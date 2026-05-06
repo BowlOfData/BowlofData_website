@@ -16,7 +16,7 @@
     <!-- Form -->
     <div class="contact-form-wrap">
 
-      <!-- Thank-you state (shown via JS when ?submitted=true) -->
+      <!-- Thank-you state -->
       <div class="contact-thankyou" id="contact-thankyou" hidden>
         <p class="thankyou-icon">&#10003;</p>
         <h2 class="thankyou-title">Message sent!</h2>
@@ -24,17 +24,26 @@
         <a href="{{ index_href }}" class="thankyou-home">Back to home</a>
       </div>
 
-      <!-- Contact form (hidden when ?submitted=true) -->
+      <!-- Error banner -->
+      <div class="contact-error" id="contact-error" hidden>
+        <p>Something went wrong — please try again, or email us directly at
+          <a href="mailto:bowlofdata@gmail.com">bowlofdata@gmail.com</a>.
+        </p>
+      </div>
+
+      <!--
+        data-netlify="true" lets Netlify detect and register the form at deploy time.
+        The actual submission is handled by the JS below (fetch to "/"), which gives us
+        full control over the loading, success, and error states.
+      -->
       <form
         id="contact-form"
-        method="POST"
-        action="{{ contact_href }}?submitted=true"
-        data-netlify="true"
         name="contact"
+        method="POST"
+        data-netlify="true"
         netlify-honeypot="bot-field"
         class="contact-form"
       >
-        <!-- Netlify required hidden fields -->
         <input type="hidden" name="form-name" value="contact">
         <p hidden><input name="bot-field"></p>
 
@@ -84,7 +93,7 @@
           ></textarea>
         </div>
 
-        <button type="submit" class="form-submit">Send message</button>
+        <button type="submit" class="form-submit" id="form-submit-btn">Send message</button>
       </form>
     </div>
 
@@ -132,11 +141,55 @@
 
 <script>
   (function () {
-    var params = new URLSearchParams(window.location.search);
-    if (params.get("submitted") === "true") {
-      document.getElementById("contact-form").hidden = true;
-      document.getElementById("contact-thankyou").hidden = false;
+    var form    = document.getElementById('contact-form');
+    var thankyou = document.getElementById('contact-thankyou');
+    var errorBanner = document.getElementById('contact-error');
+    var submitBtn = document.getElementById('form-submit-btn');
+
+    function encode(data) {
+      return Object.keys(data)
+        .map(function (k) {
+          return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]);
+        })
+        .join('&');
     }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Collect all field values into a plain object
+      var payload = {};
+      new FormData(form).forEach(function (val, key) {
+        payload[key] = val;
+      });
+
+      // Loading state
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+      errorBanner.hidden = true;
+
+      // POST to "/" — Netlify intercepts this when the form-name matches
+      // a registered form in the deploy.
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode(payload)
+      })
+        .then(function (response) {
+          if (response.ok) {
+            form.hidden = true;
+            thankyou.hidden = false;
+          } else {
+            throw new Error('status ' + response.status);
+          }
+        })
+        .catch(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send message';
+          errorBanner.hidden = false;
+          errorBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+    });
   })();
 </script>
 {% endblock %}

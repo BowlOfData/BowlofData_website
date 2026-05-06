@@ -1025,6 +1025,25 @@ img { display: block; max-width: 100%; }
   box-shadow: var(--shadow-sm);
 }
 
+.contact-error {
+  background: #fff5f5;
+  border: 1px solid #fca5a5;
+  border-left: 3px solid #ef4444;
+  border-radius: var(--radius-sm);
+  padding: 0.8em 1em;
+  margin-bottom: 1.25rem;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: #7f1d1d;
+  line-height: 1.55;
+}
+
+.contact-error a {
+  color: #b91c1c;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
 .contact-form {
   display: flex;
   flex-direction: column;
