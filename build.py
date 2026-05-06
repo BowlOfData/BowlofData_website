@@ -263,6 +263,7 @@ def build() -> None:
             logo_path="../imgs/logo.png",
             index_href="../index.html",
             archive_href="../archive.html",
+            contact_href="../contact.html",
         )
         out_path.write_text(html, encoding="utf-8")
         print(f"  Rendered  {w['label']} ({w['article_count']} articles) → {out_path.relative_to(HERE)}")
@@ -273,26 +274,32 @@ def build() -> None:
     # ------------------------------------------------------------------
     latest_week = all_weeks[0] if all_weeks else None
 
-    landing_html = env.get_template("index.html").render(
-        latest_week=latest_week,
+    shared = dict(
         css_path="static/style.css",
         logo_path="imgs/logo.png",
-        bowl_path="imgs/bowl.png",
         index_href="index.html",
         archive_href="archive.html",
+        contact_href="contact.html",
+    )
+
+    landing_html = env.get_template("index.html").render(
+        **shared,
+        latest_week=latest_week,
+        bowl_path="imgs/bowl.png",
     )
     (SITE_DIR / "index.html").write_text(landing_html, encoding="utf-8")
     print(f"  Rendered  landing → site/index.html")
 
     archive_html = env.get_template("archive.html").render(
+        **shared,
         weeks=all_weeks,
-        css_path="static/style.css",
-        logo_path="imgs/logo.png",
-        index_href="index.html",
-        archive_href="archive.html",
     )
     (SITE_DIR / "archive.html").write_text(archive_html, encoding="utf-8")
     print(f"  Rendered  archive → site/archive.html")
+
+    contact_html = env.get_template("contact.html").render(**shared)
+    (SITE_DIR / "contact.html").write_text(contact_html, encoding="utf-8")
+    print(f"  Rendered  contact → site/contact.html")
 
     # ------------------------------------------------------------------
     # Phase 5: persist the manifest

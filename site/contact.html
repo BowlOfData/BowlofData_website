@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Bowl of Data</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="header-brand">
+        <img src="imgs/logo.png" alt="Bowl of Data logo" class="header-logo">
+        <div class="header-text">
+          <span class="header-site-name">Bowl of Data</span>
+          <span class="header-tagline">A weekly digest of the most relevant tech stories</span>
+        </div>
+      </a>
+      <nav class="header-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="archive.html" class="nav-link">Archive</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    
+<div class="contact-header">
+  <div class="contact-header-inner">
+    <h1 class="contact-title">Get in touch</h1>
+    <p class="contact-sub">Feedback, article suggestions, or anything else — we read every message.</p>
+  </div>
+</div>
+
+<div class="contact-body">
+  <div class="contact-grid">
+
+    <!-- Form -->
+    <div class="contact-form-wrap">
+
+      <!-- Thank-you state (shown via JS when ?submitted=true) -->
+      <div class="contact-thankyou" id="contact-thankyou" hidden>
+        <p class="thankyou-icon">&#10003;</p>
+        <h2 class="thankyou-title">Message sent!</h2>
+        <p class="thankyou-sub">Thanks for reaching out. We'll get back to you as soon as possible.</p>
+        <a href="index.html" class="thankyou-home">Back to home</a>
+      </div>
+
+      <!-- Contact form (hidden when ?submitted=true) -->
+      <form
+        id="contact-form"
+        method="POST"
+        action="contact.html?submitted=true"
+        data-netlify="true"
+        name="contact"
+        netlify-honeypot="bot-field"
+        class="contact-form"
+      >
+        <!-- Netlify required hidden fields -->
+        <input type="hidden" name="form-name" value="contact">
+        <p hidden><input name="bot-field"></p>
+
+        <div class="form-group">
+          <label class="form-label" for="name">Name</label>
+          <input
+            class="form-input"
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your name"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Email</label>
+          <input
+            class="form-input"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="you@example.com"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="subject">Subject</label>
+          <select class="form-input form-select" id="subject" name="subject">
+            <option value="feedback">Feedback</option>
+            <option value="article-suggestion">Article suggestion</option>
+            <option value="partnership">Partnership</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="message">Message</label>
+          <textarea
+            class="form-input form-textarea"
+            id="message"
+            name="message"
+            placeholder="What's on your mind?"
+            rows="6"
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Send message</button>
+      </form>
+    </div>
+
+    <!-- Info panel -->
+    <aside class="contact-info">
+      <div class="contact-info-card">
+        <h2 class="info-title">What to expect</h2>
+        <ul class="info-list">
+          <li class="info-item">
+            <span class="info-dot info-dot-yellow"></span>
+            <div>
+              <p class="info-item-label">Response time</p>
+              <p class="info-item-text">We reply within a few days, usually sooner.</p>
+            </div>
+          </li>
+          <li class="info-item">
+            <span class="info-dot info-dot-orange"></span>
+            <div>
+              <p class="info-item-label">Article suggestions</p>
+              <p class="info-item-text">Got a story we should cover? Drop the URL and a line on why it matters.</p>
+            </div>
+          </li>
+          <li class="info-item">
+            <span class="info-dot info-dot-amber"></span>
+            <div>
+              <p class="info-item-label">Feedback</p>
+              <p class="info-item-text">Tell us what you love, what you'd cut, or what you'd add.</p>
+            </div>
+          </li>
+          <li class="info-item">
+            <span class="info-dot info-dot-dark"></span>
+            <div>
+              <p class="info-item-label">Direct email</p>
+              <p class="info-item-text">
+                <a href="mailto:bowlofdata@gmail.com" class="info-email">bowlofdata@gmail.com</a>
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get("submitted") === "true") {
+      document.getElementById("contact-form").hidden = true;
+      document.getElementById("contact-thankyou").hidden = false;
+    }
+  })();
+</script>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <img src="imgs/logo.png" alt="Bowl of Data" class="footer-logo">
+      <div class="footer-text">
+        <p class="footer-name">Bowl of Data</p>
+        <p class="footer-sub">A weekly digest of the most relevant tech stories</p>
+      </div>
+      <p class="footer-credit">
+        Generated on 2026-05-06 &middot; Powered by
+        <a href="https://github.com/bowlofdata/maki" target="_blank" rel="noopener">Maki</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
