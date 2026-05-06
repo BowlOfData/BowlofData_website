@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}{{ site_name }} — Newsletter Archive{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="hero-inner">
+    <img src="{{ logo_path }}" alt="{{ site_name }} logo" class="hero-logo">
+    <h1 class="hero-title">Bowl of <span>Data</span></h1>
+    <p class="hero-sub">{{ tagline }}</p>
+  </div>
+</section>
+
+{% if weeks %}
+{% set latest = weeks[0] %}
+<div class="section latest-section">
+  <p class="section-heading">Latest issue</p>
+  <div class="latest-card">
+    <div class="latest-card-header">
+      <div>
+        <span class="latest-week-label">{{ latest.label }}</span>
+        <span class="latest-article-count">{{ latest.article_count }} articles</span>
+      </div>
+      <a href="{{ latest.href }}" class="latest-read-btn">Read full issue →</a>
+    </div>
+    {% if latest.preview_articles %}
+    <ul class="latest-article-list">
+      {% for a in latest.preview_articles %}
+      <li class="latest-article-item">
+        <p class="latest-article-title">{{ a.title }}</p>
+        {% if a.short_summary %}
+        <p class="latest-article-summary">{{ a.short_summary }}</p>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    {% if latest.article_count > 5 %}
+    <p class="latest-more">+ {{ latest.article_count - 5 }} more articles in this issue</p>
+    {% endif %}
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+
+<div class="section">
+  <p class="section-heading">All issues</p>
+
+  {% if weeks %}
+  <div class="week-grid">
+    {% for w in weeks %}
+    <a class="week-card" href="{{ w.href }}">
+      <div class="week-card-label">{{ w.label }}</div>
+      <div class="week-card-count">{{ w.article_count }} articles</div>
+      {% if w.preview_titles %}
+      <ul class="week-card-preview">
+        {% for t in w.preview_titles %}
+        <li>{{ t }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="empty-state">No newsletters found yet. Run the Maki pipeline to generate the first issue.</p>
+  {% endif %}
+</div>
+{% endblock %}

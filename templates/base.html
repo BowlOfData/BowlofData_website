@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ site_name }}{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ css_path }}">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="{{ index_href }}" class="header-brand">
+        <img src="{{ logo_path }}" alt="{{ site_name }} logo" class="header-logo">
+        <div class="header-text">
+          <span class="header-site-name">{{ site_name }}</span>
+          <span class="header-tagline">{{ tagline }}</span>
+        </div>
+      </a>
+      <nav class="header-nav">
+        <a href="{{ index_href }}" class="nav-link">Archive</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <img src="{{ logo_path }}" alt="{{ site_name }}" class="footer-logo">
+      <div class="footer-text">
+        <p class="footer-name">{{ site_name }}</p>
+        <p class="footer-sub">{{ tagline }}</p>
+      </div>
+      <p class="footer-credit">
+        Generated on {{ build_date }} &middot; Powered by
+        <a href="https://github.com/bowlofdata/maki" target="_blank" rel="noopener">Maki</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

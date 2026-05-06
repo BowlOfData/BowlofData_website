@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}{{ label }} — {{ site_name }}{% endblock %}
+
+{% block content %}
+<div class="week-header">
+  <div class="week-header-inner">
+    <a href="{{ index_href }}" class="back-link">← All issues</a>
+    <h1 class="week-title">
+      Week <span class="week-title-accent">{{ "%02d"|format(week) }}</span> · {{ year }}
+    </h1>
+    <p class="week-meta">{{ articles | length }} articles</p>
+  </div>
+</div>
+
+<div class="article-section">
+  {% if articles %}
+
+  <div class="week-nav">
+    {% if prev_week %}
+    <a href="../{{ prev_week.href }}" class="week-nav-btn week-nav-older">← {{ prev_week.label }}</a>
+    {% else %}<span></span>{% endif %}
+    {% if next_week %}
+    <a href="../{{ next_week.href }}" class="week-nav-btn week-nav-newer">{{ next_week.label }} →</a>
+    {% else %}<span></span>{% endif %}
+  </div>
+
+  <div class="article-list">
+    {% for a in articles %}
+    <article class="article-card">
+
+      <div class="article-card-top">
+        <p class="article-number">Article {{ loop.index }}</p>
+        <h2 class="article-title">
+          {% if a.url %}
+          <a href="{{ a.url }}" target="_blank" rel="noopener">{{ a.title }}</a>
+          {% else %}
+          {{ a.title }}
+          {% endif %}
+        </h2>
+        <div class="article-meta">
+          {% if a.source %}
+          <span class="article-source">{{ a.source }}</span>
+          {% endif %}
+          {% if a.score %}
+          <span class="article-score {% if a.score >= 8 %}score-high{% else %}score-mid{% endif %}">
+            {{ a.score }}/10
+          </span>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="article-card-body">
+        {% if a.main_topic %}
+        <p class="article-topic">{{ a.main_topic }}</p>
+        {% endif %}
+
+        {% if a.short_summary %}
+        <div class="tldr-box">
+          <p class="tldr-label">TL;DR</p>
+          <p class="tldr-text">{{ a.short_summary }}</p>
+        </div>
+        {% endif %}
+
+        {% if a.long_resume_paragraphs %}
+        <div class="long-resume">
+          {% for para in a.long_resume_paragraphs %}
+          <p>{{ para }}</p>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+
+      <div class="article-card-footer">
+        {% if a.technologies %}
+        <div class="article-tags">
+          {% for tech in a.technologies %}
+          <span class="tag">{{ tech }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% if a.url %}
+        <a class="read-more" href="{{ a.url }}" target="_blank" rel="noopener">Read full article →</a>
+        {% endif %}
+      </div>
+
+    </article>
+    {% endfor %}
+  </div>
+
+  <div class="week-nav week-nav-bottom-bar">
+    {% if prev_week %}
+    <a href="../{{ prev_week.href }}" class="week-nav-btn week-nav-older">← {{ prev_week.label }}</a>
+    {% else %}<span></span>{% endif %}
+    <a href="{{ index_href }}" class="week-nav-btn week-nav-archive">All issues</a>
+    {% if next_week %}
+    <a href="../{{ next_week.href }}" class="week-nav-btn week-nav-newer">{{ next_week.label }} →</a>
+    {% else %}<span></span>{% endif %}
+  </div>
+
+  {% else %}
+  <p class="empty-state">No articles in this issue.</p>
+  {% endif %}
+</div>
+{% endblock %}
