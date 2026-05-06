@@ -74,6 +74,20 @@ def _parse_summaries_filename(path: Path) -> tuple[int, int] | None:
     return int(match.group(1)), int(match.group(2))
 
 
+def _slugify(text: str) -> str:
+    """Convert an article title to an HTML anchor slug.
+
+    Must stay in sync with the identical function in
+    maki_newsletter/pipeline.py so that anchor IDs on the rendered pages
+    match the netlify_url values written into summaries_*.json.
+    """
+    slug = text.lower().strip()
+    slug = re.sub(r"[^\w\s-]", "", slug)
+    slug = re.sub(r"[\s_]+", "-", slug)
+    slug = re.sub(r"-+", "-", slug)
+    return slug.strip("-")
+
+
 def _week_label(week: int, year: int) -> str:
     return f"Week {week:02d} · {year}"
 
@@ -88,8 +102,10 @@ def _normalise_articles(raw_articles: list[dict]) -> list[dict]:
     for a in raw_articles:
         resume_raw = (a.get("long_resume") or "").strip()
         resume_paragraphs = [p.strip() for p in resume_raw.split("\n\n") if p.strip()] if resume_raw else []
+        title = (a.get("title") or "").strip()
         result.append({
-            "title":                  (a.get("title") or "").strip(),
+            "title":                  title,
+            "slug":                   _slugify(title),
             "url":                    (a.get("url") or "").strip(),
             "source":                 (a.get("source") or "").strip(),
             "published":              (a.get("published") or "").strip(),
@@ -97,7 +113,6 @@ def _normalise_articles(raw_articles: list[dict]) -> list[dict]:
             "long_resume":            resume_raw,
             "long_resume_paragraphs": resume_paragraphs,
             "main_topic":             (a.get("main_topic") or "").strip(),
-            "score":                  int(a.get("quality_score") or 0),
             "technologies":           [t.strip() for t in (a.get("technologies") or []) if t and t.strip()],
         })
     return result

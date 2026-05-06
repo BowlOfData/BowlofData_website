@@ -27,7 +27,7 @@
 
   <div class="article-list">
     {% for a in articles %}
-    <article class="article-card">
+    <article class="article-card" id="{{ a.slug }}">
 
       <div class="article-card-top">
         <p class="article-number">Article {{ loop.index }}</p>
@@ -41,11 +41,6 @@
         <div class="article-meta">
           {% if a.source %}
           <span class="article-source">{{ a.source }}</span>
-          {% endif %}
-          {% if a.score %}
-          <span class="article-score {% if a.score >= 8 %}score-high{% else %}score-mid{% endif %}">
-            {{ a.score }}/10
-          </span>
           {% endif %}
         </div>
       </div>
