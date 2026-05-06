@@ -96,6 +96,24 @@ def _week_href(week: int, year: int) -> str:
     return f"week/{week:02d}_{year}.html"
 
 
+def _normalise_releases(raw: list[dict]) -> list[dict]:
+    """Normalise raw release dicts from a model_releases_WW_YYYY.json file."""
+    result = []
+    for r in raw:
+        model_name = (r.get("model_name") or "").strip()
+        if not model_name:
+            continue
+        result.append({
+            "provider":     (r.get("provider") or "").strip(),
+            "model_name":   model_name,
+            "release_date": (r.get("release_date") or "").strip(),
+            "summary":      (r.get("summary") or "").strip(),
+            "key_features": [f.strip() for f in (r.get("key_features") or []) if f and f.strip()],
+            "url":          (r.get("url") or "").strip(),
+        })
+    return result
+
+
 def _normalise_articles(raw_articles: list[dict]) -> list[dict]:
     """Normalise raw article dicts from a pipeline summaries JSON."""
     result = []
@@ -118,18 +136,27 @@ def _normalise_articles(raw_articles: list[dict]) -> list[dict]:
     return result
 
 
-def _build_week_entry(week: int, year: int, articles: list[dict], source_mtime: float) -> dict:
+def _build_week_entry(
+    week: int,
+    year: int,
+    articles: list[dict],
+    source_mtime: float,
+    model_releases: list[dict] | None = None,
+    model_releases_mtime: float = 0,
+) -> dict:
     """Build a complete week entry for storage in the manifest."""
     return {
-        "week":             week,
-        "year":             year,
-        "label":            _week_label(week, year),
-        "href":             _week_href(week, year),
-        "articles":         articles,
-        "article_count":    len(articles),
-        "preview_titles":   [a["title"] for a in articles[:3] if a["title"]],
-        "preview_articles": articles[:5],
-        "source_mtime":     source_mtime,
+        "week":                  week,
+        "year":                  year,
+        "label":                 _week_label(week, year),
+        "href":                  _week_href(week, year),
+        "articles":              articles,
+        "article_count":         len(articles),
+        "preview_titles":        [a["title"] for a in articles[:3] if a["title"]],
+        "preview_articles":      articles[:5],
+        "source_mtime":          source_mtime,
+        "model_releases":        model_releases or [],
+        "model_releases_mtime":  model_releases_mtime,
     }
 
 # ---------------------------------------------------------------------------
@@ -201,6 +228,10 @@ def build() -> None:
         week_num, year = parts
         key = (week_num, year)
         source_mtime = path.stat().st_mtime
+
+        mr_path = MAKI_OUTPUT_DIR / f"model_releases_{week_num:02d}_{year}.json"
+        mr_mtime = mr_path.stat().st_mtime if mr_path.exists() else 0
+
         html_exists = (SITE_DIR / _week_href(week_num, year)).exists()
 
         existing = manifest.get(key)
@@ -208,6 +239,7 @@ def build() -> None:
             not FORCE_REBUILD
             and existing is not None
             and source_mtime <= existing.get("source_mtime", 0)
+            and mr_mtime <= existing.get("model_releases_mtime", 0)
             and html_exists
         ):
             print(f"  Skipping  {_week_label(week_num, year)} — up to date")
@@ -219,11 +251,25 @@ def build() -> None:
             print(f"  Warning: could not load {path.name}: {exc}")
             continue
 
+        model_releases: list[dict] = []
+        if mr_path.exists():
+            try:
+                model_releases = _normalise_releases(
+                    json.loads(mr_path.read_text(encoding="utf-8"))
+                )
+            except (OSError, json.JSONDecodeError) as exc:
+                print(f"  Warning: could not load {mr_path.name}: {exc}")
+
         articles = _normalise_articles(raw)
-        manifest[key] = _build_week_entry(week_num, year, articles, source_mtime)
+        manifest[key] = _build_week_entry(
+            week_num, year, articles, source_mtime,
+            model_releases=model_releases,
+            model_releases_mtime=mr_mtime,
+        )
         needs_rebuild.add(key)
         verb = "forced" if FORCE_REBUILD else ("new" if existing is None else "updated")
-        print(f"  Queued    {_week_label(week_num, year)} ({verb}, {len(articles)} articles)")
+        releases_note = f", {len(model_releases)} releases" if model_releases else ""
+        print(f"  Queued    {_week_label(week_num, year)} ({verb}, {len(articles)} articles{releases_note})")
 
     # Queue weeks whose HTML file is absent even though the manifest knows about them
     # (e.g. first run after cloning the repo when site/ was gitignored)
@@ -271,6 +317,7 @@ def build() -> None:
             year=w["year"],
             label=w["label"],
             articles=w["articles"],
+            model_releases=w.get("model_releases", []),
             all_weeks=all_weeks,
             prev_week=prev_week,
             next_week=next_week,
@@ -301,6 +348,7 @@ def build() -> None:
         **shared,
         latest_week=latest_week,
         bowl_path="imgs/bowl.png",
+        current_page="home",
     )
     (SITE_DIR / "index.html").write_text(landing_html, encoding="utf-8")
     print(f"  Rendered  landing → site/index.html")
@@ -308,11 +356,12 @@ def build() -> None:
     archive_html = env.get_template("archive.html").render(
         **shared,
         weeks=all_weeks,
+        current_page="archive",
     )
     (SITE_DIR / "archive.html").write_text(archive_html, encoding="utf-8")
     print(f"  Rendered  archive → site/archive.html")
 
-    contact_html = env.get_template("contact.html").render(**shared)
+    contact_html = env.get_template("contact.html").render(**shared, current_page="contact")
     (SITE_DIR / "contact.html").write_text(contact_html, encoding="utf-8")
     print(f"  Rendered  contact → site/contact.html")
 

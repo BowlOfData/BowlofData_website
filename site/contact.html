@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact — Bowl of Data</title>
+  <title>Contact · Bowl of Data</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
@@ -21,9 +21,9 @@
         </div>
       </a>
       <nav class="header-nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="archive.html" class="nav-link">Archive</a>
-        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="index.html" class="nav-link" >Home</a>
+        <a href="archive.html" class="nav-link" >Archive</a>
+        <a href="contact.html" class="nav-link" aria-current="page">Contact</a>
       </nav>
     </div>
   </header>
@@ -33,7 +33,7 @@
 <div class="contact-header">
   <div class="contact-header-inner">
     <h1 class="contact-title">Get in touch</h1>
-    <p class="contact-sub">Feedback, article suggestions, or anything else — we read every message.</p>
+    <p class="contact-sub">Feedback, article suggestions, or anything else; we read every message.</p>
   </div>
 </div>
 
@@ -53,9 +53,7 @@
 
       <!-- Error banner -->
       <div class="contact-error" id="contact-error" hidden>
-        <p>Something went wrong — please try again, or email us directly at
-          <a href="mailto:bowlofdata@gmail.com">bowlofdata@gmail.com</a>.
-        </p>
+        <p>Something went wrong. Please try again in a moment.</p>
       </div>
 
       <!--
@@ -150,15 +148,6 @@
               <p class="info-item-text">Tell us what you love, what you'd cut, or what you'd add.</p>
             </div>
           </li>
-          <li class="info-item">
-            <span class="info-dot info-dot-dark"></span>
-            <div>
-              <p class="info-item-label">Direct email</p>
-              <p class="info-item-text">
-                <a href="mailto:bowlofdata@gmail.com" class="info-email">bowlofdata@gmail.com</a>
-              </p>
-            </div>
-          </li>
         </ul>
       </div>
     </aside>
@@ -195,7 +184,7 @@
       submitBtn.textContent = 'Sending…';
       errorBanner.hidden = true;
 
-      // POST to "/" — Netlify intercepts this when the form-name matches
+      // POST to "/". Netlify intercepts this when the form-name matches
       // a registered form in the deploy.
       fetch('/', {
         method: 'POST',
@@ -229,6 +218,10 @@
         <p class="footer-name">Bowl of Data</p>
         <p class="footer-sub">A weekly digest of the most relevant tech stories</p>
       </div>
+      <nav class="footer-nav">
+        <a href="archive.html" class="footer-nav-link">Archive</a>
+        <a href="contact.html" class="footer-nav-link">Contact</a>
+      </nav>
       <p class="footer-credit">
         Generated on 2026-05-06 &middot; Powered by
         <a href="https://github.com/bowlofdata/maki" target="_blank" rel="noopener">Maki</a>

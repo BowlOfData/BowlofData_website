@@ -6,7 +6,7 @@
   <title>{% block title %}{{ site_name }}{% endblock %}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ css_path }}">
 </head>
 <body>
@@ -21,9 +21,9 @@
         </div>
       </a>
       <nav class="header-nav">
-        <a href="{{ index_href }}" class="nav-link">Home</a>
-        <a href="{{ archive_href }}" class="nav-link">Archive</a>
-        <a href="{{ contact_href }}" class="nav-link">Contact</a>
+        <a href="{{ index_href }}" class="nav-link" {% if current_page == 'home' %}aria-current="page"{% endif %}>Home</a>
+        <a href="{{ archive_href }}" class="nav-link" {% if current_page == 'archive' %}aria-current="page"{% endif %}>Archive</a>
+        <a href="{{ contact_href }}" class="nav-link" {% if current_page == 'contact' %}aria-current="page"{% endif %}>Contact</a>
       </nav>
     </div>
   </header>
@@ -39,6 +39,10 @@
         <p class="footer-name">{{ site_name }}</p>
         <p class="footer-sub">{{ tagline }}</p>
       </div>
+      <nav class="footer-nav">
+        <a href="{{ archive_href }}" class="footer-nav-link">Archive</a>
+        <a href="{{ contact_href }}" class="footer-nav-link">Contact</a>
+      </nav>
       <p class="footer-credit">
         Generated on {{ build_date }} &middot; Powered by
         <a href="https://github.com/bowlofdata/maki" target="_blank" rel="noopener">Maki</a>

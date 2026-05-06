@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ label }} — {{ site_name }}{% endblock %}
+{% block title %}{{ label }} · {{ site_name }}{% endblock %}
 
 {% block content %}
 <div class="week-header">
@@ -9,11 +9,51 @@
     <h1 class="week-title">
       Week <span class="week-title-accent">{{ "%02d"|format(week) }}</span> · {{ year }}
     </h1>
-    <p class="week-meta">{{ articles | length }} articles</p>
+    <p class="week-meta">{{ articles | length }} article{{ 's' if articles | length != 1 else '' }}{% if model_releases %} · {{ model_releases | length }} model release{{ 's' if model_releases | length != 1 else '' }}{% endif %}</p>
   </div>
 </div>
 
 <div class="article-section">
+
+  {% if model_releases %}
+  <section class="releases-section">
+    <div class="releases-header">
+      <span class="releases-badge">New This Week</span>
+      <h2 class="releases-title">AI Model Releases</h2>
+      <p class="releases-sub">New models and updates from major AI providers</p>
+    </div>
+    <div class="releases-grid">
+      {% for item in model_releases %}
+      <div class="release-card">
+        <div class="release-card-inner">
+          <p class="release-provider-tag">{{ item.provider }}</p>
+          <div class="release-name-row">
+            {% if item.url %}
+            <a href="{{ item.url }}" class="release-name" target="_blank" rel="noopener">{{ item.model_name }}</a>
+            {% else %}
+            <span class="release-name">{{ item.model_name }}</span>
+            {% endif %}
+            {% if item.release_date and item.release_date != 'recent' %}
+            <span class="release-date-pill">{{ item.release_date }}</span>
+            {% endif %}
+          </div>
+          {% if item.summary %}
+          <p class="release-summary">{{ item.summary }}</p>
+          {% endif %}
+          {% if item.key_features %}
+          <ul class="release-features">
+            {% for feat in item.key_features %}
+            <li>{{ feat }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
   {% if articles %}
 
   <div class="week-nav">
