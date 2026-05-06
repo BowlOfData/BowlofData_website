@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Archive — {{ site_name }}{% endblock %}
+
+{% block content %}
+<div class="archive-header">
+  <div class="archive-header-inner">
+    <h1 class="archive-title">All issues</h1>
+    <p class="archive-sub">Every weekly digest, from the first bowl to the latest.</p>
+  </div>
+</div>
+
+<div class="section">
+  {% if weeks %}
+  <div class="week-grid">
+    {% for w in weeks %}
+    <a class="week-card {% if loop.first %}week-card-latest{% endif %}" href="{{ w.href }}">
+      {% if loop.first %}<span class="week-card-badge">Latest</span>{% endif %}
+      <div class="week-card-label">{{ w.label }}</div>
+      <div class="week-card-count">{{ w.article_count }} articles</div>
+      {% if w.preview_titles %}
+      <ul class="week-card-preview">
+        {% for t in w.preview_titles %}
+        <li>{{ t }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="empty-state">No newsletters found yet. Run the Maki pipeline to generate the first issue.</p>
+  {% endif %}
+</div>
+{% endblock %}

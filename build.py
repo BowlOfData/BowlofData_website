@@ -262,22 +262,37 @@ def build() -> None:
             css_path="../static/style.css",
             logo_path="../imgs/logo.png",
             index_href="../index.html",
+            archive_href="../archive.html",
         )
         out_path.write_text(html, encoding="utf-8")
         print(f"  Rendered  {w['label']} ({w['article_count']} articles) → {out_path.relative_to(HERE)}")
         rendered_count += 1
 
     # ------------------------------------------------------------------
-    # Phase 4: always regenerate the index (reflects the full manifest)
+    # Phase 4: always regenerate the landing page and archive index
     # ------------------------------------------------------------------
-    index_html = env.get_template("index.html").render(
+    latest_week = all_weeks[0] if all_weeks else None
+
+    landing_html = env.get_template("index.html").render(
+        latest_week=latest_week,
+        css_path="static/style.css",
+        logo_path="imgs/logo.png",
+        bowl_path="imgs/bowl.png",
+        index_href="index.html",
+        archive_href="archive.html",
+    )
+    (SITE_DIR / "index.html").write_text(landing_html, encoding="utf-8")
+    print(f"  Rendered  landing → site/index.html")
+
+    archive_html = env.get_template("archive.html").render(
         weeks=all_weeks,
         css_path="static/style.css",
         logo_path="imgs/logo.png",
         index_href="index.html",
+        archive_href="archive.html",
     )
-    (SITE_DIR / "index.html").write_text(index_html, encoding="utf-8")
-    print(f"  Rendered  index → site/index.html")
+    (SITE_DIR / "archive.html").write_text(archive_html, encoding="utf-8")
+    print(f"  Rendered  archive → site/archive.html")
 
     # ------------------------------------------------------------------
     # Phase 5: persist the manifest

@@ -5,7 +5,7 @@
 {% block content %}
 <div class="week-header">
   <div class="week-header-inner">
-    <a href="{{ index_href }}" class="back-link">← All issues</a>
+    <a href="{{ archive_href }}" class="back-link">← All issues</a>
     <h1 class="week-title">
       Week <span class="week-title-accent">{{ "%02d"|format(week) }}</span> · {{ year }}
     </h1>
@@ -92,7 +92,7 @@
     {% if prev_week %}
     <a href="../{{ prev_week.href }}" class="week-nav-btn week-nav-older">← {{ prev_week.label }}</a>
     {% else %}<span></span>{% endif %}
-    <a href="{{ index_href }}" class="week-nav-btn week-nav-archive">All issues</a>
+    <a href="{{ archive_href }}" class="week-nav-btn week-nav-archive">All issues</a>
     {% if next_week %}
     <a href="../{{ next_week.href }}" class="week-nav-btn week-nav-newer">{{ next_week.label }} →</a>
     {% else %}<span></span>{% endif %}

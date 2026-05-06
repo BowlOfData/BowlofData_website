@@ -1,31 +1,71 @@
 {% extends "base.html" %}
 
-{% block title %}{{ site_name }} — Newsletter Archive{% endblock %}
+{% block title %}{{ site_name }} — Weekly Tech Newsletter{% endblock %}
 
 {% block content %}
-<section class="hero">
-  <div class="hero-inner">
-    <img src="{{ logo_path }}" alt="{{ site_name }} logo" class="hero-logo">
-    <h1 class="hero-title">Bowl of <span>Data</span></h1>
-    <p class="hero-sub">{{ tagline }}</p>
+
+<section class="landing-image-strip">
+  <img src="{{ bowl_path }}" alt="Bowl of Data" class="landing-bowl-img">
+</section>
+
+<section class="landing-copy">
+  <div class="landing-copy-inner">
+    <h1 class="landing-headline">
+      The internet is noisy.<br>
+      <span>Your tech digest&nbsp;isn't.</span>
+    </h1>
+    <p class="landing-sub">
+      Every week, an AI&#8209;powered pipeline combs through hundreds of sources —
+      security advisories, model releases, blockchain moves, and engineering deep&#8209;dives —
+      and serves only the stories that actually matter.
+    </p>
+    <div class="landing-ctas">
+      {% if latest_week %}
+      <a href="{{ latest_week.href }}" class="cta-primary">Read latest issue</a>
+      {% endif %}
+      <a href="{{ archive_href }}" class="cta-secondary">Browse archive</a>
+    </div>
   </div>
 </section>
 
-{% if weeks %}
-{% set latest = weeks[0] %}
+<section class="landing-topics">
+  <div class="landing-topics-inner">
+    <p class="section-heading">What we cover</p>
+    <div class="topic-grid">
+      <div class="topic-card topic-ai">
+        <p class="topic-name">AI &amp; Machine Learning</p>
+        <p class="topic-desc">Model releases, research breakthroughs, and the real-world impact of large language models on products and people.</p>
+      </div>
+      <div class="topic-card topic-security">
+        <p class="topic-name">Cybersecurity</p>
+        <p class="topic-desc">Vulnerabilities, exploits, threat intelligence, and what to patch before it becomes someone else's headline.</p>
+      </div>
+      <div class="topic-card topic-blockchain">
+        <p class="topic-name">Blockchain &amp; Crypto</p>
+        <p class="topic-desc">Market moves, protocol upgrades, DeFi developments, and regulatory shifts worth paying attention to.</p>
+      </div>
+      <div class="topic-card topic-engineering">
+        <p class="topic-name">Software Engineering</p>
+        <p class="topic-desc">Tools, frameworks, open-source releases, and developer ecosystem news that changes how we build things.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if latest_week %}
 <div class="section latest-section">
   <p class="section-heading">Latest issue</p>
   <div class="latest-card">
     <div class="latest-card-header">
       <div>
-        <span class="latest-week-label">{{ latest.label }}</span>
-        <span class="latest-article-count">{{ latest.article_count }} articles</span>
+        <span class="latest-week-label">{{ latest_week.label }}</span>
+        <span class="latest-article-count">{{ latest_week.article_count }} articles</span>
       </div>
-      <a href="{{ latest.href }}" class="latest-read-btn">Read full issue →</a>
+      <a href="{{ latest_week.href }}" class="latest-read-btn">Read full issue →</a>
     </div>
-    {% if latest.preview_articles %}
+    {% if latest_week.preview_articles %}
     <ul class="latest-article-list">
-      {% for a in latest.preview_articles %}
+      {% for a in latest_week.preview_articles %}
       <li class="latest-article-item">
         <p class="latest-article-title">{{ a.title }}</p>
         {% if a.short_summary %}
@@ -34,35 +74,12 @@
       </li>
       {% endfor %}
     </ul>
-    {% if latest.article_count > 5 %}
-    <p class="latest-more">+ {{ latest.article_count - 5 }} more articles in this issue</p>
+    {% if latest_week.article_count > 5 %}
+    <p class="latest-more">+ {{ latest_week.article_count - 5 }} more articles in this issue</p>
     {% endif %}
     {% endif %}
   </div>
 </div>
 {% endif %}
 
-<div class="section">
-  <p class="section-heading">All issues</p>
-
-  {% if weeks %}
-  <div class="week-grid">
-    {% for w in weeks %}
-    <a class="week-card" href="{{ w.href }}">
-      <div class="week-card-label">{{ w.label }}</div>
-      <div class="week-card-count">{{ w.article_count }} articles</div>
-      {% if w.preview_titles %}
-      <ul class="week-card-preview">
-        {% for t in w.preview_titles %}
-        <li>{{ t }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-    </a>
-    {% endfor %}
-  </div>
-  {% else %}
-  <p class="empty-state">No newsletters found yet. Run the Maki pipeline to generate the first issue.</p>
-  {% endif %}
-</div>
 {% endblock %}
