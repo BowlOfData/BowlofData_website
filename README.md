@@ -9,6 +9,7 @@ The site is a **pre-built static site**: `build.py` reads newsletter data produc
 ```
 BowlofData_website/
 ├── build.py              # Site generator (run locally after each newsletter)
+├── weeks_manifest.json   # Incremental build state — commit this to git
 ├── requirements.txt      # Python deps (jinja2, python-dotenv)
 ├── netlify.toml          # Netlify config — publishes site/
 ├── imgs/                 # Brand assets (logo.png)
@@ -94,6 +95,20 @@ Scans `MAKI_OUTPUT_DIR` for `summaries_WW_YYYY.json` files, normalises each arti
 - one `site/index.html` listing all weeks
 
 Each week page receives `prev_week` / `next_week` context for issue-to-issue navigation.
+
+**Incremental build** — the builder runs in four phases:
+
+1. **Reconcile** — compare each source JSON's mtime against `weeks_manifest.json`. Only new or changed files are queued for rendering.
+2. **Expand** — also queue the immediate neighbours (older and newer issue) of any changed week, so their prev/next navigation links stay accurate.
+3. **Render** — write HTML only for queued weeks; all other existing pages are untouched.
+4. **Persist** — update `weeks_manifest.json` with the current build state.
+
+**Deletion safety** — when a `summaries_WW_YYYY.json` is removed from the maki output directory, its entry remains in `weeks_manifest.json` and its built HTML is preserved. The archive index is always derived from the manifest, not from what source files currently exist on disk.
+
+**Force a full rebuild:**
+```bash
+FORCE_REBUILD=1 python3 build.py
+```
 
 ### Templates
 
