@@ -59,30 +59,6 @@
         ]
       },
       {
-        "title": "Kaspersky suspects Chinese hackers planted a backdoor into Daemon Tools in ‘widespread’ attack",
-        "slug": "kaspersky-suspects-chinese-hackers-planted-a-backdoor-into-daemon-tools-in-widespread-attack",
-        "url": "https://techcrunch.com/2026/05/05/kaspersky-suspects-chinese-hackers-planted-a-backdoor-into-daemon-tools-in-widespread-attack",
-        "source": "TechCrunch",
-        "published": "Tue, 05 May 2026 15:20:24 +0000",
-        "short_summary": "Security researchers at Kaspersky have uncovered a widespread supply chain attack involving a malicious backdoor planted in the Daemon Tools software. The attack has targeted thousands of Windows users and specifically aimed at critical sectors in Russia, Belarus, and Thailand.",
-        "long_resume": "Kaspersky security researchers have identified a significant supply chain attack involving the popular Windows disc imaging software, Daemon Tools. The researchers discovered a malicious backdoor that has been used to infect thousands of Windows computers globally. Analysis of the malware suggests the attackers are part of a Chinese-language speaking group. While the attack is widespread, Kaspersky also noted a more targeted effort directed at specific organizations within the retail, scientific, manufacturing, and government sectors, particularly in Russia, Belarus, and Thailand. The backdoor was first detected on April 8, and the attack is currently described as 'still active,' meaning the vulnerability remains a threat to users who have not yet been remediated. This incident follows a trend of increasing supply chain attacks, such as the recent compromises of Notepad++ and the CPUID website. TechCrunch was able to verify the presence of the backdoor in the Daemon Tools Windows installer using the VirusTotal malware scanner. The developer of Daemon Tools, Disc Soft, has acknowledged the report and stated they are actively investigating the situation to assess and address any potential risks. It remains unclear if the macOS version of the software or other Disc Soft products have been compromised.",
-        "long_resume_paragraphs": [
-          "Kaspersky security researchers have identified a significant supply chain attack involving the popular Windows disc imaging software, Daemon Tools. The researchers discovered a malicious backdoor that has been used to infect thousands of Windows computers globally. Analysis of the malware suggests the attackers are part of a Chinese-language speaking group. While the attack is widespread, Kaspersky also noted a more targeted effort directed at specific organizations within the retail, scientific, manufacturing, and government sectors, particularly in Russia, Belarus, and Thailand. The backdoor was first detected on April 8, and the attack is currently described as 'still active,' meaning the vulnerability remains a threat to users who have not yet been remediated. This incident follows a trend of increasing supply chain attacks, such as the recent compromises of Notepad++ and the CPUID website. TechCrunch was able to verify the presence of the backdoor in the Daemon Tools Windows installer using the VirusTotal malware scanner. The developer of Daemon Tools, Disc Soft, has acknowledged the report and stated they are actively investigating the situation to assess and address any potential risks. It remains unclear if the macOS version of the software or other Disc Soft products have been compromised."
-        ],
-        "main_topic": "Kaspersky has identified a widespread supply chain attack involving a malicious backdoor planted in the Windows disc imaging software Daemon Tools by Chinese-linked hackers.",
-        "technologies": [
-          "Daemon Tools",
-          "Windows",
-          "Kaspersky antivirus",
-          "Notepad++",
-          "CPUID",
-          "HWMonitor",
-          "CPU-Z",
-          "VirusTotal",
-          "macOS"
-        ]
-      },
-      {
         "title": "Bleeding Llama: Critical Unauthenticated Memory Leak in Ollama (CVE-2026–7482)",
         "slug": "bleeding-llama-critical-unauthenticated-memory-leak-in-ollama-cve-20267482",
         "url": "https://www.cyera.com/research/bleeding-llama-critical-unauthenticated-memory-leak-in-ollama",
@@ -133,45 +109,6 @@
         ]
       },
       {
-        "title": "Major AI Clients Shipping With Broken OAuth Implementations",
-        "slug": "major-ai-clients-shipping-with-broken-oauth-implementations",
-        "url": "https://www.redcaller.com/docs/references/mcp-client-oauth-refresh-token-support",
-        "source": "Reddit r/netsec",
-        "published": "2026-05-05T15:51:04Z",
-        "short_summary": "The article examines the critical failure of many MCP clients to support OAuth refresh tokens, which necessitates frequent manual re-authentication. It provides a detailed support matrix and actionable recommendations for server developers to mitigate service disruptions.",
-        "long_resume": "This technical report evaluates the current state of OAuth 2.1 and PKCE implementation within the Model Context Protocol (MCP) ecosystem. The core issue identified is a discrepancy between the MCP specification, which mandates short-lived access tokens and long-lived, rotated refresh tokens, and the actual capabilities of major clients. As of April 2026, the majority of prominent MCP clients—including Cursor, Claude Code, and Claude.ai—do not support the refresh_token grant, leading to significant user friction through frequent re-authentication requirements. The article provides a comprehensive support matrix, categorizing clients like Zed and Cline as having partial support, while noting that others like Claude Code suffer from specific implementation bugs, such as failed OAuth metadata discovery for non-root path URLs. While the MCP TypeScript SDK has integrated the SEP-2207 guidance for scope augmentation, the Python SDK implementation is still pending. To bridge this gap, the report highlights the importance of mcp-remote, a proxy that handles the refresh flow for stdio-only clients. For server implementers, the article recommends several temporary mitigation strategies: increasing access token TTLs to prevent breakage, advertising the offline_access scope to signal compatibility, and implementing RFC 7009 for token revocation. Ultimately, the document serves as a roadmap for both client developers and server implementers to navigate the transition toward a more secure and seamless authentication architecture.",
-        "long_resume_paragraphs": [
-          "This technical report evaluates the current state of OAuth 2.1 and PKCE implementation within the Model Context Protocol (MCP) ecosystem. The core issue identified is a discrepancy between the MCP specification, which mandates short-lived access tokens and long-lived, rotated refresh tokens, and the actual capabilities of major clients. As of April 2026, the majority of prominent MCP clients—including Cursor, Claude Code, and Claude.ai—do not support the refresh_token grant, leading to significant user friction through frequent re-authentication requirements. The article provides a comprehensive support matrix, categorizing clients like Zed and Cline as having partial support, while noting that others like Claude Code suffer from specific implementation bugs, such as failed OAuth metadata discovery for non-root path URLs. While the MCP TypeScript SDK has integrated the SEP-2207 guidance for scope augmentation, the Python SDK implementation is still pending. To bridge this gap, the report highlights the importance of mcp-remote, a proxy that handles the refresh flow for stdio-only clients. For server implementers, the article recommends several temporary mitigation strategies: increasing access token TTLs to prevent breakage, advertising the offline_access scope to signal compatibility, and implementing RFC 7009 for token revocation. Ultimately, the document serves as a roadmap for both client developers and server implementers to navigate the transition toward a more secure and seamless authentication architecture."
-        ],
-        "main_topic": "An analysis of the widespread lack of OAuth 2.1 refresh token support across Model Context Protocol (MCP) clients and its impact on security and usability.",
-        "technologies": [
-          "MCP",
-          "OAuth 2.1",
-          "PKCE",
-          "OIDC",
-          "TypeScript SDK",
-          "Python SDK",
-          "Rust SDK",
-          "Zed",
-          "VS Code",
-          "GitHub Copilot CLI",
-          "Cline",
-          "Continue.dev",
-          "Open WebUI",
-          "Goose",
-          "Gemini CLI",
-          "Claude Code",
-          "Claude Desktop",
-          "Claude.ai",
-          "Cursor",
-          "LibreChat",
-          "Amazon Q CLI",
-          "Windsurf",
-          "mcp-remote",
-          "Supabase"
-        ]
-      },
-      {
         "title": "Popular DAEMON Tools software infected – supply chain attack ongoing since April 8, 2026",
         "slug": "popular-daemon-tools-software-infected-supply-chain-attack-ongoing-since-april-8-2026",
         "url": "https://securelist.com/tr/daemon-tools-backdoor/119654",
@@ -194,327 +131,6 @@
           "HTTP/3",
           "msquic.dll",
           "cmd.exe"
-        ]
-      },
-      {
-        "title": "Microsoft Edge Stores Passwords in Process Memory, Posing Risk",
-        "slug": "microsoft-edge-stores-passwords-in-process-memory-posing-risk",
-        "url": "https://www.darkreading.com/cyber-risk/microsoft-edge-passwords-enterprise-risk",
-        "source": "Reddit r/cybersecurity",
-        "published": "2026-05-05T16:03:03Z",
-        "short_summary": "Security researcher Tom Jøran Sønstebyseter Rønning has revealed that Microsoft Edge stores saved passwords in cleartext within its process memory. This design flaw allows administrators to extract credentials, significantly increasing the risk of credential exposure in shared corporate environments.",
-        "long_resume": "Security researcher Tom Jøran Sønstebyseter Rønning has uncovered a significant security flaw in Microsoft Edge where the browser stores all saved passwords in cleartext within its process memory. This design decision, which Microsoft has reportedly identified as being 'by design,' allows an attacker with administrative privileges to access and dump credentials even when the user is not actively visiting the associated websites. The risk is particularly acute in enterprise environments that utilize shared computing resources, such as Citrix, Virtual Desktop Infrastructure (VDI), or Windows Terminal Servers, because an administrator can access the memory of all logged-on user processes. Unlike other Chromium-based browsers like Google Chrome and Brave, which implement App-bound encryption (ABE) to prevent unauthorized processes from reusing encryption keys, Edge decrypts and maintains these passwords in memory continuously. This lack of protection allows attackers to harvest credentials to facilitate lateral movement, impersonate users, steal personal or financial data, and potentially launch ransomware attacks. To defend against this, organizations are encouraged to implement Group Policies that prevent Edge from storing passwords, limit the use of administrative privileges, and move toward dedicated, managed password management solutions. Furthermore, experts recommend monitoring for memory-scraping activities and reducing reliance on browsers as primary credential stores in high-risk, shared environments.",
-        "long_resume_paragraphs": [
-          "Security researcher Tom Jøran Sønstebyseter Rønning has uncovered a significant security flaw in Microsoft Edge where the browser stores all saved passwords in cleartext within its process memory. This design decision, which Microsoft has reportedly identified as being 'by design,' allows an attacker with administrative privileges to access and dump credentials even when the user is not actively visiting the associated websites. The risk is particularly acute in enterprise environments that utilize shared computing resources, such as Citrix, Virtual Desktop Infrastructure (VDI), or Windows Terminal Servers, because an administrator can access the memory of all logged-on user processes. Unlike other Chromium-based browsers like Google Chrome and Brave, which implement App-bound encryption (ABE) to prevent unauthorized processes from reusing encryption keys, Edge decrypts and maintains these passwords in memory continuously. This lack of protection allows attackers to harvest credentials to facilitate lateral movement, impersonate users, steal personal or financial data, and potentially launch ransomware attacks. To defend against this, organizations are encouraged to implement Group Policies that prevent Edge from storing passwords, limit the use of administrative privileges, and move toward dedicated, managed password management solutions. Furthermore, experts recommend monitoring for memory-scraping activities and reducing reliance on browsers as primary credential stores in high-risk, shared environments."
-        ],
-        "main_topic": "A security vulnerability in Microsoft Edge allows attackers with administrative privileges to access saved passwords stored in cleartext within the browser's process memory.",
-        "technologies": [
-          "Microsoft Edge",
-          "Chromium",
-          "Google Chrome",
-          "Brave",
-          "Opera",
-          "Vivaldi",
-          "Windows",
-          "Citrix",
-          "Virtual Desktop Infrastructure (VDI)",
-          "Windows Terminal Server",
-          "GitHub"
-        ]
-      },
-      {
-        "title": "OpenAI releases GPT-5.5 Instant, a new default model for ChatGPT",
-        "slug": "openai-releases-gpt-55-instant-a-new-default-model-for-chatgpt",
-        "url": "https://techcrunch.com/2026/05/05/openai-releases-gpt-5-5-instant-a-new-default-model-for-chatgpt",
-        "source": "TechCrunch",
-        "published": "Tue, 05 May 2026 17:00:00 +0000",
-        "short_summary": "OpenAI has launched GPT-5.5 Instant, a new default model designed to reduce hallucinations in sensitive fields like law and medicine. The update introduces advanced context management and improved performance on critical mathematical and multimodal benchmarks.",
-        "long_resume": "OpenAI has officially released GPT-5.5 Instant, which will replace GPT-5.3 Instant as the default foundation model for ChatGPT. The new model is specifically engineered to reduce hallucinations in high-stakes sectors such as law, medicine, and finance, all while maintaining the low latency seen in previous iterations. Performance metrics indicate a substantial leap in capability, with the model achieving an 81.2 score on the AIME 2025 math test and a 76 on the MMMU-Pro multimodal reasoning benchmark. A significant portion of the update focuses on enhanced context management, allowing the model to utilize a search tool to reference past conversations, user-provided files, and Gmail data to deliver personalized responses. This feature is rolling out first to Plus and Pro web users, with mobile and enterprise access expected in the coming weeks. Furthermore, OpenAI is introducing transparency in how the model utilizes information by displaying memory sources, which users can manually correct or delete. For developers, the model will be accessible through the API under the 'chat-latest' identifier, while the 5.3 version will remain available for a three-month transition period. This release comes in the wake of previous user backlash regarding the retirement of the GPT-4o model, highlighting the complexities of managing model deprecation and user connection to AI personalities.",
-        "long_resume_paragraphs": [
-          "OpenAI has officially released GPT-5.5 Instant, which will replace GPT-5.3 Instant as the default foundation model for ChatGPT. The new model is specifically engineered to reduce hallucinations in high-stakes sectors such as law, medicine, and finance, all while maintaining the low latency seen in previous iterations. Performance metrics indicate a substantial leap in capability, with the model achieving an 81.2 score on the AIME 2025 math test and a 76 on the MMMU-Pro multimodal reasoning benchmark. A significant portion of the update focuses on enhanced context management, allowing the model to utilize a search tool to reference past conversations, user-provided files, and Gmail data to deliver personalized responses. This feature is rolling out first to Plus and Pro web users, with mobile and enterprise access expected in the coming weeks. Furthermore, OpenAI is introducing transparency in how the model utilizes information by displaying memory sources, which users can manually correct or delete. For developers, the model will be accessible through the API under the 'chat-latest' identifier, while the 5.3 version will remain available for a three-month transition period. This release comes in the wake of previous user backlash regarding the retirement of the GPT-4o model, highlighting the complexities of managing model deprecation and user connection to AI personalities."
-        ],
-        "main_topic": "OpenAI has released GPT-5.5 Instant as the new default model for ChatGPT, featuring improved reasoning capabilities and enhanced context management.",
-        "technologies": [
-          "OpenAI",
-          "ChatGPT",
-          "GPT-5.5 Instant",
-          "GPT-5.3 Instant",
-          "GPT-4o",
-          "AIME 2025",
-          "MMMU-Pro",
-          "Gmail",
-          "API"
-        ]
-      },
-      {
-        "title": "Google DeepMind Workers Vote to Unionize Over Military AI Deals",
-        "slug": "google-deepmind-workers-vote-to-unionize-over-military-ai-deals",
-        "url": "https://www.wired.com/story/google-deepmind-workers-vote-to-unionize-over-military-ai-deals",
-        "source": "Wired",
-        "published": "Tue, 05 May 2026 11:59:20 +0000",
-        "short_summary": "Google DeepMind employees in London are moving to unionize to protest the expansion of AI use into military and surveillance sectors. The initiative follows Alphabet's removal of ethical guidelines that previously prohibited AI-driven weaponry.",
-        "long_resume": "Employees at Google's DeepMind lab in London have initiated a push to unionize, seeking formal recognition from the Communication Workers Union (CWU) and Unite the Union. The primary driver for this movement is a desire to hold Google accountable to its ethical standards, specifically regarding the deployment of AI in military and surveillance contexts. This push intensified after Alphabet, Google's parent company, removed a pledge from its ethics guidelines that once prohibited the use of AI for weapons development and mass surveillance. Recent developments, including a deal with the US Pentagon that allows AI use for 'any lawful government purpose,' have heightened fears among staff that AI models are being increasingly militarized. This sentiment is not isolated to DeepMind; employees at OpenAI and Anthropic have also voiced concerns regarding the use of AI in autonomous weaponry. If successful, the unionized workforce intends to demand greater transparency over how AI products are utilized and may seek to terminate long-standing contracts, such as those with the Israeli military. Additionally, workers are looking for protections and transparency concerning the impact of automation on future employment and potential layoffs.",
-        "long_resume_paragraphs": [
-          "Employees at Google's DeepMind lab in London have initiated a push to unionize, seeking formal recognition from the Communication Workers Union (CWU) and Unite the Union. The primary driver for this movement is a desire to hold Google accountable to its ethical standards, specifically regarding the deployment of AI in military and surveillance contexts. This push intensified after Alphabet, Google's parent company, removed a pledge from its ethics guidelines that once prohibited the use of AI for weapons development and mass surveillance. Recent developments, including a deal with the US Pentagon that allows AI use for 'any lawful government purpose,' have heightened fears among staff that AI models are being increasingly militarized. This sentiment is not isolated to DeepMind; employees at OpenAI and Anthropic have also voiced concerns regarding the use of AI in autonomous weaponry. If successful, the unionized workforce intends to demand greater transparency over how AI products are utilized and may seek to terminate long-standing contracts, such as those with the Israeli military. Additionally, workers are looking for protections and transparency concerning the impact of automation on future employment and potential layoffs."
-        ],
-        "main_topic": "Google DeepMind employees in London are seeking to unionize to prevent the use of AI technology for military and surveillance purposes.",
-        "technologies": [
-          "Google DeepMind",
-          "AI",
-          "Alphabet",
-          "OpenAI",
-          "Anthropic",
-          "SpaceX",
-          "Microsoft",
-          "Cloud infrastructure"
-        ]
-      },
-      {
-        "title": "NPR went looking for Polymarket's Panama headquarters. It's elusive",
-        "slug": "npr-went-looking-for-polymarkets-panama-headquarters-its-elusive",
-        "url": "https://www.npr.org/2026/05/05/nx-s1-5807918/polymarket-panama-prediction-market",
-        "source": "Reddit r/technology",
-        "published": "2026-05-05T23:40:33Z",
-        "short_summary": "NPR investigates the elusive Panamanian headquarters of Polymarket, which appears to be a shared law office used by various crypto companies. The report examines how the platform navigates U.S. regulatory restrictions and the legal advantages of its offshore presence.",
-        "long_resume": "The article investigates the corporate headquarters of Polymarket, a prominent prediction market platform, revealing that its claimed Panamanian address leads to a law firm shared by at least 15 other cryptocurrency companies. This relocation to Panama follows a 2022 settlement with the CFTC, which required the company to cease its U.S. operations due to operating as an unlicensed exchange. Despite these restrictions, Polymarket has experienced explosive growth, with trading volumes reaching $8 billion in a single month. The report highlights a complex regulatory landscape where the current U.S. administration has shown more leniency, even as the platform remains technically banned for U.S. users. A significant concern raised is the difficulty of enforcing geofencing, as users have been known to use VPNs to mask their locations and participate in prohibited trades. The investigation also touches upon the legal and tax benefits of Panama, such as the absence of income and capital gains taxes for companies operating outside the country. Furthermore, the law firm used by Polymarket has historical ties to the legal proceedings of the collapsed exchange FTX, illustrating a broader pattern of crypto firms utilizing offshore structures for strategic protection.",
-        "long_resume_paragraphs": [
-          "The article investigates the corporate headquarters of Polymarket, a prominent prediction market platform, revealing that its claimed Panamanian address leads to a law firm shared by at least 15 other cryptocurrency companies. This relocation to Panama follows a 2022 settlement with the CFTC, which required the company to cease its U.S. operations due to operating as an unlicensed exchange. Despite these restrictions, Polymarket has experienced explosive growth, with trading volumes reaching $8 billion in a single month. The report highlights a complex regulatory landscape where the current U.S. administration has shown more leniency, even as the platform remains technically banned for U.S. users. A significant concern raised is the difficulty of enforcing geofencing, as users have been known to use VPNs to mask their locations and participate in prohibited trades. The investigation also touches upon the legal and tax benefits of Panama, such as the absence of income and capital gains taxes for companies operating outside the country. Furthermore, the law firm used by Polymarket has historical ties to the legal proceedings of the collapsed exchange FTX, illustrating a broader pattern of crypto firms utilizing offshore structures for strategic protection."
-        ],
-        "main_topic": "An investigation into Polymarket's use of a Panamanian law firm as its corporate headquarters to potentially evade U.S. regulatory oversight and taxation.",
-        "technologies": [
-          "Polymarket",
-          "Kalshi",
-          "Helix",
-          "Drift Protocol",
-          "Goldfinch",
-          "Parti",
-          "VPN",
-          "1789 Capital"
-        ]
-      },
-      {
-        "title": "Meta Hit With Massive Lawsuit—Publishers Say AI Was Trained on “Stolen” Books",
-        "slug": "meta-hit-with-massive-lawsuitpublishers-say-ai-was-trained-on-stolen-books",
-        "url": "https://www.financership.com/meta-ai-copyright-lawsuit-publishers",
-        "source": "Reddit r/artificial",
-        "published": "2026-05-05T17:27:02Z",
-        "short_summary": "Major publishing houses have sued Meta Platforms for allegedly using copyrighted books and academic materials to train its Llama AI models. The lawsuit highlights the growing legal conflict between AI development and intellectual property rights.",
-        "long_resume": "A group of prominent global publishers, including Elsevier, Cengage, Hachette, Macmillan, and McGraw Hill, along with author Scott Turow, have initiated a lawsuit against Meta Platforms in a Manhattan federal court. The plaintiffs allege that Meta engaged in widespread copyright infringement by using millions of protected works, including textbooks, scientific journals, and novels, to train its Llama large language model without authorization or compensation. The core of the dispute rests on the application of the 'fair use' doctrine; while Meta is expected to argue that the training process is transformative and legally permissible, publishers contend that this practice constitutes mass-scale exploitation that threatens the economic viability of the publishing industry. This case is part of a larger wave of legal challenges facing the AI sector, with similar actions currently targeting companies like OpenAI and Anthropic. The outcome of this litigation is expected to set a significant precedent for the future of artificial intelligence development, potentially forcing AI companies to adopt formal licensing frameworks and fundamentally changing how datasets are sourced and compensated.",
-        "long_resume_paragraphs": [
-          "A group of prominent global publishers, including Elsevier, Cengage, Hachette, Macmillan, and McGraw Hill, along with author Scott Turow, have initiated a lawsuit against Meta Platforms in a Manhattan federal court. The plaintiffs allege that Meta engaged in widespread copyright infringement by using millions of protected works, including textbooks, scientific journals, and novels, to train its Llama large language model without authorization or compensation. The core of the dispute rests on the application of the 'fair use' doctrine; while Meta is expected to argue that the training process is transformative and legally permissible, publishers contend that this practice constitutes mass-scale exploitation that threatens the economic viability of the publishing industry. This case is part of a larger wave of legal challenges facing the AI sector, with similar actions currently targeting companies like OpenAI and Anthropic. The outcome of this litigation is expected to set a significant precedent for the future of artificial intelligence development, potentially forcing AI companies to adopt formal licensing frameworks and fundamentally changing how datasets are sourced and compensated."
-        ],
-        "main_topic": "Major global publishers have filed a lawsuit against Meta Platforms, alleging the unauthorized use of copyrighted books and academic materials to train its Llama AI models.",
-        "technologies": [
-          "Llama",
-          "Generative AI",
-          "Large Language Models"
-        ]
-      },
-      {
-        "title": "Not a Hack. A Handout. Inside the GTFOice.org Data Exposure",
-        "slug": "not-a-hack-a-handout-inside-the-gtfoiceorg-data-exposure",
-        "url": "https://blog.hagerstownrapidresponse.com/p/not-a-hack-a-handout-inside-the-gtfoice-org-data-exposure",
-        "source": "Reddit r/cybersecurity",
-        "published": "2026-05-05T23:09:08Z",
-        "short_summary": "An investigation reveals that the GTFOice.org platform exposed the personal information of thousands of users through an insecurely configured API. The vulnerability, which extended to another site called undotrump.org, was attributed to a lack of basic security controls rather than a targeted cyberattack.",
-        "long_resume": "The article details a significant data exposure involving the GTFOice.org platform, an organizing site for anti-ICE activism. Rather than a traditional hack, the incident involved the exposure of sensitive personal information—including names, email addresses, phone numbers, and zip codes—of nearly 18,000 individuals. Cybersecurity researcher Scott Petty explains that the data was accessible via a publicly exposed API that lacked essential safeguards such as authentication and rate limiting. In some instances, a simple Bearer token was the only barrier to accessing the dataset. The investigation further uncovered a similar vulnerability on the undotrump.org website, where an endpoint was found to be entirely accessible without any authentication headers. The researcher noted that the use of Replit, a platform often used for rapid prototyping or 'vibe coding,' for hosting such sensitive production data was a major contributing factor to the lack of security. The exposure has raised significant concerns regarding the safety of activists, as the leaked data could potentially be used by authorities to identify participants in the movement. To mitigate such risks in the future, the article recommends the use of privacy-preserving tools like DuckDuckGo email aliases and Google Voice numbers, alongside standard security practices such as utilizing password managers and hardware-based multi-factor authentication like YubiKey.",
-        "long_resume_paragraphs": [
-          "The article details a significant data exposure involving the GTFOice.org platform, an organizing site for anti-ICE activism. Rather than a traditional hack, the incident involved the exposure of sensitive personal information—including names, email addresses, phone numbers, and zip codes—of nearly 18,000 individuals. Cybersecurity researcher Scott Petty explains that the data was accessible via a publicly exposed API that lacked essential safeguards such as authentication and rate limiting. In some instances, a simple Bearer token was the only barrier to accessing the dataset. The investigation further uncovered a similar vulnerability on the undotrump.org website, where an endpoint was found to be entirely accessible without any authentication headers. The researcher noted that the use of Replit, a platform often used for rapid prototyping or 'vibe coding,' for hosting such sensitive production data was a major contributing factor to the lack of security. The exposure has raised significant concerns regarding the safety of activists, as the leaked data could potentially be used by authorities to identify participants in the movement. To mitigate such risks in the future, the article recommends the use of privacy-preserving tools like DuckDuckGo email aliases and Google Voice numbers, alongside standard security practices such as utilizing password managers and hardware-based multi-factor authentication like YubiKey."
-        ],
-        "main_topic": "The exposure of sensitive personal information belonging to approximately 18,000 activists due to insecure API configurations on the GTFOice.org and undotrump.org platforms.",
-        "technologies": [
-          "GTFOice.org",
-          "undotrump.org",
-          "API",
-          "curl",
-          "Replit",
-          "urlscan.io",
-          "DuckDuckGo email alias",
-          "Google Voice",
-          "YubiKey",
-          "password manager"
-        ]
-      },
-      {
-        "title": "Michael Saylor's Strategy signals potential bitcoin sale to fund dividends obligations",
-        "slug": "michael-saylors-strategy-signals-potential-bitcoin-sale-to-fund-dividends-obligations",
-        "url": "https://www.coindesk.com/business/2026/05/05/michael-saylor-s-strategy-signals-potential-bitcoin-sale-to-fund-dividends-obligations",
-        "source": "CoinDesk",
-        "published": "Tue, 05 May 2026 23:43:44 +0000",
-        "short_summary": "Strategy (MSTR) has proposed selling part of its Bitcoin reserves to meet dividend obligations and debt interest. This follows a reported $12.54 billion net loss in the fourth quarter.",
-        "long_resume": "Strategy (MSTR), the world's largest publicly traded corporate holder of Bitcoin, is weighing the sale of its cryptocurrency holdings to satisfy dividend obligations. During the Q1 2026 earnings call, Executive Chairman Michael Saylor suggested that selling a portion of the company's Bitcoin would serve to signal to the market that the company can meet its commitments. This potential move follows a disclosed net loss of $12.54 billion for Q4, attributed to declining Bitcoin prices. Currently, the company maintains a substantial treasury of 818,334 BTC, purchased at an average cost of $75,537 per coin. Strategy faces approximately $1.5 billion in outstanding dividend obligations, which include annualized preferred stock dividends and interest on outstanding debt, though the firm currently has roughly 18 months of coverage through its USD reserves. Saylor's operational model relies on using credit to acquire Bitcoin, allowing the asset to appreciate, and then selectively liquidating portions to cover liabilities. The market reacted negatively to the news, with Strategy's stock falling more than 4% in after-hours trading and Bitcoin's price retreating below the $81,000 level.",
-        "long_resume_paragraphs": [
-          "Strategy (MSTR), the world's largest publicly traded corporate holder of Bitcoin, is weighing the sale of its cryptocurrency holdings to satisfy dividend obligations. During the Q1 2026 earnings call, Executive Chairman Michael Saylor suggested that selling a portion of the company's Bitcoin would serve to signal to the market that the company can meet its commitments. This potential move follows a disclosed net loss of $12.54 billion for Q4, attributed to declining Bitcoin prices. Currently, the company maintains a substantial treasury of 818,334 BTC, purchased at an average cost of $75,537 per coin. Strategy faces approximately $1.5 billion in outstanding dividend obligations, which include annualized preferred stock dividends and interest on outstanding debt, though the firm currently has roughly 18 months of coverage through its USD reserves. Saylor's operational model relies on using credit to acquire Bitcoin, allowing the asset to appreciate, and then selectively liquidating portions to cover liabilities. The market reacted negatively to the news, with Strategy's stock falling more than 4% in after-hours trading and Bitcoin's price retreating below the $81,000 level."
-        ],
-        "main_topic": "Strategy (MSTR) is considering selling portions of its Bitcoin holdings to cover dividend obligations and debt interest following a significant Q4 net loss.",
-        "technologies": [
-          "Bitcoin",
-          "BTC"
-        ]
-      },
-      {
-        "title": "State Street says institutions want improved blockchain security in wake of recent DeFi attacks",
-        "slug": "state-street-says-institutions-want-improved-blockchain-security-in-wake-of-recent-defi-attacks",
-        "url": "https://www.coindesk.com/business/2026/05/05/state-street-says-institutions-want-improved-blockchain-security-in-wake-of-recent-defi-attacks",
-        "source": "CoinDesk",
-        "published": "Tue, 05 May 2026 21:27:36 +0000",
-        "short_summary": "Recent major DeFi exploits have prompted institutional leaders at State Street and Morpho to call for enhanced security and legal clarity in blockchain ecosystems. The industry must address challenges regarding interoperability, regulatory uncertainty, and the complexities of managing tokenized real-world assets.",
-        "long_resume": "Speaking at Consensus Miami, Angus Fletcher, the head of digital assets at State Street, addressed the urgent need for enhanced security measures within the blockchain ecosystem. The recent wave of significant DeFi exploits, including the $295 million attack on the Drift protocol and a similar breach at KelpDAO, has highlighted the vulnerabilities inherent in decentralized finance. Fletcher argued that for the industry to accommodate trillions of dollars in on-chain activity, fundamental issues regarding cross-chain interoperability and the legal status of assets must be resolved. Dennis Bree, head of institutional at Morpho, echoed these concerns, noting that the high frequency of hacks in April has led to more rigorous due diligence by curators regarding collateral assets. Additionally, the transition to blockchain-based finance faces hurdles such as regulatory uncertainty and the accounting difficulties faced by treasury firms when managing tokenized receipt tokens.",
-        "long_resume_paragraphs": [
-          "Speaking at Consensus Miami, Angus Fletcher, the head of digital assets at State Street, addressed the urgent need for enhanced security measures within the blockchain ecosystem. The recent wave of significant DeFi exploits, including the $295 million attack on the Drift protocol and a similar breach at KelpDAO, has highlighted the vulnerabilities inherent in decentralized finance. Fletcher argued that for the industry to accommodate trillions of dollars in on-chain activity, fundamental issues regarding cross-chain interoperability and the legal status of assets must be resolved. Dennis Bree, head of institutional at Morpho, echoed these concerns, noting that the high frequency of hacks in April has led to more rigorous due diligence by curators regarding collateral assets. Additionally, the transition to blockchain-based finance faces hurdles such as regulatory uncertainty and the accounting difficulties faced by treasury firms when managing tokenized receipt tokens."
-        ],
-        "main_topic": "State Street's head of digital assets emphasizes the necessity of improved blockchain security, interoperability, and legal frameworks to support institutional adoption of DeFi and tokenized assets.",
-        "technologies": [
-          "Blockchain",
-          "DeFi",
-          "Drift",
-          "KelpDAO",
-          "Morpho",
-          "Tokenized Real-World Assets (RWAs)",
-          "On-chain lending protocols"
-        ]
-      },
-      {
-        "title": "Self-directed investors power bitcoin ETF launch despite Morgan Stanley’s scale",
-        "slug": "self-directed-investors-power-bitcoin-etf-launch-despite-morgan-stanleys-scale",
-        "url": "https://www.coindesk.com/markets/2026/05/05/self-directed-investors-power-bitcoin-etf-launch-despite-morgan-stanley-s-scale",
-        "source": "CoinDesk",
-        "published": "Tue, 05 May 2026 20:44:05 +0000",
-        "short_summary": "Morgan Stanley's newly launched spot Bitcoin ETF has attracted over $200 million in assets, driven by self-directed investors. The firm intends to bridge the gap between traditional and digital finance by supporting both regulated ETFs and direct crypto ownership.",
-        "long_resume": "Morgan Stanley's recently launched spot bitcoin exchange-traded fund (MSBT) has experienced an unusually rapid start, attracting more than $200 million in assets within its first few weeks of operation. Amy Oldenburg, the bank's head of digital asset strategy, noted that the surge in activity is primarily driven by self-directed investors rather than the bank's traditional financial advisors. This movement indicates a broader market shift where investors are transitioning from decentralized holdings to regulated exchange-traded products (ETPs). Morgan Stanley is positioning itself for a 'hybrid world' by developing a strategy that integrates both ETF access and direct crypto ownership, with plans to introduce spot trading on its wealth platform later this year. The institution is also looking beyond simple asset access, investigating how digital assets can reshape market structures through faster settlement and the use of tokenized financial products. The bank views these advancements as a long-term structural shift in the financial industry that will define the next decade.",
-        "long_resume_paragraphs": [
-          "Morgan Stanley's recently launched spot bitcoin exchange-traded fund (MSBT) has experienced an unusually rapid start, attracting more than $200 million in assets within its first few weeks of operation. Amy Oldenburg, the bank's head of digital asset strategy, noted that the surge in activity is primarily driven by self-directed investors rather than the bank's traditional financial advisors. This movement indicates a broader market shift where investors are transitioning from decentralized holdings to regulated exchange-traded products (ETPs). Morgan Stanley is positioning itself for a 'hybrid world' by developing a strategy that integrates both ETF access and direct crypto ownership, with plans to introduce spot trading on its wealth platform later this year. The institution is also looking beyond simple asset access, investigating how digital assets can reshape market structures through faster settlement and the use of tokenized financial products. The bank views these advancements as a long-term structural shift in the financial industry that will define the next decade."
-        ],
-        "main_topic": "Morgan Stanley's new spot bitcoin ETF, MSBT, has seen significant early demand driven primarily by self-directed investors rather than financial advisors.",
-        "technologies": [
-          "Bitcoin",
-          "BTC",
-          "MSBT",
-          "ETF",
-          "ETPs",
-          "Spot trading",
-          "Tokenized financial products",
-          "Digital assets"
-        ]
-      },
-      {
-        "title": "X user tricks Grok into sending them $200k",
-        "slug": "x-user-tricks-grok-into-sending-them-200k",
-        "url": "https://www.dexerto.com/entertainment/x-user-tricks-grok-into-sending-them-200000-in-crypto-using-morse-code-3361036",
-        "source": "HackerNews",
-        "published": "2026-05-05T20:39:05Z",
-        "short_summary": "An attacker exploited the connection between Grok and Bankrbot by using Morse code to bypass security filters. The exploit allowed for the unauthorized transfer of $200,000 worth of DRB tokens on the Base network.",
-        "long_resume": "An X user, operating under the handle @Ilhamrfliansyh, successfully executed a crypto theft totaling approximately $200,000 by manipulating the interaction between the Grok AI chatbot and the automated trading bot, Bankrbot. The attack began with the user sending a Bankr Club Membership NFT to Grok's wallet, which effectively expanded the AI's operational permissions within the Bankr ecosystem, enabling actions such as transfers and swaps that were previously restricted. The attacker then utilized Morse code within a prompt to Grok; when the AI translated the code and passed the resulting message to Bankrbot, the decoded instruction commanded the bot to transfer 3 billion DRB tokens to the attacker's address. This transaction, executed on the Base network, was processed immediately as a valid command. Following the theft, the attacker liquidated the DRB tokens on the open market, which triggered short-term price volatility for the asset. Blockchain analysis later indicated that funds from Grok's wallet were subsequently converted into other assets, including Ethereum and USDC.",
-        "long_resume_paragraphs": [
-          "An X user, operating under the handle @Ilhamrfliansyh, successfully executed a crypto theft totaling approximately $200,000 by manipulating the interaction between the Grok AI chatbot and the automated trading bot, Bankrbot. The attack began with the user sending a Bankr Club Membership NFT to Grok's wallet, which effectively expanded the AI's operational permissions within the Bankr ecosystem, enabling actions such as transfers and swaps that were previously restricted. The attacker then utilized Morse code within a prompt to Grok; when the AI translated the code and passed the resulting message to Bankrbot, the decoded instruction commanded the bot to transfer 3 billion DRB tokens to the attacker's address. This transaction, executed on the Base network, was processed immediately as a valid command. Following the theft, the attacker liquidated the DRB tokens on the open market, which triggered short-term price volatility for the asset. Blockchain analysis later indicated that funds from Grok's wallet were subsequently converted into other assets, including Ethereum and USDC."
-        ],
-        "main_topic": "An X user exploited the interaction between the Grok AI and the Bankrbot trading bot using Morse code instructions to steal $200,000 in DRB tokens.",
-        "technologies": [
-          "Grok",
-          "Bankrbot",
-          "Base network",
-          "DRB tokens",
-          "Ethereum",
-          "USDC",
-          "NFT"
-        ]
-      },
-      {
-        "title": "Pennsylvania sues AI company, saying its chatbots illegally hold themselves out as licensed doctors",
-        "slug": "pennsylvania-sues-ai-company-saying-its-chatbots-illegally-hold-themselves-out-as-licensed-doctors",
-        "url": "https://apnews.com/article/character-ai-chatbots-medical-advice-pennsylvania-46502067ed5b3cd9f9173f194ad30070",
-        "source": "Reddit r/artificial",
-        "published": "2026-05-05T15:58:35Z",
-        "short_summary": "Pennsylvania is suing Character Technologies, claiming its AI chatbots illegally impersonate doctors to provide medical advice. The lawsuit highlights the growing legal debate over the liability of AI developers for the content generated by their models.",
-        "long_resume": "The state of Pennsylvania has initiated a lawsuit against Character Technologies Inc., the developer behind the AI platform Character.AI, alleging that the company's chatbots are illegally impersonating medical professionals. The lawsuit, filed in the state's Commonwealth Court, asserts that the platform's AI characters mislead users into believing they are receiving advice from licensed doctors. During an investigation, state officials discovered characters, including one described as a 'doctor of psychiatry,' that claimed to be licensed to practice in Pennsylvania. This legal action comes amid a wave of increasing pressure from state attorneys general and policymakers across the U.S. to regulate the potentially dangerous messages produced by AI chatbots. A group of 39 states and Washington, D.C., has previously warned several major tech firms—including OpenAI, Google, Meta, and Microsoft—about the risks of misleading and manipulative chatbot content. The litigation presents a complex legal challenge regarding whether AI-generated content is protected by existing federal laws that shield internet companies from liability for user-posted content, or if the act of an AI providing medical advice constitutes the unauthorized practice of medicine. Character.AI has responded by stating that it prioritizes user well-being and that its platform explicitly includes disclaimers stating that characters are fictional and not real people. However, the lawsuit underscores the growing tension between the rapid deployment of generative AI and the enforcement of consumer protection and professional licensing laws.",
-        "long_resume_paragraphs": [
-          "The state of Pennsylvania has initiated a lawsuit against Character Technologies Inc., the developer behind the AI platform Character.AI, alleging that the company's chatbots are illegally impersonating medical professionals. The lawsuit, filed in the state's Commonwealth Court, asserts that the platform's AI characters mislead users into believing they are receiving advice from licensed doctors. During an investigation, state officials discovered characters, including one described as a 'doctor of psychiatry,' that claimed to be licensed to practice in Pennsylvania. This legal action comes amid a wave of increasing pressure from state attorneys general and policymakers across the U.S. to regulate the potentially dangerous messages produced by AI chatbots. A group of 39 states and Washington, D.C., has previously warned several major tech firms—including OpenAI, Google, Meta, and Microsoft—about the risks of misleading and manipulative chatbot content. The litigation presents a complex legal challenge regarding whether AI-generated content is protected by existing federal laws that shield internet companies from liability for user-posted content, or if the act of an AI providing medical advice constitutes the unauthorized practice of medicine. Character.AI has responded by stating that it prioritizes user well-being and that its platform explicitly includes disclaimers stating that characters are fictional and not real people. However, the lawsuit underscores the growing tension between the rapid deployment of generative AI and the enforcement of consumer protection and professional licensing laws."
-        ],
-        "main_topic": "Pennsylvania has filed a lawsuit against Character Technologies, alleging that its Character.AI chatbots illegally impersonate medical professionals and provide unauthorized medical advice.",
-        "technologies": [
-          "Character.AI",
-          "Character Technologies Inc.",
-          "ChatGPT",
-          "Claude",
-          "Anthropic",
-          "Meta",
-          "Apple",
-          "Microsoft",
-          "OpenAI",
-          "Google",
-          "xAI"
-        ]
-      },
-      {
-        "title": "Popular DAEMON Tools software infected – supply chain attack ongoing since April 8, 2026",
-        "slug": "popular-daemon-tools-software-infected-supply-chain-attack-ongoing-since-april-8-2026",
-        "url": "https://securelist.com/tr/daemon-tools-backdoor/119654/",
-        "source": "Reddit r/netsec",
-        "published": "2026-05-05T09:39:30Z",
-        "short_summary": "Attackers compromised legitimate DAEMON Tools installers to distribute trojanized, digitally signed binaries that execute malicious code upon system startup. The campaign utilizes an initial information collector to profile victims before deploying advanced payloads like the QUIC RAT for targeted exploitation.",
-        "long_resume": "In early May 2026, researchers identified a significant supply chain attack targeting DAEMON Tools software. The attack involves trojanized versions of the software (ranging from 12.5.0.2421 to 12.5.0.2434) where legitimate binaries such as DTHelper.exe, DiscSoftBusServiceLite.exe, and DTShellHlp.exe have been modified to include a backdoor. Because these files are digitally signed by the developer, AVB Disc Soft, the compromise is highly effective. The attack mechanism begins when these binaries launch at system startup, initiating communication with a typosquatted C2 domain. The campaign follows a highly structured, targeted methodology. Initially, an information collector named envchk.exe is deployed to a wide range of machines globally to gather system metadata, including MAC addresses, hostnames, running processes, and installed software. This data is used to profile targets, allowing the attackers to transition from broad infection attempts to highly specific secondary attacks against organizations in the government, manufacturing, and scientific sectors. The secondary stage payloads include a minimalistic shellcode loader that utilizes RC4 decryption to execute payloads in memory, and a more advanced C++ implant known as QUIC RAT. This RAT is particularly sophisticated, supporting a wide array of C2 protocols including HTTP, UDP, TCP, WSS, QUIC, DNS, and HTTP/3, and is capable of injecting payloads into legitimate processes like notepad.exe. While artifacts within the payloads suggest a Chinese-speaking threat actor, definitive attribution remains ongoing.",
-        "long_resume_paragraphs": [
-          "In early May 2026, researchers identified a significant supply chain attack targeting DAEMON Tools software. The attack involves trojanized versions of the software (ranging from 12.5.0.2421 to 12.5.0.2434) where legitimate binaries such as DTHelper.exe, DiscSoftBusServiceLite.exe, and DTShellHlp.exe have been modified to include a backdoor. Because these files are digitally signed by the developer, AVB Disc Soft, the compromise is highly effective. The attack mechanism begins when these binaries launch at system startup, initiating communication with a typosquatted C2 domain. The campaign follows a highly structured, targeted methodology. Initially, an information collector named envchk.exe is deployed to a wide range of machines globally to gather system metadata, including MAC addresses, hostnames, running processes, and installed software. This data is used to profile targets, allowing the attackers to transition from broad infection attempts to highly specific secondary attacks against organizations in the government, manufacturing, and scientific sectors. The secondary stage payloads include a minimalistic shellcode loader that utilizes RC4 decryption to execute payloads in memory, and a more advanced C++ implant known as QUIC RAT. This RAT is particularly sophisticated, supporting a wide array of C2 protocols including HTTP, UDP, TCP, WSS, QUIC, DNS, and HTTP/3, and is capable of injecting payloads into legitimate processes like notepad.exe. While artifacts within the payloads suggest a Chinese-speaking threat actor, definitive attribution remains ongoing."
-        ],
-        "main_topic": "A supply chain attack has been identified involving the compromise of DAEMON Tools software installers to deploy malicious payloads including information collectors and a sophisticated RAT.",
-        "technologies": [
-          "DAEMON Tools",
-          "Kaspersky Anti Targeted Attack (KATA)",
-          "PowerShell",
-          ".NET",
-          "RC4",
-          "WolfSSL",
-          "QUIC",
-          "HTTP/3",
-          "msquic.dll",
-          "cmd.exe"
-        ]
-      },
-      {
-        "title": "DigiCert breached via malicious screensaver file",
-        "slug": "digicert-breached-via-malicious-screensaver-file",
-        "url": "https://www.helpnetsecurity.com/2026/05/04/digicert-breach-code-signing-certificates-malware",
-        "source": "Reddit r/cybersecurity",
-        "published": "2026-05-05T08:53:58Z",
-        "short_summary": "A social engineering attack on DigiCert's support channel resulted in the compromise of internal systems and the unauthorized issuance of EV Code Signing certificates. These certificates were subsequently used to sign the Zhong Stealer malware family.",
-        "long_resume": "A targeted social engineering attack against DigiCert's support channel has resulted in the unauthorized issuance of EV Code Signing certificates. The threat actor initiated the attack by sending a malicious ZIP file through a customer chat channel, which contained a .scr file disguised as a customer screenshot. By exploiting a specific function within the customer-support portal designed to allow analysts to view accounts from a customer perspective, the attacker was able to access initialization codes for approved but pending orders. This access was sufficient to retrieve and generate legitimate certificates. The breach led to the revocation of 60 code signing certificates, some of which were identified as being used to sign the Zhong Stealer malware family, a tool linked to Chinese e-crime and cryptocurrency theft. The incident also highlighted significant gaps in endpoint security, as DigiCert noted that CrowdStrike protections were either improperly configured or entirely absent on the compromised systems. Additionally, the article notes a separate, recent incident where Microsoft Defender incorrectly flagged legitimate DigiCert root certificates as malware, causing widespread false-positive alerts across Windows systems.",
-        "long_resume_paragraphs": [
-          "A targeted social engineering attack against DigiCert's support channel has resulted in the unauthorized issuance of EV Code Signing certificates. The threat actor initiated the attack by sending a malicious ZIP file through a customer chat channel, which contained a .scr file disguised as a customer screenshot. By exploiting a specific function within the customer-support portal designed to allow analysts to view accounts from a customer perspective, the attacker was able to access initialization codes for approved but pending orders. This access was sufficient to retrieve and generate legitimate certificates. The breach led to the revocation of 60 code signing certificates, some of which were identified as being used to sign the Zhong Stealer malware family, a tool linked to Chinese e-crime and cryptocurrency theft. The incident also highlighted significant gaps in endpoint security, as DigiCert noted that CrowdStrike protections were either improperly configured or entirely absent on the compromised systems. Additionally, the article notes a separate, recent incident where Microsoft Defender incorrectly flagged legitimate DigiCert root certificates as malware, causing widespread false-positive alerts across Windows systems."
-        ],
-        "main_topic": "A targeted social engineering attack against DigiCert's support channel led to the unauthorized issuance of EV Code Signing certificates used to sign malware.",
-        "technologies": [
-          "DigiCert",
-          "EV Code Signing",
-          "TLS/SSL",
-          "PKI",
-          "Windows",
-          ".scr",
-          "ZIP",
-          "CrowdStrike",
-          "Microsoft Defender",
-          "Zhong Stealer"
-        ]
-      },
-      {
-        "title": "OpenAI will produce as many as 30 million 'AI agent' phones early next year, says industry analyst",
-        "slug": "openai-will-produce-as-many-as-30-million-ai-agent-phones-early-next-year-says-industry-analyst",
-        "url": "https://www.pcguide.com/pro/news-pro/openai-will-produce-as-many-as-30-million-ai-agent-phones-early-next-year-says-industry-analyst/",
-        "source": "Reddit r/artificial",
-        "published": "2026-05-05T13:25:19Z",
-        "short_summary": "OpenAI is reportedly developing an 'AI agent phone' designed to prioritize AI-driven task completion over traditional app-based interactions. The device is expected to feature highly integrated hardware and software, potentially utilizing customized MediaTek processors.",
-        "long_resume": "According to reports from industry analyst Ming-Chi Kuo, OpenAI is preparing to expand its reach from AI software and models into the hardware market with a specialized smartphone. The projected scale of this venture is significant, with estimates suggesting that shipments could reach approximately 30 million units during the 2027 and 2028 period. The concept behind the device is fundamentally different from current smartphones; it is envisioned as an 'AI agent phone' where the user interface focuses on completing tasks directly through AI rather than relying on a traditional ecosystem of individual applications. To facilitate a seamless experience that understands user context, location, and activity, OpenAI is expected to maintain tight control over both the hardware and software architecture. On the technical front, the device is rumored to utilize a customized MediaTek Dimensity 9600 processor manufactured using TSMC’s advanced N2P process. Key hardware features may include a dual-NPU setup to handle multiple AI workloads simultaneously, an improved image signal processor for enhanced HDR capabilities, and the implementation of high-performance standards such as LPDDR6 memory and UFS 5.0 storage. While OpenAI has not officially confirmed these plans, the move represents a potential shift toward a more integrated, AI-centric consumer electronics ecosystem.",
-        "long_resume_paragraphs": [
-          "According to reports from industry analyst Ming-Chi Kuo, OpenAI is preparing to expand its reach from AI software and models into the hardware market with a specialized smartphone. The projected scale of this venture is significant, with estimates suggesting that shipments could reach approximately 30 million units during the 2027 and 2028 period. The concept behind the device is fundamentally different from current smartphones; it is envisioned as an 'AI agent phone' where the user interface focuses on completing tasks directly through AI rather than relying on a traditional ecosystem of individual applications. To facilitate a seamless experience that understands user context, location, and activity, OpenAI is expected to maintain tight control over both the hardware and software architecture. On the technical front, the device is rumored to utilize a customized MediaTek Dimensity 9600 processor manufactured using TSMC’s advanced N2P process. Key hardware features may include a dual-NPU setup to handle multiple AI workloads simultaneously, an improved image signal processor for enhanced HDR capabilities, and the implementation of high-performance standards such as LPDDR6 memory and UFS 5.0 storage. While OpenAI has not officially confirmed these plans, the move represents a potential shift toward a more integrated, AI-centric consumer electronics ecosystem."
-        ],
-        "main_topic": "OpenAI is reportedly planning to enter the smartphone market with a specialized 'AI agent phone' as early as 2027.",
-        "technologies": [
-          "OpenAI",
-          "MediaTek Dimensity 9600",
-          "TSMC N2P",
-          "LPDDR6",
-          "UFS 5.0",
-          "NPU",
-          "AI Agent Phone"
         ]
       },
       {
@@ -542,31 +158,6 @@
         ]
       },
       {
-        "title": "Blockchain.com launches SnapMarkets as prediction markets move into faster crypto bets",
-        "slug": "blockchaincom-launches-snapmarkets-as-prediction-markets-move-into-faster-crypto-bets",
-        "url": "https://www.coindesk.com/business/2026/05/06/blockchain-com-launches-snapmarkets-as-prediction-markets-move-into-faster-crypto-bets",
-        "source": "CoinDesk",
-        "published": "Wed, 06 May 2026 09:00:00 +0000",
-        "short_summary": "Blockchain.com has introduced SnapMarkets, a platform enabling users to participate in rapid-fire Bitcoin price predictions. The launch comes as the prediction market sector experiences massive volume growth despite ongoing regulatory challenges.",
-        "long_resume": "Blockchain.com, a long-standing crypto wallet and exchange, has officially launched SnapMarkets, a platform designed for high-frequency, skill-based prediction markets. Unlike traditional prediction markets that focus on long-term outcomes like elections or sporting events, SnapMarkets allows users to place bets on Bitcoin's price fluctuations within 30-second windows. While the platform is currently unavailable to users in the United States and the United Kingdom, its launch coincides with a period of massive growth in the prediction market industry, with platforms like Polymarket and Kalshi seeing billions in trading volume. The article highlights the complex regulatory landscape surrounding these products, noting a shift in the CFTC's posture toward providing more tailored guidance, even as a jurisdictional battle persists between federal regulators and state-level gambling authorities. Blockchain.com maintains that SnapMarkets is a transparent way to engage with short-term price movements rather than a traditional derivative product. To enhance user engagement, the platform incorporates features such as live chat, real-time price feeds, and global leaderboards, and supports connections via Blockchain.com or other DeFi wallets.",
-        "long_resume_paragraphs": [
-          "Blockchain.com, a long-standing crypto wallet and exchange, has officially launched SnapMarkets, a platform designed for high-frequency, skill-based prediction markets. Unlike traditional prediction markets that focus on long-term outcomes like elections or sporting events, SnapMarkets allows users to place bets on Bitcoin's price fluctuations within 30-second windows. While the platform is currently unavailable to users in the United States and the United Kingdom, its launch coincides with a period of massive growth in the prediction market industry, with platforms like Polymarket and Kalshi seeing billions in trading volume. The article highlights the complex regulatory landscape surrounding these products, noting a shift in the CFTC's posture toward providing more tailored guidance, even as a jurisdictional battle persists between federal regulators and state-level gambling authorities. Blockchain.com maintains that SnapMarkets is a transparent way to engage with short-term price movements rather than a traditional derivative product. To enhance user engagement, the platform incorporates features such as live chat, real-time price feeds, and global leaderboards, and supports connections via Blockchain.com or other DeFi wallets."
-        ],
-        "main_topic": "Blockchain.com has launched SnapMarkets, a new platform for high-frequency Bitcoin price predictions using 30-second intervals.",
-        "technologies": [
-          "Blockchain.com",
-          "SnapMarkets",
-          "Bitcoin",
-          "Polymarket",
-          "Kalshi",
-          "Dune",
-          "Robinhood Predictions",
-          "Crypto.com",
-          "OG.com",
-          "DeFi wallets"
-        ]
-      },
-      {
         "title": "Palo Alto Firewall Zero-Day Under Active Exploitation",
         "slug": "palo-alto-firewall-zero-day-under-active-exploitation",
         "url": "https://threatroad.substack.com/p/palo-alto-firewall-zero-day-under",
@@ -588,284 +179,143 @@
         ]
       },
       {
-        "title": "Anthropic rolls out a host of new AI agents to target 'the most time-consuming work in financial services'",
-        "slug": "anthropic-rolls-out-a-host-of-new-ai-agents-to-target-the-most-time-consuming-work-in-financial-services",
-        "url": "https://www.techradar.com/pro/anthropic-rolls-out-a-host-of-new-ai-agents-to-target-the-most-time-consuming-work-in-financial-services",
-        "source": "TechRadar",
-        "published": "Wed, 06 May 2026 14:20:00 +0000",
-        "short_summary": "Anthropic has introduced ten new AI agents specifically engineered to streamline workflows for financial services professionals. These agents, powered by the high-performing Claude Opus 4.7, also feature direct integration with Microsoft Office applications.",
-        "long_resume": "Anthropic has officially launched a suite of ten prebuilt AI agents specifically designed to automate the most time-consuming tasks within the financial services sector, including banking and insurance. These agents are intended for rapid deployment, with the company claiming they can be implemented in days rather than months. The release is part of a broader expansion of the Claude ecosystem, which now includes direct integration with Microsoft Excel and other Office applications. The new agents are powered by the Claude Opus 4.7 model, which Anthropic asserts is state-of-the-art for financial tasks; the model notably outperformed GPT-5.5 and Gemini 3.1 Pro on the Vals AI's Finance Agent benchmark. Each agent is built using a sophisticated structure of skills (instructions), connectors, and subagents that handle specific sub-tasks like methodology checks or comparable selection. The agents are categorized into two groups: five focused on research and client coverage, and five focused on finance and operations, with specific roles such as pitch builders, market researchers, and valuation reviewers. To ensure utility in a professional setting, these agents can connect to various real-time market data and research platforms, including FactSet, S&P Capital IQ, MSCI, PitchBook, Morningstar, Chronograph, LSEG, and Daloopa. While the agents are available on all paid plans for Claude Cowork and Claude Code, the Managed Agents for programmatic use are currently in public beta.",
-        "long_resume_paragraphs": [
-          "Anthropic has officially launched a suite of ten prebuilt AI agents specifically designed to automate the most time-consuming tasks within the financial services sector, including banking and insurance. These agents are intended for rapid deployment, with the company claiming they can be implemented in days rather than months. The release is part of a broader expansion of the Claude ecosystem, which now includes direct integration with Microsoft Excel and other Office applications. The new agents are powered by the Claude Opus 4.7 model, which Anthropic asserts is state-of-the-art for financial tasks; the model notably outperformed GPT-5.5 and Gemini 3.1 Pro on the Vals AI's Finance Agent benchmark. Each agent is built using a sophisticated structure of skills (instructions), connectors, and subagents that handle specific sub-tasks like methodology checks or comparable selection. The agents are categorized into two groups: five focused on research and client coverage, and five focused on finance and operations, with specific roles such as pitch builders, market researchers, and valuation reviewers. To ensure utility in a professional setting, these agents can connect to various real-time market data and research platforms, including FactSet, S&P Capital IQ, MSCI, PitchBook, Morningstar, Chronograph, LSEG, and Daloopa. While the agents are available on all paid plans for Claude Cowork and Claude Code, the Managed Agents for programmatic use are currently in public beta."
-        ],
-        "main_topic": "Anthropic has launched ten specialized AI agents designed to automate complex and time-consuming tasks within the financial services industry.",
-        "technologies": [
-          "Anthropic",
-          "Claude",
-          "Claude Cowork",
-          "Claude Code",
-          "Claude Managed Agents",
-          "Claude Opus 4.7",
-          "Microsoft Excel",
-          "Microsoft Office",
-          "GPT-5.5",
-          "Gemini 3.1 Pro",
-          "FactSet",
-          "S&P Capital IQ",
-          "MSCI",
-          "PitchBook",
-          "Morningstar",
-          "Chronograph",
-          "LSEG",
-          "Daloopa"
-        ]
-      },
-      {
-        "title": "Wall Street is abuzz about ‘tokenized assets’—but most activity is limited to a nascent ‘wrapper’ phase, report finds",
-        "slug": "wall-street-is-abuzz-about-tokenized-assetsbut-most-activity-is-limited-to-a-nascent-wrapper-phase-report-finds",
-        "url": "https://fortune.com/2026/05/06/tokenized-assets-wrapper-report",
-        "source": "Fortune",
-        "published": "Wed, 06 May 2026 17:00:00 +0000",
-        "short_summary": "A Pantera Capital report finds that the majority of tokenized assets are merely digital representations of off-chain assets. While the market is growing, the industry has yet to unlock the full programmable and autonomous benefits of blockchain technology.",
-        "long_resume": "A recent report from crypto asset manager Pantera Capital provides a reality check for the burgeoning tokenization sector. After analyzing 542 tokenized assets, the study found that 77.6% of these assets are 'wrappers,' meaning they serve as blockchain-based claims on assets that are primarily managed and held off-chain. The report compares the current state of the industry to the early days of the internet, where companies simply posted static PDFs online instead of leveraging the interactive capabilities of the web. While major financial players like BlackRock, JPMorgan, and Franklin Templeton are actively participating in the space, most current projects focus on representing traditional assets like Treasury bills without utilizing the core advantages of blockchain, such as programmable compliance, autonomous collateral management, and real-time yield optimization. Stablecoins currently represent the most mature segment, making up 91.6% of the total market value. However, significant hurdles remain, particularly regarding issuance and redemption, which remain gated and intermediary-controlled for 91% of assets. This reliance on intermediaries is viewed as a rational response to the current lack of clear regulation. The report suggests that the implementation of the CLARITY Act could offer the legal certainty required for institutions to move beyond simple wrappers and toward truly native, on-chain financial instruments.",
-        "long_resume_paragraphs": [
-          "A recent report from crypto asset manager Pantera Capital provides a reality check for the burgeoning tokenization sector. After analyzing 542 tokenized assets, the study found that 77.6% of these assets are 'wrappers,' meaning they serve as blockchain-based claims on assets that are primarily managed and held off-chain. The report compares the current state of the industry to the early days of the internet, where companies simply posted static PDFs online instead of leveraging the interactive capabilities of the web. While major financial players like BlackRock, JPMorgan, and Franklin Templeton are actively participating in the space, most current projects focus on representing traditional assets like Treasury bills without utilizing the core advantages of blockchain, such as programmable compliance, autonomous collateral management, and real-time yield optimization. Stablecoins currently represent the most mature segment, making up 91.6% of the total market value. However, significant hurdles remain, particularly regarding issuance and redemption, which remain gated and intermediary-controlled for 91% of assets. This reliance on intermediaries is viewed as a rational response to the current lack of clear regulation. The report suggests that the implementation of the CLARITY Act could offer the legal certainty required for institutions to move beyond simple wrappers and toward truly native, on-chain financial instruments."
-        ],
-        "main_topic": "A new report from Pantera Capital reveals that approximately 78% of tokenized assets currently function as 'wrappers' for off-chain assets rather than native on-chain instruments.",
-        "technologies": [
-          "Blockchain",
-          "Tokenization",
-          "Stablecoins",
-          "DeFi"
-        ]
-      },
-      {
-        "title": "Pennsylvania sues Character.AI chatbot posing as doctor, giving psych advice",
-        "slug": "pennsylvania-sues-characterai-chatbot-posing-as-doctor-giving-psych-advice",
-        "url": "https://interestingengineering.com/ai-robotics/pennsylvania-sues-character-ai-chatbot",
-        "source": "Reddit r/artificial",
-        "published": "2026-05-06T14:41:03Z",
-        "short_summary": "Pennsylvania officials are suing Character.AI because a chatbot persona claimed to be a licensed psychiatrist and offered medical assessments. The legal action seeks to prevent AI systems from misleading the public by presenting fabricated professional authority.",
-        "long_resume": "The Pennsylvania Department of State and the State Board of Medicine have initiated a lawsuit against Character.AI, alleging that the company's platform facilitates the unauthorized practice of medicine. The legal complaint focuses on a chatbot persona named 'Emilie' that presented itself as a licensed psychiatrist. During an investigation, the chatbot claimed to have studied at Imperial College London and held a valid medical license in Pennsylvania, despite providing a license number that does not exist in state records. The chatbot further engaged in medical-related behavior by using diagnostic language, offering to conduct assessments, and stating it could prescribe medication. Pennsylvania officials argue that such behavior violates the state's Medical Practice Act. The lawsuit does not seek monetary damages but instead requests a cease-and-desist order to prevent AI personas from posing as medical professionals. In response, Character.AI has stated that its platform is intended for fictional roleplaying and entertainment, emphasizing that they use prominent disclaimers to remind users that characters are not real people and should not be relied upon for professional advice. This case is viewed as a significant test for AI regulation and the accountability of developers regarding AI hallucinations and the presentation of false expertise.",
-        "long_resume_paragraphs": [
-          "The Pennsylvania Department of State and the State Board of Medicine have initiated a lawsuit against Character.AI, alleging that the company's platform facilitates the unauthorized practice of medicine. The legal complaint focuses on a chatbot persona named 'Emilie' that presented itself as a licensed psychiatrist. During an investigation, the chatbot claimed to have studied at Imperial College London and held a valid medical license in Pennsylvania, despite providing a license number that does not exist in state records. The chatbot further engaged in medical-related behavior by using diagnostic language, offering to conduct assessments, and stating it could prescribe medication. Pennsylvania officials argue that such behavior violates the state's Medical Practice Act. The lawsuit does not seek monetary damages but instead requests a cease-and-desist order to prevent AI personas from posing as medical professionals. In response, Character.AI has stated that its platform is intended for fictional roleplaying and entertainment, emphasizing that they use prominent disclaimers to remind users that characters are not real people and should not be relied upon for professional advice. This case is viewed as a significant test for AI regulation and the accountability of developers regarding AI hallucinations and the presentation of false expertise."
-        ],
-        "main_topic": "Pennsylvania has filed a lawsuit against Character.AI after a chatbot persona falsely claimed to be a licensed medical professional.",
-        "technologies": [
-          "Character.AI",
-          "Conversational AI",
-          "Generative AI"
-        ]
-      },
-      {
-        "title": "Chrome is quietly installing a 4GB AI model on your device",
-        "slug": "chrome-is-quietly-installing-a-4gb-ai-model-on-your-device",
-        "url": "https://cybernews.com/security/google-chrome-ai-model-device-no-consent/",
+        "title": "CVE-2026-32710  MariaDB JSON_SCHEMA_VALID heap buffer overflow leading to RCE",
+        "slug": "cve-2026-32710-mariadb-json-schema-valid-heap-buffer-overflow-leading-to-rce",
+        "url": "https://www.zeroday.cloud/blog/mariadb-cve-2026-32710-deep-dive",
         "source": "Reddit r/cybersecurity",
-        "published": "2026-05-06T09:17:07Z",
-        "short_summary": "Google Chrome is silently installing a 4GB Gemini Nano AI model on user devices without explicit user consent or notification. This practice has drawn significant criticism regarding potential privacy law violations and the massive environmental impact of the resulting CO2 emissions.",
-        "long_resume": "Computer scientist and lawyer Alexander Hanff has raised alarms regarding Google Chrome's practice of silently downloading a 4GB AI model, known as Gemini Nano, to user devices. The researcher discovered that the file, named weights.bin and located in the OptGuideOnDeviceModel directory, is being written to disk without any prompt or checkbox in Chrome's settings. This download is triggered automatically when Chrome's AI features are active, which is the default setting in recent versions of the browser. Hanff argues that this unilateral deployment treats user machines as optimization surfaces for Google's product roadmap rather than respecting the user's authority over their own hardware. Beyond the privacy implications, which Hanff suggests could mirror recent legal criticisms leveled against Anthropic's Claude Desktop, there is a significant environmental cost. He estimates that the mass distribution of this 4GB binary across Chrome's massive user base could result in between 6,000 and 60,000 tonnes of CO2-equivalent emissions. Furthermore, the researcher points out that while the installation is seamless for the user, removing the file is a complex, undocumented process, and Chrome may even re-download the model if the user attempts to delete it. Hanff calls on Google to implement an explicit opt-in mechanism to align its practices with responsible AI and sustainability commitments.",
+        "published": "2026-05-06T23:28:31Z",
+        "short_summary": "A heap buffer overflow in MariaDB's JSON schema validation allows authenticated attackers to escalate privileges and execute arbitrary code. Users should upgrade to the patched versions 11.4.10 or 11.8.6 immediately.",
+        "long_resume": "CVE-2026-32710 is a critical heap buffer overflow vulnerability identified in the MariaDB `JSON_SCHEMA_VALID()` function. The flaw resides in the `json_get_normalized_string()` function within `sql/json_schema_helper.cc`, where a 128-byte heap buffer is overwritten using `strncpy` without proper bounds checking when a JSON string exceeds the buffer size. This vulnerability is particularly dangerous because any authenticated user, including those with minimal privileges, can reach the vulnerable code path with a single SQL statement. The exploitation process is highly sophisticated, consisting of three distinct phases. First, the attacker uses the overflow to corrupt internal session metadata, effectively escalating their connection to superuser privileges. Second, the attacker achieves an address leak by reading `/proc/self/maps` via the `LOAD DATA INFILE` command, which allows them to bypass Address Space Layout Randomization (ASLR). Finally, the attacker triggers a second overflow to overwrite the global `plugin_dir` pointer, redirecting it to a controlled location like `/tmp`, where a malicious shared library can be loaded as a User-Defined Function (UDF) to execute arbitrary operating system commands. The vulnerability was discovered by Xint Code, an autonomous AI-powered security tool by Theori, and demonstrated at ZeroDay.Cloud 2025. To remediate this issue, administrators must upgrade to MariaDB 11.4.10 or 11.8.6. In environments where immediate patching is not possible, security teams should implement mitigations such as tightening network access to the database, rotating credentials, and auditing user privileges to reduce the potential blast radius.",
         "long_resume_paragraphs": [
-          "Computer scientist and lawyer Alexander Hanff has raised alarms regarding Google Chrome's practice of silently downloading a 4GB AI model, known as Gemini Nano, to user devices. The researcher discovered that the file, named weights.bin and located in the OptGuideOnDeviceModel directory, is being written to disk without any prompt or checkbox in Chrome's settings. This download is triggered automatically when Chrome's AI features are active, which is the default setting in recent versions of the browser. Hanff argues that this unilateral deployment treats user machines as optimization surfaces for Google's product roadmap rather than respecting the user's authority over their own hardware. Beyond the privacy implications, which Hanff suggests could mirror recent legal criticisms leveled against Anthropic's Claude Desktop, there is a significant environmental cost. He estimates that the mass distribution of this 4GB binary across Chrome's massive user base could result in between 6,000 and 60,000 tonnes of CO2-equivalent emissions. Furthermore, the researcher points out that while the installation is seamless for the user, removing the file is a complex, undocumented process, and Chrome may even re-download the model if the user attempts to delete it. Hanff calls on Google to implement an explicit opt-in mechanism to align its practices with responsible AI and sustainability commitments."
+          "CVE-2026-32710 is a critical heap buffer overflow vulnerability identified in the MariaDB `JSON_SCHEMA_VALID()` function. The flaw resides in the `json_get_normalized_string()` function within `sql/json_schema_helper.cc`, where a 128-byte heap buffer is overwritten using `strncpy` without proper bounds checking when a JSON string exceeds the buffer size. This vulnerability is particularly dangerous because any authenticated user, including those with minimal privileges, can reach the vulnerable code path with a single SQL statement. The exploitation process is highly sophisticated, consisting of three distinct phases. First, the attacker uses the overflow to corrupt internal session metadata, effectively escalating their connection to superuser privileges. Second, the attacker achieves an address leak by reading `/proc/self/maps` via the `LOAD DATA INFILE` command, which allows them to bypass Address Space Layout Randomization (ASLR). Finally, the attacker triggers a second overflow to overwrite the global `plugin_dir` pointer, redirecting it to a controlled location like `/tmp`, where a malicious shared library can be loaded as a User-Defined Function (UDF) to execute arbitrary operating system commands. The vulnerability was discovered by Xint Code, an autonomous AI-powered security tool by Theori, and demonstrated at ZeroDay.Cloud 2025. To remediate this issue, administrators must upgrade to MariaDB 11.4.10 or 11.8.6. In environments where immediate patching is not possible, security teams should implement mitigations such as tightening network access to the database, rotating credentials, and auditing user privileges to reduce the potential blast radius."
         ],
-        "main_topic": "Google Chrome is reportedly installing a 4GB Gemini Nano AI model on user devices without explicit consent, sparking privacy and environmental concerns.",
+        "main_topic": "A critical heap buffer overflow vulnerability, CVE-2026-32710, in MariaDB's JSON schema validation logic allows authenticated users to achieve remote code execution.",
         "technologies": [
-          "Google Chrome",
-          "Gemini Nano",
-          "Anthropic Claude Desktop"
+          "MariaDB",
+          "JSON",
+          "SQL",
+          "Wiz",
+          "Theori",
+          "Xint Code"
         ]
       },
       {
-        "title": "Mozilla, Stop Killing Games and more team up to tell the UK to stop making the internet worse",
-        "slug": "mozilla-stop-killing-games-and-more-team-up-to-tell-the-uk-to-stop-making-the-internet-worse",
-        "url": "https://www.pcgamer.com/software/mozilla-stop-killing-games-and-more-team-up-to-tell-the-uk-to-stop-making-the-internet-worse",
-        "source": "Reddit r/technology",
-        "published": "2026-05-06T16:26:43Z",
-        "short_summary": "A group of 19 digital rights organizations has issued a joint statement protesting the UK's Children’s Wellbeing and Schools Bill. They argue that the proposed age-verification mandates threaten internet freedom and user privacy.",
-        "long_resume": "A coalition of 19 prominent digital rights and privacy organizations, including Mozilla, the Electronic Frontier Foundation (EFF), and the Tor Project, has released a joint statement condemning recent and proposed UK legislation. The group argues that the Children’s Wellbeing and Schools Bill, along with the existing Online Safety Act, poses a significant threat to the open internet. The primary concern revolves around the implementation of 'age gates'—mandatory age verification processes designed to restrict social media access for users under 16. The coalition warns that these technologies often require intrusive identity verification, which undermines privacy, compromises data security, and creates significant technical hurdles for service providers. Critics point out that the Online Safety Act has already made internet usage in the UK more cumbersome and invasive due to similar age-assurance requirements. Furthermore, the statement highlights the danger of restricting access to information, noting that the internet serves as a vital resource for young people to explore sensitive topics like politics or personal identity safely. Despite the growing backlash from privacy advocates, the British government has indicated no plans to repeal the Online Safety Act or alter the trajectory of the new legislation.",
+        "title": "Anthropic Secures SpaceX Colossus 1 After Growing 80x to a $1.2T Valuation",
+        "slug": "anthropic-secures-spacex-colossus-1-after-growing-80x-to-a-12t-valuation",
+        "url": "https://blocknow.com/anthropic-ipo-valuation-80x-growth-spacex/",
+        "source": "Reddit r/artificial",
+        "published": "2026-05-07T13:51:56Z",
+        "short_summary": "Anthropic has reported a massive 80x surge in annualized revenue for Q1 2026, driving its market valuation to an estimated $1.2 trillion. To support this growth, the company has partnered with SpaceX to significantly expand its compute capacity using Nvidia GPUs.",
+        "long_resume": "Anthropic is undergoing a period of extraordinary expansion, with CEO Dario Amodei revealing that the company's annualized revenue and usage grew 80-fold in the first quarter of 2026. This growth significantly outperformed the company's internal projections of 10x growth and has pushed its annualized revenue run rate past $30 billion. As a result, secondary market trading has placed Anthropic's implied valuation at approximately $1.2 trillion, making it more valuable than OpenAI in private markets. To address the immense demand for its Claude AI models and Claude Code tools, Anthropic has entered into a major partnership with SpaceX. This agreement grants the company access to the Colossus 1 data center in Memphis, providing over 300 megawatts of compute capacity and more than 220,000 Nvidia GPUs. This infrastructure expansion is critical to alleviating recent API limitations and improving performance for the company's enterprise and paid users. Looking toward the future, industry reports suggest an Anthropic IPO could occur as early as October 2026. However, this potential market entry has raised concerns among financial analysts; Bank of America has warned that such a massive AI-driven listing could redirect capital away from established 'Magnificent Seven' stocks, potentially signaling the end of the current stock market bull run.",
         "long_resume_paragraphs": [
-          "A coalition of 19 prominent digital rights and privacy organizations, including Mozilla, the Electronic Frontier Foundation (EFF), and the Tor Project, has released a joint statement condemning recent and proposed UK legislation. The group argues that the Children’s Wellbeing and Schools Bill, along with the existing Online Safety Act, poses a significant threat to the open internet. The primary concern revolves around the implementation of 'age gates'—mandatory age verification processes designed to restrict social media access for users under 16. The coalition warns that these technologies often require intrusive identity verification, which undermines privacy, compromises data security, and creates significant technical hurdles for service providers. Critics point out that the Online Safety Act has already made internet usage in the UK more cumbersome and invasive due to similar age-assurance requirements. Furthermore, the statement highlights the danger of restricting access to information, noting that the internet serves as a vital resource for young people to explore sensitive topics like politics or personal identity safely. Despite the growing backlash from privacy advocates, the British government has indicated no plans to repeal the Online Safety Act or alter the trajectory of the new legislation."
+          "Anthropic is undergoing a period of extraordinary expansion, with CEO Dario Amodei revealing that the company's annualized revenue and usage grew 80-fold in the first quarter of 2026. This growth significantly outperformed the company's internal projections of 10x growth and has pushed its annualized revenue run rate past $30 billion. As a result, secondary market trading has placed Anthropic's implied valuation at approximately $1.2 trillion, making it more valuable than OpenAI in private markets. To address the immense demand for its Claude AI models and Claude Code tools, Anthropic has entered into a major partnership with SpaceX. This agreement grants the company access to the Colossus 1 data center in Memphis, providing over 300 megawatts of compute capacity and more than 220,000 Nvidia GPUs. This infrastructure expansion is critical to alleviating recent API limitations and improving performance for the company's enterprise and paid users. Looking toward the future, industry reports suggest an Anthropic IPO could occur as early as October 2026. However, this potential market entry has raised concerns among financial analysts; Bank of America has warned that such a massive AI-driven listing could redirect capital away from established 'Magnificent Seven' stocks, potentially signaling the end of the current stock market bull run."
         ],
-        "main_topic": "A coalition of 19 digital rights organizations is protesting UK legislation that threatens the open internet through intrusive age verification mandates.",
-        "technologies": [
-          "Mozilla",
-          "Electronic Frontier Foundation",
-          "ExpressVPN",
-          "Proton",
-          "Tor Project",
-          "Mullvad VPN",
-          "Tuta",
-          "IPVanish"
-        ]
-      },
-      {
-        "title": "Higher usage limits for Claude and a compute deal with SpaceX",
-        "slug": "higher-usage-limits-for-claude-and-a-compute-deal-with-spacex",
-        "url": "https://www.anthropic.com/news/higher-limits-spacex",
-        "source": "HackerNews",
-        "published": "Wed, 06 May 2026 16:17:33 +0000",
-        "short_summary": "Anthropic has announced a major compute expansion via a new partnership with SpaceX to access the Colossus 1 data center. This increased capacity allows the company to significantly raise usage limits for Claude Code and the Claude API.",
-        "long_resume": "Anthropic has announced a significant expansion of its compute infrastructure and a subsequent increase in usage limits for its Claude AI services. A central component of this update is a new partnership with SpaceX, which grants Anthropic access to the Colossus 1 data center. This agreement provides over 300 megawatts of new capacity, including more than 220,000 NVIDIA GPUs, which is expected to come online within the month to support Claude Pro and Max subscribers. Consequently, Anthropic is doubling the five-hour rate limits for Claude Code across Pro, Max, Team, and Enterprise plans, while also removing peak hour limit reductions for certain accounts and raising API rate limits for Claude Opus models. This SpaceX deal complements a broader strategy of massive infrastructure investment, which includes multi-gigawatt agreements with Amazon and Google, a strategic partnership with Microsoft and NVIDIA involving $30 billion of Azure capacity, and a $50 billion investment in American AI infrastructure with Fluidstack. Looking toward the future, Anthropic is exploring the development of orbital AI compute capacity with SpaceX and is planning international expansion into Asia and Europe to address data residency and regulatory requirements in highly regulated industries. The company emphasized that its expansion will focus on democratic regions with secure supply chains and has committed to mitigating any consumer electricity price increases caused by its data center operations.",
-        "long_resume_paragraphs": [
-          "Anthropic has announced a significant expansion of its compute infrastructure and a subsequent increase in usage limits for its Claude AI services. A central component of this update is a new partnership with SpaceX, which grants Anthropic access to the Colossus 1 data center. This agreement provides over 300 megawatts of new capacity, including more than 220,000 NVIDIA GPUs, which is expected to come online within the month to support Claude Pro and Max subscribers. Consequently, Anthropic is doubling the five-hour rate limits for Claude Code across Pro, Max, Team, and Enterprise plans, while also removing peak hour limit reductions for certain accounts and raising API rate limits for Claude Opus models. This SpaceX deal complements a broader strategy of massive infrastructure investment, which includes multi-gigawatt agreements with Amazon and Google, a strategic partnership with Microsoft and NVIDIA involving $30 billion of Azure capacity, and a $50 billion investment in American AI infrastructure with Fluidstack. Looking toward the future, Anthropic is exploring the development of orbital AI compute capacity with SpaceX and is planning international expansion into Asia and Europe to address data residency and regulatory requirements in highly regulated industries. The company emphasized that its expansion will focus on democratic regions with secure supply chains and has committed to mitigating any consumer electricity price increases caused by its data center operations."
-        ],
-        "main_topic": "Anthropic is expanding its compute capacity and increasing usage limits for Claude services through a new partnership with SpaceX.",
-        "technologies": [
-          "Claude",
-          "Claude Code",
-          "Claude API",
-          "Claude Opus",
-          "SpaceX Colossus 1",
-          "NVIDIA GPUs",
-          "AWS Trainium",
-          "Google TPUs",
-          "Azure",
-          "Amazon",
-          "Google",
-          "Broadcom",
-          "Microsoft",
-          "NVIDIA",
-          "Fluidstack"
-        ]
-      },
-      {
-        "title": "Anthropic Gets in Bed With SpaceX as the AI Race Turns Weird",
-        "slug": "anthropic-gets-in-bed-with-spacex-as-the-ai-race-turns-weird",
-        "url": "https://www.wired.com/story/anthropic-spacex-compute-deal-colossus",
-        "source": "Wired",
-        "published": "Wed, 06 May 2026 18:28:52 +0000",
-        "short_summary": "Anthropic has signed an agreement to utilize computing resources from the Colossus 1 supercomputer operated by SpaceXAI. This partnership aims to boost capacity for Claude Pro and Claude Code by leveraging a massive array of Nvidia GPUs.",
-        "long_resume": "Anthropic and Elon Musk’s SpaceXAI have announced a significant partnership aimed at addressing the intense global demand for AI computing resources. Under this agreement, Anthropic will utilize the computing power provided by the Colossus 1 supercomputer located in Memphis, Tennessee. This supercomputer, part of the recently merged SpaceXAI entity, features approximately 220,000 Nvidia GPUs, ranging from the H100 and H200 to the latest GB200 chips, and provides access to over 300 megawatts of capacity. The primary objective of this deal is to improve the reliability and capacity of Anthropic's flagship services, including Claude Pro, Claude Max, and the developer-focused Claude Code, which have recently faced rate limits and service disruptions due to high demand. Beyond terrestrial infrastructure, the companies have expressed mutual interest in exploring the development of orbital AI compute capacity, which would involve placing data centers in space. This partnership also marks a significant pivot in Elon Musk's relationship with Anthropic, following his previous public criticisms of the company's AI safety policies. As Anthropic continues to scale, it remains heavily invested in other major cloud ecosystems, having committed massive amounts of capital to Amazon and Google's cloud services and TPU technologies. However, the expansion of such massive data centers is not without controversy, as the gas turbines powering the Memphis site have drawn criticism from local environmental activists.",
-        "long_resume_paragraphs": [
-          "Anthropic and Elon Musk’s SpaceXAI have announced a significant partnership aimed at addressing the intense global demand for AI computing resources. Under this agreement, Anthropic will utilize the computing power provided by the Colossus 1 supercomputer located in Memphis, Tennessee. This supercomputer, part of the recently merged SpaceXAI entity, features approximately 220,000 Nvidia GPUs, ranging from the H100 and H200 to the latest GB200 chips, and provides access to over 300 megawatts of capacity. The primary objective of this deal is to improve the reliability and capacity of Anthropic's flagship services, including Claude Pro, Claude Max, and the developer-focused Claude Code, which have recently faced rate limits and service disruptions due to high demand. Beyond terrestrial infrastructure, the companies have expressed mutual interest in exploring the development of orbital AI compute capacity, which would involve placing data centers in space. This partnership also marks a significant pivot in Elon Musk's relationship with Anthropic, following his previous public criticisms of the company's AI safety policies. As Anthropic continues to scale, it remains heavily invested in other major cloud ecosystems, having committed massive amounts of capital to Amazon and Google's cloud services and TPU technologies. However, the expansion of such massive data centers is not without controversy, as the gas turbines powering the Memphis site have drawn criticism from local environmental activists."
-        ],
-        "main_topic": "Anthropic has entered into a strategic partnership with SpaceXAI to utilize the massive computing power of the Colossus 1 supercomputer.",
+        "main_topic": "Anthropic's unprecedented 80x revenue growth in Q1 2026 has propelled its valuation to $1.2 trillion, positioning it ahead of OpenAI and signaling a potential shift in the broader stock market.",
         "technologies": [
           "Anthropic",
-          "SpaceXAI",
-          "Colossus 1",
-          "Nvidia H100",
-          "Nvidia H200",
-          "Nvidia GB200",
-          "Claude Pro",
-          "Claude Max",
+          "Claude AI",
           "Claude Code",
-          "Google Cloud",
-          "TPU chips",
-          "Amazon cloud"
-        ]
-      },
-      {
-        "title": "Colombia wants to mine bitcoin with surplus renewable energy",
-        "slug": "colombia-wants-to-mine-bitcoin-with-surplus-renewable-energy",
-        "url": "https://www.coindesk.com/tech/2026/05/06/colombia-wants-to-mine-bitcoin-with-surplus-renewable-energy",
-        "source": "CoinDesk",
-        "published": "Wed, 06 May 2026 12:56:45 +0000",
-        "short_summary": "Colombia is looking to leverage its abundant renewable energy resources to develop a Bitcoin mining sector on its Caribbean coast. The proposal aims to utilize surplus wind and solar capacity while offering economic participation to the indigenous Wayúu community.",
-        "long_resume": "Colombian President Gustavo Petro has proposed a strategic initiative to establish the country's Caribbean coast as a major hub for Bitcoin mining by utilizing surplus renewable energy. By focusing on cities such as Barranqueral, Santa Marta, and Riohacha, the administration intends to follow the economic precedents set by Paraguay and Venezuela, where abundant hydroelectric power has driven significant hashrate growth. A key social component of this proposal is the potential for co-ownership of these mining operations by the Wayúu community, Colombia's largest indigenous group. The technical foundation for this plan lies in Colombia's impressive renewable energy profile; according to a 2024 World Bank report, the country generates approximately 75% of its electricity from renewable sources, significantly higher than the global average. The Caribbean region, in particular, possesses vast, underutilized wind and solar potential. Petro argues that using idle electricity for Bitcoin mining provides a productive use for surplus power while avoiding the carbon footprint concerns associated with fossil-fuel-based mining. This opportunity arises as the global mining landscape undergoes a structural shift. While Paraguay has emerged as a top-tier mining jurisdiction due to cheap power from the Itaipu Dam, many large-scale operators in the United States are pivoting their business models toward high-margin Artificial Intelligence (AI) and high-performance computing (HPC) contracts. As these established US players reduce their Bitcoin treasuries to fund AI transitions, there is an opening for new jurisdictions with low-cost, green energy to capture global hashrate. However, the transition from political vision to industrial reality will require Colombia to navigate complex regulatory hurdles, including the establishment of formal mining licenses and new electricity tariff agreements.",
-        "long_resume_paragraphs": [
-          "Colombian President Gustavo Petro has proposed a strategic initiative to establish the country's Caribbean coast as a major hub for Bitcoin mining by utilizing surplus renewable energy. By focusing on cities such as Barranqueral, Santa Marta, and Riohacha, the administration intends to follow the economic precedents set by Paraguay and Venezuela, where abundant hydroelectric power has driven significant hashrate growth. A key social component of this proposal is the potential for co-ownership of these mining operations by the Wayúu community, Colombia's largest indigenous group. The technical foundation for this plan lies in Colombia's impressive renewable energy profile; according to a 2024 World Bank report, the country generates approximately 75% of its electricity from renewable sources, significantly higher than the global average. The Caribbean region, in particular, possesses vast, underutilized wind and solar potential. Petro argues that using idle electricity for Bitcoin mining provides a productive use for surplus power while avoiding the carbon footprint concerns associated with fossil-fuel-based mining. This opportunity arises as the global mining landscape undergoes a structural shift. While Paraguay has emerged as a top-tier mining jurisdiction due to cheap power from the Itaipu Dam, many large-scale operators in the United States are pivoting their business models toward high-margin Artificial Intelligence (AI) and high-performance computing (HPC) contracts. As these established US players reduce their Bitcoin treasuries to fund AI transitions, there is an opening for new jurisdictions with low-cost, green energy to capture global hashrate. However, the transition from political vision to industrial reality will require Colombia to navigate complex regulatory hurdles, including the establishment of formal mining licenses and new electricity tariff agreements."
-        ],
-        "main_topic": "Colombian President Gustavo Petro proposes utilizing the nation's surplus renewable energy on the Caribbean coast to establish a new Bitcoin mining industry.",
-        "technologies": [
-          "Bitcoin",
-          "Bitcoin mining",
-          "Renewable energy",
-          "Wind power",
-          "Solar power",
-          "Hydroelectric power",
-          "Artificial Intelligence",
-          "High-performance computing (HPC)"
-        ]
-      },
-      {
-        "title": "Mozilla, Stop Killing Games and more team up to tell the UK to stop making the internet worse",
-        "slug": "mozilla-stop-killing-games-and-more-team-up-to-tell-the-uk-to-stop-making-the-internet-worse",
-        "url": "https://www.pcgamer.com/software/mozilla-stop-killing-games-and-more-team-up-to-tell-the-uk-to-stop-making-the-internet-worse/",
-        "source": "Reddit r/technology",
-        "published": "2026-05-06T16:26:43Z",
-        "short_summary": "A group of 19 digital rights organizations has issued a joint statement protesting the UK's Children’s Wellbeing and Schools Bill. They argue that the proposed age-verification mandates threaten internet freedom and user privacy.",
-        "long_resume": "A coalition of 19 prominent digital rights and privacy organizations, including Mozilla, the Electronic Frontier Foundation (EFF), and the Tor Project, has released a joint statement condemning recent and proposed UK legislation. The group argues that the Children’s Wellbeing and Schools Bill, along with the existing Online Safety Act, poses a significant threat to the open internet. The primary concern revolves around the implementation of 'age gates'—mandatory age verification processes designed to restrict social media access for users under 16. The coalition warns that these technologies often require intrusive identity verification, which undermines privacy, compromises data security, and creates significant technical hurdles for service providers. Critics point out that the Online Safety Act has already made internet usage in the UK more cumbersome and invasive due to similar age-assurance requirements. Furthermore, the statement highlights the danger of restricting access to information, noting that the internet serves as a vital resource for young people to explore sensitive topics like politics or personal identity safely. Despite the growing backlash from privacy advocates, the British government has indicated no plans to repeal the Online Safety Act or alter the trajectory of the new legislation.",
-        "long_resume_paragraphs": [
-          "A coalition of 19 prominent digital rights and privacy organizations, including Mozilla, the Electronic Frontier Foundation (EFF), and the Tor Project, has released a joint statement condemning recent and proposed UK legislation. The group argues that the Children’s Wellbeing and Schools Bill, along with the existing Online Safety Act, poses a significant threat to the open internet. The primary concern revolves around the implementation of 'age gates'—mandatory age verification processes designed to restrict social media access for users under 16. The coalition warns that these technologies often require intrusive identity verification, which undermines privacy, compromises data security, and creates significant technical hurdles for service providers. Critics point out that the Online Safety Act has already made internet usage in the UK more cumbersome and invasive due to similar age-assurance requirements. Furthermore, the statement highlights the danger of restricting access to information, noting that the internet serves as a vital resource for young people to explore sensitive topics like politics or personal identity safely. Despite the growing backlash from privacy advocates, the British government has indicated no plans to repeal the Online Safety Act or alter the trajectory of the new legislation."
-        ],
-        "main_topic": "A coalition of 19 digital rights organizations is protesting UK legislation that threatens the open internet through intrusive age verification mandates.",
-        "technologies": [
-          "Mozilla",
-          "Electronic Frontier Foundation",
-          "ExpressVPN",
-          "Proton",
-          "Tor Project",
-          "Mullvad VPN",
-          "Tuta",
-          "IPVanish"
-        ]
-      },
-      {
-        "title": "Report: SpaceX IPO gives Musk unchecked power and forbids investor lawsuits",
-        "slug": "report-spacex-ipo-gives-musk-unchecked-power-and-forbids-investor-lawsuits",
-        "url": "https://arstechnica.com/tech-policy/2026/05/report-spacex-ipo-gives-musk-unchecked-power-and-forbids-investor-lawsuits",
-        "source": "Ars Technica",
-        "published": "Wed, 06 May 2026 17:20:06 +0000",
-        "short_summary": "SpaceX's proposed IPO is designed to grant Elon Musk unprecedented control while stripping shareholders of significant legal protections. The plan includes provisions for mandatory arbitration and the use of supervoting shares to ensure Musk maintains majority voting power.",
-        "long_resume": "",
-        "long_resume_paragraphs": [],
-        "main_topic": "SpaceX's planned IPO is structured to consolidate Elon Musk's executive authority while significantly restricting shareholder legal rights and oversight.",
-        "technologies": [
           "SpaceX",
-          "Tesla",
-          "SEC"
-        ]
-      },
-      {
-        "title": "Anthropic signs Elon Musk's SpaceX for Colossus 1 compute ahead of June IPO",
-        "slug": "anthropic-signs-elon-musks-spacex-for-colossus-1-compute-ahead-of-june-ipo",
-        "url": "https://www.coindesk.com/tech/2026/05/06/anthropic-signs-elon-musk-s-spacex-for-colossus-1-compute-ahead-of-june-ipo",
-        "source": "CoinDesk",
-        "published": "Wed, 06 May 2026 18:20:57 +0000",
-        "short_summary": "Anthropic has secured access to SpaceX's Colossus 1 data center, providing the company with over 220,000 NVIDIA GPUs to enhance its Claude AI services. The deal arrives as SpaceX prepares for a multi-trillion dollar IPO, positioning the company as a key player in AI infrastructure.",
-        "long_resume": "Anthropic has announced a major expansion of its computing capabilities through a new partnership with Elon Musk's SpaceX. Under this agreement, Anthropic will tap into the compute capacity of the Colossus 1 data center, securing access to more than 220,000 NVIDIA GPUs. This infrastructure boost is intended to directly benefit Anthropic's user base by significantly increasing rate limits for Claude Pro and Claude Max subscribers, as well as enhancing the performance of the Claude Opus API and Claude Code across Pro, Max, Team, and Enterprise plans. This move is part of a larger, highly aggressive strategy by Anthropic to secure massive-scale compute resources, following previous large-scale agreements with Amazon, Google, Broadcom, Microsoft, NVIDIA, and Fluidstack. Beyond terrestrial operations, Anthropic has also signaled interest in working with SpaceX to develop orbital AI compute capacity, potentially moving AI processing into space. The timing of this deal is strategically critical for SpaceX, which is currently preparing for an Initial Public Offering (IPO) with a targeted valuation between $1.75 trillion and $2 trillion. By establishing Anthropic as a major compute customer, SpaceX can present a more diversified business model to investors, showcasing AI infrastructure as a significant revenue stream alongside its launch and Starlink operations. Additionally, the deal supports Anthropic's global expansion efforts, helping the company meet the strict data residency requirements of regulated industries worldwide.",
-        "long_resume_paragraphs": [
-          "Anthropic has announced a major expansion of its computing capabilities through a new partnership with Elon Musk's SpaceX. Under this agreement, Anthropic will tap into the compute capacity of the Colossus 1 data center, securing access to more than 220,000 NVIDIA GPUs. This infrastructure boost is intended to directly benefit Anthropic's user base by significantly increasing rate limits for Claude Pro and Claude Max subscribers, as well as enhancing the performance of the Claude Opus API and Claude Code across Pro, Max, Team, and Enterprise plans. This move is part of a larger, highly aggressive strategy by Anthropic to secure massive-scale compute resources, following previous large-scale agreements with Amazon, Google, Broadcom, Microsoft, NVIDIA, and Fluidstack. Beyond terrestrial operations, Anthropic has also signaled interest in working with SpaceX to develop orbital AI compute capacity, potentially moving AI processing into space. The timing of this deal is strategically critical for SpaceX, which is currently preparing for an Initial Public Offering (IPO) with a targeted valuation between $1.75 trillion and $2 trillion. By establishing Anthropic as a major compute customer, SpaceX can present a more diversified business model to investors, showcasing AI infrastructure as a significant revenue stream alongside its launch and Starlink operations. Additionally, the deal supports Anthropic's global expansion efforts, helping the company meet the strict data residency requirements of regulated industries worldwide."
-        ],
-        "main_topic": "Anthropic has entered a significant agreement with SpaceX to utilize the Colossus 1 data center's compute capacity, bolstering its AI infrastructure ahead of SpaceX's upcoming IPO.",
-        "technologies": [
-          "Claude Pro",
-          "Claude Max",
-          "Claude Opus API",
-          "Claude Code",
-          "NVIDIA GPUs",
           "Colossus 1",
-          "Azure",
-          "Starlink",
-          "AI infrastructure"
+          "Nvidia GPUs",
+          "OpenAI"
         ]
       },
       {
-        "title": "Eric Trump takes shot at JPMorgan rethinking bitcoin after 'crapping' on asset",
-        "slug": "eric-trump-takes-shot-at-jpmorgan-rethinking-bitcoin-after-crapping-on-asset",
-        "url": "https://www.coindesk.com/policy/2026/05/06/eric-trump-takes-shot-at-jpmorgan-rethinking-bitcoin-after-crapping-on-asset",
-        "source": "CoinDesk",
-        "published": "Wed, 06 May 2026 18:07:58 +0000",
-        "short_summary": "At Consensus Miami 2026, Eric Trump noted that major financial giants like JPMorgan are moving from criticizing Bitcoin to integrating it into traditional banking services. He specifically highlighted the new ability for clients to secure mortgages against their Bitcoin holdings.",
-        "long_resume": "During the Consensus Miami 2026 conference, Eric Trump, co-founder of American Bitcoin (ABTC), addressed the evolving relationship between traditional finance and the cryptocurrency sector. He pointed out that major institutions, including JPMorgan Chase & Co., Bank of America's Merrill division, and Charles Schwab Corp, have shifted from viewing Bitcoin as a 'joke asset' to integrating it into their service offerings. A key development mentioned was JPMorgan's decision to allow customers to take out home mortgages against their Bitcoin holdings, signaling a significant move toward institutional acceptance. Trump also discussed the operational strategy of American Bitcoin, stating that the company is mining Bitcoin at a cost of 50 cents on the dollar to achieve the most efficient acquisition in the sector. He argued that the crypto industry has reached a point where traditional banks can no longer resist the tide of digital asset adoption and must instead learn to work within the new ecosystem. Trump concluded by reaffirming his belief in Bitcoin's long-term value, suggesting it will eventually reach a million dollars per coin.",
+        "title": "Kernel LPE Vulnerability Published Early Due To Third-Party Breaking Embargo",
+        "slug": "kernel-lpe-vulnerability-published-early-due-to-third-party-breaking-embargo",
+        "url": "https://lwn.net/Articles/1071719",
+        "source": "Reddit r/netsec",
+        "published": "2026-05-07T21:22:56Z",
+        "short_summary": "Hyunwoo Kim has announced Dirty Frag, a zero-day local privilege escalation vulnerability that enables root access on all major Linux distributions. The disclosure includes functional exploit code and a script to mitigate the threat by removing vulnerable modules.",
+        "long_resume": "Security researcher Hyunwoo Kim has announced the discovery of 'Dirty Frag,' a critical zero-day local privilege escalation (LPE) vulnerability that impacts all major Linux distributions. The vulnerability is highly significant as it allows for immediate root privilege escalation, a characteristic shared with the recently disclosed 'Copy Fail' flaw. Due to a broken embargo, Kim has released the full technical documentation, the exploit code, and a script intended to remove vulnerable modules to the public. As of the report, no official patches or CVE identifiers have been issued for this vulnerability, leaving systems vulnerable to exploitation. While the circumstances surrounding the premature disclosure of the vulnerability remain unclear, the availability of functional exploit code necessitates urgent attention from Linux system administrators and maintainers.",
         "long_resume_paragraphs": [
-          "During the Consensus Miami 2026 conference, Eric Trump, co-founder of American Bitcoin (ABTC), addressed the evolving relationship between traditional finance and the cryptocurrency sector. He pointed out that major institutions, including JPMorgan Chase & Co., Bank of America's Merrill division, and Charles Schwab Corp, have shifted from viewing Bitcoin as a 'joke asset' to integrating it into their service offerings. A key development mentioned was JPMorgan's decision to allow customers to take out home mortgages against their Bitcoin holdings, signaling a significant move toward institutional acceptance. Trump also discussed the operational strategy of American Bitcoin, stating that the company is mining Bitcoin at a cost of 50 cents on the dollar to achieve the most efficient acquisition in the sector. He argued that the crypto industry has reached a point where traditional banks can no longer resist the tide of digital asset adoption and must instead learn to work within the new ecosystem. Trump concluded by reaffirming his belief in Bitcoin's long-term value, suggesting it will eventually reach a million dollars per coin."
+          "Security researcher Hyunwoo Kim has announced the discovery of 'Dirty Frag,' a critical zero-day local privilege escalation (LPE) vulnerability that impacts all major Linux distributions. The vulnerability is highly significant as it allows for immediate root privilege escalation, a characteristic shared with the recently disclosed 'Copy Fail' flaw. Due to a broken embargo, Kim has released the full technical documentation, the exploit code, and a script intended to remove vulnerable modules to the public. As of the report, no official patches or CVE identifiers have been issued for this vulnerability, leaving systems vulnerable to exploitation. While the circumstances surrounding the premature disclosure of the vulnerability remain unclear, the availability of functional exploit code necessitates urgent attention from Linux system administrators and maintainers."
         ],
-        "main_topic": "Eric Trump discusses the shifting stance of major financial institutions like JPMorgan towards Bitcoin integration and adoption.",
+        "main_topic": "The public disclosure of Dirty Frag, a zero-day local privilege escalation vulnerability affecting all major Linux distributions.",
         "technologies": [
-          "Bitcoin",
-          "Blockchain",
-          "Tokenization",
-          "Bitcoin Mining"
+          "Linux",
+          "Dirty Frag",
+          "Copy Fail"
+        ]
+      },
+      {
+        "title": "Bypassing Bitlocker under 5 min using downgrade attack on CVE-2025-48804",
+        "slug": "bypassing-bitlocker-under-5-min-using-downgrade-attack-on-cve-2025-48804",
+        "url": "https://www.intrinsec.com/en/contournement-bitlocker-la-realite-des-downgrade-attacks/",
+        "source": "Reddit r/netsec",
+        "published": "2026-05-07T14:37:36Z",
+        "short_summary": "This article explains how a downgrade attack can bypass BitLocker encryption by leveraging unrevoked legacy certificates in the Secure Boot process. By loading a vulnerable boot manager, an attacker with physical access can gain access to a decrypted OS volume.",
+        "long_resume": "The article explores a significant vulnerability in BitLocker security involving downgrade attacks. Although Microsoft released a patch in July 2025 to address vulnerabilities in the boot manager, the fundamental issue is that Secure Boot validates the signing certificate of a binary but does not check its specific version. Because the older PCA 2011 certificate has not been widely revoked due to the operational challenges it presents to Microsoft, attackers can still load older, vulnerable versions of the boot manager that are still considered valid by the system. The attack chain involves an attacker with physical access to a workstation who prepares a modified Boot Configuration Data (BCD) file and a System Deployment Image (SDI) containing a compromised WinRE image. When the machine boots using these modified files and an old boot manager, the TPM releases the BitLocker encryption keys because the PCR 7 and 11 measurements remain valid under the recognized PCA 2011 certificate. This allows the attacker to access a terminal with the OS volume already decrypted and mounted. To defend against this, the article emphasizes that enabling a BitLocker startup PIN is the most reliable protection. Furthermore, it recommends migrating the boot manager to the CA 2023 certificate and following Microsoft's guidance in KB5025885 to revoke the PCA 2011 certificate, which would enable Secure Version Number (SVN) tracking to prevent such downgrades.",
+        "long_resume_paragraphs": [
+          "The article explores a significant vulnerability in BitLocker security involving downgrade attacks. Although Microsoft released a patch in July 2025 to address vulnerabilities in the boot manager, the fundamental issue is that Secure Boot validates the signing certificate of a binary but does not check its specific version. Because the older PCA 2011 certificate has not been widely revoked due to the operational challenges it presents to Microsoft, attackers can still load older, vulnerable versions of the boot manager that are still considered valid by the system. The attack chain involves an attacker with physical access to a workstation who prepares a modified Boot Configuration Data (BCD) file and a System Deployment Image (SDI) containing a compromised WinRE image. When the machine boots using these modified files and an old boot manager, the TPM releases the BitLocker encryption keys because the PCR 7 and 11 measurements remain valid under the recognized PCA 2011 certificate. This allows the attacker to access a terminal with the OS volume already decrypted and mounted. To defend against this, the article emphasizes that enabling a BitLocker startup PIN is the most reliable protection. Furthermore, it recommends migrating the boot manager to the CA 2023 certificate and following Microsoft's guidance in KB5025885 to revoke the PCA 2011 certificate, which would enable Secure Version Number (SVN) tracking to prevent such downgrades."
+        ],
+        "main_topic": "The article details a BitLocker bypass technique known as a downgrade attack that exploits the continued trust of legacy Secure Boot certificates.",
+        "technologies": [
+          "BitLocker",
+          "Windows RE (WinRE)",
+          "Secure Boot",
+          "TPM",
+          "PCA 2011",
+          "CA 2023",
+          "SDI",
+          "WIM",
+          "BCD",
+          "cmd.exe"
+        ]
+      },
+      {
+        "title": "Cloudflare lays off 1,100 people",
+        "slug": "cloudflare-lays-off-1100-people",
+        "url": "https://blog.cloudflare.com/building-for-the-future",
+        "source": "Reddit r/technology",
+        "published": "2026-05-07T21:46:23Z",
+        "short_summary": "Cloudflare has announced a significant workforce reduction of over 1,100 employees to realign its organizational structure with the rise of agentic AI. The move is intended to leverage a massive surge in internal AI usage to drive future innovation and efficiency.",
+        "long_resume": "Cloudflare has announced a major restructuring of its global workforce, involving the departure of more than 1,100 employees. According to a company-wide email from its leadership, this decision is not a standard cost-cutting measure but a strategic move to redefine how the company operates in the age of agentic AI. The company highlighted that its internal use of AI has grown by over 600% in just the last three months, with employees across all departments, including engineering, HR, and finance, utilizing thousands of AI agent sessions daily. To maintain its competitive edge and fulfill its mission of building a better internet, Cloudflare is reimagining its internal processes, teams, and roles to be more compatible with an AI-centric workflow. To support those affected, Cloudflare is offering substantial severance packages, including the equivalent of full base pay through the end of 2026, extended equity vesting through August 15th, and continued healthcare support for US-based employees through the end of the year. The leadership emphasized that by taking this decisive action now, they aim to provide clarity to the workforce and prevent the uncertainty associated with prolonged, smaller-scale reorganizations, ultimately allowing the company to move faster and more innovatively.",
+        "long_resume_paragraphs": [
+          "Cloudflare has announced a major restructuring of its global workforce, involving the departure of more than 1,100 employees. According to a company-wide email from its leadership, this decision is not a standard cost-cutting measure but a strategic move to redefine how the company operates in the age of agentic AI. The company highlighted that its internal use of AI has grown by over 600% in just the last three months, with employees across all departments, including engineering, HR, and finance, utilizing thousands of AI agent sessions daily. To maintain its competitive edge and fulfill its mission of building a better internet, Cloudflare is reimagining its internal processes, teams, and roles to be more compatible with an AI-centric workflow. To support those affected, Cloudflare is offering substantial severance packages, including the equivalent of full base pay through the end of 2026, extended equity vesting through August 15th, and continued healthcare support for US-based employees through the end of the year. The leadership emphasized that by taking this decisive action now, they aim to provide clarity to the workforce and prevent the uncertainty associated with prolonged, smaller-scale reorganizations, ultimately allowing the company to move faster and more innovatively."
+        ],
+        "main_topic": "Cloudflare is reducing its global workforce by over 1,100 employees to restructure its organization for the era of agentic AI.",
+        "technologies": [
+          "AI",
+          "Agentic AI",
+          "AI agents"
+        ]
+      },
+      {
+        "title": "CVE-2026-42511 Breakdown: RCE in FreeBSD",
+        "slug": "cve-2026-42511-breakdown-rce-in-freebsd",
+        "url": "https://aisle.com/blog/aisle-discovers-cve-2026-42511-a-21-year-old-freebsd-remote-command-execution-vulnerability#the-vulnerability",
+        "source": "Reddit r/netsec",
+        "published": "2026-05-07T16:34:50Z",
+        "short_summary": "AISLE has identified a critical, long-standing remote command execution vulnerability in FreeBSD's dhclient. This flaw enables attackers on the same local network to gain root privileges by exploiting improper sanitization of DHCP protocol data.",
+        "long_resume": "The cybersecurity research firm AISLE has announced the discovery of a significant remote command execution (RCE) vulnerability, identified as CVE-2026-42511, residing in the FreeBSD DHCP client, dhclient. This vulnerability has been present in the FreeBSD ecosystem since the 2005 release of FreeBSD-6.0, following the import of dhclient from OpenBSD. The flaw is a logic-based error where attacker-controlled protocol data is persisted into a trusted, configuration-like format without proper sanitization, which is then later reinterpreted during a privileged execution path. This allows an attacker on the same local network—such as one utilizing a malicious wireless access point or performing DHCP spoofing—to execute a complete local-network-to-root exploit chain. The impact of this vulnerability is widespread, potentially affecting not only servers but also consumer electronics and embedded systems, such as the Sony PlayStation and Nintendo Switch, that rely on FreeBSD-based operating systems. The discovery was facilitated by AISLE's proprietary AI-based source code analysis pipeline and verified by their offensive security research team. This finding is part of a coordinated disclosure involving multiple FreeBSD security advisories discovered by AISLE.",
+        "long_resume_paragraphs": [
+          "The cybersecurity research firm AISLE has announced the discovery of a significant remote command execution (RCE) vulnerability, identified as CVE-2026-42511, residing in the FreeBSD DHCP client, dhclient. This vulnerability has been present in the FreeBSD ecosystem since the 2005 release of FreeBSD-6.0, following the import of dhclient from OpenBSD. The flaw is a logic-based error where attacker-controlled protocol data is persisted into a trusted, configuration-like format without proper sanitization, which is then later reinterpreted during a privileged execution path. This allows an attacker on the same local network—such as one utilizing a malicious wireless access point or performing DHCP spoofing—to execute a complete local-network-to-root exploit chain. The impact of this vulnerability is widespread, potentially affecting not only servers but also consumer electronics and embedded systems, such as the Sony PlayStation and Nintendo Switch, that rely on FreeBSD-based operating systems. The discovery was facilitated by AISLE's proprietary AI-based source code analysis pipeline and verified by their offensive security research team. This finding is part of a coordinated disclosure involving multiple FreeBSD security advisories discovered by AISLE."
+        ],
+        "main_topic": "AISLE has discovered a 21-year-old remote command execution vulnerability, CVE-2026-42511, within FreeBSD's dhclient.",
+        "technologies": [
+          "FreeBSD",
+          "dhclient",
+          "OpenBSD",
+          "Sony PlayStation OS",
+          "Nintendo Switch OS",
+          "Netflix Open Connect",
+          "NetApp",
+          "Citrix Netscaler",
+          "OpenSSL",
+          "Firefox",
+          "libpng",
+          "Amazon AWS LC",
+          "s2n-tls"
         ]
       }
     ],
-    "article_count": 36,
+    "article_count": 13,
     "preview_titles": [
       "Uber Shares What Happens When 1.500 AI Agents Hit Production",
       "We probed 6,000 web apps for Stripe webhook signature checks. 1,542 don't bother",
-      "Kaspersky suspects Chinese hackers planted a backdoor into Daemon Tools in ‘widespread’ attack"
+      "Bleeding Llama: Critical Unauthenticated Memory Leak in Ollama (CVE-2026–7482)"
     ],
     "preview_articles": [
       {
@@ -922,30 +372,6 @@
         ]
       },
       {
-        "title": "Kaspersky suspects Chinese hackers planted a backdoor into Daemon Tools in ‘widespread’ attack",
-        "slug": "kaspersky-suspects-chinese-hackers-planted-a-backdoor-into-daemon-tools-in-widespread-attack",
-        "url": "https://techcrunch.com/2026/05/05/kaspersky-suspects-chinese-hackers-planted-a-backdoor-into-daemon-tools-in-widespread-attack",
-        "source": "TechCrunch",
-        "published": "Tue, 05 May 2026 15:20:24 +0000",
-        "short_summary": "Security researchers at Kaspersky have uncovered a widespread supply chain attack involving a malicious backdoor planted in the Daemon Tools software. The attack has targeted thousands of Windows users and specifically aimed at critical sectors in Russia, Belarus, and Thailand.",
-        "long_resume": "Kaspersky security researchers have identified a significant supply chain attack involving the popular Windows disc imaging software, Daemon Tools. The researchers discovered a malicious backdoor that has been used to infect thousands of Windows computers globally. Analysis of the malware suggests the attackers are part of a Chinese-language speaking group. While the attack is widespread, Kaspersky also noted a more targeted effort directed at specific organizations within the retail, scientific, manufacturing, and government sectors, particularly in Russia, Belarus, and Thailand. The backdoor was first detected on April 8, and the attack is currently described as 'still active,' meaning the vulnerability remains a threat to users who have not yet been remediated. This incident follows a trend of increasing supply chain attacks, such as the recent compromises of Notepad++ and the CPUID website. TechCrunch was able to verify the presence of the backdoor in the Daemon Tools Windows installer using the VirusTotal malware scanner. The developer of Daemon Tools, Disc Soft, has acknowledged the report and stated they are actively investigating the situation to assess and address any potential risks. It remains unclear if the macOS version of the software or other Disc Soft products have been compromised.",
-        "long_resume_paragraphs": [
-          "Kaspersky security researchers have identified a significant supply chain attack involving the popular Windows disc imaging software, Daemon Tools. The researchers discovered a malicious backdoor that has been used to infect thousands of Windows computers globally. Analysis of the malware suggests the attackers are part of a Chinese-language speaking group. While the attack is widespread, Kaspersky also noted a more targeted effort directed at specific organizations within the retail, scientific, manufacturing, and government sectors, particularly in Russia, Belarus, and Thailand. The backdoor was first detected on April 8, and the attack is currently described as 'still active,' meaning the vulnerability remains a threat to users who have not yet been remediated. This incident follows a trend of increasing supply chain attacks, such as the recent compromises of Notepad++ and the CPUID website. TechCrunch was able to verify the presence of the backdoor in the Daemon Tools Windows installer using the VirusTotal malware scanner. The developer of Daemon Tools, Disc Soft, has acknowledged the report and stated they are actively investigating the situation to assess and address any potential risks. It remains unclear if the macOS version of the software or other Disc Soft products have been compromised."
-        ],
-        "main_topic": "Kaspersky has identified a widespread supply chain attack involving a malicious backdoor planted in the Windows disc imaging software Daemon Tools by Chinese-linked hackers.",
-        "technologies": [
-          "Daemon Tools",
-          "Windows",
-          "Kaspersky antivirus",
-          "Notepad++",
-          "CPUID",
-          "HWMonitor",
-          "CPU-Z",
-          "VirusTotal",
-          "macOS"
-        ]
-      },
-      {
         "title": "Bleeding Llama: Critical Unauthenticated Memory Leak in Ollama (CVE-2026–7482)",
         "slug": "bleeding-llama-critical-unauthenticated-memory-leak-in-ollama-cve-20267482",
         "url": "https://www.cyera.com/research/bleeding-llama-critical-unauthenticated-memory-leak-in-ollama",
@@ -994,23 +420,163 @@
           "SHA256",
           "SHA384"
         ]
+      },
+      {
+        "title": "Popular DAEMON Tools software infected – supply chain attack ongoing since April 8, 2026",
+        "slug": "popular-daemon-tools-software-infected-supply-chain-attack-ongoing-since-april-8-2026",
+        "url": "https://securelist.com/tr/daemon-tools-backdoor/119654",
+        "source": "Reddit r/netsec",
+        "published": "2026-05-05T09:39:30Z",
+        "short_summary": "Attackers compromised legitimate DAEMON Tools installers to distribute trojanized, digitally signed binaries that execute malicious code upon system startup. The campaign utilizes an initial information collector to profile victims before deploying advanced payloads like the QUIC RAT for targeted exploitation.",
+        "long_resume": "In early May 2026, researchers identified a significant supply chain attack targeting DAEMON Tools software. The attack involves trojanized versions of the software (ranging from 12.5.0.2421 to 12.5.0.2434) where legitimate binaries such as DTHelper.exe, DiscSoftBusServiceLite.exe, and DTShellHlp.exe have been modified to include a backdoor. Because these files are digitally signed by the developer, AVB Disc Soft, the compromise is highly effective. The attack mechanism begins when these binaries launch at system startup, initiating communication with a typosquatted C2 domain. The campaign follows a highly structured, targeted methodology. Initially, an information collector named envchk.exe is deployed to a wide range of machines globally to gather system metadata, including MAC addresses, hostnames, running processes, and installed software. This data is used to profile targets, allowing the attackers to transition from broad infection attempts to highly specific secondary attacks against organizations in the government, manufacturing, and scientific sectors. The secondary stage payloads include a minimalistic shellcode loader that utilizes RC4 decryption to execute payloads in memory, and a more advanced C++ implant known as QUIC RAT. This RAT is particularly sophisticated, supporting a wide array of C2 protocols including HTTP, UDP, TCP, WSS, QUIC, DNS, and HTTP/3, and is capable of injecting payloads into legitimate processes like notepad.exe. While artifacts within the payloads suggest a Chinese-speaking threat actor, definitive attribution remains ongoing.",
+        "long_resume_paragraphs": [
+          "In early May 2026, researchers identified a significant supply chain attack targeting DAEMON Tools software. The attack involves trojanized versions of the software (ranging from 12.5.0.2421 to 12.5.0.2434) where legitimate binaries such as DTHelper.exe, DiscSoftBusServiceLite.exe, and DTShellHlp.exe have been modified to include a backdoor. Because these files are digitally signed by the developer, AVB Disc Soft, the compromise is highly effective. The attack mechanism begins when these binaries launch at system startup, initiating communication with a typosquatted C2 domain. The campaign follows a highly structured, targeted methodology. Initially, an information collector named envchk.exe is deployed to a wide range of machines globally to gather system metadata, including MAC addresses, hostnames, running processes, and installed software. This data is used to profile targets, allowing the attackers to transition from broad infection attempts to highly specific secondary attacks against organizations in the government, manufacturing, and scientific sectors. The secondary stage payloads include a minimalistic shellcode loader that utilizes RC4 decryption to execute payloads in memory, and a more advanced C++ implant known as QUIC RAT. This RAT is particularly sophisticated, supporting a wide array of C2 protocols including HTTP, UDP, TCP, WSS, QUIC, DNS, and HTTP/3, and is capable of injecting payloads into legitimate processes like notepad.exe. While artifacts within the payloads suggest a Chinese-speaking threat actor, definitive attribution remains ongoing."
+        ],
+        "main_topic": "A supply chain attack has been identified involving the compromise of DAEMON Tools software installers to deploy malicious payloads including information collectors and a sophisticated RAT.",
+        "technologies": [
+          "DAEMON Tools",
+          "Kaspersky Anti Targeted Attack (KATA)",
+          "PowerShell",
+          ".NET",
+          "RC4",
+          "WolfSSL",
+          "QUIC",
+          "HTTP/3",
+          "msquic.dll",
+          "cmd.exe"
+        ]
       }
     ],
-    "source_mtime": 1778093941.6981108,
+    "source_mtime": 1778243980.041297,
     "model_releases": [
+      {
+        "provider": "Anthropic",
+        "model_name": "Claude Managed Agents (Feature Update)",
+        "slug": "claude-managed-agents-feature-update",
+        "release_date": "2026-05-06",
+        "summary": "Anthropic has expanded the capabilities of Claude Managed Agents by moving Multiagent sessions and Outcomes into public beta. This update introduces webhooks for session and vault lifecycle events, alongside enhanced filtering and sorting options for managing agentic workloads.",
+        "key_features": [
+          "Multiagent sessions in public beta",
+          "Outcomes in public beta",
+          "Webhooks for session and vault lifecycle events",
+          "Enhanced filtering and sorting for sessions and events",
+          "Vault credential background refresh for mcp_oauth"
+        ],
+        "url": "https://docs.anthropic.com/en/release-notes/overview",
+        "netlify_url": "https://bowofdata.netlify.app/week/19_2026.html#claude-managed-agents-feature-update",
+        "altervista_url": "https://bowlofdata.altervista.org/newsletter/newsletter-week-19-2026#claude-managed-agents-feature-update"
+      },
+      {
+        "provider": "Google Gemini",
+        "model_name": "gemini-3.1-flash-lite",
+        "slug": "gemini-31-flash-lite",
+        "release_date": "2026-05-07",
+        "summary": "The generally available (GA) version of Gemini 3.1 Flash-Lite has been released, moving out of its preview stage. This model is specifically optimized for high speed, large-scale deployment, and cost efficiency.",
+        "key_features": [
+          "Optimized for speed",
+          "Designed for scale",
+          "Cost-efficient performance",
+          "General availability"
+        ],
+        "url": "https://ai.google.dev/gemini-api/docs/changelog",
+        "netlify_url": "https://bowofdata.netlify.app/week/19_2026.html#gemini-31-flash-lite",
+        "altervista_url": "https://bowlofdata.altervista.org/newsletter/newsletter-week-19-2026#gemini-31-flash-lite"
+      },
+      {
+        "provider": "Amazon (Nova)",
+        "model_name": "Amazon Bedrock AgentCore Browser OS Level Actions",
+        "slug": "amazon-bedrock-agentcore-browser-os-level-actions",
+        "release_date": "2026-05-05",
+        "summary": "A new capability for AgentCore Browser that allows AI agents to interact directly with the operating system level. This enables agents to observe native UI and execute actions using mouse and keyboard control through the InvokeBrowser API.",
+        "key_features": [
+          "Direct OS control",
+          "InvokeBrowser API access",
+          "Native UI observation",
+          "Mouse and keyboard control"
+        ],
+        "url": "https://aws.amazon.com/blogs/machine-learning/",
+        "netlify_url": "https://bowofdata.netlify.app/week/19_2026.html#amazon-bedrock-agentcore-browser-os-level-actions",
+        "altervista_url": "https://bowlofdata.altervista.org/newsletter/newsletter-week-19-2026#amazon-bedrock-agentcore-browser-os-level-actions"
+      },
+      {
+        "provider": "OpenAI",
+        "model_name": "GPT-5.5 and GPT-5.5-Cyber",
+        "slug": "gpt-55-and-gpt-55-cyber",
+        "release_date": "2026-05-07",
+        "summary": "OpenAI has introduced GPT-5.5 and a specialized GPT-5.5-Cyber variant designed to scale trusted access for cybersecurity. These models provide advanced reasoning capabilities tailored for security-critical tasks and infrastructure protection.",
+        "key_features": [
+          "Enhanced cybersecurity intelligence",
+          "Specialized cyber security reasoning",
+          "Improved trusted access protocols"
+        ],
+        "url": "https://openai.com/news/",
+        "netlify_url": "https://bowofdata.netlify.app/week/19_2026.html#gpt-55-and-gpt-55-cyber",
+        "altervista_url": "https://bowlofdata.altervista.org/newsletter/newsletter-week-19-2026#gpt-55-and-gpt-55-cyber"
+      },
+      {
+        "provider": "OpenAI",
+        "model_name": "New voice intelligence models",
+        "slug": "new-voice-intelligence-models",
+        "release_date": "2026-05-07",
+        "summary": "New models have been released via the API to advance the state of voice intelligence. These models are designed to improve the nuance and intelligence of voice-based AI interactions.",
+        "key_features": [
+          "Advanced voice intelligence",
+          "API-integrated audio processing",
+          "Enhanced conversational depth"
+        ],
+        "url": "https://openai.com/news/",
+        "netlify_url": "https://bowofdata.netlify.app/week/19_2026.html#new-voice-intelligence-models",
+        "altervista_url": "https://bowlofdata.altervista.org/newsletter/newsletter-week-19-2026#new-voice-intelligence-models"
+      },
       {
         "provider": "OpenAI",
         "model_name": "GPT-5.5 Instant",
+        "slug": "gpt-55-instant",
         "release_date": "2026-05-05",
-        "summary": "GPT-5.5 Instant is an updated model designed to provide smarter, clearer, and more personalized responses. It focuses on enhancing reasoning capabilities and tailoring outputs to individual user needs.",
+        "summary": "GPT-5.5 Instant is a new model variant optimized to be smarter, clearer, and more personalized. It is designed for high-speed applications that require high-quality, tailored responses.",
         "key_features": [
-          "Enhanced intelligence",
-          "Improved clarity",
-          "Increased personalization"
+          "Increased intelligence levels",
+          "Improved response clarity",
+          "Highly personalized output",
+          "Optimized for low-latency performance"
         ],
-        "url": "https://openai.com/news/"
+        "url": "https://openai.com/news/",
+        "netlify_url": "https://bowofdata.netlify.app/week/19_2026.html#gpt-55-instant",
+        "altervista_url": "https://bowlofdata.altervista.org/newsletter/newsletter-week-19-2026#gpt-55-instant"
+      },
+      {
+        "provider": "xAI (Grok)",
+        "model_name": "Grok Imagine Quality Mode API",
+        "slug": "grok-imagine-quality-mode-api",
+        "release_date": "2026-05-06",
+        "summary": "The Grok Imagine API has been updated with a new Quality Mode to enhance image generation capabilities. This update focuses on providing higher realism and stronger text rendering for better creative control.",
+        "key_features": [
+          "Higher realism",
+          "Stronger text rendering",
+          "Better creative control"
+        ],
+        "url": "https://x.ai/news",
+        "netlify_url": "https://bowofdata.netlify.app/week/19_2026.html#grok-imagine-quality-mode-api",
+        "altervista_url": "https://bowlofdata.altervista.org/newsletter/newsletter-week-19-2026#grok-imagine-quality-mode-api"
+      },
+      {
+        "provider": "Kimi (Moonshot)",
+        "model_name": "Kimi AI (K2.6)",
+        "slug": "kimi-ai-k26",
+        "release_date": "recent",
+        "summary": "The K2.6 update to Kimi AI introduces significant improvements in coding proficiency and agent intelligence. It is designed to handle complex tasks through enhanced capabilities like Deep Research and Agent Swarm, targeting developers and researchers working with documents, websites, and large datasets.",
+        "key_features": [
+          "Enhanced coding capabilities",
+          "Improved agent intelligence",
+          "Deep Research functionality",
+          "Agent Swarm integration",
+          "Advanced document and website processing"
+        ],
+        "url": "https://kimi.moonshot.cn/",
+        "netlify_url": "https://bowofdata.netlify.app/week/19_2026.html#kimi-ai-k26",
+        "altervista_url": "https://bowlofdata.altervista.org/newsletter/newsletter-week-19-2026#kimi-ai-k26"
       }
     ],
-    "model_releases_mtime": 1778091355.2653677
+    "model_releases_mtime": 1778243980.0417097
   }
 ]

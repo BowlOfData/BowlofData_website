@@ -1,3 +1,4 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5b9d0b22-a375-46b3-897f-2d4951929886/deploy-status)](https://app.netlify.com/projects/bowofdata/deploys)
 # Bowl of Data — Website
 
 Static website for the [Bowl of Data](https://bowlofdata.netlify.app) tech newsletter. Built with Jinja2 templates and deployed on Netlify.

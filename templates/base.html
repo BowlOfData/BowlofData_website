@@ -23,6 +23,7 @@
       <nav class="header-nav">
         <a href="{{ index_href }}" class="nav-link" {% if current_page == 'home' %}aria-current="page"{% endif %}>Home</a>
         <a href="{{ archive_href }}" class="nav-link" {% if current_page == 'archive' %}aria-current="page"{% endif %}>Archive</a>
+        <a href="{{ team_href }}" class="nav-link" {% if current_page == 'team' %}aria-current="page"{% endif %}>Team</a>
         <a href="{{ contact_href }}" class="nav-link" {% if current_page == 'contact' %}aria-current="page"{% endif %}>Contact</a>
       </nav>
     </div>
@@ -41,6 +42,7 @@
       </div>
       <nav class="footer-nav">
         <a href="{{ archive_href }}" class="footer-nav-link">Archive</a>
+        <a href="{{ team_href }}" class="footer-nav-link">Team</a>
         <a href="{{ contact_href }}" class="footer-nav-link">Contact</a>
       </nav>
       <p class="footer-credit">

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Team · {{ site_name }}{% endblock %}
+
+{% block content %}
+<div class="team-header">
+  <div class="team-header-inner">
+    <h1 class="team-title">The Team</h1>
+    <p class="team-sub">The people behind Bowl of Data — curating stories, crafting ideas, and running the machines.</p>
+  </div>
+</div>
+
+<div class="team-body">
+  <div class="team-grid">
+
+    <div class="team-card">
+      <div class="team-avatar-wrap">
+        <img src="{{ imgs_path }}marco.jpg" alt="Marco" class="team-avatar">
+      </div>
+      <div class="team-card-content">
+        <span class="team-role-badge team-role-creator">Creator</span>
+        <h2 class="team-name">Marco</h2>
+        <p class="team-desc">The creator behind the newsletter and Maki.</p>
+      </div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-avatar-wrap">
+        <img src="{{ imgs_path }}luigi.jpg" alt="Luigi" class="team-avatar">
+      </div>
+      <div class="team-card-content">
+        <span class="team-role-badge team-role-ideas">Visionary</span>
+        <h2 class="team-name">Luigi</h2>
+        <p class="team-desc">The mind with brilliant ideas.</p>
+      </div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-avatar-wrap">
+        <img src="{{ imgs_path }}maki_logo.png" alt="Maki" class="team-avatar team-avatar-bot">
+      </div>
+      <div class="team-card-content">
+        <span class="team-role-badge team-role-agent">Agent</span>
+        <h2 class="team-name">Maki</h2>
+        <p class="team-desc">The worker, the agent orchestrator.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

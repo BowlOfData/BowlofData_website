@@ -13,49 +13,79 @@
   </div>
 </div>
 
-<div class="article-section">
+{% if model_releases %}
+<section class="releases-section">
 
-  {% if model_releases %}
-  <section class="releases-section">
-    <div class="releases-header">
-      <span class="releases-badge">New This Week</span>
-      <h2 class="releases-title">AI Model Releases</h2>
-      <p class="releases-sub">New models and updates from major AI providers</p>
+  <div class="releases-header">
+    <div class="releases-header-inner">
+      <div class="releases-header-text">
+        <h2 class="releases-title">AI Model Releases</h2>
+        <p class="releases-sub">New models and updates from major AI providers this week</p>
+      </div>
+      <span class="releases-badge">This Week</span>
     </div>
-    <div class="releases-grid">
-      {% for item in model_releases %}
-      <div class="release-card">
-        <div class="release-card-inner">
-          <p class="release-provider-tag">{{ item.provider }}</p>
-          <div class="release-name-row">
-            {% if item.url %}
-            <a href="{{ item.url }}" class="release-name" target="_blank" rel="noopener">{{ item.model_name }}</a>
-            {% else %}
-            <span class="release-name">{{ item.model_name }}</span>
+  </div>
+
+  <div class="releases-body">
+    <div class="releases-body-inner">
+      <div class="releases-grid">
+        {% for item in model_releases %}
+        <article class="release-card" id="{{ item.slug }}">
+
+          <div class="release-card-top">
+            <div class="release-meta-row">
+              <span class="release-provider-tag">{{ item.provider }}</span>
+              {% if item.release_date and item.release_date != 'recent' %}
+              <span class="release-date-pill">{{ item.release_date }}</span>
+              {% endif %}
+            </div>
+            <h3 class="release-name">
+              {% if item.url %}
+              <a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.model_name }}</a>
+              {% else %}
+              {{ item.model_name }}
+              {% endif %}
+            </h3>
+          </div>
+
+          <div class="release-card-body">
+            {% if item.summary %}
+            <p class="release-summary">{{ item.summary }}</p>
             {% endif %}
-            {% if item.release_date and item.release_date != 'recent' %}
-            <span class="release-date-pill">{{ item.release_date }}</span>
+            {% if item.key_features %}
+            <ul class="release-features">
+              {% for feat in item.key_features %}
+              <li>{{ feat }}</li>
+              {% endfor %}
+            </ul>
             {% endif %}
           </div>
-          {% if item.summary %}
-          <p class="release-summary">{{ item.summary }}</p>
+
+          {% if item.url %}
+          <div class="release-card-footer">
+            <a href="{{ item.url }}" class="release-read-link" target="_blank" rel="noopener">Read announcement →</a>
+          </div>
           {% endif %}
-          {% if item.key_features %}
-          <ul class="release-features">
-            {% for feat in item.key_features %}
-            <li>{{ feat }}</li>
-            {% endfor %}
-          </ul>
-          {% endif %}
-        </div>
+
+        </article>
+        {% endfor %}
       </div>
-      {% endfor %}
     </div>
-  </section>
-  {% endif %}
+  </div>
+
+</section>
+{% endif %}
+
+<div class="article-section">
 
   {% if articles %}
 
+  <div class="news-section-header">
+    <h2 class="news-section-title">This Week in Tech</h2>
+    <p class="news-section-sub">Top stories curated from across the web this week</p>
+  </div>
+
+  {% if prev_week or next_week %}
   <div class="week-nav">
     {% if prev_week %}
     <a href="../{{ prev_week.href }}" class="week-nav-btn week-nav-older">← {{ prev_week.label }}</a>
@@ -64,6 +94,7 @@
     <a href="../{{ next_week.href }}" class="week-nav-btn week-nav-newer">{{ next_week.label }} →</a>
     {% else %}<span></span>{% endif %}
   </div>
+  {% endif %}
 
   <div class="article-list">
     {% for a in articles %}

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Archive · Bowl of Data</title>
+  <title>Team · Bowl of Data</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -22,8 +22,8 @@
       </a>
       <nav class="header-nav">
         <a href="index.html" class="nav-link" >Home</a>
-        <a href="archive.html" class="nav-link" aria-current="page">Archive</a>
-        <a href="team.html" class="nav-link" >Team</a>
+        <a href="archive.html" class="nav-link" >Archive</a>
+        <a href="team.html" class="nav-link" aria-current="page">Team</a>
         <a href="contact.html" class="nav-link" >Contact</a>
       </nav>
     </div>
@@ -31,36 +31,50 @@
 
   <main class="main-content">
     
-<div class="archive-header">
-  <div class="archive-header-inner">
-    <h1 class="archive-title">All issues</h1>
-    <p class="archive-sub">Every weekly digest, from the first bowl to the latest.</p>
+<div class="team-header">
+  <div class="team-header-inner">
+    <h1 class="team-title">The Team</h1>
+    <p class="team-sub">The people behind Bowl of Data — curating stories, crafting ideas, and running the machines.</p>
   </div>
 </div>
 
-<div class="section">
-  
-  <div class="week-grid">
-    
-    <a class="week-card week-card-latest" href="week/19_2026.html">
-      <span class="week-card-badge">Latest</span>
-      <div class="week-card-label">Week 19 · 2026</div>
-      <div class="week-card-count">13 articles</div>
-      
-      <ul class="week-card-preview">
-        
-        <li>Uber Shares What Happens When 1.500 AI Agents Hit Production</li>
-        
-        <li>We probed 6,000 web apps for Stripe webhook signature checks. 1,542 don&#39;t bother</li>
-        
-        <li>Bleeding Llama: Critical Unauthenticated Memory Leak in Ollama (CVE-2026–7482)</li>
-        
-      </ul>
-      
-    </a>
-    
+<div class="team-body">
+  <div class="team-grid">
+
+    <div class="team-card">
+      <div class="team-avatar-wrap">
+        <img src="imgs/marco.jpg" alt="Marco" class="team-avatar">
+      </div>
+      <div class="team-card-content">
+        <span class="team-role-badge team-role-creator">Creator</span>
+        <h2 class="team-name">Marco</h2>
+        <p class="team-desc">The creator behind the newsletter and Maki.</p>
+      </div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-avatar-wrap">
+        <img src="imgs/luigi.jpg" alt="Luigi" class="team-avatar">
+      </div>
+      <div class="team-card-content">
+        <span class="team-role-badge team-role-ideas">Visionary</span>
+        <h2 class="team-name">Luigi</h2>
+        <p class="team-desc">The mind with brilliant ideas.</p>
+      </div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-avatar-wrap">
+        <img src="imgs/maki_logo.png" alt="Maki" class="team-avatar team-avatar-bot">
+      </div>
+      <div class="team-card-content">
+        <span class="team-role-badge team-role-agent">Agent</span>
+        <h2 class="team-name">Maki</h2>
+        <p class="team-desc">The worker, the agent orchestrator.</p>
+      </div>
+    </div>
+
   </div>
-  
 </div>
 
   </main>

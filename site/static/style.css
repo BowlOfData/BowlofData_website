@@ -284,7 +284,7 @@ img { display: block; max-width: 100%; }
 .week-header {
   background: var(--dark);
   border-bottom: 1px solid rgba(245,197,24,.15);
-  padding: 2.5rem 1.5rem;
+  padding: 1.25rem 1.5rem;
 }
 
 .week-header-inner {
@@ -300,7 +300,7 @@ img { display: block; max-width: 100%; }
   font-size: 0.78rem;
   font-weight: 500;
   color: rgba(255,255,255,.5);
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.65rem;
   transition: color .15s;
   text-decoration: none;
 }
@@ -463,21 +463,110 @@ img { display: block; max-width: 100%; }
 .long-resume p:last-child { margin-bottom: 0; }
 
 /* --- Model Releases section -------------------------------------------- */
-.releases-section {
-  background: rgba(232, 97, 58, 0.04);
-  border: 1px solid rgba(232, 97, 58, 0.18);
-  border-left: 4px solid var(--orange);
-  border-radius: var(--radius-lg);
-  padding: 1.75rem;
-  margin-bottom: 2rem;
+
+/* Full-width band — sits between week-header and article-section */
+.releases-section { display: block; }
+
+/* Light header — orange top-border serves as the accent transition from the
+   dark week-header above; flipping to white breaks the dark mass */
+.releases-header {
+  background: var(--white);
+  border-top: 3px solid var(--orange);
+  border-bottom: 1px solid var(--border);
 }
 
-.releases-header {
-  margin-bottom: 1.25rem;
+.releases-header-inner {
+  max-width: var(--max-index);
+  margin: 0 auto;
+  padding: 1.1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.releases-header-text { flex: 1; min-width: 0; }
+
+.releases-title {
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.15rem;
+}
+
+.releases-sub {
+  font-family: var(--font-ui);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  margin: 0;
 }
 
 .releases-badge {
-  display: inline-block;
+  flex-shrink: 0;
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--dark);
+  background: var(--orange);
+  border-radius: var(--radius-sm);
+  padding: 0.3rem 0.7rem;
+}
+
+/* Off-white body housing the card grid */
+.releases-body {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.releases-body-inner {
+  max-width: var(--max-index);
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.releases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+/* Individual release card */
+.release-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: box-shadow .18s ease, transform .18s ease;
+}
+
+.release-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* Top section: provider tag + date + model name */
+.release-card-top {
+  padding: 1.1rem 1.35rem 0.85rem;
+  border-bottom: 1px solid var(--lighter);
+}
+
+.release-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.release-provider-tag {
   font-family: var(--font-ui);
   font-size: 0.65rem;
   font-weight: 700;
@@ -485,108 +574,59 @@ img { display: block; max-width: 100%; }
   text-transform: uppercase;
   color: #9A3412;
   background: var(--orange-light);
-  border: 1px solid rgba(232, 97, 58, 0.22);
-  border-radius: 99px;
-  padding: 0.15rem 0.6rem;
-  margin-bottom: 0.5rem;
-}
-
-.releases-title {
-  font-family: var(--font-ui);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--dark);
-  letter-spacing: -0.02em;
-  margin-bottom: 0.2rem;
-}
-
-.releases-sub {
-  font-family: var(--font-ui);
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin: 0;
-}
-
-.releases-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  gap: 1rem;
-}
-
-.release-card {
-  background: var(--white);
-  border: 1px solid rgba(232, 97, 58, 0.16);
-  border-top: 3px solid var(--orange);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow .18s ease, transform .18s ease;
-}
-
-.release-card:hover {
-  box-shadow: var(--shadow);
-  transform: translateY(-2px);
-}
-
-.release-card-inner {
-  padding: 1rem 1.2rem 1.1rem;
-}
-
-.release-provider-tag {
-  font-family: var(--font-ui);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: var(--orange);
-  margin-bottom: 0.45rem;
-}
-
-.release-name-row {
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 0.55rem;
-}
-
-a.release-name {
-  font-family: var(--font-ui);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--dark);
-  text-decoration: none;
-  transition: color .15s;
-}
-a.release-name:hover {
-  color: var(--orange);
-  text-decoration: none;
-}
-
-span.release-name {
-  font-family: var(--font-ui);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--dark);
+  border: 1px solid rgba(232, 97, 58, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 0.18rem 0.55rem;
+  white-space: nowrap;
 }
 
 .release-date-pill {
   font-family: var(--font-ui);
   font-size: 0.68rem;
   font-weight: 500;
-  color: #9A3412;
-  background: var(--orange-light);
-  border-radius: 99px;
-  padding: 0.12rem 0.5rem;
+  color: var(--text-muted);
+  background: var(--lighter);
+  border-radius: var(--radius-sm);
+  padding: 0.18rem 0.55rem;
   white-space: nowrap;
   flex-shrink: 0;
+}
+
+.release-name {
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.release-name a {
+  color: var(--dark);
+  text-decoration: none;
+  transition: color .15s;
+}
+.release-name a:hover {
+  color: var(--orange);
+  text-decoration: none;
+}
+
+/* Body: summary + feature list */
+.release-card-body {
+  padding: 0.9rem 1.35rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .release-summary {
   font-family: var(--font-ui);
   font-size: 0.84rem;
-  line-height: 1.65;
+  line-height: 1.7;
   color: var(--dark-60);
-  margin: 0 0 0.7rem;
+  margin: 0;
 }
 
 .release-features {
@@ -596,8 +636,8 @@ span.release-name {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-  border-top: 1px solid rgba(232, 97, 58, 0.12);
-  padding-top: 0.65rem;
+  border-top: 1px solid var(--lighter);
+  padding-top: 0.7rem;
 }
 
 .release-features li {
@@ -605,17 +645,67 @@ span.release-name {
   font-size: 0.79rem;
   color: var(--text-muted);
   line-height: 1.5;
-  padding-left: 1.1rem;
+  padding-left: 1.2rem;
   position: relative;
 }
 
 .release-features li::before {
-  content: '→';
+  content: '✓';
   position: absolute;
   left: 0;
   color: var(--orange);
   font-size: 0.72rem;
-  top: 0.08rem;
+  font-weight: 700;
+  top: 0.05rem;
+}
+
+/* Footer: read-more link */
+.release-card-footer {
+  padding: 0.65rem 1.35rem;
+  background: var(--lighter);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.release-read-link {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--orange);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  transition: color .15s, gap .15s;
+}
+.release-read-link:hover {
+  color: #9A3412;
+  gap: 0.4rem;
+  text-decoration: none;
+}
+
+/* --- News section title ------------------------------------------------- */
+.news-section-header {
+  padding: 1.5rem 0 0.5rem;
+  border-bottom: 2px solid var(--yellow);
+  margin-bottom: 1.5rem;
+}
+
+.news-section-title {
+  font-family: var(--font-ui);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.2rem;
+}
+
+.news-section-sub {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0;
 }
 
 /* --- Week prev/next navigation ----------------------------------------- */
@@ -1329,6 +1419,165 @@ span.release-name {
 }
 .info-email:hover { color: var(--accent-hover); text-decoration: underline; }
 
+/* --- Team page ---------------------------------------------------------- */
+.team-header {
+  background: var(--dark);
+  border-bottom: 1px solid rgba(245,197,24,.15);
+  padding: 2.75rem 1.5rem 2.5rem;
+}
+
+.team-header-inner {
+  max-width: var(--max-index);
+  margin: 0 auto;
+}
+
+.team-title {
+  font-family: var(--font-ui);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+  margin-bottom: 0.4rem;
+}
+
+.team-sub {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  color: rgba(255,255,255,.45);
+  max-width: 560px;
+}
+
+.team-body {
+  max-width: var(--max-index);
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+.team-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2.25rem 1.75rem 2rem;
+  transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.team-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--yellow), var(--orange));
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+
+.team-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  border-color: rgba(245,197,24,.35);
+}
+
+.team-card:hover::before {
+  opacity: 1;
+}
+
+.team-avatar-wrap {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--border);
+  margin-bottom: 1.5rem;
+  flex-shrink: 0;
+  background: var(--lighter);
+  transition: border-color .2s ease;
+}
+
+.team-card:hover .team-avatar-wrap {
+  border-color: var(--yellow);
+}
+
+.team-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.team-avatar-bot {
+  object-fit: contain;
+  padding: 8px;
+  background: var(--dark);
+}
+
+.team-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.team-role-badge {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 99px;
+  padding: 0.2rem 0.7rem;
+  border: 1px solid transparent;
+}
+
+.team-role-creator {
+  color: var(--yellow-dark);
+  background: var(--yellow-light);
+  border-color: rgba(217,119,6,.2);
+}
+
+.team-role-ideas {
+  color: #9A3412;
+  background: var(--orange-light);
+  border-color: rgba(232,97,58,.2);
+}
+
+.team-role-agent {
+  color: var(--white);
+  background: var(--dark-60);
+  border-color: transparent;
+}
+
+.team-name {
+  font-family: var(--font-ui);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.02em;
+  margin: 0.15rem 0 0;
+}
+
+.team-desc {
+  font-family: var(--font-ui);
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 220px;
+}
+
 /* --- Responsive --------------------------------------------------------- */
 @media (max-width: 640px) {
   html { font-size: 16px; }
@@ -1368,7 +1617,16 @@ span.release-name {
   .form-submit { width: 100%; text-align: center; }
   .contact-title { font-size: 1.5rem; }
 
+  /* Team */
+  .team-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+  .team-title { font-size: 1.5rem; }
+  .team-body { padding: 2rem 1.25rem 3rem; }
+
   /* Model Releases */
-  .releases-section { padding: 1.25rem; border-left-width: 3px; }
-  .releases-grid { grid-template-columns: 1fr; }
+  .releases-header-inner { padding: 1rem 1.25rem; }
+  .releases-body-inner { padding: 1rem; }
+  .releases-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+  .release-card-top,
+  .release-card-body { padding-left: 1.1rem; padding-right: 1.1rem; }
+  .release-card-footer { padding-left: 1.1rem; padding-right: 1.1rem; }
 }

@@ -53,7 +53,7 @@ MANIFEST_PATH = HERE / "weeks_manifest.json"   # outside site/ so it survives gi
 MAKI_OUTPUT_DIR = Path(
     os.environ.get(
         "MAKI_OUTPUT_DIR",
-        str(HERE.parent / "maki" / "maki_newsletter" / "output"),
+        str(HERE.parent / "maki-newsletter" / "maki_newsletter" / "output"),
     )
 )
 
@@ -104,12 +104,15 @@ def _normalise_releases(raw: list[dict]) -> list[dict]:
         if not model_name:
             continue
         result.append({
-            "provider":     (r.get("provider") or "").strip(),
-            "model_name":   model_name,
-            "release_date": (r.get("release_date") or "").strip(),
-            "summary":      (r.get("summary") or "").strip(),
-            "key_features": [f.strip() for f in (r.get("key_features") or []) if f and f.strip()],
-            "url":          (r.get("url") or "").strip(),
+            "provider":      (r.get("provider") or "").strip(),
+            "model_name":    model_name,
+            "slug":          _slugify(model_name),
+            "release_date":  (r.get("release_date") or "").strip(),
+            "summary":       (r.get("summary") or "").strip(),
+            "key_features":  [f.strip() for f in (r.get("key_features") or []) if f and f.strip()],
+            "url":           (r.get("url") or "").strip(),
+            "netlify_url":   (r.get("netlify_url") or "").strip(),
+            "altervista_url": (r.get("altervista_url") or "").strip(),
         })
     return result
 
@@ -326,6 +329,7 @@ def build() -> None:
             index_href="../index.html",
             archive_href="../archive.html",
             contact_href="../contact.html",
+            team_href="../team.html",
         )
         out_path.write_text(html, encoding="utf-8")
         print(f"  Rendered  {w['label']} ({w['article_count']} articles) → {out_path.relative_to(HERE)}")
@@ -342,6 +346,7 @@ def build() -> None:
         index_href="index.html",
         archive_href="archive.html",
         contact_href="contact.html",
+        team_href="team.html",
     )
 
     landing_html = env.get_template("index.html").render(
@@ -364,6 +369,10 @@ def build() -> None:
     contact_html = env.get_template("contact.html").render(**shared, current_page="contact")
     (SITE_DIR / "contact.html").write_text(contact_html, encoding="utf-8")
     print(f"  Rendered  contact → site/contact.html")
+
+    team_html = env.get_template("team.html").render(**shared, current_page="team", imgs_path="imgs/")
+    (SITE_DIR / "team.html").write_text(team_html, encoding="utf-8")
+    print(f"  Rendered  team → site/team.html")
 
     # ------------------------------------------------------------------
     # Phase 5: persist the manifest
