@@ -1,4 +1,5 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/5b9d0b22-a375-46b3-897f-2d4951929886/deploy-status)](https://app.netlify.com/projects/bowofdata/deploys)
+[![Substack](https://img.shields.io/badge/Substack-bowlofdata-orange?logo=substack&logoColor=white)](https://substack.com/@bowlofdata)
 # Bowl of Data — Website
 
 Static website for the [Bowl of Data](https://bowlofdata.netlify.app) tech newsletter. Built with Jinja2 templates and deployed on Netlify.
@@ -6,27 +7,6 @@ Static website for the [Bowl of Data](https://bowlofdata.netlify.app) tech newsl
 ## Overview
 
 The site is a **pre-built static site**: `build.py` reads newsletter data produced by the [maki](https://github.com/bowlofdata/maki) pipeline, renders HTML via Jinja2 templates, and writes the output to `site/`. The `site/` directory is committed to the repo and served by Netlify as-is — no server-side processing, no build step on Netlify.
-
-```
-BowlofData_website/
-├── build.py              # Site generator (run locally after each newsletter)
-├── weeks_manifest.json   # Incremental build state — commit this to git
-├── requirements.txt      # Python deps (jinja2, python-dotenv)
-├── netlify.toml          # Netlify config — publishes site/
-├── imgs/                 # Brand assets (logo.png)
-├── static/               # CSS source
-│   └── style.css
-├── templates/            # Jinja2 HTML templates
-│   ├── base.html         # Shared header, footer, fonts
-│   ├── index.html        # Landing page + archive grid
-│   └── week.html         # Individual newsletter issue
-└── site/                 # Generated output (committed, served by Netlify)
-    ├── index.html
-    ├── imgs/
-    ├── static/
-    └── week/
-        └── WW_YYYY.html
-```
 
 The newsletter pipeline lives in the separate `maki` repo (`maki_newsletter/`). This repo only contains the website frontend and the build script.
 

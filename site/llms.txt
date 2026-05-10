@@ -1,0 +1,21 @@
+# Bowl of Data
+
+> A weekly digest of the most relevant tech stories
+
+Bowl of Data is a weekly newsletter powered by Maki, an AI pipeline that curates and summarises the most relevant tech stories from hundreds of sources each week. Coverage spans AI & machine learning, cybersecurity, blockchain & crypto, and software engineering.
+
+## Issues
+
+- [Week 19 · 2026](https://bowofdata.netlify.app/week/19_2026.html): 13 articles. Highlights: Uber Shares What Happens When 1.500 AI Agents Hit Production; We probed 6,000 web apps for Stripe webhook signature checks. 1,542 don't bother; Bleeding Llama: Critical Unauthenticated Memory Leak in Ollama (CVE-2026–7482).
+
+## Pages
+
+- [Archive](https://bowofdata.netlify.app/archive.html): Index of all past issues
+- [About](https://bowofdata.netlify.app/about.html): Mission, topics covered, and how the pipeline works
+- [Team](https://bowofdata.netlify.app/team.html): About the people and AI behind Bowl of Data
+- [Contact](https://bowofdata.netlify.app/contact.html): Feedback and article suggestions
+
+## Optional
+
+- [Subscribe](https://bowlofdata.substack.com/): Free weekly newsletter on Substack
+- [Instagram](https://www.instagram.com/bowl_of_data): Follow on Instagram

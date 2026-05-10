@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block title %}{{ site_name }} · Weekly Tech Newsletter{% endblock %}
+{% block og_description %}Every week, an AI-powered pipeline combs through hundreds of sources and serves only the stories that matter: AI, security, blockchain, and engineering.{% endblock %}
+{% block og_url %}{{ site_url }}/{% endblock %}
 
 {% block content %}
 
@@ -20,8 +22,9 @@
       and serves only the stories that actually matter.
     </p>
     <div class="landing-ctas">
+      <a href="https://bowlofdata.substack.com/" class="cta-primary" target="_blank" rel="noopener">Subscribe, it's free</a>
       {% if latest_week %}
-      <a href="{{ latest_week.href }}" class="cta-primary">Read latest issue</a>
+      <a href="{{ latest_week.href }}" class="cta-secondary">Read latest issue</a>
       {% endif %}
       <a href="{{ archive_href }}" class="cta-secondary">Browse archive</a>
     </div>

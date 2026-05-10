@@ -8,6 +8,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/style.css">
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="Bowl of Data">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contact · Bowl of Data">
+  <meta property="og:description" content="A weekly digest of the most relevant tech stories">
+  <meta property="og:image" content="https://bowofdata.netlify.app/imgs/bowl.png">
+  <meta property="og:url" content="https://bowofdata.netlify.app/">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact · Bowl of Data">
+  <meta name="twitter:description" content="A weekly digest of the most relevant tech stories">
+  <meta name="twitter:image" content="https://bowofdata.netlify.app/imgs/bowl.png">
+  <link rel="alternate" type="application/rss+xml" title="Bowl of Data RSS Feed" href="https://bowofdata.netlify.app/feed.xml">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Bowl of Data", "description": "A weekly digest of the most relevant tech stories", "url": "https://bowofdata.netlify.app"}</script>
 </head>
 <body>
 
@@ -20,11 +34,24 @@
           <span class="header-tagline">A weekly digest of the most relevant tech stories</span>
         </div>
       </a>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
       <nav class="header-nav">
         <a href="index.html" class="nav-link" >Home</a>
         <a href="archive.html" class="nav-link" >Archive</a>
-        <a href="team.html" class="nav-link" >Team</a>
-        <a href="contact.html" class="nav-link" aria-current="page">Contact</a>
+        <div class="nav-more-group">
+          <button class="nav-more-btn" aria-expanded="false" aria-haspopup="true">
+            More
+            <svg class="nav-more-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <div class="nav-more-panel">
+            <a href="about.html" class="nav-link" >About</a>
+            <a href="team.html" class="nav-link" >Team</a>
+            <a href="contact.html" class="nav-link" aria-current="page">Contact</a>
+          </div>
+        </div>
+        <a href="https://bowlofdata.substack.com/" class="nav-subscribe" target="_blank" rel="noopener">Subscribe</a>
       </nav>
     </div>
   </header>
@@ -219,17 +246,70 @@
         <p class="footer-name">Bowl of Data</p>
         <p class="footer-sub">A weekly digest of the most relevant tech stories</p>
       </div>
-      <nav class="footer-nav">
-        <a href="archive.html" class="footer-nav-link">Archive</a>
-        <a href="team.html" class="footer-nav-link">Team</a>
-        <a href="contact.html" class="footer-nav-link">Contact</a>
-      </nav>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/bowl_of_data" class="footer-social-link" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <a href="https://bowlofdata.substack.com/" class="footer-social-link" target="_blank" rel="noopener" aria-label="Subscribe on Substack">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+          </svg>
+        </a>
+      </div>
       <p class="footer-credit">
-        Generated on 2026-05-08 &middot; Powered by
+        Powered by
         <a href="https://github.com/bowlofdata/maki" target="_blank" rel="noopener">Maki</a>
       </p>
     </div>
   </footer>
 
+  <script>
+    (function () {
+      var btn      = document.querySelector('.menu-toggle');
+      var nav      = document.querySelector('.header-nav');
+      var moreBtn  = document.querySelector('.nav-more-btn');
+      var morePanel = document.querySelector('.nav-more-panel');
+
+      // Hamburger toggle
+      if (btn && nav) {
+        btn.addEventListener('click', function () {
+          var open = nav.classList.toggle('is-open');
+          btn.setAttribute('aria-expanded', String(open));
+        });
+      }
+
+      // More dropdown toggle
+      if (moreBtn && morePanel) {
+        moreBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var open = morePanel.classList.toggle('is-open');
+          moreBtn.setAttribute('aria-expanded', String(open));
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && morePanel.classList.contains('is-open')) {
+            morePanel.classList.remove('is-open');
+            moreBtn.setAttribute('aria-expanded', 'false');
+            moreBtn.focus();
+          }
+        });
+      }
+
+      // Close both on outside click
+      document.addEventListener('click', function (e) {
+        if (!e.target.closest('.header-inner') && nav && nav.classList.contains('is-open')) {
+          nav.classList.remove('is-open');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+        if (!e.target.closest('.nav-more-group') && morePanel && morePanel.classList.contains('is-open')) {
+          morePanel.classList.remove('is-open');
+          moreBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bowl of Data</title>
+    <link>https://bowofdata.netlify.app/</link>
+    <description>A weekly digest of the most relevant tech stories</description>
+    <language>en-us</language>
+    <atom:link href="https://bowofdata.netlify.app/feed.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>Fri, 08 May 2026 12:39:40 +0000</lastBuildDate>
+    <image>
+      <url>https://bowofdata.netlify.app/imgs/logo.png</url>
+      <title>Bowl of Data</title>
+      <link>https://bowofdata.netlify.app/</link>
+    </image>
+    <item>
+      <title>Week 19 · 2026 · Bowl of Data</title>
+      <link>https://bowofdata.netlify.app/week/19_2026.html</link>
+      <guid isPermaLink="true">https://bowofdata.netlify.app/week/19_2026.html</guid>
+      <pubDate>Fri, 08 May 2026 12:39:40 +0000</pubDate>
+      <description><![CDATA[<p><strong>Week 19 · 2026</strong> — 13 articles</p>
+<ul>
+  <li><a href="https://shiftmag.dev/uber-shares-what-happens-when-1-500-ai-agents-hit-production-9430">Uber Shares What Happens When 1.500 AI Agents Hit Production</a>: Uber is managing the deployment of over 1,500 AI agents by implementing a centralized MCP gateway and registry. This infrastructure addresses critical challenges in security, tool discovery, and development standardization across their engineering organization.</li>
+  <li><a href="https://securityscanner.dev/blog/stripe-webhook-signature-bypass-1500-apps">We probed 6,000 web apps for Stripe webhook signature checks. 1,542 don't bother</a>: A security scan discovered that 25% of 6,000 web applications fail to verify Stripe webhook signatures, allowing for unauthorized payment bypass. This flaw enables attackers to forge successful payment events and upgrade account statuses without actual charges.</li>
+  <li><a href="https://www.cyera.com/research/bleeding-llama-critical-unauthenticated-memory-leak-in-ollama">Bleeding Llama: Critical Unauthenticated Memory Leak in Ollama (CVE-2026–7482)</a>: A critical vulnerability in Ollama allows unauthenticated attackers to trigger an out-of-bounds heap read via malicious GGUF files. This exploit can expose sensitive information like user messages and system prompts by leaking them into newly created model files.</li>
+  <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2033170">DigiCert: Misissued code signing certificates</a>: Threat actors compromised DigiCert support endpoints by sending malicious attachments through a customer chat channel. This breach enabled the unauthorized retrieval of certificate initialization codes, resulting in the misissuance of 60 code signing certificates.</li>
+  <li><a href="https://securelist.com/tr/daemon-tools-backdoor/119654">Popular DAEMON Tools software infected – supply chain attack ongoing since April 8, 2026</a>: Attackers compromised legitimate DAEMON Tools installers to distribute trojanized, digitally signed binaries that execute malicious code upon system startup. The campaign utilizes an initial information collector to profile victims before deploying advanced payloads like the QUIC RAT for targeted exploitation.</li>
+  <li><a href="https://www.theregister.com/security/2026/05/05/copyfail-attackers-start-cashing-in-on-linux-flaw/5226930">'CopyFail' attackers start cashing in on Linux flaw</a>: A critical Linux kernel flaw known as 'CopyFail' is currently being exploited by attackers to gain full root access to vulnerable systems. The vulnerability affects a wide range of Linux distributions and requires only a local foothold to execute.</li>
+  <li><a href="https://threatroad.substack.com/p/palo-alto-firewall-zero-day-under">Palo Alto Firewall Zero-Day Under Active Exploitation</a>: A critical buffer overflow vulnerability in Palo Alto Networks' PAN-OS is under active exploitation, allowing for unauthenticated root access. Organizations are advised to restrict access to the User-ID Authentication Portal to trusted networks until an emergency patch is released.</li>
+  <li><a href="https://www.zeroday.cloud/blog/mariadb-cve-2026-32710-deep-dive">CVE-2026-32710  MariaDB JSON_SCHEMA_VALID heap buffer overflow leading to RCE</a>: A heap buffer overflow in MariaDB's JSON schema validation allows authenticated attackers to escalate privileges and execute arbitrary code. Users should upgrade to the patched versions 11.4.10 or 11.8.6 immediately.</li>
+  <li><a href="https://blocknow.com/anthropic-ipo-valuation-80x-growth-spacex/">Anthropic Secures SpaceX Colossus 1 After Growing 80x to a $1.2T Valuation</a>: Anthropic has reported a massive 80x surge in annualized revenue for Q1 2026, driving its market valuation to an estimated $1.2 trillion. To support this growth, the company has partnered with SpaceX to significantly expand its compute capacity using Nvidia GPUs.</li>
+  <li><a href="https://lwn.net/Articles/1071719">Kernel LPE Vulnerability Published Early Due To Third-Party Breaking Embargo</a>: Hyunwoo Kim has announced Dirty Frag, a zero-day local privilege escalation vulnerability that enables root access on all major Linux distributions. The disclosure includes functional exploit code and a script to mitigate the threat by removing vulnerable modules.</li>
+  <li><a href="https://www.intrinsec.com/en/contournement-bitlocker-la-realite-des-downgrade-attacks/">Bypassing Bitlocker under 5 min using downgrade attack on CVE-2025-48804</a>: This article explains how a downgrade attack can bypass BitLocker encryption by leveraging unrevoked legacy certificates in the Secure Boot process. By loading a vulnerable boot manager, an attacker with physical access can gain access to a decrypted OS volume.</li>
+  <li><a href="https://blog.cloudflare.com/building-for-the-future">Cloudflare lays off 1,100 people</a>: Cloudflare has announced a significant workforce reduction of over 1,100 employees to realign its organizational structure with the rise of agentic AI. The move is intended to leverage a massive surge in internal AI usage to drive future innovation and efficiency.</li>
+  <li><a href="https://aisle.com/blog/aisle-discovers-cve-2026-42511-a-21-year-old-freebsd-remote-command-execution-vulnerability#the-vulnerability">CVE-2026-42511 Breakdown: RCE in FreeBSD</a>: AISLE has identified a critical, long-standing remote command execution vulnerability in FreeBSD's dhclient. This flaw enables attackers on the same local network to gain root privileges by exploiting improper sanitization of DHCP protocol data.</li>
+</ul>]]></description>
+    </item>
+  </channel>
+</rss>
