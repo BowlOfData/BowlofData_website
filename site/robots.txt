@@ -16,4 +16,4 @@ Allow: /
 User-agent: Googlebot
 Allow: /
 
-Sitemap: https://bowofdata.netlify.app/sitemap.xml
+Sitemap: https://bowlofdata.netlify.app/sitemap.xml

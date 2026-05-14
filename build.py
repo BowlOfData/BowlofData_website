@@ -53,7 +53,7 @@ MANIFEST_PATH = HERE / "weeks_manifest.json"   # outside site/ so it survives gi
 MAKI_OUTPUT_DIR = Path(
     os.environ.get(
         "MAKI_OUTPUT_DIR",
-        str(HERE.parent / "maki-newsletter" / "maki_newsletter" / "output"),
+        str(HERE.parent / "maki_newsletter" / "maki_newsletter" / "output"),
     )
 )
 
@@ -61,7 +61,7 @@ FORCE_REBUILD = os.environ.get("FORCE_REBUILD", "").strip() not in ("", "0")
 
 SITE_NAME    = "Bowl of Data"
 SITE_TAGLINE = "A weekly digest of the most relevant tech stories"
-SITE_URL     = "https://bowofdata.netlify.app"
+SITE_URL     = "https://bowlofdata.netlify.app"
 
 # ---------------------------------------------------------------------------
 # Helpers

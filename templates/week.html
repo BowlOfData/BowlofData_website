@@ -122,18 +122,19 @@
         {% if a.main_topic %}
         <p class="article-topic">{{ a.main_topic }}</p>
         {% endif %}
-
+<!--
         {% if a.short_summary %}
         <div class="tldr-box">
           <p class="tldr-label">TL;DR</p>
           <p class="tldr-text">{{ a.short_summary }}</p>
         </div>
         {% endif %}
-
+-->
         {% if a.long_resume_paragraphs %}
-        <div class="long-resume">
+        <div class="tldr-box">
+          <p class="tldr-label">TL;DR</p>
           {% for para in a.long_resume_paragraphs %}
-          <p>{{ para }}</p>
+          <p class="tldr-text">{{ para }}</p>
           {% endfor %}
         </div>
         {% endif %}

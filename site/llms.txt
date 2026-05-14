@@ -6,14 +6,15 @@ Bowl of Data is a weekly newsletter powered by Maki, an AI pipeline that curates
 
 ## Issues
 
-- [Week 19 · 2026](https://bowofdata.netlify.app/week/19_2026.html): 13 articles. Highlights: Uber Shares What Happens When 1.500 AI Agents Hit Production; We probed 6,000 web apps for Stripe webhook signature checks. 1,542 don't bother; Bleeding Llama: Critical Unauthenticated Memory Leak in Ollama (CVE-2026–7482).
+- [Week 20 · 2026](https://bowlofdata.netlify.app/week/20_2026.html): 13 articles. Highlights: Postmortem: TanStack npm supply-chain compromise; Giving Claude Code Full Control of a Hardware Fault Injection Setup to Bypass Secure Boot; Hackers Used AI to Develop First Known Zero-Day 2FA Bypass for Mass Exploitation.
+- [Week 19 · 2026](https://bowlofdata.netlify.app/week/19_2026.html): 13 articles. Highlights: Uber Shares What Happens When 1.500 AI Agents Hit Production; We probed 6,000 web apps for Stripe webhook signature checks. 1,542 don't bother; Bleeding Llama: Critical Unauthenticated Memory Leak in Ollama (CVE-2026–7482).
 
 ## Pages
 
-- [Archive](https://bowofdata.netlify.app/archive.html): Index of all past issues
-- [About](https://bowofdata.netlify.app/about.html): Mission, topics covered, and how the pipeline works
-- [Team](https://bowofdata.netlify.app/team.html): About the people and AI behind Bowl of Data
-- [Contact](https://bowofdata.netlify.app/contact.html): Feedback and article suggestions
+- [Archive](https://bowlofdata.netlify.app/archive.html): Index of all past issues
+- [About](https://bowlofdata.netlify.app/about.html): Mission, topics covered, and how the pipeline works
+- [Team](https://bowlofdata.netlify.app/team.html): About the people and AI behind Bowl of Data
+- [Contact](https://bowlofdata.netlify.app/contact.html): Feedback and article suggestions
 
 ## Optional
 

@@ -1,5 +1,502 @@
 [
   {
+    "week": 20,
+    "year": 2026,
+    "label": "Week 20 · 2026",
+    "href": "week/20_2026.html",
+    "articles": [
+      {
+        "title": "Postmortem: TanStack npm supply-chain compromise",
+        "slug": "postmortem-tanstack-npm-supply-chain-compromise",
+        "url": "https://tanstack.com/blog/npm-supply-chain-compromise-postmortem",
+        "source": "Reddit r/netsec",
+        "published": "2026-05-12T08:16:00Z",
+        "short_summary": "An attacker successfully compromised 42 TanStack npm packages by chaining GitHub Actions cache poisoning with OIDC token extraction. The breach allowed for the unauthorized publication of malicious versions that could exfiltrate sensitive cloud and infrastructure credentials.",
+        "long_resume": "On May 11, 2026, the TanStack ecosystem experienced a significant supply-chain attack involving 84 malicious versions across 42 npm packages. The attack utilized a sophisticated chain of three vulnerabilities to bypass security boundaries. First, the attacker leveraged the pull_request_target GitHub Actions workflow pattern to execute code from a malicious fork. Second, the attacker poisoned the GitHub Actions cache by injecting malicious data into the pnpm-store directory during a benchmark job. This poisoned cache was subsequently restored during a legitimate release workflow on the main branch. Finally, the malicious payload, embedded within the restored cache, extracted an OIDC token from the runner process. Using this token, the attacker was able to use the trusted-publisher binding to publish malicious packages directly to the npm registry. The malicious script, router_init.js, was designed to harvest a wide array of credentials, including AWS IMDS, GCP metadata, Kubernetes service-account tokens, Vault tokens, and SSH private keys. These credentials were exfiltrated using the Session/Oxen messenger file-upload network. The attack was detected within 20 minutes by an external researcher, leading to the deprecation of all affected packages and the purging of poisoned cache entries. While no npm credentials were stolen, the developers recommend that any host that ran an affected version during the window of compromise be treated as compromised, necessitating a rotation of all reachable credentials.",
+        "long_resume_paragraphs": [
+          "On May 11, 2026, the TanStack ecosystem experienced a significant supply-chain attack involving 84 malicious versions across 42 npm packages. The attack utilized a sophisticated chain of three vulnerabilities to bypass security boundaries. First, the attacker leveraged the pull_request_target GitHub Actions workflow pattern to execute code from a malicious fork. Second, the attacker poisoned the GitHub Actions cache by injecting malicious data into the pnpm-store directory during a benchmark job. This poisoned cache was subsequently restored during a legitimate release workflow on the main branch. Finally, the malicious payload, embedded within the restored cache, extracted an OIDC token from the runner process. Using this token, the attacker was able to use the trusted-publisher binding to publish malicious packages directly to the npm registry. The malicious script, router_init.js, was designed to harvest a wide array of credentials, including AWS IMDS, GCP metadata, Kubernetes service-account tokens, Vault tokens, and SSH private keys. These credentials were exfiltrated using the Session/Oxen messenger file-upload network. The attack was detected within 20 minutes by an external researcher, leading to the deprecation of all affected packages and the purging of poisoned cache entries. While no npm credentials were stolen, the developers recommend that any host that ran an affected version during the window of compromise be treated as compromised, necessitating a rotation of all reachable credentials."
+        ],
+        "main_topic": "A supply-chain attack targeted 42 TanStack npm packages by exploiting GitHub Actions cache poisoning and OIDC token extraction via the pull_request_target pattern.",
+        "technologies": [
+          "npm",
+          "GitHub Actions",
+          "TanStack",
+          "pnpm",
+          "AWS",
+          "GCP",
+          "Kubernetes",
+          "Vault",
+          "OIDC",
+          "Vite",
+          "SSH",
+          "Oxen messenger"
+        ]
+      },
+      {
+        "title": "Giving Claude Code Full Control of a Hardware Fault Injection Setup to Bypass Secure Boot",
+        "slug": "giving-claude-code-full-control-of-a-hardware-fault-injection-setup-to-bypass-secure-boot",
+        "url": "https://raelize.com/blog/ai-fi-giving-claude-code-glitch-skills-for-bypassing-secure-boot/",
+        "source": "Reddit r/netsec",
+        "published": "2026-05-11T08:00:07Z",
+        "short_summary": "Researchers demonstrated a successful hardware Fault Injection attack where an AI agent, Claude Code, was given control over hardware tools to bypass Secure Boot on an ESP32. This represents a significant milestone in the use of agentic AI for automating complex hardware exploitation workflows.",
+        "long_resume": "The article describes a highly experimental and successful demonstration of an AI-driven hardware attack. Using Claude Code, the researchers were able to reproduce a known Fault Injection attack targeting the Secure Boot V1 feature of the Espressable ESP32 SoC. The AI agent was granted full control over the hardware environment, which included a ChipWhisperer Husky for glitch injection, a Riden RK6006 programmable power supply, and a PicoScope for signal monitoring. Notably, the researchers did not write any of the attack software; instead, they provided the AI with the necessary hardware connections and access to various Python libraries, leaving the AI to write the attack scripts, configure the hardware registers, and manage the glitching campaign autonomously. The AI even created its own monitoring dashboard and a wiki to track its learning progress. While the specific vulnerability in the ESP32 V1 has been addressed in newer revisions, the core significance of this research lies in the methodology. It proves that agentic AI is capable of handling the high-complexity, iterative, and hardware-dependent tasks required for fault injection attacks, suggesting a new frontier for automated hardware vulnerability research and exploitation.",
+        "long_resume_paragraphs": [
+          "The article describes a highly experimental and successful demonstration of an AI-driven hardware attack. Using Claude Code, the researchers were able to reproduce a known Fault Injection attack targeting the Secure Boot V1 feature of the Espressable ESP32 SoC. The AI agent was granted full control over the hardware environment, which included a ChipWhisperer Husky for glitch injection, a Riden RK6006 programmable power supply, and a PicoScope for signal monitoring. Notably, the researchers did not write any of the attack software; instead, they provided the AI with the necessary hardware connections and access to various Python libraries, leaving the AI to write the attack scripts, configure the hardware registers, and manage the glitching campaign autonomously. The AI even created its own monitoring dashboard and a wiki to track its learning progress. While the specific vulnerability in the ESP32 V1 has been addressed in newer revisions, the core significance of this research lies in the methodology. It proves that agentic AI is capable of handling the high-complexity, iterative, and hardware-dependent tasks required for fault injection attacks, suggesting a new frontier for automated hardware vulnerability research and exploitation."
+        ],
+        "main_topic": "The article documents the first publicly-documented AI-driven Fault Injection attack, where Claude Code was used to autonomously bypass Secure Boot on an Espressif ESP32 SoC.",
+        "technologies": [
+          "Claude Code",
+          "Espressif ESP32",
+          "ChipWhisperer Husky",
+          "Riden RK6006",
+          "PicoScope",
+          "Python",
+          "Ubuntu 26.04 LTS",
+          "chipwhisperer library",
+          "picosdk",
+          "pyserial",
+          "RK6006-Python-Module",
+          "TAoFI Target"
+        ]
+      },
+      {
+        "title": "Hackers Used AI to Develop First Known Zero-Day 2FA Bypass for Mass Exploitation",
+        "slug": "hackers-used-ai-to-develop-first-known-zero-day-2fa-bypass-for-mass-exploitation",
+        "url": "https://thehackernews.com/2026/05/hackers-used-ai-to-develop-first-known.html?m=1",
+        "source": "Reddit r/cybersecurity",
+        "published": "2026-05-11T15:47:23Z",
+        "short_summary": "Google has uncovered a new threat involving a zero-day 2FA bypass exploit likely created using AI-generated Python code. Additionally, the report highlights PromptSpy, an Android malware that leverages Gemini AI to perform autonomous malicious actions on mobile devices.",
+        "long_resume": "Google's Threat Intelligence Group (GTIG) has reported a significant milestone in cyber warfare: the first known use of artificial intelligence to develop a zero-day exploit for mass exploitation. The attack involves a Python script designed to bypass two-factor authentication (2FA) on a popular open-source, web-based system administration tool. The script exhibits clear indicators of being generated by a Large Language Model (LLM), such as highly structured 'Pythonic' formatting, excessive educational docstrings, and a hallucinated CVSS score. The vulnerability itself stems from a semantic logic flaw involving a hard-coded trust assumption, a type of error that LLMs are particularly adept at identifying. Beyond this specific exploit, the report details the emergence of 'PromptSpy,' a sophisticated Android malware. PromptSpy utilizes Google's Gemini AI to analyze the device's screen and autonomously navigate the user interface to perform malicious tasks. The malware is capable of capturing biometric data to replay authentication gestures and employs an 'AppProtectionDetector' module to prevent uninstallation by overlaying an invisible layer over the 'Uninstall' button. The malware's infrastructure is highly resilient, allowing attackers to dynamically update command-and-control (C2) components, including Gemini API keys and VNC relay servers, via its C2 channel to maintain presence even if specific endpoints are blocked.",
+        "long_resume_paragraphs": [
+          "Google's Threat Intelligence Group (GTIG) has reported a significant milestone in cyber warfare: the first known use of artificial intelligence to develop a zero-day exploit for mass exploitation. The attack involves a Python script designed to bypass two-factor authentication (2FA) on a popular open-source, web-based system administration tool. The script exhibits clear indicators of being generated by a Large Language Model (LLM), such as highly structured 'Pythonic' formatting, excessive educational docstrings, and a hallucinated CVSS score. The vulnerability itself stems from a semantic logic flaw involving a hard-coded trust assumption, a type of error that LLMs are particularly adept at identifying. Beyond this specific exploit, the report details the emergence of 'PromptSpy,' a sophisticated Android malware. PromptSpy utilizes Google's Gemini AI to analyze the device's screen and autonomously navigate the user interface to perform malicious tasks. The malware is capable of capturing biometric data to replay authentication gestures and employs an 'AppProtectionDetector' module to prevent uninstallation by overlaying an invisible layer over the 'Uninstall' button. The malware's infrastructure is highly resilient, allowing attackers to dynamically update command-and-control (C2) components, including Gemini API keys and VNC relay servers, via its C2 channel to maintain presence even if specific endpoints are blocked."
+        ],
+        "main_topic": "Google has identified the first known instance of AI-assisted zero-day exploit development used for a mass 2FA bypass campaign and the emergence of AI-driven Android malware.",
+        "technologies": [
+          "AI",
+          "LLM",
+          "Python",
+          "Gemini AI",
+          "Android",
+          "2FA",
+          "VNC",
+          "PromptSpy"
+        ]
+      },
+      {
+        "title": "Dead.Letter (CVE-2026-45185) How XBOW found an unauthenticated RCE on Exim",
+        "slug": "deadletter-cve-2026-45185-how-xbow-found-an-unauthenticated-rce-on-exim",
+        "url": "https://xbow.com/blog/dead-letter-cve-2026-45185-xbow-found-rce-exim",
+        "source": "Reddit r/netsec",
+        "published": "2026-05-12T17:41:33Z",
+        "short_summary": "Researchers have identified a critical unauthenticated remote code execution vulnerability in the Exim mail server, tracked as CVE-2026-45185. The bug stems from a use-after-free condition during TLS shutdown when GnuTLS is employed.",
+        "long_resume": "The article details the discovery of CVE-2026-45185, a high-impact unauthenticated remote code execution vulnerability found in the Exim mail server. The vulnerability is a use-after-free bug that occurs during the TLS shutdown process when Exim is configured with the GnuTLS library, which is the default on many Debian-based distributions like Ubuntu. Specifically, the researchers found that during TLS shutdown, Exim frees its TLS transfer buffer, yet a nested BDAT receive wrapper can still process incoming bytes and trigger an ungetc() call. This action writes a single newline character into the previously freed memory region, resulting in the corruption of the allocator's internal metadata. Although the initial write primitive is limited to a single byte, the authors demonstrate how this corruption can be leveraged to gain full remote code execution. A significant aspect of this vulnerability is that it requires almost no special configuration on the target server to be successfully triggered. The discovery was made using XBOW, a tool designed for finding vulnerabilities in native code, and the report also reflects on the paradigm shift brought about by the integration of large language models into the exploit development and vulnerability research workflows.",
+        "long_resume_paragraphs": [
+          "The article details the discovery of CVE-2026-45185, a high-impact unauthenticated remote code execution vulnerability found in the Exim mail server. The vulnerability is a use-after-free bug that occurs during the TLS shutdown process when Exim is configured with the GnuTLS library, which is the default on many Debian-based distributions like Ubuntu. Specifically, the researchers found that during TLS shutdown, Exim frees its TLS transfer buffer, yet a nested BDAT receive wrapper can still process incoming bytes and trigger an ungetc() call. This action writes a single newline character into the previously freed memory region, resulting in the corruption of the allocator's internal metadata. Although the initial write primitive is limited to a single byte, the authors demonstrate how this corruption can be leveraged to gain full remote code execution. A significant aspect of this vulnerability is that it requires almost no special configuration on the target server to be successfully triggered. The discovery was made using XBOW, a tool designed for finding vulnerabilities in native code, and the report also reflects on the paradigm shift brought about by the integration of large language models into the exploit development and vulnerability research workflows."
+        ],
+        "main_topic": "The technical discovery and analysis of CVE-2026-45185, an unauthenticated remote code execution vulnerability in the Exim mail server.",
+        "technologies": [
+          "Exim",
+          "GnuTLS",
+          "SMTP",
+          "TLS",
+          "BDAT",
+          "XBOW",
+          "LLM",
+          "Debian",
+          "Ubuntu"
+        ]
+      },
+      {
+        "title": "Microsoft France's legal affairs director told the French Senate, under oath, that he can't guarantee European \"sovereign cloud\" data stays out of US reach",
+        "slug": "microsoft-frances-legal-affairs-director-told-the-french-senate-under-oath-that-he-cant-guarantee-european-sovereign-cloud-data-stays-out-of-us-reach",
+        "url": "https://thevisibleinvisible.substack.com/p/the-stolen-word",
+        "source": "Reddit r/cybersecurity",
+        "published": "2026-05-13T06:26:25Z",
+        "short_summary": "The text argues that European digital sovereignty is being hollowed out by the legal reach of the US CLOUD Act and the aggressive lobbying of American hyperscalers. It details how strategic acquisitions and legislative influence are bringing essential European infrastructure under US jurisdiction.",
+        "long_resume": "The article provides a detailed critique of the loss of digital sovereignty in Europe, focusing on how US-based hyperscalers like Microsoft, Amazon, and Google have effectively neutralized European attempts at technological independence. A primary mechanism of this erosion is the US CLOUD Act, which allows US authorities to compel American companies to provide data regardless of where the physical servers are located, making 'sovereign' cloud promises legally hollow. The author traces the failure of European initiatives like Gaia-X to the successful lobbying and structural integration of American companies into the very frameworks meant to compete with them. Beyond infrastructure, the piece highlights the influence of Big Tech on EU policy, specifically citing the Digital Omnibus as a product of intense corporate lobbying that mirrors the positions of US tech giants. The most acute risk is presented through the lens of strategic acquisitions, such as Kyndryl's move to acquire Solvinity, a provider for the Dutch national identity system, DigiD. Such moves place the authentication layers of European states within the legal reach of the United States. Through a combination of legal frameworks, marketing rebranding, and economic pressure, the article concludes that the concept of European digital sovereignty is being systematically dismantled.",
+        "long_resume_paragraphs": [
+          "The article provides a detailed critique of the loss of digital sovereignty in Europe, focusing on how US-based hyperscalers like Microsoft, Amazon, and Google have effectively neutralized European attempts at technological independence. A primary mechanism of this erosion is the US CLOUD Act, which allows US authorities to compel American companies to provide data regardless of where the physical servers are located, making 'sovereign' cloud promises legally hollow. The author traces the failure of European initiatives like Gaia-X to the successful lobbying and structural integration of American companies into the very frameworks meant to compete with them. Beyond infrastructure, the piece highlights the influence of Big Tech on EU policy, specifically citing the Digital Omnibus as a product of intense corporate lobbying that mirrors the positions of US tech giants. The most acute risk is presented through the lens of strategic acquisitions, such as Kyndryl's move to acquire Solvinity, a provider for the Dutch national identity system, DigiD. Such moves place the authentication layers of European states within the legal reach of the United States. Through a combination of legal frameworks, marketing rebranding, and economic pressure, the article concludes that the concept of European digital sovereignty is being systematically dismantled."
+        ],
+        "main_topic": "The article explores the systematic erosion of European digital sovereignty through the legal, economic, and lobbying influence of major US cloud providers.",
+        "technologies": [
+          "Microsoft",
+          "Amazon",
+          "Google",
+          "Microsoft Cloud",
+          "Google Cloud",
+          "Gaia-X",
+          "Nextcloud",
+          "S3NS",
+          "Kyndryl",
+          "Solvinity",
+          "DigiD",
+          "GDPR",
+          "AI Act",
+          "Digital Markets Act",
+          "Digital Services Act"
+        ]
+      },
+      {
+        "title": "Official CheckMarx Jenkins package compromised with infostealer",
+        "slug": "official-checkmarx-jenkins-package-compromised-with-infostealer",
+        "url": "https://bleepingcomputer.com/news/security/official-checkmarx-jenkins-package-compromised-with-infostealer",
+        "source": "Reddit r/cybersecurity",
+        "published": "2026-05-11T22:11:50Z",
+        "short_summary": "The TeamPCP hacker group has compromised the Checkmarx Jenkins AST plugin by leveraging credentials stolen from a previous Trivy scanner breach. This supply-chain attack allows for the delivery of credential-stealing malware to developer environments.",
+        "long_resume": "Checkmarx has warned of a significant supply-chain compromise involving a rogue version of its Jenkins Application Security Testing (AST) plugin. The threat actor, identified as the TeamPCP group, gained access to Checkmarx's GitHub repositories by utilizing credentials previously stolen during the breach of the Trivy vulnerability scanner. This access enabled the attackers to publish malicious artifacts, including a modified Jenkins plugin (version 2026.5.09) to the Jenkins Marketplace and a compromised KICS analysis tool to platforms such as Docker, VSCode, and Open VSX. The malicious code is designed to function as an infostealer, targeting developer environments to harvest credentials. Although Checkmarx has stated that its customer production environments are isolated from the compromised GitHub repositories, the risk of credential exposure is high. The company advises all users to ensure they are running version 2.0.13-829.vc72453fa_1c16 or older, to rotate all secrets, and to perform thorough investigations for any signs of lateral movement or persistence within their systems.",
+        "long_resume_paragraphs": [
+          "Checkmarx has warned of a significant supply-chain compromise involving a rogue version of its Jenkins Application Security Testing (AST) plugin. The threat actor, identified as the TeamPCP group, gained access to Checkmarx's GitHub repositories by utilizing credentials previously stolen during the breach of the Trivy vulnerability scanner. This access enabled the attackers to publish malicious artifacts, including a modified Jenkins plugin (version 2026.5.09) to the Jenkins Marketplace and a compromised KICS analysis tool to platforms such as Docker, VSCode, and Open VSX. The malicious code is designed to function as an infostealer, targeting developer environments to harvest credentials. Although Checkmarx has stated that its customer production environments are isolated from the compromised GitHub repositories, the risk of credential exposure is high. The company advises all users to ensure they are running version 2.0.13-829.vc72453fa_1c16 or older, to rotate all secrets, and to perform thorough investigations for any signs of lateral movement or persistence within their systems."
+        ],
+        "main_topic": "A rogue version of the Checkmarx Jenkins AST plugin was discovered on the Jenkins Marketplace as part of a supply-chain attack by the TeamPCP hacker group.",
+        "technologies": [
+          "Jenkins",
+          "Checkmarx AST plugin",
+          "GitHub",
+          "Trivy",
+          "Docker",
+          "VSCode",
+          "KICS analysis tool",
+          "Open VSX",
+          "npm"
+        ]
+      },
+      {
+        "title": "Gartner: GenAI has broken traditional cybersecurity awareness – what comes next?",
+        "slug": "gartner-genai-has-broken-traditional-cybersecurity-awareness-what-comes-next",
+        "url": "https://techradar.com/pro/gartner-genai-has-broken-traditional-cybersecurity-awareness-what-comes-next",
+        "source": "TechRadar",
+        "published": "Mon, 11 May 2026 10:06:33 +0000",
+        "short_summary": "The rapid adoption of Generative AI is expanding the human risk surface through shadow AI and advanced, AI-augmented external attacks. To mitigate these evolving threats, cybersecurity leaders must move beyond traditional awareness training toward behavior-driven security culture programs.",
+        "long_resume": "The article discusses the breakdown of traditional cybersecurity awareness models caused by the emergence of Generative AI (GenAI). As organizations adopt GenAI to drive productivity, they face a dual threat: internal risks from 'shadow AI'—where employees use personal, unapproved accounts for work tasks—and external risks from AI-powered attacks like deepfakes and sophisticated phishing. Gartner's research highlights that 33% of employees admit to inputting sensitive information into public GenAI tools, and the frequency of AI-assisted phishing has doubled recently. Traditional training programs, which rely on static modules and generic guidance, are no longer effective because AI-generated content is increasingly difficult to distinguish from legitimate communications. Furthermore, new vulnerabilities such as prompt injections and insecure AI tool usage are not addressed by legacy models. The author proposes a shift toward Security Behavior and Culture Programs (SBCPs), which prioritize how employees act in real-world scenarios rather than just what they know. These programs aim to embed security into daily workflows through continuous engagement, microlearning, and simulations of AI-driven attacks. To succeed, organizations must establish clear boundaries for GenAI use, extend governance to include legal and compliance departments, and invest in AI literacy to help employees identify hallucinations and manipulated content. Ultimately, managing GenAI risk is a cultural challenge that requires reframing security as an enabler of safe innovation rather than a technical barrier.",
+        "long_resume_paragraphs": [
+          "The article discusses the breakdown of traditional cybersecurity awareness models caused by the emergence of Generative AI (GenAI). As organizations adopt GenAI to drive productivity, they face a dual threat: internal risks from 'shadow AI'—where employees use personal, unapproved accounts for work tasks—and external risks from AI-powered attacks like deepfakes and sophisticated phishing. Gartner's research highlights that 33% of employees admit to inputting sensitive information into public GenAI tools, and the frequency of AI-assisted phishing has doubled recently. Traditional training programs, which rely on static modules and generic guidance, are no longer effective because AI-generated content is increasingly difficult to distinguish from legitimate communications. Furthermore, new vulnerabilities such as prompt injections and insecure AI tool usage are not addressed by legacy models. The author proposes a shift toward Security Behavior and Culture Programs (SBCPs), which prioritize how employees act in real-world scenarios rather than just what they know. These programs aim to embed security into daily workflows through continuous engagement, microlearning, and simulations of AI-driven attacks. To succeed, organizations must establish clear boundaries for GenAI use, extend governance to include legal and compliance departments, and invest in AI literacy to help employees identify hallucinations and manipulated content. Ultimately, managing GenAI risk is a cultural challenge that requires reframing security as an enabler of safe innovation rather than a technical barrier."
+        ],
+        "main_topic": "Generative AI is rendering traditional cybersecurity awareness models obsolete, necessitating a shift toward security behavior and culture programs.",
+        "technologies": [
+          "Generative AI",
+          "GenAI",
+          "Deepfakes",
+          "AI-assisted phishing",
+          "Shadow AI"
+        ]
+      },
+      {
+        "title": "$14 Trillion BlackRock Picks Ethereum for Tokenized Funds",
+        "slug": "14-trillion-blackrock-picks-ethereum-for-tokenized-funds",
+        "url": "https://dailycryptobriefs.com/news/blackrock-picks-ethereum-tokenized-funds",
+        "source": "Reddit r/ethereum",
+        "published": "2026-05-11T22:01:35Z",
+        "short_summary": "BlackRock has updated its filings to include Ethereum-based ERC-20 tokens for its tokenized money-market fund shares. This initiative aims to provide liquid, on-chain reserve assets for stablecoin issuers and institutional investors.",
+        "long_resume": "BlackRock has officially filed paperwork to integrate the Ethereum blockchain into its tokenized fund offerings, specifically targeting the expansion of its on-chain liquidity products. The filings include the introduction of OnChain Shares for the BlackRock Select Treasury Based Liquidity Fund, which will be issued as ERC-20 tokens recorded on the Ethereum network. Despite the blockchain-based distribution, the fund's portfolio remains tied to traditional low-risk instruments, such as cash, U.S. Treasury bills with maturities of 93 days or less, and overnight repurchase agreements. Additionally, the firm introduced the BlackRock Daily Reinvestment Stablecoin Reserve Vehicle, designed to serve as an eligible reserve asset for payment stablecoin issuers under the GENIUS Act framework. While the Ethereum-based shares will operate within a permissioned system to allow for essential regulatory controls like whitelisting and asset freezing, the move highlights Ethereum's significant role as a primary settlement rail for institutional real-world assets. The filing also hints at potential expansion across other public blockchains for its stablecoin reserve vehicle, though specific networks were not explicitly named in the documentation. This development follows BlackRock's previous success with its BUIDL fund and aligns with a broader industry trend toward the tokenization of traditional financial instruments and the pursuit of efficient, on-chain settlement.",
+        "long_resume_paragraphs": [
+          "BlackRock has officially filed paperwork to integrate the Ethereum blockchain into its tokenized fund offerings, specifically targeting the expansion of its on-chain liquidity products. The filings include the introduction of OnChain Shares for the BlackRock Select Treasury Based Liquidity Fund, which will be issued as ERC-20 tokens recorded on the Ethereum network. Despite the blockchain-based distribution, the fund's portfolio remains tied to traditional low-risk instruments, such as cash, U.S. Treasury bills with maturities of 93 days or less, and overnight repurchase agreements. Additionally, the firm introduced the BlackRock Daily Reinvestment Stablecoin Reserve Vehicle, designed to serve as an eligible reserve asset for payment stablecoin issuers under the GENIUS Act framework. While the Ethereum-based shares will operate within a permissioned system to allow for essential regulatory controls like whitelisting and asset freezing, the move highlights Ethereum's significant role as a primary settlement rail for institutional real-world assets. The filing also hints at potential expansion across other public blockchains for its stablecoin reserve vehicle, though specific networks were not explicitly named in the documentation. This development follows BlackRock's previous success with its BUIDL fund and aligns with a broader industry trend toward the tokenization of traditional financial instruments and the pursuit of efficient, on-chain settlement."
+        ],
+        "main_topic": "BlackRock has filed paperwork to launch tokenized money-market fund shares specifically utilizing the Ethereum blockchain.",
+        "technologies": [
+          "Ethereum",
+          "ERC-20",
+          "Uniswap",
+          "Securitize",
+          "Canton Network",
+          "Solana",
+          "Stellar",
+          "Avalanche",
+          "Polygon",
+          "Bitcoin"
+        ]
+      },
+      {
+        "title": "Protocol Cluster Updates: May 2026",
+        "slug": "protocol-cluster-updates-may-2026",
+        "url": "https://blog.ethereum.org/2026/05/11/protocol-update-may-26",
+        "source": "Reddit r/ethereum",
+        "published": "2026-05-11T20:10:51Z",
+        "short_summary": "The Ethereum Protocol Cluster has reached several technical milestones for the upcoming Glamsterdam upgrade, including gas limit floors and ePBS stabilization. The update also details a leadership handover as several key contributors depart the Ethereum Foundation.",
+        "long_resume": "The Ethereum Protocol Cluster recently met in Svalbard, Norway, to coordinate efforts for the upcoming Glamsterdam upgrade. Significant technical progress was reported, most notably the establishment of a 200 million gas limit floor, which is a target for the post-Glamsterdam period. This milestone is supported by the convergence of ePBS, BAL optimizations, and the implementation of EIP-8037, which fixes the cost per state byte. The meeting also confirmed that ePBS has stabilized, with successful end-to-end testing completed across nearly all clients in a multi-client devnet environment. Looking toward future upgrades, the cluster has begun groundwork for Hegotá, specifically focusing on functional FOCIL prototypes and defining requirements for native Account Abstraction (AA). Beyond technical updates, the announcement marks a major leadership transition within the Ethereum Foundation's Protocol cluster. Departing leaders Barnabé Monint, Tim Beiko, and Alex Stokes are being succeeded by Will Corcoran, Kev Wedderburn, and Fredrik. The incoming team brings diverse expertise, including research in zkVM and post-quantum consensus, zkEVM engineering, and protocol security. The immediate focus for the new leadership remains the hardening and deployment of the Glamsterdam devnets and the continued advancement of the network's long-term roadmap.",
+        "long_resume_paragraphs": [
+          "The Ethereum Protocol Cluster recently met in Svalbard, Norway, to coordinate efforts for the upcoming Glamsterdam upgrade. Significant technical progress was reported, most notably the establishment of a 200 million gas limit floor, which is a target for the post-Glamsterdam period. This milestone is supported by the convergence of ePBS, BAL optimizations, and the implementation of EIP-8037, which fixes the cost per state byte. The meeting also confirmed that ePBS has stabilized, with successful end-to-end testing completed across nearly all clients in a multi-client devnet environment. Looking toward future upgrades, the cluster has begun groundwork for Hegotá, specifically focusing on functional FOCIL prototypes and defining requirements for native Account Abstraction (AA). Beyond technical updates, the announcement marks a major leadership transition within the Ethereum Foundation's Protocol cluster. Departing leaders Barnabé Monint, Tim Beiko, and Alex Stokes are being succeeded by Will Corcoran, Kev Wedderburn, and Fredrik. The incoming team brings diverse expertise, including research in zkVM and post-quantum consensus, zkEVM engineering, and protocol security. The immediate focus for the new leadership remains the hardening and deployment of the Glamsterdam devnets and the continued advancement of the network's long-term roadmap."
+        ],
+        "main_topic": "The Ethereum Protocol Cluster has announced technical milestones for the upcoming Glamsterdam upgrade alongside a significant leadership transition.",
+        "technologies": [
+          "Ethereum",
+          "Glamsterdam",
+          "ePBS",
+          "EIP-8037",
+          "Hegotá",
+          "FOCIL",
+          "Account Abstraction",
+          "Fusaka",
+          "PeerDAS",
+          "zkVM",
+          "zkEVM"
+        ]
+      },
+      {
+        "title": "'I don't think that's crazy': Here is why Circle is betting on new $3 billion blockchain",
+        "slug": "i-dont-think-thats-crazy-here-is-why-circle-is-betting-on-new-3-billion-blockchain",
+        "url": "https://coindesk.com/business/2026/05/11/i-don-t-think-that-s-crazy-here-is-why-circle-is-betting-on-new-usd3-billion-blockchain",
+        "source": "CoinDesk",
+        "published": "Mon, 11 May 2026 19:51:09 +0000",
+        "short_summary": "Circle is launching the Arc blockchain to transition from a stablecoin issuer to a broader financial infrastructure provider. The project's $3 billion valuation reflects significant interest from major institutional investors like BlackRock and a16z.",
+        "long_resume": "Circle is making a strategic pivot from being primarily a stablecoin issuer to becoming a comprehensive blockchain infrastructure provider through the launch of its Arc network. Following its recent earnings call, the company announced a $222 million token presale for Arc, which has reached a valuation of approximately $3 billion. Backed by prominent institutional investors such as a16z crypto, Apollo, BlackRock, and ARK Invest, the Arc blockchain is designed to serve as an 'economic operating system' for payments firms, asset issuers, and capital markets. Unlike many existing retail-oriented blockchains, Arc focuses on meeting institutional requirements, including fast settlement, configurable privacy, and the use of known validators. The network is also being developed to support the integration of AI agents within the financial sector. This move places Circle in direct competition with established layer-1 networks like Ethereum and Solana, as well as emerging institutional-focused chains like Coinbase's Base and Stripe's Tempo. While the potential for growth is significant, analysts remain cautious, noting that the long-term value of the Arc token depends heavily on actual network activity and the adoption of applications on the chain. The economic model for Arc is expected to involve fees denominated in stablecoins, with value accruing to the ARC token through mechanisms like validator rewards and token burns, mirroring the Ethereum model. Ultimately, the launch of Arc signals a broader industry trend where blockchain development is shifting toward providing the backbone for global, institutionalized finance.",
+        "long_resume_paragraphs": [
+          "Circle is making a strategic pivot from being primarily a stablecoin issuer to becoming a comprehensive blockchain infrastructure provider through the launch of its Arc network. Following its recent earnings call, the company announced a $222 million token presale for Arc, which has reached a valuation of approximately $3 billion. Backed by prominent institutional investors such as a16z crypto, Apollo, BlackRock, and ARK Invest, the Arc blockchain is designed to serve as an 'economic operating system' for payments firms, asset issuers, and capital markets. Unlike many existing retail-oriented blockchains, Arc focuses on meeting institutional requirements, including fast settlement, configurable privacy, and the use of known validators. The network is also being developed to support the integration of AI agents within the financial sector. This move places Circle in direct competition with established layer-1 networks like Ethereum and Solana, as well as emerging institutional-focused chains like Coinbase's Base and Stripe's Tempo. While the potential for growth is significant, analysts remain cautious, noting that the long-term value of the Arc token depends heavily on actual network activity and the adoption of applications on the chain. The economic model for Arc is expected to involve fees denominated in stablecoins, with value accruing to the ARC token through mechanisms like validator rewards and token burns, mirroring the Ethereum model. Ultimately, the launch of Arc signals a broader industry trend where blockchain development is shifting toward providing the backbone for global, institutionalized finance."
+        ],
+        "main_topic": "Circle is expanding its business model from a stablecoin issuer to a blockchain infrastructure provider with the launch of its Arc network.",
+        "technologies": [
+          "Circle",
+          "Arc",
+          "USDC",
+          "Ethereum",
+          "Solana",
+          "Base",
+          "Tempo",
+          "Canton Network",
+          "blockchain",
+          "stablecoins",
+          "AI agents"
+        ]
+      },
+      {
+        "title": "DTCC builds out blockchain-based collateral system with Chainlink integration",
+        "slug": "dtcc-builds-out-blockchain-based-collateral-system-with-chainlink-integration",
+        "url": "https://coindesk.com/business/2026/05/12/dtcc-taps-chainlink-for-its-tokenized-collateral-platform-ahead-of-q4-launch",
+        "source": "CoinDesk",
+        "published": "Tue, 12 May 2026 12:15:00 +0000",
+        "short_summary": "DTCC has announced the use of Chainlink infrastructure to power its new blockchain-based collateral management platform. The system aims to modernize global risk management through real-time asset tokenization and automated settlement.",
+        "long_resume": "The Depository Trust & Clearing Corporation (DTCC) is advancing its blockchain-based financial services by integrating Chainlink's infrastructure into its new Collateral AppChain. This platform, built on the Besu blockchain, will leverage Chainlink's Runtime Environment (CRE) and data standards to handle critical functions such as pricing, valuation, margining, collateral optimization, and settlement. The primary objective of the AppChain is to resolve the fragmentation and delays characteristic of current collateral systems, where assets are often trapped across different institutions and time zones. By utilizing distributed ledger technology (DLT) and smart contracts, DTCC intends to enable near real-time, 24/7 collateral movement across both traditional financial markets and blockchain networks. This development is an extension of previous collaborative efforts, most notably the 'Smart NAV' pilot, which saw participation from major financial institutions including JPMorgan, BNY Mellon, and Franklin Templeton. Beyond this specific platform, DTCC is actively expanding its tokenization capabilities, with a working group of more than 50 firms already engaged in its broader tokenization services, aiming for significant production milestones later this year.",
+        "long_resume_paragraphs": [
+          "The Depository Trust & Clearing Corporation (DTCC) is advancing its blockchain-based financial services by integrating Chainlink's infrastructure into its new Collateral AppChain. This platform, built on the Besu blockchain, will leverage Chainlink's Runtime Environment (CRE) and data standards to handle critical functions such as pricing, valuation, margining, collateral optimization, and settlement. The primary objective of the AppChain is to resolve the fragmentation and delays characteristic of current collateral systems, where assets are often trapped across different institutions and time zones. By utilizing distributed ledger technology (DLT) and smart contracts, DTCC intends to enable near real-time, 24/7 collateral movement across both traditional financial markets and blockchain networks. This development is an extension of previous collaborative efforts, most notably the 'Smart NAV' pilot, which saw participation from major financial institutions including JPMorgan, BNY Mellon, and Franklin Templeton. Beyond this specific platform, DTCC is actively expanding its tokenization capabilities, with a working group of more than 50 firms already engaged in its broader tokenization services, aiming for significant production milestones later this year."
+        ],
+        "main_topic": "DTCC is integrating Chainlink's infrastructure into its Besu-based Collateral AppChain to enable real-time, tokenized collateral management.",
+        "technologies": [
+          "Chainlink",
+          "Chainlink Runtime Environment (CRE)",
+          "Besu",
+          "Distributed Ledger Technology (DLT)",
+          "Smart contracts",
+          "Oracle network"
+        ]
+      },
+      {
+        "title": "Bitcoin mining pools with 75% of BTC hashrate join open standard for block construction",
+        "slug": "bitcoin-mining-pools-with-75-of-btc-hashrate-join-open-standard-for-block-construction",
+        "url": "https://coindesk.com/markets/2026/05/11/bitcoin-mining-pools-with-75-of-btc-hashrate-join-open-standard-for-block-construction",
+        "source": "CoinDesk",
+        "published": "Mon, 11 May 2026 06:01:53 +0000",
+        "short_summary": "Seven of the world's largest Bitcoin mining pools have officially joined the Stratum V2 working group. This move allows individual miners to control block template construction, reducing the power of pool operators to decide transaction selection.",
+        "long_resume": "The Bitcoin mining ecosystem is experiencing a significant move toward decentralization as seven of the largest mining pools have agreed to back the Stratum V2 open standard. The participating pools—Foundry, AntPool, F2Pool, SpiderPool, MARA Pool, Block Inc, and DMND—collectively represent nearly 75% of the global Bitcoin hashrate. The primary innovation of the Stratum V2 protocol is its ability to allow individual miners to construct their own block templates. Under the previous Stratum V1 standard, the authority to select transactions for each block resided with the pool operators, creating a centralized point of influence that many in the Bitcoin community viewed as a structural risk. By shifting this responsibility to the miners, Stratum V2 mitigates the risk associated with a single pool controlling transaction ordering, even if the overall hashrate concentration remains similar. This transition follows the protocol's development since 2022 by Braiins and Spiral and signals a new phase of accelerated deployment. This technological advancement comes at a time of economic volatility for the mining sector, as rising network difficulty and low hashprices have rendered a portion of the mining population unprofitable. However, the adoption of Stratum V2 by the industry's largest players marks a critical milestone in enhancing the decentralized nature of the Bitcoin network's block construction process.",
+        "long_resume_paragraphs": [
+          "The Bitcoin mining ecosystem is experiencing a significant move toward decentralization as seven of the largest mining pools have agreed to back the Stratum V2 open standard. The participating pools—Foundry, AntPool, F2Pool, SpiderPool, MARA Pool, Block Inc, and DMND—collectively represent nearly 75% of the global Bitcoin hashrate. The primary innovation of the Stratum V2 protocol is its ability to allow individual miners to construct their own block templates. Under the previous Stratum V1 standard, the authority to select transactions for each block resided with the pool operators, creating a centralized point of influence that many in the Bitcoin community viewed as a structural risk. By shifting this responsibility to the miners, Stratum V2 mitigates the risk associated with a single pool controlling transaction ordering, even if the overall hashrate concentration remains similar. This transition follows the protocol's development since 2022 by Braiins and Spiral and signals a new phase of accelerated deployment. This technological advancement comes at a time of economic volatility for the mining sector, as rising network difficulty and low hashprices have rendered a portion of the mining population unprofitable. However, the adoption of Stratum V2 by the industry's largest players marks a critical milestone in enhancing the decentralized nature of the Bitcoin network's block construction process."
+        ],
+        "main_topic": "Seven major Bitcoin mining pools representing 75% of the global hashrate have joined the Stratum V2 working group to decentralize block construction.",
+        "technologies": [
+          "Bitcoin",
+          "BTC",
+          "Stratum V2",
+          "Stratum V1",
+          "Hashrate Index",
+          "CoinWarz"
+        ]
+      },
+      {
+        "title": "Square Crosses 1 Million Bitcoin-Enabled Merchants As Real-World Adoption Continues To Grow",
+        "slug": "square-crosses-1-million-bitcoin-enabled-merchants-as-real-world-adoption-continues-to-grow",
+        "url": "https://bitcoinmagazine.com/news/square-crosses-1-million-bitcoin-merchants",
+        "source": "Reddit r/Bitcoin",
+        "published": "2026-05-12T19:11:57Z",
+        "short_summary": "Square has surpassed one million merchants capable of accepting Bitcoin via its automated enrollment process. The company is also expanding its Bitcoin ecosystem through NFC tap-to-pay features and enhanced self-custody tools.",
+        "long_resume": "Block Inc.'s Square has officially crossed the threshold of one million merchants enabled to accept Bitcoin payments. This growth is largely attributed to an automatic enrollment feature for eligible U.S. sellers that launched in late March. To ensure merchant stability, the system utilizes the Lightning Network to facilitate near-instant settlements while defaulting to U.S. dollar payouts, effectively removing currency risk for the seller. Beyond simple payments, Square is introducing a tap-to-pay Bitcoin feature using NFC hardware, which will offer zero processing fees through 2026. The company is also integrating Bitcoin more deeply into its existing consumer products; for instance, Cash App users can now automatically convert peer-to-peer payments into Bitcoin and earn 'Bitcoin Back' rewards at participating Square merchants. On the security and self-custody front, Block has released an updated Bitkey hardware wallet featuring a touchscreen and a 2-of-3 multisig security model. Finally, Block's Q1 2026 proof-of-reserves report confirmed a significant Bitcoin treasury, holding 28,355.05 BTC valued at approximately $2.2 billion.",
+        "long_resume_paragraphs": [
+          "Block Inc.'s Square has officially crossed the threshold of one million merchants enabled to accept Bitcoin payments. This growth is largely attributed to an automatic enrollment feature for eligible U.S. sellers that launched in late March. To ensure merchant stability, the system utilizes the Lightning Network to facilitate near-instant settlements while defaulting to U.S. dollar payouts, effectively removing currency risk for the seller. Beyond simple payments, Square is introducing a tap-to-pay Bitcoin feature using NFC hardware, which will offer zero processing fees through 2026. The company is also integrating Bitcoin more deeply into its existing consumer products; for instance, Cash App users can now automatically convert peer-to-peer payments into Bitcoin and earn 'Bitcoin Back' rewards at participating Square merchants. On the security and self-custody front, Block has released an updated Bitkey hardware wallet featuring a touchscreen and a 2-of-3 multisig security model. Finally, Block's Q1 2026 proof-of-reserves report confirmed a significant Bitcoin treasury, holding 28,355.05 BTC valued at approximately $2.2 billion."
+        ],
+        "main_topic": "Square has reached a milestone of one million merchants enabled to accept Bitcoin payments through automated enrollment and Lightning Network integration.",
+        "technologies": [
+          "Square",
+          "Block Inc.",
+          "Bitcoin",
+          "Lightning Network",
+          "Cash App",
+          "Bitkey",
+          "NFC",
+          "2-of-3 multisig"
+        ]
+      }
+    ],
+    "article_count": 13,
+    "preview_titles": [
+      "Postmortem: TanStack npm supply-chain compromise",
+      "Giving Claude Code Full Control of a Hardware Fault Injection Setup to Bypass Secure Boot",
+      "Hackers Used AI to Develop First Known Zero-Day 2FA Bypass for Mass Exploitation"
+    ],
+    "preview_articles": [
+      {
+        "title": "Postmortem: TanStack npm supply-chain compromise",
+        "slug": "postmortem-tanstack-npm-supply-chain-compromise",
+        "url": "https://tanstack.com/blog/npm-supply-chain-compromise-postmortem",
+        "source": "Reddit r/netsec",
+        "published": "2026-05-12T08:16:00Z",
+        "short_summary": "An attacker successfully compromised 42 TanStack npm packages by chaining GitHub Actions cache poisoning with OIDC token extraction. The breach allowed for the unauthorized publication of malicious versions that could exfiltrate sensitive cloud and infrastructure credentials.",
+        "long_resume": "On May 11, 2026, the TanStack ecosystem experienced a significant supply-chain attack involving 84 malicious versions across 42 npm packages. The attack utilized a sophisticated chain of three vulnerabilities to bypass security boundaries. First, the attacker leveraged the pull_request_target GitHub Actions workflow pattern to execute code from a malicious fork. Second, the attacker poisoned the GitHub Actions cache by injecting malicious data into the pnpm-store directory during a benchmark job. This poisoned cache was subsequently restored during a legitimate release workflow on the main branch. Finally, the malicious payload, embedded within the restored cache, extracted an OIDC token from the runner process. Using this token, the attacker was able to use the trusted-publisher binding to publish malicious packages directly to the npm registry. The malicious script, router_init.js, was designed to harvest a wide array of credentials, including AWS IMDS, GCP metadata, Kubernetes service-account tokens, Vault tokens, and SSH private keys. These credentials were exfiltrated using the Session/Oxen messenger file-upload network. The attack was detected within 20 minutes by an external researcher, leading to the deprecation of all affected packages and the purging of poisoned cache entries. While no npm credentials were stolen, the developers recommend that any host that ran an affected version during the window of compromise be treated as compromised, necessitating a rotation of all reachable credentials.",
+        "long_resume_paragraphs": [
+          "On May 11, 2026, the TanStack ecosystem experienced a significant supply-chain attack involving 84 malicious versions across 42 npm packages. The attack utilized a sophisticated chain of three vulnerabilities to bypass security boundaries. First, the attacker leveraged the pull_request_target GitHub Actions workflow pattern to execute code from a malicious fork. Second, the attacker poisoned the GitHub Actions cache by injecting malicious data into the pnpm-store directory during a benchmark job. This poisoned cache was subsequently restored during a legitimate release workflow on the main branch. Finally, the malicious payload, embedded within the restored cache, extracted an OIDC token from the runner process. Using this token, the attacker was able to use the trusted-publisher binding to publish malicious packages directly to the npm registry. The malicious script, router_init.js, was designed to harvest a wide array of credentials, including AWS IMDS, GCP metadata, Kubernetes service-account tokens, Vault tokens, and SSH private keys. These credentials were exfiltrated using the Session/Oxen messenger file-upload network. The attack was detected within 20 minutes by an external researcher, leading to the deprecation of all affected packages and the purging of poisoned cache entries. While no npm credentials were stolen, the developers recommend that any host that ran an affected version during the window of compromise be treated as compromised, necessitating a rotation of all reachable credentials."
+        ],
+        "main_topic": "A supply-chain attack targeted 42 TanStack npm packages by exploiting GitHub Actions cache poisoning and OIDC token extraction via the pull_request_target pattern.",
+        "technologies": [
+          "npm",
+          "GitHub Actions",
+          "TanStack",
+          "pnpm",
+          "AWS",
+          "GCP",
+          "Kubernetes",
+          "Vault",
+          "OIDC",
+          "Vite",
+          "SSH",
+          "Oxen messenger"
+        ]
+      },
+      {
+        "title": "Giving Claude Code Full Control of a Hardware Fault Injection Setup to Bypass Secure Boot",
+        "slug": "giving-claude-code-full-control-of-a-hardware-fault-injection-setup-to-bypass-secure-boot",
+        "url": "https://raelize.com/blog/ai-fi-giving-claude-code-glitch-skills-for-bypassing-secure-boot/",
+        "source": "Reddit r/netsec",
+        "published": "2026-05-11T08:00:07Z",
+        "short_summary": "Researchers demonstrated a successful hardware Fault Injection attack where an AI agent, Claude Code, was given control over hardware tools to bypass Secure Boot on an ESP32. This represents a significant milestone in the use of agentic AI for automating complex hardware exploitation workflows.",
+        "long_resume": "The article describes a highly experimental and successful demonstration of an AI-driven hardware attack. Using Claude Code, the researchers were able to reproduce a known Fault Injection attack targeting the Secure Boot V1 feature of the Espressable ESP32 SoC. The AI agent was granted full control over the hardware environment, which included a ChipWhisperer Husky for glitch injection, a Riden RK6006 programmable power supply, and a PicoScope for signal monitoring. Notably, the researchers did not write any of the attack software; instead, they provided the AI with the necessary hardware connections and access to various Python libraries, leaving the AI to write the attack scripts, configure the hardware registers, and manage the glitching campaign autonomously. The AI even created its own monitoring dashboard and a wiki to track its learning progress. While the specific vulnerability in the ESP32 V1 has been addressed in newer revisions, the core significance of this research lies in the methodology. It proves that agentic AI is capable of handling the high-complexity, iterative, and hardware-dependent tasks required for fault injection attacks, suggesting a new frontier for automated hardware vulnerability research and exploitation.",
+        "long_resume_paragraphs": [
+          "The article describes a highly experimental and successful demonstration of an AI-driven hardware attack. Using Claude Code, the researchers were able to reproduce a known Fault Injection attack targeting the Secure Boot V1 feature of the Espressable ESP32 SoC. The AI agent was granted full control over the hardware environment, which included a ChipWhisperer Husky for glitch injection, a Riden RK6006 programmable power supply, and a PicoScope for signal monitoring. Notably, the researchers did not write any of the attack software; instead, they provided the AI with the necessary hardware connections and access to various Python libraries, leaving the AI to write the attack scripts, configure the hardware registers, and manage the glitching campaign autonomously. The AI even created its own monitoring dashboard and a wiki to track its learning progress. While the specific vulnerability in the ESP32 V1 has been addressed in newer revisions, the core significance of this research lies in the methodology. It proves that agentic AI is capable of handling the high-complexity, iterative, and hardware-dependent tasks required for fault injection attacks, suggesting a new frontier for automated hardware vulnerability research and exploitation."
+        ],
+        "main_topic": "The article documents the first publicly-documented AI-driven Fault Injection attack, where Claude Code was used to autonomously bypass Secure Boot on an Espressif ESP32 SoC.",
+        "technologies": [
+          "Claude Code",
+          "Espressif ESP32",
+          "ChipWhisperer Husky",
+          "Riden RK6006",
+          "PicoScope",
+          "Python",
+          "Ubuntu 26.04 LTS",
+          "chipwhisperer library",
+          "picosdk",
+          "pyserial",
+          "RK6006-Python-Module",
+          "TAoFI Target"
+        ]
+      },
+      {
+        "title": "Hackers Used AI to Develop First Known Zero-Day 2FA Bypass for Mass Exploitation",
+        "slug": "hackers-used-ai-to-develop-first-known-zero-day-2fa-bypass-for-mass-exploitation",
+        "url": "https://thehackernews.com/2026/05/hackers-used-ai-to-develop-first-known.html?m=1",
+        "source": "Reddit r/cybersecurity",
+        "published": "2026-05-11T15:47:23Z",
+        "short_summary": "Google has uncovered a new threat involving a zero-day 2FA bypass exploit likely created using AI-generated Python code. Additionally, the report highlights PromptSpy, an Android malware that leverages Gemini AI to perform autonomous malicious actions on mobile devices.",
+        "long_resume": "Google's Threat Intelligence Group (GTIG) has reported a significant milestone in cyber warfare: the first known use of artificial intelligence to develop a zero-day exploit for mass exploitation. The attack involves a Python script designed to bypass two-factor authentication (2FA) on a popular open-source, web-based system administration tool. The script exhibits clear indicators of being generated by a Large Language Model (LLM), such as highly structured 'Pythonic' formatting, excessive educational docstrings, and a hallucinated CVSS score. The vulnerability itself stems from a semantic logic flaw involving a hard-coded trust assumption, a type of error that LLMs are particularly adept at identifying. Beyond this specific exploit, the report details the emergence of 'PromptSpy,' a sophisticated Android malware. PromptSpy utilizes Google's Gemini AI to analyze the device's screen and autonomously navigate the user interface to perform malicious tasks. The malware is capable of capturing biometric data to replay authentication gestures and employs an 'AppProtectionDetector' module to prevent uninstallation by overlaying an invisible layer over the 'Uninstall' button. The malware's infrastructure is highly resilient, allowing attackers to dynamically update command-and-control (C2) components, including Gemini API keys and VNC relay servers, via its C2 channel to maintain presence even if specific endpoints are blocked.",
+        "long_resume_paragraphs": [
+          "Google's Threat Intelligence Group (GTIG) has reported a significant milestone in cyber warfare: the first known use of artificial intelligence to develop a zero-day exploit for mass exploitation. The attack involves a Python script designed to bypass two-factor authentication (2FA) on a popular open-source, web-based system administration tool. The script exhibits clear indicators of being generated by a Large Language Model (LLM), such as highly structured 'Pythonic' formatting, excessive educational docstrings, and a hallucinated CVSS score. The vulnerability itself stems from a semantic logic flaw involving a hard-coded trust assumption, a type of error that LLMs are particularly adept at identifying. Beyond this specific exploit, the report details the emergence of 'PromptSpy,' a sophisticated Android malware. PromptSpy utilizes Google's Gemini AI to analyze the device's screen and autonomously navigate the user interface to perform malicious tasks. The malware is capable of capturing biometric data to replay authentication gestures and employs an 'AppProtectionDetector' module to prevent uninstallation by overlaying an invisible layer over the 'Uninstall' button. The malware's infrastructure is highly resilient, allowing attackers to dynamically update command-and-control (C2) components, including Gemini API keys and VNC relay servers, via its C2 channel to maintain presence even if specific endpoints are blocked."
+        ],
+        "main_topic": "Google has identified the first known instance of AI-assisted zero-day exploit development used for a mass 2FA bypass campaign and the emergence of AI-driven Android malware.",
+        "technologies": [
+          "AI",
+          "LLM",
+          "Python",
+          "Gemini AI",
+          "Android",
+          "2FA",
+          "VNC",
+          "PromptSpy"
+        ]
+      },
+      {
+        "title": "Dead.Letter (CVE-2026-45185) How XBOW found an unauthenticated RCE on Exim",
+        "slug": "deadletter-cve-2026-45185-how-xbow-found-an-unauthenticated-rce-on-exim",
+        "url": "https://xbow.com/blog/dead-letter-cve-2026-45185-xbow-found-rce-exim",
+        "source": "Reddit r/netsec",
+        "published": "2026-05-12T17:41:33Z",
+        "short_summary": "Researchers have identified a critical unauthenticated remote code execution vulnerability in the Exim mail server, tracked as CVE-2026-45185. The bug stems from a use-after-free condition during TLS shutdown when GnuTLS is employed.",
+        "long_resume": "The article details the discovery of CVE-2026-45185, a high-impact unauthenticated remote code execution vulnerability found in the Exim mail server. The vulnerability is a use-after-free bug that occurs during the TLS shutdown process when Exim is configured with the GnuTLS library, which is the default on many Debian-based distributions like Ubuntu. Specifically, the researchers found that during TLS shutdown, Exim frees its TLS transfer buffer, yet a nested BDAT receive wrapper can still process incoming bytes and trigger an ungetc() call. This action writes a single newline character into the previously freed memory region, resulting in the corruption of the allocator's internal metadata. Although the initial write primitive is limited to a single byte, the authors demonstrate how this corruption can be leveraged to gain full remote code execution. A significant aspect of this vulnerability is that it requires almost no special configuration on the target server to be successfully triggered. The discovery was made using XBOW, a tool designed for finding vulnerabilities in native code, and the report also reflects on the paradigm shift brought about by the integration of large language models into the exploit development and vulnerability research workflows.",
+        "long_resume_paragraphs": [
+          "The article details the discovery of CVE-2026-45185, a high-impact unauthenticated remote code execution vulnerability found in the Exim mail server. The vulnerability is a use-after-free bug that occurs during the TLS shutdown process when Exim is configured with the GnuTLS library, which is the default on many Debian-based distributions like Ubuntu. Specifically, the researchers found that during TLS shutdown, Exim frees its TLS transfer buffer, yet a nested BDAT receive wrapper can still process incoming bytes and trigger an ungetc() call. This action writes a single newline character into the previously freed memory region, resulting in the corruption of the allocator's internal metadata. Although the initial write primitive is limited to a single byte, the authors demonstrate how this corruption can be leveraged to gain full remote code execution. A significant aspect of this vulnerability is that it requires almost no special configuration on the target server to be successfully triggered. The discovery was made using XBOW, a tool designed for finding vulnerabilities in native code, and the report also reflects on the paradigm shift brought about by the integration of large language models into the exploit development and vulnerability research workflows."
+        ],
+        "main_topic": "The technical discovery and analysis of CVE-2026-45185, an unauthenticated remote code execution vulnerability in the Exim mail server.",
+        "technologies": [
+          "Exim",
+          "GnuTLS",
+          "SMTP",
+          "TLS",
+          "BDAT",
+          "XBOW",
+          "LLM",
+          "Debian",
+          "Ubuntu"
+        ]
+      },
+      {
+        "title": "Microsoft France's legal affairs director told the French Senate, under oath, that he can't guarantee European \"sovereign cloud\" data stays out of US reach",
+        "slug": "microsoft-frances-legal-affairs-director-told-the-french-senate-under-oath-that-he-cant-guarantee-european-sovereign-cloud-data-stays-out-of-us-reach",
+        "url": "https://thevisibleinvisible.substack.com/p/the-stolen-word",
+        "source": "Reddit r/cybersecurity",
+        "published": "2026-05-13T06:26:25Z",
+        "short_summary": "The text argues that European digital sovereignty is being hollowed out by the legal reach of the US CLOUD Act and the aggressive lobbying of American hyperscalers. It details how strategic acquisitions and legislative influence are bringing essential European infrastructure under US jurisdiction.",
+        "long_resume": "The article provides a detailed critique of the loss of digital sovereignty in Europe, focusing on how US-based hyperscalers like Microsoft, Amazon, and Google have effectively neutralized European attempts at technological independence. A primary mechanism of this erosion is the US CLOUD Act, which allows US authorities to compel American companies to provide data regardless of where the physical servers are located, making 'sovereign' cloud promises legally hollow. The author traces the failure of European initiatives like Gaia-X to the successful lobbying and structural integration of American companies into the very frameworks meant to compete with them. Beyond infrastructure, the piece highlights the influence of Big Tech on EU policy, specifically citing the Digital Omnibus as a product of intense corporate lobbying that mirrors the positions of US tech giants. The most acute risk is presented through the lens of strategic acquisitions, such as Kyndryl's move to acquire Solvinity, a provider for the Dutch national identity system, DigiD. Such moves place the authentication layers of European states within the legal reach of the United States. Through a combination of legal frameworks, marketing rebranding, and economic pressure, the article concludes that the concept of European digital sovereignty is being systematically dismantled.",
+        "long_resume_paragraphs": [
+          "The article provides a detailed critique of the loss of digital sovereignty in Europe, focusing on how US-based hyperscalers like Microsoft, Amazon, and Google have effectively neutralized European attempts at technological independence. A primary mechanism of this erosion is the US CLOUD Act, which allows US authorities to compel American companies to provide data regardless of where the physical servers are located, making 'sovereign' cloud promises legally hollow. The author traces the failure of European initiatives like Gaia-X to the successful lobbying and structural integration of American companies into the very frameworks meant to compete with them. Beyond infrastructure, the piece highlights the influence of Big Tech on EU policy, specifically citing the Digital Omnibus as a product of intense corporate lobbying that mirrors the positions of US tech giants. The most acute risk is presented through the lens of strategic acquisitions, such as Kyndryl's move to acquire Solvinity, a provider for the Dutch national identity system, DigiD. Such moves place the authentication layers of European states within the legal reach of the United States. Through a combination of legal frameworks, marketing rebranding, and economic pressure, the article concludes that the concept of European digital sovereignty is being systematically dismantled."
+        ],
+        "main_topic": "The article explores the systematic erosion of European digital sovereignty through the legal, economic, and lobbying influence of major US cloud providers.",
+        "technologies": [
+          "Microsoft",
+          "Amazon",
+          "Google",
+          "Microsoft Cloud",
+          "Google Cloud",
+          "Gaia-X",
+          "Nextcloud",
+          "S3NS",
+          "Kyndryl",
+          "Solvinity",
+          "DigiD",
+          "GDPR",
+          "AI Act",
+          "Digital Markets Act",
+          "Digital Services Act"
+        ]
+      }
+    ],
+    "source_mtime": 1778767828.536221,
+    "model_releases": [
+      {
+        "provider": "OpenAI",
+        "model_name": "Codex (Windows Sandbox)",
+        "slug": "codex-windows-sandbox",
+        "release_date": "2026-05-13",
+        "summary": "OpenAI has introduced a new engineering initiative to enable Codex within a safe, effective sandbox environment on Windows. This development focuses on improving the security and usability of code generation models on desktop operating systems.",
+        "key_features": [
+          "Windows sandbox integration",
+          "Enhanced execution safety for Codex"
+        ],
+        "url": "https://openai.com/news/",
+        "netlify_url": "",
+        "altervista_url": ""
+      },
+      {
+        "provider": "Google DeepMind",
+        "model_name": "Google Finance AI",
+        "slug": "google-finance-ai",
+        "release_date": "2026-05-11",
+        "summary": "Google is expanding its AI-powered Google Finance experience to users across Europe. The update includes full local language support and a reimagined interface designed to provide powerful financial insights.",
+        "key_features": [
+          "Expansion to European markets",
+          "Full local language support",
+          "Reimagined AI-powered user experience"
+        ],
+        "url": "https://blog.google/products-and-platforms/products/search/ai-powered-google-finance-in-europe/",
+        "netlify_url": "",
+        "altervista_url": ""
+      }
+    ],
+    "model_releases_mtime": 1778764079.516328
+  },
+  {
     "week": 19,
     "year": 2026,
     "label": "Week 19 · 2026",
@@ -463,7 +960,7 @@
           "Vault credential background refresh for mcp_oauth"
         ],
         "url": "https://docs.anthropic.com/en/release-notes/overview",
-        "netlify_url": "https://bowofdata.netlify.app/week/19_2026.html#claude-managed-agents-feature-update",
+        "netlify_url": "https://bowlofdata.netlify.app/week/19_2026.html#claude-managed-agents-feature-update",
         "altervista_url": "https://bowlofdata.altervista.org/newsletter/newsletter-week-19-2026#claude-managed-agents-feature-update"
       },
       {
@@ -479,7 +976,7 @@
           "General availability"
         ],
         "url": "https://ai.google.dev/gemini-api/docs/changelog",
-        "netlify_url": "https://bowofdata.netlify.app/week/19_2026.html#gemini-31-flash-lite",
+        "netlify_url": "https://bowlofdata.netlify.app/week/19_2026.html#gemini-31-flash-lite",
         "altervista_url": "https://bowlofdata.altervista.org/newsletter/newsletter-week-19-2026#gemini-31-flash-lite"
       },
       {
@@ -495,7 +992,7 @@
           "Mouse and keyboard control"
         ],
         "url": "https://aws.amazon.com/blogs/machine-learning/",
-        "netlify_url": "https://bowofdata.netlify.app/week/19_2026.html#amazon-bedrock-agentcore-browser-os-level-actions",
+        "netlify_url": "https://bowlofdata.netlify.app/week/19_2026.html#amazon-bedrock-agentcore-browser-os-level-actions",
         "altervista_url": "https://bowlofdata.altervista.org/newsletter/newsletter-week-19-2026#amazon-bedrock-agentcore-browser-os-level-actions"
       },
       {
@@ -510,7 +1007,7 @@
           "Improved trusted access protocols"
         ],
         "url": "https://openai.com/news/",
-        "netlify_url": "https://bowofdata.netlify.app/week/19_2026.html#gpt-55-and-gpt-55-cyber",
+        "netlify_url": "https://bowlofdata.netlify.app/week/19_2026.html#gpt-55-and-gpt-55-cyber",
         "altervista_url": "https://bowlofdata.altervista.org/newsletter/newsletter-week-19-2026#gpt-55-and-gpt-55-cyber"
       },
       {
@@ -525,7 +1022,7 @@
           "Enhanced conversational depth"
         ],
         "url": "https://openai.com/news/",
-        "netlify_url": "https://bowofdata.netlify.app/week/19_2026.html#new-voice-intelligence-models",
+        "netlify_url": "https://bowlofdata.netlify.app/week/19_2026.html#new-voice-intelligence-models",
         "altervista_url": "https://bowlofdata.altervista.org/newsletter/newsletter-week-19-2026#new-voice-intelligence-models"
       },
       {
@@ -541,7 +1038,7 @@
           "Optimized for low-latency performance"
         ],
         "url": "https://openai.com/news/",
-        "netlify_url": "https://bowofdata.netlify.app/week/19_2026.html#gpt-55-instant",
+        "netlify_url": "https://bowlofdata.netlify.app/week/19_2026.html#gpt-55-instant",
         "altervista_url": "https://bowlofdata.altervista.org/newsletter/newsletter-week-19-2026#gpt-55-instant"
       },
       {
@@ -556,7 +1053,7 @@
           "Better creative control"
         ],
         "url": "https://x.ai/news",
-        "netlify_url": "https://bowofdata.netlify.app/week/19_2026.html#grok-imagine-quality-mode-api",
+        "netlify_url": "https://bowlofdata.netlify.app/week/19_2026.html#grok-imagine-quality-mode-api",
         "altervista_url": "https://bowlofdata.altervista.org/newsletter/newsletter-week-19-2026#grok-imagine-quality-mode-api"
       },
       {
@@ -573,7 +1070,7 @@
           "Advanced document and website processing"
         ],
         "url": "https://kimi.moonshot.cn/",
-        "netlify_url": "https://bowofdata.netlify.app/week/19_2026.html#kimi-ai-k26",
+        "netlify_url": "https://bowlofdata.netlify.app/week/19_2026.html#kimi-ai-k26",
         "altervista_url": "https://bowlofdata.altervista.org/newsletter/newsletter-week-19-2026#kimi-ai-k26"
       }
     ],

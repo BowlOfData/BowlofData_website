@@ -2,20 +2,42 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Bowl of Data</title>
-    <link>https://bowofdata.netlify.app/</link>
+    <link>https://bowlofdata.netlify.app/</link>
     <description>A weekly digest of the most relevant tech stories</description>
     <language>en-us</language>
-    <atom:link href="https://bowofdata.netlify.app/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 08 May 2026 12:39:40 +0000</lastBuildDate>
+    <atom:link href="https://bowlofdata.netlify.app/feed.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>Thu, 14 May 2026 14:10:28 +0000</lastBuildDate>
     <image>
-      <url>https://bowofdata.netlify.app/imgs/logo.png</url>
+      <url>https://bowlofdata.netlify.app/imgs/logo.png</url>
       <title>Bowl of Data</title>
-      <link>https://bowofdata.netlify.app/</link>
+      <link>https://bowlofdata.netlify.app/</link>
     </image>
     <item>
+      <title>Week 20 · 2026 · Bowl of Data</title>
+      <link>https://bowlofdata.netlify.app/week/20_2026.html</link>
+      <guid isPermaLink="true">https://bowlofdata.netlify.app/week/20_2026.html</guid>
+      <pubDate>Thu, 14 May 2026 14:10:28 +0000</pubDate>
+      <description><![CDATA[<p><strong>Week 20 · 2026</strong> — 13 articles</p>
+<ul>
+  <li><a href="https://tanstack.com/blog/npm-supply-chain-compromise-postmortem">Postmortem: TanStack npm supply-chain compromise</a>: An attacker successfully compromised 42 TanStack npm packages by chaining GitHub Actions cache poisoning with OIDC token extraction. The breach allowed for the unauthorized publication of malicious versions that could exfiltrate sensitive cloud and infrastructure credentials.</li>
+  <li><a href="https://raelize.com/blog/ai-fi-giving-claude-code-glitch-skills-for-bypassing-secure-boot/">Giving Claude Code Full Control of a Hardware Fault Injection Setup to Bypass Secure Boot</a>: Researchers demonstrated a successful hardware Fault Injection attack where an AI agent, Claude Code, was given control over hardware tools to bypass Secure Boot on an ESP32. This represents a significant milestone in the use of agentic AI for automating complex hardware exploitation workflows.</li>
+  <li><a href="https://thehackernews.com/2026/05/hackers-used-ai-to-develop-first-known.html?m=1">Hackers Used AI to Develop First Known Zero-Day 2FA Bypass for Mass Exploitation</a>: Google has uncovered a new threat involving a zero-day 2FA bypass exploit likely created using AI-generated Python code. Additionally, the report highlights PromptSpy, an Android malware that leverages Gemini AI to perform autonomous malicious actions on mobile devices.</li>
+  <li><a href="https://xbow.com/blog/dead-letter-cve-2026-45185-xbow-found-rce-exim">Dead.Letter (CVE-2026-45185) How XBOW found an unauthenticated RCE on Exim</a>: Researchers have identified a critical unauthenticated remote code execution vulnerability in the Exim mail server, tracked as CVE-2026-45185. The bug stems from a use-after-free condition during TLS shutdown when GnuTLS is employed.</li>
+  <li><a href="https://thevisibleinvisible.substack.com/p/the-stolen-word">Microsoft France's legal affairs director told the French Senate, under oath, that he can't guarantee European &quot;sovereign cloud&quot; data stays out of US reach</a>: The text argues that European digital sovereignty is being hollowed out by the legal reach of the US CLOUD Act and the aggressive lobbying of American hyperscalers. It details how strategic acquisitions and legislative influence are bringing essential European infrastructure under US jurisdiction.</li>
+  <li><a href="https://bleepingcomputer.com/news/security/official-checkmarx-jenkins-package-compromised-with-infostealer">Official CheckMarx Jenkins package compromised with infostealer</a>: The TeamPCP hacker group has compromised the Checkmarx Jenkins AST plugin by leveraging credentials stolen from a previous Trivy scanner breach. This supply-chain attack allows for the delivery of credential-stealing malware to developer environments.</li>
+  <li><a href="https://techradar.com/pro/gartner-genai-has-broken-traditional-cybersecurity-awareness-what-comes-next">Gartner: GenAI has broken traditional cybersecurity awareness – what comes next?</a>: The rapid adoption of Generative AI is expanding the human risk surface through shadow AI and advanced, AI-augmented external attacks. To mitigate these evolving threats, cybersecurity leaders must move beyond traditional awareness training toward behavior-driven security culture programs.</li>
+  <li><a href="https://dailycryptobriefs.com/news/blackrock-picks-ethereum-tokenized-funds">$14 Trillion BlackRock Picks Ethereum for Tokenized Funds</a>: BlackRock has updated its filings to include Ethereum-based ERC-20 tokens for its tokenized money-market fund shares. This initiative aims to provide liquid, on-chain reserve assets for stablecoin issuers and institutional investors.</li>
+  <li><a href="https://blog.ethereum.org/2026/05/11/protocol-update-may-26">Protocol Cluster Updates: May 2026</a>: The Ethereum Protocol Cluster has reached several technical milestones for the upcoming Glamsterdam upgrade, including gas limit floors and ePBS stabilization. The update also details a leadership handover as several key contributors depart the Ethereum Foundation.</li>
+  <li><a href="https://coindesk.com/business/2026/05/11/i-don-t-think-that-s-crazy-here-is-why-circle-is-betting-on-new-usd3-billion-blockchain">'I don't think that's crazy': Here is why Circle is betting on new $3 billion blockchain</a>: Circle is launching the Arc blockchain to transition from a stablecoin issuer to a broader financial infrastructure provider. The project's $3 billion valuation reflects significant interest from major institutional investors like BlackRock and a16z.</li>
+  <li><a href="https://coindesk.com/business/2026/05/12/dtcc-taps-chainlink-for-its-tokenized-collateral-platform-ahead-of-q4-launch">DTCC builds out blockchain-based collateral system with Chainlink integration</a>: DTCC has announced the use of Chainlink infrastructure to power its new blockchain-based collateral management platform. The system aims to modernize global risk management through real-time asset tokenization and automated settlement.</li>
+  <li><a href="https://coindesk.com/markets/2026/05/11/bitcoin-mining-pools-with-75-of-btc-hashrate-join-open-standard-for-block-construction">Bitcoin mining pools with 75% of BTC hashrate join open standard for block construction</a>: Seven of the world's largest Bitcoin mining pools have officially joined the Stratum V2 working group. This move allows individual miners to control block template construction, reducing the power of pool operators to decide transaction selection.</li>
+  <li><a href="https://bitcoinmagazine.com/news/square-crosses-1-million-bitcoin-merchants">Square Crosses 1 Million Bitcoin-Enabled Merchants As Real-World Adoption Continues To Grow</a>: Square has surpassed one million merchants capable of accepting Bitcoin via its automated enrollment process. The company is also expanding its Bitcoin ecosystem through NFC tap-to-pay features and enhanced self-custody tools.</li>
+</ul>]]></description>
+    </item>
+    <item>
       <title>Week 19 · 2026 · Bowl of Data</title>
-      <link>https://bowofdata.netlify.app/week/19_2026.html</link>
-      <guid isPermaLink="true">https://bowofdata.netlify.app/week/19_2026.html</guid>
+      <link>https://bowlofdata.netlify.app/week/19_2026.html</link>
+      <guid isPermaLink="true">https://bowlofdata.netlify.app/week/19_2026.html</guid>
       <pubDate>Fri, 08 May 2026 12:39:40 +0000</pubDate>
       <description><![CDATA[<p><strong>Week 19 · 2026</strong> — 13 articles</p>
 <ul>
