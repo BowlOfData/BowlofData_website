@@ -462,7 +462,7 @@
         ]
       }
     ],
-    "source_mtime": 1778767828.536221,
+    "source_mtime": 1778781316.4681144,
     "model_releases": [
       {
         "provider": "OpenAI",
@@ -475,8 +475,8 @@
           "Enhanced execution safety for Codex"
         ],
         "url": "https://openai.com/news/",
-        "netlify_url": "",
-        "altervista_url": ""
+        "netlify_url": "https://bowofdata.netlify.app/week/20_2026.html#codex-windows-sandbox",
+        "altervista_url": "https://bowlofdata.altervista.org/newsletter/newsletter-week-20-2026#codex-windows-sandbox"
       },
       {
         "provider": "Google DeepMind",
@@ -490,11 +490,11 @@
           "Reimagined AI-powered user experience"
         ],
         "url": "https://blog.google/products-and-platforms/products/search/ai-powered-google-finance-in-europe/",
-        "netlify_url": "",
-        "altervista_url": ""
+        "netlify_url": "https://bowofdata.netlify.app/week/20_2026.html#google-finance-ai",
+        "altervista_url": "https://bowlofdata.altervista.org/newsletter/newsletter-week-20-2026#google-finance-ai"
       }
     ],
-    "model_releases_mtime": 1778764079.516328
+    "model_releases_mtime": 1778781316.4692118
   },
   {
     "week": 19,

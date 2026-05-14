@@ -472,19 +472,18 @@
         
         <p class="article-topic">Uber&#39;s implementation of a centralized MCP gateway and registry to manage and secure the deployment of over 1,500 AI agents.</p>
         
-<!--
+
         
         <div class="tldr-box">
           <p class="tldr-label">TL;DR</p>
           <p class="tldr-text">Uber is managing the deployment of over 1,500 AI agents by implementing a centralized MCP gateway and registry. This infrastructure addresses critical challenges in security, tool discovery, and development standardization across their engineering organization.</p>
         </div>
         
--->
+
         
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
+        <div class="long-resume">
           
-          <p class="tldr-text">Uber&#39;s engineering organization, comprising over 5,000 engineers, has integrated AI into their monthly workflows, with more than 1,500 active agents performing over 60,000 executions per week. However, scaling this level of automation presented significant operational risks, most notably the potential for agents to cause rapid, large-scale accidental damage. The primary challenges identified by Uber&#39;s leadership, Meghana Somasundara and Rush Tehrani, were the lack of standardized development practices, which led to duplicated work across 10,000+ internal services; security concerns regarding unauthorized endpoint access and data exposure; and the difficulty of discovering reliable, high-performing MCP (Model Context Protocol) servers. To mitigate these issues, Uber developed a centralized MCP gateway and registry that acts as a control plane, allowing service owners to define and expose endpoints securely. This system ensures all changes pass through security scans and pull requests, providing necessary visibility into call patterns. Additionally, Uber introduced a no-code Agent Builder that allows engineers to pre-select tools and lock parameters, reducing the number of autonomous decisions an agent must make at runtime. This structured approach has proven successful, with their &#39;Minions&#39; coding agent generating approximately 1,800 code changes weekly. While the scale of Uber&#39;s infrastructure is extreme, the principles of centralized governance and standardized tool discovery are highly relevant to any organization scaling agentic workflows.</p>
+          <p>Uber&#39;s engineering organization, comprising over 5,000 engineers, has integrated AI into their monthly workflows, with more than 1,500 active agents performing over 60,000 executions per week. However, scaling this level of automation presented significant operational risks, most notably the potential for agents to cause rapid, large-scale accidental damage. The primary challenges identified by Uber&#39;s leadership, Meghana Somasundara and Rush Tehrani, were the lack of standardized development practices, which led to duplicated work across 10,000+ internal services; security concerns regarding unauthorized endpoint access and data exposure; and the difficulty of discovering reliable, high-performing MCP (Model Context Protocol) servers. To mitigate these issues, Uber developed a centralized MCP gateway and registry that acts as a control plane, allowing service owners to define and expose endpoints securely. This system ensures all changes pass through security scans and pull requests, providing necessary visibility into call patterns. Additionally, Uber introduced a no-code Agent Builder that allows engineers to pre-select tools and lock parameters, reducing the number of autonomous decisions an agent must make at runtime. This structured approach has proven successful, with their &#39;Minions&#39; coding agent generating approximately 1,800 code changes weekly. While the scale of Uber&#39;s infrastructure is extreme, the principles of centralized governance and standardized tool discovery are highly relevant to any organization scaling agentic workflows.</p>
           
         </div>
         
@@ -537,19 +536,18 @@
         
         <p class="article-topic">A security scan of 6,000 web applications revealed that 1,542 apps fail to verify Stripe webhook signatures, leaving them vulnerable to payment bypass attacks.</p>
         
-<!--
+
         
         <div class="tldr-box">
           <p class="tldr-label">TL;DR</p>
           <p class="tldr-text">A security scan discovered that 25% of 6,000 web applications fail to verify Stripe webhook signatures, allowing for unauthorized payment bypass. This flaw enables attackers to forge successful payment events and upgrade account statuses without actual charges.</p>
         </div>
         
--->
+
         
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
+        <div class="long-resume">
           
-          <p class="tldr-text">A security scan of roughly 6,000 web applications has uncovered a widespread vulnerability where 1,542 endpoints (about 25%) fail to implement Stripe webhook signature verification. By sending a forged &#39;checkout.session.completed&#39; event without a valid &#39;Stripe-Signature&#39; header, an attacker can potentially trick a SaaS application into upgrading a free account to a premium tier without any actual payment being processed. The research highlights that this pattern often occurs when developers leave security checks as a &#39;TODO&#39; item during initial integration or when using code generated by AI assistants. The scan identified vulnerabilities across a variety of hosting environments, including custom domains, Render, Vercel, Replit, and Heroku. While a 200 OK response does not definitively prove a successful exploit, the lack of signature verification constitutes a critical misconfiguration. The article concludes with a technical guide on how to properly implement the fix using official SDKs, specifically noting the importance of processing the raw request body to prevent signature mismatches in frameworks like Express.</p>
+          <p>A security scan of roughly 6,000 web applications has uncovered a widespread vulnerability where 1,542 endpoints (about 25%) fail to implement Stripe webhook signature verification. By sending a forged &#39;checkout.session.completed&#39; event without a valid &#39;Stripe-Signature&#39; header, an attacker can potentially trick a SaaS application into upgrading a free account to a premium tier without any actual payment being processed. The research highlights that this pattern often occurs when developers leave security checks as a &#39;TODO&#39; item during initial integration or when using code generated by AI assistants. The scan identified vulnerabilities across a variety of hosting environments, including custom domains, Render, Vercel, Replit, and Heroku. While a 200 OK response does not definitively prove a successful exploit, the lack of signature verification constitutes a critical misconfiguration. The article concludes with a technical guide on how to properly implement the fix using official SDKs, specifically noting the importance of processing the raw request body to prevent signature mismatches in frameworks like Express.</p>
           
         </div>
         
@@ -620,19 +618,18 @@
         
         <p class="article-topic">A critical unauthenticated memory leak vulnerability, CVE-2026-7482, has been discovered in the Ollama platform, allowing attackers to leak sensitive process memory.</p>
         
-<!--
+
         
         <div class="tldr-box">
           <p class="tldr-label">TL;DR</p>
           <p class="tldr-text">A critical vulnerability in Ollama allows unauthenticated attackers to trigger an out-of-bounds heap read via malicious GGUF files. This exploit can expose sensitive information like user messages and system prompts by leaking them into newly created model files.</p>
         </div>
         
--->
+
         
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
+        <div class="long-resume">
           
-          <p class="tldr-text">Researchers have identified a critical unauthenticated memory leak vulnerability in Ollama, tracked as CVE-2026-7482, with a CVSS score of 9.1. The vulnerability resides in the way Ollama handles the quantization of GGUF model files when using the &#39;/api/create&#39; endpoint. During the quantization process, Ollama converts tensors from their original format to F32 and then to a target format. This process relies on the Go &#39;unsafe&#39; package to perform low-level memory operations. An attacker can craft a malicious GGUF file where the tensor shape metadata is manipulated to report a much larger number of elements than actually exist in the buffer. Because the application does not validate the number of elements against the actual buffer size, the conversion loop performs an out-of-bounds heap read. This allows the attacker to read adjacent memory contents, which may include highly sensitive data such as user prompts, system instructions, and environment variables. The vulnerability is particularly dangerous because the leaked data is subsequently written into the new model file on the server&#39;s disk, effectively persisting the stolen information. With widespread adoption of Ollama for running large language models locally, this vulnerability potentially impacts hundreds of thousands of servers globally.</p>
+          <p>Researchers have identified a critical unauthenticated memory leak vulnerability in Ollama, tracked as CVE-2026-7482, with a CVSS score of 9.1. The vulnerability resides in the way Ollama handles the quantization of GGUF model files when using the &#39;/api/create&#39; endpoint. During the quantization process, Ollama converts tensors from their original format to F32 and then to a target format. This process relies on the Go &#39;unsafe&#39; package to perform low-level memory operations. An attacker can craft a malicious GGUF file where the tensor shape metadata is manipulated to report a much larger number of elements than actually exist in the buffer. Because the application does not validate the number of elements against the actual buffer size, the conversion loop performs an out-of-bounds heap read. This allows the attacker to read adjacent memory contents, which may include highly sensitive data such as user prompts, system instructions, and environment variables. The vulnerability is particularly dangerous because the leaked data is subsequently written into the new model file on the server&#39;s disk, effectively persisting the stolen information. With widespread adoption of Ollama for running large language models locally, this vulnerability potentially impacts hundreds of thousands of servers globally.</p>
           
         </div>
         
@@ -695,19 +692,18 @@
         
         <p class="article-topic">A security breach at DigiCert led to the unauthorized acquisition of initialization codes and the subsequent misissuance of 60 code signing certificates.</p>
         
-<!--
+
         
         <div class="tldr-box">
           <p class="tldr-label">TL;DR</p>
           <p class="tldr-text">Threat actors compromised DigiCert support endpoints by sending malicious attachments through a customer chat channel. This breach enabled the unauthorized retrieval of certificate initialization codes, resulting in the misissuance of 60 code signing certificates.</p>
         </div>
         
--->
+
         
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
+        <div class="long-resume">
           
-          <p class="tldr-text">In April 2026, DigiCert identified a security incident involving the compromise of two internal support analyst endpoints. The attack vector involved a threat actor engaging a support analyst via the Salesforce enhanced chat channel and delivering a malicious ZIP file disguised as a customer screenshot. While CrowdStrike successfully blocked several initial attempts on the first endpoint, a subsequent attempt successfully compromised a second endpoint that lacked CrowdStrike protection. Using the compromised endpoint, the threat actor accessed DigiCert&#39;s internal support portal. Specifically, they exploited a limited-functionality feature that allows analysts to view customer accounts from the customer&#39;s perspective. This access allowed the attacker to retrieve initialization codes for approved but pending EV Code Signing certificate orders. By combining these codes with the approved orders, the attacker was able to obtain valid certificates. DigiCert&#39;s investigation confirmed that 60 certificates were revoked as a result of this incident, 27 of which were directly linked to the attacker. Furthermore, some of these compromised certificates were used to sign the &#39;Zhong Stealer&#39; malware family. In response to the breach, DigiCert revoked all identified certificates within 24 hours of discovery, cancelled pending orders, and implemented enhanced security measures, including masking initialization codes in all proxied support sessions.</p>
+          <p>In April 2026, DigiCert identified a security incident involving the compromise of two internal support analyst endpoints. The attack vector involved a threat actor engaging a support analyst via the Salesforce enhanced chat channel and delivering a malicious ZIP file disguised as a customer screenshot. While CrowdStrike successfully blocked several initial attempts on the first endpoint, a subsequent attempt successfully compromised a second endpoint that lacked CrowdStrike protection. Using the compromised endpoint, the threat actor accessed DigiCert&#39;s internal support portal. Specifically, they exploited a limited-functionality feature that allows analysts to view customer accounts from the customer&#39;s perspective. This access allowed the attacker to retrieve initialization codes for approved but pending EV Code Signing certificate orders. By combining these codes with the approved orders, the attacker was able to obtain valid certificates. DigiCert&#39;s investigation confirmed that 60 certificates were revoked as a result of this incident, 27 of which were directly linked to the attacker. Furthermore, some of these compromised certificates were used to sign the &#39;Zhong Stealer&#39; malware family. In response to the breach, DigiCert revoked all identified certificates within 24 hours of discovery, cancelled pending orders, and implemented enhanced security measures, including masking initialization codes in all proxied support sessions.</p>
           
         </div>
         
@@ -762,19 +758,18 @@
         
         <p class="article-topic">A supply chain attack has been identified involving the compromise of DAEMON Tools software installers to deploy malicious payloads including information collectors and a sophisticated RAT.</p>
         
-<!--
+
         
         <div class="tldr-box">
           <p class="tldr-label">TL;DR</p>
           <p class="tldr-text">Attackers compromised legitimate DAEMON Tools installers to distribute trojanized, digitally signed binaries that execute malicious code upon system startup. The campaign utilizes an initial information collector to profile victims before deploying advanced payloads like the QUIC RAT for targeted exploitation.</p>
         </div>
         
--->
+
         
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
+        <div class="long-resume">
           
-          <p class="tldr-text">In early May 2026, researchers identified a significant supply chain attack targeting DAEMON Tools software. The attack involves trojanized versions of the software (ranging from 12.5.0.2421 to 12.5.0.2434) where legitimate binaries such as DTHelper.exe, DiscSoftBusServiceLite.exe, and DTShellHlp.exe have been modified to include a backdoor. Because these files are digitally signed by the developer, AVB Disc Soft, the compromise is highly effective. The attack mechanism begins when these binaries launch at system startup, initiating communication with a typosquatted C2 domain. The campaign follows a highly structured, targeted methodology. Initially, an information collector named envchk.exe is deployed to a wide range of machines globally to gather system metadata, including MAC addresses, hostnames, running processes, and installed software. This data is used to profile targets, allowing the attackers to transition from broad infection attempts to highly specific secondary attacks against organizations in the government, manufacturing, and scientific sectors. The secondary stage payloads include a minimalistic shellcode loader that utilizes RC4 decryption to execute payloads in memory, and a more advanced C++ implant known as QUIC RAT. This RAT is particularly sophisticated, supporting a wide array of C2 protocols including HTTP, UDP, TCP, WSS, QUIC, DNS, and HTTP/3, and is capable of injecting payloads into legitimate processes like notepad.exe. While artifacts within the payloads suggest a Chinese-speaking threat actor, definitive attribution remains ongoing.</p>
+          <p>In early May 2026, researchers identified a significant supply chain attack targeting DAEMON Tools software. The attack involves trojanized versions of the software (ranging from 12.5.0.2421 to 12.5.0.2434) where legitimate binaries such as DTHelper.exe, DiscSoftBusServiceLite.exe, and DTShellHlp.exe have been modified to include a backdoor. Because these files are digitally signed by the developer, AVB Disc Soft, the compromise is highly effective. The attack mechanism begins when these binaries launch at system startup, initiating communication with a typosquatted C2 domain. The campaign follows a highly structured, targeted methodology. Initially, an information collector named envchk.exe is deployed to a wide range of machines globally to gather system metadata, including MAC addresses, hostnames, running processes, and installed software. This data is used to profile targets, allowing the attackers to transition from broad infection attempts to highly specific secondary attacks against organizations in the government, manufacturing, and scientific sectors. The secondary stage payloads include a minimalistic shellcode loader that utilizes RC4 decryption to execute payloads in memory, and a more advanced C++ implant known as QUIC RAT. This RAT is particularly sophisticated, supporting a wide array of C2 protocols including HTTP, UDP, TCP, WSS, QUIC, DNS, and HTTP/3, and is capable of injecting payloads into legitimate processes like notepad.exe. While artifacts within the payloads suggest a Chinese-speaking threat actor, definitive attribution remains ongoing.</p>
           
         </div>
         
@@ -833,19 +828,18 @@
         
         <p class="article-topic">The &#39;CopyFail&#39; Linux kernel vulnerability (CVE-2026-31431) is being actively exploited to achieve root-level privilege escalation.</p>
         
-<!--
+
         
         <div class="tldr-box">
           <p class="tldr-label">TL;DR</p>
           <p class="tldr-text">A critical Linux kernel flaw known as &#39;CopyFail&#39; is currently being exploited by attackers to gain full root access to vulnerable systems. The vulnerability affects a wide range of Linux distributions and requires only a local foothold to execute.</p>
         </div>
         
--->
+
         
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
+        <div class="long-resume">
           
-          <p class="tldr-text">The &#39;CopyFail&#39; vulnerability, tracked as CVE-2026-31431, has emerged as a significant threat to Linux-based infrastructure. Discovered by the cybersecurity consultancy Theori via their Xint AI-powered platform, the flaw resides in the way the Linux kernel handles certain cryptographic operations. This design flaw allows attackers to manipulate cached data, enabling a local user to escalate their privileges to full root control. The exploit is particularly dangerous due to its high level of reliability; a single Python-based proof-of-concept works unmodified across several major distributions, including Ubuntu 24.04 LTS, Amazon Linux 2023, RHEL 10.1, and SUSE 16. Furthermore, the vulnerability is applicable to nearly any mainstream Linux kernel released since 2017. The exploitation of this flaw is already being observed in the wild, prompting CISA to add it to its Known Exploited Vulnerabilities catalog and set a strict patching deadline of May 15 for federal agencies. Microsoft has also reported seeing preliminary testing and exploitation activity through Microsoft Defender. Because the attack requires no user interaction and only a local foothold, it poses a high risk of turning minor system compromises into full-scale administrative takeovers.</p>
+          <p>The &#39;CopyFail&#39; vulnerability, tracked as CVE-2026-31431, has emerged as a significant threat to Linux-based infrastructure. Discovered by the cybersecurity consultancy Theori via their Xint AI-powered platform, the flaw resides in the way the Linux kernel handles certain cryptographic operations. This design flaw allows attackers to manipulate cached data, enabling a local user to escalate their privileges to full root control. The exploit is particularly dangerous due to its high level of reliability; a single Python-based proof-of-concept works unmodified across several major distributions, including Ubuntu 24.04 LTS, Amazon Linux 2023, RHEL 10.1, and SUSE 16. Furthermore, the vulnerability is applicable to nearly any mainstream Linux kernel released since 2017. The exploitation of this flaw is already being observed in the wild, prompting CISA to add it to its Known Exploited Vulnerabilities catalog and set a strict patching deadline of May 15 for federal agencies. Microsoft has also reported seeing preliminary testing and exploitation activity through Microsoft Defender. Because the attack requires no user interaction and only a local foothold, it poses a high risk of turning minor system compromises into full-scale administrative takeovers.</p>
           
         </div>
         
@@ -902,19 +896,18 @@
         
         <p class="article-topic">A critical zero-day vulnerability, CVE-2026-0300, is currently being exploited in Palo Alto Networks&#39; PAN-OS User-ID Authentication Portal.</p>
         
-<!--
+
         
         <div class="tldr-box">
           <p class="tldr-label">TL;DR</p>
           <p class="tldr-text">A critical buffer overflow vulnerability in Palo Alto Networks&#39; PAN-OS is under active exploitation, allowing for unauthenticated root access. Organizations are advised to restrict access to the User-ID Authentication Portal to trusted networks until an emergency patch is released.</p>
         </div>
         
--->
+
         
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
+        <div class="long-resume">
           
-          <p class="tldr-text">The article details the emergence of CVE-2026-0300, a high-severity buffer overflow vulnerability within the User-ID Authentication Portal of Palo Alto Networks&#39; PAN-OS. This vulnerability enables unauthenticated attackers to execute arbitrary code with root-level privileges on both PA-Series and VM-Series firewalls, carrying a CVSS score of 9.3. Palo Alto Networks has confirmed that limited exploitation is currently underway, suggesting that sophisticated, state-sponsored actors may be targeting exposed authentication portals. The primary vector for exploitation is the exposure of the Authentication Portal to the public internet. To mitigate this risk in the absence of a patch, administrators must immediately audit their configurations and ensure that the portal is only accessible from trusted internal networks. This event is particularly concerning as it marks the third time in eighteen months that an internet-facing PAN-OS component has been hit by a zero-day attack. The author stresses that any internet-exposed component within the PAN-OS stack should be audited immediately, as these components have become a recurring target for attackers. An emergency patch from Palo Alto Networks is expected within the coming days.</p>
+          <p>The article details the emergence of CVE-2026-0300, a high-severity buffer overflow vulnerability within the User-ID Authentication Portal of Palo Alto Networks&#39; PAN-OS. This vulnerability enables unauthenticated attackers to execute arbitrary code with root-level privileges on both PA-Series and VM-Series firewalls, carrying a CVSS score of 9.3. Palo Alto Networks has confirmed that limited exploitation is currently underway, suggesting that sophisticated, state-sponsored actors may be targeting exposed authentication portals. The primary vector for exploitation is the exposure of the Authentication Portal to the public internet. To mitigate this risk in the absence of a patch, administrators must immediately audit their configurations and ensure that the portal is only accessible from trusted internal networks. This event is particularly concerning as it marks the third time in eighteen months that an internet-facing PAN-OS component has been hit by a zero-day attack. The author stresses that any internet-exposed component within the PAN-OS stack should be audited immediately, as these components have become a recurring target for attackers. An emergency patch from Palo Alto Networks is expected within the coming days.</p>
           
         </div>
         
@@ -965,19 +958,18 @@
         
         <p class="article-topic">A critical heap buffer overflow vulnerability, CVE-2026-32710, in MariaDB&#39;s JSON schema validation logic allows authenticated users to achieve remote code execution.</p>
         
-<!--
+
         
         <div class="tldr-box">
           <p class="tldr-label">TL;DR</p>
           <p class="tldr-text">A heap buffer overflow in MariaDB&#39;s JSON schema validation allows authenticated attackers to escalate privileges and execute arbitrary code. Users should upgrade to the patched versions 11.4.10 or 11.8.6 immediately.</p>
         </div>
         
--->
+
         
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
+        <div class="long-resume">
           
-          <p class="tldr-text">CVE-2026-32710 is a critical heap buffer overflow vulnerability identified in the MariaDB `JSON_SCHEMA_VALID()` function. The flaw resides in the `json_get_normalized_string()` function within `sql/json_schema_helper.cc`, where a 128-byte heap buffer is overwritten using `strncpy` without proper bounds checking when a JSON string exceeds the buffer size. This vulnerability is particularly dangerous because any authenticated user, including those with minimal privileges, can reach the vulnerable code path with a single SQL statement. The exploitation process is highly sophisticated, consisting of three distinct phases. First, the attacker uses the overflow to corrupt internal session metadata, effectively escalating their connection to superuser privileges. Second, the attacker achieves an address leak by reading `/proc/self/maps` via the `LOAD DATA INFILE` command, which allows them to bypass Address Space Layout Randomization (ASLR). Finally, the attacker triggers a second overflow to overwrite the global `plugin_dir` pointer, redirecting it to a controlled location like `/tmp`, where a malicious shared library can be loaded as a User-Defined Function (UDF) to execute arbitrary operating system commands. The vulnerability was discovered by Xint Code, an autonomous AI-powered security tool by Theori, and demonstrated at ZeroDay.Cloud 2025. To remediate this issue, administrators must upgrade to MariaDB 11.4.10 or 11.8.6. In environments where immediate patching is not possible, security teams should implement mitigations such as tightening network access to the database, rotating credentials, and auditing user privileges to reduce the potential blast radius.</p>
+          <p>CVE-2026-32710 is a critical heap buffer overflow vulnerability identified in the MariaDB `JSON_SCHEMA_VALID()` function. The flaw resides in the `json_get_normalized_string()` function within `sql/json_schema_helper.cc`, where a 128-byte heap buffer is overwritten using `strncpy` without proper bounds checking when a JSON string exceeds the buffer size. This vulnerability is particularly dangerous because any authenticated user, including those with minimal privileges, can reach the vulnerable code path with a single SQL statement. The exploitation process is highly sophisticated, consisting of three distinct phases. First, the attacker uses the overflow to corrupt internal session metadata, effectively escalating their connection to superuser privileges. Second, the attacker achieves an address leak by reading `/proc/self/maps` via the `LOAD DATA INFILE` command, which allows them to bypass Address Space Layout Randomization (ASLR). Finally, the attacker triggers a second overflow to overwrite the global `plugin_dir` pointer, redirecting it to a controlled location like `/tmp`, where a malicious shared library can be loaded as a User-Defined Function (UDF) to execute arbitrary operating system commands. The vulnerability was discovered by Xint Code, an autonomous AI-powered security tool by Theori, and demonstrated at ZeroDay.Cloud 2025. To remediate this issue, administrators must upgrade to MariaDB 11.4.10 or 11.8.6. In environments where immediate patching is not possible, security teams should implement mitigations such as tightening network access to the database, rotating credentials, and auditing user privileges to reduce the potential blast radius.</p>
           
         </div>
         
@@ -1028,19 +1020,18 @@
         
         <p class="article-topic">Anthropic&#39;s unprecedented 80x revenue growth in Q1 2026 has propelled its valuation to $1.2 trillion, positioning it ahead of OpenAI and signaling a potential shift in the broader stock market.</p>
         
-<!--
+
         
         <div class="tldr-box">
           <p class="tldr-label">TL;DR</p>
           <p class="tldr-text">Anthropic has reported a massive 80x surge in annualized revenue for Q1 2026, driving its market valuation to an estimated $1.2 trillion. To support this growth, the company has partnered with SpaceX to significantly expand its compute capacity using Nvidia GPUs.</p>
         </div>
         
--->
+
         
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
+        <div class="long-resume">
           
-          <p class="tldr-text">Anthropic is undergoing a period of extraordinary expansion, with CEO Dario Amodei revealing that the company&#39;s annualized revenue and usage grew 80-fold in the first quarter of 2026. This growth significantly outperformed the company&#39;s internal projections of 10x growth and has pushed its annualized revenue run rate past $30 billion. As a result, secondary market trading has placed Anthropic&#39;s implied valuation at approximately $1.2 trillion, making it more valuable than OpenAI in private markets. To address the immense demand for its Claude AI models and Claude Code tools, Anthropic has entered into a major partnership with SpaceX. This agreement grants the company access to the Colossus 1 data center in Memphis, providing over 300 megawatts of compute capacity and more than 220,000 Nvidia GPUs. This infrastructure expansion is critical to alleviating recent API limitations and improving performance for the company&#39;s enterprise and paid users. Looking toward the future, industry reports suggest an Anthropic IPO could occur as early as October 2026. However, this potential market entry has raised concerns among financial analysts; Bank of America has warned that such a massive AI-driven listing could redirect capital away from established &#39;Magnificent Seven&#39; stocks, potentially signaling the end of the current stock market bull run.</p>
+          <p>Anthropic is undergoing a period of extraordinary expansion, with CEO Dario Amodei revealing that the company&#39;s annualized revenue and usage grew 80-fold in the first quarter of 2026. This growth significantly outperformed the company&#39;s internal projections of 10x growth and has pushed its annualized revenue run rate past $30 billion. As a result, secondary market trading has placed Anthropic&#39;s implied valuation at approximately $1.2 trillion, making it more valuable than OpenAI in private markets. To address the immense demand for its Claude AI models and Claude Code tools, Anthropic has entered into a major partnership with SpaceX. This agreement grants the company access to the Colossus 1 data center in Memphis, providing over 300 megawatts of compute capacity and more than 220,000 Nvidia GPUs. This infrastructure expansion is critical to alleviating recent API limitations and improving performance for the company&#39;s enterprise and paid users. Looking toward the future, industry reports suggest an Anthropic IPO could occur as early as October 2026. However, this potential market entry has raised concerns among financial analysts; Bank of America has warned that such a massive AI-driven listing could redirect capital away from established &#39;Magnificent Seven&#39; stocks, potentially signaling the end of the current stock market bull run.</p>
           
         </div>
         
@@ -1093,19 +1084,18 @@
         
         <p class="article-topic">The public disclosure of Dirty Frag, a zero-day local privilege escalation vulnerability affecting all major Linux distributions.</p>
         
-<!--
+
         
         <div class="tldr-box">
           <p class="tldr-label">TL;DR</p>
           <p class="tldr-text">Hyunwoo Kim has announced Dirty Frag, a zero-day local privilege escalation vulnerability that enables root access on all major Linux distributions. The disclosure includes functional exploit code and a script to mitigate the threat by removing vulnerable modules.</p>
         </div>
         
--->
+
         
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
+        <div class="long-resume">
           
-          <p class="tldr-text">Security researcher Hyunwoo Kim has announced the discovery of &#39;Dirty Frag,&#39; a critical zero-day local privilege escalation (LPE) vulnerability that impacts all major Linux distributions. The vulnerability is highly significant as it allows for immediate root privilege escalation, a characteristic shared with the recently disclosed &#39;Copy Fail&#39; flaw. Due to a broken embargo, Kim has released the full technical documentation, the exploit code, and a script intended to remove vulnerable modules to the public. As of the report, no official patches or CVE identifiers have been issued for this vulnerability, leaving systems vulnerable to exploitation. While the circumstances surrounding the premature disclosure of the vulnerability remain unclear, the availability of functional exploit code necessitates urgent attention from Linux system administrators and maintainers.</p>
+          <p>Security researcher Hyunwoo Kim has announced the discovery of &#39;Dirty Frag,&#39; a critical zero-day local privilege escalation (LPE) vulnerability that impacts all major Linux distributions. The vulnerability is highly significant as it allows for immediate root privilege escalation, a characteristic shared with the recently disclosed &#39;Copy Fail&#39; flaw. Due to a broken embargo, Kim has released the full technical documentation, the exploit code, and a script intended to remove vulnerable modules to the public. As of the report, no official patches or CVE identifiers have been issued for this vulnerability, leaving systems vulnerable to exploitation. While the circumstances surrounding the premature disclosure of the vulnerability remain unclear, the availability of functional exploit code necessitates urgent attention from Linux system administrators and maintainers.</p>
           
         </div>
         
@@ -1150,19 +1140,18 @@
         
         <p class="article-topic">The article details a BitLocker bypass technique known as a downgrade attack that exploits the continued trust of legacy Secure Boot certificates.</p>
         
-<!--
+
         
         <div class="tldr-box">
           <p class="tldr-label">TL;DR</p>
           <p class="tldr-text">This article explains how a downgrade attack can bypass BitLocker encryption by leveraging unrevoked legacy certificates in the Secure Boot process. By loading a vulnerable boot manager, an attacker with physical access can gain access to a decrypted OS volume.</p>
         </div>
         
--->
+
         
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
+        <div class="long-resume">
           
-          <p class="tldr-text">The article explores a significant vulnerability in BitLocker security involving downgrade attacks. Although Microsoft released a patch in July 2025 to address vulnerabilities in the boot manager, the fundamental issue is that Secure Boot validates the signing certificate of a binary but does not check its specific version. Because the older PCA 2011 certificate has not been widely revoked due to the operational challenges it presents to Microsoft, attackers can still load older, vulnerable versions of the boot manager that are still considered valid by the system. The attack chain involves an attacker with physical access to a workstation who prepares a modified Boot Configuration Data (BCD) file and a System Deployment Image (SDI) containing a compromised WinRE image. When the machine boots using these modified files and an old boot manager, the TPM releases the BitLocker encryption keys because the PCR 7 and 11 measurements remain valid under the recognized PCA 2011 certificate. This allows the attacker to access a terminal with the OS volume already decrypted and mounted. To defend against this, the article emphasizes that enabling a BitLocker startup PIN is the most reliable protection. Furthermore, it recommends migrating the boot manager to the CA 2023 certificate and following Microsoft&#39;s guidance in KB5025885 to revoke the PCA 2011 certificate, which would enable Secure Version Number (SVN) tracking to prevent such downgrades.</p>
+          <p>The article explores a significant vulnerability in BitLocker security involving downgrade attacks. Although Microsoft released a patch in July 2025 to address vulnerabilities in the boot manager, the fundamental issue is that Secure Boot validates the signing certificate of a binary but does not check its specific version. Because the older PCA 2011 certificate has not been widely revoked due to the operational challenges it presents to Microsoft, attackers can still load older, vulnerable versions of the boot manager that are still considered valid by the system. The attack chain involves an attacker with physical access to a workstation who prepares a modified Boot Configuration Data (BCD) file and a System Deployment Image (SDI) containing a compromised WinRE image. When the machine boots using these modified files and an old boot manager, the TPM releases the BitLocker encryption keys because the PCR 7 and 11 measurements remain valid under the recognized PCA 2011 certificate. This allows the attacker to access a terminal with the OS volume already decrypted and mounted. To defend against this, the article emphasizes that enabling a BitLocker startup PIN is the most reliable protection. Furthermore, it recommends migrating the boot manager to the CA 2023 certificate and following Microsoft&#39;s guidance in KB5025885 to revoke the PCA 2011 certificate, which would enable Secure Version Number (SVN) tracking to prevent such downgrades.</p>
           
         </div>
         
@@ -1221,19 +1210,18 @@
         
         <p class="article-topic">Cloudflare is reducing its global workforce by over 1,100 employees to restructure its organization for the era of agentic AI.</p>
         
-<!--
+
         
         <div class="tldr-box">
           <p class="tldr-label">TL;DR</p>
           <p class="tldr-text">Cloudflare has announced a significant workforce reduction of over 1,100 employees to realign its organizational structure with the rise of agentic AI. The move is intended to leverage a massive surge in internal AI usage to drive future innovation and efficiency.</p>
         </div>
         
--->
+
         
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
+        <div class="long-resume">
           
-          <p class="tldr-text">Cloudflare has announced a major restructuring of its global workforce, involving the departure of more than 1,100 employees. According to a company-wide email from its leadership, this decision is not a standard cost-cutting measure but a strategic move to redefine how the company operates in the age of agentic AI. The company highlighted that its internal use of AI has grown by over 600% in just the last three months, with employees across all departments, including engineering, HR, and finance, utilizing thousands of AI agent sessions daily. To maintain its competitive edge and fulfill its mission of building a better internet, Cloudflare is reimagining its internal processes, teams, and roles to be more compatible with an AI-centric workflow. To support those affected, Cloudflare is offering substantial severance packages, including the equivalent of full base pay through the end of 2026, extended equity vesting through August 15th, and continued healthcare support for US-based employees through the end of the year. The leadership emphasized that by taking this decisive action now, they aim to provide clarity to the workforce and prevent the uncertainty associated with prolonged, smaller-scale reorganizations, ultimately allowing the company to move faster and more innovatively.</p>
+          <p>Cloudflare has announced a major restructuring of its global workforce, involving the departure of more than 1,100 employees. According to a company-wide email from its leadership, this decision is not a standard cost-cutting measure but a strategic move to redefine how the company operates in the age of agentic AI. The company highlighted that its internal use of AI has grown by over 600% in just the last three months, with employees across all departments, including engineering, HR, and finance, utilizing thousands of AI agent sessions daily. To maintain its competitive edge and fulfill its mission of building a better internet, Cloudflare is reimagining its internal processes, teams, and roles to be more compatible with an AI-centric workflow. To support those affected, Cloudflare is offering substantial severance packages, including the equivalent of full base pay through the end of 2026, extended equity vesting through August 15th, and continued healthcare support for US-based employees through the end of the year. The leadership emphasized that by taking this decisive action now, they aim to provide clarity to the workforce and prevent the uncertainty associated with prolonged, smaller-scale reorganizations, ultimately allowing the company to move faster and more innovatively.</p>
           
         </div>
         
@@ -1278,19 +1266,18 @@
         
         <p class="article-topic">AISLE has discovered a 21-year-old remote command execution vulnerability, CVE-2026-42511, within FreeBSD&#39;s dhclient.</p>
         
-<!--
+
         
         <div class="tldr-box">
           <p class="tldr-label">TL;DR</p>
           <p class="tldr-text">AISLE has identified a critical, long-standing remote command execution vulnerability in FreeBSD&#39;s dhclient. This flaw enables attackers on the same local network to gain root privileges by exploiting improper sanitization of DHCP protocol data.</p>
         </div>
         
--->
+
         
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
+        <div class="long-resume">
           
-          <p class="tldr-text">The cybersecurity research firm AISLE has announced the discovery of a significant remote command execution (RCE) vulnerability, identified as CVE-2026-42511, residing in the FreeBSD DHCP client, dhclient. This vulnerability has been present in the FreeBSD ecosystem since the 2005 release of FreeBSD-6.0, following the import of dhclient from OpenBSD. The flaw is a logic-based error where attacker-controlled protocol data is persisted into a trusted, configuration-like format without proper sanitization, which is then later reinterpreted during a privileged execution path. This allows an attacker on the same local network—such as one utilizing a malicious wireless access point or performing DHCP spoofing—to execute a complete local-network-to-root exploit chain. The impact of this vulnerability is widespread, potentially affecting not only servers but also consumer electronics and embedded systems, such as the Sony PlayStation and Nintendo Switch, that rely on FreeBSD-based operating systems. The discovery was facilitated by AISLE&#39;s proprietary AI-based source code analysis pipeline and verified by their offensive security research team. This finding is part of a coordinated disclosure involving multiple FreeBSD security advisories discovered by AISLE.</p>
+          <p>The cybersecurity research firm AISLE has announced the discovery of a significant remote command execution (RCE) vulnerability, identified as CVE-2026-42511, residing in the FreeBSD DHCP client, dhclient. This vulnerability has been present in the FreeBSD ecosystem since the 2005 release of FreeBSD-6.0, following the import of dhclient from OpenBSD. The flaw is a logic-based error where attacker-controlled protocol data is persisted into a trusted, configuration-like format without proper sanitization, which is then later reinterpreted during a privileged execution path. This allows an attacker on the same local network—such as one utilizing a malicious wireless access point or performing DHCP spoofing—to execute a complete local-network-to-root exploit chain. The impact of this vulnerability is widespread, potentially affecting not only servers but also consumer electronics and embedded systems, such as the Sony PlayStation and Nintendo Switch, that rely on FreeBSD-based operating systems. The discovery was facilitated by AISLE&#39;s proprietary AI-based source code analysis pipeline and verified by their offensive security research team. This finding is part of a coordinated disclosure involving multiple FreeBSD security advisories discovered by AISLE.</p>
           
         </div>
         

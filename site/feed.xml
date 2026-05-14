@@ -6,7 +6,7 @@
     <description>A weekly digest of the most relevant tech stories</description>
     <language>en-us</language>
     <atom:link href="https://bowlofdata.netlify.app/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Thu, 14 May 2026 14:10:28 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 14 May 2026 17:55:16 +0000</lastBuildDate>
     <image>
       <url>https://bowlofdata.netlify.app/imgs/logo.png</url>
       <title>Bowl of Data</title>
@@ -16,7 +16,7 @@
       <title>Week 20 · 2026 · Bowl of Data</title>
       <link>https://bowlofdata.netlify.app/week/20_2026.html</link>
       <guid isPermaLink="true">https://bowlofdata.netlify.app/week/20_2026.html</guid>
-      <pubDate>Thu, 14 May 2026 14:10:28 +0000</pubDate>
+      <pubDate>Thu, 14 May 2026 17:55:16 +0000</pubDate>
       <description><![CDATA[<p><strong>Week 20 · 2026</strong> — 13 articles</p>
 <ul>
   <li><a href="https://tanstack.com/blog/npm-supply-chain-compromise-postmortem">Postmortem: TanStack npm supply-chain compromise</a>: An attacker successfully compromised 42 TanStack npm packages by chaining GitHub Actions cache poisoning with OIDC token extraction. The breach allowed for the unauthorized publication of malicious versions that could exfiltrate sensitive cloud and infrastructure credentials.</li>
