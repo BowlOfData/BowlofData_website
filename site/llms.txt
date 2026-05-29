@@ -6,6 +6,7 @@ Bowl of Data is a weekly newsletter powered by Maki, an AI pipeline that curates
 
 ## Issues
 
+- [Week 22 · 2026](https://bowlofdata.netlify.app/week/22_2026.html): 70 articles. Highlights: Scientists trained an AI model using an IBM quantum computer — and it answered questions correctly that the base model couldn't; Some of my perspective on where the EF is going | Vitalik; US's big bet on quantum computing may not be entirely legal.
 - [Week 21 · 2026](https://bowlofdata.netlify.app/week/21_2026.html): 51 articles. Highlights: Article: Kernel-Level Ground Truth: Why eBPF is Replacing User-Space Agents for Security Observability; The SEC Is About to Allow Tokenized Stocks on Blockchain; Aramco and Pasqal Launch Commercial Quantum Computing as a Service Platform in Saudi Arabia.
 - [Week 20 · 2026](https://bowlofdata.netlify.app/week/20_2026.html): 13 articles. Highlights: Postmortem: TanStack npm supply-chain compromise; Giving Claude Code Full Control of a Hardware Fault Injection Setup to Bypass Secure Boot; Hackers Used AI to Develop First Known Zero-Day 2FA Bypass for Mass Exploitation.
 - [Week 19 · 2026](https://bowlofdata.netlify.app/week/19_2026.html): 13 articles. Highlights: Uber Shares What Happens When 1.500 AI Agents Hit Production; We probed 6,000 web apps for Stripe webhook signature checks. 1,542 don't bother; Bleeding Llama: Critical Unauthenticated Memory Leak in Ollama (CVE-2026–7482).
