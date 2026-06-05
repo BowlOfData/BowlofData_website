@@ -4,13 +4,13 @@
     <loc>https://bowlofdata.netlify.app/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-05</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.netlify.app/archive.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-05</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.netlify.app/about.html</loc>
@@ -26,6 +26,12 @@
     <loc>https://bowlofdata.netlify.app/contact.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://bowlofdata.netlify.app/week/23_2026.html</loc>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-06-05</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.netlify.app/week/22_2026.html</loc>

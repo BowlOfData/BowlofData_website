@@ -1,5 +1,525 @@
 [
   {
+    "week": 23,
+    "year": 2026,
+    "label": "Week 23 · 2026",
+    "href": "week/23_2026.html",
+    "articles": [
+      {
+        "title": "Microsoft Reveals '1,000x More Reliable' Quantum Chip as Bitcoin Threat Draws Nearer",
+        "slug": "microsoft-reveals-1000x-more-reliable-quantum-chip-as-bitcoin-threat-draws-nearer",
+        "url": "https://decrypt.co/369811/microsoft-1000x-more-reliable-quantum-chip-bitcoin-threat-draws-nearer",
+        "source": "Decrypt",
+        "published": "Wed, 03 Jun 2026 03:31:03 +0000",
+        "short_summary": "Microsoft's new Majorana 2 quantum chip marks a significant leap in reliability, utilizing AI-driven research to enhance qubit stability. This progress brings the industry closer to scalable quantum computing and highlights the growing threat to existing cryptographic standards.",
+        "long_resume": "Microsoft has announced a major milestone in quantum computing with the unveiling of its Majorana 2 topological quantum chip. The company claims this new chip is 1,000 times more reliable than the previous Majorana 1 generation, achieving average qubit lifetimes of 20 seconds, with some instances lasting up to one minute. A key technical innovation in the Majorana 2 is the replacement of an aluminum-based topological superconductor with a lead-based design, which significantly improves the protection of qubits from environmental interference. The development process was heavily accelerated by the integration of agentic AI and the Microsoft Discovery platform, which allowed researchers to automate complex measurements, optimize fabrication processes, and analyze decades of quantum research far more efficiently than traditional linear human methods. Microsoft expects this trajectory to lead to the realization of scalable quantum computing by 2029. However, this technological progress intensifies the looming threat of 'Q-Day,' the moment when quantum computers become powerful enough to break the public-key cryptography that secures the modern internet and cryptocurrencies like Bitcoin. Experts warn that such a breakthrough could allow attackers to forge digital signatures and derive private keys from exposed public keys, potentially putting hundreds of billions of dollars in Bitcoin at risk. As other players like Google also report progress with chips like Willow, the race to develop quantum-resistant cryptographic solutions becomes increasingly critical.",
+        "long_resume_paragraphs": [
+          "Microsoft has announced a major milestone in quantum computing with the unveiling of its Majorana 2 topological quantum chip. The company claims this new chip is 1,000 times more reliable than the previous Majorana 1 generation, achieving average qubit lifetimes of 20 seconds, with some instances lasting up to one minute. A key technical innovation in the Majorana 2 is the replacement of an aluminum-based topological superconductor with a lead-based design, which significantly improves the protection of qubits from environmental interference. The development process was heavily accelerated by the integration of agentic AI and the Microsoft Discovery platform, which allowed researchers to automate complex measurements, optimize fabrication processes, and analyze decades of quantum research far more efficiently than traditional linear human methods. Microsoft expects this trajectory to lead to the realization of scalable quantum computing by 2029. However, this technological progress intensifies the looming threat of 'Q-Day,' the moment when quantum computers become powerful enough to break the public-key cryptography that secures the modern internet and cryptocurrencies like Bitcoin. Experts warn that such a breakthrough could allow attackers to forge digital signatures and derive private keys from exposed public keys, potentially putting hundreds of billions of dollars in Bitcoin at risk. As other players like Google also report progress with chips like Willow, the race to develop quantum-resistant cryptographic solutions becomes increasingly critical."
+        ],
+        "main_topic": "Microsoft has unveiled its Majorana 2 quantum chip, which is 1,000 times more reliable than its predecessor and was developed using agentic AI.",
+        "technologies": [
+          "Microsoft Majorana 2",
+          "Majorana 1",
+          "Microsoft Discovery platform",
+          "Agentic AI",
+          "Bitcoin",
+          "Google Willow chip",
+          "Elliptic-curve cryptography",
+          "Public-key cryptography"
+        ]
+      },
+      {
+        "title": "Red Hat npm packages compromised to steal developer credentials",
+        "slug": "red-hat-npm-packages-compromised-to-steal-developer-credentials",
+        "url": "https://bleepingcomputer.com/news/security/red-hat-npm-packages-compromised-to-steal-developer-credentials",
+        "source": "BleepingComputer",
+        "published": "Mon, 01 Jun 2026 17:38:29 -0400",
+        "short_summary": "More than 30 Red Hat npm packages were compromised in a supply-chain attack using the Miasma malware to steal developer credentials. The attack was executed via a compromised GitHub account and targeted various cloud and infrastructure secrets.",
+        "long_resume": "A significant supply-chain attack has been identified involving the compromise of over 30 npm packages under Red Hat's '@redhat-cloud-services' namespace. Security researchers from Aikido and OX Security discovered that the attack distributed a new variant of the Shai-Hulud malware, dubbed 'Miasma,' which is specifically designed to harvest developer credentials and sensitive cloud secrets. The breach originated from the compromise of a Red Hat employee's GitHub account, which allowed attackers to push malicious commits and implement a GitHub Actions workflow. This workflow leveraged npm's publishing mechanism and OIDC tokens to release backdoored package versions. The malicious payload, an obfuscated 'index.js' file, executes during the npm preinstall stage to steal a wide array of data, including AWS, Google Cloud, and Azure credentials, as well as SSH keys, Kubernetes service account tokens, and Docker credentials. While the scale of the attack is significant, with approximately 117,000 weekly downloads for the affected packages, Red Hat has stated that the compromise was limited to internal development tooling and that no customer or production systems were impacted. This incident follows a series of similar supply-chain attacks involving the Shai-Hulud malware family targeting prominent organizations like Bitwarden, SAP, and OpenAI. Organizations that may have installed the affected versions are advised to rotate all credentials and secrets immediately.",
+        "long_resume_paragraphs": [
+          "A significant supply-chain attack has been identified involving the compromise of over 30 npm packages under Red Hat's '@redhat-cloud-services' namespace. Security researchers from Aikido and OX Security discovered that the attack distributed a new variant of the Shai-Hulud malware, dubbed 'Miasma,' which is specifically designed to harvest developer credentials and sensitive cloud secrets. The breach originated from the compromise of a Red Hat employee's GitHub account, which allowed attackers to push malicious commits and implement a GitHub Actions workflow. This workflow leveraged npm's publishing mechanism and OIDC tokens to release backdoored package versions. The malicious payload, an obfuscated 'index.js' file, executes during the npm preinstall stage to steal a wide array of data, including AWS, Google Cloud, and Azure credentials, as well as SSH keys, Kubernetes service account tokens, and Docker credentials. While the scale of the attack is significant, with approximately 117,000 weekly downloads for the affected packages, Red Hat has stated that the compromise was limited to internal development tooling and that no customer or production systems were impacted. This incident follows a series of similar supply-chain attacks involving the Shai-Hulud malware family targeting prominent organizations like Bitwarden, SAP, and OpenAI. Organizations that may have installed the affected versions are advised to rotate all credentials and secrets immediately."
+        ],
+        "main_topic": "A supply-chain attack targeting Red Hat's npm packages has been identified, using a new Shai-Hulud malware variant called 'Miasma' to steal developer credentials.",
+        "technologies": [
+          "npm",
+          "Red Hat",
+          "GitHub",
+          "GitHub Actions",
+          "Bun",
+          "AWS",
+          "Google Cloud",
+          "Azure",
+          "HashiCorp Vault",
+          "Kubernetes",
+          "Docker",
+          "PyPI",
+          "Shai-Hulud",
+          "Miasma"
+        ]
+      },
+      {
+        "title": "Mastercard expands onchain settlement in bet on stablecoins and always-on finance",
+        "slug": "mastercard-expands-onchain-settlement-in-bet-on-stablecoins-and-always-on-finance",
+        "url": "https://coindesk.com/markets/2026/06/03/mastercard-expands-on-chain-settlement-in-bet-on-stablecoins-and-always-on-finance",
+        "source": "CoinDesk",
+        "published": "Wed, 03 Jun 2026 04:00:00 +0000",
+        "short_summary": "Mastercard is integrating regulated stablecoins into its settlement infrastructure to facilitate continuous, around-the-clock payments. This initiative aims to modernize global finance by providing liquidity management options outside of traditional banking hours.",
+        "long_resume": "Mastercard is expanding its settlement network to support regulated stablecoins, a strategic move designed to integrate blockchain-based payments into the core of the global financial system. The company's new framework will offer issuers and acquirers enhanced settlement options, including intraday, weekend, and holiday capabilities, alongside existing fiat processes. This transition is intended to move the payment network toward an 'always-on' model, allowing value to be transferred and settled regardless of traditional banking schedules. Mastercard will initially support several prominent stablecoins, including Circle's USDC, Paxos-issued PYUSD, USDG, USDP, Ripple's RLUSD, and SoFiUSD. These assets will be available across multiple blockchain networks, including Ethereum, Solana, Polygon, Base, Arbitrum, and the XRP Ledger (XRPL). This shift highlights the evolving role of stablecoins from mere trading instruments to critical settlement assets for banks, payment firms, and asset managers seeking efficient cross-border transfers. The rollout is expected to include several financial institutions, such as Cross River, Lead Bank, CBW Bank, ARQ, and Nuvei, particularly within the U.S. and Latin American markets. By leveraging these digital assets, Mastercard aims to provide financial institutions with greater flexibility in managing liquidity and navigating the complexities of modern, high-speed global finance.",
+        "long_resume_paragraphs": [
+          "Mastercard is expanding its settlement network to support regulated stablecoins, a strategic move designed to integrate blockchain-based payments into the core of the global financial system. The company's new framework will offer issuers and acquirers enhanced settlement options, including intraday, weekend, and holiday capabilities, alongside existing fiat processes. This transition is intended to move the payment network toward an 'always-on' model, allowing value to be transferred and settled regardless of traditional banking schedules. Mastercard will initially support several prominent stablecoins, including Circle's USDC, Paxos-issued PYUSD, USDG, USDP, Ripple's RLUSD, and SoFiUSD. These assets will be available across multiple blockchain networks, including Ethereum, Solana, Polygon, Base, Arbitrum, and the XRP Ledger (XRPL). This shift highlights the evolving role of stablecoins from mere trading instruments to critical settlement assets for banks, payment firms, and asset managers seeking efficient cross-border transfers. The rollout is expected to include several financial institutions, such as Cross River, Lead Bank, CBW Bank, ARQ, and Nuvei, particularly within the U.S. and Latin American markets. By leveraging these digital assets, Mastercard aims to provide financial institutions with greater flexibility in managing liquidity and navigating the complexities of modern, high-speed global finance."
+        ],
+        "main_topic": "Mastercard is expanding its settlement network to support regulated stablecoins, enabling 24/7 onchain financial settlement.",
+        "technologies": [
+          "Mastercard",
+          "Circle USDC",
+          "Paxos PYUSD",
+          "USDG",
+          "USDP",
+          "Ripple RLUSD",
+          "SoFiUSD",
+          "Ethereum",
+          "Solana",
+          "Polygon",
+          "Base",
+          "Arbitrum",
+          "XRPL"
+        ]
+      },
+      {
+        "title": "Hackers Used Meta’s AI Support Bot to Seize Instagram Accounts",
+        "slug": "hackers-used-metas-ai-support-bot-to-seize-instagram-accounts",
+        "url": "https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts",
+        "source": "Krebs on Security",
+        "published": "Mon, 01 Jun 2026 17:32:50 +0000",
+        "short_summary": "Hackers manipulated Meta's AI customer support bot to bypass security protocols and hijack prominent Instagram accounts. The vulnerability allowed attackers to trigger password resets by tricking the AI into linking unauthorized email addresses to target profiles.",
+        "long_resume": "A significant security vulnerability was recently exploited using Meta's AI-powered customer support assistant, leading to the hijacking of high-profile Instagram accounts, including those of the Obama White House and the U.S. Space Force. The exploit, documented on Telegram, involved attackers using a VPN to mimic a target's usual location and then interacting with the conversational AI bot. By instructing the bot to link a new email address to the target account, the attackers were able to trigger the standard password reset flow, effectively gaining unauthorized access. The breach resulted in the defacement of several accounts with pro-Iranian messages and images. While Meta has since deployed an emergency patch and confirmed that no backend database breach occurred, the incident highlights a new and dangerous attack surface created by integrating AI into sensitive account recovery workflows. Security researchers warn that AI bots are susceptible to the same social engineering tactics as human agents. However, the exploit was notably ineffective against accounts protected by strong multi-factor authentication (MFA) methods, such as passkeys or security keys, underscoring the importance of robust authentication in an era of AI-driven threats.",
+        "long_resume_paragraphs": [
+          "A significant security vulnerability was recently exploited using Meta's AI-powered customer support assistant, leading to the hijacking of high-profile Instagram accounts, including those of the Obama White House and the U.S. Space Force. The exploit, documented on Telegram, involved attackers using a VPN to mimic a target's usual location and then interacting with the conversational AI bot. By instructing the bot to link a new email address to the target account, the attackers were able to trigger the standard password reset flow, effectively gaining unauthorized access. The breach resulted in the defacement of several accounts with pro-Iranian messages and images. While Meta has since deployed an emergency patch and confirmed that no backend database breach occurred, the incident highlights a new and dangerous attack surface created by integrating AI into sensitive account recovery workflows. Security researchers warn that AI bots are susceptible to the same social engineering tactics as human agents. However, the exploit was notably ineffective against accounts protected by strong multi-factor authentication (MFA) methods, such as passkeys or security keys, underscoring the importance of robust authentication in an era of AI-driven threats."
+        ],
+        "main_topic": "Hackers exploited Meta's AI-driven support bot to hijack high-profile Instagram accounts by manipulating the password reset process.",
+        "technologies": [
+          "Instagram",
+          "Meta AI Support Assistant",
+          "Telegram",
+          "VPN",
+          "Multi-factor authentication (MFA)",
+          "Passkeys",
+          "SMS"
+        ]
+      },
+      {
+        "title": "Unauthenticated RCE as QSECOFR via IBM i Management Central — port 5555, client-controlled verify flag, no credentials required (V7R4 and earlier)",
+        "slug": "unauthenticated-rce-as-qsecofr-via-ibm-i-management-central-port-5555-client-controlled-verify-flag-no-credentials-required-v7r4-and-earlier",
+        "url": "https://blog.silentsignal.eu/2026/06/05/unauthenticated-rce-as-qsecofr-via-ibm-i-management-central",
+        "source": "Reddit r/netsec",
+        "published": "2026-06-05T11:35:56Z",
+        "short_summary": "A critical pre-authentication remote code execution vulnerability has been discovered in IBM i Management Central. The flaw allows unauthorized attackers to execute commands with full system privileges by exploiting a custom binary protocol.",
+        "long_resume": "Researchers have identified and developed an exploit for a pre-authentication remote code execution (RCE) vulnerability within IBM i Management Central (MGTC). The vulnerability targets the custom binary protocol operating on port 5555, which utilizes a proprietary serialization engine called McBuffer. By decompiling the MGTC Java classes, the researchers were able to reconstruct the undocumented protocol, including the binary handshake and packet structure. The exploit enables an unauthenticated attacker to bypass authentication mechanisms and execute arbitrary CL commands under the QSECOFR profile, which possesses root-equivalent permissions on the IBM i operating system. While IBM has begun deprecating Management Central in newer releases like V7R5, the continued use of V7R4 and earlier versions in production environments poses a significant security risk.",
+        "long_resume_paragraphs": [
+          "Researchers have identified and developed an exploit for a pre-authentication remote code execution (RCE) vulnerability within IBM i Management Central (MGTC). The vulnerability targets the custom binary protocol operating on port 5555, which utilizes a proprietary serialization engine called McBuffer. By decompiling the MGTC Java classes, the researchers were able to reconstruct the undocumented protocol, including the binary handshake and packet structure. The exploit enables an unauthenticated attacker to bypass authentication mechanisms and execute arbitrary CL commands under the QSECOFR profile, which possesses root-equivalent permissions on the IBM i operating system. While IBM has begun deprecating Management Central in newer releases like V7R5, the continued use of V7R4 and earlier versions in production environments poses a significant security risk."
+        ],
+        "main_topic": "Discovery of an unauthenticated remote code execution vulnerability in IBM i Management Central allowing arbitrary command execution as QSECOFR.",
+        "technologies": [
+          "IBM i",
+          "IBM i Management Central",
+          "Java",
+          "CL (Command Language)",
+          "McBuffer",
+          "IBM i Access Client Solutions"
+        ]
+      },
+      {
+        "title": "System Over Model, Tested: Reproducing Mythos’s FreeBSD Find on Local Open-Weight Models",
+        "slug": "system-over-model-tested-reproducing-mythoss-freebsd-find-on-local-open-weight-models",
+        "url": "https://clearbluejar.github.io/posts/system-over-model-tested-mythos-freebsd-local-openweight",
+        "source": "Reddit r/netsec",
+        "published": "2026-06-04T18:12:02Z",
+        "short_summary": "The author tests if open-weight models can replicate the discovery of a FreeBSD RCE using the nano-analyzer pipeline. The study finds that while noise in large-scale scans can cause misses, improving the pipeline's scaffolding allows local models to successfully identify the bug.",
+        "long_resume": "The article examines the 'system over model' hypothesis in the context of automated vulnerability research. Following the discovery of CVE-2026-4747—a 17-year-old RCE in FreeBSD’s RPCSEC_GSS authentication—by frontier models like Claude Mythos, the author sought to determine if local, open-weight models could achieve similar results using AISLE's nano-analyzer pipeline. The experiment involved testing two models, openai/gpt-oss-20b and google/gemma-4-31b-it, across a larger subsystem scope of approximately 50 files. Initially, the models appeared to fail at detecting the vulnerability when the scan was scaled up, a phenomenon the author attributed to the high volume of false positives generated by the pipeline's initial stages. By refining the system's architecture—specifically by introducing an extra reachability stage to filter out noise—the author was able to successfully trigger the detection of the stack overflow bug in both models. This result underscores the importance of the 'scaffolding'—the prompts, triage rounds, and verification steps—over the inherent intelligence of the LLM itself, suggesting that effective automated exploit discovery is a product of well-engineered pipelines.",
+        "long_resume_paragraphs": [
+          "The article examines the 'system over model' hypothesis in the context of automated vulnerability research. Following the discovery of CVE-2026-4747—a 17-year-old RCE in FreeBSD’s RPCSEC_GSS authentication—by frontier models like Claude Mythos, the author sought to determine if local, open-weight models could achieve similar results using AISLE's nano-analyzer pipeline. The experiment involved testing two models, openai/gpt-oss-20b and google/gemma-4-31b-it, across a larger subsystem scope of approximately 50 files. Initially, the models appeared to fail at detecting the vulnerability when the scan was scaled up, a phenomenon the author attributed to the high volume of false positives generated by the pipeline's initial stages. By refining the system's architecture—specifically by introducing an extra reachability stage to filter out noise—the author was able to successfully trigger the detection of the stack overflow bug in both models. This result underscores the importance of the 'scaffolding'—the prompts, triage rounds, and verification steps—over the inherent intelligence of the LLM itself, suggesting that effective automated exploit discovery is a product of well-engineered pipelines."
+        ],
+        "main_topic": "An experimental study investigating whether open-weight LLMs can replicate zero-day discovery capabilities for FreeBSD vulnerabilities using specialized scanning pipelines.",
+        "technologies": [
+          "Claude Mythos Preview",
+          "gpt-5.4-nano",
+          "openai/gpt-oss-20b",
+          "google/gemma-4-31b-it",
+          "FreeBSD",
+          "nano-analyzer",
+          "Python",
+          "RPCSEC_GSS"
+        ]
+      },
+      {
+        "title": "Enter the WasmForge: Compiling Sliver into WebAssembly",
+        "slug": "enter-the-wasmforge-compiling-sliver-into-webassembly",
+        "url": "https://praetorian.com/blog/wasmforge-sliver-webassembly",
+        "source": "Reddit r/netsec",
+        "published": "2026-06-04T13:49:55Z",
+        "short_summary": "WasmForge is a novel loader designed to wrap offensive security tools in WebAssembly to evade EDR detection. It achieves this by providing a custom runtime environment that bridges WASM modules to native host APIs without requiring changes to the original tool's source code.",
+        "long_resume": "The article introduces WasmForge, a specialized build wrapper designed to enhance the stealth of established offensive security tools such as Sliver, Chisel, and Mythic. The primary challenge addressed is the high rate of detection by Endpoint Detection and Response (EDR) vendors through YARA rules and static analysis. WasmForge solves this by compiling Go-based tools into WebAssembly (WASM) modules. Because the instruction set and binary format of WASM are relatively unfamiliar to many defensive heuristic engines, the resulting binaries are more likely to bypass traditional security scanners. The architecture of WasmForge consists of a three-stage pipeline: first, it prepares a patched Go standard library that supports the wasip1 target; second, it compiles the tool into a .wasm module; and third, it generates an outer Go binary containing a custom Wazero runtime. This runtime includes a fork of the Wazero engine, modified to randomize opcode tables and rename internal paths to further evade detection. To ensure the original tool functions correctly, WasmForge implements approximately eighty host shim functions that bridge the gap between the WASM sandbox and the host operating system's APIs, including Win32 and macOS frameworks. This allows the guest program to perform tasks like network communication and process execution as if it were running natively. A critical component of the implementation is the management of WASM linear memory, where the loader must translate 32-bit WASM offsets into valid host-side memory addresses to prevent access violations when calling native APIs. By automating the hardening process, WasmForge allows security practitioners to deploy known-good tools in highly monitored environments with minimal manual effort.",
+        "long_resume_paragraphs": [
+          "The article introduces WasmForge, a specialized build wrapper designed to enhance the stealth of established offensive security tools such as Sliver, Chisel, and Mythic. The primary challenge addressed is the high rate of detection by Endpoint Detection and Response (EDR) vendors through YARA rules and static analysis. WasmForge solves this by compiling Go-based tools into WebAssembly (WASM) modules. Because the instruction set and binary format of WASM are relatively unfamiliar to many defensive heuristic engines, the resulting binaries are more likely to bypass traditional security scanners. The architecture of WasmForge consists of a three-stage pipeline: first, it prepares a patched Go standard library that supports the wasip1 target; second, it compiles the tool into a .wasm module; and third, it generates an outer Go binary containing a custom Wazero runtime. This runtime includes a fork of the Wazero engine, modified to randomize opcode tables and rename internal paths to further evade detection. To ensure the original tool functions correctly, WasmForge implements approximately eighty host shim functions that bridge the gap between the WASM sandbox and the host operating system's APIs, including Win32 and macOS frameworks. This allows the guest program to perform tasks like network communication and process execution as if it were running natively. A critical component of the implementation is the management of WASM linear memory, where the loader must translate 32-bit WASM offsets into valid host-side memory addresses to prevent access violations when calling native APIs. By automating the hardening process, WasmForge allows security practitioners to deploy known-good tools in highly monitored environments with minimal manual effort."
+        ],
+        "main_topic": "The article introduces WasmForge, a build wrapper that uses WebAssembly to wrap offensive security tools in a way that evades EDR detection without modifying the original source code.",
+        "technologies": [
+          "WasmForge",
+          "WebAssembly",
+          "WASM",
+          "Go",
+          "Wazero",
+          "Sliver",
+          "Chisel",
+          "Mythic",
+          "WASI",
+          "Windows",
+          "macOS",
+          "Win32",
+          "Claude",
+          "YARA"
+        ]
+      },
+      {
+        "title": "BIP324, Miniscript, Changing Consensus segment - Bitcoin Optech Newsletter #408",
+        "slug": "bip324-miniscript-changing-consensus-segment-bitcoin-optech-newsletter-408",
+        "url": "https://bitcoinops.org/en/newsletters/2026/06/05",
+        "source": "Reddit r/Bitcoin",
+        "published": "2026-06-05T11:18:45Z",
+        "short_summary": "This edition of the Bitcoin Optech newsletter explores critical upgrades for post-quantum resistance in P2P protocols and the Lightning Network. It also covers new proposals for miniscript wallet standardization and advancements in CTV-based vault implementations.",
+        "long_resume": "The Bitcoin Optech Newsletter #408 provides a comprehensive overview of ongoing technical discussions and developments within the Bitcoin ecosystem. A significant portion of the newsletter is dedicated to post-quantum security, specifically examining ways to upgrade BIP324 transport encryption using Module-Lattice-based KEM (ML-KEM) and discussing the necessary cryptographic primitives for a post-quantum Lightning Network. The newsletter also addresses the standardization of data payloads for QR-based signing in miniscript wallets to improve interoperability between air-gapped devices and coordinators. Regarding consensus-level changes, the newsletter highlights the MCCV (More Complicated CTV Vault) project, which demonstrates how complex vaults can be implemented using existing CTV (BIP119) primitives without the need for newer, more complex opcodes. Other notable topics include the game theory of potential quantum attacks, the potential utility of 64-byte transactions despite consensus cleanup efforts (BIP54), and the release of Core Lightning version 26.06, which introduces new RPC capabilities and experimental support for BOLT12 payment proofs.",
+        "long_resume_paragraphs": [
+          "The Bitcoin Optech Newsletter #408 provides a comprehensive overview of ongoing technical discussions and developments within the Bitcoin ecosystem. A significant portion of the newsletter is dedicated to post-quantum security, specifically examining ways to upgrade BIP324 transport encryption using Module-Lattice-based KEM (ML-KEM) and discussing the necessary cryptographic primitives for a post-quantum Lightning Network. The newsletter also addresses the standardization of data payloads for QR-based signing in miniscript wallets to improve interoperability between air-gapped devices and coordinators. Regarding consensus-level changes, the newsletter highlights the MCCV (More Complicated CTV Vault) project, which demonstrates how complex vaults can be implemented using existing CTV (BIP119) primitives without the need for newer, more complex opcodes. Other notable topics include the game theory of potential quantum attacks, the potential utility of 64-byte transactions despite consensus cleanup efforts (BIP54), and the release of Core Lightning version 26.06, which introduces new RPC capabilities and experimental support for BOLT12 payment proofs."
+        ],
+        "main_topic": "The newsletter covers recent technical developments in Bitcoin, focusing on post-quantum security, protocol upgrades, and consensus rule discussions.",
+        "technologies": [
+          "Bitcoin",
+          "BIP324",
+          "ML-KEM",
+          "ECDH",
+          "miniscript",
+          "CTV",
+          "BIP119",
+          "MCCV",
+          "Taproot",
+          "Lightning Network",
+          "Core Lightning",
+          "BOLT12",
+          "BIP54"
+        ]
+      },
+      {
+        "title": "Quantum Error Correction with Toric Code at Atom Computing",
+        "slug": "quantum-error-correction-with-toric-code-at-atom-computing",
+        "url": "https://atom-computing.com/quantum-error-correction-with-toric-code",
+        "source": "Reddit r/QuantumComputing",
+        "published": "2026-06-03T20:45:21Z",
+        "short_summary": "Atom Computing has successfully demonstrated complete quantum error correction using neutral atom qubits and the toric code. This breakthrough enables the real-time detection and replacement of lost qubits, marking a major step toward scalable quantum computing.",
+        "long_resume": "Atom Computing has announced a landmark achievement in quantum computing: the first complete demonstration of quantum error correction (QEC) using neutral atom qubits. By utilizing the toric code, the company leveraged the unique all-to-all connectivity provided by neutral atom architectures, a feature not easily implemented in fixed-topology superconducting qubit systems. A critical hurdle in neutral-atom and trapped-on platforms is the occurrence of erasure errors, where qubits are lost due to environmental interactions or operational side effects. To combat this, Atom Computing integrated mid-circuit measurement to identify lost qubits in real-time and developed a method to replenish the qubit supply continuously. The researchers demonstrated up to 90 rounds of error correction, maintaining the integrity of the quantum memory. In the early stages, specifically fewer than 10 rounds, the system exhibited sub-threshold performance, where increasing the code distance led to lower logical error rates. As the process extended beyond 10 rounds and required atom reloading, the error rates stabilized near the error correction threshold. This milestone places Atom Computing's technology on a similar footing to Google's superconducting qubit demonstrations for deep quantum memory and validates neutral atoms as a leading platform for achieving utility-scale, fault-tolerant quantum computing.",
+        "long_resume_paragraphs": [
+          "Atom Computing has announced a landmark achievement in quantum computing: the first complete demonstration of quantum error correction (QEC) using neutral atom qubits. By utilizing the toric code, the company leveraged the unique all-to-all connectivity provided by neutral atom architectures, a feature not easily implemented in fixed-topology superconducting qubit systems. A critical hurdle in neutral-atom and trapped-on platforms is the occurrence of erasure errors, where qubits are lost due to environmental interactions or operational side effects. To combat this, Atom Computing integrated mid-circuit measurement to identify lost qubits in real-time and developed a method to replenish the qubit supply continuously. The researchers demonstrated up to 90 rounds of error correction, maintaining the integrity of the quantum memory. In the early stages, specifically fewer than 10 rounds, the system exhibited sub-threshold performance, where increasing the code distance led to lower logical error rates. As the process extended beyond 10 rounds and required atom reloading, the error rates stabilized near the error correction threshold. This milestone places Atom Computing's technology on a similar footing to Google's superconducting qubit demonstrations for deep quantum memory and validates neutral atoms as a leading platform for achieving utility-scale, fault-tolerant quantum computing."
+        ],
+        "main_topic": "Atom Computing has achieved the first complete demonstration of quantum error correction using neutral atom qubits through the implementation of the toric code.",
+        "technologies": [
+          "neutral atom qubits",
+          "toric code",
+          "quantum error correction",
+          "superconducting qubits",
+          "trapped-ion quantum computing",
+          "mid-circuit measurement"
+        ]
+      },
+      {
+        "title": "IBM Plans $10 Billion Quantum Push as Efforts to Commercialize Quantum Intensifies",
+        "slug": "ibm-plans-10-billion-quantum-push-as-efforts-to-commercialize-quantum-intensifies",
+        "url": "https://thequantuminsider.com/2026/05/28/ibm-plans-10-billion-quantum-push-as-efforts-to-commercialize-quantum-intensifies",
+        "source": "Reddit r/QuantumComputing",
+        "published": "2026-06-03T19:45:55Z",
+        "short_summary": "IBM is committing $10 billion to accelerate quantum computing capabilities, targeting the achievement of fault-tolerant systems by 2029. The plan includes a major partnership with the U.S. government to build a specialized quantum chip foundry in New York.",
+        "long_resume": "IBM has unveiled an aggressive $10 billion investment strategy intended to secure leadership in the quantum computing sector over the next five years. According to recent SEC disclosures, the company's primary technical milestone is the delivery of a large-scale, fault-tolerant quantum computer by 2029. This investment will be directed toward research and development, manufacturing expansion, capital expenditures, and mergers and acquisitions. A cornerstone of this initiative is the establishment of Anderon, a new standalone American quantum chip foundry located in Albany, New Found. This venture is a collaborative effort with the U.S. Department of Commerce, leveraging $1 billion in CHIPS Act incentives alongside $1 billion in funding and infrastructure support from IBM. The foundry will specialize in manufacturing 300-millimeter quantum wafers, a critical component for building the processors that drive quantum computation. By creating a dedicated domestic manufacturing site, IBM aims to address the industry-wide bottlenecks in specialized fabrication and supply chain constraints. IBM's current quantum footprint is already significant, with over 90 systems deployed globally and a network of more than 325 partners spanning academia, startups, and the Fortune 500. As quantum technology emerges as a critical frontier for both economic growth and national security—with the potential to disrupt modern encryption and revolutionize materials science—IBM's massive capital commitment underscores the intensifying global competition for quantum supremacy.",
+        "long_resume_paragraphs": [
+          "IBM has unveiled an aggressive $10 billion investment strategy intended to secure leadership in the quantum computing sector over the next five years. According to recent SEC disclosures, the company's primary technical milestone is the delivery of a large-scale, fault-tolerant quantum computer by 2029. This investment will be directed toward research and development, manufacturing expansion, capital expenditures, and mergers and acquisitions. A cornerstone of this initiative is the establishment of Anderon, a new standalone American quantum chip foundry located in Albany, New Found. This venture is a collaborative effort with the U.S. Department of Commerce, leveraging $1 billion in CHIPS Act incentives alongside $1 billion in funding and infrastructure support from IBM. The foundry will specialize in manufacturing 300-millimeter quantum wafers, a critical component for building the processors that drive quantum computation. By creating a dedicated domestic manufacturing site, IBM aims to address the industry-wide bottlenecks in specialized fabrication and supply chain constraints. IBM's current quantum footprint is already significant, with over 90 systems deployed globally and a network of more than 325 partners spanning academia, startups, and the Fortune 500. As quantum technology emerges as a critical frontier for both economic growth and national security—with the potential to disrupt modern encryption and revolutionize materials science—IBM's massive capital commitment underscores the intensifying global competition for quantum supremacy."
+        ],
+        "main_topic": "IBM has announced a $10 billion investment plan over the next five years to advance the development of large-scale, fault-tolerant quantum computing.",
+        "technologies": [
+          "Quantum computing",
+          "Fault-tolerant quantum computers",
+          "Quantum chips",
+          "Quantum wafers",
+          "Qubits",
+          "300-millimeter quantum wafer manufacturing",
+          "Cloud-accessible quantum systems"
+        ]
+      },
+      {
+        "title": "Cursor cuts prices and adds enterprise spend controls amid “tokenomics” reckoning",
+        "slug": "cursor-cuts-prices-and-adds-enterprise-spend-controls-amid-tokenomics-reckoning",
+        "url": "https://thenewstack.io/cursor-pricing-token-billing",
+        "source": "The New Stack",
+        "published": "Thu, 04 Jun 2026 19:36:41 +0000",
+        "short_summary": "The AI coding market is moving away from predictable monthly fees toward variable, token-based pricing models. Consequently, companies like Cursor are launching new enterprise features to provide the visibility and control required by finance and IT teams.",
+        "long_resume": "The AI coding landscape is undergoing a fundamental shift from predictable, flat-rate subscriptions to consumption-based 'tokenomics.' This transition is exemplified by GitHub Copilot's move to token-based billing, which has caused significant cost spikes and user backlash. To address the industry-wide lack of standards for measuring AI usage, the Linux Foundation has announced the Tokenomics Foundation, a new body backed by industry giants like Google, Microsoft, and Salesforce, aimed at creating vendor-based frameworks for AI token management. In response to these economic pressures, Cursor has restructured its pricing and introduced advanced enterprise governance features. These updates include a new Premium tier, spend alerts via Slack or email, and an 'organizations' structure that allows IT teams to manage budgets and model access at the departmental level. Cursor is also leveraging its first-party Composer model to provide a more cost-effective alternative to high-priced third-party models from providers like Anthropic and OpenAI, effectively protecting its margins while offering users a cheaper usage pool. This trend toward cost management and infrastructure independence is also visible in the open-source space, with JetBrains releasing Mellum2, a model designed for the coordination tasks within agentic systems. As the 'wrapper squeeze' forces companies to find more efficient ways to manage inference costs, the focus for enterprise AI adoption is increasingly shifting toward visibility, control, and the ability to implement granular chargebacks across business units.",
+        "long_resume_paragraphs": [
+          "The AI coding landscape is undergoing a fundamental shift from predictable, flat-rate subscriptions to consumption-based 'tokenomics.' This transition is exemplified by GitHub Copilot's move to token-based billing, which has caused significant cost spikes and user backlash. To address the industry-wide lack of standards for measuring AI usage, the Linux Foundation has announced the Tokenomics Foundation, a new body backed by industry giants like Google, Microsoft, and Salesforce, aimed at creating vendor-based frameworks for AI token management. In response to these economic pressures, Cursor has restructured its pricing and introduced advanced enterprise governance features. These updates include a new Premium tier, spend alerts via Slack or email, and an 'organizations' structure that allows IT teams to manage budgets and model access at the departmental level. Cursor is also leveraging its first-party Composer model to provide a more cost-effective alternative to high-priced third-party models from providers like Anthropic and OpenAI, effectively protecting its margins while offering users a cheaper usage pool. This trend toward cost management and infrastructure independence is also visible in the open-source space, with JetBrains releasing Mellum2, a model designed for the coordination tasks within agentic systems. As the 'wrapper squeeze' forces companies to find more efficient ways to manage inference costs, the focus for enterprise AI adoption is increasingly shifting toward visibility, control, and the ability to implement granular chargebacks across business units."
+        ],
+        "main_topic": "The AI coding industry is shifting from flat-rate subscriptions to token-based consumption models, necessitating new enterprise tools for cost management and governance.",
+        "technologies": [
+          "Cursor",
+          "GitHub Copilot",
+          "Anthropic",
+          "OpenAI",
+          "Google",
+          "Microsoft",
+          "Salesforce",
+          "JPMorgan Chase",
+          "Composer",
+          "Mellum2",
+          "Claude",
+          "Slack",
+          "JetBrains",
+          "xAI"
+        ]
+      },
+      {
+        "title": "OQC, JPMorganChase and AMD Commence Research Collaboration to Develop New Quantum-AI Platform in London",
+        "slug": "oqc-jpmorganchase-and-amd-commence-research-collaboration-to-develop-new-quantum-ai-platform-in-london",
+        "url": "https://thequantuminsider.com/2026/06/05/oqc-jpmorganchase-and-amd-commence-research-collaboration-to-develop-new-quantum-ai-platform-in-london",
+        "source": "Reddit r/artificial",
+        "published": "2026-06-05T17:20:20Z",
+        "short_summary": "OQC, JPMorganChase, and AMD are collaborating to build a Quantum-AI Data Centre in London. The platform will integrate quantum hardware with AI and classical computing to research complex financial applications.",
+        "long_resume": "OQC, JPMorganChase, and AMD have announced a strategic research collaboration centered on the creation of a dedicated Quantum-AI Data Centre in London. The project aims to explore the intersection of quantum computing, artificial intelligence, and high-performance computing (HPC) to address complex challenges within the financial services industry. The platform will physically integrate OQC’s GENESIS quantum system with AMD-supported AI and classical compute infrastructure, all housed within a secure enterprise environment. JPMorganChase will serve as the first dedicated user of the platform, which is expected to be fully operational within 12 months. The research scope includes investigating hybrid quantum-classical use cases such as portfolio optimization and quantum machine learning, as well as developing specialized AI models to improve quantum circuit performance. Additionally, the partners plan to explore how quantum-enhanced AI can accelerate the discovery of novel algorithms for finance and determine the role of classical computing in supporting scalable, fault-tolerant quantum algorithms. By placing quantum hardware inside a secure enterprise environment, the collaboration seeks to test hybrid workflows for performance, scalability, and reproducibility against the rigorous operational standards required by the financial sector. This initiative represents a significant shift from experimental quantum access toward integrated, secure infrastructure designed for real-world enterprise workflows.",
+        "long_resume_paragraphs": [
+          "OQC, JPMorganChase, and AMD have announced a strategic research collaboration centered on the creation of a dedicated Quantum-AI Data Centre in London. The project aims to explore the intersection of quantum computing, artificial intelligence, and high-performance computing (HPC) to address complex challenges within the financial services industry. The platform will physically integrate OQC’s GENESIS quantum system with AMD-supported AI and classical compute infrastructure, all housed within a secure enterprise environment. JPMorganChase will serve as the first dedicated user of the platform, which is expected to be fully operational within 12 months. The research scope includes investigating hybrid quantum-classical use cases such as portfolio optimization and quantum machine learning, as well as developing specialized AI models to improve quantum circuit performance. Additionally, the partners plan to explore how quantum-enhanced AI can accelerate the discovery of novel algorithms for finance and determine the role of classical computing in supporting scalable, fault-tolerant quantum algorithms. By placing quantum hardware inside a secure enterprise environment, the collaboration seeks to test hybrid workflows for performance, scalability, and reproducibility against the rigorous operational standards required by the financial sector. This initiative represents a significant shift from experimental quantum access toward integrated, secure infrastructure designed for real-world enterprise workflows."
+        ],
+        "main_topic": "OQC, JPMorganChase, and AMD have launched a research collaboration to develop a dedicated Quantum-AI Data Centre in London for financial services.",
+        "technologies": [
+          "OQC GENESIS",
+          "AMD compute technologies",
+          "Quantum computing",
+          "Artificial Intelligence",
+          "High-performance computing",
+          "Quantum machine learning"
+        ]
+      },
+      {
+        "title": "JPMorgan, Bank of America, Citi to start blockchain offensive with shared tokenized network",
+        "slug": "jpmorgan-bank-of-america-citi-to-start-blockchain-offensive-with-shared-tokenized-network",
+        "url": "https://coindesk.com/markets/2026/06/05/jpmorgan-bank-of-america-and-citi-are-going-on-the-blockchain-offensive-with-a-shared-tokenized-network",
+        "source": "CoinDesk",
+        "published": "Fri, 05 Jun 2026 09:16:29 +0000",
+        "short_summary": "Major US banks are building a shared blockchain-based network for tokenized deposits to counter the threat of stablecoins. The project aims to provide crypto-like payment efficiencies while keeping deposits within the traditional banking system.",
+        "long_resume": "Major US financial institutions, including JPMorgan, Citi, and Bank of America, are collaborating to create a shared, tokenized deposit network intended to launch by the first half of 2027. Operated by The Clearing House, this system will convert traditional bank deposits into digital tokens on a blockchain to facilitate rapid, efficient transfers. The primary driver behind this initiative is the rising competition from stablecoins, which offer fast and cheap payment capabilities outside the traditional banking infrastructure. If large-scale adoption of stablecoins occurs, banks risk losing the deposits essential for extending credit to the economy. To prevent this, the new network will provide programmable treasury options, real-time liquidity management, and streamlined cross-border payments. By adopting blockchain-based tokenization, these banks hope to retain customers by offering the same technological advantages as crypto-assets while maintaining the security and regulation of the traditional banking sector.",
+        "long_resume_paragraphs": [
+          "Major US financial institutions, including JPMorgan, Citi, and Bank of America, are collaborating to create a shared, tokenized deposit network intended to launch by the first half of 2027. Operated by The Clearing House, this system will convert traditional bank deposits into digital tokens on a blockchain to facilitate rapid, efficient transfers. The primary driver behind this initiative is the rising competition from stablecoins, which offer fast and cheap payment capabilities outside the traditional banking infrastructure. If large-scale adoption of stablecoins occurs, banks risk losing the deposits essential for extending credit to the economy. To prevent this, the new network will provide programmable treasury options, real-time liquidity management, and streamlined cross-border payments. By adopting blockchain-based tokenization, these banks hope to retain customers by offering the same technological advantages as crypto-assets while maintaining the security and regulation of the traditional banking sector."
+        ],
+        "main_topic": "Major US banks are developing a shared tokenized deposit network to compete with the growing threat of stablecoins.",
+        "technologies": [
+          "Blockchain",
+          "Tokenized Deposits",
+          "Stablecoins",
+          "Tokenized Deposit Network"
+        ]
+      },
+      {
+        "title": "Bitcoin Miners Emerge as 'Power Landlords' of AI Boom—And Revenue Will Surge: Bernstein",
+        "slug": "bitcoin-miners-emerge-as-power-landlords-of-ai-boomand-revenue-will-surge-bernstein",
+        "url": "https://decrypt.co/370047/bitcoin-miners-power-landlords-ai-boom-revenue-surge-bernstein",
+        "source": "Decrypt",
+        "published": "Thu, 04 Jun 2026 16:32:52 +0000",
+        "short_summary": "Bitcoin miners are emerging as 'power landlords' by leveraging their large-scale electrical infrastructure to support AI hyperscalers. This strategic shift is expected to drive massive revenue growth as the demand for AI computing power accelerates.",
+        "long_resume": "A recent research report from Bernstein highlights a significant shift in the role of Bitcoin mining companies, which are increasingly acting as 'power landlords' for the artificial intelligence sector. As AI development faces critical bottlenecks in accessing large-scale, ready-to-use power, miners are uniquely positioned to provide the necessary infrastructure. Over the last two years, these mining operators have signed 17 deals worth more than $110 billion, contracting roughly 6 gigawatts of power to major hyperscalers such as Google, Amazon, Microsoft, Nvidia, and CoreWeave. These facilities, referred to as 'warm powered shells,' feature electricity that is already flowing and ready for the deployment of computing hardware. Bernstein projects that the aggregate AI revenue for the covered companies will grow from $1.2 billion this year to $10.7 billion by 2030. Companies like TeraWulf and Cipher Digital are at the forefront of this transition, with high projected EBITDA margins driven by long-term, take-or-pay colocation contracts. This trend underscores the growing importance of securing reliable, large-scale electricity as a strategic asset in the global AI arms race.",
+        "long_resume_paragraphs": [
+          "A recent research report from Bernstein highlights a significant shift in the role of Bitcoin mining companies, which are increasingly acting as 'power landlords' for the artificial intelligence sector. As AI development faces critical bottlenecks in accessing large-scale, ready-to-use power, miners are uniquely positioned to provide the necessary infrastructure. Over the last two years, these mining operators have signed 17 deals worth more than $110 billion, contracting roughly 6 gigawatts of power to major hyperscalers such as Google, Amazon, Microsoft, Nvidia, and CoreWeave. These facilities, referred to as 'warm powered shells,' feature electricity that is already flowing and ready for the deployment of computing hardware. Bernstein projects that the aggregate AI revenue for the covered companies will grow from $1.2 billion this year to $10.7 billion by 2030. Companies like TeraWulf and Cipher Digital are at the forefront of this transition, with high projected EBITDA margins driven by long-term, take-or-pay colocation contracts. This trend underscores the growing importance of securing reliable, large-scale electricity as a strategic asset in the global AI arms race."
+        ],
+        "main_topic": "Bitcoin mining companies are transitioning into essential power infrastructure providers for the expanding artificial intelligence industry.",
+        "technologies": [
+          "Bitcoin",
+          "Artificial Intelligence",
+          "Data Centers",
+          "Computing Hardware"
+        ]
+      }
+    ],
+    "article_count": 14,
+    "preview_titles": [
+      "Microsoft Reveals '1,000x More Reliable' Quantum Chip as Bitcoin Threat Draws Nearer",
+      "Red Hat npm packages compromised to steal developer credentials",
+      "Mastercard expands onchain settlement in bet on stablecoins and always-on finance"
+    ],
+    "preview_articles": [
+      {
+        "title": "Microsoft Reveals '1,000x More Reliable' Quantum Chip as Bitcoin Threat Draws Nearer",
+        "slug": "microsoft-reveals-1000x-more-reliable-quantum-chip-as-bitcoin-threat-draws-nearer",
+        "url": "https://decrypt.co/369811/microsoft-1000x-more-reliable-quantum-chip-bitcoin-threat-draws-nearer",
+        "source": "Decrypt",
+        "published": "Wed, 03 Jun 2026 03:31:03 +0000",
+        "short_summary": "Microsoft's new Majorana 2 quantum chip marks a significant leap in reliability, utilizing AI-driven research to enhance qubit stability. This progress brings the industry closer to scalable quantum computing and highlights the growing threat to existing cryptographic standards.",
+        "long_resume": "Microsoft has announced a major milestone in quantum computing with the unveiling of its Majorana 2 topological quantum chip. The company claims this new chip is 1,000 times more reliable than the previous Majorana 1 generation, achieving average qubit lifetimes of 20 seconds, with some instances lasting up to one minute. A key technical innovation in the Majorana 2 is the replacement of an aluminum-based topological superconductor with a lead-based design, which significantly improves the protection of qubits from environmental interference. The development process was heavily accelerated by the integration of agentic AI and the Microsoft Discovery platform, which allowed researchers to automate complex measurements, optimize fabrication processes, and analyze decades of quantum research far more efficiently than traditional linear human methods. Microsoft expects this trajectory to lead to the realization of scalable quantum computing by 2029. However, this technological progress intensifies the looming threat of 'Q-Day,' the moment when quantum computers become powerful enough to break the public-key cryptography that secures the modern internet and cryptocurrencies like Bitcoin. Experts warn that such a breakthrough could allow attackers to forge digital signatures and derive private keys from exposed public keys, potentially putting hundreds of billions of dollars in Bitcoin at risk. As other players like Google also report progress with chips like Willow, the race to develop quantum-resistant cryptographic solutions becomes increasingly critical.",
+        "long_resume_paragraphs": [
+          "Microsoft has announced a major milestone in quantum computing with the unveiling of its Majorana 2 topological quantum chip. The company claims this new chip is 1,000 times more reliable than the previous Majorana 1 generation, achieving average qubit lifetimes of 20 seconds, with some instances lasting up to one minute. A key technical innovation in the Majorana 2 is the replacement of an aluminum-based topological superconductor with a lead-based design, which significantly improves the protection of qubits from environmental interference. The development process was heavily accelerated by the integration of agentic AI and the Microsoft Discovery platform, which allowed researchers to automate complex measurements, optimize fabrication processes, and analyze decades of quantum research far more efficiently than traditional linear human methods. Microsoft expects this trajectory to lead to the realization of scalable quantum computing by 2029. However, this technological progress intensifies the looming threat of 'Q-Day,' the moment when quantum computers become powerful enough to break the public-key cryptography that secures the modern internet and cryptocurrencies like Bitcoin. Experts warn that such a breakthrough could allow attackers to forge digital signatures and derive private keys from exposed public keys, potentially putting hundreds of billions of dollars in Bitcoin at risk. As other players like Google also report progress with chips like Willow, the race to develop quantum-resistant cryptographic solutions becomes increasingly critical."
+        ],
+        "main_topic": "Microsoft has unveiled its Majorana 2 quantum chip, which is 1,000 times more reliable than its predecessor and was developed using agentic AI.",
+        "technologies": [
+          "Microsoft Majorana 2",
+          "Majorana 1",
+          "Microsoft Discovery platform",
+          "Agentic AI",
+          "Bitcoin",
+          "Google Willow chip",
+          "Elliptic-curve cryptography",
+          "Public-key cryptography"
+        ]
+      },
+      {
+        "title": "Red Hat npm packages compromised to steal developer credentials",
+        "slug": "red-hat-npm-packages-compromised-to-steal-developer-credentials",
+        "url": "https://bleepingcomputer.com/news/security/red-hat-npm-packages-compromised-to-steal-developer-credentials",
+        "source": "BleepingComputer",
+        "published": "Mon, 01 Jun 2026 17:38:29 -0400",
+        "short_summary": "More than 30 Red Hat npm packages were compromised in a supply-chain attack using the Miasma malware to steal developer credentials. The attack was executed via a compromised GitHub account and targeted various cloud and infrastructure secrets.",
+        "long_resume": "A significant supply-chain attack has been identified involving the compromise of over 30 npm packages under Red Hat's '@redhat-cloud-services' namespace. Security researchers from Aikido and OX Security discovered that the attack distributed a new variant of the Shai-Hulud malware, dubbed 'Miasma,' which is specifically designed to harvest developer credentials and sensitive cloud secrets. The breach originated from the compromise of a Red Hat employee's GitHub account, which allowed attackers to push malicious commits and implement a GitHub Actions workflow. This workflow leveraged npm's publishing mechanism and OIDC tokens to release backdoored package versions. The malicious payload, an obfuscated 'index.js' file, executes during the npm preinstall stage to steal a wide array of data, including AWS, Google Cloud, and Azure credentials, as well as SSH keys, Kubernetes service account tokens, and Docker credentials. While the scale of the attack is significant, with approximately 117,000 weekly downloads for the affected packages, Red Hat has stated that the compromise was limited to internal development tooling and that no customer or production systems were impacted. This incident follows a series of similar supply-chain attacks involving the Shai-Hulud malware family targeting prominent organizations like Bitwarden, SAP, and OpenAI. Organizations that may have installed the affected versions are advised to rotate all credentials and secrets immediately.",
+        "long_resume_paragraphs": [
+          "A significant supply-chain attack has been identified involving the compromise of over 30 npm packages under Red Hat's '@redhat-cloud-services' namespace. Security researchers from Aikido and OX Security discovered that the attack distributed a new variant of the Shai-Hulud malware, dubbed 'Miasma,' which is specifically designed to harvest developer credentials and sensitive cloud secrets. The breach originated from the compromise of a Red Hat employee's GitHub account, which allowed attackers to push malicious commits and implement a GitHub Actions workflow. This workflow leveraged npm's publishing mechanism and OIDC tokens to release backdoored package versions. The malicious payload, an obfuscated 'index.js' file, executes during the npm preinstall stage to steal a wide array of data, including AWS, Google Cloud, and Azure credentials, as well as SSH keys, Kubernetes service account tokens, and Docker credentials. While the scale of the attack is significant, with approximately 117,000 weekly downloads for the affected packages, Red Hat has stated that the compromise was limited to internal development tooling and that no customer or production systems were impacted. This incident follows a series of similar supply-chain attacks involving the Shai-Hulud malware family targeting prominent organizations like Bitwarden, SAP, and OpenAI. Organizations that may have installed the affected versions are advised to rotate all credentials and secrets immediately."
+        ],
+        "main_topic": "A supply-chain attack targeting Red Hat's npm packages has been identified, using a new Shai-Hulud malware variant called 'Miasma' to steal developer credentials.",
+        "technologies": [
+          "npm",
+          "Red Hat",
+          "GitHub",
+          "GitHub Actions",
+          "Bun",
+          "AWS",
+          "Google Cloud",
+          "Azure",
+          "HashiCorp Vault",
+          "Kubernetes",
+          "Docker",
+          "PyPI",
+          "Shai-Hulud",
+          "Miasma"
+        ]
+      },
+      {
+        "title": "Mastercard expands onchain settlement in bet on stablecoins and always-on finance",
+        "slug": "mastercard-expands-onchain-settlement-in-bet-on-stablecoins-and-always-on-finance",
+        "url": "https://coindesk.com/markets/2026/06/03/mastercard-expands-on-chain-settlement-in-bet-on-stablecoins-and-always-on-finance",
+        "source": "CoinDesk",
+        "published": "Wed, 03 Jun 2026 04:00:00 +0000",
+        "short_summary": "Mastercard is integrating regulated stablecoins into its settlement infrastructure to facilitate continuous, around-the-clock payments. This initiative aims to modernize global finance by providing liquidity management options outside of traditional banking hours.",
+        "long_resume": "Mastercard is expanding its settlement network to support regulated stablecoins, a strategic move designed to integrate blockchain-based payments into the core of the global financial system. The company's new framework will offer issuers and acquirers enhanced settlement options, including intraday, weekend, and holiday capabilities, alongside existing fiat processes. This transition is intended to move the payment network toward an 'always-on' model, allowing value to be transferred and settled regardless of traditional banking schedules. Mastercard will initially support several prominent stablecoins, including Circle's USDC, Paxos-issued PYUSD, USDG, USDP, Ripple's RLUSD, and SoFiUSD. These assets will be available across multiple blockchain networks, including Ethereum, Solana, Polygon, Base, Arbitrum, and the XRP Ledger (XRPL). This shift highlights the evolving role of stablecoins from mere trading instruments to critical settlement assets for banks, payment firms, and asset managers seeking efficient cross-border transfers. The rollout is expected to include several financial institutions, such as Cross River, Lead Bank, CBW Bank, ARQ, and Nuvei, particularly within the U.S. and Latin American markets. By leveraging these digital assets, Mastercard aims to provide financial institutions with greater flexibility in managing liquidity and navigating the complexities of modern, high-speed global finance.",
+        "long_resume_paragraphs": [
+          "Mastercard is expanding its settlement network to support regulated stablecoins, a strategic move designed to integrate blockchain-based payments into the core of the global financial system. The company's new framework will offer issuers and acquirers enhanced settlement options, including intraday, weekend, and holiday capabilities, alongside existing fiat processes. This transition is intended to move the payment network toward an 'always-on' model, allowing value to be transferred and settled regardless of traditional banking schedules. Mastercard will initially support several prominent stablecoins, including Circle's USDC, Paxos-issued PYUSD, USDG, USDP, Ripple's RLUSD, and SoFiUSD. These assets will be available across multiple blockchain networks, including Ethereum, Solana, Polygon, Base, Arbitrum, and the XRP Ledger (XRPL). This shift highlights the evolving role of stablecoins from mere trading instruments to critical settlement assets for banks, payment firms, and asset managers seeking efficient cross-border transfers. The rollout is expected to include several financial institutions, such as Cross River, Lead Bank, CBW Bank, ARQ, and Nuvei, particularly within the U.S. and Latin American markets. By leveraging these digital assets, Mastercard aims to provide financial institutions with greater flexibility in managing liquidity and navigating the complexities of modern, high-speed global finance."
+        ],
+        "main_topic": "Mastercard is expanding its settlement network to support regulated stablecoins, enabling 24/7 onchain financial settlement.",
+        "technologies": [
+          "Mastercard",
+          "Circle USDC",
+          "Paxos PYUSD",
+          "USDG",
+          "USDP",
+          "Ripple RLUSD",
+          "SoFiUSD",
+          "Ethereum",
+          "Solana",
+          "Polygon",
+          "Base",
+          "Arbitrum",
+          "XRPL"
+        ]
+      },
+      {
+        "title": "Hackers Used Meta’s AI Support Bot to Seize Instagram Accounts",
+        "slug": "hackers-used-metas-ai-support-bot-to-seize-instagram-accounts",
+        "url": "https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts",
+        "source": "Krebs on Security",
+        "published": "Mon, 01 Jun 2026 17:32:50 +0000",
+        "short_summary": "Hackers manipulated Meta's AI customer support bot to bypass security protocols and hijack prominent Instagram accounts. The vulnerability allowed attackers to trigger password resets by tricking the AI into linking unauthorized email addresses to target profiles.",
+        "long_resume": "A significant security vulnerability was recently exploited using Meta's AI-powered customer support assistant, leading to the hijacking of high-profile Instagram accounts, including those of the Obama White House and the U.S. Space Force. The exploit, documented on Telegram, involved attackers using a VPN to mimic a target's usual location and then interacting with the conversational AI bot. By instructing the bot to link a new email address to the target account, the attackers were able to trigger the standard password reset flow, effectively gaining unauthorized access. The breach resulted in the defacement of several accounts with pro-Iranian messages and images. While Meta has since deployed an emergency patch and confirmed that no backend database breach occurred, the incident highlights a new and dangerous attack surface created by integrating AI into sensitive account recovery workflows. Security researchers warn that AI bots are susceptible to the same social engineering tactics as human agents. However, the exploit was notably ineffective against accounts protected by strong multi-factor authentication (MFA) methods, such as passkeys or security keys, underscoring the importance of robust authentication in an era of AI-driven threats.",
+        "long_resume_paragraphs": [
+          "A significant security vulnerability was recently exploited using Meta's AI-powered customer support assistant, leading to the hijacking of high-profile Instagram accounts, including those of the Obama White House and the U.S. Space Force. The exploit, documented on Telegram, involved attackers using a VPN to mimic a target's usual location and then interacting with the conversational AI bot. By instructing the bot to link a new email address to the target account, the attackers were able to trigger the standard password reset flow, effectively gaining unauthorized access. The breach resulted in the defacement of several accounts with pro-Iranian messages and images. While Meta has since deployed an emergency patch and confirmed that no backend database breach occurred, the incident highlights a new and dangerous attack surface created by integrating AI into sensitive account recovery workflows. Security researchers warn that AI bots are susceptible to the same social engineering tactics as human agents. However, the exploit was notably ineffective against accounts protected by strong multi-factor authentication (MFA) methods, such as passkeys or security keys, underscoring the importance of robust authentication in an era of AI-driven threats."
+        ],
+        "main_topic": "Hackers exploited Meta's AI-driven support bot to hijack high-profile Instagram accounts by manipulating the password reset process.",
+        "technologies": [
+          "Instagram",
+          "Meta AI Support Assistant",
+          "Telegram",
+          "VPN",
+          "Multi-factor authentication (MFA)",
+          "Passkeys",
+          "SMS"
+        ]
+      },
+      {
+        "title": "Unauthenticated RCE as QSECOFR via IBM i Management Central — port 5555, client-controlled verify flag, no credentials required (V7R4 and earlier)",
+        "slug": "unauthenticated-rce-as-qsecofr-via-ibm-i-management-central-port-5555-client-controlled-verify-flag-no-credentials-required-v7r4-and-earlier",
+        "url": "https://blog.silentsignal.eu/2026/06/05/unauthenticated-rce-as-qsecofr-via-ibm-i-management-central",
+        "source": "Reddit r/netsec",
+        "published": "2026-06-05T11:35:56Z",
+        "short_summary": "A critical pre-authentication remote code execution vulnerability has been discovered in IBM i Management Central. The flaw allows unauthorized attackers to execute commands with full system privileges by exploiting a custom binary protocol.",
+        "long_resume": "Researchers have identified and developed an exploit for a pre-authentication remote code execution (RCE) vulnerability within IBM i Management Central (MGTC). The vulnerability targets the custom binary protocol operating on port 5555, which utilizes a proprietary serialization engine called McBuffer. By decompiling the MGTC Java classes, the researchers were able to reconstruct the undocumented protocol, including the binary handshake and packet structure. The exploit enables an unauthenticated attacker to bypass authentication mechanisms and execute arbitrary CL commands under the QSECOFR profile, which possesses root-equivalent permissions on the IBM i operating system. While IBM has begun deprecating Management Central in newer releases like V7R5, the continued use of V7R4 and earlier versions in production environments poses a significant security risk.",
+        "long_resume_paragraphs": [
+          "Researchers have identified and developed an exploit for a pre-authentication remote code execution (RCE) vulnerability within IBM i Management Central (MGTC). The vulnerability targets the custom binary protocol operating on port 5555, which utilizes a proprietary serialization engine called McBuffer. By decompiling the MGTC Java classes, the researchers were able to reconstruct the undocumented protocol, including the binary handshake and packet structure. The exploit enables an unauthenticated attacker to bypass authentication mechanisms and execute arbitrary CL commands under the QSECOFR profile, which possesses root-equivalent permissions on the IBM i operating system. While IBM has begun deprecating Management Central in newer releases like V7R5, the continued use of V7R4 and earlier versions in production environments poses a significant security risk."
+        ],
+        "main_topic": "Discovery of an unauthenticated remote code execution vulnerability in IBM i Management Central allowing arbitrary command execution as QSECOFR.",
+        "technologies": [
+          "IBM i",
+          "IBM i Management Central",
+          "Java",
+          "CL (Command Language)",
+          "McBuffer",
+          "IBM i Access Client Solutions"
+        ]
+      }
+    ],
+    "source_mtime": 1780688646.476532,
+    "model_releases": [
+      {
+        "provider": "Google (Gemma)",
+        "model_name": "Gemma 4 12B",
+        "slug": "gemma-4-12b",
+        "release_date": "2026-06-03",
+        "summary": "Google has released Gemma 4 12B, a dense, multimodal model optimized for high-performance local execution on consumer devices. The model features a novel, encoder-free architecture that allows multimodal data to be processed directly through the LLM backbone.",
+        "key_features": [
+          "Encoder-free architecture for direct multimodal processing",
+          "Optimized for local execution on devices with 16GB RAM",
+          "Supports agentic workflows and visual insight generation via Google AI Edge"
+        ],
+        "url": "https://developers.googleblog.com/en/search/?query=gemma",
+        "netlify_url": "https://bowlofdata.netlify.app/week/23_2026.html#gemma-4-12b",
+        "altervista_url": ""
+      },
+      {
+        "provider": "Microsoft (Phi)",
+        "model_name": "Microsoft Discovery",
+        "slug": "microsoft-discovery",
+        "release_date": "2026-06-02",
+        "summary": "Microsoft has announced the general availability of Microsoft Discovery, a comprehensive platform designed for building and governing agentic AI workflows. The platform is now available to all organizations to support scalable AI agent development.",
+        "key_features": [
+          "Platform for building agentic AI workflows",
+          "Governance capabilities for AI agents",
+          "General availability for all organizations"
+        ],
+        "url": "https://azure.microsoft.com/en-us/blog/category/ai-machine-learning/",
+        "netlify_url": "https://bowlofdata.netlify.app/week/23_2026.html#microsoft-discovery",
+        "altervista_url": ""
+      },
+      {
+        "provider": "xAI (Grok)",
+        "model_name": "Grok Imagine 1.5 Preview",
+        "slug": "grok-imagine-15-preview",
+        "release_date": "2026-06-03",
+        "summary": "xAI has released a preview of the Grok Imagine 1.5 model. This update represents the latest iteration in their generative imaging capabilities.",
+        "key_features": [
+          "Preview release of Imagine 1.5"
+        ],
+        "url": "https://x.ai/news",
+        "netlify_url": "https://bowlofdata.netlify.app/week/23_2026.html#grok-imagine-15-preview",
+        "altervista_url": ""
+      }
+    ],
+    "model_releases_mtime": 1780688646.477126
+  },
+  {
     "week": 22,
     "year": 2026,
     "label": "Week 22 · 2026",
