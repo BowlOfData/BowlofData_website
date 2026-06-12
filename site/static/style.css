@@ -1133,6 +1133,174 @@ img { display: block; max-width: 100%; }
   margin-bottom: 0.6rem;
 }
 
+/* --- Archive header stat ------------------------------------------------ */
+.archive-header-inner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.archive-header-text { flex: 1; min-width: 0; }
+
+.archive-header-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+  padding-bottom: 0.1rem;
+}
+
+.archive-stat-num {
+  font-family: var(--font-ui);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--yellow);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.archive-stat-label {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: rgba(255,255,255,.35);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 0.15rem;
+}
+
+/* --- Archive year jump nav --------------------------------------------- */
+.archive-year-nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 68px;
+  z-index: 50;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+
+.archive-year-nav-inner {
+  max-width: var(--max-index);
+  margin: 0 auto;
+  padding: 0.6rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.archive-year-nav-label {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-right: 0.25rem;
+}
+
+.archive-year-pill {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 0.28rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  background: var(--bg);
+  text-decoration: none;
+  transition: background .15s, color .15s, border-color .15s;
+  white-space: nowrap;
+}
+
+.archive-year-pill:hover {
+  background: var(--yellow-light);
+  color: var(--yellow-dark);
+  border-color: rgba(217,119,6,.35);
+  text-decoration: none;
+}
+
+/* --- Archive year section ----------------------------------------------- */
+.archive-body {
+  padding-bottom: 3rem;
+}
+
+.archive-year-section {
+  margin-bottom: 0;
+}
+
+.archive-year-band {
+  background: var(--dark);
+  border-top: 3px solid var(--yellow);
+  border-bottom: 1px solid rgba(245,197,24,.1);
+}
+
+.archive-year-band-inner {
+  max-width: var(--max-index);
+  margin: 0 auto;
+  padding: 1.1rem 1.5rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.archive-year-label {
+  font-family: var(--font-ui);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--yellow);
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.archive-year-count {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(255,255,255,.35);
+}
+
+/* --- Archive month section ---------------------------------------------- */
+.archive-month-section {
+  max-width: var(--max-index);
+  margin: 0 auto;
+  padding: 2rem 1.5rem 1.5rem;
+}
+
+.archive-month-section + .archive-month-section {
+  border-top: 1px solid var(--border);
+  padding-top: 1.75rem;
+}
+
+.archive-month-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+
+.archive-month-name {
+  font-family: var(--font-ui);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.015em;
+}
+
+.archive-month-count {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--lighter);
+  border-radius: 99px;
+  padding: 0.15rem 0.6rem;
+  border: 1px solid var(--border);
+}
+
 /* --- Landing page ------------------------------------------------------- */
 
 /* Brand image strip — bg matches bowl.png's own background */
@@ -1731,6 +1899,13 @@ img { display: block; max-width: 100%; }
 
 @media (max-width: 640px) {
   html { font-size: 16px; }
+
+  /* Archive grouped layout */
+  .archive-header-stat { display: none; }
+  .archive-year-nav { position: static; }
+  .archive-year-label { font-size: 1.75rem; }
+  .archive-month-section { padding: 1.5rem 1.1rem 1rem; }
+  .archive-month-section + .archive-month-section { padding-top: 1.25rem; }
 
   /* Hamburger menu */
   .menu-toggle { display: flex; }

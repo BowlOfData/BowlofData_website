@@ -5,31 +5,77 @@
 {% block content %}
 <div class="archive-header">
   <div class="archive-header-inner">
-    <h1 class="archive-title">All issues</h1>
-    <p class="archive-sub">Every weekly digest, from the first bowl to the latest.</p>
+    <div class="archive-header-text">
+      <h1 class="archive-title">All issues</h1>
+      <p class="archive-sub">Every weekly digest, from the first bowl to the latest.</p>
+    </div>
+    {% if total_count %}
+    <div class="archive-header-stat">
+      <span class="archive-stat-num">{{ total_count }}</span>
+      <span class="archive-stat-label">issue{{ 's' if total_count != 1 }}</span>
+    </div>
+    {% endif %}
   </div>
 </div>
 
-<div class="section">
-  {% if weeks %}
-  <div class="week-grid">
-    {% for w in weeks %}
-    <a class="week-card {% if loop.first %}week-card-latest{% endif %}" href="{{ w.href }}">
-      {% if loop.first %}<span class="week-card-badge">Latest</span>{% endif %}
-      <div class="week-card-label">{{ w.label }}</div>
-      <div class="week-card-count">{{ w.article_count }} articles</div>
-      {% if w.preview_titles %}
-      <ul class="week-card-preview">
-        {% for t in w.preview_titles %}
-        <li>{{ t }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-    </a>
+{% if weeks_by_year %}
+
+{% if weeks_by_year | length > 1 %}
+<div class="archive-year-nav">
+  <div class="archive-year-nav-inner">
+    <span class="archive-year-nav-label">Jump to</span>
+    {% for yg in weeks_by_year %}
+    <a href="#year-{{ yg.year }}" class="archive-year-pill">{{ yg.year }}</a>
     {% endfor %}
   </div>
-  {% else %}
-  <p class="empty-state">No newsletters found yet. Run the Maki pipeline to generate the first issue.</p>
-  {% endif %}
 </div>
+{% endif %}
+
+<div class="archive-body">
+  {% set ns = namespace(is_first=true) %}
+  {% for yg in weeks_by_year %}
+  <section class="archive-year-section" id="year-{{ yg.year }}">
+
+    <div class="archive-year-band">
+      <div class="archive-year-band-inner">
+        <span class="archive-year-label">{{ yg.year }}</span>
+        <span class="archive-year-count">{{ yg.count }} issue{{ 's' if yg.count != 1 }}</span>
+      </div>
+    </div>
+
+    {% for mg in yg.months %}
+    <div class="archive-month-section">
+      <div class="archive-month-header">
+        <span class="archive-month-name">{{ mg.month_name }}</span>
+        <span class="archive-month-count">{{ mg.weeks | length }} issue{{ 's' if mg.weeks | length != 1 }}</span>
+      </div>
+      <div class="week-grid">
+        {% for w in mg.weeks %}
+        <a class="week-card{% if ns.is_first %} week-card-latest{% endif %}" href="{{ w.href }}">
+          {% if ns.is_first %}<span class="week-card-badge">Latest</span>{% endif %}
+          {% set ns.is_first = false %}
+          <div class="week-card-label">{{ w.label }}</div>
+          <div class="week-card-count">{{ w.article_count }} articles</div>
+          {% if w.preview_titles %}
+          <ul class="week-card-preview">
+            {% for t in w.preview_titles %}
+            <li>{{ t }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+
+  </section>
+  {% endfor %}
+</div>
+
+{% else %}
+<div class="section">
+  <p class="empty-state">No newsletters found yet. Run the Maki pipeline to generate the first issue.</p>
+</div>
+{% endif %}
 {% endblock %}

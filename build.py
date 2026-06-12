@@ -149,9 +149,18 @@ def _build_week_entry(
     model_releases_mtime: float = 0,
 ) -> dict:
     """Build a complete week entry for storage in the manifest."""
+    try:
+        dt = datetime.fromisocalendar(year, week, 1)
+        month = dt.month
+        month_name = dt.strftime("%B")
+    except (ValueError, AttributeError):
+        month = 0
+        month_name = ""
     return {
         "week":                  week,
         "year":                  year,
+        "month":                 month,
+        "month_name":            month_name,
         "label":                 _week_label(week, year),
         "href":                  _week_href(week, year),
         "articles":              articles,
@@ -162,6 +171,39 @@ def _build_week_entry(
         "model_releases":        model_releases or [],
         "model_releases_mtime":  model_releases_mtime,
     }
+
+
+def _group_weeks_by_year_month(all_weeks: list[dict]) -> list[dict]:
+    """
+    Group weeks (newest-first) into year → month buckets.
+    Returns a list of year-groups, newest year first.
+    Each year-group: {'year': int, 'count': int, 'months': [{'month': int, 'month_name': str, 'weeks': [...]}]}
+    """
+    year_data: dict[int, dict[int, dict]] = {}
+    for w in all_weeks:
+        yr = w["year"]
+        mo = w.get("month", 0)
+        month_name = w.get("month_name", "")
+        # Compute from ISO week if missing (e.g. loaded from an old manifest)
+        if not mo:
+            try:
+                dt = datetime.fromisocalendar(yr, w["week"], 1)
+                mo = dt.month
+                month_name = dt.strftime("%B")
+            except (ValueError, AttributeError):
+                pass
+        if yr not in year_data:
+            year_data[yr] = {}
+        if mo not in year_data[yr]:
+            year_data[yr][mo] = {"month": mo, "month_name": month_name, "weeks": []}
+        year_data[yr][mo]["weeks"].append(w)
+
+    result = []
+    for yr in sorted(year_data, reverse=True):
+        months = [year_data[yr][mo] for mo in sorted(year_data[yr], reverse=True)]
+        count = sum(len(m["weeks"]) for m in months)
+        result.append({"year": yr, "count": count, "months": months})
+    return result
 
 # ---------------------------------------------------------------------------
 # LLM / SEO helpers
@@ -569,6 +611,8 @@ def build() -> None:
     archive_html = env.get_template("archive.html").render(
         **shared,
         weeks=all_weeks,
+        weeks_by_year=_group_weeks_by_year_month(all_weeks),
+        total_count=len(all_weeks),
         current_page="archive",
     )
     (SITE_DIR / "archive.html").write_text(archive_html, encoding="utf-8")

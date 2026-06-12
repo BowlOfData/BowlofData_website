@@ -1,7 +1,509 @@
 [
   {
+    "week": 24,
+    "year": 2026,
+    "month": 6,
+    "month_name": "June",
+    "label": "Week 24 · 2026",
+    "href": "week/24_2026.html",
+    "articles": [
+      {
+        "title": "Claude Fable & Mythos released by Anthropic",
+        "slug": "claude-fable-mythos-released-by-anthropic",
+        "url": "https://anthropic.com/news/claude-fable-5-mythos-5",
+        "source": "Reddit r/artificial",
+        "published": "2026-06-09T18:56:40Z",
+        "short_summary": "Anthropic introduces Claude Fable 5 and Mythos 5, marking a significant advancement in autonomous AI capabilities for coding and science. While Fable 5 is safe for general use, Mythos 5 provides enhanced power for cybersecurity professionals through controlled access.",
+        "long_resume": "Anthropic's launch of Claude Fable 5 and Claude Mythos 5 represents a major leap in the frontier of large language model capabilities. Fable 5 is positioned as a state-of-the-art model for general use, excelling in software engineering, vision-based tasks, and complex analytical reasoning. To mitigate the risks associated with its high performance in sensitive areas like cybersecurity, Anthropic has implemented safety guardrails that revert certain queries to the Claude Opus 4.8 model. For specialized use cases involving critical infrastructure and defense, Anthropic is deploying Claude Mythos 5 through Project Glasswing, which allows for higher capabilities in security-sensitive domains without the standard restrictions.\n\nThe technical advancements demonstrated by these models are substantial. In software engineering, Fable 5 has shown the ability to perform massive codebase migrations, such as converting a 50-million-line Ruby repository in a single day. In the realm of vision, the model can execute complex tasks like reconstructing web applications from screenshots and playing games like Pokémon FireRed using only raw visual input. Furthermore, the models are driving innovation in the life sciences; Mythos 5 has been used to accelerate protein design by tenfold and has even produced novel, verifiable scientific hypotheses in molecular biology and genomics.\n\nDespite the increased power, Anthropic emphasizes a commitment to alignment and safety. Automated assessments indicate that the level of misaligned behavior in Mythos 5 remains comparable to previous models like Opus 4.8. As part of their broader strategy, Anthropic aims to expand access to these advanced capabilities through trusted access programs while continuously refining safeguards to reduce false positives in the general-use model.",
+        "long_resume_paragraphs": [
+          "Anthropic's launch of Claude Fable 5 and Claude Mythos 5 represents a major leap in the frontier of large language model capabilities. Fable 5 is positioned as a state-of-the-art model for general use, excelling in software engineering, vision-based tasks, and complex analytical reasoning. To mitigate the risks associated with its high performance in sensitive areas like cybersecurity, Anthropic has implemented safety guardrails that revert certain queries to the Claude Opus 4.8 model. For specialized use cases involving critical infrastructure and defense, Anthropic is deploying Claude Mythos 5 through Project Glasswing, which allows for higher capabilities in security-sensitive domains without the standard restrictions.",
+          "The technical advancements demonstrated by these models are substantial. In software engineering, Fable 5 has shown the ability to perform massive codebase migrations, such as converting a 50-million-line Ruby repository in a single day. In the realm of vision, the model can execute complex tasks like reconstructing web applications from screenshots and playing games like Pokémon FireRed using only raw visual input. Furthermore, the models are driving innovation in the life sciences; Mythos 5 has been used to accelerate protein design by tenfold and has even produced novel, verifiable scientific hypotheses in molecular biology and genomics.",
+          "Despite the increased power, Anthropic emphasizes a commitment to alignment and safety. Automated assessments indicate that the level of misaligned behavior in Mythos 5 remains comparable to previous models like Opus 4.8. As part of their broader strategy, Anthropic aims to expand access to these advanced capabilities through trusted access programs while continuously refining safeguards to reduce false positives in the general-use model."
+        ],
+        "main_topic": "Anthropic has announced the launch of Claude Fable 5, a high-capability general-use model, and Claude Mythos 5, a specialized version for cybersecurity and scientific research.",
+        "technologies": [
+          "Claude Fable 5",
+          "Claude Mythos 5",
+          "Claude Opus 4.8",
+          "Project Glasswing",
+          "Claude Code",
+          "Ruby",
+          "FrontierCode",
+          "CursorBench"
+        ]
+      },
+      {
+        "title": "Signal Alums Reveal ‘Encrypted Spaces,’ a System for Making Private Collaboration Apps",
+        "slug": "signal-alums-reveal-encrypted-spaces-a-system-for-making-private-collaboration-apps",
+        "url": "https://wired.com/story/signal-alums-release-encrypted-spaces-a-new-system-for-building-private-collaboration-apps",
+        "source": "Wired",
+        "published": "Thu, 11 Jun 2026 12:00:00 +0000",
+        "short_summary": "Former Signal engineers have unveiled Encrypted Spaces, a framework for building end-to-end encrypted collaborative platforms. The system uses zero-knowledge proofs to allow servers to manage and verify data changes without ever accessing the underlying unencrypted information.",
+        "long_resume": "A group of former Signal engineers has developed 'Encrypted Spaces,' a novel cryptographic architecture intended to facilitate secure, multi-user collaboration. While traditional end-to-end encrypted (E2EE) protocols like Signal are highly effective for one-on-one messaging, they struggle with collaborative environments like Google Docs or Slack because the server cannot manipulate encrypted data. Encrypted Spaces addresses this by implementing a system where users maintain a synchronized change log on their local devices. To ensure the integrity of this process, the central server utilizes zero-knowledge proofs to verify that no changes have been omitted or maliciously altered, all without ever gaining access to the plaintext data. Furthermore, the technology employs 'roll-ups,' allowing the server to provide succinct cryptographic proofs that a specific state is valid, thereby reducing the need for clients to download entire histories of changes. The project is currently released as a code repository, inviting researchers and developers to build new applications that make E2EE the default standard for collaboration by removing the technical barrier of complex cryptographic implementation.",
+        "long_resume_paragraphs": [
+          "A group of former Signal engineers has developed 'Encrypted Spaces,' a novel cryptographic architecture intended to facilitate secure, multi-user collaboration. While traditional end-to-end encrypted (E2EE) protocols like Signal are highly effective for one-on-one messaging, they struggle with collaborative environments like Google Docs or Slack because the server cannot manipulate encrypted data. Encrypted Spaces addresses this by implementing a system where users maintain a synchronized change log on their local devices. To ensure the integrity of this process, the central server utilizes zero-knowledge proofs to verify that no changes have been omitted or maliciously altered, all without ever gaining access to the plaintext data. Furthermore, the technology employs 'roll-ups,' allowing the server to provide succinct cryptographic proofs that a specific state is valid, thereby reducing the need for clients to download entire histories of changes. The project is currently released as a code repository, inviting researchers and developers to build new applications that make E2EE the default standard for collaboration by removing the technical barrier of complex cryptographic implementation."
+        ],
+        "main_topic": "The introduction of 'Encrypted Spaces,' a new cryptographic architecture designed for end-to-end encrypted collaborative applications.",
+        "technologies": [
+          "Encrypted Spaces",
+          "Signal protocol",
+          "Zero-knowledge proofs",
+          "Zero-knowledge roll-ups",
+          "End-to-end encryption"
+        ]
+      },
+      {
+        "title": "Jupyter Enterprise Gateway - From Notebook to Kubernetes Cluster Admin - elttam",
+        "slug": "jupyter-enterprise-gateway-from-notebook-to-kubernetes-cluster-admin-elttam",
+        "url": "https://elttam.com/blog/jupyter-enterprise-gateway",
+        "source": "Reddit r/netsec",
+        "published": "2026-06-10T06:30:38Z",
+        "short_summary": "Researchers at elttam have identified critical vulnerabilities in Jupyter Enterprise Gateway that enable cluster-wide compromise. By exploiting improper validation of environment variables, an attacker can bypass security constraints to gain root access within a Kubernetes pod.",
+        "long_resume": "The article details a series of security vulnerabilities discovered in Jupyter Enterprise Gateway, a component used to launch remote kernels on distributed infrastructure like Kubernetes. The researchers demonstrated that users with legitimate access to notebooks but no Kubernetes privileges could exploit the Gateway's high-privilege service account to compromise the entire cluster. Specifically, they identified a bypass in the ContainerProcessProxy._enforce_prohibited_ids function (GHSA-chq7-94j8-cj28). While the system attempts to block the use of UID/GID 0 (root), it performs a strict string comparison that can be bypassed by providing values with trailing spaces, such as '0 '. Because the downstream Kubernetes manifest uses the Jinja2 'int' filter, these padded strings are successfully converted to integer 0, resulting in pods running with root privileges. This escalation allows attackers to perform highly sensitive actions including reading cluster secrets and mounting host filesystems. The vulnerabilities have been responsibly disclosed, and a patch is available in version 3.3.0.",
+        "long_resume_paragraphs": [
+          "The article details a series of security vulnerabilities discovered in Jupyter Enterprise Gateway, a component used to launch remote kernels on distributed infrastructure like Kubernetes. The researchers demonstrated that users with legitimate access to notebooks but no Kubernetes privileges could exploit the Gateway's high-privilege service account to compromise the entire cluster. Specifically, they identified a bypass in the ContainerProcessProxy._enforce_prohibited_ids function (GHSA-chq7-94j8-cj28). While the system attempts to block the use of UID/GID 0 (root), it performs a strict string comparison that can be bypassed by providing values with trailing spaces, such as '0 '. Because the downstream Kubernetes manifest uses the Jinja2 'int' filter, these padded strings are successfully converted to integer 0, resulting in pods running with root privileges. This escalation allows attackers to perform highly sensitive actions including reading cluster secrets and mounting host filesystems. The vulnerabilities have been responsibly disclosed, and a patch is available in version 3.3.0."
+        ],
+        "main_topic": "Security researchers discovered vulnerabilities in Jupyter Enterprise Gateway that allow unprivileged notebook users to escalate privileges and compromise Kubernetes clusters.",
+        "technologies": [
+          "Jupyter Enterprise Gateway",
+          "Kubernetes",
+          "Jupyter Notebook",
+          "JupyterHub",
+          "Apache Spark",
+          "Python",
+          "Helm",
+          "Jinja2"
+        ]
+      },
+      {
+        "title": "Field Demonstration of Trusted-Node QKD over Deployed Single-Mode and Multi-Core Fiber Infrastructure",
+        "slug": "field-demonstration-of-trusted-node-qkd-over-deployed-single-mode-and-multi-core-fiber-infrastructure",
+        "url": "https://quantumcomputingreport.com/field-demonstration-of-trusted-node-qkd-over-deployed-single-mode-and-multi-core-fiber-infrastructure",
+        "source": "Quantum Computing Report",
+        "published": "Tue, 09 Jun 2026 00:31:00 +0000",
+        "short_summary": "Researchers have demonstrated a resilient 303 km quantum-secured network using a combination of single-mode and multi-core fiber technologies. The trial showcased high-efficiency photon detection and the ability to maintain secure communication through trusted-node relay even under simulated network noise.",
+        "long_resume": "A collaborative research effort involving several Swedish universities has successfully deployed a long-haul, trusted-node Quantum Key Distribution (QKD) link across 303 km of existing telecommunications infrastructure. The network connects Linköping to Stockholm, utilizing a hybrid architecture that blends traditional single-mode fiber with seven-core multi-core fiber (MCF). To overcome the significant signal attenuation inherent in long-distance quantum transmission—reaching up to 36 dB on certain segments—the team retrofitted commercial ThinkQuantum systems with Superconducting Nanowire Single-Photon Detectors (SNSPDs). This modification improved detection efficiency to 93% and boosted the Secret Key Rate (SKR) from 0.16 kbit/s to 4.75 kbit/s in the initial segments. The experiment also tested space-division multiplexing, using a Polatis optical switch to route quantum channels through different fiber cores while maintaining polarization stability. To simulate real-world telecommunications environments, the researchers introduced classical 10 Gbps Ethernet traffic and broadband optical noise. On the application layer, the generated keys were used for One-Time Pad (OTP) encryption of image data. The study compared traditional JPEG 2000 compression against a deep-learning-based JPEG AI codec, finding that the neural-network approach was more efficient at preserving image quality under the constrained bit budgets imposed by fluctuating quantum key rates. The system demonstrated robust performance over a 92-hour continuous operation period, utilizing Key Management System (KMS) buffers to handle rate discrepancies between network segments.",
+        "long_resume_paragraphs": [
+          "A collaborative research effort involving several Swedish universities has successfully deployed a long-haul, trusted-node Quantum Key Distribution (QKD) link across 303 km of existing telecommunications infrastructure. The network connects Linköping to Stockholm, utilizing a hybrid architecture that blends traditional single-mode fiber with seven-core multi-core fiber (MCF). To overcome the significant signal attenuation inherent in long-distance quantum transmission—reaching up to 36 dB on certain segments—the team retrofitted commercial ThinkQuantum systems with Superconducting Nanowire Single-Photon Detectors (SNSPDs). This modification improved detection efficiency to 93% and boosted the Secret Key Rate (SKR) from 0.16 kbit/s to 4.75 kbit/s in the initial segments. The experiment also tested space-division multiplexing, using a Polatis optical switch to route quantum channels through different fiber cores while maintaining polarization stability. To simulate real-world telecommunications environments, the researchers introduced classical 10 Gbps Ethernet traffic and broadband optical noise. On the application layer, the generated keys were used for One-Time Pad (OTP) encryption of image data. The study compared traditional JPEG 2000 compression against a deep-learning-based JPEG AI codec, finding that the neural-network approach was more efficient at preserving image quality under the constrained bit budgets imposed by fluctuating quantum key rates. The system demonstrated robust performance over a 92-hour continuous operation period, utilizing Key Management System (KMS) buffers to handle rate discrepancies between network segments."
+        ],
+        "main_topic": "A successful field demonstration of a long-haul, trusted-node Quantum Key Distribution (QKD) network spanning 303 km using integrated single-mode and multi-core fiber infrastructure.",
+        "technologies": [
+          "Quantum Key Distribution (QKD)",
+          "Single-Mode Fiber (SMF)",
+          "Multi-Core Fiber (MCF)",
+          "Superconducting Nanowire Single-Photon Detectors (SNSPDs)",
+          "ThinkQuantum QuKy EDU Pro",
+          "Polatis optical fiber switch",
+          "Key Management Systems (KMS)",
+          "One-Time Pad (OTP)",
+          "JPEG AI codec",
+          "10 Gbps Ethernet"
+        ]
+      },
+      {
+        "title": "“The manual model breaks”: What happens when agents write to production data",
+        "slug": "the-manual-model-breaks-what-happens-when-agents-write-to-production-data",
+        "url": "https://thenewstack.io/lakefs-agentic-ai-sandbox",
+        "source": "The New Stack",
+        "published": "Thu, 11 Jun 2026 17:35:59 +0000",
+        "short_summary": "As autonomous AI agents scale, the risk of catastrophic production data loss increases due to the inability of human oversight to keep pace with machine-speed writes. lakeFS has launched a new service providing isolated data sandboxes and automated governance to ensure agentic workloads remain auditable and reversible.",
+        "long_resume": "The rapid adoption of autonomous AI agents is creating a critical gap in data governance. Unlike human analysts, AI agents operate at machine speed and can execute hundreds of simultaneous changes without the pause for manual review that traditionally prevents errors. The article highlights recent high-profile failures, such as a Replit AI agent deleting production databases and a Google Gemini CLI agent destroying user project files, both of which resulted from a lack of data isolation and rollback capabilities. To address this, lakeFS has introduced 'lakeFS for Agentic AI,' a service designed to provide governed, reproducible data access. The technology utilizes a 'zero-copy' branching architecture, allowing agents to operate in isolated sandboxes where they can read and write to a virtualized version of the dataset without impacting the production environment. Key features include branch-scoped ephemeral credentials that confine agents to specific workspaces, as well as the ability to implement custom validation logic via webhooks or Lua scripts. By treating data with 'Git-like' properties—including pull requests for human-in-the-loop oversight and immutable audit trails—lakeFS aims to mitigate the liabilities of autonomous agents. While other tools like Apache Iceberg and Project Nessie exist in the data versioning space, lakeFS is positioning itself as a comprehensive control plane for the era of agentic AI.",
+        "long_resume_paragraphs": [
+          "The rapid adoption of autonomous AI agents is creating a critical gap in data governance. Unlike human analysts, AI agents operate at machine speed and can execute hundreds of simultaneous changes without the pause for manual review that traditionally prevents errors. The article highlights recent high-profile failures, such as a Replit AI agent deleting production databases and a Google Gemini CLI agent destroying user project files, both of which resulted from a lack of data isolation and rollback capabilities. To address this, lakeFS has introduced 'lakeFS for Agentic AI,' a service designed to provide governed, reproducible data access. The technology utilizes a 'zero-copy' branching architecture, allowing agents to operate in isolated sandboxes where they can read and write to a virtualized version of the dataset without impacting the production environment. Key features include branch-scoped ephemeral credentials that confine agents to specific workspaces, as well as the ability to implement custom validation logic via webhooks or Lua scripts. By treating data with 'Git-like' properties—including pull requests for human-in-the-loop oversight and immutable audit trails—lakeFS aims to mitigate the liabilities of autonomous agents. While other tools like Apache Iceberg and Project Nessie exist in the data versioning space, lakeFS is positioning itself as a comprehensive control plane for the era of agentic AI."
+        ],
+        "main_topic": "The emergence of lakeFS for Agentic AI to solve the risks of autonomous agents performing unvalidated writes to production data.",
+        "technologies": [
+          "lakeFS",
+          "Replit AI",
+          "Google Gemini CLI",
+          "Apache Iceberg",
+          "Pachyderm",
+          "Project Nessie",
+          "DVC (Data Version Control)",
+          "Lua",
+          "LLM"
+        ]
+      },
+      {
+        "title": "A Quantum Clock Is Ticking for Bitcoin and Crypto—Here's How Stellar Is Preparing",
+        "slug": "a-quantum-clock-is-ticking-for-bitcoin-and-cryptoheres-how-stellar-is-preparing",
+        "url": "https://decrypt.co/370570/quantum-clock-ticking-bitcoin-crypto-how-stellar-preparing",
+        "source": "Decrypt",
+        "published": "Tue, 09 Jun 2026 19:49:05 +0000",
+        "short_summary": "The Stellar Development Foundation has unveiled a strategic roadmap to implement post-quantum cryptography to protect against future quantum computing attacks. The plan leverages Stellar's unique architecture to allow for seamless key migration without altering user addresses.",
+        "long_resume": "As the threat of quantum computing looms, the Stellar Development Foundation has introduced its 'Quantum Preparedness Plan,' a three-stage initiative designed to safeguard the blockchain against the eventual breaking of elliptic curve cryptography. The primary concern is that powerful quantum computers could allow attackers to derive private keys from public ones, leading to widespread account takeovers. Unlike Bitcoin or Ethereum, Stellar possesses a structural advantage: its account identity is decoupled from signing keys, meaning users can transition to quantum-resistant signatures without needing to migrate balances or change their network addresses.\n\nThe proposed roadmap begins in 2026 by adding post-quantum signature verification to the smart contract layer for enterprise wallets. By 2027, a protocol-level upgrade will enable all Stellar accounts to adopt quantum-safe signers. The final stage involves the full deprecation of current vulnerable cryptography once community readiness is established. However, a significant hurdle persists regarding dormant accounts; if holders cannot be reached to perform the upgrade, their funds could effectively be frozen. This issue is expected to require extensive community governance. As organizations like NIST and Google prepare for a 2029-2030 window of quantum vulnerability, Stellar's proactive approach serves as a benchmark for the broader cryptocurrency industry's struggle to achieve post-quantum resilience.",
+        "long_resume_paragraphs": [
+          "As the threat of quantum computing looms, the Stellar Development Foundation has introduced its 'Quantum Preparedness Plan,' a three-stage initiative designed to safeguard the blockchain against the eventual breaking of elliptic curve cryptography. The primary concern is that powerful quantum computers could allow attackers to derive private keys from public ones, leading to widespread account takeovers. Unlike Bitcoin or Ethereum, Stellar possesses a structural advantage: its account identity is decoupled from signing keys, meaning users can transition to quantum-resistant signatures without needing to migrate balances or change their network addresses.",
+          "The proposed roadmap begins in 2026 by adding post-quantum signature verification to the smart contract layer for enterprise wallets. By 2027, a protocol-level upgrade will enable all Stellar accounts to adopt quantum-safe signers. The final stage involves the full deprecation of current vulnerable cryptography once community readiness is established. However, a significant hurdle persists regarding dormant accounts; if holders cannot be reached to perform the upgrade, their funds could effectively be frozen. This issue is expected to require extensive community governance. As organizations like NIST and Google prepare for a 2029-2030 window of quantum vulnerability, Stellar's proactive approach serves as a benchmark for the broader cryptocurrency industry's struggle to achieve post-quantum resilience."
+        ],
+        "main_topic": "The Stellar Development Foundation has announced a three-stage roadmap to transition its blockchain network to quantum-safe cryptography to defend against future quantum computing threats.",
+        "technologies": [
+          "Stellar",
+          "Bitcoin",
+          "Ethereum",
+          "Quantum Computing",
+          "Elliptic Curve Cryptography",
+          "NIST",
+          "XLM"
+        ]
+      },
+      {
+        "title": "Landmark German ruling declares Google's AI Overviews are Google's own words and makes it liable for false answers",
+        "slug": "landmark-german-ruling-declares-googles-ai-overviews-are-googles-own-words-and-makes-it-liable-for-false-answers",
+        "url": "https://the-decoder.com/landmark-german-ruling-declares-googles-ai-overviews-are-googles-own-words-and-makes-it-liable-for-false-answers",
+        "source": "Reddit r/technology",
+        "published": "2026-06-11T00:27:02Z",
+        "short_summary": "A German court has held Google liable for defamatory content produced by its AI Overviews, ruling that the technology generates its own substantive statements. This landmark decision shifts the legal responsibility from search engine intermediaries to direct content publishers for AI-generated summaries.",
+        "long_resume": "The Regional Court of Munich has issued a significant ruling regarding the legal liability of generative AI in search engines. In case no. 26 O 869/26, the court granted an injunction against Google after its 'AI Overviews' feature falsely associated two Munich-based publishers with fraudulent business practices and scams. Crucially, the court determined that Google cannot claim the status of a mere intermediary or 'indirect infringer' as traditional search engines do under previous German Federal Court of Justice (BGH) precedents. The judge argued that because AI Overviews rewrite, evaluate, and structure information into 'independent, new, and substantive statements' that may not exist in the underlying source material, Google acts as a direct creator of the content.\n\nThe court specifically rejected Google's argument that users bear the responsibility to verify claims by checking linked sources. The ruling noted that AI Overviews are often understandable on their own and that studies show a very low rate of users actually clicking through to primary sources. Furthermore, the court found that an AI's algorithmic output does not enjoy the same level of free speech protection as human opinion, especially when it presents unverified facts as certainties. This ruling addresses a critical 'protection gap' where victims of AI hallucinations had no recourse because the original web sources were not the authors of the false claims. While Google was ordered to pay 80 percent of the legal costs and cease the specific defamatory statements, the precedent poses a systemic threat to the business models of all AI-integrated search services, as any inaccuracy in paraphrasing could now result in direct liability for the provider.",
+        "long_resume_paragraphs": [
+          "The Regional Court of Munich has issued a significant ruling regarding the legal liability of generative AI in search engines. In case no. 26 O 869/26, the court granted an injunction against Google after its 'AI Overviews' feature falsely associated two Munich-based publishers with fraudulent business practices and scams. Crucially, the court determined that Google cannot claim the status of a mere intermediary or 'indirect infringer' as traditional search engines do under previous German Federal Court of Justice (BGH) precedents. The judge argued that because AI Overviews rewrite, evaluate, and structure information into 'independent, new, and substantive statements' that may not exist in the underlying source material, Google acts as a direct creator of the content.",
+          "The court specifically rejected Google's argument that users bear the responsibility to verify claims by checking linked sources. The ruling noted that AI Overviews are often understandable on their own and that studies show a very low rate of users actually clicking through to primary sources. Furthermore, the court found that an AI's algorithmic output does not enjoy the same level of free speech protection as human opinion, especially when it presents unverified facts as certainties. This ruling addresses a critical 'protection gap' where victims of AI hallucinations had no recourse because the original web sources were not the authors of the false claims. While Google was ordered to pay 80 percent of the legal costs and cease the specific defamatory statements, the precedent poses a systemic threat to the business models of all AI-integrated search services, as any inaccuracy in paraphrasing could now result in direct liability for the provider."
+        ],
+        "main_topic": "A German court ruled that Google is directly liable for false information generated by its AI Overviews because the feature creates original content rather than just indexing third-party results.",
+        "technologies": [
+          "Google AI Overviews",
+          "Gemini 3",
+          "ChatGPT",
+          "Claude",
+          "Perplexity",
+          "Google Search"
+        ]
+      },
+      {
+        "title": "For the 2nd time in weeks, Microsoft packages laced with credential stealer",
+        "slug": "for-the-2nd-time-in-weeks-microsoft-packages-laced-with-credential-stealer",
+        "url": "https://arstechnica.com/security/2026/06/for-the-2nd-time-in-weeks-microsoft-packages-laced-with-credential-stealer",
+        "source": "Reddit r/cybersecurity",
+        "published": "2026-06-08T21:53:55Z",
+        "short_summary": "Threat actors have successfully compromised dozens of Microsoft-owned repositories to deploy the Miasma malware via supply-chain attacks. The malware is designed to steal cloud credentials and spread laterally through developer environments by exploiting AI coding agents.",
+        "long_resume": "A significant security breach has occurred involving the compromise of 73 cryptographically verified open-source packages owned by Microsoft. This incident marks the second major supply-chain attack against Microsoft's official repositories in recent months, following a similar compromise of the durabletask Python SDK in May. The malicious payload, identified as Miasma, is approximately 28 KB and is specifically engineered to trigger when developers interact with the packages using AI coding agents. Once active, the malware performs extensive credential harvesting, targeting sensitive information from AWS, Azure, GCP, and Kubernetes, as well as password managers and over 90 different developer tool configurations.\n\nThe attack has been attributed to a threat actor known as TeamPCP. The group utilized techniques similar to their previously open-sourced Mini Shai-Hulud toolkit to bypass traditional build pipelines. A particularly sophisticated aspect of this attack involves the theft of OpenID-Connect (OIDC) tokens. These tokens are critical components of the SLSA (Supply-chain Levels for Software Artifacts) framework, which provides cryptographically signed guarantees regarding software integrity. By stealing these legitimate tokens, the attackers can undermine the very mechanisms intended to verify software provenance.\n\nThere has been criticism regarding the transparency of the response; GitHub initially disabled the packages citing violations of their terms of service rather than alerting developers to a direct security compromise. The malware's ability to spread laterally through cloud infrastructures poses a severe risk to the broader developer ecosystem and cloud-native environments. This pattern of targeting official channels highlights an evolving threat landscape where trusted, verified software repositories are being weaponized against the developers who rely on them.",
+        "long_resume_paragraphs": [
+          "A significant security breach has occurred involving the compromise of 73 cryptographically verified open-source packages owned by Microsoft. This incident marks the second major supply-chain attack against Microsoft's official repositories in recent months, following a similar compromise of the durabletask Python SDK in May. The malicious payload, identified as Miasma, is approximately 28 KB and is specifically engineered to trigger when developers interact with the packages using AI coding agents. Once active, the malware performs extensive credential harvesting, targeting sensitive information from AWS, Azure, GCP, and Kubernetes, as well as password managers and over 90 different developer tool configurations.",
+          "The attack has been attributed to a threat actor known as TeamPCP. The group utilized techniques similar to their previously open-sourced Mini Shai-Hulud toolkit to bypass traditional build pipelines. A particularly sophisticated aspect of this attack involves the theft of OpenID-Connect (OIDC) tokens. These tokens are critical components of the SLSA (Supply-chain Levels for Software Artifacts) framework, which provides cryptographically signed guarantees regarding software integrity. By stealing these legitimate tokens, the attackers can undermine the very mechanisms intended to verify software provenance.",
+          "There has been criticism regarding the transparency of the response; GitHub initially disabled the packages citing violations of their terms of service rather than alerting developers to a direct security compromise. The malware's ability to spread laterally through cloud infrastructures poses a severe risk to the broader developer ecosystem and cloud-native environments. This pattern of targeting official channels highlights an evolving threat landscape where trusted, verified software repositories are being weaponized against the developers who rely on them."
+        ],
+        "main_topic": "A second major supply-chain attack in two months has compromised 73 Microsoft-owned open-source packages to distribute the Miasma credential-stealing malware.",
+        "technologies": [
+          "Microsoft",
+          "GitHub",
+          "AWS",
+          "Azure",
+          "GCP",
+          "Kubernetes",
+          "Python",
+          "PyPI",
+          "OIDC (OpenID-Connect)",
+          "SLSA (Supply-chain Levels for Software Artifacts)",
+          "durabletask",
+          "npm"
+        ]
+      },
+      {
+        "title": "LG, Arbitrum launch blockchain-based bid for $679B ad market",
+        "slug": "lg-arbitrum-launch-blockchain-based-bid-for-679b-ad-market",
+        "url": "https://cointelegraph.com/news/lg-arbitrum-launch-blockchain-based-bid-for-679b-ad-market?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+        "source": "CoinTelegraph",
+        "published": "Fri, 12 Jun 2026 04:32:04 +0000",
+        "short_summary": "LG Electronics and Arbitrum are collaborating to build a decentralized advertising network that utilizes blockchain to automate ad inventory management. By removing intermediaries, the platform intends to provide greater transparency and cost efficiency for publishers and advertisers.",
+        "long_resume": "LG Electronics has announced a strategic collaboration with the Ethereum Layer-2 network, Arbitrum, to develop a blockchain-based advertising network. The primary goal of this initiative is to revolutionize the digital advertising industry by providing a shared database for ad inventory and tracking customer interactions through a decentralized ledger. By utilizing blockchain technology, the network aims to eliminate the need for expensive intermediaries that currently manage the buying and selling of ad space, thereby reducing costs and increasing transparency regarding audience reach. Steven Goldfeder, co-founder of Arbitrum, noted that the software-driven approach allows for an automated market that functions without manual intervention. This development has already had a market impact, with the price of the ARB token rising by over 5% following the announcement. The project is part of LG's long-standing interest in blockchain technology, which includes previous ventures like the Monachain enterprise blockchain and the Wallypto crypto wallet built on Hedera Hashgraph. While some of LG's previous NFT-related projects have been discontinued, this new venture focuses on the massive $679 billion digital ad market, seeking to leverage Layer-2 scaling solutions to bring tangible value to advertisers and publishers alike.",
+        "long_resume_paragraphs": [
+          "LG Electronics has announced a strategic collaboration with the Ethereum Layer-2 network, Arbitrum, to develop a blockchain-based advertising network. The primary goal of this initiative is to revolutionize the digital advertising industry by providing a shared database for ad inventory and tracking customer interactions through a decentralized ledger. By utilizing blockchain technology, the network aims to eliminate the need for expensive intermediaries that currently manage the buying and selling of ad space, thereby reducing costs and increasing transparency regarding audience reach. Steven Goldfeder, co-founder of Arbitrum, noted that the software-driven approach allows for an automated market that functions without manual intervention. This development has already had a market impact, with the price of the ARB token rising by over 5% following the announcement. The project is part of LG's long-standing interest in blockchain technology, which includes previous ventures like the Monachain enterprise blockchain and the Wallypto crypto wallet built on Hedera Hashgraph. While some of LG's previous NFT-related projects have been discontinued, this new venture focuses on the massive $679 billion digital ad market, seeking to leverage Layer-2 scaling solutions to bring tangible value to advertisers and publishers alike."
+        ],
+        "main_topic": "LG Electronics is partnering with the Arbitrum network to develop a blockchain-based advertising network designed to increase transparency and efficiency in digital ad buying.",
+        "technologies": [
+          "Arbitrum",
+          "Ethereum",
+          "Blockchain",
+          "Monachain",
+          "Hedera Hashgraph",
+          "Wallypto"
+        ]
+      },
+      {
+        "title": "A 'Bitcoin DeFi' project just shut down with a brutal post-mortem: Users just didn't care",
+        "slug": "a-bitcoin-defi-project-just-shut-down-with-a-brutal-post-mortem-users-just-didnt-care",
+        "url": "https://coindesk.com/tech/2026/06/10/a-bitcoin-defi-project-just-shut-down-with-a-brutal-post-mortem-users-just-didn-t-care",
+        "source": "CoinDesk",
+        "published": "Wed, 10 Jun 2026 12:00:29 +0000",
+        "short_summary": "Bitcoin layer-2 project Botanix has announced its shutdown after failing to gain traction in the DeFi ecosystem. The collapse highlights a significant gap between developer ambitions for Bitcoin programmability and actual user demand for wrapped assets on Ethereum.",
+        "long_resume": "The Bitcoin layer-2 network Botanix is officially winding down its operations, marking a significant setback for the 'Bitcoin DeFi' (BTCFi) movement. Despite successfully raising $14.4 million in funding rounds during 2023 and 2024, the project struggled to attract liquidity, ending its run with a Total Value Locked (TVL) of just $119,500. The developers attributed the failure to broader market conditions and a lack of interest from users in complex Bitcoin-native smart contract functionality. Instead, the market has shown a preference for using wrapped Bitcoin (wBTC) and other synthetic tokens on established networks like Ethereum, which provide sufficient utility for lending and staking without the trust assumptions required by new layer-2s. This shutdown serves as a cautionary tale for the broader Bitcoin scaling sector, including projects like Rootstock and Citrea, as the industry faces potential consolidation due to an oversupply of competing networks and a lack of capital concentration. The post-mortem suggests that if Bitcoin's role remains strictly as a reserve asset, the market for native programmable Bitcoin layers may never materialize.",
+        "long_resume_paragraphs": [
+          "The Bitcoin layer-2 network Botanix is officially winding down its operations, marking a significant setback for the 'Bitcoin DeFi' (BTCFi) movement. Despite successfully raising $14.4 million in funding rounds during 2023 and 2024, the project struggled to attract liquidity, ending its run with a Total Value Locked (TVL) of just $119,500. The developers attributed the failure to broader market conditions and a lack of interest from users in complex Bitcoin-native smart contract functionality. Instead, the market has shown a preference for using wrapped Bitcoin (wBTC) and other synthetic tokens on established networks like Ethereum, which provide sufficient utility for lending and staking without the trust assumptions required by new layer-2s. This shutdown serves as a cautionary tale for the broader Bitcoin scaling sector, including projects like Rootstock and Citrea, as the industry faces potential consolidation due to an oversupply of competing networks and a lack of capital concentration. The post-mortem suggests that if Bitcoin's role remains strictly as a reserve asset, the market for native programmable Bitcoin layers may never materialize."
+        ],
+        "main_topic": "The Bitcoin layer-2 network Botanix is shutting down due to lack of user interest and unfavorable market conditions.",
+        "technologies": [
+          "Bitcoin",
+          "Botanix",
+          "Ethereum",
+          "Rootstock",
+          "Citrea",
+          "wBTC",
+          "DeFiLlama",
+          "Aave"
+        ]
+      },
+      {
+        "title": "CISA Tells US Agencies to Fix Security Bugs in as Little as 3 Days Thanks to AI Threats",
+        "slug": "cisa-tells-us-agencies-to-fix-security-bugs-in-as-little-as-3-days-thanks-to-ai-threats",
+        "url": "https://wired.com/story/cisa-ai-vulnerability-directive",
+        "source": "Wired",
+        "published": "Wed, 10 Jun 2026 20:55:40 +0000",
+        "short_summary": "CISA has implemented a new directive forcing federal civilian agencies to remediate high-risk vulnerabilities in as little as three days. This rapid response requirement is a direct reaction to the increased ability of threat actors to use AI for automated bug hunting and exploitation.",
+        "long_resume": "The United States Cybersecurity and Infrastructure Security Agency (CISA) has introduced a new 'binding operational directive' aimed at accelerating software patching across federal civilian agencies. As artificial intelligence evolves, the window between vulnerability discovery and active exploitation is shrinking, allowing malicious actors to automate much of the attack lifecycle. To combat this, CISA’s new rubric requires critical patches to be applied within three days if a vulnerability meets four specific risk factors: it is publicly exposed, listed in the Known Exploited Vulnerabilities Catalog, capable of being exploited via automation, and provides high levels of attacker access. This directive significantly tightens previous mandates from 2011 and 2021, which allowed for much longer remediation periods of up to 30 days. While CISA officials emphasize that this is a necessary step to counter AI-driven threats, cybersecurity experts argue that patching alone is insufficient. Industry leaders suggest that true security requires moving toward architectural improvements, such as containment by design, to limit the impact of breaches even when vulnerabilities exist.",
+        "long_resume_paragraphs": [
+          "The United States Cybersecurity and Infrastructure Security Agency (CISA) has introduced a new 'binding operational directive' aimed at accelerating software patching across federal civilian agencies. As artificial intelligence evolves, the window between vulnerability discovery and active exploitation is shrinking, allowing malicious actors to automate much of the attack lifecycle. To combat this, CISA’s new rubric requires critical patches to be applied within three days if a vulnerability meets four specific risk factors: it is publicly exposed, listed in the Known Exploited Vulnerabilities Catalog, capable of being exploited via automation, and provides high levels of attacker access. This directive significantly tightens previous mandates from 2011 and 2021, which allowed for much longer remediation periods of up to 30 days. While CISA officials emphasize that this is a necessary step to counter AI-driven threats, cybersecurity experts argue that patching alone is insufficient. Industry leaders suggest that true security requires moving toward architectural improvements, such as containment by design, to limit the impact of breaches even when vulnerabilities exist."
+        ],
+        "main_topic": "CISA has issued a new binding operational directive requiring federal agencies to patch critical software vulnerabilities within three days to counter AI-driven exploitation.",
+        "technologies": [
+          "Artificial Intelligence",
+          "CISA Known Exploited Vulnerabilities Catalog",
+          "Cloud Security"
+        ]
+      },
+      {
+        "title": "Equipment finance platform Trad.Fi to bring $650M in private credit onchain",
+        "slug": "equipment-finance-platform-tradfi-to-bring-650m-in-private-credit-onchain",
+        "url": "https://cointelegraph.com/news/equipment-finance-tradfi-650m-private-credit-onchain?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+        "source": "CoinTelegraph",
+        "published": "Wed, 10 Jun 2026 12:09:04 +0000",
+        "short_summary": "Trad.Fi has announced a plan to tokenize $650 million in private credit to streamline US equipment financing. The initiative leverages blockchains like Base and Avalanche to accelerate credit approval processes for manufacturers.",
+        "long_resume": "The US-based finance platform Trad.Fi is launching an ambitious initiative to bring up to $650 million of private credit onchain over the next four years. This move targets the massive, yet under-digitized, US equipment financing market, which supports industries such as manufacturing and residential solar installation. By moving capital, records, and workflows onto programmable blockchain rails, Trad.Fi aims to reduce the time required for credit approvals from several weeks down to just one business day. The project includes a credit pipeline backed by committed senior credit facilities and signed Letters of Intent, with approximately $85 million in signed term sheets already secured. Furthermore, the initiative will introduce an onchain investment pool, managed by a third party, allowing investors to gain exposure to these equipment-finance loans. The technical infrastructure for tokenization and record management will span the Base, Arc, and Avalanche blockchains. While legal documentation like UCC-1 filings will remain offchain, the move represents a significant expansion of the growing Tokenized Real-World Assets (RWA) sector.",
+        "long_resume_paragraphs": [
+          "The US-based finance platform Trad.Fi is launching an ambitious initiative to bring up to $650 million of private credit onchain over the next four years. This move targets the massive, yet under-digitized, US equipment financing market, which supports industries such as manufacturing and residential solar installation. By moving capital, records, and workflows onto programmable blockchain rails, Trad.Fi aims to reduce the time required for credit approvals from several weeks down to just one business day. The project includes a credit pipeline backed by committed senior credit facilities and signed Letters of Intent, with approximately $85 million in signed term sheets already secured. Furthermore, the initiative will introduce an onchain investment pool, managed by a third party, allowing investors to gain exposure to these equipment-finance loans. The technical infrastructure for tokenization and record management will span the Base, Arc, and Avalanche blockchains. While legal documentation like UCC-1 filings will remain offchain, the move represents a significant expansion of the growing Tokenized Real-World Assets (RWA) sector."
+        ],
+        "main_topic": "Trad.Fi aims to bring $650 million in private credit onchain to digitize the US equipment financing market.",
+        "technologies": [
+          "Base",
+          "Arc",
+          "Avalanche",
+          "Blockchain",
+          "Tokenized Real-World Assets (RWA)"
+        ]
+      }
+    ],
+    "article_count": 12,
+    "preview_titles": [
+      "Claude Fable & Mythos released by Anthropic",
+      "Signal Alums Reveal ‘Encrypted Spaces,’ a System for Making Private Collaboration Apps",
+      "Jupyter Enterprise Gateway - From Notebook to Kubernetes Cluster Admin - elttam"
+    ],
+    "preview_articles": [
+      {
+        "title": "Claude Fable & Mythos released by Anthropic",
+        "slug": "claude-fable-mythos-released-by-anthropic",
+        "url": "https://anthropic.com/news/claude-fable-5-mythos-5",
+        "source": "Reddit r/artificial",
+        "published": "2026-06-09T18:56:40Z",
+        "short_summary": "Anthropic introduces Claude Fable 5 and Mythos 5, marking a significant advancement in autonomous AI capabilities for coding and science. While Fable 5 is safe for general use, Mythos 5 provides enhanced power for cybersecurity professionals through controlled access.",
+        "long_resume": "Anthropic's launch of Claude Fable 5 and Claude Mythos 5 represents a major leap in the frontier of large language model capabilities. Fable 5 is positioned as a state-of-the-art model for general use, excelling in software engineering, vision-based tasks, and complex analytical reasoning. To mitigate the risks associated with its high performance in sensitive areas like cybersecurity, Anthropic has implemented safety guardrails that revert certain queries to the Claude Opus 4.8 model. For specialized use cases involving critical infrastructure and defense, Anthropic is deploying Claude Mythos 5 through Project Glasswing, which allows for higher capabilities in security-sensitive domains without the standard restrictions.\n\nThe technical advancements demonstrated by these models are substantial. In software engineering, Fable 5 has shown the ability to perform massive codebase migrations, such as converting a 50-million-line Ruby repository in a single day. In the realm of vision, the model can execute complex tasks like reconstructing web applications from screenshots and playing games like Pokémon FireRed using only raw visual input. Furthermore, the models are driving innovation in the life sciences; Mythos 5 has been used to accelerate protein design by tenfold and has even produced novel, verifiable scientific hypotheses in molecular biology and genomics.\n\nDespite the increased power, Anthropic emphasizes a commitment to alignment and safety. Automated assessments indicate that the level of misaligned behavior in Mythos 5 remains comparable to previous models like Opus 4.8. As part of their broader strategy, Anthropic aims to expand access to these advanced capabilities through trusted access programs while continuously refining safeguards to reduce false positives in the general-use model.",
+        "long_resume_paragraphs": [
+          "Anthropic's launch of Claude Fable 5 and Claude Mythos 5 represents a major leap in the frontier of large language model capabilities. Fable 5 is positioned as a state-of-the-art model for general use, excelling in software engineering, vision-based tasks, and complex analytical reasoning. To mitigate the risks associated with its high performance in sensitive areas like cybersecurity, Anthropic has implemented safety guardrails that revert certain queries to the Claude Opus 4.8 model. For specialized use cases involving critical infrastructure and defense, Anthropic is deploying Claude Mythos 5 through Project Glasswing, which allows for higher capabilities in security-sensitive domains without the standard restrictions.",
+          "The technical advancements demonstrated by these models are substantial. In software engineering, Fable 5 has shown the ability to perform massive codebase migrations, such as converting a 50-million-line Ruby repository in a single day. In the realm of vision, the model can execute complex tasks like reconstructing web applications from screenshots and playing games like Pokémon FireRed using only raw visual input. Furthermore, the models are driving innovation in the life sciences; Mythos 5 has been used to accelerate protein design by tenfold and has even produced novel, verifiable scientific hypotheses in molecular biology and genomics.",
+          "Despite the increased power, Anthropic emphasizes a commitment to alignment and safety. Automated assessments indicate that the level of misaligned behavior in Mythos 5 remains comparable to previous models like Opus 4.8. As part of their broader strategy, Anthropic aims to expand access to these advanced capabilities through trusted access programs while continuously refining safeguards to reduce false positives in the general-use model."
+        ],
+        "main_topic": "Anthropic has announced the launch of Claude Fable 5, a high-capability general-use model, and Claude Mythos 5, a specialized version for cybersecurity and scientific research.",
+        "technologies": [
+          "Claude Fable 5",
+          "Claude Mythos 5",
+          "Claude Opus 4.8",
+          "Project Glasswing",
+          "Claude Code",
+          "Ruby",
+          "FrontierCode",
+          "CursorBench"
+        ]
+      },
+      {
+        "title": "Signal Alums Reveal ‘Encrypted Spaces,’ a System for Making Private Collaboration Apps",
+        "slug": "signal-alums-reveal-encrypted-spaces-a-system-for-making-private-collaboration-apps",
+        "url": "https://wired.com/story/signal-alums-release-encrypted-spaces-a-new-system-for-building-private-collaboration-apps",
+        "source": "Wired",
+        "published": "Thu, 11 Jun 2026 12:00:00 +0000",
+        "short_summary": "Former Signal engineers have unveiled Encrypted Spaces, a framework for building end-to-end encrypted collaborative platforms. The system uses zero-knowledge proofs to allow servers to manage and verify data changes without ever accessing the underlying unencrypted information.",
+        "long_resume": "A group of former Signal engineers has developed 'Encrypted Spaces,' a novel cryptographic architecture intended to facilitate secure, multi-user collaboration. While traditional end-to-end encrypted (E2EE) protocols like Signal are highly effective for one-on-one messaging, they struggle with collaborative environments like Google Docs or Slack because the server cannot manipulate encrypted data. Encrypted Spaces addresses this by implementing a system where users maintain a synchronized change log on their local devices. To ensure the integrity of this process, the central server utilizes zero-knowledge proofs to verify that no changes have been omitted or maliciously altered, all without ever gaining access to the plaintext data. Furthermore, the technology employs 'roll-ups,' allowing the server to provide succinct cryptographic proofs that a specific state is valid, thereby reducing the need for clients to download entire histories of changes. The project is currently released as a code repository, inviting researchers and developers to build new applications that make E2EE the default standard for collaboration by removing the technical barrier of complex cryptographic implementation.",
+        "long_resume_paragraphs": [
+          "A group of former Signal engineers has developed 'Encrypted Spaces,' a novel cryptographic architecture intended to facilitate secure, multi-user collaboration. While traditional end-to-end encrypted (E2EE) protocols like Signal are highly effective for one-on-one messaging, they struggle with collaborative environments like Google Docs or Slack because the server cannot manipulate encrypted data. Encrypted Spaces addresses this by implementing a system where users maintain a synchronized change log on their local devices. To ensure the integrity of this process, the central server utilizes zero-knowledge proofs to verify that no changes have been omitted or maliciously altered, all without ever gaining access to the plaintext data. Furthermore, the technology employs 'roll-ups,' allowing the server to provide succinct cryptographic proofs that a specific state is valid, thereby reducing the need for clients to download entire histories of changes. The project is currently released as a code repository, inviting researchers and developers to build new applications that make E2EE the default standard for collaboration by removing the technical barrier of complex cryptographic implementation."
+        ],
+        "main_topic": "The introduction of 'Encrypted Spaces,' a new cryptographic architecture designed for end-to-end encrypted collaborative applications.",
+        "technologies": [
+          "Encrypted Spaces",
+          "Signal protocol",
+          "Zero-knowledge proofs",
+          "Zero-knowledge roll-ups",
+          "End-to-end encryption"
+        ]
+      },
+      {
+        "title": "Jupyter Enterprise Gateway - From Notebook to Kubernetes Cluster Admin - elttam",
+        "slug": "jupyter-enterprise-gateway-from-notebook-to-kubernetes-cluster-admin-elttam",
+        "url": "https://elttam.com/blog/jupyter-enterprise-gateway",
+        "source": "Reddit r/netsec",
+        "published": "2026-06-10T06:30:38Z",
+        "short_summary": "Researchers at elttam have identified critical vulnerabilities in Jupyter Enterprise Gateway that enable cluster-wide compromise. By exploiting improper validation of environment variables, an attacker can bypass security constraints to gain root access within a Kubernetes pod.",
+        "long_resume": "The article details a series of security vulnerabilities discovered in Jupyter Enterprise Gateway, a component used to launch remote kernels on distributed infrastructure like Kubernetes. The researchers demonstrated that users with legitimate access to notebooks but no Kubernetes privileges could exploit the Gateway's high-privilege service account to compromise the entire cluster. Specifically, they identified a bypass in the ContainerProcessProxy._enforce_prohibited_ids function (GHSA-chq7-94j8-cj28). While the system attempts to block the use of UID/GID 0 (root), it performs a strict string comparison that can be bypassed by providing values with trailing spaces, such as '0 '. Because the downstream Kubernetes manifest uses the Jinja2 'int' filter, these padded strings are successfully converted to integer 0, resulting in pods running with root privileges. This escalation allows attackers to perform highly sensitive actions including reading cluster secrets and mounting host filesystems. The vulnerabilities have been responsibly disclosed, and a patch is available in version 3.3.0.",
+        "long_resume_paragraphs": [
+          "The article details a series of security vulnerabilities discovered in Jupyter Enterprise Gateway, a component used to launch remote kernels on distributed infrastructure like Kubernetes. The researchers demonstrated that users with legitimate access to notebooks but no Kubernetes privileges could exploit the Gateway's high-privilege service account to compromise the entire cluster. Specifically, they identified a bypass in the ContainerProcessProxy._enforce_prohibited_ids function (GHSA-chq7-94j8-cj28). While the system attempts to block the use of UID/GID 0 (root), it performs a strict string comparison that can be bypassed by providing values with trailing spaces, such as '0 '. Because the downstream Kubernetes manifest uses the Jinja2 'int' filter, these padded strings are successfully converted to integer 0, resulting in pods running with root privileges. This escalation allows attackers to perform highly sensitive actions including reading cluster secrets and mounting host filesystems. The vulnerabilities have been responsibly disclosed, and a patch is available in version 3.3.0."
+        ],
+        "main_topic": "Security researchers discovered vulnerabilities in Jupyter Enterprise Gateway that allow unprivileged notebook users to escalate privileges and compromise Kubernetes clusters.",
+        "technologies": [
+          "Jupyter Enterprise Gateway",
+          "Kubernetes",
+          "Jupyter Notebook",
+          "JupyterHub",
+          "Apache Spark",
+          "Python",
+          "Helm",
+          "Jinja2"
+        ]
+      },
+      {
+        "title": "Field Demonstration of Trusted-Node QKD over Deployed Single-Mode and Multi-Core Fiber Infrastructure",
+        "slug": "field-demonstration-of-trusted-node-qkd-over-deployed-single-mode-and-multi-core-fiber-infrastructure",
+        "url": "https://quantumcomputingreport.com/field-demonstration-of-trusted-node-qkd-over-deployed-single-mode-and-multi-core-fiber-infrastructure",
+        "source": "Quantum Computing Report",
+        "published": "Tue, 09 Jun 2026 00:31:00 +0000",
+        "short_summary": "Researchers have demonstrated a resilient 303 km quantum-secured network using a combination of single-mode and multi-core fiber technologies. The trial showcased high-efficiency photon detection and the ability to maintain secure communication through trusted-node relay even under simulated network noise.",
+        "long_resume": "A collaborative research effort involving several Swedish universities has successfully deployed a long-haul, trusted-node Quantum Key Distribution (QKD) link across 303 km of existing telecommunications infrastructure. The network connects Linköping to Stockholm, utilizing a hybrid architecture that blends traditional single-mode fiber with seven-core multi-core fiber (MCF). To overcome the significant signal attenuation inherent in long-distance quantum transmission—reaching up to 36 dB on certain segments—the team retrofitted commercial ThinkQuantum systems with Superconducting Nanowire Single-Photon Detectors (SNSPDs). This modification improved detection efficiency to 93% and boosted the Secret Key Rate (SKR) from 0.16 kbit/s to 4.75 kbit/s in the initial segments. The experiment also tested space-division multiplexing, using a Polatis optical switch to route quantum channels through different fiber cores while maintaining polarization stability. To simulate real-world telecommunications environments, the researchers introduced classical 10 Gbps Ethernet traffic and broadband optical noise. On the application layer, the generated keys were used for One-Time Pad (OTP) encryption of image data. The study compared traditional JPEG 2000 compression against a deep-learning-based JPEG AI codec, finding that the neural-network approach was more efficient at preserving image quality under the constrained bit budgets imposed by fluctuating quantum key rates. The system demonstrated robust performance over a 92-hour continuous operation period, utilizing Key Management System (KMS) buffers to handle rate discrepancies between network segments.",
+        "long_resume_paragraphs": [
+          "A collaborative research effort involving several Swedish universities has successfully deployed a long-haul, trusted-node Quantum Key Distribution (QKD) link across 303 km of existing telecommunications infrastructure. The network connects Linköping to Stockholm, utilizing a hybrid architecture that blends traditional single-mode fiber with seven-core multi-core fiber (MCF). To overcome the significant signal attenuation inherent in long-distance quantum transmission—reaching up to 36 dB on certain segments—the team retrofitted commercial ThinkQuantum systems with Superconducting Nanowire Single-Photon Detectors (SNSPDs). This modification improved detection efficiency to 93% and boosted the Secret Key Rate (SKR) from 0.16 kbit/s to 4.75 kbit/s in the initial segments. The experiment also tested space-division multiplexing, using a Polatis optical switch to route quantum channels through different fiber cores while maintaining polarization stability. To simulate real-world telecommunications environments, the researchers introduced classical 10 Gbps Ethernet traffic and broadband optical noise. On the application layer, the generated keys were used for One-Time Pad (OTP) encryption of image data. The study compared traditional JPEG 2000 compression against a deep-learning-based JPEG AI codec, finding that the neural-network approach was more efficient at preserving image quality under the constrained bit budgets imposed by fluctuating quantum key rates. The system demonstrated robust performance over a 92-hour continuous operation period, utilizing Key Management System (KMS) buffers to handle rate discrepancies between network segments."
+        ],
+        "main_topic": "A successful field demonstration of a long-haul, trusted-node Quantum Key Distribution (QKD) network spanning 303 km using integrated single-mode and multi-core fiber infrastructure.",
+        "technologies": [
+          "Quantum Key Distribution (QKD)",
+          "Single-Mode Fiber (SMF)",
+          "Multi-Core Fiber (MCF)",
+          "Superconducting Nanowire Single-Photon Detectors (SNSPDs)",
+          "ThinkQuantum QuKy EDU Pro",
+          "Polatis optical fiber switch",
+          "Key Management Systems (KMS)",
+          "One-Time Pad (OTP)",
+          "JPEG AI codec",
+          "10 Gbps Ethernet"
+        ]
+      },
+      {
+        "title": "“The manual model breaks”: What happens when agents write to production data",
+        "slug": "the-manual-model-breaks-what-happens-when-agents-write-to-production-data",
+        "url": "https://thenewstack.io/lakefs-agentic-ai-sandbox",
+        "source": "The New Stack",
+        "published": "Thu, 11 Jun 2026 17:35:59 +0000",
+        "short_summary": "As autonomous AI agents scale, the risk of catastrophic production data loss increases due to the inability of human oversight to keep pace with machine-speed writes. lakeFS has launched a new service providing isolated data sandboxes and automated governance to ensure agentic workloads remain auditable and reversible.",
+        "long_resume": "The rapid adoption of autonomous AI agents is creating a critical gap in data governance. Unlike human analysts, AI agents operate at machine speed and can execute hundreds of simultaneous changes without the pause for manual review that traditionally prevents errors. The article highlights recent high-profile failures, such as a Replit AI agent deleting production databases and a Google Gemini CLI agent destroying user project files, both of which resulted from a lack of data isolation and rollback capabilities. To address this, lakeFS has introduced 'lakeFS for Agentic AI,' a service designed to provide governed, reproducible data access. The technology utilizes a 'zero-copy' branching architecture, allowing agents to operate in isolated sandboxes where they can read and write to a virtualized version of the dataset without impacting the production environment. Key features include branch-scoped ephemeral credentials that confine agents to specific workspaces, as well as the ability to implement custom validation logic via webhooks or Lua scripts. By treating data with 'Git-like' properties—including pull requests for human-in-the-loop oversight and immutable audit trails—lakeFS aims to mitigate the liabilities of autonomous agents. While other tools like Apache Iceberg and Project Nessie exist in the data versioning space, lakeFS is positioning itself as a comprehensive control plane for the era of agentic AI.",
+        "long_resume_paragraphs": [
+          "The rapid adoption of autonomous AI agents is creating a critical gap in data governance. Unlike human analysts, AI agents operate at machine speed and can execute hundreds of simultaneous changes without the pause for manual review that traditionally prevents errors. The article highlights recent high-profile failures, such as a Replit AI agent deleting production databases and a Google Gemini CLI agent destroying user project files, both of which resulted from a lack of data isolation and rollback capabilities. To address this, lakeFS has introduced 'lakeFS for Agentic AI,' a service designed to provide governed, reproducible data access. The technology utilizes a 'zero-copy' branching architecture, allowing agents to operate in isolated sandboxes where they can read and write to a virtualized version of the dataset without impacting the production environment. Key features include branch-scoped ephemeral credentials that confine agents to specific workspaces, as well as the ability to implement custom validation logic via webhooks or Lua scripts. By treating data with 'Git-like' properties—including pull requests for human-in-the-loop oversight and immutable audit trails—lakeFS aims to mitigate the liabilities of autonomous agents. While other tools like Apache Iceberg and Project Nessie exist in the data versioning space, lakeFS is positioning itself as a comprehensive control plane for the era of agentic AI."
+        ],
+        "main_topic": "The emergence of lakeFS for Agentic AI to solve the risks of autonomous agents performing unvalidated writes to production data.",
+        "technologies": [
+          "lakeFS",
+          "Replit AI",
+          "Google Gemini CLI",
+          "Apache Iceberg",
+          "Pachyderm",
+          "Project Nessie",
+          "DVC (Data Version Control)",
+          "Lua",
+          "LLM"
+        ]
+      }
+    ],
+    "source_mtime": 1781291403.6375358,
+    "model_releases": [
+      {
+        "provider": "NVIDIA (Nemotron)",
+        "model_name": "NVIDIA Nemotron 3 Super 120B",
+        "slug": "nvidia-nemotron-3-super-120b",
+        "release_date": "recent",
+        "summary": "The NVIDIA Nemotron 3 Super 120B is an open model utilized by inference labs like Doubleword to optimize the AI stack. When deployed on Isambard infrastructure, it enables significant advancements in model loading speeds and cache compression for agentic workloads.",
+        "key_features": [
+          "70x faster model cold starts",
+          "4x lossless KV cache compression",
+          "Optimized for 90-95% lower inference costs"
+        ],
+        "url": "https://blogs.nvidia.com/uk-sovereign-ai-advancements/",
+        "netlify_url": "https://bowlofdata.netlify.app/week/24_2026.html#nvidia-nemotron-3-super-120b",
+        "altervista_url": ""
+      },
+      {
+        "provider": "JetBrains (Mellum)",
+        "model_name": "Mellum2",
+        "slug": "mellum2",
+        "release_date": "recent",
+        "summary": "JetBrains has open-sourced Mellum2, a 12B parameter model designed for practical deployment in software engineering systems. The model is specifically engineered to handle complex production AI challenges such as latency and throughput.",
+        "key_features": [
+          "Optimized for routing, Q&A, and sub-agents",
+          "Designed for private AI use cases",
+          "Engineered to reduce cost while maintaining performance"
+        ],
+        "url": "https://blog.jetbrains.com/tag/ai/",
+        "netlify_url": "https://bowlofdata.netlify.app/week/24_2026.html#mellum2",
+        "altervista_url": ""
+      },
+      {
+        "provider": "NVIDIA Dev Blog (Nemotron)",
+        "model_name": "NVIDIA Nemotron 3 Nano Omni",
+        "slug": "nvidia-nemotron-3-nano-omni",
+        "release_date": "recent",
+        "summary": "NVIDIA has introduced the Nemotron 3 Nano Omni, designed to address the inefficiencies of fragmented model chains in agentic systems. The model aims to reduce inference hops and orchestration complexity by providing a unified perception-to-action loop.",
+        "key_features": [
+          "Unified reasoning across screens, documents, audio, video, and text",
+          "Reduced inference costs through streamlined cross-modal context consistency",
+          "Optimized for agentic systems to minimize model chain fragmentation"
+        ],
+        "url": "https://developer.nvidia.com/blog/?p=116077",
+        "netlify_url": "https://bowlofdata.netlify.app/week/24_2026.html#nvidia-nemotron-3-nano-omni",
+        "altervista_url": ""
+      },
+      {
+        "provider": "Anthropic",
+        "model_name": "Claude Fable 5 and Claude Mythos 5",
+        "slug": "claude-fable-5-and-claude-mythos-5",
+        "release_date": "2026-06-09",
+        "summary": "Anthropic has announced its next generation of intelligence, featuring the new Claude Fable 5 and Claude Mythos 5 models. These models are specifically engineered to tackle highly complex knowledge work and advanced coding challenges.",
+        "key_features": [
+          "Next generation intelligence architecture",
+          "Optimized for hard knowledge work",
+          "Enhanced capabilities for complex coding problems"
+        ],
+        "url": "https://www.anthropic.com/news",
+        "netlify_url": "https://bowlofdata.netlify.app/week/24_2026.html#claude-fable-5-and-claude-mythos-5",
+        "altervista_url": ""
+      },
+      {
+        "provider": "Amazon (Nova)",
+        "model_name": "Amazon Nova 2 Lite",
+        "slug": "amazon-nova-2-lite",
+        "release_date": "2026-06-10",
+        "summary": "AWS has highlighted the use of Amazon Nova 2 Lite as a foundational model for building AI-powered equipment repair assistants via Amazon Bedrock AgentCore. The model serves as part of an agentic workflow designed to help technicians diagnose hardware issues using natural language.",
+        "key_features": [
+          "Foundation model for RAG-based repair assistance",
+          "Integration with AgentCore Runtime and Strands Agents SDK"
+        ],
+        "url": "https://aws.amazon.com/blogs/machine-learning/",
+        "netlify_url": "https://bowlofdata.netlify.app/week/24_2026.html#amazon-nova-2-lite",
+        "altervista_url": ""
+      },
+      {
+        "provider": "OpenAI",
+        "model_name": "Codex",
+        "slug": "codex",
+        "release_date": "2026-06-11",
+        "summary": "OpenAI has expanded access to Codex models through Oracle Cloud commitments. This integration allows researchers and developers to leverage advanced code generation capabilities within the Oracle cloud ecosystem.",
+        "key_features": [
+          "Oracle Cloud integration",
+          "Enhanced accessibility for enterprise workloads"
+        ],
+        "url": "https://openai.com/news/",
+        "netlify_url": "https://bowlofdata.netlify.app/week/24_2026.html#codex",
+        "altervista_url": ""
+      }
+    ],
+    "model_releases_mtime": 1781291403.638035
+  },
+  {
     "week": 23,
     "year": 2026,
+    "month": 6,
+    "month_name": "June",
     "label": "Week 23 · 2026",
     "href": "week/23_2026.html",
     "articles": [
@@ -471,7 +973,7 @@
         ]
       }
     ],
-    "source_mtime": 1780688646.476532,
+    "source_mtime": 1780690984.7891736,
     "model_releases": [
       {
         "provider": "Google (Gemma)",
@@ -486,7 +988,7 @@
         ],
         "url": "https://developers.googleblog.com/en/search/?query=gemma",
         "netlify_url": "https://bowlofdata.netlify.app/week/23_2026.html#gemma-4-12b",
-        "altervista_url": ""
+        "altervista_url": "https://bowlofdata.altervista.org/newsletter/newsletter-week-23-2026#gemma-4-12b"
       },
       {
         "provider": "Microsoft (Phi)",
@@ -501,7 +1003,7 @@
         ],
         "url": "https://azure.microsoft.com/en-us/blog/category/ai-machine-learning/",
         "netlify_url": "https://bowlofdata.netlify.app/week/23_2026.html#microsoft-discovery",
-        "altervista_url": ""
+        "altervista_url": "https://bowlofdata.altervista.org/newsletter/newsletter-week-23-2026#microsoft-discovery"
       },
       {
         "provider": "xAI (Grok)",
@@ -514,10 +1016,10 @@
         ],
         "url": "https://x.ai/news",
         "netlify_url": "https://bowlofdata.netlify.app/week/23_2026.html#grok-imagine-15-preview",
-        "altervista_url": ""
+        "altervista_url": "https://bowlofdata.altervista.org/newsletter/newsletter-week-23-2026#grok-imagine-15-preview"
       }
     ],
-    "model_releases_mtime": 1780688646.477126
+    "model_releases_mtime": 1780690984.7895248
   },
   {
     "week": 22,
