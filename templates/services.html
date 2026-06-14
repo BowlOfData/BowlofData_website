@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}Newsletter on Demand · {{ site_name }}{% endblock %}
+
+{% block og_description %}We build and run a fully AI-powered newsletter pipeline tailored to your niche — so you own the audience without owning the workload.{% endblock %}
+
+{% block content %}
+
+<div class="services-hero">
+  <div class="services-hero-inner">
+    <span class="services-hero-badge">Newsletter on Demand</span>
+    <h1 class="services-hero-title">
+      Your Brand.<br>
+      Your Topics.<br>
+      <span>Your Newsletter.</span>
+    </h1>
+    <p class="services-hero-sub">
+      We build and run a fully AI-powered newsletter pipeline tailored to your niche —
+      so you own the audience without owning the workload.
+    </p>
+    <div class="services-hero-ctas">
+      <a href="{{ contact_href }}" class="cta-primary">Request your newsletter</a>
+      <a href="#how-it-works" class="cta-secondary">See how it works ↓</a>
+    </div>
+  </div>
+</div>
+
+<div class="services-body">
+
+  <section class="services-section">
+    <h2 class="services-section-title">What you get</h2>
+    <div class="services-props">
+
+      <div class="services-prop services-prop--yellow">
+        <div class="services-prop-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </div>
+        <h3 class="services-prop-title">Tailored curation</h3>
+        <p class="services-prop-text">We configure the pipeline around your exact topics, industry, competitors, and preferred sources. Every issue speaks directly to your audience.</p>
+      </div>
+
+      <div class="services-prop services-prop--orange">
+        <div class="services-prop-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+        </div>
+        <h3 class="services-prop-title">AI-powered, human-reviewed</h3>
+        <p class="services-prop-text">Maki handles curation at scale — scanning hundreds of sources weekly. Our editors review every issue before it ships, so quality is never an afterthought.</p>
+      </div>
+
+      <div class="services-prop services-prop--amber">
+        <div class="services-prop-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <h3 class="services-prop-title">You own the audience</h3>
+        <p class="services-prop-text">Your brand, your platform, your subscribers. We are the engine behind the scenes — you keep every subscriber you earn and every relationship you build.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="services-section" id="how-it-works">
+    <h2 class="services-section-title">How it works</h2>
+    <div class="about-steps">
+
+      <div class="about-step">
+        <div class="about-step-num">01</div>
+        <div class="about-step-body">
+          <h3 class="about-step-title">Discovery</h3>
+          <p class="about-step-text">Tell us your niche, audience, and goals — in a quick email or a 20-minute call. We scope the pipeline around your exact needs: topics to track, sources to prioritise, tone to hit.</p>
+        </div>
+      </div>
+
+      <div class="about-step">
+        <div class="about-step-num">02</div>
+        <div class="about-step-body">
+          <h3 class="about-step-title">Build</h3>
+          <p class="about-step-text">We configure Maki for your topics and set up your newsletter infrastructure — platform, branding, delivery schedule. You review a test issue before anything goes public.</p>
+        </div>
+      </div>
+
+      <div class="about-step">
+        <div class="about-step-num">03</div>
+        <div class="about-step-body">
+          <h3 class="about-step-title">Launch &amp; run</h3>
+          <p class="about-step-text">Your first issue goes live. From that point on we handle everything — curation, editing, and delivery — every single week. You focus on your audience; we focus on the content.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="services-section">
+    <div class="services-proof">
+      <div class="services-proof-text">
+        <p class="services-proof-label">Proven pipeline</p>
+        <p class="services-proof-body">Bowl of Data runs on the exact same Maki infrastructure we would build for you — delivering a curated tech digest to subscribers every week without missing an issue. The pipeline is battle-tested; what changes is the topic, the audience, and the brand.</p>
+      </div>
+      <a href="{{ about_href }}" class="services-proof-link">Learn how Maki works →</a>
+    </div>
+  </section>
+
+  <section class="services-cta-section">
+    <h2 class="services-cta-title">Ready to own your audience?</h2>
+    <p class="services-cta-sub">Tell us your niche and we will get back to you within 48 hours.</p>
+    <a href="{{ contact_href }}" class="cta-primary">Request your newsletter</a>
+  </section>
+
+</div>
+{% endblock %}

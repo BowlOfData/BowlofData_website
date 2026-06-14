@@ -16,6 +16,7 @@ Bowl of Data is a weekly newsletter powered by Maki, an AI pipeline that curates
 ## Pages
 
 - [Archive](https://bowlofdata.netlify.app/archive.html): Index of all past issues
+- [Services](https://bowlofdata.netlify.app/services.html): Newsletter on Demand — we build and run your newsletter
 - [About](https://bowlofdata.netlify.app/about.html): Mission, topics covered, and how the pipeline works
 - [Team](https://bowlofdata.netlify.app/team.html): About the people and AI behind Bowl of Data
 - [Contact](https://bowlofdata.netlify.app/contact.html): Feedback and article suggestions

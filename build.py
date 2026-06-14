@@ -267,11 +267,12 @@ def _generate_robots_txt(site_url: str) -> str:
 
 def _generate_sitemap(all_weeks: list[dict], site_url: str, build_date: str) -> str:
     entries = [
-        (f"{site_url}/",               "weekly",  "1.0", build_date),
-        (f"{site_url}/archive.html",   "weekly",  "0.9", build_date),
-        (f"{site_url}/about.html",     "monthly", "0.6", None),
-        (f"{site_url}/team.html",      "monthly", "0.5", None),
-        (f"{site_url}/contact.html",   "monthly", "0.5", None),
+        (f"{site_url}/",                 "weekly",  "1.0", build_date),
+        (f"{site_url}/archive.html",     "weekly",  "0.9", build_date),
+        (f"{site_url}/services.html",    "monthly", "0.7", build_date),
+        (f"{site_url}/about.html",       "monthly", "0.6", None),
+        (f"{site_url}/team.html",        "monthly", "0.5", None),
+        (f"{site_url}/contact.html",     "monthly", "0.5", None),
     ]
     for w in all_weeks:
         mtime = w.get("source_mtime")
@@ -388,6 +389,7 @@ def _generate_llms_txt(all_weeks: list[dict], site_url: str, site_name: str, tag
         "## Pages",
         "",
         f"- [Archive]({site_url}/archive.html): Index of all past issues",
+        f"- [Services]({site_url}/services.html): Newsletter on Demand — we build and run your newsletter",
         f"- [About]({site_url}/about.html): Mission, topics covered, and how the pipeline works",
         f"- [Team]({site_url}/team.html): About the people and AI behind {site_name}",
         f"- [Contact]({site_url}/contact.html): Feedback and article suggestions",
@@ -576,6 +578,7 @@ def build() -> None:
             about_href="../about.html",
             contact_href="../contact.html",
             team_href="../team.html",
+            services_href="../services.html",
             jsonld_str=_make_week_jsonld(w, SITE_URL, SITE_NAME),
         )
         out_path.write_text(html, encoding="utf-8")
@@ -596,6 +599,7 @@ def build() -> None:
         about_href="about.html",
         contact_href="contact.html",
         team_href="team.html",
+        services_href="services.html",
         jsonld_str=website_jsonld_str,
     )
 
@@ -629,6 +633,10 @@ def build() -> None:
     team_html = env.get_template("team.html").render(**shared, current_page="team", imgs_path="imgs/")
     (SITE_DIR / "team.html").write_text(team_html, encoding="utf-8")
     print(f"  Rendered  team → site/team.html")
+
+    services_html = env.get_template("services.html").render(**shared, current_page="services")
+    (SITE_DIR / "services.html").write_text(services_html, encoding="utf-8")
+    print(f"  Rendered  services → site/services.html")
 
     # ------------------------------------------------------------------
     # Phase 5: generate LLM-friendly and crawler files

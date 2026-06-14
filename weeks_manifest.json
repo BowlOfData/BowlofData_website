@@ -406,7 +406,7 @@
         ]
       }
     ],
-    "source_mtime": 1781291403.6375358,
+    "source_mtime": 1781292514.501684,
     "model_releases": [
       {
         "provider": "NVIDIA (Nemotron)",
@@ -497,7 +497,7 @@
         "altervista_url": ""
       }
     ],
-    "model_releases_mtime": 1781291403.638035
+    "model_releases_mtime": 1781292514.502428
   },
   {
     "week": 23,

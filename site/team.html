@@ -40,6 +40,7 @@
       <nav class="header-nav">
         <a href="index.html" class="nav-link" >Home</a>
         <a href="archive.html" class="nav-link" >Archive</a>
+        <a href="services.html" class="nav-link nav-link--services" >Services</a>
         <div class="nav-more-group">
           <button class="nav-more-btn" aria-expanded="false" aria-haspopup="true">
             More
@@ -149,6 +150,22 @@
     </div>
   </footer>
 
+  <!-- Cookie consent banner -->
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Cookie consent" aria-live="polite">
+    <div class="cookie-banner-inner">
+      <p class="cookie-banner-text">
+        We use cookies and similar technologies — including Google Fonts — to operate this site.
+        No advertising or tracking cookies are used.
+        By clicking <strong>Accept</strong> you agree to our use of these technologies.
+        <a href="https://policies.google.com/privacy" class="cookie-banner-link" target="_blank" rel="noopener">Google's privacy policy</a>.
+      </p>
+      <div class="cookie-banner-actions">
+        <button id="cookie-accept" class="cookie-btn cookie-btn-accept">Accept</button>
+        <button id="cookie-decline" class="cookie-btn cookie-btn-decline">Decline</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     (function () {
       var btn      = document.querySelector('.menu-toggle');
@@ -190,6 +207,23 @@
           morePanel.classList.remove('is-open');
           moreBtn.setAttribute('aria-expanded', 'false');
         }
+      });
+    })();
+
+    // Cookie consent
+    (function () {
+      var banner = document.getElementById('cookie-banner');
+      if (!banner) return;
+      if (!localStorage.getItem('cookie-consent')) {
+        banner.classList.add('is-visible');
+      }
+      document.getElementById('cookie-accept').addEventListener('click', function () {
+        localStorage.setItem('cookie-consent', 'accepted');
+        banner.classList.remove('is-visible');
+      });
+      document.getElementById('cookie-decline').addEventListener('click', function () {
+        localStorage.setItem('cookie-consent', 'declined');
+        banner.classList.remove('is-visible');
       });
     })();
   </script>
