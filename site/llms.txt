@@ -6,7 +6,7 @@ Bowl of Data is a weekly newsletter powered by Maki, an AI pipeline that curates
 
 ## Issues
 
-- [Week 25 · 2026](https://bowlofdata.netlify.app/week/25_2026.html): 88 articles. Highlights: SearchLeak: How We Turned M365 Copilot Into a One-Click Data Exfiltration Weapon; Your Privacy My Cloak: Backdoor Attacks on Differentially Private Federated Learning; AI language models have favorite names, and we mapped them [R].
+- [Week 25 · 2026](https://bowlofdata.netlify.app/week/25_2026.html): 11 articles. Highlights: SearchLeak: How We Turned M365 Copilot Into a One-Click Data Exfiltration Weapon; Your Privacy My Cloak: Backdoor Attacks on Differentially Private Federated Learning; APPO: Agentic Procedural Policy Optimization.
 - [Week 24 · 2026](https://bowlofdata.netlify.app/week/24_2026.html): 12 articles. Highlights: Claude Fable & Mythos released by Anthropic; Signal Alums Reveal ‘Encrypted Spaces,’ a System for Making Private Collaboration Apps; Jupyter Enterprise Gateway - From Notebook to Kubernetes Cluster Admin - elttam.
 - [Week 23 · 2026](https://bowlofdata.netlify.app/week/23_2026.html): 14 articles. Highlights: Microsoft Reveals '1,000x More Reliable' Quantum Chip as Bitcoin Threat Draws Nearer; Red Hat npm packages compromised to steal developer credentials; Mastercard expands onchain settlement in bet on stablecoins and always-on finance.
 - [Week 22 · 2026](https://bowlofdata.netlify.app/week/22_2026.html): 13 articles. Highlights: Beyond a Single Quantum Chip: Why the Future of Quantum Computing is Modular; US's big bet on quantum computing may not be entirely legal; What scanners are actually trying against AI infrastructure.
