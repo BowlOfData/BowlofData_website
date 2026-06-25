@@ -573,6 +573,40 @@ img { display: block; max-width: 100%; }
 /* Full-width band — sits between week-header and article-section */
 .releases-section { display: block; }
 
+/* --- Week nav in dark header -------------------------------------------- */
+.week-nav--header {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+.week-nav--header .week-nav-btn {
+  background: transparent;
+  border-color: rgba(255,255,255,.2);
+  color: rgba(255,255,255,.6);
+  text-decoration: none;
+}
+.week-nav--header .week-nav-btn:hover {
+  background: rgba(255,255,255,.08);
+  border-color: rgba(245,197,24,.5);
+  color: var(--yellow);
+  text-decoration: none;
+}
+
+/* --- Research Papers section ------------------------------------------- */
+.papers-section { display: block; }
+.papers-section .releases-header { border-top-color: var(--accent); }
+.papers-badge {
+  background: var(--accent) !important;
+  color: var(--white) !important;
+}
+
+/* --- This Week in Tech section ------------------------------------------ */
+.news-section { display: block; }
+.news-section-band { border-top-color: var(--yellow); }
+.news-badge {
+  background: var(--yellow) !important;
+  color: var(--dark) !important;
+}
+
 /* Light header — orange top-border serves as the accent transition from the
    dark week-header above; flipping to white breaks the dark mass */
 .releases-header {

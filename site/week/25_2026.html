@@ -66,6 +66,16 @@
       Week <span class="week-title-accent">25</span> · 2026
     </h1>
     <p class="week-meta">11 articles · 5 model releases</p>
+    
+    <div class="week-nav week-nav--header">
+      
+      <a href="../week/24_2026.html" class="week-nav-btn week-nav-older">← Week 24 · 2026</a>
+      
+      
+      <a href="../week/26_2026.html" class="week-nav-btn week-nav-newer">Week 26 · 2026 →</a>
+      
+    </div>
+    
   </div>
 </div>
 
@@ -298,754 +308,758 @@
 </section>
 
 
-<div class="article-section">
 
-  
 
-  <div class="news-section-header">
-    <h2 class="news-section-title">This Week in Tech</h2>
-    <p class="news-section-sub">Top stories curated from across the web this week</p>
+<section class="news-section">
+
+  <div class="releases-header news-section-band">
+    <div class="releases-header-inner">
+      <div class="releases-header-text">
+        <h2 class="releases-title">This Week in Tech</h2>
+        <p class="releases-sub">Top stories curated from across the web this week</p>
+      </div>
+      <span class="releases-badge news-badge">This Week</span>
+    </div>
   </div>
 
-  
-  <div class="week-nav">
+  <div class="article-section">
+
     
-    <a href="../week/24_2026.html" class="week-nav-btn week-nav-older">← Week 24 · 2026</a>
+
+    <div class="article-list">
+      
+      <article class="article-card" id="searchleak-how-we-turned-m365-copilot-into-a-one-click-data-exfiltration-weapon">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 1</p>
+          <h2 class="article-title">
+            
+            <a href="https://varonis.com/blog/searchleak" target="_blank" rel="noopener">SearchLeak: How We Turned M365 Copilot Into a One-Click Data Exfiltration Weapon</a>
+            
+          </h2>
+          <div class="article-meta">
+            
+            <span class="article-source">Reddit r/netsec</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">Discovery of &#39;SearchLeak&#39;, a three-stage vulnerability chain in Microsoft 365 Copilot Enterprise that enables silent data exfiltration.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">Researchers have identified a critical vulnerability chain called SearchLeak that allows attackers to exfiltrate enterprise data via Microsoft 365 Copilot. By combining prompt injection with an HTML race condition and Bing-based SSRF, attackers can bypass security controls with a single click.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>The &#39;SearchLeak&#39; vulnerability represents a sophisticated multi-stage attack chain targeting Microsoft 365 Copilot Enterprise. The process begins with Parameter-to-Prompt (P2P) injection, where an attacker crafts a URL containing a malicious &#39;q&#39; parameter that instructs the AI to search for sensitive information and embed it within an HTML image tag. During the streaming phase of the AI&#39;s response, a race condition occurs: the browser renders the &lt;img&gt; tag before the platform&#39;s security sanitizer can wrap the output in protective &lt;code&gt; blocks. To bypass the Content Security Policy (CSP) that prevents direct requests to attacker-controlled domains, the exploit leverages a Server-Side Request Forging (SSRF) vulnerability in Bing&#39;s &#39;Search by Image&#39; feature. By pointing the image source to a Bing endpoint, the attacker forces Bing&#39;s backend to fetch the data from the attacker&#39;s server, effectively using Bing as an exfiltration proxy. This allows for the silent theft of emails, security codes, and organizational documents without requiring any special permissions or user interaction beyond clicking a trusted Microsoft link. Microsoft has since patched this vulnerability under CVE-2026-42824.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            <span class="tag">Microsoft 365 Copilot Enterprise</span>
+            
+            <span class="tag">Microsoft 365</span>
+            
+            <span class="tag">Bing</span>
+            
+            <span class="tag">SharePoint</span>
+            
+            <span class="tag">OneDrive</span>
+            
+            <span class="tag">HTML</span>
+            
+            <span class="tag">Content Security Policy (CSP)</span>
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://varonis.com/blog/searchleak" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="your-privacy-my-cloak-backdoor-attacks-on-differentially-private-federated-learning">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 2</p>
+          <h2 class="article-title">
+            
+            <a href="https://arxiv.org/html/2606.17035v1" target="_blank" rel="noopener">Your Privacy My Cloak: Backdoor Attacks on Differentially Private Federated Learning</a>
+            
+          </h2>
+          <div class="article-meta">
+            
+            <span class="article-source">arXiv</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">The research paper introduces &#39;Ring&#39;, a novel backdoor attack that exploits the masking properties of Differential Privacy in Federated Learning to evade defenses while maintaining high attack success rates.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">This paper challenges the assumption that Differential Privacy enhances Federated Learning security against backdoor attacks. The authors present &#39;Ring&#39;, an attack mechanism that leverages DP noise to conceal malicious updates from detection systems.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>The research investigates a critical vulnerability in privacy-preserving machine learning, specifically focusing on Differentially Private Federated Learning (DP-FL). While DP is traditionally viewed as a defense against backdoor attacks by adding noise to model updates, the authors demonstrate that this noise can actually act as a &#39;cloak&#39; for adversaries. By analyzing two baseline strategies—DP-opt-in and DP-opt-out—the researchers found that while bypassing DP increases attack effectiveness, it also makes malicious updates easier to detect via statistical anomaly detection. To solve this, the authors propose &#39;Ring&#39;, an adversarial perturbation layer inspired by secret sharing. In a Ring attack, compromised clients collaboratively craft perturbations that mask the backdoor signal at the individual update level but cancel each other out during the aggregation process. This allows the global model to reconstruct a strong backdoor signal while the individual malicious contributions remain statistically indistinguishable from benign, DP-perturbed updates. The study&#39;s evaluations across various image and text datasets show that Ring can achieve an average Attack Success Rate of 90.3% against six modern defenses, representing a massive improvement over previous baseline attacks. Ultimately, the paper highlights a fundamental security gap where the pursuit of privacy through DP may inadvertently facilitate more potent and stealthy poisoning attacks.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            <span class="tag">Federated Learning (FL)</span>
+            
+            <span class="tag">Differential Privacy (DP)</span>
+            
+            <span class="tag">DP-SGD</span>
+            
+            <span class="tag">Ring Attack</span>
+            
+            <span class="tag">Deep Learning</span>
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://arxiv.org/html/2606.17035v1" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="appo-agentic-procedural-policy-optimization">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 3</p>
+          <h2 class="article-title">
+            
+            <a href="https://arxiv.org/html/2606.12384" target="_blank" rel="noopener">APPO: Agentic Procedural Policy Optimization</a>
+            
+          </h2>
+          <div class="article-meta">
+            
+            <span class="article-source">HuggingFace Papers</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">The introduction of Agentic Procedural Policy Optimization (APPO), a new reinforcement learning framework designed to improve credit assignment in LLM agents by focusing on critical decision points within reasoning trajectories.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">This paper proposes APPO, a method to enhance the training of autonomous LLM agents through more granular credit assignment. It moves beyond trajectory-level rewards by identifying and branching at specific high-impact decision points within the reasoning process.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>The evolution of Large Language Models from text generators to autonomous agents has been driven by Reinforcement Learning with Verifiable Rewards (RLVR). However, a significant bottleneck remains: current training paradigms provide feedback only at the end of an entire trajectory. This leads to &#39;entangled&#39; learning signals where it is difficult to determine which specific intermediate actions or thoughts contributed to a success or failure. While some existing methods attempt to mitigate this by branching trajectories at certain intervals, they typically rely on coarse-grained units such as entire tool-call sequences or large blocks of thinking text. The authors of APPO argue that the most critical information resides in specific &#39;decision points&#39;—tokens or latent positions where a change in direction would lead to significantly different outcomes. APPO focuses on these high-impact procedural patterns. By identifying tokens with high entropy and branching rollouts around these critical junctures, the framework can more effectively assign credit to the precise moments that drive downstream performance. This approach aims to provide a denser, more informative supervision signal, ultimately leading to more stable and efficient policy improvement for long-horizon agentic tasks.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            <span class="tag">Large Language Models (LLMs)</span>
+            
+            <span class="tag">Reinforcement Learning with Verifiable Rewards (RLVR)</span>
+            
+            <span class="tag">Proximal Policy Optimization (PPO)</span>
+            
+            <span class="tag">Direct Preference Optimization (DPO)</span>
+            
+            <span class="tag">Agentic Procedural Policy Optimization (APPO)</span>
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://arxiv.org/html/2606.12384" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="france-to-phase-out-non-quantum-encryption-as-bitcoin-security-concerns-grow">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 4</p>
+          <h2 class="article-title">
+            
+            <a href="https://decrypt.co/371487/france-phase-out-non-quantum-encryption-bitcoin-security-concerns-grow" target="_blank" rel="noopener">France to Phase Out Non-Quantum Encryption as Bitcoin Security Concerns Grow</a>
+            
+          </h2>
+          <div class="article-meta">
+            
+            <span class="article-source">Decrypt</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">France&#39;s cybersecurity agency ANSSI has announced a phase-out of non-quantum-safe encryption for certified security products starting in 2027.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">France is implementing a mandatory transition to quantum-resistant encryption for all certified security products by 2027. This regulatory shift responds to the growing threat of future quantum computers capable of breaking current cryptographic standards.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>The French cybersecurity agency ANSSI has announced a significant policy shift regarding cryptographic standards, stating that it will cease the certification of security products that do not utilize quantum-safe encryption beginning in 2027. This decision is part of a broader strategic move to protect critical infrastructure and government networks from the eventual arrival of cryptographically relevant quantum computers, often referred to as &#39;Q-Day.&#39; A primary driver for this urgency is the threat of &#39;harvest now, decrypt later&#39; attacks, where malicious actors intercept encrypted data today with the intent of decrypting it once quantum technology matures. The timeline for this transition is being influenced by global tech leaders; for instance, Google has set a 2029 deadline for its own systems to transition to post-quantum cryptography. This regulatory pressure is mirrored in the cryptocurrency sector, where networks like Ethereum have established dedicated post-quantum security teams, and Stellar has unveiled a multi-stage migration roadmap. While some industry experts warn of the risks to assets like Bitcoin, others caution against panic, noting that the global scientific community is actively working on robust solutions for this transition. Ultimately, the French initiative frames the shift not just as a technical necessity, but as a critical component of national governance, industrial planning, and digital sovereignty.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            <span class="tag">Quantum-safe encryption</span>
+            
+            <span class="tag">Post-quantum cryptography</span>
+            
+            <span class="tag">Bitcoin</span>
+            
+            <span class="tag">Ethereum</span>
+            
+            <span class="tag">Stellar (XLM)</span>
+            
+            <span class="tag">ANSSI certification standards</span>
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://decrypt.co/371487/france-phase-out-non-quantum-encryption-bitcoin-security-concerns-grow" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="how-does-torchcompile-achieve-massive-speedups-despite-highly-optimized-numpy-functions-d">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 5</p>
+          <h2 class="article-title">
+            
+            <a href="https://github.com/purohit10saurabh/tinytorchcompile" target="_blank" rel="noopener">How does torch.compile() achieve massive speedups despite highly optimized NumPy functions? [D]</a>
+            
+          </h2>
+          <div class="article-meta">
+            
+            <span class="article-source">Reddit r/MachineLearning</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">The tinytorchcompile project demonstrates how operator fusion serves as the primary mechanism for performance gains in torch.compile by reducing memory transfers.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">This article introduces tinytorchcompile, a simplified single-file implementation of the torch.compile mechanism focusing on operator fusion. It provides empirical evidence that fusing operations into a single kernel is essential for bypassing memory bandwidth limitations.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>The article explores the technical core of PyTorch 2&#39;s performance improvements through a project called tinytorchcompile. The central thesis is that &#39;operator fusion&#39; is the most critical component of torch.compile, as it allows multiple operations to be executed within a single C loop, thereby preventing the need to write intermediate results back to RAM. By analyzing four different execution modes—torch eager, torch.compile, tinytorchcompile unfused, and tinytorpcompile fused—the author demonstrates that fusion alone provides a massive speedup by transforming memory-bound operations into compute-bound ones. The project utilizes a pipeline consisting of tracing via operator overloading, lowering nodes to virtualized buffers, fusing through closure inlining, and finally generating and running C code via clang/gcc and ctypes. This approach not only shows how to optimize simple expressions like ReLU activations but also mirrors the complex behavior seen in TorchInductor when handling ResNet layers. Ultimately, the documentation highlights that while other optimizations like multithreading are important, their efficacy is strictly limited by the memory bottleneck unless operator fusion is first applied.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            <span class="tag">tinytorchcompile</span>
+            
+            <span class="tag">torch.compile</span>
+            
+            <span class="tag">PyTorch</span>
+            
+            <span class="tag">TorchInductor</span>
+            
+            <span class="tag">C++</span>
+            
+            <span class="tag">NumPy</span>
+            
+            <span class="tag">Clang</span>
+            
+            <span class="tag">GCC</span>
+            
+            <span class="tag">Python</span>
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://github.com/purohit10saurabh/tinytorchcompile" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="the-first-unpatchable-iphone-exploit-in-six-years-targets-chips-still-running-apples-latest-ios">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 6</p>
+          <h2 class="article-title">
+            
+            <a href="https://techspot.com/news/112820-first-unpatchable-iphone-exploit-six-years-targets-chips.html" target="_blank" rel="noopener">The first unpatchable iPhone exploit in six years targets chips still running Apple&#39;s latest iOS</a>
+            
+          </h2>
+          <div class="article-meta">
+            
+            <span class="article-source">Reddit r/cybersecurity</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">Discovery of the usbliter8 exploit, a hardware-level bootROM vulnerability affecting specific Apple A12 and A13 chips.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">Security researchers have identified a new unpatchable bootROM exploit named usbliter8 that affects several older Apple devices. The vulnerability stems from how USB controllers manage data packets, allowing for persistent hardware-level exploits.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>Researchers at Paradigm Shift have unveiled &#39;usbliter8&#39;, the first significant iPhone bootROM exploit discovered in approximately six years. This hardware-level vulnerability targets a specific flaw in the USB controller&#39;s handling of data packets within the A12 and A13 chip architectures, as well as the S4 and S5 chips used in older Apple Watches and HomePod mini. The core of the issue lies in the failure to reset DMA addresses after packet processing, which leaves SRAM data insecure. Because this flaw is embedded in the SecureROM, it cannot be remediated through standard iOS software updates; only hardware upgrades can permanently resolve the risk. While the exploit requires physical access and specialized hardware like a Raspberry Pi, its implications are significant as it allows for persistent jailbreaking that survives device reboots. The discovery effectively extends the lineage of unpatchable vulnerabilities started by the 2019 checkm8 exploit, meaning devices ranging from the iPhone 4S through the iPhone 11 remain theoretically vulnerable to bootROM-level attacks. Notably, the iPhone 11 remains a relevant target as it is among the oldest devices still receiving active iOS support.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            <span class="tag">iPhone XS</span>
+            
+            <span class="tag">Apple Watch Series 4</span>
+            
+            <span class="tag">iPhone 11</span>
+            
+            <span class="tag">A12 chip</span>
+            
+            <span class="tag">A13 SoC</span>
+            
+            <span class="tag">S4 chip</span>
+            
+            <span class="tag">S5 chip</span>
+            
+            <span class="tag">HomePod mini</span>
+            
+            <span class="tag">Raspberry Pi</span>
+            
+            <span class="tag">iOS</span>
+            
+            <span class="tag">checkm8</span>
+            
+            <span class="tag">SecureROM</span>
+            
+            <span class="tag">USB controller</span>
+            
+            <span class="tag">SRAM</span>
+            
+            <span class="tag">DMA</span>
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://techspot.com/news/112820-first-unpatchable-iphone-exploit-six-years-targets-chips.html" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="salesforce-data-thefts-continue-via-klue-app-compromise">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 7</p>
+          <h2 class="article-title">
+            
+            <a href="https://darkreading.com/cyberattacks-data-breaches/salesforce-data-thefts-klue-app-compromise" target="_blank" rel="noopener">Salesforce Data Thefts Continue via Klue App Compromise</a>
+            
+          </h2>
+          <div class="article-meta">
+            
+            <span class="article-source">Dark Reading</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">Threat actors linked to the Icarus group breached Salesforce instances by exploiting a compromised third-party integration via Klue&#39;s Battlecards app.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">A supply chain attack targeting Klue&#39;s market intelligence platform allowed threat actors to steal Salesforce customer data through OAuth token abuse. The Icarus extortion group is identified as the primary actor behind this recent wave of CRM-focused breaches.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>The cybersecurity landscape is facing a significant surge in third-party integration exploits, specifically targeting Salesforce ecosystems. Recent investigations by ReliaQuest and Huntress reveal that threat actors successfully compromised Klue&#39;s Battlecards application to access sensitive customer data within Salesforce instances. The attack vector involved the exploitation of a legacy, unmonitored credential within Klue&#39;s backend infrastructure, which allowed attackers to push a malicious code update designed to harvest OAuth tokens from integrated customers. Once in possession of these tokens, the attackers leveraged Python scripts to interface with the Salesforce REST API, performing both stealthy low-volume queries and high-speed bulk data exfiltration over a 24-hour period. The stolen data reportedly includes business contacts, price quotes, and sales messaging. This specific campaign has been linked to the Icarus extortion group, an emerging threat actor that recently surfaced in April. Icarus has engaged in extortion attempts using the Session messenger platform and has threatened to leak data from &#39;big corps&#39; on their Dark Web leak site. The breach follows a pattern of similar attacks seen in previous months involving other SaaS integrations like Salesloft and Gainsight. To mitigate ongoing risks, security professionals are advised to immediately revoke all OAuth grants, client secrets, and service-account passwords associated with the Klue integration. Additionally, organizations should implement IP allowlisting for third-party connected apps and closely monitor Salesforce API activity for anomalous query volumes or unauthorized patterns.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            <span class="tag">Salesforce</span>
+            
+            <span class="tag">Klue Battlecards</span>
+            
+            <span class="tag">OAuth</span>
+            
+            <span class="tag">Python</span>
+            
+            <span class="tag">Salesforce REST API</span>
+            
+            <span class="tag">HubSpot</span>
+            
+            <span class="tag">Microsoft SharePoint</span>
+            
+            <span class="tag">Zoom</span>
+            
+            <span class="tag">Google Drive</span>
+            
+            <span class="tag">Session Messenger</span>
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://darkreading.com/cyberattacks-data-breaches/salesforce-data-thefts-klue-app-compromise" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="sandia-national-laboratories-and-quantinuum-validate-98-qubit-helios-trapped-ion-framework">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 8</p>
+          <h2 class="article-title">
+            
+            <a href="https://quantumcomputingreport.com/sandia-national-laboratories-and-quantinuum-validate-98-qubit-helios-trapped-ion-framework" target="_blank" rel="noopener">Sandia National Laboratories and Quantinuum Validate 98-Qubit Helios Trapped-Ion Framework</a>
+            
+          </h2>
+          <div class="article-meta">
+            
+            <span class="article-source">Quantum Computing Report</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">Sandia National Laboratories and Quantinuum have validated the performance of Helios, a 98-qubit trapped-ion quantum computer, demonstrating high gate fidelities and classical simulation resistance.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">Researchers have successfully validated the Helios 98-qubit trapped-ion quantum processor, showcasing industry-leading gate fidelities and advanced architectural features. The system&#39;s real-time control stack allows for complex algorithmic execution that challenges even the most powerful classical supercomputing architectures.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>The collaboration between Sandia National Laboratories and Quantinuum has resulted in the successful validation of Helios, a 98-qubit commercial quantum computer based on trapped-ion technology. Peer-reviewed data published in Nature reveals exceptional operational metrics, including single-qubit gate fidelities of 99.9975% and two-qubit gate fidelities of 99.921%. The hardware architecture is centered around a Quantum Charge-Coupled Device (QCCD) design using barium ions (137Ba+). A key innovation in the Helios design is its physical routing capability, which uses a four-way &#39;X&#39; junction and a rotatable ion storage ring to facilitate all-to-all connectivity without increasing fabrication complexity. This spatial segregation allows for parallel processing of ion sorting and laser-cooling cycles, effectively increasing hardware clock speeds. Furthermore, the Helios runtime software introduces a dynamic control layer that translates virtual qubit operations into physical ion transport commands in real time. This capability enables the execution of complex classical-style programming logic, such as loops and conditional branching, directly on live quantum states. Finally, volumetric evaluations using Random Circuit Sampling (RCS) have demonstrated that simulating the deep random circuits produced by Helios would require exascale-level computing resources and massive energy consumption, effectively proving the processor&#39;s quantum advantage over current classical supercomputing capabilities.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            <span class="tag">Helios</span>
+            
+            <span class="tag">Quantinuum</span>
+            
+            <span class="tag">Sandia National Laboratories</span>
+            
+            <span class="tag">QCCD Architecture</span>
+            
+            <span class="tag">137Ba+ (barium) hyperfine clock states</span>
+            
+            <span class="tag">Quantum Charge-Coupled Device</span>
+            
+            <span class="tag">Random Circuit Sampling (RCS)</span>
+            
+            <span class="tag">Tensor-network contraction modeling</span>
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://quantumcomputingreport.com/sandia-national-laboratories-and-quantinuum-validate-98-qubit-helios-trapped-ion-framework" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="accenture-to-acquire-majority-stake-in-dragos-all-of-runzero-netrise-in-41-billion-ot-cybersecurity-push">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 9</p>
+          <h2 class="article-title">
+            
+            <a href="https://securityweek.com/accenture-to-acquire-majority-stake-in-dragos-all-of-runzero-netrise-in-4-1-billion-ot-cybersecurity-push" target="_blank" rel="noopener">Accenture to Acquire Majority Stake in Dragos, All of runZero, NetRise in $4.1 Billion OT Cybersecurity Push</a>
+            
+          </h2>
+          <div class="article-meta">
+            
+            <span class="article-source">Reddit r/cybersecurity</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">Accenture is significantly expanding its operational technology (OT) cybersecurity capabilities through a $4.1 billion acquisition of majority stakes in Dragos, runZero, and NetRise.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">Accenture has announced a massive $4.1 billion initiative to dominate the OT cybersecurity market by acquiring stakes in Dragos, runZero, and NetRise. This strategic expansion focuses on providing comprehensive protection for critical infrastructure and industrial environments.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>In a major move within the cybersecurity sector, Accenture is executing an aggressive $4.1 billion strategy to enhance its capabilities in protecting Operational Technology (OT) environments. The company is acquiring majority stakes in three industry-leading firms: Drag/os, runZero, and NetRise. This massive investment is designed to address the growing complexity and increasing threat landscape facing critical infrastructure, such as manufacturing, energy, and utilities. By integrating Dragos&#39;s expertise in industrial cybersecurity, runZero&#39;s capabilities in device visibility and asset discovery, and NetRise&#39;s focus on firmware security and supply chain integrity, Accenture aims to offer an end-to-end security solution for OT ecosystems. This acquisition strategy positions Accenture as a primary leader in managing the convergence of IT and OT security, providing clients with the tools necessary to identify vulnerabilities and defend against sophisticated state-sponsored and criminal attacks targeting industrial control systems.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            <span class="tag">Dragos</span>
+            
+            <span class="tag">runZero</span>
+            
+            <span class="tag">NetRise</span>
+            
+            <span class="tag">Operational Technology (OT) Security</span>
+            
+            <span class="tag">Industrial Control Systems (ICS)</span>
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://securityweek.com/accenture-to-acquire-majority-stake-in-dragos-all-of-runzero-netrise-in-4-1-billion-ot-cybersecurity-push" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="algorand-plans-to-be-ready-for-quantum-computing-threat-by-end-of-2027">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 10</p>
+          <h2 class="article-title">
+            
+            <a href="https://decrypt.co/371581/algorand-plans-ready-quantum-computing-threat-end-2027" target="_blank" rel="noopener">Algorand Plans to Be Ready for Quantum Computing Threat by End of 2027</a>
+            
+          </h2>
+          <div class="article-meta">
+            
+            <span class="article-source">Decrypt</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">Algorand has announced a comprehensive roadmap to implement post-quantum cryptography across its entire network infrastructure by the end of 2027.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">The Algorand Foundation has unveiled a multi-year plan to integrate quantum-resistant protocols into its blockchain ecosystem by 2027. This includes implementing Falcon-based accounts and hybrid signatures to protect against future quantum computing attacks.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>The Algorand Foundation has officially announced a strategic roadmap aimed at achieving broad quantum resilience by the end of 2027. Recognizing the long-term threat posed by advancements in quantum computing—often referred to as &#39;Q-Day&#39;—the foundation intends to upgrade its entire technological stack, including user accounts, digital wallets, institutional custody systems, and core network consensus mechanisms. A primary component of this plan is the introduction of native Falcon-1024 accounts, which utilize post-quantum digital signature systems designed to withstand quantum-based decryption attempts. To ensure a smooth transition, Algorand will also implement hybrid cryptographic signatures that combine traditional methods with post-quantum algorithms, allowing for increased security without immediate loss of compatibility. The rollout is scheduled in phases, with the first significant upgrades expected in 2026. This move places Algorand alongside other major blockchain networks like Bitcoin, Ethereum, and Stellar, which are all exploring or implementing quantum-resistant frameworks. While the threat of a cryptographically relevant quantum computer is not immediate, the foundation emphasizes that proactive preparation is essential to maintain trust and security for developers and institutions in the decades to come.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            <span class="tag">Algorand</span>
+            
+            <span class="tag">Falcon-1024</span>
+            
+            <span class="tag">Post-quantum cryptography</span>
+            
+            <span class="tag">Bitcoin</span>
+            
+            <span class="tag">Ethereum</span>
+            
+            <span class="tag">Stellar</span>
+            
+            <span class="tag">Cardano</span>
+            
+            <span class="tag">BIP-360</span>
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://decrypt.co/371581/algorand-plans-ready-quantum-computing-threat-end-2027" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="bitcoin-miners-need-billions-to-fund-ai-ambitions-led-by-irens-21b-gap">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 11</p>
+          <h2 class="article-title">
+            
+            <a href="https://cointelegraph.com/news/bitcoin-miners-50b-ai-pivot-iren-21b-funding-gap?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=rss" target="_blank" rel="noopener">Bitcoin miners need billions to fund AI ambitions, led by IREN’s $21B gap</a>
+            
+          </h2>
+          <div class="article-meta">
+            
+            <span class="article-source">CoinTelegraph</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">Bitcoin mining companies are facing massive capital requirements to pivot their energy infrastructure toward AI and high-performance computing data centers.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">Bitcoin miners are attempting to pivot toward AI infrastructure to escape declining mining margins, but they face a massive $50 billion funding gap. This transition requires significant capital to upgrade modular mining sites into sophisticated, high-uptime data centers.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>The Bitcoin mining industry is undergoing a structural shift as companies attempt to rebrand and repurpose their energy assets for the burgeoning AI market. According to recent reports from Blocksbridge Consulting and VanEck, public miners need an estimated $50 billion in near-term capital to successfully bridge the gap between traditional Bitcoin mining setups and AI-ready data centers. Unlike Bitcoin mining, which utilizes relatively simple modular infrastructure and ASIC fleets capable of handling power curtailment, AI and High-Performance Computing (HPC) facilities require much higher standards for electrical redundancy, advanced cooling, networking, and consistent uptime. Among the industry players, IREN faces the most significant challenge with a $21.1 billion funding gap, while Riot Platforms and HIVE Digital also face multi-billion dollar requirements. This pivot is being driven by severe economic pressures in the Bitcoin mining sector, including declining hashprices—which dropped to as low as $28 per PH/s in early 2024—and the aftermath of the Bitcoin halving event. As profitability for traditional mining wanes, the potential for higher-margin AI cloud services presents a lucrative alternative, even as the massive capital expenditure required poses a significant barrier to entry and execution.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            <span class="tag">Bitcoin</span>
+            
+            <span class="tag">ASIC</span>
+            
+            <span class="tag">AI Cloud Infrastructure</span>
+            
+            <span class="tag">High-Performance Computing (HPC)</span>
+            
+            <span class="tag">Nvidia</span>
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://cointelegraph.com/news/bitcoin-miners-50b-ai-pivot-iren-21b-funding-gap?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=rss" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+    </div>
+
+    <div class="week-nav week-nav-bottom-bar">
+      
+      <a href="../week/24_2026.html" class="week-nav-btn week-nav-older">← Week 24 · 2026</a>
+      
+      <a href="../archive.html" class="week-nav-btn week-nav-archive">All issues</a>
+      
+      <a href="../week/26_2026.html" class="week-nav-btn week-nav-newer">Week 26 · 2026 →</a>
+      
+    </div>
+
     
-    <span></span>
   </div>
-  
 
-  <div class="article-list">
-    
-    <article class="article-card" id="searchleak-how-we-turned-m365-copilot-into-a-one-click-data-exfiltration-weapon">
-
-      <div class="article-card-top">
-        <p class="article-number">Article 1</p>
-        <h2 class="article-title">
-          
-          <a href="https://varonis.com/blog/searchleak" target="_blank" rel="noopener">SearchLeak: How We Turned M365 Copilot Into a One-Click Data Exfiltration Weapon</a>
-          
-        </h2>
-        <div class="article-meta">
-          
-          <span class="article-source">Reddit r/netsec</span>
-          
-        </div>
-      </div>
-
-      <div class="article-card-body">
-        
-        <p class="article-topic">Discovery of &#39;SearchLeak&#39;, a three-stage vulnerability chain in Microsoft 365 Copilot Enterprise that enables silent data exfiltration.</p>
-        
-
-        
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
-          <p class="tldr-text">Researchers have identified a critical vulnerability chain called SearchLeak that allows attackers to exfiltrate enterprise data via Microsoft 365 Copilot. By combining prompt injection with an HTML race condition and Bing-based SSRF, attackers can bypass security controls with a single click.</p>
-        </div>
-        
-
-        
-        <div class="long-resume">
-          
-          <p>The &#39;SearchLeak&#39; vulnerability represents a sophisticated multi-stage attack chain targeting Microsoft 365 Copilot Enterprise. The process begins with Parameter-to-Prompt (P2P) injection, where an attacker crafts a URL containing a malicious &#39;q&#39; parameter that instructs the AI to search for sensitive information and embed it within an HTML image tag. During the streaming phase of the AI&#39;s response, a race condition occurs: the browser renders the &lt;img&gt; tag before the platform&#39;s security sanitizer can wrap the output in protective &lt;code&gt; blocks. To bypass the Content Security Policy (CSP) that prevents direct requests to attacker-controlled domains, the exploit leverages a Server-Side Request Forging (SSRF) vulnerability in Bing&#39;s &#39;Search by Image&#39; feature. By pointing the image source to a Bing endpoint, the attacker forces Bing&#39;s backend to fetch the data from the attacker&#39;s server, effectively using Bing as an exfiltration proxy. This allows for the silent theft of emails, security codes, and organizational documents without requiring any special permissions or user interaction beyond clicking a trusted Microsoft link. Microsoft has since patched this vulnerability under CVE-2026-42824.</p>
-          
-        </div>
-        
-      </div>
-
-      <div class="article-card-footer">
-        
-        <div class="article-tags">
-          
-          <span class="tag">Microsoft 365 Copilot Enterprise</span>
-          
-          <span class="tag">Microsoft 365</span>
-          
-          <span class="tag">Bing</span>
-          
-          <span class="tag">SharePoint</span>
-          
-          <span class="tag">OneDrive</span>
-          
-          <span class="tag">HTML</span>
-          
-          <span class="tag">Content Security Policy (CSP)</span>
-          
-        </div>
-        
-        
-        <a class="read-more" href="https://varonis.com/blog/searchleak" target="_blank" rel="noopener">Read full article →</a>
-        
-      </div>
-
-    </article>
-    
-    <article class="article-card" id="your-privacy-my-cloak-backdoor-attacks-on-differentially-private-federated-learning">
-
-      <div class="article-card-top">
-        <p class="article-number">Article 2</p>
-        <h2 class="article-title">
-          
-          <a href="https://arxiv.org/html/2606.17035v1" target="_blank" rel="noopener">Your Privacy My Cloak: Backdoor Attacks on Differentially Private Federated Learning</a>
-          
-        </h2>
-        <div class="article-meta">
-          
-          <span class="article-source">arXiv</span>
-          
-        </div>
-      </div>
-
-      <div class="article-card-body">
-        
-        <p class="article-topic">The research paper introduces &#39;Ring&#39;, a novel backdoor attack that exploits the masking properties of Differential Privacy in Federated Learning to evade defenses while maintaining high attack success rates.</p>
-        
-
-        
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
-          <p class="tldr-text">This paper challenges the assumption that Differential Privacy enhances Federated Learning security against backdoor attacks. The authors present &#39;Ring&#39;, an attack mechanism that leverages DP noise to conceal malicious updates from detection systems.</p>
-        </div>
-        
-
-        
-        <div class="long-resume">
-          
-          <p>The research investigates a critical vulnerability in privacy-preserving machine learning, specifically focusing on Differentially Private Federated Learning (DP-FL). While DP is traditionally viewed as a defense against backdoor attacks by adding noise to model updates, the authors demonstrate that this noise can actually act as a &#39;cloak&#39; for adversaries. By analyzing two baseline strategies—DP-opt-in and DP-opt-out—the researchers found that while bypassing DP increases attack effectiveness, it also makes malicious updates easier to detect via statistical anomaly detection. To solve this, the authors propose &#39;Ring&#39;, an adversarial perturbation layer inspired by secret sharing. In a Ring attack, compromised clients collaboratively craft perturbations that mask the backdoor signal at the individual update level but cancel each other out during the aggregation process. This allows the global model to reconstruct a strong backdoor signal while the individual malicious contributions remain statistically indistinguishable from benign, DP-perturbed updates. The study&#39;s evaluations across various image and text datasets show that Ring can achieve an average Attack Success Rate of 90.3% against six modern defenses, representing a massive improvement over previous baseline attacks. Ultimately, the paper highlights a fundamental security gap where the pursuit of privacy through DP may inadvertently facilitate more potent and stealthy poisoning attacks.</p>
-          
-        </div>
-        
-      </div>
-
-      <div class="article-card-footer">
-        
-        <div class="article-tags">
-          
-          <span class="tag">Federated Learning (FL)</span>
-          
-          <span class="tag">Differential Privacy (DP)</span>
-          
-          <span class="tag">DP-SGD</span>
-          
-          <span class="tag">Ring Attack</span>
-          
-          <span class="tag">Deep Learning</span>
-          
-        </div>
-        
-        
-        <a class="read-more" href="https://arxiv.org/html/2606.17035v1" target="_blank" rel="noopener">Read full article →</a>
-        
-      </div>
-
-    </article>
-    
-    <article class="article-card" id="appo-agentic-procedural-policy-optimization">
-
-      <div class="article-card-top">
-        <p class="article-number">Article 3</p>
-        <h2 class="article-title">
-          
-          <a href="https://arxiv.org/html/2606.12384" target="_blank" rel="noopener">APPO: Agentic Procedural Policy Optimization</a>
-          
-        </h2>
-        <div class="article-meta">
-          
-          <span class="article-source">HuggingFace Papers</span>
-          
-        </div>
-      </div>
-
-      <div class="article-card-body">
-        
-        <p class="article-topic">The introduction of Agentic Procedural Policy Optimization (APPO), a new reinforcement learning framework designed to improve credit assignment in LLM agents by focusing on critical decision points within reasoning trajectories.</p>
-        
-
-        
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
-          <p class="tldr-text">This paper proposes APPO, a method to enhance the training of autonomous LLM agents through more granular credit assignment. It moves beyond trajectory-level rewards by identifying and branching at specific high-impact decision points within the reasoning process.</p>
-        </div>
-        
-
-        
-        <div class="long-resume">
-          
-          <p>The evolution of Large Language Models from text generators to autonomous agents has been driven by Reinforcement Learning with Verifiable Rewards (RLVR). However, a significant bottleneck remains: current training paradigms provide feedback only at the end of an entire trajectory. This leads to &#39;entangled&#39; learning signals where it is difficult to determine which specific intermediate actions or thoughts contributed to a success or failure. While some existing methods attempt to mitigate this by branching trajectories at certain intervals, they typically rely on coarse-grained units such as entire tool-call sequences or large blocks of thinking text. The authors of APPO argue that the most critical information resides in specific &#39;decision points&#39;—tokens or latent positions where a change in direction would lead to significantly different outcomes. APPO focuses on these high-impact procedural patterns. By identifying tokens with high entropy and branching rollouts around these critical junctures, the framework can more effectively assign credit to the precise moments that drive downstream performance. This approach aims to provide a denser, more informative supervision signal, ultimately leading to more stable and efficient policy improvement for long-horizon agentic tasks.</p>
-          
-        </div>
-        
-      </div>
-
-      <div class="article-card-footer">
-        
-        <div class="article-tags">
-          
-          <span class="tag">Large Language Models (LLMs)</span>
-          
-          <span class="tag">Reinforcement Learning with Verifiable Rewards (RLVR)</span>
-          
-          <span class="tag">Proximal Policy Optimization (PPO)</span>
-          
-          <span class="tag">Direct Preference Optimization (DPO)</span>
-          
-          <span class="tag">Agentic Procedural Policy Optimization (APPO)</span>
-          
-        </div>
-        
-        
-        <a class="read-more" href="https://arxiv.org/html/2606.12384" target="_blank" rel="noopener">Read full article →</a>
-        
-      </div>
-
-    </article>
-    
-    <article class="article-card" id="france-to-phase-out-non-quantum-encryption-as-bitcoin-security-concerns-grow">
-
-      <div class="article-card-top">
-        <p class="article-number">Article 4</p>
-        <h2 class="article-title">
-          
-          <a href="https://decrypt.co/371487/france-phase-out-non-quantum-encryption-bitcoin-security-concerns-grow" target="_blank" rel="noopener">France to Phase Out Non-Quantum Encryption as Bitcoin Security Concerns Grow</a>
-          
-        </h2>
-        <div class="article-meta">
-          
-          <span class="article-source">Decrypt</span>
-          
-        </div>
-      </div>
-
-      <div class="article-card-body">
-        
-        <p class="article-topic">France&#39;s cybersecurity agency ANSSI has announced a phase-out of non-quantum-safe encryption for certified security products starting in 2027.</p>
-        
-
-        
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
-          <p class="tldr-text">France is implementing a mandatory transition to quantum-resistant encryption for all certified security products by 2027. This regulatory shift responds to the growing threat of future quantum computers capable of breaking current cryptographic standards.</p>
-        </div>
-        
-
-        
-        <div class="long-resume">
-          
-          <p>The French cybersecurity agency ANSSI has announced a significant policy shift regarding cryptographic standards, stating that it will cease the certification of security products that do not utilize quantum-safe encryption beginning in 2027. This decision is part of a broader strategic move to protect critical infrastructure and government networks from the eventual arrival of cryptographically relevant quantum computers, often referred to as &#39;Q-Day.&#39; A primary driver for this urgency is the threat of &#39;harvest now, decrypt later&#39; attacks, where malicious actors intercept encrypted data today with the intent of decrypting it once quantum technology matures. The timeline for this transition is being influenced by global tech leaders; for instance, Google has set a 2029 deadline for its own systems to transition to post-quantum cryptography. This regulatory pressure is mirrored in the cryptocurrency sector, where networks like Ethereum have established dedicated post-quantum security teams, and Stellar has unveiled a multi-stage migration roadmap. While some industry experts warn of the risks to assets like Bitcoin, others caution against panic, noting that the global scientific community is actively working on robust solutions for this transition. Ultimately, the French initiative frames the shift not just as a technical necessity, but as a critical component of national governance, industrial planning, and digital sovereignty.</p>
-          
-        </div>
-        
-      </div>
-
-      <div class="article-card-footer">
-        
-        <div class="article-tags">
-          
-          <span class="tag">Quantum-safe encryption</span>
-          
-          <span class="tag">Post-quantum cryptography</span>
-          
-          <span class="tag">Bitcoin</span>
-          
-          <span class="tag">Ethereum</span>
-          
-          <span class="tag">Stellar (XLM)</span>
-          
-          <span class="tag">ANSSI certification standards</span>
-          
-        </div>
-        
-        
-        <a class="read-more" href="https://decrypt.co/371487/france-phase-out-non-quantum-encryption-bitcoin-security-concerns-grow" target="_blank" rel="noopener">Read full article →</a>
-        
-      </div>
-
-    </article>
-    
-    <article class="article-card" id="how-does-torchcompile-achieve-massive-speedups-despite-highly-optimized-numpy-functions-d">
-
-      <div class="article-card-top">
-        <p class="article-number">Article 5</p>
-        <h2 class="article-title">
-          
-          <a href="https://github.com/purohit10saurabh/tinytorchcompile" target="_blank" rel="noopener">How does torch.compile() achieve massive speedups despite highly optimized NumPy functions? [D]</a>
-          
-        </h2>
-        <div class="article-meta">
-          
-          <span class="article-source">Reddit r/MachineLearning</span>
-          
-        </div>
-      </div>
-
-      <div class="article-card-body">
-        
-        <p class="article-topic">The tinytorchcompile project demonstrates how operator fusion serves as the primary mechanism for performance gains in torch.compile by reducing memory transfers.</p>
-        
-
-        
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
-          <p class="tldr-text">This article introduces tinytorchcompile, a simplified single-file implementation of the torch.compile mechanism focusing on operator fusion. It provides empirical evidence that fusing operations into a single kernel is essential for bypassing memory bandwidth limitations.</p>
-        </div>
-        
-
-        
-        <div class="long-resume">
-          
-          <p>The article explores the technical core of PyTorch 2&#39;s performance improvements through a project called tinytorchcompile. The central thesis is that &#39;operator fusion&#39; is the most critical component of torch.compile, as it allows multiple operations to be executed within a single C loop, thereby preventing the need to write intermediate results back to RAM. By analyzing four different execution modes—torch eager, torch.compile, tinytorchcompile unfused, and tinytorpcompile fused—the author demonstrates that fusion alone provides a massive speedup by transforming memory-bound operations into compute-bound ones. The project utilizes a pipeline consisting of tracing via operator overloading, lowering nodes to virtualized buffers, fusing through closure inlining, and finally generating and running C code via clang/gcc and ctypes. This approach not only shows how to optimize simple expressions like ReLU activations but also mirrors the complex behavior seen in TorchInductor when handling ResNet layers. Ultimately, the documentation highlights that while other optimizations like multithreading are important, their efficacy is strictly limited by the memory bottleneck unless operator fusion is first applied.</p>
-          
-        </div>
-        
-      </div>
-
-      <div class="article-card-footer">
-        
-        <div class="article-tags">
-          
-          <span class="tag">tinytorchcompile</span>
-          
-          <span class="tag">torch.compile</span>
-          
-          <span class="tag">PyTorch</span>
-          
-          <span class="tag">TorchInductor</span>
-          
-          <span class="tag">C++</span>
-          
-          <span class="tag">NumPy</span>
-          
-          <span class="tag">Clang</span>
-          
-          <span class="tag">GCC</span>
-          
-          <span class="tag">Python</span>
-          
-        </div>
-        
-        
-        <a class="read-more" href="https://github.com/purohit10saurabh/tinytorchcompile" target="_blank" rel="noopener">Read full article →</a>
-        
-      </div>
-
-    </article>
-    
-    <article class="article-card" id="the-first-unpatchable-iphone-exploit-in-six-years-targets-chips-still-running-apples-latest-ios">
-
-      <div class="article-card-top">
-        <p class="article-number">Article 6</p>
-        <h2 class="article-title">
-          
-          <a href="https://techspot.com/news/112820-first-unpatchable-iphone-exploit-six-years-targets-chips.html" target="_blank" rel="noopener">The first unpatchable iPhone exploit in six years targets chips still running Apple&#39;s latest iOS</a>
-          
-        </h2>
-        <div class="article-meta">
-          
-          <span class="article-source">Reddit r/cybersecurity</span>
-          
-        </div>
-      </div>
-
-      <div class="article-card-body">
-        
-        <p class="article-topic">Discovery of the usbliter8 exploit, a hardware-level bootROM vulnerability affecting specific Apple A12 and A13 chips.</p>
-        
-
-        
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
-          <p class="tldr-text">Security researchers have identified a new unpatchable bootROM exploit named usbliter8 that affects several older Apple devices. The vulnerability stems from how USB controllers manage data packets, allowing for persistent hardware-level exploits.</p>
-        </div>
-        
-
-        
-        <div class="long-resume">
-          
-          <p>Researchers at Paradigm Shift have unveiled &#39;usbliter8&#39;, the first significant iPhone bootROM exploit discovered in approximately six years. This hardware-level vulnerability targets a specific flaw in the USB controller&#39;s handling of data packets within the A12 and A13 chip architectures, as well as the S4 and S5 chips used in older Apple Watches and HomePod mini. The core of the issue lies in the failure to reset DMA addresses after packet processing, which leaves SRAM data insecure. Because this flaw is embedded in the SecureROM, it cannot be remediated through standard iOS software updates; only hardware upgrades can permanently resolve the risk. While the exploit requires physical access and specialized hardware like a Raspberry Pi, its implications are significant as it allows for persistent jailbreaking that survives device reboots. The discovery effectively extends the lineage of unpatchable vulnerabilities started by the 2019 checkm8 exploit, meaning devices ranging from the iPhone 4S through the iPhone 11 remain theoretically vulnerable to bootROM-level attacks. Notably, the iPhone 11 remains a relevant target as it is among the oldest devices still receiving active iOS support.</p>
-          
-        </div>
-        
-      </div>
-
-      <div class="article-card-footer">
-        
-        <div class="article-tags">
-          
-          <span class="tag">iPhone XS</span>
-          
-          <span class="tag">Apple Watch Series 4</span>
-          
-          <span class="tag">iPhone 11</span>
-          
-          <span class="tag">A12 chip</span>
-          
-          <span class="tag">A13 SoC</span>
-          
-          <span class="tag">S4 chip</span>
-          
-          <span class="tag">S5 chip</span>
-          
-          <span class="tag">HomePod mini</span>
-          
-          <span class="tag">Raspberry Pi</span>
-          
-          <span class="tag">iOS</span>
-          
-          <span class="tag">checkm8</span>
-          
-          <span class="tag">SecureROM</span>
-          
-          <span class="tag">USB controller</span>
-          
-          <span class="tag">SRAM</span>
-          
-          <span class="tag">DMA</span>
-          
-        </div>
-        
-        
-        <a class="read-more" href="https://techspot.com/news/112820-first-unpatchable-iphone-exploit-six-years-targets-chips.html" target="_blank" rel="noopener">Read full article →</a>
-        
-      </div>
-
-    </article>
-    
-    <article class="article-card" id="salesforce-data-thefts-continue-via-klue-app-compromise">
-
-      <div class="article-card-top">
-        <p class="article-number">Article 7</p>
-        <h2 class="article-title">
-          
-          <a href="https://darkreading.com/cyberattacks-data-breaches/salesforce-data-thefts-klue-app-compromise" target="_blank" rel="noopener">Salesforce Data Thefts Continue via Klue App Compromise</a>
-          
-        </h2>
-        <div class="article-meta">
-          
-          <span class="article-source">Dark Reading</span>
-          
-        </div>
-      </div>
-
-      <div class="article-card-body">
-        
-        <p class="article-topic">Threat actors linked to the Icarus group breached Salesforce instances by exploiting a compromised third-party integration via Klue&#39;s Battlecards app.</p>
-        
-
-        
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
-          <p class="tldr-text">A supply chain attack targeting Klue&#39;s market intelligence platform allowed threat actors to steal Salesforce customer data through OAuth token abuse. The Icarus extortion group is identified as the primary actor behind this recent wave of CRM-focused breaches.</p>
-        </div>
-        
-
-        
-        <div class="long-resume">
-          
-          <p>The cybersecurity landscape is facing a significant surge in third-party integration exploits, specifically targeting Salesforce ecosystems. Recent investigations by ReliaQuest and Huntress reveal that threat actors successfully compromised Klue&#39;s Battlecards application to access sensitive customer data within Salesforce instances. The attack vector involved the exploitation of a legacy, unmonitored credential within Klue&#39;s backend infrastructure, which allowed attackers to push a malicious code update designed to harvest OAuth tokens from integrated customers. Once in possession of these tokens, the attackers leveraged Python scripts to interface with the Salesforce REST API, performing both stealthy low-volume queries and high-speed bulk data exfiltration over a 24-hour period. The stolen data reportedly includes business contacts, price quotes, and sales messaging. This specific campaign has been linked to the Icarus extortion group, an emerging threat actor that recently surfaced in April. Icarus has engaged in extortion attempts using the Session messenger platform and has threatened to leak data from &#39;big corps&#39; on their Dark Web leak site. The breach follows a pattern of similar attacks seen in previous months involving other SaaS integrations like Salesloft and Gainsight. To mitigate ongoing risks, security professionals are advised to immediately revoke all OAuth grants, client secrets, and service-account passwords associated with the Klue integration. Additionally, organizations should implement IP allowlisting for third-party connected apps and closely monitor Salesforce API activity for anomalous query volumes or unauthorized patterns.</p>
-          
-        </div>
-        
-      </div>
-
-      <div class="article-card-footer">
-        
-        <div class="article-tags">
-          
-          <span class="tag">Salesforce</span>
-          
-          <span class="tag">Klue Battlecards</span>
-          
-          <span class="tag">OAuth</span>
-          
-          <span class="tag">Python</span>
-          
-          <span class="tag">Salesforce REST API</span>
-          
-          <span class="tag">HubSpot</span>
-          
-          <span class="tag">Microsoft SharePoint</span>
-          
-          <span class="tag">Zoom</span>
-          
-          <span class="tag">Google Drive</span>
-          
-          <span class="tag">Session Messenger</span>
-          
-        </div>
-        
-        
-        <a class="read-more" href="https://darkreading.com/cyberattacks-data-breaches/salesforce-data-thefts-klue-app-compromise" target="_blank" rel="noopener">Read full article →</a>
-        
-      </div>
-
-    </article>
-    
-    <article class="article-card" id="sandia-national-laboratories-and-quantinuum-validate-98-qubit-helios-trapped-ion-framework">
-
-      <div class="article-card-top">
-        <p class="article-number">Article 8</p>
-        <h2 class="article-title">
-          
-          <a href="https://quantumcomputingreport.com/sandia-national-laboratories-and-quantinuum-validate-98-qubit-helios-trapped-ion-framework" target="_blank" rel="noopener">Sandia National Laboratories and Quantinuum Validate 98-Qubit Helios Trapped-Ion Framework</a>
-          
-        </h2>
-        <div class="article-meta">
-          
-          <span class="article-source">Quantum Computing Report</span>
-          
-        </div>
-      </div>
-
-      <div class="article-card-body">
-        
-        <p class="article-topic">Sandia National Laboratories and Quantinuum have validated the performance of Helios, a 98-qubit trapped-ion quantum computer, demonstrating high gate fidelities and classical simulation resistance.</p>
-        
-
-        
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
-          <p class="tldr-text">Researchers have successfully validated the Helios 98-qubit trapped-ion quantum processor, showcasing industry-leading gate fidelities and advanced architectural features. The system&#39;s real-time control stack allows for complex algorithmic execution that challenges even the most powerful classical supercomputing architectures.</p>
-        </div>
-        
-
-        
-        <div class="long-resume">
-          
-          <p>The collaboration between Sandia National Laboratories and Quantinuum has resulted in the successful validation of Helios, a 98-qubit commercial quantum computer based on trapped-ion technology. Peer-reviewed data published in Nature reveals exceptional operational metrics, including single-qubit gate fidelities of 99.9975% and two-qubit gate fidelities of 99.921%. The hardware architecture is centered around a Quantum Charge-Coupled Device (QCCD) design using barium ions (137Ba+). A key innovation in the Helios design is its physical routing capability, which uses a four-way &#39;X&#39; junction and a rotatable ion storage ring to facilitate all-to-all connectivity without increasing fabrication complexity. This spatial segregation allows for parallel processing of ion sorting and laser-cooling cycles, effectively increasing hardware clock speeds. Furthermore, the Helios runtime software introduces a dynamic control layer that translates virtual qubit operations into physical ion transport commands in real time. This capability enables the execution of complex classical-style programming logic, such as loops and conditional branching, directly on live quantum states. Finally, volumetric evaluations using Random Circuit Sampling (RCS) have demonstrated that simulating the deep random circuits produced by Helios would require exascale-level computing resources and massive energy consumption, effectively proving the processor&#39;s quantum advantage over current classical supercomputing capabilities.</p>
-          
-        </div>
-        
-      </div>
-
-      <div class="article-card-footer">
-        
-        <div class="article-tags">
-          
-          <span class="tag">Helios</span>
-          
-          <span class="tag">Quantinuum</span>
-          
-          <span class="tag">Sandia National Laboratories</span>
-          
-          <span class="tag">QCCD Architecture</span>
-          
-          <span class="tag">137Ba+ (barium) hyperfine clock states</span>
-          
-          <span class="tag">Quantum Charge-Coupled Device</span>
-          
-          <span class="tag">Random Circuit Sampling (RCS)</span>
-          
-          <span class="tag">Tensor-network contraction modeling</span>
-          
-        </div>
-        
-        
-        <a class="read-more" href="https://quantumcomputingreport.com/sandia-national-laboratories-and-quantinuum-validate-98-qubit-helios-trapped-ion-framework" target="_blank" rel="noopener">Read full article →</a>
-        
-      </div>
-
-    </article>
-    
-    <article class="article-card" id="accenture-to-acquire-majority-stake-in-dragos-all-of-runzero-netrise-in-41-billion-ot-cybersecurity-push">
-
-      <div class="article-card-top">
-        <p class="article-number">Article 9</p>
-        <h2 class="article-title">
-          
-          <a href="https://securityweek.com/accenture-to-acquire-majority-stake-in-dragos-all-of-runzero-netrise-in-4-1-billion-ot-cybersecurity-push" target="_blank" rel="noopener">Accenture to Acquire Majority Stake in Dragos, All of runZero, NetRise in $4.1 Billion OT Cybersecurity Push</a>
-          
-        </h2>
-        <div class="article-meta">
-          
-          <span class="article-source">Reddit r/cybersecurity</span>
-          
-        </div>
-      </div>
-
-      <div class="article-card-body">
-        
-        <p class="article-topic">Accenture is significantly expanding its operational technology (OT) cybersecurity capabilities through a $4.1 billion acquisition of majority stakes in Dragos, runZero, and NetRise.</p>
-        
-
-        
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
-          <p class="tldr-text">Accenture has announced a massive $4.1 billion initiative to dominate the OT cybersecurity market by acquiring stakes in Dragos, runZero, and NetRise. This strategic expansion focuses on providing comprehensive protection for critical infrastructure and industrial environments.</p>
-        </div>
-        
-
-        
-        <div class="long-resume">
-          
-          <p>In a major move within the cybersecurity sector, Accenture is executing an aggressive $4.1 billion strategy to enhance its capabilities in protecting Operational Technology (OT) environments. The company is acquiring majority stakes in three industry-leading firms: Drag/os, runZero, and NetRise. This massive investment is designed to address the growing complexity and increasing threat landscape facing critical infrastructure, such as manufacturing, energy, and utilities. By integrating Dragos&#39;s expertise in industrial cybersecurity, runZero&#39;s capabilities in device visibility and asset discovery, and NetRise&#39;s focus on firmware security and supply chain integrity, Accenture aims to offer an end-to-end security solution for OT ecosystems. This acquisition strategy positions Accenture as a primary leader in managing the convergence of IT and OT security, providing clients with the tools necessary to identify vulnerabilities and defend against sophisticated state-sponsored and criminal attacks targeting industrial control systems.</p>
-          
-        </div>
-        
-      </div>
-
-      <div class="article-card-footer">
-        
-        <div class="article-tags">
-          
-          <span class="tag">Dragos</span>
-          
-          <span class="tag">runZero</span>
-          
-          <span class="tag">NetRise</span>
-          
-          <span class="tag">Operational Technology (OT) Security</span>
-          
-          <span class="tag">Industrial Control Systems (ICS)</span>
-          
-        </div>
-        
-        
-        <a class="read-more" href="https://securityweek.com/accenture-to-acquire-majority-stake-in-dragos-all-of-runzero-netrise-in-4-1-billion-ot-cybersecurity-push" target="_blank" rel="noopener">Read full article →</a>
-        
-      </div>
-
-    </article>
-    
-    <article class="article-card" id="algorand-plans-to-be-ready-for-quantum-computing-threat-by-end-of-2027">
-
-      <div class="article-card-top">
-        <p class="article-number">Article 10</p>
-        <h2 class="article-title">
-          
-          <a href="https://decrypt.co/371581/algorand-plans-ready-quantum-computing-threat-end-2027" target="_blank" rel="noopener">Algorand Plans to Be Ready for Quantum Computing Threat by End of 2027</a>
-          
-        </h2>
-        <div class="article-meta">
-          
-          <span class="article-source">Decrypt</span>
-          
-        </div>
-      </div>
-
-      <div class="article-card-body">
-        
-        <p class="article-topic">Algorand has announced a comprehensive roadmap to implement post-quantum cryptography across its entire network infrastructure by the end of 2027.</p>
-        
-
-        
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
-          <p class="tldr-text">The Algorand Foundation has unveiled a multi-year plan to integrate quantum-resistant protocols into its blockchain ecosystem by 2027. This includes implementing Falcon-based accounts and hybrid signatures to protect against future quantum computing attacks.</p>
-        </div>
-        
-
-        
-        <div class="long-resume">
-          
-          <p>The Algorand Foundation has officially announced a strategic roadmap aimed at achieving broad quantum resilience by the end of 2027. Recognizing the long-term threat posed by advancements in quantum computing—often referred to as &#39;Q-Day&#39;—the foundation intends to upgrade its entire technological stack, including user accounts, digital wallets, institutional custody systems, and core network consensus mechanisms. A primary component of this plan is the introduction of native Falcon-1024 accounts, which utilize post-quantum digital signature systems designed to withstand quantum-based decryption attempts. To ensure a smooth transition, Algorand will also implement hybrid cryptographic signatures that combine traditional methods with post-quantum algorithms, allowing for increased security without immediate loss of compatibility. The rollout is scheduled in phases, with the first significant upgrades expected in 2026. This move places Algorand alongside other major blockchain networks like Bitcoin, Ethereum, and Stellar, which are all exploring or implementing quantum-resistant frameworks. While the threat of a cryptographically relevant quantum computer is not immediate, the foundation emphasizes that proactive preparation is essential to maintain trust and security for developers and institutions in the decades to come.</p>
-          
-        </div>
-        
-      </div>
-
-      <div class="article-card-footer">
-        
-        <div class="article-tags">
-          
-          <span class="tag">Algorand</span>
-          
-          <span class="tag">Falcon-1024</span>
-          
-          <span class="tag">Post-quantum cryptography</span>
-          
-          <span class="tag">Bitcoin</span>
-          
-          <span class="tag">Ethereum</span>
-          
-          <span class="tag">Stellar</span>
-          
-          <span class="tag">Cardano</span>
-          
-          <span class="tag">BIP-360</span>
-          
-        </div>
-        
-        
-        <a class="read-more" href="https://decrypt.co/371581/algorand-plans-ready-quantum-computing-threat-end-2027" target="_blank" rel="noopener">Read full article →</a>
-        
-      </div>
-
-    </article>
-    
-    <article class="article-card" id="bitcoin-miners-need-billions-to-fund-ai-ambitions-led-by-irens-21b-gap">
-
-      <div class="article-card-top">
-        <p class="article-number">Article 11</p>
-        <h2 class="article-title">
-          
-          <a href="https://cointelegraph.com/news/bitcoin-miners-50b-ai-pivot-iren-21b-funding-gap?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=rss" target="_blank" rel="noopener">Bitcoin miners need billions to fund AI ambitions, led by IREN’s $21B gap</a>
-          
-        </h2>
-        <div class="article-meta">
-          
-          <span class="article-source">CoinTelegraph</span>
-          
-        </div>
-      </div>
-
-      <div class="article-card-body">
-        
-        <p class="article-topic">Bitcoin mining companies are facing massive capital requirements to pivot their energy infrastructure toward AI and high-performance computing data centers.</p>
-        
-
-        
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
-          <p class="tldr-text">Bitcoin miners are attempting to pivot toward AI infrastructure to escape declining mining margins, but they face a massive $50 billion funding gap. This transition requires significant capital to upgrade modular mining sites into sophisticated, high-uptime data centers.</p>
-        </div>
-        
-
-        
-        <div class="long-resume">
-          
-          <p>The Bitcoin mining industry is undergoing a structural shift as companies attempt to rebrand and repurpose their energy assets for the burgeoning AI market. According to recent reports from Blocksbridge Consulting and VanEck, public miners need an estimated $50 billion in near-term capital to successfully bridge the gap between traditional Bitcoin mining setups and AI-ready data centers. Unlike Bitcoin mining, which utilizes relatively simple modular infrastructure and ASIC fleets capable of handling power curtailment, AI and High-Performance Computing (HPC) facilities require much higher standards for electrical redundancy, advanced cooling, networking, and consistent uptime. Among the industry players, IREN faces the most significant challenge with a $21.1 billion funding gap, while Riot Platforms and HIVE Digital also face multi-billion dollar requirements. This pivot is being driven by severe economic pressures in the Bitcoin mining sector, including declining hashprices—which dropped to as low as $28 per PH/s in early 2024—and the aftermath of the Bitcoin halving event. As profitability for traditional mining wanes, the potential for higher-margin AI cloud services presents a lucrative alternative, even as the massive capital expenditure required poses a significant barrier to entry and execution.</p>
-          
-        </div>
-        
-      </div>
-
-      <div class="article-card-footer">
-        
-        <div class="article-tags">
-          
-          <span class="tag">Bitcoin</span>
-          
-          <span class="tag">ASIC</span>
-          
-          <span class="tag">AI Cloud Infrastructure</span>
-          
-          <span class="tag">High-Performance Computing (HPC)</span>
-          
-          <span class="tag">Nvidia</span>
-          
-        </div>
-        
-        
-        <a class="read-more" href="https://cointelegraph.com/news/bitcoin-miners-50b-ai-pivot-iren-21b-funding-gap?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=rss" target="_blank" rel="noopener">Read full article →</a>
-        
-      </div>
-
-    </article>
-    
-  </div>
-
-  <div class="week-nav week-nav-bottom-bar">
-    
-    <a href="../week/24_2026.html" class="week-nav-btn week-nav-older">← Week 24 · 2026</a>
-    
-    <a href="../archive.html" class="week-nav-btn week-nav-archive">All issues</a>
-    <span></span>
-  </div>
-
-  
-</div>
+</section>
 
   </main>
 

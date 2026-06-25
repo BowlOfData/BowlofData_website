@@ -118,6 +118,31 @@ def _normalise_releases(raw: list[dict]) -> list[dict]:
     return result
 
 
+def _normalise_papers(raw_papers: list[dict]) -> list[dict]:
+    """Normalise raw paper dicts from a curated_papers_WW_YYYY.json file."""
+    result = []
+    for p in raw_papers:
+        title = (p.get("title") or "").strip()
+        if not title:
+            continue
+        resume_raw = (p.get("long_resume") or "").strip()
+        resume_paragraphs = [par.strip() for par in resume_raw.split("\n\n") if par.strip()] if resume_raw else []
+        result.append({
+            "title":                  title,
+            "slug":                   _slugify(title),
+            "url":                    (p.get("url") or "").strip(),
+            "source":                 (p.get("source") or "").strip(),
+            "published":              (p.get("published") or "").strip(),
+            "short_summary":          (p.get("short_summary") or "").strip(),
+            "long_resume":            resume_raw,
+            "long_resume_paragraphs": resume_paragraphs,
+            "main_topic":             (p.get("main_topic") or "").strip(),
+            "key_points":             [k.strip() for k in (p.get("key_points") or []) if k and k.strip()],
+            "technologies":           [t.strip() for t in (p.get("technologies") or []) if t and t.strip()],
+        })
+    return result
+
+
 def _normalise_articles(raw_articles: list[dict]) -> list[dict]:
     """Normalise raw article dicts from a pipeline summaries JSON."""
     result = []
@@ -147,6 +172,8 @@ def _build_week_entry(
     source_mtime: float,
     model_releases: list[dict] | None = None,
     model_releases_mtime: float = 0,
+    papers: list[dict] | None = None,
+    papers_mtime: float = 0,
 ) -> dict:
     """Build a complete week entry for storage in the manifest."""
     try:
@@ -170,6 +197,8 @@ def _build_week_entry(
         "source_mtime":          source_mtime,
         "model_releases":        model_releases or [],
         "model_releases_mtime":  model_releases_mtime,
+        "papers":                papers or [],
+        "papers_mtime":          papers_mtime,
     }
 
 
@@ -482,6 +511,9 @@ def build() -> None:
         mr_path = MAKI_OUTPUT_DIR / f"model_releases_{week_num:02d}_{year}.json"
         mr_mtime = mr_path.stat().st_mtime if mr_path.exists() else 0
 
+        papers_path = MAKI_OUTPUT_DIR / f"curated_papers_{week_num:02d}_{year}.json"
+        papers_mtime = papers_path.stat().st_mtime if papers_path.exists() else 0
+
         html_exists = (SITE_DIR / _week_href(week_num, year)).exists()
 
         existing = manifest.get(key)
@@ -490,6 +522,7 @@ def build() -> None:
             and existing is not None
             and source_mtime <= existing.get("source_mtime", 0)
             and mr_mtime <= existing.get("model_releases_mtime", 0)
+            and papers_mtime <= existing.get("papers_mtime", 0)
             and html_exists
         ):
             print(f"  Skipping  {_week_label(week_num, year)} — up to date")
@@ -510,16 +543,28 @@ def build() -> None:
             except (OSError, json.JSONDecodeError) as exc:
                 print(f"  Warning: could not load {mr_path.name}: {exc}")
 
+        papers: list[dict] = []
+        if papers_path.exists():
+            try:
+                papers = _normalise_papers(
+                    json.loads(papers_path.read_text(encoding="utf-8"))
+                )
+            except (OSError, json.JSONDecodeError) as exc:
+                print(f"  Warning: could not load {papers_path.name}: {exc}")
+
         articles = _normalise_articles(raw)
         manifest[key] = _build_week_entry(
             week_num, year, articles, source_mtime,
             model_releases=model_releases,
             model_releases_mtime=mr_mtime,
+            papers=papers,
+            papers_mtime=papers_mtime,
         )
         needs_rebuild.add(key)
         verb = "forced" if FORCE_REBUILD else ("new" if existing is None else "updated")
         releases_note = f", {len(model_releases)} releases" if model_releases else ""
-        print(f"  Queued    {_week_label(week_num, year)} ({verb}, {len(articles)} articles{releases_note})")
+        papers_note = f", {len(papers)} papers" if papers else ""
+        print(f"  Queued    {_week_label(week_num, year)} ({verb}, {len(articles)} articles{releases_note}{papers_note})")
 
     # Queue weeks whose HTML file is absent even though the manifest knows about them
     # (e.g. first run after cloning the repo when site/ was gitignored)
@@ -568,6 +613,7 @@ def build() -> None:
             label=w["label"],
             articles=w["articles"],
             model_releases=w.get("model_releases", []),
+            papers=w.get("papers", []),
             all_weeks=all_weeks,
             prev_week=prev_week,
             next_week=next_week,

@@ -11,7 +11,17 @@
     <h1 class="week-title">
       Week <span class="week-title-accent">{{ "%02d"|format(week) }}</span> · {{ year }}
     </h1>
-    <p class="week-meta">{{ articles | length }} article{{ 's' if articles | length != 1 else '' }}{% if model_releases %} · {{ model_releases | length }} model release{{ 's' if model_releases | length != 1 else '' }}{% endif %}</p>
+    <p class="week-meta">{{ articles | length }} article{{ 's' if articles | length != 1 else '' }}{% if model_releases %} · {{ model_releases | length }} model release{{ 's' if model_releases | length != 1 else '' }}{% endif %}{% if papers %} · {{ papers | length }} paper{{ 's' if papers | length != 1 else '' }}{% endif %}</p>
+    {% if prev_week or next_week %}
+    <div class="week-nav week-nav--header">
+      {% if prev_week %}
+      <a href="../{{ prev_week.href }}" class="week-nav-btn week-nav-older">← {{ prev_week.label }}</a>
+      {% else %}<span></span>{% endif %}
+      {% if next_week %}
+      <a href="../{{ next_week.href }}" class="week-nav-btn week-nav-newer">{{ next_week.label }} →</a>
+      {% else %}<span></span>{% endif %}
+    </div>
+    {% endif %}
   </div>
 </div>
 
@@ -78,96 +88,172 @@
 </section>
 {% endif %}
 
-<div class="article-section">
+{% if papers %}
+<section class="papers-section">
 
-  {% if articles %}
-
-  <div class="news-section-header">
-    <h2 class="news-section-title">This Week in Tech</h2>
-    <p class="news-section-sub">Top stories curated from across the web this week</p>
+  <div class="releases-header">
+    <div class="releases-header-inner">
+      <div class="releases-header-text">
+        <h2 class="releases-title">Research Papers</h2>
+        <p class="releases-sub">Selected arXiv and HuggingFace papers this week</p>
+      </div>
+      <span class="releases-badge papers-badge">This Week</span>
+    </div>
   </div>
 
-  {% if prev_week or next_week %}
-  <div class="week-nav">
-    {% if prev_week %}
-    <a href="../{{ prev_week.href }}" class="week-nav-btn week-nav-older">← {{ prev_week.label }}</a>
-    {% else %}<span></span>{% endif %}
-    {% if next_week %}
-    <a href="../{{ next_week.href }}" class="week-nav-btn week-nav-newer">{{ next_week.label }} →</a>
-    {% else %}<span></span>{% endif %}
+  <div class="releases-body">
+    <div class="article-section">
+      <div class="article-list">
+        {% for p in papers %}
+        <article class="article-card" id="{{ p.slug }}">
+
+          <div class="article-card-top">
+            <p class="article-number">Paper {{ loop.index }}</p>
+            <h2 class="article-title">
+              {% if p.url %}
+              <a href="{{ p.url }}" target="_blank" rel="noopener">{{ p.title }}</a>
+              {% else %}
+              {{ p.title }}
+              {% endif %}
+            </h2>
+            <div class="article-meta">
+              {% if p.source %}
+              <span class="article-source">{{ p.source }}</span>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="article-card-body">
+            {% if p.main_topic %}
+            <p class="article-topic">{{ p.main_topic }}</p>
+            {% endif %}
+
+            {% if p.short_summary %}
+            <div class="tldr-box">
+              <p class="tldr-label">TL;DR</p>
+              <p class="tldr-text">{{ p.short_summary }}</p>
+            </div>
+            {% endif %}
+
+            {% if p.long_resume_paragraphs %}
+            <div class="long-resume">
+              {% for para in p.long_resume_paragraphs %}
+              <p>{{ para }}</p>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+
+          <div class="article-card-footer">
+            {% if p.technologies %}
+            <div class="article-tags">
+              {% for tech in p.technologies %}
+              <span class="tag">{{ tech }}</span>
+              {% endfor %}
+            </div>
+            {% endif %}
+            {% if p.url %}
+            <a class="read-more" href="{{ p.url }}" target="_blank" rel="noopener">Read paper →</a>
+            {% endif %}
+          </div>
+
+        </article>
+        {% endfor %}
+      </div>
+    </div>
   </div>
-  {% endif %}
 
-  <div class="article-list">
-    {% for a in articles %}
-    <article class="article-card" id="{{ a.slug }}">
+</section>
+{% endif %}
 
-      <div class="article-card-top">
-        <p class="article-number">Article {{ loop.index }}</p>
-        <h2 class="article-title">
+<section class="news-section">
+
+  <div class="releases-header news-section-band">
+    <div class="releases-header-inner">
+      <div class="releases-header-text">
+        <h2 class="releases-title">This Week in Tech</h2>
+        <p class="releases-sub">Top stories curated from across the web this week</p>
+      </div>
+      <span class="releases-badge news-badge">This Week</span>
+    </div>
+  </div>
+
+  <div class="article-section">
+
+    {% if articles %}
+
+    <div class="article-list">
+      {% for a in articles %}
+      <article class="article-card" id="{{ a.slug }}">
+
+        <div class="article-card-top">
+          <p class="article-number">Article {{ loop.index }}</p>
+          <h2 class="article-title">
+            {% if a.url %}
+            <a href="{{ a.url }}" target="_blank" rel="noopener">{{ a.title }}</a>
+            {% else %}
+            {{ a.title }}
+            {% endif %}
+          </h2>
+          <div class="article-meta">
+            {% if a.source %}
+            <span class="article-source">{{ a.source }}</span>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          {% if a.main_topic %}
+          <p class="article-topic">{{ a.main_topic }}</p>
+          {% endif %}
+
+          {% if a.short_summary %}
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">{{ a.short_summary }}</p>
+          </div>
+          {% endif %}
+
+          {% if a.long_resume_paragraphs %}
+          <div class="long-resume">
+            {% for para in a.long_resume_paragraphs %}
+            <p>{{ para }}</p>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+
+        <div class="article-card-footer">
+          {% if a.technologies %}
+          <div class="article-tags">
+            {% for tech in a.technologies %}
+            <span class="tag">{{ tech }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
           {% if a.url %}
-          <a href="{{ a.url }}" target="_blank" rel="noopener">{{ a.title }}</a>
-          {% else %}
-          {{ a.title }}
-          {% endif %}
-        </h2>
-        <div class="article-meta">
-          {% if a.source %}
-          <span class="article-source">{{ a.source }}</span>
+          <a class="read-more" href="{{ a.url }}" target="_blank" rel="noopener">Read full article →</a>
           {% endif %}
         </div>
-      </div>
 
-      <div class="article-card-body">
-        {% if a.main_topic %}
-        <p class="article-topic">{{ a.main_topic }}</p>
-        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
 
-        {% if a.short_summary %}
-        <div class="tldr-box">
-          <p class="tldr-label">TL;DR</p>
-          <p class="tldr-text">{{ a.short_summary }}</p>
-        </div>
-        {% endif %}
+    <div class="week-nav week-nav-bottom-bar">
+      {% if prev_week %}
+      <a href="../{{ prev_week.href }}" class="week-nav-btn week-nav-older">← {{ prev_week.label }}</a>
+      {% else %}<span></span>{% endif %}
+      <a href="{{ archive_href }}" class="week-nav-btn week-nav-archive">All issues</a>
+      {% if next_week %}
+      <a href="../{{ next_week.href }}" class="week-nav-btn week-nav-newer">{{ next_week.label }} →</a>
+      {% else %}<span></span>{% endif %}
+    </div>
 
-        {% if a.long_resume_paragraphs %}
-        <div class="long-resume">
-          {% for para in a.long_resume_paragraphs %}
-          <p>{{ para }}</p>
-          {% endfor %}
-        </div>
-        {% endif %}
-      </div>
-
-      <div class="article-card-footer">
-        {% if a.technologies %}
-        <div class="article-tags">
-          {% for tech in a.technologies %}
-          <span class="tag">{{ tech }}</span>
-          {% endfor %}
-        </div>
-        {% endif %}
-        {% if a.url %}
-        <a class="read-more" href="{{ a.url }}" target="_blank" rel="noopener">Read full article →</a>
-        {% endif %}
-      </div>
-
-    </article>
-    {% endfor %}
+    {% else %}
+    <p class="empty-state">No articles in this issue.</p>
+    {% endif %}
   </div>
 
-  <div class="week-nav week-nav-bottom-bar">
-    {% if prev_week %}
-    <a href="../{{ prev_week.href }}" class="week-nav-btn week-nav-older">← {{ prev_week.label }}</a>
-    {% else %}<span></span>{% endif %}
-    <a href="{{ archive_href }}" class="week-nav-btn week-nav-archive">All issues</a>
-    {% if next_week %}
-    <a href="../{{ next_week.href }}" class="week-nav-btn week-nav-newer">{{ next_week.label }} →</a>
-    {% else %}<span></span>{% endif %}
-  </div>
-
-  {% else %}
-  <p class="empty-state">No articles in this issue.</p>
-  {% endif %}
-</div>
+</section>
 {% endblock %}
