@@ -2,20 +2,50 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Bowl of Data</title>
-    <link>https://bowlofdata.netlify.app/</link>
+    <link>https://bowlofdata.net/</link>
     <description>A weekly digest of the most relevant tech stories</description>
     <language>en-us</language>
-    <atom:link href="https://bowlofdata.netlify.app/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 03 Jul 2026 13:38:45 +0000</lastBuildDate>
+    <atom:link href="https://bowlofdata.net/feed.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>Wed, 08 Jul 2026 14:26:30 +0000</lastBuildDate>
     <image>
-      <url>https://bowlofdata.netlify.app/imgs/logo.png</url>
+      <url>https://bowlofdata.net/imgs/logo.png</url>
       <title>Bowl of Data</title>
-      <link>https://bowlofdata.netlify.app/</link>
+      <link>https://bowlofdata.net/</link>
     </image>
     <item>
+      <title>Week 28 · 2026 · Bowl of Data</title>
+      <link>https://bowlofdata.net/week/28_2026.html</link>
+      <guid isPermaLink="true">https://bowlofdata.net/week/28_2026.html</guid>
+      <pubDate>Wed, 08 Jul 2026 14:26:30 +0000</pubDate>
+      <description><![CDATA[<p><strong>Week 28 · 2026</strong> — 21 articles</p>
+<ul>
+  <li><a href="https://spectrum.ieee.org/google-quantum-cryptography-zero-knowledge">Independent Labs Crack Google’s Secret Cryptography Work</a>: Researchers at Google recently discovered a way to break 256-bit ECC encryption with much lower qubit counts than expected, but withheld their exact method using zero-knowledge proofs. The startup Eigen Labs successfully bypassed this secrecy by using AI agents and crowdsourcing to develop an even more efficient attack circuit.</li>
+  <li><a href="https://noma.security/blog/gitlost-how-we-tricked-githubs-ai-agent-into-leaking-private-repos">GitLost: a public GitHub issue can steer an org's Agentic Workflow into leaking private repo contents, and a one-word prefix (&quot;Additionally&quot;) bypassed the threat-detection guardrail</a>: Noma Labs has uncovered 'GitLost', a vulnerability in GitHub Agentic Workflows that enables indirect prompt injection. By posting malicious instructions in a public issue, an attacker can trick the AI agent into leaking sensitive data from private organizational repositories.</li>
+  <li><a href="https://thenewstack.io/post-quantum-cryptography-deadline-2029">Microsoft, Google and Cloudflare just made 2029 the new quantum deadline</a>: Tech giants are moving up their quantum-safe security deadlines to 2029 to combat the accelerating threat of quantum decryption. Organizations are urged to begin cryptographic inventories and implement crypto-agility immediately to protect against 'harvest now, decrypt later' attacks.</li>
+  <li><a href="https://cointelegraph.com/research/bitcoin-covenants-part-3-sighash-anyprevout?utm_source=rss_feed&amp;utm_medium=rss&amp;utm_campaign=rss_partner_inbound">Bitcoin Covenants part 3: SIGHASH_ANYPREVOUT</a>: This article explores the technical mechanics of the SIGHASH_ANYPREVOUT proposal and its ability to allow signature reuse across compatible UTXOs. It details how removing outpoint commitment facilitates Layer-2 protocols while highlighting potential risks like signature replay.</li>
+  <li><a href="https://github.com/Ymsniper/Whisper_Bully">Extract, Knock Offline, and Take Over Bluetooth Devices with Just a Laptop</a>: The Whisper_Bully tool demonstrates a sophisticated three-stage attack against Bluetooth Fast Pair devices. It leverages a specific vulnerability to bypass privacy randomization, followed by L2CAP flooding and connection hijacking.</li>
+  <li><a href="https://github.com/SimplexLab/TorchJD">TorchJD: Training with multiple losses in PyTorch [P]</a>: TorchJD is a specialized PyTorch library for optimizing neural networks with multiple simultaneous loss functions. It implements advanced methods like Jacobian descent and scalarization to resolve optimization conflicts in multi-task learning.</li>
+  <li><a href="https://ipurple.team/2026/07/06/windows-service">Windows Service - Playbook &amp; Detection Strategies</a>: This technical report details multiple methods for abusing Windows Services to achieve persistence and elevated privileges. It covers everything from traditional binary path modification to advanced techniques involving SDDL manipulation and service recovery hijacking.</li>
+  <li><a href="https://blog.paradoxis.nl/playing-around-with-adidns-rpc-internals-0c59c15d0a15?gi=b2ceb685702d">Playing Around With ADIDNS RPC Internals</a>: This technical deep-dive details the process of reverse-engineering and interacting with ADIDNS RPC internals. The author outlines a methodology for using specific RPC calls to manipulate debug log paths via UNC shares.</li>
+  <li><a href="https://decrypt.co/372810/bitcoin-mining-stocks-jump-terawulf-19-billion-lease-anthropic">Bitcoin Mining Stocks Jump After TeraWulf Signs $19 Billion Lease With Anthropic</a>: TeraWulf has entered into a landmark $19 billion, 20-year lease agreement with Anthropic to host AI data center operations in Kentucky. This strategic pivot toward AI infrastructure has triggered a broad rally across the Bitcoin mining sector.</li>
+  <li><a href="https://cointelegraph.com/news/eu-parliament-digital-assets-policy-mica-transition?utm_source=rss_feed&amp;utm_medium=rss&amp;utm_campaign=rss_partner_inbound">EU lawmakers adopt digital assets policy stance after MiCA transition ends</a>: The European Parliament has established a formal policy position to evaluate the expansion of crypto regulations beyond the current MiCA framework. The move aims to address unregulated sectors like DeFi and NFTs while ensuring market uniformity across the EU.</li>
+  <li><a href="https://cointelegraph.com/news/usdt-wins-payments-usdc-wins-defi-as-stablecoins-diverge-dune?utm_source=rss_feed&amp;utm_medium=rss&amp;utm_campaign=rss_partner_inbound">USDT wins payments, USDC wins DeFi as stablecoins diverge: Dune</a>: Analysis from Dune reveals that USDT and USDC are moving toward specialized roles rather than direct competition. While USDT dominates global payments and remittances, USDC has become the primary liquidity driver for DeFi protocols.</li>
+  <li><a href="https://cointelegraph.com/news/south-korea-toss-partners-optimism-won-stablecoins?utm_source=rss_feed&amp;utm_medium=rss&amp;utm_campaign=rss_partner_inbound">Mobile app Toss and blockchain Optimism to conduct Korean won stablecoin POC : report</a>: Toss has entered a partnership with Optimism and Sunnyside Labs to test a Korean won-based stablecoin for institutional payments. The three-month pilot focuses on integrating privacy-preserving technology with blockchain infrastructure to ensure regulatory compliance.</li>
+  <li><a href="https://cointelegraph.com/news/base-to-activate-b20-standard-for-stablecoins-rwas-and-other-tokens?utm_source=rss_feed&amp;utm_medium=rss&amp;utm_campaign=rss_partner_inbound">Base to activate B20 standard for stablecoins, RWAs and other tokens</a>: Base is deploying the B20 token standard on its mainnet to provide a native framework for fungible tokens like stablecoins and RWAs. This deployment follows recent technical challenges involving sequencer outages during the network's Beryl upgrade.</li>
+  <li><a href="https://compsec.snu.ac.kr/blog/badepoll">Bad Epoll: The bug missed by Mythos</a>: The article details the discovery of CVE-2026-46242, a critical race-condition bug in the Linux kernel's epoll subsystem. This vulnerability enables local privilege escalation to root on various platforms including Android.</li>
+  <li><a href="https://krebsonsecurity.com/2026/07/felons-fraudsters-flog-offensive-cybersecurity-startup">Felons, Fraudsters Flog Offensive Cybersecurity Startup</a>: The cybersecurity startup IRIS C2 is attempting to build a massive stockpile of high-value software exploits by offering multi-million dollar bounties. However, the company's leadership consists of Jack Burkman and Jacob Wohl, notorious figures known for orchestrating large-scale disinformation and fraud schemes.</li>
+  <li><a href="https://space.com/space-exploration/satellites/the-us-space-force-just-got-a-new-electromagnetic-weapon-to-jam-adversary-satellites">The US Space Force just got a new electromagnetic weapon to jam adversary satellites</a>: The U.S. Space Force is deploying the Meadowlands system to achieve spectrum dominance by jamming adversary satellite communications. This non-kinetic weapon allows for the reversible disruption of enemy space assets during combat operations.</li>
+  <li><a href="https://arxiv.org/html/2607.05394v1">Weak-to-Strong Generalization via Direct On-Policy Distillation</a>: This technical paper proposes a new distillation paradigm called Direct-OPD to improve weak-to-strong generalization in reasoning models. By distilling only the policy shift induced by reinforcement learning, the method avoids the capacity limitations inherent in traditional teacher-student imitation.</li>
+  <li><a href="https://arxiv.org/html/2607.05061">KVpop -- Key-Value Cache Compression with Predictive Online Pruning</a>: This technical paper presents KVpop, a technique for compressing the KV cache in transformer models via predictive online pruning. It optimizes the computation of attention targets by reusing sparse log-normalizers and utilizing efficient data structures like Fenwick trees.</li>
+  <li><a href="https://arxiv.org/html/2607.01804">VLA-Corrector: Lightweight Detect-and-Correct Inference for Adaptive Action Horizon</a>: VLA-Corrector is a new inference framework that mitigates the risks of error accumulation in action-chunked robotic policies. By using latent-space monitoring and gradient guidance, it allows robots to dynamically truncate stale actions and replan when environmental deviations are detected.</li>
+  <li><a href="https://arxiv.org/html/2607.06553v1">From RGB Generation to Dense Field Readout: Pixel-Space Dense Prediction with Text-to-Image Models</a>: This paper proposes ReChannel, a novel architecture that transforms text-to-image models from RGB generators into efficient dense prediction engines. By treating transformer tokens as spatial carriers for task-specific data rather than RGB pixels, the method achieves new state-of-the-art performance with much higher computational efficiency.</li>
+  <li><a href="https://arxiv.org/html/2607.03748">Bridging Interleaved Multi-Modal Reasoning as a Unified Decision Process</a>: This paper presents BRAID, a framework that bridges interleaved multi-modal reasoning by treating it as a unified decision process via Reinforcement Learning. The method demonstrates that RL can close the performance gap between generative unified models and dedicated understanding-only VLMs.</li>
+</ul>]]></description>
+    </item>
+    <item>
       <title>Week 27 · 2026 · Bowl of Data</title>
-      <link>https://bowlofdata.netlify.app/week/27_2026.html</link>
-      <guid isPermaLink="true">https://bowlofdata.netlify.app/week/27_2026.html</guid>
+      <link>https://bowlofdata.net/week/27_2026.html</link>
+      <guid isPermaLink="true">https://bowlofdata.net/week/27_2026.html</guid>
       <pubDate>Fri, 03 Jul 2026 13:38:45 +0000</pubDate>
       <description><![CDATA[<p><strong>Week 27 · 2026</strong> — 21 articles</p>
 <ul>
@@ -44,8 +74,8 @@
     </item>
     <item>
       <title>Week 26 · 2026 · Bowl of Data</title>
-      <link>https://bowlofdata.netlify.app/week/26_2026.html</link>
-      <guid isPermaLink="true">https://bowlofdata.netlify.app/week/26_2026.html</guid>
+      <link>https://bowlofdata.net/week/26_2026.html</link>
+      <guid isPermaLink="true">https://bowlofdata.net/week/26_2026.html</guid>
       <pubDate>Thu, 25 Jun 2026 21:15:59 +0000</pubDate>
       <description><![CDATA[<p><strong>Week 26 · 2026</strong> — 23 articles</p>
 <ul>
@@ -76,8 +106,8 @@
     </item>
     <item>
       <title>Week 25 · 2026 · Bowl of Data</title>
-      <link>https://bowlofdata.netlify.app/week/25_2026.html</link>
-      <guid isPermaLink="true">https://bowlofdata.netlify.app/week/25_2026.html</guid>
+      <link>https://bowlofdata.net/week/25_2026.html</link>
+      <guid isPermaLink="true">https://bowlofdata.net/week/25_2026.html</guid>
       <pubDate>Fri, 19 Jun 2026 16:53:26 +0000</pubDate>
       <description><![CDATA[<p><strong>Week 25 · 2026</strong> — 11 articles</p>
 <ul>
@@ -96,8 +126,8 @@
     </item>
     <item>
       <title>Week 24 · 2026 · Bowl of Data</title>
-      <link>https://bowlofdata.netlify.app/week/24_2026.html</link>
-      <guid isPermaLink="true">https://bowlofdata.netlify.app/week/24_2026.html</guid>
+      <link>https://bowlofdata.net/week/24_2026.html</link>
+      <guid isPermaLink="true">https://bowlofdata.net/week/24_2026.html</guid>
       <pubDate>Fri, 12 Jun 2026 19:28:34 +0000</pubDate>
       <description><![CDATA[<p><strong>Week 24 · 2026</strong> — 12 articles</p>
 <ul>
@@ -117,8 +147,8 @@
     </item>
     <item>
       <title>Week 23 · 2026 · Bowl of Data</title>
-      <link>https://bowlofdata.netlify.app/week/23_2026.html</link>
-      <guid isPermaLink="true">https://bowlofdata.netlify.app/week/23_2026.html</guid>
+      <link>https://bowlofdata.net/week/23_2026.html</link>
+      <guid isPermaLink="true">https://bowlofdata.net/week/23_2026.html</guid>
       <pubDate>Fri, 05 Jun 2026 20:23:04 +0000</pubDate>
       <description><![CDATA[<p><strong>Week 23 · 2026</strong> — 14 articles</p>
 <ul>
@@ -140,8 +170,8 @@
     </item>
     <item>
       <title>Week 22 · 2026 · Bowl of Data</title>
-      <link>https://bowlofdata.netlify.app/week/22_2026.html</link>
-      <guid isPermaLink="true">https://bowlofdata.netlify.app/week/22_2026.html</guid>
+      <link>https://bowlofdata.net/week/22_2026.html</link>
+      <guid isPermaLink="true">https://bowlofdata.net/week/22_2026.html</guid>
       <pubDate>Sun, 31 May 2026 14:07:37 +0000</pubDate>
       <description><![CDATA[<p><strong>Week 22 · 2026</strong> — 13 articles</p>
 <ul>
@@ -162,8 +192,8 @@
     </item>
     <item>
       <title>Week 21 · 2026 · Bowl of Data</title>
-      <link>https://bowlofdata.netlify.app/week/21_2026.html</link>
-      <guid isPermaLink="true">https://bowlofdata.netlify.app/week/21_2026.html</guid>
+      <link>https://bowlofdata.net/week/21_2026.html</link>
+      <guid isPermaLink="true">https://bowlofdata.net/week/21_2026.html</guid>
       <pubDate>Wed, 20 May 2026 16:04:32 +0000</pubDate>
       <description><![CDATA[<p><strong>Week 21 · 2026</strong> — 51 articles</p>
 <ul>
@@ -222,8 +252,8 @@
     </item>
     <item>
       <title>Week 20 · 2026 · Bowl of Data</title>
-      <link>https://bowlofdata.netlify.app/week/20_2026.html</link>
-      <guid isPermaLink="true">https://bowlofdata.netlify.app/week/20_2026.html</guid>
+      <link>https://bowlofdata.net/week/20_2026.html</link>
+      <guid isPermaLink="true">https://bowlofdata.net/week/20_2026.html</guid>
       <pubDate>Thu, 14 May 2026 17:55:16 +0000</pubDate>
       <description><![CDATA[<p><strong>Week 20 · 2026</strong> — 13 articles</p>
 <ul>
@@ -244,8 +274,8 @@
     </item>
     <item>
       <title>Week 19 · 2026 · Bowl of Data</title>
-      <link>https://bowlofdata.netlify.app/week/19_2026.html</link>
-      <guid isPermaLink="true">https://bowlofdata.netlify.app/week/19_2026.html</guid>
+      <link>https://bowlofdata.net/week/19_2026.html</link>
+      <guid isPermaLink="true">https://bowlofdata.net/week/19_2026.html</guid>
       <pubDate>Fri, 08 May 2026 12:39:40 +0000</pubDate>
       <description><![CDATA[<p><strong>Week 19 · 2026</strong> — 13 articles</p>
 <ul>

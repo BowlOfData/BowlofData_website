@@ -6,23 +6,24 @@ Bowl of Data is a weekly newsletter powered by Maki, an AI pipeline that curates
 
 ## Issues
 
-- [Week 27 · 2026](https://bowlofdata.netlify.app/week/27_2026.html): 21 articles. Highlights: CitrixBleed To Infinity And Beyond (Citrix NetScaler Pre-Auth Memory Overread CVE-2026-8451) - watchTowr Labs; It’s 37oC, And All We Can Think About Is ColdFusion (Adobe ColdFusion Security Bulletin APSB26-68 CVE Bonanza) - watchTowr Labs; Auditing OpenReception: 16 CVEs in an end-to-end encrypted appointment booking platform (unauthenticated admin creation, account takeover, E2E bypass).
-- [Week 26 · 2026](https://bowlofdata.netlify.app/week/26_2026.html): 23 articles. Highlights: Trump Orders Acceleration of Quantum Readiness as Bitcoin Faces Coming Risk; Europe Expands Quantum-GPU Computing as NVIDIA Announces 35 New AI Supercomputers; How Many Qubits Does a Quantum Computer Need?.
-- [Week 25 · 2026](https://bowlofdata.netlify.app/week/25_2026.html): 11 articles. Highlights: SearchLeak: How We Turned M365 Copilot Into a One-Click Data Exfiltration Weapon; Your Privacy My Cloak: Backdoor Attacks on Differentially Private Federated Learning; APPO: Agentic Procedural Policy Optimization.
-- [Week 24 · 2026](https://bowlofdata.netlify.app/week/24_2026.html): 12 articles. Highlights: Claude Fable & Mythos released by Anthropic; Signal Alums Reveal ‘Encrypted Spaces,’ a System for Making Private Collaboration Apps; Jupyter Enterprise Gateway - From Notebook to Kubernetes Cluster Admin - elttam.
-- [Week 23 · 2026](https://bowlofdata.netlify.app/week/23_2026.html): 14 articles. Highlights: Microsoft Reveals '1,000x More Reliable' Quantum Chip as Bitcoin Threat Draws Nearer; Red Hat npm packages compromised to steal developer credentials; Mastercard expands onchain settlement in bet on stablecoins and always-on finance.
-- [Week 22 · 2026](https://bowlofdata.netlify.app/week/22_2026.html): 13 articles. Highlights: Beyond a Single Quantum Chip: Why the Future of Quantum Computing is Modular; US's big bet on quantum computing may not be entirely legal; What scanners are actually trying against AI infrastructure.
-- [Week 21 · 2026](https://bowlofdata.netlify.app/week/21_2026.html): 51 articles. Highlights: Article: Kernel-Level Ground Truth: Why eBPF is Replacing User-Space Agents for Security Observability; The SEC Is About to Allow Tokenized Stocks on Blockchain; Aramco and Pasqal Launch Commercial Quantum Computing as a Service Platform in Saudi Arabia.
-- [Week 20 · 2026](https://bowlofdata.netlify.app/week/20_2026.html): 13 articles. Highlights: Postmortem: TanStack npm supply-chain compromise; Giving Claude Code Full Control of a Hardware Fault Injection Setup to Bypass Secure Boot; Hackers Used AI to Develop First Known Zero-Day 2FA Bypass for Mass Exploitation.
-- [Week 19 · 2026](https://bowlofdata.netlify.app/week/19_2026.html): 13 articles. Highlights: Uber Shares What Happens When 1.500 AI Agents Hit Production; We probed 6,000 web apps for Stripe webhook signature checks. 1,542 don't bother; Bleeding Llama: Critical Unauthenticated Memory Leak in Ollama (CVE-2026–7482).
+- [Week 28 · 2026](https://bowlofdata.net/week/28_2026.html): 21 articles. Highlights: Independent Labs Crack Google’s Secret Cryptography Work; GitLost: a public GitHub issue can steer an org's Agentic Workflow into leaking private repo contents, and a one-word prefix ("Additionally") bypassed the threat-detection guardrail; Microsoft, Google and Cloudflare just made 2029 the new quantum deadline.
+- [Week 27 · 2026](https://bowlofdata.net/week/27_2026.html): 21 articles. Highlights: CitrixBleed To Infinity And Beyond (Citrix NetScaler Pre-Auth Memory Overread CVE-2026-8451) - watchTowr Labs; It’s 37oC, And All We Can Think About Is ColdFusion (Adobe ColdFusion Security Bulletin APSB26-68 CVE Bonanza) - watchTowr Labs; Auditing OpenReception: 16 CVEs in an end-to-end encrypted appointment booking platform (unauthenticated admin creation, account takeover, E2E bypass).
+- [Week 26 · 2026](https://bowlofdata.net/week/26_2026.html): 23 articles. Highlights: Trump Orders Acceleration of Quantum Readiness as Bitcoin Faces Coming Risk; Europe Expands Quantum-GPU Computing as NVIDIA Announces 35 New AI Supercomputers; How Many Qubits Does a Quantum Computer Need?.
+- [Week 25 · 2026](https://bowlofdata.net/week/25_2026.html): 11 articles. Highlights: SearchLeak: How We Turned M365 Copilot Into a One-Click Data Exfiltration Weapon; Your Privacy My Cloak: Backdoor Attacks on Differentially Private Federated Learning; APPO: Agentic Procedural Policy Optimization.
+- [Week 24 · 2026](https://bowlofdata.net/week/24_2026.html): 12 articles. Highlights: Claude Fable & Mythos released by Anthropic; Signal Alums Reveal ‘Encrypted Spaces,’ a System for Making Private Collaboration Apps; Jupyter Enterprise Gateway - From Notebook to Kubernetes Cluster Admin - elttam.
+- [Week 23 · 2026](https://bowlofdata.net/week/23_2026.html): 14 articles. Highlights: Microsoft Reveals '1,000x More Reliable' Quantum Chip as Bitcoin Threat Draws Nearer; Red Hat npm packages compromised to steal developer credentials; Mastercard expands onchain settlement in bet on stablecoins and always-on finance.
+- [Week 22 · 2026](https://bowlofdata.net/week/22_2026.html): 13 articles. Highlights: Beyond a Single Quantum Chip: Why the Future of Quantum Computing is Modular; US's big bet on quantum computing may not be entirely legal; What scanners are actually trying against AI infrastructure.
+- [Week 21 · 2026](https://bowlofdata.net/week/21_2026.html): 51 articles. Highlights: Article: Kernel-Level Ground Truth: Why eBPF is Replacing User-Space Agents for Security Observability; The SEC Is About to Allow Tokenized Stocks on Blockchain; Aramco and Pasqal Launch Commercial Quantum Computing as a Service Platform in Saudi Arabia.
+- [Week 20 · 2026](https://bowlofdata.net/week/20_2026.html): 13 articles. Highlights: Postmortem: TanStack npm supply-chain compromise; Giving Claude Code Full Control of a Hardware Fault Injection Setup to Bypass Secure Boot; Hackers Used AI to Develop First Known Zero-Day 2FA Bypass for Mass Exploitation.
+- [Week 19 · 2026](https://bowlofdata.net/week/19_2026.html): 13 articles. Highlights: Uber Shares What Happens When 1.500 AI Agents Hit Production; We probed 6,000 web apps for Stripe webhook signature checks. 1,542 don't bother; Bleeding Llama: Critical Unauthenticated Memory Leak in Ollama (CVE-2026–7482).
 
 ## Pages
 
-- [Archive](https://bowlofdata.netlify.app/archive.html): Index of all past issues
-- [Services](https://bowlofdata.netlify.app/services.html): Newsletter on Demand — we build and run your newsletter
-- [About](https://bowlofdata.netlify.app/about.html): Mission, topics covered, and how the pipeline works
-- [Team](https://bowlofdata.netlify.app/team.html): About the people and AI behind Bowl of Data
-- [Contact](https://bowlofdata.netlify.app/contact.html): Feedback and article suggestions
+- [Archive](https://bowlofdata.net/archive.html): Index of all past issues
+- [Services](https://bowlofdata.net/services.html): Newsletter on Demand — we build and run your newsletter
+- [About](https://bowlofdata.net/about.html): Mission, topics covered, and how the pipeline works
+- [Team](https://bowlofdata.net/team.html): About the people and AI behind Bowl of Data
+- [Contact](https://bowlofdata.net/contact.html): Feedback and article suggestions
 
 ## Optional
 

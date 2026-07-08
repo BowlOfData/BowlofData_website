@@ -61,7 +61,7 @@ FORCE_REBUILD = os.environ.get("FORCE_REBUILD", "").strip() not in ("", "0")
 
 SITE_NAME    = "Bowl of Data"
 SITE_TAGLINE = "A weekly digest of the most relevant tech stories"
-SITE_URL     = "https://bowlofdata.netlify.app"
+SITE_URL     = "https://bowlofdata.net"
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -248,6 +248,21 @@ def _make_website_jsonld(site_url: str, site_name: str, tagline: str) -> str:
     }, ensure_ascii=False)
 
 
+def _make_organization_jsonld(site_url: str, site_name: str, tagline: str) -> str:
+    return json.dumps({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": site_name,
+        "description": tagline,
+        "url": site_url,
+        "logo": f"{site_url}/imgs/logo.png",
+        "sameAs": [
+            "https://bowlofdata.substack.com/",
+            "https://www.instagram.com/bowl_of_data",
+        ],
+    }, ensure_ascii=False)
+
+
 def _make_week_jsonld(w: dict, site_url: str, site_name: str) -> str:
     count = w["article_count"]
     week_url = f"{site_url}/{w['href']}"
@@ -299,9 +314,9 @@ def _generate_sitemap(all_weeks: list[dict], site_url: str, build_date: str) -> 
         (f"{site_url}/",                 "weekly",  "1.0", build_date),
         (f"{site_url}/archive.html",     "weekly",  "0.9", build_date),
         (f"{site_url}/services.html",    "monthly", "0.7", build_date),
-        (f"{site_url}/about.html",       "monthly", "0.6", None),
-        (f"{site_url}/team.html",        "monthly", "0.5", None),
-        (f"{site_url}/contact.html",     "monthly", "0.5", None),
+        (f"{site_url}/about.html",       "monthly", "0.6", build_date),
+        (f"{site_url}/team.html",        "monthly", "0.5", build_date),
+        (f"{site_url}/contact.html",     "monthly", "0.5", build_date),
     ]
     for w in all_weeks:
         mtime = w.get("source_mtime")
@@ -492,6 +507,7 @@ def build() -> None:
         tagline=SITE_TAGLINE,
         site_url=SITE_URL,
         build_date=datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+        organization_jsonld_str=_make_organization_jsonld(SITE_URL, SITE_NAME, SITE_TAGLINE),
     )
 
     # ------------------------------------------------------------------
