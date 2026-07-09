@@ -8,6 +8,119 @@
     "href": "week/28_2026.html",
     "articles": [
       {
+        "title": "Weak-to-Strong Generalization via Direct On-Policy Distillation",
+        "slug": "weak-to-strong-generalization-via-direct-on-policy-distillation",
+        "url": "https://arxiv.org/html/2607.05394v1",
+        "source": "arXiv",
+        "published": "2026-07-06T17:59:58Z",
+        "short_summary": "This technical paper proposes a new distillation paradigm called Direct-OPD to improve weak-to-strong generalization in reasoning models. By distilling only the policy shift induced by reinforcement learning, the method avoids the capacity limitations inherent in traditional teacher-student imitation.",
+        "long_resume": "The research addresses a critical bottleneck in the development of frontier reasoning models: how to effectively transfer high-level reasoning capabilities from large 'teacher' models to smaller, more efficient 'student' models. Current methodologies rely heavily on On-Policy Distillation (OPD), where students are trained on states sampled under teacher supervision. However, existing OPD methods and their hybrids often suffer from a capacity ceiling; if the teacher model is used to imitate an absolute policy, the student effectively inherits the limitations of that teacher. Furthermore, research indicates that small models struggle significantly when attempting to copy much stronger reasoners directly. To solve this, the paper introduces Direct On-Policy Distillation (Direct-OPD). Unlike standard approaches that attempt to mimic the teacher's final output distribution, Direct-OPD focuses exclusively on the policy shift—the difference between the post-RL policy and the reference policy (log πT - log πTref). By discarding the absolute policy and focusing only on the improvements introduced by reinforcement learning, the student model can more effectively learn the underlying reasoning logic without being constrained by the teacher's absolute performance bounds. This technique facilitates better weak-to-strong generalization, allowing smaller models to potentially extrapolate beyond the immediate imitation of the teacher's final state.",
+        "long_resume_paragraphs": [
+          "The research addresses a critical bottleneck in the development of frontier reasoning models: how to effectively transfer high-level reasoning capabilities from large 'teacher' models to smaller, more efficient 'student' models. Current methodologies rely heavily on On-Policy Distillation (OPD), where students are trained on states sampled under teacher supervision. However, existing OPD methods and their hybrids often suffer from a capacity ceiling; if the teacher model is used to imitate an absolute policy, the student effectively inherits the limitations of that teacher. Furthermore, research indicates that small models struggle significantly when attempting to copy much stronger reasoners directly. To solve this, the paper introduces Direct On-Policy Distillation (Direct-OPD). Unlike standard approaches that attempt to mimic the teacher's final output distribution, Direct-OPD focuses exclusively on the policy shift—the difference between the post-RL policy and the reference policy (log πT - log πTref). By discarding the absolute policy and focusing only on the improvements introduced by reinforcement learning, the student model can more effectively learn the underlying reasoning logic without being constrained by the teacher's absolute performance bounds. This technique facilitates better weak-to-strong generalization, allowing smaller models to potentially extrapolate beyond the immediate imitation of the teacher's final state."
+        ],
+        "main_topic": "The paper introduces Direct On-Policy Distillation (Direct-OPD) as a method to transfer reasoning capabilities from large models to smaller models by focusing on policy shifts rather than absolute policies.",
+        "technologies": [
+          "Reinforcement Learning",
+          "On-Policy Distillation (OPD)",
+          "Direct On-Policy Distillation (Direct-OPD)",
+          "Large Language Models (LLMs)",
+          "KL-constrained RL"
+        ]
+      },
+      {
+        "title": "KVpop -- Key-Value Cache Compression with Predictive Online Pruning",
+        "slug": "kvpop-key-value-cache-compression-with-predictive-online-pruning",
+        "url": "https://arxiv.org/html/2607.05061",
+        "source": "HuggingFace Papers",
+        "published": "2026-07-06T00:00:00.000Z",
+        "short_summary": "This technical paper presents KVpop, a technique for compressing the KV cache in transformer models via predictive online pruning. It optimizes the computation of attention targets by reusing sparse log-normalizers and utilizing efficient data structures like Fenwick trees.",
+        "long_resume": "The research introduces KVpop, an advanced approach to Key-Value (KV) cache compression designed to maintain model performance while significantly reducing memory overhead during inference. The core innovation lies in its ability to predictively prune the KV cache using a student-teacher framework. To avoid the massive computational cost of calculating dense causal attention probabilities, KVpop implements a transposed-attention target computation. This method swaps query and key roles in an efficient attention kernel, such as FlexAttention, to approximate future-attention mass without materializing large S×S matrices. By reusing sparse log-normalizers from the student pass, the system achieves high accuracy with minimal added inference-time overhead. Furthermore, the algorithm manages a top-k sparse attention pattern by maintaining a union of sink tokens, a recent window, and high-priority tokens. To keep this process efficient as the sequence length grows, the authors utilize a Fenwick tree to track token ranks, allowing for a query-specific cutoff computation in O(S log S) time. This ensures that the sparse mask is generated dynamically within fused kernels, optimizing both space and time complexity.",
+        "long_resume_paragraphs": [
+          "The research introduces KVpop, an advanced approach to Key-Value (KV) cache compression designed to maintain model performance while significantly reducing memory overhead during inference. The core innovation lies in its ability to predictively prune the KV cache using a student-teacher framework. To avoid the massive computational cost of calculating dense causal attention probabilities, KVpop implements a transposed-attention target computation. This method swaps query and key roles in an efficient attention kernel, such as FlexAttention, to approximate future-attention mass without materializing large S×S matrices. By reusing sparse log-normalizers from the student pass, the system achieves high accuracy with minimal added inference-time overhead. Furthermore, the algorithm manages a top-k sparse attention pattern by maintaining a union of sink tokens, a recent window, and high-priority tokens. To keep this process efficient as the sequence length grows, the authors utilize a Fenwick tree to track token ranks, allowing for a query-specific cutoff computation in O(S log S) time. This ensures that the sparse mask is generated dynamically within fused kernels, optimizing both space and time complexity."
+        ],
+        "main_topic": "The article introduces KVpop, a novel method for efficient Key-Value (KV) cache compression in large language models using predictive online pruning.",
+        "technologies": [
+          "KVpop",
+          "FlexAttention",
+          "Fenwick tree",
+          "Transformer Attention Kernels",
+          "Sparse Attention"
+        ]
+      },
+      {
+        "title": "From RGB Generation to Dense Field Readout: Pixel-Space Dense Prediction with Text-to-Image Models",
+        "slug": "from-rgb-generation-to-dense-field-readout-pixel-space-dense-prediction-with-text-to-image-models",
+        "url": "https://arxiv.org/html/2607.06553v1",
+        "source": "arXiv",
+        "published": "2026-07-07T17:54:28Z",
+        "short_summary": "This paper proposes ReChannel, a novel architecture that transforms text-to-image models from RGB generators into efficient dense prediction engines. By treating transformer tokens as spatial carriers for task-specific data rather than RGB pixels, the method achieves new state-of-the-art performance with much higher computational efficiency.",
+        "long_resume": "The research addresses a fundamental inefficiency in using large-scale text-to-image models for dense prediction tasks like depth estimation, segmentation, and matting. Current approaches typically treat these tasks as an image-to-image translation problem, encoding task targets into an RGB-trained VAE latent space and decoding them back to pixels. The authors argue that this 'generation' interface is unnecessary because dense prediction requires pixel-accurate task fields, not the reconstruction of complex RGB textures. They propose 'ReChannel,' which leverages the inherent patch-based spatial structure of Diffusion Transformers (DiTs). In ReChannel, the pretrained DiT acts as a field organizer; the input passes through a standard VAE encoder, but the output bypasses the decoder entirely. Instead, a lightweight token-local linear head maps adapted tokens directly to task-native pixel patches. This approach was validated using the FLUX-Klein backbone across six different dense prediction tasks and over twelve benchmarks. The results show that ReChannel not only reaches state-of-the-art performance in areas like KITTI depth and trimap-free matting but also provides a massive speedup, performing up to 2.48x faster than previous generative editing methods while using significantly fewer parameters for the output head.",
+        "long_resume_paragraphs": [
+          "The research addresses a fundamental inefficiency in using large-scale text-to-image models for dense prediction tasks like depth estimation, segmentation, and matting. Current approaches typically treat these tasks as an image-to-image translation problem, encoding task targets into an RGB-trained VAE latent space and decoding them back to pixels. The authors argue that this 'generation' interface is unnecessary because dense prediction requires pixel-accurate task fields, not the reconstruction of complex RGB textures. They propose 'ReChannel,' which leverages the inherent patch-based spatial structure of Diffusion Transformers (DiTs). In ReChannel, the pretrained DiT acts as a field organizer; the input passes through a standard VAE encoder, but the output bypasses the decoder entirely. Instead, a lightweight token-local linear head maps adapted tokens directly to task-native pixel patches. This approach was validated using the FLUX-Klein backbone across six different dense prediction tasks and over twelve benchmarks. The results show that ReChannel not only reaches state-of-the-art performance in areas like KITTI depth and trimap-free matting but also provides a massive speedup, performing up to 2.48x faster than previous generative editing methods while using significantly fewer parameters for the output head."
+        ],
+        "main_topic": "The introduction of ReChannel, a method that repurposes text-to-image Diffusion Transformers (DiTs) for dense prediction by reading out task-native pixel-space fields directly instead of generating RGB targets via VAE decoders.",
+        "technologies": [
+          "ReChannel",
+          "Diffusion Transformer (DiT)",
+          "FLUX-Klein",
+          "VAE (Variational Autoencoder)",
+          "LoRA (Low-Rank Adaptation)",
+          "DINOv2",
+          "SAM (Segment Anything Model)"
+        ]
+      },
+      {
+        "title": "The Key to Going Linear: Analysis-Driven Transformer Linearization",
+        "slug": "the-key-to-going-linear-analysis-driven-transformer-linearization",
+        "url": "https://arxiv.org/html/2607.07706v1",
+        "source": "arXiv",
+        "published": "2026-07-08T17:59:09Z",
+        "short_summary": "This paper presents a method for converting pretrained transformers into linear-time architectures by focusing on the efficiency of state update designs. By analyzing softmax attention through a first-order approximation, the authors prove that delta-style updates are superior for post hoc linearization.",
+        "long_resume": "The research addresses the quadratic computational bottleneck of causal self-attention in large language models, which limits long-context inference. The authors propose an analysis-driven approach to 'post hoc linearization,' a process where existing full-attention models are converted into linear-time architectures without requiring retraining from scratch. To avoid the confusion caused by simultaneous interventions like LoRA or distillation, the study employs a controlled experiment with a frozen backbone, training only the new replacement mechanism parameters.\n\nA key theoretical contribution is the derivation of a first-order approximation that connects softmax attention to linear state updates, revealing that softmax relies on key-dependent, rank-1 orthogonal projections. This finding explains why delta-style networks (such as Gated Delta Networks) outperform purely gated accumulation models (such as Gated Linear Attention), as the former can implement necessary geometric corrections. To further close the performance gap, the researchers introduce several structural interventions: sink tokens to handle attention spikes, short convolutions for projection adaptation, and a disjoint sliding-window path for local context preservation.\n\nThe effectiveness of this approach was validated by scaling it across LLaMA and Qwen models up to 32B parameters. The results show that this linearization method outperforms prior post hoc baselines on the MMLU benchmark and achieves long-context retrieval performance comparable to much more complex adaptive-caching frameworks.",
+        "long_resume_paragraphs": [
+          "The research addresses the quadratic computational bottleneck of causal self-attention in large language models, which limits long-context inference. The authors propose an analysis-driven approach to 'post hoc linearization,' a process where existing full-attention models are converted into linear-time architectures without requiring retraining from scratch. To avoid the confusion caused by simultaneous interventions like LoRA or distillation, the study employs a controlled experiment with a frozen backbone, training only the new replacement mechanism parameters.",
+          "A key theoretical contribution is the derivation of a first-order approximation that connects softmax attention to linear state updates, revealing that softmax relies on key-dependent, rank-1 orthogonal projections. This finding explains why delta-style networks (such as Gated Delta Networks) outperform purely gated accumulation models (such as Gated Linear Attention), as the former can implement necessary geometric corrections. To further close the performance gap, the researchers introduce several structural interventions: sink tokens to handle attention spikes, short convolutions for projection adaptation, and a disjoint sliding-window path for local context preservation.",
+          "The effectiveness of this approach was validated by scaling it across LLaMA and Qwen models up to 32B parameters. The results show that this linearization method outperforms prior post hoc baselines on the MMLU benchmark and achieves long-context retrieval performance comparable to much more complex adaptive-caching frameworks."
+        ],
+        "main_topic": "The research explores an analysis-driven approach to transformer linearization, specifically identifying why delta-style state updates better approximate softmax attention than gated accumulation.",
+        "technologies": [
+          "LLaMA",
+          "Qwen",
+          "Transformer",
+          "Gated Linear Attention (GLA)",
+          "Gated Delta Networks (GDN)",
+          "LoRA",
+          "Sliding Window Attention (SWA)",
+          "Mamba-style models"
+        ]
+      },
+      {
+        "title": "DSpark: Confidence-Scheduled Speculative Decoding with Semi-Autoregressive Generation",
+        "slug": "dspark-confidence-scheduled-speculative-decoding-with-semi-autoregressive-generation",
+        "url": "https://arxiv.org/html/2607.05147",
+        "source": "HuggingFace Papers",
+        "published": "2026-07-06T00:00:00.000Z",
+        "short_summary": "This technical paper presents DSpark, a new approach to speculative decoding designed to enhance the speed of autoregressive generation. It contextualizes the work within the broader landscape of drafting architectures and parallel generation strategies.",
+        "long_resume": "The article explores the evolution of speculative decoding, a technique used to accelerate the inference of large language models by separating the proposal of tokens from their verification against a target model. The efficiency of this process is highly dependent on the accuracy and speed of the 'drafter.' Historically, researchers have utilized small standalone language models as drafters, but recent innovations have integrated multi-token heads or feature extrapolators directly into the target model's architecture to improve performance. Other specialized strategies mentioned include self-speculation through early exits, dynamic vocabulary compression, prompt lookup, and retrieval-based methods. To address the sequential bottleneck inherent in traditional drafting, newer research has moved toward parallel or blockwise generation techniques such as Medusa, P-EAGLE, PARD, DART, and DFlash. Furthermore, some advanced methods like DDTree, TAPS, and JetSpec expand the draft chain into verifiable trees to maximize throughput. The paper positions DSpark within this landscape, highlighting its use of confidence-scheduled semi-autoregressive generation as a way to optimize the balance between drafting speed and verification accuracy.",
+        "long_resume_paragraphs": [
+          "The article explores the evolution of speculative decoding, a technique used to accelerate the inference of large language models by separating the proposal of tokens from their verification against a target model. The efficiency of this process is highly dependent on the accuracy and speed of the 'drafter.' Historically, researchers have utilized small standalone language models as drafters, but recent innovations have integrated multi-token heads or feature extrapolators directly into the target model's architecture to improve performance. Other specialized strategies mentioned include self-speculation through early exits, dynamic vocabulary compression, prompt lookup, and retrieval-based methods. To address the sequential bottleneck inherent in traditional drafting, newer research has moved toward parallel or blockwise generation techniques such as Medusa, P-EAGLE, PARD, DART, and DFlash. Furthermore, some advanced methods like DDTree, TAPS, and JetSpec expand the draft chain into verifiable trees to maximize throughput. The paper positions DSpark within this landscape, highlighting its use of confidence-scheduled semi-autoregressive generation as a way to optimize the balance between drafting speed and verification accuracy."
+        ],
+        "main_topic": "The article introduces DSpark, a novel confidence-scheduled speculative decoding method that utilizes semi-autoregressive generation to accelerate large language model inference.",
+        "technologies": [
+          "DSpark",
+          "Medusa",
+          "P-EAGLE",
+          "PARD",
+          "DART",
+          "DFlash",
+          "DDTree",
+          "TAPS",
+          "JetSpec",
+          "Domino",
+          "DFlare"
+        ]
+      },
+      {
         "title": "Independent Labs Crack Google’s Secret Cryptography Work",
         "slug": "independent-labs-crack-googles-secret-cryptography-work",
         "url": "https://spectrum.ieee.org/google-quantum-cryptography-zero-knowledge",
@@ -173,115 +286,6 @@
         ]
       },
       {
-        "title": "Playing Around With ADIDNS RPC Internals",
-        "slug": "playing-around-with-adidns-rpc-internals",
-        "url": "https://blog.paradoxis.nl/playing-around-with-adidns-rpc-internals-0c59c15d0a15?gi=b2ceb685702d",
-        "source": "Reddit r/netsec",
-        "published": "2026-07-06T09:25:13Z",
-        "short_summary": "This technical deep-dive details the process of reverse-engineering and interacting with ADIDNS RPC internals. The author outlines a methodology for using specific RPC calls to manipulate debug log paths via UNC shares.",
-        "long_resume": "The article provides a hands-on walkthrough of interfacing with Microsoft Remote Procedure Call (RPC) interfaces, specifically focusing on Active Directory DNS (ADIDNS). The author begins by describing the difficulty of working with MS RPC natively and details how they utilized an IDL (Interface Definition Language) definition file—generated with the help of Claude—to define necessary structures for querying server information. A functional C implementation is provided, demonstrating how to use the R_DnssrvQuery2 API call to retrieve DNS server metadata. Beyond simple queries, the author investigates more advanced exploitation vectors, such as using the LogFilePath RPC call to specify an absolute or relative pathname. The core discovery involves leveraging the ClearDebugLog call to force the DNS server to write to a user-controlled UNC path (e.g., \\\\attacker_server\\share\\file.txt), potentially enabling outbound connections or file writes. The author also acknowledges the operational risks, noting that improper handling of plugin initialization can crash the DNS service and subsequently impact the entire Active Directory environment.",
-        "long_resume_paragraphs": [
-          "The article provides a hands-on walkthrough of interfacing with Microsoft Remote Procedure Call (RPC) interfaces, specifically focusing on Active Directory DNS (ADIDNS). The author begins by describing the difficulty of working with MS RPC natively and details how they utilized an IDL (Interface Definition Language) definition file—generated with the help of Claude—to define necessary structures for querying server information. A functional C implementation is provided, demonstrating how to use the R_DnssrvQuery2 API call to retrieve DNS server metadata. Beyond simple queries, the author investigates more advanced exploitation vectors, such as using the LogFilePath RPC call to specify an absolute or relative pathname. The core discovery involves leveraging the ClearDebugLog call to force the DNS server to write to a user-controlled UNC path (e.g., \\\\attacker_server\\share\\file.txt), potentially enabling outbound connections or file writes. The author also acknowledges the operational risks, noting that improper handling of plugin initialization can crash the DNS service and subsequently impact the entire Active Directory environment."
-        ],
-        "main_topic": "The author explores the internal workings of Active Directory DNS RPC to develop methods for remote file manipulation via UNC paths.",
-        "technologies": [
-          "Active Directory DNS",
-          "MS RPC",
-          "Windows RPC",
-          "IDL (Interface Definition Language)",
-          "Claude (LLM)",
-          "Impacket",
-          "smbserver.py",
-          "C/C++",
-          "SMB"
-        ]
-      },
-      {
-        "title": "Bitcoin Mining Stocks Jump After TeraWulf Signs $19 Billion Lease With Anthropic",
-        "slug": "bitcoin-mining-stocks-jump-after-terawulf-signs-19-billion-lease-with-anthropic",
-        "url": "https://decrypt.co/372810/bitcoin-mining-stocks-jump-terawulf-19-billion-lease-anthropic",
-        "source": "Decrypt",
-        "published": "Mon, 06 Jul 2026 15:15:36 +0000",
-        "short_summary": "TeraWulf has entered into a landmark $19 billion, 20-year lease agreement with Anthropic to host AI data center operations in Kentucky. This strategic pivot toward AI infrastructure has triggered a broad rally across the Bitcoin mining sector.",
-        "long_resume": "Bitcoin mining firm TeraWulf has announced a transformative long-term agreement with Anthropic, the developer of the Claude chatbot. The deal involves a 20-year lease for a purpose-built campus at TeraWulf's Justified Data site in Hawesville, Kentucky, which is designed to support roughly 401 megawatts of computing capacity. This massive infrastructure project is expected to generate an estimated $19 billion in revenue, with the first phase scheduled to go online in late 2027 and full capacity reached by early 2028. In conjunction with this expansion into AI, TeraWulf is restructuring its portfolio by selling its 50.1% stake in the Abernathy Joint Venture in Texas to an investor group led by Fluidstack. This sale allows the company to monetize its $450 million investment at a premium. The announcement has had a significant impact on the broader market, driving up shares for several Bitcoin mining companies including IREN, Hut 8, and Cipher Digital, as the industry increasingly pivots from cryptocurrency mining toward high-demand AI compute services.",
-        "long_resume_paragraphs": [
-          "Bitcoin mining firm TeraWulf has announced a transformative long-term agreement with Anthropic, the developer of the Claude chatbot. The deal involves a 20-year lease for a purpose-built campus at TeraWulf's Justified Data site in Hawesville, Kentucky, which is designed to support roughly 401 megawatts of computing capacity. This massive infrastructure project is expected to generate an estimated $19 billion in revenue, with the first phase scheduled to go online in late 2027 and full capacity reached by early 2028. In conjunction with this expansion into AI, TeraWulf is restructuring its portfolio by selling its 50.1% stake in the Abernathy Joint Venture in Texas to an investor group led by Fluidstack. This sale allows the company to monetize its $450 million investment at a premium. The announcement has had a significant impact on the broader market, driving up shares for several Bitcoin mining companies including IREN, Hut 8, and Cipher Digital, as the industry increasingly pivots from cryptocurrency mining toward high-demand AI compute services."
-        ],
-        "main_topic": "Bitcoin mining company TeraWulf has secured a massive 20-year lease with Anthropic to provide AI data center capacity.",
-        "technologies": [
-          "AI compute",
-          "Large Language Models (LLMs)",
-          "Claude chatbot",
-          "Data center infrastructure",
-          "Bitcoin mining hardware"
-        ]
-      },
-      {
-        "title": "EU lawmakers adopt digital assets policy stance after MiCA transition ends",
-        "slug": "eu-lawmakers-adopt-digital-assets-policy-stance-after-mica-transition-ends",
-        "url": "https://cointelegraph.com/news/eu-parliament-digital-assets-policy-mica-transition?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-        "source": "CoinTelegraph",
-        "published": "Tue, 07 Jul 2026 12:36:45 +0000",
-        "short_summary": "The European Parliament has established a formal policy position to evaluate the expansion of crypto regulations beyond the current MiCA framework. The move aims to address unregulated sectors like DeFi and NFTs while ensuring market uniformity across the EU.",
-        "long_resume": "Following the conclusion of the MiCA transitional period on July 1, the European Parliament has officially adopted a position paper titled 'Digital assets – challenges for the competitiveness and integrity of the European Union’s financial system.' This document serves as a formal policy stance rather than a direct legislative amendment to existing laws. The primary objective is to prompt the European Commission to investigate whether specific digital asset activities—specifically decentralized finance (DeFi), crypto lending, staking, and non-fungable tokens (NFTs)—should be integrated into the EU's regulatory framework. A significant concern highlighted in the report is the risk of market fragmentation caused by inconsistent national regulations across different member states. Furthermore, the Parliament's position adopts a pro-innovation stance toward tokenization and the use of euro-denominated stablecoins, viewing them as potential drivers for the competitiveness of the European financial system. This development follows recent public consultations by the European Commission regarding the expansion of MiCA's scope and the regulation of interest-bearing stablecoins.",
-        "long_resume_paragraphs": [
-          "Following the conclusion of the MiCA transitional period on July 1, the European Parliament has officially adopted a position paper titled 'Digital assets – challenges for the competitiveness and integrity of the European Union’s financial system.' This document serves as a formal policy stance rather than a direct legislative amendment to existing laws. The primary objective is to prompt the European Commission to investigate whether specific digital asset activities—specifically decentralized finance (DeFi), crypto lending, staking, and non-fungable tokens (NFTs)—should be integrated into the EU's regulatory framework. A significant concern highlighted in the report is the risk of market fragmentation caused by inconsistent national regulations across different member states. Furthermore, the Parliament's position adopts a pro-innovation stance toward tokenization and the use of euro-denominated stablecoins, viewing them as potential drivers for the competitiveness of the European financial system. This development follows recent public consultations by the European Commission regarding the expansion of MiCA's scope and the regulation of interest-bearing stablecoins."
-        ],
-        "main_topic": "The European Parliament has adopted a formal policy position regarding the future regulation of digital assets following the implementation of the MiCA framework.",
-        "technologies": [
-          "Markets in Crypto-Assets (MiCA)",
-          "Decentralized Finance (DeFi)",
-          "Non-fungible tokens (NFTs)",
-          "Crypto lending and borrowing",
-          "Staking",
-          "Stablecoins",
-          "Tokenized financial assets"
-        ]
-      },
-      {
-        "title": "USDT wins payments, USDC wins DeFi as stablecoins diverge: Dune",
-        "slug": "usdt-wins-payments-usdc-wins-defi-as-stablecoins-diverge-dune",
-        "url": "https://cointelegraph.com/news/usdt-wins-payments-usdc-wins-defi-as-stablecoins-diverge-dune?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-        "source": "CoinTelegraph",
-        "published": "Tue, 07 Jul 2026 18:05:08 +0000",
-        "short_summary": "Analysis from Dune reveals that USDT and USDC are moving toward specialized roles rather than direct competition. While USDT dominates global payments and remittances, USDC has become the primary liquidity driver for DeFi protocols.",
-        "long_resume": "According to recent data from Dune's Digital Asset Brief, the landscape of stablecoins is shifting from a competitive rivalry between Tether (USDT) and Circle (USDC) toward a functional specialization. USDT has emerged as the leader in onchain commerce, settling approximately $95 billion in identified payments during the first half of 2020, with a massive presence on the Tron network where most tokens are held in ordinary wallets for remittances. Conversely, USDC has solidified its position as the utility layer for decentralized finance, processing trillions in transfer volume across Ethereum and the Base L2 network, characterized by high daily velocity. This bifurcation suggests that the two assets are complementary components of the broader crypto economy rather than direct substitutes. Beyond market dynamics, the regulatory landscape in the United States is undergoing significant transformation. Following the implementation of the GENIUS Act, which created a framework for regulated payment stablecoins, legislative focus has shifted to the CLARITY Act. This pending legislation seeks to clarify the regulatory oversight between the SEC and CFTC, potentially reshaping how issuers and DeFi platforms operate within the US jurisdiction.",
-        "long_resume_paragraphs": [
-          "According to recent data from Dune's Digital Asset Brief, the landscape of stablecoins is shifting from a competitive rivalry between Tether (USDT) and Circle (USDC) toward a functional specialization. USDT has emerged as the leader in onchain commerce, settling approximately $95 billion in identified payments during the first half of 2020, with a massive presence on the Tron network where most tokens are held in ordinary wallets for remittances. Conversely, USDC has solidified its position as the utility layer for decentralized finance, processing trillions in transfer volume across Ethereum and the Base L2 network, characterized by high daily velocity. This bifurcation suggests that the two assets are complementary components of the broader crypto economy rather than direct substitutes. Beyond market dynamics, the regulatory landscape in the United States is undergoing significant transformation. Following the implementation of the GENIUS Act, which created a framework for regulated payment stablecoins, legislative focus has shifted to the CLARITY Act. This pending legislation seeks to clarify the regulatory oversight between the SEC and CFTC, potentially reshaping how issuers and DeFi platforms operate within the US jurisdiction."
-        ],
-        "main_topic": "The diverging roles of USDT and USDC in the crypto ecosystem, where USDT dominates payments while USDC leads in DeFi activity.",
-        "technologies": [
-          "USDT",
-          "USDC",
-          "Tron",
-          "Ethereum",
-          "Base",
-          "Dune"
-        ]
-      },
-      {
-        "title": "Mobile app Toss and blockchain Optimism to conduct Korean won stablecoin POC : report",
-        "slug": "mobile-app-toss-and-blockchain-optimism-to-conduct-korean-won-stablecoin-poc-report",
-        "url": "https://cointelegraph.com/news/south-korea-toss-partners-optimism-won-stablecoins?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-        "source": "CoinTelegraph",
-        "published": "Wed, 08 Jul 2026 11:33:11 +0000",
-        "short_summary": "Toss has entered a partnership with Optimism and Sunnyside Labs to test a Korean won-based stablecoin for institutional payments. The three-month pilot focuses on integrating privacy-preserving technology with blockchain infrastructure to ensure regulatory compliance.",
-        "long_resume": "Viva Republica, the operator of the popular South Korean mobile payment app Toss, has announced a strategic partnership with Optimism and Sunnyside Labs to conduct a three-month proof of concept (PoC) for a KRW-based stablecoin. The technical framework of this pilot will leverage Optimism's OP Stack as the underlying blockchain infrastructure, while Sunnyside Labs will implement its Privacy Boost protocol to ensure transaction confidentiality. A primary objective of the PoC is to determine if financial institutions can maintain control over the settlement process while adhering to essential regulatory requirements, specifically Know-Your-Customer (KYC) and Anti-Money Laundering (AML) protocols, on a public blockchain ledger. This move is part of a broader trend within South Korea's financial sector toward adopting blockchain technology for payments; for instance, Shinhan Card has previously collaborated with the Solana Foundation to explore stablecoin-based payment feasibility. Globally, major payment networks like Visa and Mastercard are also actively integrating stablecoin settlement services into their existing frameworks. If successful, Toss intends to use the findings from this pilot to build a robust, compliant, and scalable stablecoin-based payment infrastructure for the domestic market.",
-        "long_resume_paragraphs": [
-          "Viva Republica, the operator of the popular South Korean mobile payment app Toss, has announced a strategic partnership with Optimism and Sunnyside Labs to conduct a three-month proof of concept (PoC) for a KRW-based stablecoin. The technical framework of this pilot will leverage Optimism's OP Stack as the underlying blockchain infrastructure, while Sunnyside Labs will implement its Privacy Boost protocol to ensure transaction confidentiality. A primary objective of the PoC is to determine if financial institutions can maintain control over the settlement process while adhering to essential regulatory requirements, specifically Know-Your-Customer (KYC) and Anti-Money Laundering (AML) protocols, on a public blockchain ledger. This move is part of a broader trend within South Korea's financial sector toward adopting blockchain technology for payments; for instance, Shinhan Card has previously collaborated with the Solana Foundation to explore stablecoin-based payment feasibility. Globally, major payment networks like Visa and Mastercard are also actively integrating stablecoin settlement services into their existing frameworks. If successful, Toss intends to use the findings from this pilot to build a robust, compliant, and scalable stablecoin-based payment infrastructure for the domestic market."
-        ],
-        "main_topic": "South Korean mobile payment giant Toss is partnering with Optimism and Sunnyside Labs to pilot a KRW-based stablecoin infrastructure for institutional use.",
-        "technologies": [
-          "Optimism",
-          "OP Stack",
-          "Sunnyside Labs",
-          "Privacy Boost protocol",
-          "Solana",
-          "USDC",
-          "Blockchain Oracles"
-        ]
-      },
-      {
         "title": "Base to activate B20 standard for stablecoins, RWAs and other tokens",
         "slug": "base-to-activate-b20-standard-for-stablecoins-rwas-and-other-tokens",
         "url": "https://cointelegraph.com/news/base-to-activate-b20-standard-for-stablecoins-rwas-and-other-tokens?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
@@ -322,44 +326,138 @@
         ]
       },
       {
-        "title": "Felons, Fraudsters Flog Offensive Cybersecurity Startup",
-        "slug": "felons-fraudsters-flog-offensive-cybersecurity-startup",
-        "url": "https://krebsonsecurity.com/2026/07/felons-fraudsters-flog-offensive-cybersecurity-startup",
-        "source": "Krebs on Security",
-        "published": "Wed, 08 Jul 2026 12:31:39 +0000",
-        "short_summary": "The cybersecurity startup IRIS C2 is attempting to build a massive stockpile of high-value software exploits by offering multi-million dollar bounties. However, the company's leadership consists of Jack Burkman and Jacob Wohl, notorious figures known for orchestrating large-scale disinformation and fraud schemes.",
-        "long_resume": "The article details the emergence of IRIS C2, a cybersecurity firm claiming to operate out of McLean, Virginia, which seeks to acquire 'zero-day exploits, individual primitives, partial chains, and full capabilities' across all major platforms. The company uses its social media presence to attract researchers by dangling massive payouts ranging from $10,000 up to $7 million. Investigation reveals that the parent company, Calvexa Group LLC, is linked to Jack Burkman and Jacob Wohl, two individuals with extensive criminal records involving telecommunications fraud, securities fraud, and civil rights violations. The pair has a history of creating fake intelligence companies and using disinformation to target political figures. While Jacob Wohl claims the firm's business model involves refining preliminary vulnerability findings into stable, reliable exploits for government use—specifically targeting phone-hacking capabilities—he lacks formal training in computer science. The report also highlights a pattern of deceptive behavior, noting that the duo previously operated an AI lobbying platform, LobbyMatic, using pseudonyms to hide their true identities from employees and partners.",
+        "title": "AI is shortening the shelf life of crypto security audits, researchers warn",
+        "slug": "ai-is-shortening-the-shelf-life-of-crypto-security-audits-researchers-warn",
+        "url": "https://cointelegraph.com/news/ai-is-shortening-the-shelf-life-of-crypto-security-audits-researchers-warn?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+        "source": "CoinTelegraph",
+        "published": "Thu, 09 Jul 2026 05:47:09 +0000",
+        "short_summary": "The emergence of advanced AI tooling is enabling hackers to efficiently scan and exploit old smart contract vulnerabilities. Experts suggest that continuous reauditing is now a critical operational requirement for maintaining blockchain security.",
+        "long_resume": "Blockchain security landscape is undergoing a significant shift as artificial intelligence makes automated vulnerability discovery much more accessible to malicious actors. Recent reports from CertiK and TRM Labs highlight that hackers are no longer just targeting new protocols, but are actively revisiting legacy codebases to find latent bugs. A notable example includes the discovery of a major vulnerability in Zcash's Orchard pool by a security engineer using an AI agent powered by Anthropic’s Claude Opus 4.8; this bug had remained undetected for four years and posed a risk of undetectable counterfeiting. The scale of the threat is evidenced by the $1.32 billion stolen in the first half of 2026, with attackers utilizing sophisticated automated tools to scan large amounts of code at scale. Furthermore, even defunct protocols like Aztec Connect have been successfully exploited for millions of dollars. While technical audits are essential, experts also emphasize that security must extend beyond the codebase to include the disruption of broader criminal infrastructures, such as money laundering networks and state-sponsored hacking groups from North Korea. As the total value locked in DeFi exceeds $72 billion, the incentive for these AI-assisted attacks remains extremely high, necessitating a move toward continuous, recurring audit cycles rather than one-time post-deployment checks.",
         "long_resume_paragraphs": [
-          "The article details the emergence of IRIS C2, a cybersecurity firm claiming to operate out of McLean, Virginia, which seeks to acquire 'zero-day exploits, individual primitives, partial chains, and full capabilities' across all major platforms. The company uses its social media presence to attract researchers by dangling massive payouts ranging from $10,000 up to $7 million. Investigation reveals that the parent company, Calvexa Group LLC, is linked to Jack Burkman and Jacob Wohl, two individuals with extensive criminal records involving telecommunications fraud, securities fraud, and civil rights violations. The pair has a history of creating fake intelligence companies and using disinformation to target political figures. While Jacob Wohl claims the firm's business model involves refining preliminary vulnerability findings into stable, reliable exploits for government use—specifically targeting phone-hacking capabilities—he lacks formal training in computer science. The report also highlights a pattern of deceptive behavior, noting that the duo previously operated an AI lobbying platform, LobbyMatic, using pseudonyms to hide their true identities from employees and partners."
+          "Blockchain security landscape is undergoing a significant shift as artificial intelligence makes automated vulnerability discovery much more accessible to malicious actors. Recent reports from CertiK and TRM Labs highlight that hackers are no longer just targeting new protocols, but are actively revisiting legacy codebases to find latent bugs. A notable example includes the discovery of a major vulnerability in Zcash's Orchard pool by a security engineer using an AI agent powered by Anthropic’s Claude Opus 4.8; this bug had remained undetected for four years and posed a risk of undetectable counterfeiting. The scale of the threat is evidenced by the $1.32 billion stolen in the first half of 2026, with attackers utilizing sophisticated automated tools to scan large amounts of code at scale. Furthermore, even defunct protocols like Aztec Connect have been successfully exploited for millions of dollars. While technical audits are essential, experts also emphasize that security must extend beyond the codebase to include the disruption of broader criminal infrastructures, such as money laundering networks and state-sponsored hacking groups from North Korea. As the total value locked in DeFi exceeds $72 billion, the incentive for these AI-assisted attacks remains extremely high, necessitating a move toward continuous, recurring audit cycles rather than one-time post-deployment checks."
         ],
-        "main_topic": "An investigation into IRIS C2, an offensive cybersecurity startup run by convicted felons and far-right conspiracy theorists specializing in the acquisition of zero-day exploits.",
+        "main_topic": "Blockchain security experts are warning crypto protocols to implement continuous reauditing of smart contracts due to the rising efficacy of AI-driven vulnerability discovery.",
         "technologies": [
-          "Zero-day exploits",
-          "AI (Artificial Intelligence)",
-          "Media decoders",
-          "Phone-hacking services",
-          "Exploit primitives"
+          "Zcash",
+          "Anthropic Claude Opus 4.8",
+          "Aztec Connect",
+          "mySwap",
+          "Ethereum (ETH)",
+          "DeFi",
+          "Smart Contracts"
         ]
       },
       {
-        "title": "The US Space Force just got a new electromagnetic weapon to jam adversary satellites",
-        "slug": "the-us-space-force-just-got-a-new-electromagnetic-weapon-to-jam-adversary-satellites",
-        "url": "https://space.com/space-exploration/satellites/the-us-space-force-just-got-a-new-electromagnetic-weapon-to-jam-adversary-satellites",
-        "source": "Space.com",
-        "published": "Wed, 08 Jul 2026 13:00:00 +0000",
-        "short_summary": "The U.S. Space Force is deploying the Meadowlands system to achieve spectrum dominance by jamming adversary satellite communications. This non-kinetic weapon allows for the reversible disruption of enemy space assets during combat operations.",
-        "long_resume": "The U.S. Space Force has officially acknowledged the acquisition of Meadowlands, an offensive electromagnetic warfare system developed by L3 Harris. Unlike kinetic weapons that physically destroy satellites, Meadowlands utilizes beams of electromagnetic radiation to disrupt, deny, or degrade the use of the electromagnetic spectrum. This allows the military to render adversary satellites effectively silent by interfering with radio waves and data transmission, providing a 'reversible' method of combat that does not result in permanent orbital debris. The system's physical configuration, based on available imagery, includes an antenna dish mounted on a wheeled trailer, suggesting high mobility for deployment via ground transport or cargo aircraft to intercept signals from specific orbital positions. To sustain and expand these capabilities, the Space Force has requested nearly $460 million in the Fiscal Year 2027 budget for development, support, and specialized training. The strategic importance of such systems was highlighted by leadership during discussions regarding recent operations, including Operation Midnight Hammer and Operation Epic Fury, where electromagnetic 'silence zones' were used to secure bomber movements and prevent adversary communications. As part of Mission Delta 3, the Space Force continues to prioritize investment in electronic warfare software and training to maintain dominance in an increasingly contested space domain.",
+        "title": "Bull Bitcoin asks French court to strike down DAC8 implementing decree",
+        "slug": "bull-bitcoin-asks-french-court-to-strike-down-dac8-implementing-decree",
+        "url": "https://cointelegraph.com/news/bull-bitcoin-legal-action-france-dac8?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+        "source": "CoinTelegraph",
+        "published": "Wed, 08 Jul 2026 13:36:44 +0000",
+        "short_summary": "Bull Bitcoin has filed a legal challenge against France's implementation of the DAC8 directive, citing severe privacy and safety risks. The exchange warns that centralized databases of crypto transactions could facilitate kidnappings and physical attacks known as 'wrench attacks'.",
+        "long_resume": "The cryptocurrency exchange Bull Bitcoin has initiated legal proceedings before France's Council of State (Conseil d'État) to overturn the national implementation of the European Union's DAC8 directive. The directive, which is set to take effect on January 1, 2026, mandates that crypto-asset service providers collect and report user identity and transaction data to national tax authorities for automated exchange across EU member states. Bull Bitcoin argues that this creates a centralized repository of sensitive information that links legal identities and home addresses to digital asset movements. The primary concern cited by the exchange is the physical safety of users, particularly in light of a surge in 'wrench attacks'—physical assaults or kidnappings intended to coerce the transfer of digital assets. Data indicates that France has seen a significant rise in such incidents, with 41 crypto-related kidnappings reported since the start of 2026. Furthermore, the exchange highlights the broader risk of data breaches, noting recent high-profile security incidents at major firms like Coinbase. Beyond the EU's DAC8, Bull Bitcoin intends to challenge the OECD's global Crypto-Asset Reporting Framework (CARF) as well. The legal battle focuses on Decree No. 2025-1276, which was signed in late December 2025, and seeks to suspend or annul the reporting requirements to prevent the creation of a high-risk database for criminals.",
         "long_resume_paragraphs": [
-          "The U.S. Space Force has officially acknowledged the acquisition of Meadowlands, an offensive electromagnetic warfare system developed by L3 Harris. Unlike kinetic weapons that physically destroy satellites, Meadowlands utilizes beams of electromagnetic radiation to disrupt, deny, or degrade the use of the electromagnetic spectrum. This allows the military to render adversary satellites effectively silent by interfering with radio waves and data transmission, providing a 'reversible' method of combat that does not result in permanent orbital debris. The system's physical configuration, based on available imagery, includes an antenna dish mounted on a wheeled trailer, suggesting high mobility for deployment via ground transport or cargo aircraft to intercept signals from specific orbital positions. To sustain and expand these capabilities, the Space Force has requested nearly $460 million in the Fiscal Year 2027 budget for development, support, and specialized training. The strategic importance of such systems was highlighted by leadership during discussions regarding recent operations, including Operation Midnight Hammer and Operation Epic Fury, where electromagnetic 'silence zones' were used to secure bomber movements and prevent adversary communications. As part of Mission Delta 3, the Space Force continues to prioritize investment in electronic warfare software and training to maintain dominance in an increasingly contested space domain."
+          "The cryptocurrency exchange Bull Bitcoin has initiated legal proceedings before France's Council of State (Conseil d'État) to overturn the national implementation of the European Union's DAC8 directive. The directive, which is set to take effect on January 1, 2026, mandates that crypto-asset service providers collect and report user identity and transaction data to national tax authorities for automated exchange across EU member states. Bull Bitcoin argues that this creates a centralized repository of sensitive information that links legal identities and home addresses to digital asset movements. The primary concern cited by the exchange is the physical safety of users, particularly in light of a surge in 'wrench attacks'—physical assaults or kidnappings intended to coerce the transfer of digital assets. Data indicates that France has seen a significant rise in such incidents, with 41 crypto-related kidnappings reported since the start of 2026. Furthermore, the exchange highlights the broader risk of data breaches, noting recent high-profile security incidents at major firms like Coinbase. Beyond the EU's DAC8, Bull Bitcoin intends to challenge the OECD's global Crypto-Asset Reporting Framework (CARF) as well. The legal battle focuses on Decree No. 2025-1276, which was signed in late December 2025, and seeks to suspend or annul the reporting requirements to prevent the creation of a high-risk database for criminals."
         ],
-        "main_topic": "The U.S. Space Force has acquired the Meadowlands electromagnetic warfare system developed by L3 Harris to disrupt adversary satellite communications.",
+        "main_topic": "Bitcoin exchange Bull Bitcoin is legally challenging France's implementation of the EU's DAC8 crypto tax reporting rules due to privacy and physical security concerns.",
         "technologies": [
-          "Meadowlands",
-          "L3 Harris electromagnetic warfare system",
-          "Electromagnetic spectrum disruption technology",
-          "Satellite jamming systems"
+          "Bitcoin",
+          "DAC8",
+          "CARF",
+          "Blockchain",
+          "Crypto-asset reporting framework"
         ]
       },
+      {
+        "title": "Compose Whitepaper: A Composition Layer for On-Chain Applications",
+        "slug": "compose-whitepaper-a-composition-layer-for-on-chain-applications",
+        "url": "https://compose.diamonds/whitepaper",
+        "source": "Reddit r/ethereum",
+        "published": "2026-07-08T15:58:51Z",
+        "short_summary": "The Compose whitepaper proposes a new development paradigm called Smart Contract Oriented Programming (SCOP) to solve the inefficiencies of redundant on-chain deployments. By utilizing stateless facets and diamond architectures, it aims to transform smart contracts from isolated programs into modular, reusable systems.",
+        "long_resume": "The whitepaper addresses a critical inefficiency in the current blockchain ecosystem: the lack of shared, on-chain infrastructure for reusable logic. While developers frequently reuse code via libraries and templates before deployment, this practice results in the redundant redeployment of identical bytecode across multiple addresses. This duplication increases gas consumption, complicates the audit landscape, and creates significant security risks, as evidenced by studies showing that nearly 10% of similar contract pairs share the same vulnerabilities. The paper argues that because remediation is fragmented across independent deployments, the ecosystem lacks a way to patch shared logic globally.\n\nTo resolve this, the authors introduce Smart Contract Oriented Programming (SCOPE) and the Compose layer. Unlike traditional software engineering where applications can be easily patched or replaced by their operators, smart contracts are persistent, public, and constrained by the Ethereum Virtual Machine (EVM). SCOP adapts software engineering principles—such as modularity and abstraction—to these specific on-chain constraints. The core of this approach is the separation of logic from state. By using a diamond-native architecture, Compose utilizes 'diamonds' as application containers and 'stateless facets' as reusable logic components that operate over a shared system state. This transition from contract-level to system-level reasoning allows for a more scalable, auditable, and interconnected on-chain ecosystem, effectively acting as a composition layer for decentralized applications.",
+        "long_resume_paragraphs": [
+          "The whitepaper addresses a critical inefficiency in the current blockchain ecosystem: the lack of shared, on-chain infrastructure for reusable logic. While developers frequently reuse code via libraries and templates before deployment, this practice results in the redundant redeployment of identical bytecode across multiple addresses. This duplication increases gas consumption, complicates the audit landscape, and creates significant security risks, as evidenced by studies showing that nearly 10% of similar contract pairs share the same vulnerabilities. The paper argues that because remediation is fragmented across independent deployments, the ecosystem lacks a way to patch shared logic globally.",
+          "To resolve this, the authors introduce Smart Contract Oriented Programming (SCOPE) and the Compose layer. Unlike traditional software engineering where applications can be easily patched or replaced by their operators, smart contracts are persistent, public, and constrained by the Ethereum Virtual Machine (EVM). SCOP adapts software engineering principles—such as modularity and abstraction—to these specific on-chain constraints. The core of this approach is the separation of logic from state. By using a diamond-native architecture, Compose utilizes 'diamonds' as application containers and 'stateless facets' as reusable logic components that operate over a shared system state. This transition from contract-level to system-level reasoning allows for a more scalable, auditable, and interconnected on-chain ecosystem, effectively acting as a composition layer for decentralized applications."
+        ],
+        "main_topic": "The introduction of Smart Contract Oriented Programming (SCOP) via the Compose layer to enable modular, reusable, and stateless on-chain infrastructure.",
+        "technologies": [
+          "Solidity",
+          "Ethereum Virtual Machine (EVM)",
+          "Ethereum",
+          "Compose",
+          "SCOP",
+          "Diamond-native architecture"
+        ]
+      },
+      {
+        "title": "Google pays 250K for Linux vulnerability allowing guest VM escapes",
+        "slug": "google-pays-250k-for-linux-vulnerability-allowing-guest-vm-escapes",
+        "url": "https://arstechnica.com/security/2026/07/high-severity-guest-vm-escape-is-1-of-2-linux-vulnerabilities-to-surface-this-week",
+        "source": "Reddit r/cybersecurity",
+        "published": "2026-07-08T22:48:04Z",
+        "short_summary": "Researcher Hyunwoo Kim discovered a high-severity use-after-free vulnerability in the Linux KVM subsystem called Januscape. This flaw enables untrusted guest VMs to break out of their isolation and potentially take control of the host operating system.",
+        "long_resume": "A significant security flaw known as 'Januscape' has been identified within the Linux kernel's KVM (Kernel-based Virtual Machine) component. Tracked as CVE-2026-53359, this vulnerability is a use-after-free error located in the shadow MMU emulation process, which is responsible for translating memory addresses between the host and guest environments. The flaw is particularly dangerous because it can be triggered using only guest-side actions, meaning an attacker with access to a single virtual machine instance on a cloud platform could compromise the entire physical host. Specifically, the exploit allows for either a Denial of Service (DoS) by panicking the host kernel or full Remote Code Execution (RCE) with root privileges, potentially compromising all other tenant VMs sharing the same hardware. The vulnerability has remained undetected in the Linux kernel for 16 years and affects systems running on both Intel and AMD architectures. While a proof-of-concept exploit demonstrating a host crash is currently available, a full guest-to-host escape exploit has been developed but will not be released publicly for the time being. Google has recognized the importance of this discovery by awarding the researcher $250,000.",
+        "long_resume_paragraphs": [
+          "A significant security flaw known as 'Januscape' has been identified within the Linux kernel's KVM (Kernel-based Virtual Machine) component. Tracked as CVE-2026-53359, this vulnerability is a use-after-free error located in the shadow MMU emulation process, which is responsible for translating memory addresses between the host and guest environments. The flaw is particularly dangerous because it can be triggered using only guest-side actions, meaning an attacker with access to a single virtual machine instance on a cloud platform could compromise the entire physical host. Specifically, the exploit allows for either a Denial of Service (DoS) by panicking the host kernel or full Remote Code Execution (RCE) with root privileges, potentially compromising all other tenant VMs sharing the same hardware. The vulnerability has remained undetected in the Linux kernel for 16 years and affects systems running on both Intel and AMD architectures. While a proof-of-concept exploit demonstrating a host crash is currently available, a full guest-to-host escape exploit has been developed but will not be released publicly for the time being. Google has recognized the importance of this discovery by awarding the researcher $250,000."
+        ],
+        "main_topic": "A critical Linux KVM vulnerability named Januscape allows guest virtual machines to escape to the host machine.",
+        "technologies": [
+          "Linux",
+          "KVM",
+          "AMD",
+          "Intel",
+          "Shadow MMU emulation"
+        ]
+      },
+      {
+        "title": "FT: Meta is testing an always-on 'super sensing' mode for its next Ray-Bans, and Zuckerberg reportedly questioned whether the capture LED could stay off while it runs",
+        "slug": "ft-meta-is-testing-an-always-on-super-sensing-mode-for-its-next-ray-bans-and-zuckerberg-reportedly-questioned-whether-the-capture-led-could-stay-off-while-it-runs",
+        "url": "https://aiweekly.co/alerts/meta-tests-always-on-super-sensing-mode-for-next-ray-bans",
+        "source": "Reddit r/artificial",
+        "published": "2026-07-08T11:46:33Z",
+        "short_summary": "Meta is prototyping next-generation smart glasses featuring an extended 'super sensing' mode for continuous AI interaction. The development includes a controversial debate over disabling the visible recording LED, which could fundamentally alter the privacy landscape of wearable cameras.",
+        "long_resume": "Meta is reportedly testing a new 'super sensing' feature for its upcoming Ray-Ban smart glasses, intended to extend the duration of Live AI functionality from approximately 30 minutes to several hours. This continuous mode would allow the AI assistant to provide proactive notifications and context-aware reminders by maintaining active sensors and cameras in the background. The hardware roadmap includes two next-generation devices codenamed Aperol, a sunglasses design, and Bellini, a prescription variant, both expected to launch between late 202</strong>6 and early 2027. A significant point of contention within Meta involves whether the white LED, which currently notifies bystanders of active recording, should remain off during this always-on mode. If implemented, this change would shift the paradigm of wearable technology from 'record-on-command' to 'record-by-default,' potentially undermining existing social contracts regarding transparency in public spaces. While the feature promises transformative accessibility benefits for users with visual impairments, it also presents substantial privacy challenges and strategic opportunities for competitors who prioritize transparent, opt-in recording indicators.",
+        "long_resume_paragraphs": [
+          "Meta is reportedly testing a new 'super sensing' feature for its upcoming Ray-Ban smart glasses, intended to extend the duration of Live AI functionality from approximately 30 minutes to several hours. This continuous mode would allow the AI assistant to provide proactive notifications and context-aware reminders by maintaining active sensors and cameras in the background. The hardware roadmap includes two next-generation devices codenamed Aperol, a sunglasses design, and Bellini, a prescription variant, both expected to launch between late 202</strong>6 and early 2027. A significant point of contention within Meta involves whether the white LED, which currently notifies bystanders of active recording, should remain off during this always-on mode. If implemented, this change would shift the paradigm of wearable technology from 'record-on-command' to 'record-by-default,' potentially undermining existing social contracts regarding transparency in public spaces. While the feature promises transformative accessibility benefits for users with visual impairments, it also presents substantial privacy challenges and strategic opportunities for competitors who prioritize transparent, opt-in recording indicators."
+        ],
+        "main_topic": "Meta is testing an 'always-on' super sensing mode for next-generation Ray-Ban smart glasses that extends Live AI capabilities but raises significant privacy concerns regarding recording indicators.",
+        "technologies": [
+          "Ray-Ban Meta glasses",
+          "Live AI",
+          "Aperol (prototype)",
+          "Bellini (prototype)",
+          "Super sensing mode"
+        ]
+      },
+      {
+        "title": "Shoebox-sized 'detector satellites' could sniff out a nuclear bomb in space",
+        "slug": "shoebox-sized-detector-satellites-could-sniff-out-a-nuclear-bomb-in-space",
+        "url": "https://space.com/space-exploration/satellites/shoebox-sized-detector-satellites-could-sniff-out-a-nuclear-bomb-in-space",
+        "source": "Space.com",
+        "published": "Wed, 08 Jul 2026 18:00:00 +0000",
+        "short_summary": "Researchers have developed a method to detect orbital nuclear weapons using small, shoebox-sized satellites equipped with specialized radiation sensors. This technology aims to identify the unique neutron signatures produced when cosmic rays interact with fissile materials in space.",
+        "long_resume": "A recent study published in Nature by MIT professor Areg Danagoulian proposes a novel method for detecting nuclear weapons in Earth's orbit. The research addresses growing concerns regarding the deployment of space-borne nuclear assets, such as those suspected in Russia's Kosmos 2553 mission. A nuclear detonation in low Earth orbit (LEO) would release intense radiation, specifically fast electrons, capable of destroying unhardened satellites and rendering orbits like those used by Starlink and the International Space Station unusable for extended periods. To counter this threat, Danagoulian suggests deploying a constellation of '9U' cubesats designed to act as 'nuke sniffers.' These small satellites would utilize a sophisticated sensor suite consisting of a neutron scintillator and a diamond-based detector to identify specific radiation signatures. The detection mechanism relies on proton-induced neutron spallation, where high-energy protons from the Van Allen belts interact with the uranium in a weapon, creating an intense, identifiable neutron source. By maneuvering within kilometers of a suspect satellite, these detectors could confirm the presence of nuclear material by back-projecting the direction of incoming neutrons. While the Outer Space Treaty prohibits nuclear weapons in orbit, the study notes that there are currently no effective means to ensure compliance or defuse such weapons once deployed.",
+        "long_resume_paragraphs": [
+          "A recent study published in Nature by MIT professor Areg Danagoulian proposes a novel method for detecting nuclear weapons in Earth's orbit. The research addresses growing concerns regarding the deployment of space-borne nuclear assets, such as those suspected in Russia's Kosmos 2553 mission. A nuclear detonation in low Earth orbit (LEO) would release intense radiation, specifically fast electrons, capable of destroying unhardened satellites and rendering orbits like those used by Starlink and the International Space Station unusable for extended periods. To counter this threat, Danagoulian suggests deploying a constellation of '9U' cubesats designed to act as 'nuke sniffers.' These small satellites would utilize a sophisticated sensor suite consisting of a neutron scintillator and a diamond-based detector to identify specific radiation signatures. The detection mechanism relies on proton-induced neutron spallation, where high-energy protons from the Van Allen belts interact with the uranium in a weapon, creating an intense, identifiable neutron source. By maneuvering within kilometers of a suspect satellite, these detectors could confirm the presence of nuclear material by back-projecting the direction of incoming neutrons. While the Outer Space Treaty prohibits nuclear weapons in orbit, the study notes that there are currently no effective means to ensure compliance or defuse such weapons once deployed."
+        ],
+        "main_topic": "A new study proposes using a constellation of small cubesat detectors to identify nuclear weapons hidden on adversary satellites in orbit.",
+        "technologies": [
+          "Cubesats",
+          "Starlink",
+          "Amazon Leo",
+          "Neutron scintillator",
+          "Diamond detector",
+          "9U cubesat form factor"
+        ]
+      }
+    ],
+    "article_count": 20,
+    "preview_titles": [
+      "Weak-to-Strong Generalization via Direct On-Policy Distillation",
+      "KVpop -- Key-Value Cache Compression with Predictive Online Pruning",
+      "From RGB Generation to Dense Field Readout: Pixel-Space Dense Prediction with Text-to-Image Models"
+    ],
+    "preview_articles": [
       {
         "title": "Weak-to-Strong Generalization via Direct On-Policy Distillation",
         "slug": "weak-to-strong-generalization-via-direct-on-policy-distillation",
@@ -401,29 +499,6 @@
         ]
       },
       {
-        "title": "VLA-Corrector: Lightweight Detect-and-Correct Inference for Adaptive Action Horizon",
-        "slug": "vla-corrector-lightweight-detect-and-correct-inference-for-adaptive-action-horizon",
-        "url": "https://arxiv.org/html/2607.01804",
-        "source": "HuggingFace Papers",
-        "published": "2026-07-02T00:00:00.000Z",
-        "short_summary": "VLA-Corrector is a new inference framework that mitigates the risks of error accumulation in action-chunked robotic policies. By using latent-space monitoring and gradient guidance, it allows robots to dynamically truncate stale actions and replan when environmental deviations are detected.",
-        "long_resume": "Vision-Language-Action (VLA) models have become a cornerstone of embodied intelligence, yet they face a fundamental trade-off between computational efficiency and closed-loop reactivity. Most current models utilize 'action chunking' to predict multiple future steps in one pass, reducing the frequency of expensive policy calls. However, this creates an 'open-loop blind spot' where the robot continues executing pre-planned actions even if physical perturbations, such as slippage or collisions, occur. This lack of reactivity leads to compounding errors and task failure. The paper presents VLA-Transformer (VLA-Corrector), a framework that operates without modifying the original model weights. It employs two primary mechanisms: first, a Latent-space Vision Monitor (LVM) that tracks discrepancies between expected and actual visual features to trigger an interrupt; second, Online Gradient Guidance (OGG) which uses detected deviations to inject corrective gradients during re-inference. This approach effectively transforms a static action horizon into an adaptive one. Experimental results on various VLA backbones like π0.5, SmolVLA, and X-VLA show significant improvements in success rates and 'success-per-call' efficiency, particularly in complex, contact-rich manipulation tasks.",
-        "long_resume_paragraphs": [
-          "Vision-Language-Action (VLA) models have become a cornerstone of embodied intelligence, yet they face a fundamental trade-off between computational efficiency and closed-loop reactivity. Most current models utilize 'action chunking' to predict multiple future steps in one pass, reducing the frequency of expensive policy calls. However, this creates an 'open-loop blind spot' where the robot continues executing pre-planned actions even if physical perturbations, such as slippage or collisions, occur. This lack of reactivity leads to compounding errors and task failure. The paper presents VLA-Transformer (VLA-Corrector), a framework that operates without modifying the original model weights. It employs two primary mechanisms: first, a Latent-space Vision Monitor (LVM) that tracks discrepancies between expected and actual visual features to trigger an interrupt; second, Online Gradient Guidance (OGG) which uses detected deviations to inject corrective gradients during re-inference. This approach effectively transforms a static action horizon into an adaptive one. Experimental results on various VLA backbones like π0.5, SmolVLA, and X-VLA show significant improvements in success rates and 'success-per-call' efficiency, particularly in complex, contact-rich manipulation tasks."
-        ],
-        "main_topic": "The introduction of VLA-Corrector, a lightweight framework designed to improve the robustness and efficiency of Vision-Language-Action models through adaptive action horizon management.",
-        "technologies": [
-          "Vision-Language-Action (VLA) models",
-          "Latent-space Vision Monitor (LVM)",
-          "Online Gradient Gradient Guidance (OGG)",
-          "Diffusion Models",
-          "Flow Matching",
-          "π0.5",
-          "SmolVLA",
-          "X-VLA"
-        ]
-      },
-      {
         "title": "From RGB Generation to Dense Field Readout: Pixel-Space Dense Prediction with Text-to-Image Models",
         "slug": "from-rgb-generation-to-dense-field-readout-pixel-space-dense-prediction-with-text-to-image-models",
         "url": "https://arxiv.org/html/2607.06553v1",
@@ -446,156 +521,58 @@
         ]
       },
       {
-        "title": "Bridging Interleaved Multi-Modal Reasoning as a Unified Decision Process",
-        "slug": "bridging-interleaved-multi-modal-reasoning-as-a-unified-decision-process",
-        "url": "https://arxiv.org/html/2607.03748",
+        "title": "The Key to Going Linear: Analysis-Driven Transformer Linearization",
+        "slug": "the-key-to-going-linear-analysis-driven-transformer-linearization",
+        "url": "https://arxiv.org/html/2607.07706v1",
+        "source": "arXiv",
+        "published": "2026-07-08T17:59:09Z",
+        "short_summary": "This paper presents a method for converting pretrained transformers into linear-time architectures by focusing on the efficiency of state update designs. By analyzing softmax attention through a first-order approximation, the authors prove that delta-style updates are superior for post hoc linearization.",
+        "long_resume": "The research addresses the quadratic computational bottleneck of causal self-attention in large language models, which limits long-context inference. The authors propose an analysis-driven approach to 'post hoc linearization,' a process where existing full-attention models are converted into linear-time architectures without requiring retraining from scratch. To avoid the confusion caused by simultaneous interventions like LoRA or distillation, the study employs a controlled experiment with a frozen backbone, training only the new replacement mechanism parameters.\n\nA key theoretical contribution is the derivation of a first-order approximation that connects softmax attention to linear state updates, revealing that softmax relies on key-dependent, rank-1 orthogonal projections. This finding explains why delta-style networks (such as Gated Delta Networks) outperform purely gated accumulation models (such as Gated Linear Attention), as the former can implement necessary geometric corrections. To further close the performance gap, the researchers introduce several structural interventions: sink tokens to handle attention spikes, short convolutions for projection adaptation, and a disjoint sliding-window path for local context preservation.\n\nThe effectiveness of this approach was validated by scaling it across LLaMA and Qwen models up to 32B parameters. The results show that this linearization method outperforms prior post hoc baselines on the MMLU benchmark and achieves long-context retrieval performance comparable to much more complex adaptive-caching frameworks.",
+        "long_resume_paragraphs": [
+          "The research addresses the quadratic computational bottleneck of causal self-attention in large language models, which limits long-context inference. The authors propose an analysis-driven approach to 'post hoc linearization,' a process where existing full-attention models are converted into linear-time architectures without requiring retraining from scratch. To avoid the confusion caused by simultaneous interventions like LoRA or distillation, the study employs a controlled experiment with a frozen backbone, training only the new replacement mechanism parameters.",
+          "A key theoretical contribution is the derivation of a first-order approximation that connects softmax attention to linear state updates, revealing that softmax relies on key-dependent, rank-1 orthogonal projections. This finding explains why delta-style networks (such as Gated Delta Networks) outperform purely gated accumulation models (such as Gated Linear Attention), as the former can implement necessary geometric corrections. To further close the performance gap, the researchers introduce several structural interventions: sink tokens to handle attention spikes, short convolutions for projection adaptation, and a disjoint sliding-window path for local context preservation.",
+          "The effectiveness of this approach was validated by scaling it across LLaMA and Qwen models up to 32B parameters. The results show that this linearization method outperforms prior post hoc baselines on the MMLU benchmark and achieves long-context retrieval performance comparable to much more complex adaptive-caching frameworks."
+        ],
+        "main_topic": "The research explores an analysis-driven approach to transformer linearization, specifically identifying why delta-style state updates better approximate softmax attention than gated accumulation.",
+        "technologies": [
+          "LLaMA",
+          "Qwen",
+          "Transformer",
+          "Gated Linear Attention (GLA)",
+          "Gated Delta Networks (GDN)",
+          "LoRA",
+          "Sliding Window Attention (SWA)",
+          "Mamba-style models"
+        ]
+      },
+      {
+        "title": "DSpark: Confidence-Scheduled Speculative Decoding with Semi-Autoregressive Generation",
+        "slug": "dspark-confidence-scheduled-speculative-decoding-with-semi-autoregressive-generation",
+        "url": "https://arxiv.org/html/2607.05147",
         "source": "HuggingFace Papers",
-        "published": "2026-07-04T00:00:00.000Z",
-        "short_summary": "This paper presents BRAID, a framework that bridges interleaved multi-modal reasoning by treating it as a unified decision process via Reinforcement Learning. The method demonstrates that RL can close the performance gap between generative unified models and dedicated understanding-only VLMs.",
-        "long_resume": "The research addresses the historical deficit in visual reasoning capabilities within unified multimodal architectures, which often struggle to match the performance of understanding-only models. By implementing a training pipeline that starts with Supervised Fine-Tuning (SFT) to establish a reliable baseline and follows with Reinforcement Learning (RL), the authors introduce BRAID. This method demonstrates significant improvements in spatial reasoning tasks like SAT and visual perception benchmarks like V*Bench, even surpassing GPT-4o on specific metrics using only 7B parameters. The study evaluates several data allocation regimes and rollout-to-update ratios, concluding that a 2:1 ratio provides the necessary stability for gradient estimation and prevents policy oscillation. Furthermore, the researchers prove through Maj@nn and Avg@nn metrics that RL does not merely increase output diversity but actively enhances the model's underlying reasoning capacity and solution space exploration.",
+        "published": "2026-07-06T00:00:00.000Z",
+        "short_summary": "This technical paper presents DSpark, a new approach to speculative decoding designed to enhance the speed of autoregressive generation. It contextualizes the work within the broader landscape of drafting architectures and parallel generation strategies.",
+        "long_resume": "The article explores the evolution of speculative decoding, a technique used to accelerate the inference of large language models by separating the proposal of tokens from their verification against a target model. The efficiency of this process is highly dependent on the accuracy and speed of the 'drafter.' Historically, researchers have utilized small standalone language models as drafters, but recent innovations have integrated multi-token heads or feature extrapolators directly into the target model's architecture to improve performance. Other specialized strategies mentioned include self-speculation through early exits, dynamic vocabulary compression, prompt lookup, and retrieval-based methods. To address the sequential bottleneck inherent in traditional drafting, newer research has moved toward parallel or blockwise generation techniques such as Medusa, P-EAGLE, PARD, DART, and DFlash. Furthermore, some advanced methods like DDTree, TAPS, and JetSpec expand the draft chain into verifiable trees to maximize throughput. The paper positions DSpark within this landscape, highlighting its use of confidence-scheduled semi-autoregressive generation as a way to optimize the balance between drafting speed and verification accuracy.",
         "long_resume_paragraphs": [
-          "The research addresses the historical deficit in visual reasoning capabilities within unified multimodal architectures, which often struggle to match the performance of understanding-only models. By implementing a training pipeline that starts with Supervised Fine-Tuning (SFT) to establish a reliable baseline and follows with Reinforcement Learning (RL), the authors introduce BRAID. This method demonstrates significant improvements in spatial reasoning tasks like SAT and visual perception benchmarks like V*Bench, even surpassing GPT-4o on specific metrics using only 7B parameters. The study evaluates several data allocation regimes and rollout-to-update ratios, concluding that a 2:1 ratio provides the necessary stability for gradient estimation and prevents policy oscillation. Furthermore, the researchers prove through Maj@nn and Avg@nn metrics that RL does not merely increase output diversity but actively enhances the model's underlying reasoning capacity and solution space exploration."
+          "The article explores the evolution of speculative decoding, a technique used to accelerate the inference of large language models by separating the proposal of tokens from their verification against a target model. The efficiency of this process is highly dependent on the accuracy and speed of the 'drafter.' Historically, researchers have utilized small standalone language models as drafters, but recent innovations have integrated multi-token heads or feature extrapolators directly into the target model's architecture to improve performance. Other specialized strategies mentioned include self-speculation through early exits, dynamic vocabulary compression, prompt lookup, and retrieval-based methods. To address the sequential bottleneck inherent in traditional drafting, newer research has moved toward parallel or blockwise generation techniques such as Medusa, P-EAGLE, PARD, DART, and DFlash. Furthermore, some advanced methods like DDTree, TAPS, and JetSpec expand the draft chain into verifiable trees to maximize throughput. The paper positions DSpark within this landscape, highlighting its use of confidence-scheduled semi-autoregressive generation as a way to optimize the balance between drafting speed and verification accuracy."
         ],
-        "main_topic": "The research introduces BRAID, a method using Reinforcement Learning (RL) to enhance the multi-modal reasoning and visual perception capabilities of unified multimodal models.",
+        "main_topic": "The article introduces DSpark, a novel confidence-scheduled speculative decoding method that utilizes semi-autoregressive generation to accelerate large language model inference.",
         "technologies": [
-          "BRAID",
-          "GPT-4o",
-          "Qwen2.5-VL",
-          "BAGEL",
-          "Janus-Pro",
-          "Chameleon",
-          "VLMEvalKit",
-          "DiffusionNFT"
+          "DSpark",
+          "Medusa",
+          "P-EAGLE",
+          "PARD",
+          "DART",
+          "DFlash",
+          "DDTree",
+          "TAPS",
+          "JetSpec",
+          "Domino",
+          "DFlare"
         ]
       }
     ],
-    "article_count": 21,
-    "preview_titles": [
-      "Independent Labs Crack Google’s Secret Cryptography Work",
-      "GitLost: a public GitHub issue can steer an org's Agentic Workflow into leaking private repo contents, and a one-word prefix (\"Additionally\") bypassed the threat-detection guardrail",
-      "Microsoft, Google and Cloudflare just made 2029 the new quantum deadline"
-    ],
-    "preview_articles": [
-      {
-        "title": "Independent Labs Crack Google’s Secret Cryptography Work",
-        "slug": "independent-labs-crack-googles-secret-cryptography-work",
-        "url": "https://spectrum.ieee.org/google-quantum-cryptography-zero-knowledge",
-        "source": "Reddit r/QuantumComputing",
-        "published": "2026-07-07T15:25:50Z",
-        "short_summary": "Researchers at Google recently discovered a way to break 256-bit ECC encryption with much lower qubit counts than expected, but withheld their exact method using zero-knowledge proofs. The startup Eigen Labs successfully bypassed this secrecy by using AI agents and crowdsourcing to develop an even more efficient attack circuit.",
-        "long_resume": "The landscape of quantum computing security has been disrupted by recent developments in algorithmic efficiency. Google Quantum AI researchers recently published findings suggesting that 256-bit Elliptic Curve Cryptography (ECC)—a cornerstone of modern internet security and cryptocurrency—could be broken using only 1,200 to 1,450 logical qubits. To mitigate the risk of providing a roadmap for attackers, the Google team utilized a zero-knowledge proof to verify their results without disclosing the underlying mechanics. However, this strategy of information concealment was circumvented by the Seattle-based startup Eigen Labs. Using a combination of crowdsourcing and autonomous AI agents designed to analyze scientific literature and optimize quantum circuits, Eigen Labs' engineers were able to match Google's results within eight hours and surpass them within three days. Their final discovered circuit is approximately 47.5% more efficient than the one proposed by Google. This event highlights a growing tension in cybersecurity research between responsible disclosure and the rapid advancement of automated cryptanalysis tools. Furthermore, the significant reduction in required physical qubits serves as a stark warning for governments and organizations currently tasked with transitioning to post-quantum cryptography (PQC) standards before 2030.",
-        "long_resume_paragraphs": [
-          "The landscape of quantum computing security has been disrupted by recent developments in algorithmic efficiency. Google Quantum AI researchers recently published findings suggesting that 256-bit Elliptic Curve Cryptography (ECC)—a cornerstone of modern internet security and cryptocurrency—could be broken using only 1,200 to 1,450 logical qubits. To mitigate the risk of providing a roadmap for attackers, the Google team utilized a zero-knowledge proof to verify their results without disclosing the underlying mechanics. However, this strategy of information concealment was circumvented by the Seattle-based startup Eigen Labs. Using a combination of crowdsourcing and autonomous AI agents designed to analyze scientific literature and optimize quantum circuits, Eigen Labs' engineers were able to match Google's results within eight hours and surpass them within three days. Their final discovered circuit is approximately 47.5% more efficient than the one proposed by Google. This event highlights a growing tension in cybersecurity research between responsible disclosure and the rapid advancement of automated cryptanalysis tools. Furthermore, the significant reduction in required physical qubits serves as a stark warning for governments and organizations currently tasked with transitioning to post-quantum cryptography (PQC) standards before 2030."
-        ],
-        "main_topic": "A startup named Eigen Labs used AI agents and crowdsourcing to replicate and surpass Google's research on breaking elliptic curve cryptography using quantum computers.",
-        "technologies": [
-          "Quantum Computing",
-          "Shor's Algorithm",
-          "Elliptic Curve Cryptography (ECC)",
-          "RSA Encryption",
-          "AI Agents",
-          "Zero-Knowledge Proofs",
-          "Superconducting Qubits",
-          "IBM Condor",
-          "Post-Quantum Cryptography (PQC)"
-        ]
-      },
-      {
-        "title": "GitLost: a public GitHub issue can steer an org's Agentic Workflow into leaking private repo contents, and a one-word prefix (\"Additionally\") bypassed the threat-detection guardrail",
-        "slug": "gitlost-a-public-github-issue-can-steer-an-orgs-agentic-workflow-into-leaking-private-repo-contents-and-a-one-word-prefix-additionally-bypassed-the-threat-detection-guardrail",
-        "url": "https://noma.security/blog/gitlost-how-we-tricked-githubs-ai-agent-into-leaking-private-repos",
-        "source": "Reddit r/netsec",
-        "published": "2026-07-07T15:16:22Z",
-        "short_summary": "Noma Labs has uncovered 'GitLost', a vulnerability in GitHub Agentic Workflows that enables indirect prompt injection. By posting malicious instructions in a public issue, an attacker can trick the AI agent into leaking sensitive data from private organizational repositories.",
-        "long_resume": "The research conducted by Noma Labs reveals a significant security flaw dubbed 'GitLost' within GitHub’s recently launched Agentic Workflows. These workflows leverage AI agents powered by models like Claude and GitHub Copilot to automate repository tasks using natural language. The core of the vulnerability lies in an indirect prompt injection attack: because the agent processes user-generated content—such as Issue titles and bodies—as part of its instruction context, it cannot distinguish between legitimate developer commands and malicious instructions hidden in text. An unauthenticated attacker can create a public GitHub Issue containing specifically crafted English instructions that command the agent to fetch files from private repositories and post them back to the public issue via comments. The researchers demonstrated that even when GitHub implemented guardrails to prevent such leaks, they were able to bypass these protections using simple linguistic manipulation, such as adding the word 'Additionally' to reframe the model's output. This discovery highlights a systemic risk in agentic AI systems where the context window serves as an expanded attack surface. To mitigate this, Noma Labs recommends that developers strictly scope agent permissions, never treat user-controlled content as trusted input, and implement rigorous sanitization of all inputs passed to LLM-based agents.",
-        "long_resume_paragraphs": [
-          "The research conducted by Noma Labs reveals a significant security flaw dubbed 'GitLost' within GitHub’s recently launched Agentic Workflows. These workflows leverage AI agents powered by models like Claude and GitHub Copilot to automate repository tasks using natural language. The core of the vulnerability lies in an indirect prompt injection attack: because the agent processes user-generated content—such as Issue titles and bodies—as part of its instruction context, it cannot distinguish between legitimate developer commands and malicious instructions hidden in text. An unauthenticated attacker can create a public GitHub Issue containing specifically crafted English instructions that command the agent to fetch files from private repositories and post them back to the public issue via comments. The researchers demonstrated that even when GitHub implemented guardrails to prevent such leaks, they were able to bypass these protections using simple linguistic manipulation, such as adding the word 'Additionally' to reframe the model's output. This discovery highlights a systemic risk in agentic AI systems where the context window serves as an expanded attack surface. To mitigate this, Noma Labs recommends that developers strictly scope agent permissions, never treat user-controlled content as trusted input, and implement rigorous sanitization of all inputs passed to LLM-based agents."
-        ],
-        "main_topic": "Discovery of the 'GitLost' vulnerability, an indirect prompt injection attack in GitHub Agentic Workflows that allows unauthorized access to private repositories.",
-        "technologies": [
-          "GitHub Agentic Workflows",
-          "GitHub Actions",
-          "Claude",
-          "GitHub Copilot",
-          "Markdown",
-          "YAML"
-        ]
-      },
-      {
-        "title": "Microsoft, Google and Cloudflare just made 2029 the new quantum deadline",
-        "slug": "microsoft-google-and-cloudflare-just-made-2029-the-new-quantum-deadline",
-        "url": "https://thenewstack.io/post-quantum-cryptography-deadline-2029",
-        "source": "The New Stack",
-        "published": "Mon, 06 Jul 2026 20:20:17 +0000",
-        "short_summary": "Tech giants are moving up their quantum-safe security deadlines to 2029 to combat the accelerating threat of quantum decryption. Organizations are urged to begin cryptographic inventories and implement crypto-agility immediately to protect against 'harvest now, decrypt later' attacks.",
-        "long_resume": "The landscape of cybersecurity is facing a significant shift as major technology players including Microsoft, Google, and Cloudflare have officially moved their target date for implementing quantum-safe cryptography forward to 2029. This change follows previous government directives from the US and France that aimed for a 2030 deadline. The primary driver behind this acceleration is the increasing realization that cryptographically relevant quantum computers may emerge much sooner than expected, necessitating a more urgent response to protect critical infrastructure.\n\nMicrosoft Azure CTO Mark Russinovich emphasizes that preparing for this transition is a massive, multi-year engineering challenge. Microsoft is integrating post-quantum cryptography (PQC) requirements into its Secure Future Initiative (SFI). Meanwhile, Google is already working on integration, such as implementing ML-DSA digital signature protection in Android 17. While current quantum technology remains in the Noisy Intermediate-Scale Quantum (NISQ) era—exemplified by chips like IBM Heron and Google Willow—the progress in various computing architectures, including neutral atoms, keeps the threat of 'Q-Day' a pressing reality.\n\nA critical component of this risk is the 'harvest now, decrypt later' phenomenon. Security experts, such as Simon Pamplin from Certes, warn that state-level actors are currently intercepting and storing encrypted data with the intention of decrypting it once sufficiently powerful quantum computers become available. This means that even if a quantum computer does not exist today, the data being transmitted now is already at risk.\n\nTo mitigate these risks, experts recommend that organizations move beyond simply updating infrastructure to adopting a data-centric approach. The focus should be on creating 'living cryptographic inventories' to identify where encryption exists across applications and legacy systems. Ultimately, the goal for software architects and engineers is to build 'crypto-agility' into new products, ensuring that future transitions to new mathematical standards—such as lattice-based or hash-based structures—can be handled as routine updates rather than emergency security crises.",
-        "long_resume_paragraphs": [
-          "The landscape of cybersecurity is facing a significant shift as major technology players including Microsoft, Google, and Cloudflare have officially moved their target date for implementing quantum-safe cryptography forward to 2029. This change follows previous government directives from the US and France that aimed for a 2030 deadline. The primary driver behind this acceleration is the increasing realization that cryptographically relevant quantum computers may emerge much sooner than expected, necessitating a more urgent response to protect critical infrastructure.",
-          "Microsoft Azure CTO Mark Russinovich emphasizes that preparing for this transition is a massive, multi-year engineering challenge. Microsoft is integrating post-quantum cryptography (PQC) requirements into its Secure Future Initiative (SFI). Meanwhile, Google is already working on integration, such as implementing ML-DSA digital signature protection in Android 17. While current quantum technology remains in the Noisy Intermediate-Scale Quantum (NISQ) era—exemplified by chips like IBM Heron and Google Willow—the progress in various computing architectures, including neutral atoms, keeps the threat of 'Q-Day' a pressing reality.",
-          "A critical component of this risk is the 'harvest now, decrypt later' phenomenon. Security experts, such as Simon Pamplin from Certes, warn that state-level actors are currently intercepting and storing encrypted data with the intention of decrypting it once sufficiently powerful quantum computers become available. This means that even if a quantum computer does not exist today, the data being transmitted now is already at risk.",
-          "To mitigate these risks, experts recommend that organizations move beyond simply updating infrastructure to adopting a data-centric approach. The focus should be on creating 'living cryptographic inventories' to identify where encryption exists across applications and legacy systems. Ultimately, the goal for software architects and engineers is to build 'crypto-agility' into new products, ensuring that future transitions to new mathematical standards—such as lattice-based or hash-based structures—can be handled as routine updates rather than emergency security crises."
-        ],
-        "main_topic": "Major technology vendors Microsoft, Google, and Cloudflare have accelerated their deadlines for implementing quantum-safe cryptography to 2029 due to the rising threat of quantum computing.",
-        "technologies": [
-          "Microsoft Azure",
-          "Google Android 17",
-          "Cloudflare",
-          "IBM Heron",
-          "Google Willow",
-          "RSA",
-          "ECC (Elliptic Curve Cryptography)",
-          "ML-DSA",
-          "NIST Post-Quantum Cryptography standards",
-          "Shor's algorithm"
-        ]
-      },
-      {
-        "title": "Bitcoin Covenants part 3: SIGHASH_ANYPREVOUT",
-        "slug": "bitcoin-covenants-part-3-sighash-anyprevout",
-        "url": "https://cointelegraph.com/research/bitcoin-covenants-part-3-sighash-anyprevout?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-        "source": "CoinTelegraph",
-        "published": "Tue, 07 Jul 2026 15:00:00 +0000",
-        "short_summary": "This article explores the technical mechanics of the SIGHASH_ANYPREVOUT proposal and its ability to allow signature reuse across compatible UTXOs. It details how removing outpoint commitment facilitates Layer-2 protocols while highlighting potential risks like signature replay.",
-        "long_resume": "The article provides a deep dive into the proposed BIP 118, which introduces SIGHASH_ANYPREVOUT as a soft-fork upgrade for Bitcoin. Unlike existing SIGHASH modes like SIGHASH_ALL or SIGHASH_SINGLE, which cryptographically bind a signature to a specific outpoint (transaction ID and output index), ANYPREVOUT excludes the outpoint from the digest. This allows a single pre-signed transaction to be applied to any UTXO that meets the remaining criteria, such as matching amounts or scriptPubKey. The text distinguishes between two primary variants: ANYPREVOUT, which maintains commitment to the previous output's amount and script, and ANYPREVOUTANYSCRIPT, which removes these commitments entirely. While this flexibility is highly beneficial for Layer-2 scaling solutions and certain recovered-key constructions, it introduces the risk of signature replay attacks. If a signer does not carefully manage the remaining committed fields, an attacker or miner could potentially reuse a signature to spend a different UTXO than intended. Ultimately, while ANYPREVOUT enhances transaction expressiveness, it does not implement full recursive covenants on its own but serves as a foundational component for more complex script logic.",
-        "long_resume_paragraphs": [
-          "The article provides a deep dive into the proposed BIP 118, which introduces SIGHASH_ANYPREVOUT as a soft-fork upgrade for Bitcoin. Unlike existing SIGHASH modes like SIGHASH_ALL or SIGHASH_SINGLE, which cryptographically bind a signature to a specific outpoint (transaction ID and output index), ANYPREVOUT excludes the outpoint from the digest. This allows a single pre-signed transaction to be applied to any UTXO that meets the remaining criteria, such as matching amounts or scriptPubKey. The text distinguishes between two primary variants: ANYPREVOUT, which maintains commitment to the previous output's amount and script, and ANYPREVOUTANYSCRIPT, which removes these commitments entirely. While this flexibility is highly beneficial for Layer-2 scaling solutions and certain recovered-key constructions, it introduces the risk of signature replay attacks. If a signer does not carefully manage the remaining committed fields, an attacker or miner could potentially reuse a signature to spend a different UTXO than intended. Ultimately, while ANYPREVOUT enhances transaction expressiveness, it does not implement full recursive covenants on its own but serves as a foundational component for more complex script logic."
-        ],
-        "main_topic": "The technical implications and mechanisms of the proposed SIGHASH_ANYPREVOUT flag for Bitcoin transactions.",
-        "technologies": [
-          "Bitcoin",
-          "BIP 118",
-          "Taproot",
-          "SIGHASH_ANYPREVOUT",
-          "SIGHASH_ANYPREVOUTANYSCRIPT",
-          "OP_CHECKSIG",
-          "OP_CTV"
-        ]
-      },
-      {
-        "title": "Extract, Knock Offline, and Take Over Bluetooth Devices with Just a Laptop",
-        "slug": "extract-knock-offline-and-take-over-bluetooth-devices-with-just-a-laptop",
-        "url": "https://github.com/Ymsniper/Whisper_Bully",
-        "source": "Reddit r/cybersecurity",
-        "published": "2026-07-07T22:17:07Z",
-        "short_summary": "The Whisper_Bully tool demonstrates a sophisticated three-stage attack against Bluetooth Fast Pair devices. It leverages a specific vulnerability to bypass privacy randomization, followed by L2CAP flooding and connection hijacking.",
-        "long_resume": "Whisper_Bully is a technical security tool designed to demonstrate a multi-stage exploitation process against Bluetooth Low Energy (BLE) devices utilizing the Google Fast Pair protocol. The attack sequence begins with Stage 1, which targets CVE-2025-36911; by writing forged pairing requests and fake Account Keys to specific GATT characteristics (UUID 1236 and 1238), the attacker forces the device to transition from a randomized private address to its permanent factory-programmed BD_ADDR. Once the identity is known, Stage 2 initiates an L2CAP denial-of-service attack via 'EMP mode,' which involves sending rapid bursts of echo packets and intentional connection closures to exhaust the target's resources and lock out legitimate users. Finally, Stage 3 leverages the unstable state of the device during the flood to establish an unauthorized L2CAP connection, potentially allowing for reconnaissance or credential theft. The implementation is Python-based and relies on Linux-native Bluetooth stacks like BlueZ and tools such as bluetoothctl.",
-        "long_resume_paragraphs": [
-          "Whisper_Bully is a technical security tool designed to demonstrate a multi-stage exploitation process against Bluetooth Low Energy (BLE) devices utilizing the Google Fast Pair protocol. The attack sequence begins with Stage 1, which targets CVE-2025-36911; by writing forged pairing requests and fake Account Keys to specific GATT characteristics (UUID 1236 and 1238), the attacker forces the device to transition from a randomized private address to its permanent factory-programmed BD_ADDR. Once the identity is known, Stage 2 initiates an L2CAP denial-of-service attack via 'EMP mode,' which involves sending rapid bursts of echo packets and intentional connection closures to exhaust the target's resources and lock out legitimate users. Finally, Stage 3 leverages the unstable state of the device during the flood to establish an unauthorized L2CAP connection, potentially allowing for reconnaissance or credential theft. The implementation is Python-based and relies on Linux-native Bluetooth stacks like BlueZ and tools such as bluetoothctl."
-        ],
-        "main_topic": "A new three-stage Bluetooth attack tool named Whisper_Bully exploits CVE-2025-36911 to extract permanent addresses, execute DoS attacks, and hijack Fast Pair devices.",
-        "technologies": [
-          "Bluetooth",
-          "BLE",
-          "Fast Pair",
-          "L2CAP",
-          "BlueZ",
-          "Python",
-          "Linux",
-          "CVE-2025-36911"
-        ]
-      }
-    ],
-    "source_mtime": 1783520790.390982,
+    "source_mtime": 1783587470.2008524,
     "model_releases": [
       {
         "provider": "Anthropic",
@@ -612,6 +589,81 @@
         "altervista_url": ""
       },
       {
+        "provider": "Cohere",
+        "model_name": "cohere-transcribe-arabic-07-2026",
+        "slug": "cohere-transcribe-arabic-07-2026",
+        "release_date": "2026-07-07",
+        "summary": "Cohere has released Cohere Transcribe Arabic, an open-source speech-to-text model fine-tuned for high accuracy in Arabic dialects. The 2B parameter conformer-based model is optimized for production throughput and supports both Arabic and English accents.",
+        "key_features": [
+          "High accuracy for regional Arabic dialects",
+          "Optimized for production inference and throughput",
+          "Supports English spoken with an Arabic accent"
+        ],
+        "url": "https://docs.cohere.com/changelog",
+        "netlify_url": "https://bowlofdata.netlify.app/week/28_2026.html#cohere-transcribe-arabic-07-2026",
+        "altervista_url": ""
+      },
+      {
+        "provider": "NVIDIA (Nemotron)",
+        "model_name": "NVIDIA Nemotron 3 Ultra",
+        "slug": "nvidia-nemotron-3-ultra",
+        "release_date": "2026-07-08",
+        "summary": "NVIDIA has released the Nemotron 3 Ultra, which achieves benchmark-leading performance and business task parity with top closed models. By tuning the LangChain Deep Agents harness around the model rather than retraining it, NVIDIA provides a high-throughput solution at 1/10th the inference cost of leading competitors.",
+        "key_features": [
+          "Achieves highest accuracy among open models on LangChain's Deep Agents benchmark",
+          "Operates at 10x lower inference cost per run compared to top closed models",
+          "Integrated with NVIDIA NemoClaw for secure, customizable agent orchestration"
+        ],
+        "url": "https://blogs.nvidia.com/blog/nemotron-langchain-agents-open-stack/",
+        "netlify_url": "https://bowlofdata.netlify.app/week/28_2026.html#nvidia-nemotron-3-ultra",
+        "altervista_url": ""
+      },
+      {
+        "provider": "OpenAI",
+        "model_name": "GPT-Live",
+        "slug": "gpt-live",
+        "release_date": "2026-07-08",
+        "summary": "OpenAI has introduced GPT-Live, a new product designed for real-time interaction. The release includes accompanying safety documentation via the GPT-Live System Card to address deployment considerations.",
+        "key_features": [
+          "Real-time live processing",
+          "Integrated safety protocols"
+        ],
+        "url": "https://openai.com/news/",
+        "netlify_url": "https://bowlofdata.netlify.app/week/28_2026.html#gpt-live",
+        "altervista_url": ""
+      },
+      {
+        "provider": "xAI (Grok)",
+        "model_name": "Grok 4.5",
+        "slug": "grok-45",
+        "release_date": "2026-07-08",
+        "summary": "xAI has introduced Grok 4.5, positioned as the company's smartest model to date. It is specifically optimized for coding tasks, agentic workflows, and complex knowledge work.",
+        "key_features": [
+          "Optimized for coding",
+          "Enhanced capabilities for agentic tasks",
+          "Advanced performance in knowledge work"
+        ],
+        "url": "https://x.ai/news",
+        "netlify_url": "https://bowlofdata.netlify.app/week/28_2026.html#grok-45",
+        "altervista_url": ""
+      },
+      {
+        "provider": "StepFun",
+        "model_name": "Step 3.7 Flash",
+        "slug": "step-37-flash",
+        "release_date": "recent",
+        "summary": "StepFun has released Step 3.7 Flash, a 198B-parameter sparse Mixture-of-Experts (MoE) vision-language model designed for high-frequency production workloads and agentic workflows. The model features native image understanding via a 1.8B visual encoder and offers selectable reasoning levels to balance speed, cost, and depth.",
+        "key_features": [
+          "Up to 400 tokens per second throughput with an 11B active parameter count",
+          "256k context window supporting multi-step search loops and massive document parsing",
+          "High performance in tool orchestration (ClawEval-1.1) and software engineering tasks (SWE-Bench PRO)",
+          "NVFP4 quantized variant with MTP draft layers for accelerated speculative decoding on NVIDIA GPUs"
+        ],
+        "url": "https://raw.githubusercontent.com/stepfun-ai/Step-3.7-Flash/main/README.md",
+        "netlify_url": "https://bowlofdata.netlify.app/week/28_2026.html#step-37-flash",
+        "altervista_url": ""
+      },
+      {
         "provider": "xAI (Grok)",
         "model_name": "Grok Voices",
         "slug": "grok-voices",
@@ -624,25 +676,9 @@
         "url": "https://x.ai/news",
         "netlify_url": "https://bowlofdata.netlify.app/week/28_2026.html#grok-voices",
         "altervista_url": ""
-      },
-      {
-        "provider": "Kimi (Moonshot)",
-        "model_name": "Kimi K2",
-        "slug": "kimi-k2",
-        "release_date": "recent",
-        "summary": "Moonshot AI has introduced Kimi K2, a massive 1 trillion parameter Mixture-of-Experts (MoE) model featuring 32 billion activated parameters. The model is specifically optimized for agentic intelligence, demonstrating exceptional performance in tool use, reasoning, and autonomous problem-solving tasks.",
-        "key_features": [
-          "Large-scale MoE architecture with 1T total parameters trained on 15.5T tokens",
-          "Utilization of the MuonClip optimizer to ensure training stability at scale",
-          "Enhanced agentic capabilities for advanced tool use and coding tasks",
-          "Advanced attention mechanism using Multi-Head Latent Attention (MLA)"
-        ],
-        "url": "https://raw.githubusercontent.com/MoonshotAI/Kimi-K2/main/README.md",
-        "netlify_url": "https://bowlofdata.netlify.app/week/28_2026.html#kimi-k2",
-        "altervista_url": ""
       }
     ],
-    "model_releases_mtime": 1783520790.3916156,
+    "model_releases_mtime": 1783587470.201759,
     "papers": [
       {
         "title": "Weak-to-Strong Generalization via Direct On-Policy Distillation",
@@ -699,36 +735,6 @@
         ]
       },
       {
-        "title": "VLA-Corrector: Lightweight Detect-and-Correct Inference for Adaptive Action Horizon",
-        "slug": "vla-corrector-lightweight-detect-and-correct-inference-for-adaptive-action-horizon",
-        "url": "https://arxiv.org/html/2607.01804",
-        "source": "HuggingFace Papers",
-        "published": "2026-07-02T00:00:00.000Z",
-        "short_summary": "VLA-Corrector is a new inference framework that mitigates the risks of error accumulation in action-chunked robotic policies. By using latent-space monitoring and gradient guidance, it allows robots to dynamically truncate stale actions and replan when environmental deviations are detected.",
-        "long_resume": "Vision-Language-Action (VLA) models have become a cornerstone of embodied intelligence, yet they face a fundamental trade-off between computational efficiency and closed-loop reactivity. Most current models utilize 'action chunking' to predict multiple future steps in one pass, reducing the frequency of expensive policy calls. However, this creates an 'open-loop blind spot' where the robot continues executing pre-planned actions even if physical perturbations, such as slippage or collisions, occur. This lack of reactivity leads to compounding errors and task failure. The paper presents VLA-Transformer (VLA-Corrector), a framework that operates without modifying the original model weights. It employs two primary mechanisms: first, a Latent-space Vision Monitor (LVM) that tracks discrepancies between expected and actual visual features to trigger an interrupt; second, Online Gradient Guidance (OGG) which uses detected deviations to inject corrective gradients during re-inference. This approach effectively transforms a static action horizon into an adaptive one. Experimental results on various VLA backbones like π0.5, SmolVLA, and X-VLA show significant improvements in success rates and 'success-per-call' efficiency, particularly in complex, contact-rich manipulation tasks.",
-        "long_resume_paragraphs": [
-          "Vision-Language-Action (VLA) models have become a cornerstone of embodied intelligence, yet they face a fundamental trade-off between computational efficiency and closed-loop reactivity. Most current models utilize 'action chunking' to predict multiple future steps in one pass, reducing the frequency of expensive policy calls. However, this creates an 'open-loop blind spot' where the robot continues executing pre-planned actions even if physical perturbations, such as slippage or collisions, occur. This lack of reactivity leads to compounding errors and task failure. The paper presents VLA-Transformer (VLA-Corrector), a framework that operates without modifying the original model weights. It employs two primary mechanisms: first, a Latent-space Vision Monitor (LVM) that tracks discrepancies between expected and actual visual features to trigger an interrupt; second, Online Gradient Guidance (OGG) which uses detected deviations to inject corrective gradients during re-inference. This approach effectively transforms a static action horizon into an adaptive one. Experimental results on various VLA backbones like π0.5, SmolVLA, and X-VLA show significant improvements in success rates and 'success-per-call' efficiency, particularly in complex, contact-rich manipulation tasks."
-        ],
-        "main_topic": "The introduction of VLA-Corrector, a lightweight framework designed to improve the robustness and efficiency of Vision-Language-Action models through adaptive action horizon management.",
-        "key_points": [
-          "Addresses the 'predict-then-blindly-execute' flaw in action-chunked VLA policies that leads to compounding errors during open-loop execution.",
-          "Introduces a Latent-space Vision Monitor (LVM) to detect visual dynamics deviations between predicted and actual feature evolution.",
-          "Implements Online Gradient Guidance (OGG) to actively steer robot trajectories back to intended paths after error detection.",
-          "Enables an adaptive action horizon that maintains long-horizon efficiency while triggering short-horizon reactive replanning when necessary.",
-          "Demonstrates improved success-per-call efficiency and robustness across multiple VLA backbones without requiring retraining the backbone weights."
-        ],
-        "technologies": [
-          "Vision-Language-Action (VLA) models",
-          "Latent-space Vision Monitor (LVM)",
-          "Online Gradient Gradient Guidance (OGG)",
-          "Diffusion Models",
-          "Flow Matching",
-          "π0.5",
-          "SmolVLA",
-          "X-VLA"
-        ]
-      },
-      {
         "title": "From RGB Generation to Dense Field Readout: Pixel-Space Dense Prediction with Text-to-Image Models",
         "slug": "from-rgb-generation-to-dense-field-readout-pixel-space-dense-prediction-with-text-to-image-models",
         "url": "https://arxiv.org/html/2607.06553v1",
@@ -758,37 +764,72 @@
         ]
       },
       {
-        "title": "Bridging Interleaved Multi-Modal Reasoning as a Unified Decision Process",
-        "slug": "bridging-interleaved-multi-modal-reasoning-as-a-unified-decision-process",
-        "url": "https://arxiv.org/html/2607.03748",
-        "source": "HuggingFace Papers",
-        "published": "2026-07-04T00:00:00.000Z",
-        "short_summary": "This paper presents BRAID, a framework that bridges interleaved multi-modal reasoning by treating it as a unified decision process via Reinforcement Learning. The method demonstrates that RL can close the performance gap between generative unified models and dedicated understanding-only VLMs.",
-        "long_resume": "The research addresses the historical deficit in visual reasoning capabilities within unified multimodal architectures, which often struggle to match the performance of understanding-only models. By implementing a training pipeline that starts with Supervised Fine-Tuning (SFT) to establish a reliable baseline and follows with Reinforcement Learning (RL), the authors introduce BRAID. This method demonstrates significant improvements in spatial reasoning tasks like SAT and visual perception benchmarks like V*Bench, even surpassing GPT-4o on specific metrics using only 7B parameters. The study evaluates several data allocation regimes and rollout-to-update ratios, concluding that a 2:1 ratio provides the necessary stability for gradient estimation and prevents policy oscillation. Furthermore, the researchers prove through Maj@nn and Avg@nn metrics that RL does not merely increase output diversity but actively enhances the model's underlying reasoning capacity and solution space exploration.",
+        "title": "The Key to Going Linear: Analysis-Driven Transformer Linearization",
+        "slug": "the-key-to-going-linear-analysis-driven-transformer-linearization",
+        "url": "https://arxiv.org/html/2607.07706v1",
+        "source": "arXiv",
+        "published": "2026-07-08T17:59:09Z",
+        "short_summary": "This paper presents a method for converting pretrained transformers into linear-time architectures by focusing on the efficiency of state update designs. By analyzing softmax attention through a first-order approximation, the authors prove that delta-style updates are superior for post hoc linearization.",
+        "long_resume": "The research addresses the quadratic computational bottleneck of causal self-attention in large language models, which limits long-context inference. The authors propose an analysis-driven approach to 'post hoc linearization,' a process where existing full-attention models are converted into linear-time architectures without requiring retraining from scratch. To avoid the confusion caused by simultaneous interventions like LoRA or distillation, the study employs a controlled experiment with a frozen backbone, training only the new replacement mechanism parameters.\n\nA key theoretical contribution is the derivation of a first-order approximation that connects softmax attention to linear state updates, revealing that softmax relies on key-dependent, rank-1 orthogonal projections. This finding explains why delta-style networks (such as Gated Delta Networks) outperform purely gated accumulation models (such as Gated Linear Attention), as the former can implement necessary geometric corrections. To further close the performance gap, the researchers introduce several structural interventions: sink tokens to handle attention spikes, short convolutions for projection adaptation, and a disjoint sliding-window path for local context preservation.\n\nThe effectiveness of this approach was validated by scaling it across LLaMA and Qwen models up to 32B parameters. The results show that this linearization method outperforms prior post hoc baselines on the MMLU benchmark and achieves long-context retrieval performance comparable to much more complex adaptive-caching frameworks.",
         "long_resume_paragraphs": [
-          "The research addresses the historical deficit in visual reasoning capabilities within unified multimodal architectures, which often struggle to match the performance of understanding-only models. By implementing a training pipeline that starts with Supervised Fine-Tuning (SFT) to establish a reliable baseline and follows with Reinforcement Learning (RL), the authors introduce BRAID. This method demonstrates significant improvements in spatial reasoning tasks like SAT and visual perception benchmarks like V*Bench, even surpassing GPT-4o on specific metrics using only 7B parameters. The study evaluates several data allocation regimes and rollout-to-update ratios, concluding that a 2:1 ratio provides the necessary stability for gradient estimation and prevents policy oscillation. Furthermore, the researchers prove through Maj@nn and Avg@nn metrics that RL does not merely increase output diversity but actively enhances the model's underlying reasoning capacity and solution space exploration."
+          "The research addresses the quadratic computational bottleneck of causal self-attention in large language models, which limits long-context inference. The authors propose an analysis-driven approach to 'post hoc linearization,' a process where existing full-attention models are converted into linear-time architectures without requiring retraining from scratch. To avoid the confusion caused by simultaneous interventions like LoRA or distillation, the study employs a controlled experiment with a frozen backbone, training only the new replacement mechanism parameters.",
+          "A key theoretical contribution is the derivation of a first-order approximation that connects softmax attention to linear state updates, revealing that softmax relies on key-dependent, rank-1 orthogonal projections. This finding explains why delta-style networks (such as Gated Delta Networks) outperform purely gated accumulation models (such as Gated Linear Attention), as the former can implement necessary geometric corrections. To further close the performance gap, the researchers introduce several structural interventions: sink tokens to handle attention spikes, short convolutions for projection adaptation, and a disjoint sliding-window path for local context preservation.",
+          "The effectiveness of this approach was validated by scaling it across LLaMA and Qwen models up to 32B parameters. The results show that this linearization method outperforms prior post hoc baselines on the MMLU benchmark and achieves long-context retrieval performance comparable to much more complex adaptive-caching frameworks."
         ],
-        "main_topic": "The research introduces BRAID, a method using Reinforcement Learning (RL) to enhance the multi-modal reasoning and visual perception capabilities of unified multimodal models.",
+        "main_topic": "The research explores an analysis-driven approach to transformer linearization, specifically identifying why delta-style state updates better approximate softmax attention than gated accumulation.",
         "key_points": [
-          "BRAID utilizes a two-stage training process consisting of Supervised Fine-Tuning (SFT) followed by Reinforcement Learning (RL).",
-          "The RL phase significantly improves spatial reasoning and fine-grained visual discrimination, specifically on benchmarks like SAT and V*Bench.",
-          "Experimental results show that BRAID-7B can outperform GPT-4o in certain multimodal benchmarks despite having fewer parameters.",
-          "The study identifies that a 2:1 rollout-to-update ratio is optimal for maintaining training stability compared to more aggressive update frequencies.",
-          "RL endows the model with a broader solution space and higher per-sample quality, rather than just increasing output diversity."
+          "Identifies that softmax attention utilizes key-dependent, rank-1 orthogonal projections which delta-style networks can natively implement.",
+          "Uses a strict frozen-backbone regime to isolate the effectiveness of linear state update designs without confounding factors like LoRA or distillation.",
+          "Demonstrates that delta-based mechanisms outperform kernelized and purely gated linear attention models in approximating pretrained transformers.",
+          "Introduces structural interventions such as sink tokens, short convolutions, and sliding-window paths to reduce approximation errors.",
+          "Achieves superior performance on MMLU benchmarks and matches long-context retrieval capabilities of complex adaptive-caching frameworks."
         ],
         "technologies": [
-          "BRAID",
-          "GPT-4o",
-          "Qwen2.5-VL",
-          "BAGEL",
-          "Janus-Pro",
-          "Chameleon",
-          "VLMEvalKit",
-          "DiffusionNFT"
+          "LLaMA",
+          "Qwen",
+          "Transformer",
+          "Gated Linear Attention (GLA)",
+          "Gated Delta Networks (GDN)",
+          "LoRA",
+          "Sliding Window Attention (SWA)",
+          "Mamba-style models"
+        ]
+      },
+      {
+        "title": "DSpark: Confidence-Scheduled Speculative Decoding with Semi-Autoregressive Generation",
+        "slug": "dspark-confidence-scheduled-speculative-decoding-with-semi-autoregressive-generation",
+        "url": "https://arxiv.org/html/2607.05147",
+        "source": "HuggingFace Papers",
+        "published": "2026-07-06T00:00:00.000Z",
+        "short_summary": "This technical paper presents DSpark, a new approach to speculative decoding designed to enhance the speed of autoregressive generation. It contextualizes the work within the broader landscape of drafting architectures and parallel generation strategies.",
+        "long_resume": "The article explores the evolution of speculative decoding, a technique used to accelerate the inference of large language models by separating the proposal of tokens from their verification against a target model. The efficiency of this process is highly dependent on the accuracy and speed of the 'drafter.' Historically, researchers have utilized small standalone language models as drafters, but recent innovations have integrated multi-token heads or feature extrapolators directly into the target model's architecture to improve performance. Other specialized strategies mentioned include self-speculation through early exits, dynamic vocabulary compression, prompt lookup, and retrieval-based methods. To address the sequential bottleneck inherent in traditional drafting, newer research has moved toward parallel or blockwise generation techniques such as Medusa, P-EAGLE, PARD, DART, and DFlash. Furthermore, some advanced methods like DDTree, TAPS, and JetSpec expand the draft chain into verifiable trees to maximize throughput. The paper positions DSpark within this landscape, highlighting its use of confidence-scheduled semi-autoregressive generation as a way to optimize the balance between drafting speed and verification accuracy.",
+        "long_resume_paragraphs": [
+          "The article explores the evolution of speculative decoding, a technique used to accelerate the inference of large language models by separating the proposal of tokens from their verification against a target model. The efficiency of this process is highly dependent on the accuracy and speed of the 'drafter.' Historically, researchers have utilized small standalone language models as drafters, but recent innovations have integrated multi-token heads or feature extrapolators directly into the target model's architecture to improve performance. Other specialized strategies mentioned include self-speculation through early exits, dynamic vocabulary compression, prompt lookup, and retrieval-based methods. To address the sequential bottleneck inherent in traditional drafting, newer research has moved toward parallel or blockwise generation techniques such as Medusa, P-EAGLE, PARD, DART, and DFlash. Furthermore, some advanced methods like DDTree, TAPS, and JetSpec expand the draft chain into verifiable trees to maximize throughput. The paper positions DSpark within this landscape, highlighting its use of confidence-scheduled semi-autoregressive generation as a way to optimize the balance between drafting speed and verification accuracy."
+        ],
+        "main_topic": "The article introduces DSpark, a novel confidence-scheduled speculative decoding method that utilizes semi-autoregressive generation to accelerate large language model inference.",
+        "key_points": [
+          "Speculative decoding accelerates inference by decoupling the token proposal (drafting) from the verification process.",
+          "DSpark utilizes a confidence-scheduling mechanism and semi-autoregressive generation to optimize efficiency.",
+          "Research trends include using small language models, multi-token heads, feature extrapolators, and self-speculation via early exits.",
+          "Recent advancements focus on removing sequential bottlenecks through parallel or blockwise generation methods like Medusa and P-EAGLE.",
+          "Newer architectures extend draft chains into verifiable trees, such as DDTree, TAPS, and JetSpec."
+        ],
+        "technologies": [
+          "DSpark",
+          "Medusa",
+          "P-EAGLE",
+          "PARD",
+          "DART",
+          "DFlash",
+          "DDTree",
+          "TAPS",
+          "JetSpec",
+          "Domino",
+          "DFlare"
         ]
       }
     ],
-    "papers_mtime": 1783520698.1192517
+    "papers_mtime": 1783587271.4191656
   },
   {
     "week": 27,

@@ -62,6 +62,7 @@ FORCE_REBUILD = os.environ.get("FORCE_REBUILD", "").strip() not in ("", "0")
 SITE_NAME    = "Bowl of Data"
 SITE_TAGLINE = "A weekly digest of the most relevant tech stories"
 SITE_URL     = "https://bowlofdata.net"
+PODCAST_URL  = "https://open.spotify.com/show/033Mqus9YAIssepHakRIIk"
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -259,6 +260,7 @@ def _make_organization_jsonld(site_url: str, site_name: str, tagline: str) -> st
         "sameAs": [
             "https://bowlofdata.substack.com/",
             "https://www.instagram.com/bowl_of_data",
+            PODCAST_URL,
         ],
     }, ensure_ascii=False)
 
@@ -442,6 +444,7 @@ def _generate_llms_txt(all_weeks: list[dict], site_url: str, site_name: str, tag
         "",
         "- [Subscribe](https://bowlofdata.substack.com/): Free weekly newsletter on Substack",
         "- [Instagram](https://www.instagram.com/bowl_of_data): Follow on Instagram",
+        f"- [Podcast (Spotify)]({PODCAST_URL}): Listen to Bowl of Data as a podcast",
     ]
     return "\n".join(lines) + "\n"
 
@@ -506,6 +509,7 @@ def build() -> None:
         site_name=SITE_NAME,
         tagline=SITE_TAGLINE,
         site_url=SITE_URL,
+        podcast_url=PODCAST_URL,
         build_date=datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         organization_jsonld_str=_make_organization_jsonld(SITE_URL, SITE_NAME, SITE_TAGLINE),
     )
@@ -668,8 +672,10 @@ def build() -> None:
     landing_html = env.get_template("index.html").render(
         **shared,
         latest_week=latest_week,
-        bowl_path="imgs/bowl.png",
+        bowl_path="imgs/bowl-hero.png",
         current_page="home",
+        total_count=len(all_weeks),
+        total_articles=sum(w["article_count"] for w in all_weeks),
     )
     (SITE_DIR / "index.html").write_text(landing_html, encoding="utf-8")
     print(f"  Rendered  landing → site/index.html")
