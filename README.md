@@ -2,7 +2,7 @@
 [![Substack](https://img.shields.io/badge/Substack-bowlofdata-orange?logo=substack&logoColor=white)](https://substack.com/@bowlofdata)
 # Bowl of Data — Website
 
-Static website for the [Bowl of Data](https://bowlofdata.netlify.app) tech newsletter. Built with Jinja2 templates and deployed on Netlify.
+Static website for the [Bowl of Data](https://bowlofdata.net) tech newsletter. Built with Jinja2 templates and deployed on Netlify.
 
 ## Overview
 
