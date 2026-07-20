@@ -672,6 +672,7 @@ def build() -> None:
     landing_html = env.get_template("index.html").render(
         **shared,
         latest_week=latest_week,
+        recent_weeks=all_weeks[1:6],
         bowl_path="imgs/bowl-hero.png",
         current_page="home",
         total_count=len(all_weeks),

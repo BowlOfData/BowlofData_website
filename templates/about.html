@@ -1,47 +1,105 @@
 {% extends "base.html" %}
 
 {% block title %}About · {{ site_name }}{% endblock %}
-{% block og_description %}How Bowl of Data's weekly tech newsletter works: an AI-powered pipeline curates AI, cybersecurity, blockchain, and engineering news, reviewed by humans before it ships.{% endblock %}
+{% block og_description %}How Bowl of Data works: an AI-powered pipeline reads hundreds of sources every week across AI, security, blockchain, and engineering — running mainly on local open models for privacy and cost — reviewed by humans before it ships.{% endblock %}
 {% block og_url %}{{ site_url }}/about.html{% endblock %}
 
 {% block content %}
 <div class="about-header">
   <div class="about-header-inner">
     <h1 class="about-title">About Bowl of Data</h1>
-    <p class="about-sub">A weekly digest at the intersection of AI, security, blockchain, and engineering: curated by humans, powered by Maki.</p>
+    <p class="about-sub">A weekly digest at the intersection of AI, security, blockchain, and engineering — curated by humans, powered by Maki, and run mostly on local models.</p>
   </div>
 </div>
 
 <div class="about-body">
 
   <section class="about-section">
-    <h2 class="about-section-title">Our Mission</h2>
-    <p class="about-text">Staying current with technology should take minutes, not hours. Every week, hundreds of articles, papers, and announcements compete for your attention: most of them are noise. We sort through it so you don't have to, selecting only the stories that genuinely matter and packaging them into a tight, readable digest.</p>
-    <p class="about-text">Our focus is deliberate: breakthroughs in AI and machine learning, exploits that reshape security, meaningful shifts in the blockchain ecosystem, and engineering practices worth adopting. No hype, no noise; just the signal.</p>
+    <h2 class="about-section-title">Our mission</h2>
+    <p class="about-text">Staying current with technology should take minutes, not hours. Every week, hundreds of articles, papers, and release notes compete for your attention — and most of it is noise. Bowl of Data reads all of it so you don&rsquo;t have to, then hands you the short list that actually matters.</p>
+    <p class="about-text">Our focus is deliberate: breakthroughs in AI and machine learning, exploits that reshape security, meaningful moves in blockchain, and engineering worth adopting. No hype, no filler — just the signal.</p>
   </section>
 
   <section class="about-section">
-    <h2 class="about-section-title">How It Works</h2>
+    <h2 class="about-section-title">What&rsquo;s in every issue</h2>
+    <p class="about-text">Each issue is built from three independent streams, curated on their own tracks so one never crowds out the others.</p>
+    <div class="about-streams">
+      <div class="about-stream about-stream--news">
+        <p class="about-stream-k">This week in tech</p>
+        <h3 class="about-stream-t">Stories</h3>
+        <p class="about-stream-d">The strongest reads from across the web, each with a TL;DR, a longer write-up, and a link to the source.</p>
+      </div>
+      <div class="about-stream about-stream--papers">
+        <p class="about-stream-k">Research</p>
+        <h3 class="about-stream-t">Papers</h3>
+        <p class="about-stream-d">Notable work from arXiv and Hugging Face, selected on its own track for significance and novelty.</p>
+      </div>
+      <div class="about-stream about-stream--releases">
+        <p class="about-stream-k">Model watch</p>
+        <h3 class="about-stream-t">Releases</h3>
+        <p class="about-stream-d">Every new model and major update from the labs — Anthropic, OpenAI, Google, Meta, Mistral, NVIDIA, and more.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <h2 class="about-section-title">How it works</h2>
     <div class="about-steps">
       <div class="about-step">
         <div class="about-step-num">01</div>
         <div class="about-step-body">
-          <h3 class="about-step-title">Collect</h3>
-          <p class="about-step-text">Maki, our AI agent orchestration framework, scans hundreds of sources every week: RSS feeds, research repositories, security advisories, and engineering blogs. Every relevant signal is captured before curation begins.</p>
+          <h3 class="about-step-title">Gather</h3>
+          <p class="about-step-text">Maki, our multi-agent framework, scans hundreds of sources every week: RSS feeds, Hacker News, Reddit, GitHub, Lobste.rs, arXiv, Hugging Face, and the announcement pages of every major AI lab. Live trend signals from Google Trends, Reddit, and GitHub steer what earns a closer look.</p>
         </div>
       </div>
       <div class="about-step">
         <div class="about-step-num">02</div>
         <div class="about-step-body">
-          <h3 class="about-step-title">Summarise</h3>
-          <p class="about-step-text">Each article receives a concise TL;DR and a deeper contextual analysis, generated by the pipeline and refined for clarity. The bar is consistent: every item has to earn its place, and nothing ships if it doesn't add value.</p>
+          <h3 class="about-step-title">Read &amp; rank</h3>
+          <p class="about-step-text">Every candidate is read by a language model that extracts its topic, key points, technologies, and a quality score, then ranks the field — weighted by what the wider community is actually talking about that week.</p>
         </div>
       </div>
       <div class="about-step">
         <div class="about-step-num">03</div>
         <div class="about-step-body">
-          <h3 class="about-step-title">Publish</h3>
-          <p class="about-step-text">The team reviews, curates, and ships the final digest each week: here on the site and on Substack. Human judgement is always the last gate before anything goes out.</p>
+          <h3 class="about-step-title">Summarise</h3>
+          <p class="about-step-text">Each surviving story earns a two-sentence TL;DR and a three-paragraph long-form resume, so you can skim the gist or go deep without ever leaving the page.</p>
+        </div>
+      </div>
+      <div class="about-step">
+        <div class="about-step-num">04</div>
+        <div class="about-step-body">
+          <h3 class="about-step-title">Curate</h3>
+          <p class="about-step-text">Separate curation passes pick the best articles and the best papers, guided by eight weeks of editorial memory — so the mix stays fresh, balanced across topics, and never repeats itself.</p>
+        </div>
+      </div>
+      <div class="about-step">
+        <div class="about-step-num">05</div>
+        <div class="about-step-body">
+          <h3 class="about-step-title">Review &amp; publish</h3>
+          <p class="about-step-text">The team reviews the shortlist — the last gate before anything ships. Then the same selection goes out three ways: here on the site, as a Substack digest, and as a weekly podcast with a locally synthesised voice.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <h2 class="about-section-title">Local by design</h2>
+    <div class="about-local">
+      <p class="about-local-lead">Almost all of that work runs on open models on our own hardware — not a commercial AI API. The articles we process, the prompts we send, and the summaries we write never leave our machines, and even the podcast voice is synthesised locally.</p>
+      <p class="about-local-lead">Two things follow from that. Your data and ours stays private — nothing is handed to a third-party model provider to log or train on. And with no per-token API bills, we can read far more sources, far more thoroughly, at a fraction of what the same pipeline would cost on a hosted service — savings that keep the newsletter free.</p>
+      <div class="about-points">
+        <div class="about-point">
+          <p class="about-point-t">Private</p>
+          <p class="about-point-d">Processing stays on our own hardware. No third-party AI service sits in the loop.</p>
+        </div>
+        <div class="about-point">
+          <p class="about-point-t">Low-cost</p>
+          <p class="about-point-d">Open local models mean no per-token bills, so coverage stays broad and the newsletter stays free.</p>
+        </div>
+        <div class="about-point">
+          <p class="about-point-t">Open models</p>
+          <p class="about-point-d">Built on open-weight models we run ourselves, with the podcast voice synthesised locally too.</p>
         </div>
       </div>
     </div>
@@ -49,7 +107,7 @@
     <div class="about-note">
       <p class="about-note-label">Get involved with Maki</p>
       <p class="about-note-text">Maki is currently in private development: the repository is not yet public, as the project is still in its early stages. That said, we believe in building with the right people from the start, and collaboration is already open.</p>
-      <p class="about-note-text">Whether you are a developer interested in contributing to the framework, a technical writer who wants to document AI agent systems, or a reviewer who can help sharpen the newsletter's quality: send a request through the <a href="{{ contact_href }}" class="about-note-link">contact page</a> and we will get back to you.</p>
+      <p class="about-note-text">Whether you are a developer interested in contributing to the framework, a technical writer who wants to document AI agent systems, or a reviewer who can help sharpen the newsletter&rsquo;s quality: send a request through the <a href="{{ contact_href }}" class="about-note-link">contact page</a> and we will get back to you.</p>
     </div>
   </section>
 
