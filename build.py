@@ -886,7 +886,7 @@ def _upsert_week(conn: "psycopg.Connection", w: dict) -> None:
     with conn.cursor() as cur:
         cur.execute(
             """
-            INSERT INTO weeks (week, year, month, month_name, label, href, source_mtime)
+            INSERT INTO bowl_of_data.weeks (week, year, month, month_name, label, href, source_mtime)
             VALUES (%s, %s, %s, %s, %s, %s, %s)
             ON CONFLICT (week, year) DO UPDATE SET
                 month = EXCLUDED.month, month_name = EXCLUDED.month_name,
@@ -897,14 +897,14 @@ def _upsert_week(conn: "psycopg.Connection", w: dict) -> None:
              w["label"], w["href"], w.get("source_mtime")),
         )
         # Full per-week replace — item_tags cascade off items.
-        cur.execute("DELETE FROM items    WHERE week = %s AND year = %s", (w["week"], w["year"]))
-        cur.execute("DELETE FROM releases WHERE week = %s AND year = %s", (w["week"], w["year"]))
+        cur.execute("DELETE FROM bowl_of_data.items    WHERE week = %s AND year = %s", (w["week"], w["year"]))
+        cur.execute("DELETE FROM bowl_of_data.releases WHERE week = %s AND year = %s", (w["week"], w["year"]))
 
         for kind, coll in (("article", w["articles"]), ("paper", w.get("papers", []))):
             for pos, it in enumerate(coll):
                 cur.execute(
                     """
-                    INSERT INTO items
+                    INSERT INTO bowl_of_data.items
                         (week, year, kind, position, title, slug, url, source, published,
                          short_summary, long_resume, long_resume_paragraphs, main_topic,
                          technologies, category, category_label)
@@ -926,14 +926,14 @@ def _upsert_week(conn: "psycopg.Connection", w: dict) -> None:
                         continue
                     seen.add(slug)
                     cur.execute(
-                        "INSERT INTO item_tags (item_id, slug, name) VALUES (%s, %s, %s)",
+                        "INSERT INTO bowl_of_data.item_tags (item_id, slug, name) VALUES (%s, %s, %s)",
                         (item_id, slug, tech),
                     )
 
         for pos, r in enumerate(w.get("model_releases", [])):
             cur.execute(
                 """
-                INSERT INTO releases
+                INSERT INTO bowl_of_data.releases
                     (week, year, position, slug, provider, model_name, release_date,
                      summary, url, key_features)
                 VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
@@ -948,7 +948,7 @@ def _canonicalize_tag_names(conn: "psycopg.Connection") -> None:
     """Set every item_tags.name to the most common spelling of its slug across the
     whole corpus — mirrors _tag_display_map. Runs after all weeks are upserted."""
     with conn.cursor() as cur:
-        cur.execute("SELECT slug, name, count(*) AS c FROM item_tags GROUP BY slug, name")
+        cur.execute("SELECT slug, name, count(*) AS c FROM bowl_of_data.item_tags GROUP BY slug, name")
         best: dict[str, tuple[int, str]] = {}
         for row in cur.fetchall():
             slug, name, c = row["slug"], row["name"], row["c"]
@@ -957,7 +957,7 @@ def _canonicalize_tag_names(conn: "psycopg.Connection") -> None:
                 best[slug] = (c, name)
         for slug, (_c, name) in best.items():
             cur.execute(
-                "UPDATE item_tags SET name = %s WHERE slug = %s AND name <> %s",
+                "UPDATE bowl_of_data.item_tags SET name = %s WHERE slug = %s AND name <> %s",
                 (name, slug, name),
             )
 
@@ -965,13 +965,13 @@ def _canonicalize_tag_names(conn: "psycopg.Connection") -> None:
 def _read_all_weeks(conn: "psycopg.Connection") -> list[dict]:
     """Reconstruct the in-memory week dicts (newest-first) the templates expect."""
     with conn.cursor() as cur:
-        cur.execute("SELECT * FROM weeks ORDER BY year DESC, week DESC")
+        cur.execute("SELECT * FROM bowl_of_data.weeks ORDER BY year DESC, week DESC")
         week_rows = cur.fetchall()
 
         all_weeks: list[dict] = []
         for w in week_rows:
             cur.execute(
-                "SELECT * FROM items WHERE week = %s AND year = %s ORDER BY kind, position",
+                "SELECT * FROM bowl_of_data.items WHERE week = %s AND year = %s ORDER BY kind, position",
                 (w["week"], w["year"]),
             )
             items = cur.fetchall()
@@ -979,7 +979,7 @@ def _read_all_weeks(conn: "psycopg.Connection") -> list[dict]:
             papers   = [i for i in items if i["kind"] == "paper"]
 
             cur.execute(
-                "SELECT * FROM releases WHERE week = %s AND year = %s ORDER BY position",
+                "SELECT * FROM bowl_of_data.releases WHERE week = %s AND year = %s ORDER BY position",
                 (w["week"], w["year"]),
             )
             releases = cur.fetchall()
