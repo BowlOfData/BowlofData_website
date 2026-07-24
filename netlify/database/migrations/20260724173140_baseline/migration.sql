@@ -5,8 +5,6 @@
 -- Tags and topics are DERIVED, not free-standing tables:
 --   topic = items.category ; tags come from item_tags (populated at load time).
 
-CREATE SCHEMA bowl_of_data;
-
 CREATE TABLE IF NOT EXISTS weeks (
   week          int              NOT NULL,
   year          int              NOT NULL,
