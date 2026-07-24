@@ -1,7 +1,22 @@
 .DS_Store
 site/.DS_Store
-.DS_Store
 .venv/*
-.DS_Store
-site/.DS_Store
-.DS_Store
+
+# Generated output — regenerated on every Netlify deploy from Neon.
+site/
+
+# Retired: Neon Postgres is now the source of truth.
+weeks_manifest.json
+
+# Local secrets (NETLIFY_DATABASE_URL for `build.py --load`).
+.env
+
+# Node / functions
+node_modules/
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Local Netlify folder
+.netlify

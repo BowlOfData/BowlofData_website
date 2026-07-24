@@ -1,0 +1,15 @@
+{
+  "name": "bowlofdata-website",
+  "version": "1.0.0",
+  "description": "Bowl of Data — dynamic pages served by Netlify Functions from Neon Postgres",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@netlify/database": "^1.1.0",
+    "@netlify/neon": "^0.1.0",
+    "drizzle-orm": "^1.0.0-beta.22"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^1.0.0-beta.22"
+  }
+}
