@@ -1,0 +1,13 @@
+{# Reusable subscribe CTA. Set `subscribe_ctx` before including to tag the UTM source. #}
+<section class="subscribe-cta" aria-label="Subscribe to Bowl of Data">
+  <div class="subscribe-cta-inner">
+    <p class="subscribe-cta-kicker">Free weekly digest</p>
+    <h2 class="subscribe-cta-title">Get next Saturday&rsquo;s issue in your inbox</h2>
+    <p class="subscribe-cta-sub">
+      The week&rsquo;s most relevant AI, security, blockchain, and engineering stories —
+      curated, summarised, and reviewed by humans. No spam, unsubscribe anytime.
+    </p>
+    <a href="{{ substack_url }}?utm_source=bowlofdata&amp;utm_medium=site&amp;utm_campaign={{ subscribe_ctx | default('inline') }}"
+       class="cta-primary" target="_blank" rel="noopener">Subscribe — it&rsquo;s free</a>
+  </div>
+</section>

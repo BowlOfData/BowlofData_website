@@ -3,6 +3,7 @@
 {% block title %}{{ label }} · {{ site_name }}{% endblock %}
 {% block og_description %}{{ articles | length }} article{{ 's' if articles | length != 1 else '' }} curated this week: AI, cybersecurity, blockchain and engineering.{% endblock %}
 {% block og_url %}{{ site_url }}/week/{{ "%02d"|format(week) }}_{{ year }}.html{% endblock %}
+{% block og_type %}article{% endblock %}
 
 {% block content %}
 <div class="week-header">
@@ -117,6 +118,9 @@
               {% endif %}
             </h2>
             <div class="article-meta">
+              {% if p.category_label %}
+              <a class="beat-badge beat-badge--{{ p.category }}" href="{{ topic_base }}{{ p.category }}.html">{{ p.category_label }}</a>
+              {% endif %}
               {% if p.source %}
               <span class="article-source">{{ p.source }}</span>
               {% endif %}
@@ -148,7 +152,12 @@
             {% if p.technologies %}
             <div class="article-tags">
               {% for tech in p.technologies %}
+              {% set tslug = tech | slugify %}
+              {% if tslug in linkable_tags %}
+              <a class="tag tag--link" href="{{ tag_base }}{{ tslug }}.html">{{ tech }}</a>
+              {% else %}
               <span class="tag">{{ tech }}</span>
+              {% endif %}
               {% endfor %}
             </div>
             {% endif %}
@@ -196,6 +205,9 @@
             {% endif %}
           </h2>
           <div class="article-meta">
+            {% if a.category_label %}
+            <a class="beat-badge beat-badge--{{ a.category }}" href="{{ topic_base }}{{ a.category }}.html">{{ a.category_label }}</a>
+            {% endif %}
             {% if a.source %}
             <span class="article-source">{{ a.source }}</span>
             {% endif %}
@@ -227,7 +239,12 @@
           {% if a.technologies %}
           <div class="article-tags">
             {% for tech in a.technologies %}
+            {% set tslug = tech | slugify %}
+            {% if tslug in linkable_tags %}
+            <a class="tag tag--link" href="{{ tag_base }}{{ tslug }}.html">{{ tech }}</a>
+            {% else %}
             <span class="tag">{{ tech }}</span>
+            {% endif %}
             {% endfor %}
           </div>
           {% endif %}
@@ -256,4 +273,7 @@
   </div>
 
 </section>
+
+{% set subscribe_ctx = 'week' %}
+{% include "_subscribe.html" %}
 {% endblock %}

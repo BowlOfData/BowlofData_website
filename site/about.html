@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About · Bowl of Data</title>
   <meta name="description" content="How Bowl of Data works: an AI-powered pipeline reads hundreds of sources every week across AI, security, blockchain, and engineering — running mainly on local open models for privacy and cost — reviewed by humans before it ships.">
+  <meta name="author" content="Bowl of Data team">
   <link rel="canonical" href="https://bowlofdata.net/about.html">
   <link rel="icon" type="image/png" href="https://bowlofdata.net/imgs/logo.png">
   <link rel="apple-touch-icon" href="https://bowlofdata.net/imgs/logo.png">
@@ -19,6 +20,9 @@
   <meta property="og:title" content="About · Bowl of Data">
   <meta property="og:description" content="How Bowl of Data works: an AI-powered pipeline reads hundreds of sources every week across AI, security, blockchain, and engineering — running mainly on local open models for privacy and cost — reviewed by humans before it ships.">
   <meta property="og:image" content="https://bowlofdata.net/imgs/bowl.png">
+  <meta property="og:image:width" content="2560">
+  <meta property="og:image:height" content="1440">
+  <meta property="og:image:alt" content="Bowl of Data — weekly tech newsletter">
   <meta property="og:url" content="https://bowlofdata.net/about.html">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
@@ -28,6 +32,8 @@
   <link rel="alternate" type="application/rss+xml" title="Bowl of Data RSS Feed" href="https://bowlofdata.net/feed.xml">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Bowl of Data", "description": "A weekly digest of the most relevant tech stories", "url": "https://bowlofdata.net", "logo": "https://bowlofdata.net/imgs/logo.png", "sameAs": ["https://bowlofdata.substack.com/", "https://www.instagram.com/bowl_of_data", "https://open.spotify.com/show/033Mqus9YAIssepHakRIIk"]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Bowl of Data", "description": "A weekly digest of the most relevant tech stories", "url": "https://bowlofdata.net"}</script>
+  
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is Bowl of Data?", "acceptedAnswer": {"@type": "Answer", "text": "Bowl of Data is a free weekly newsletter that curates the most relevant technology stories across AI and machine learning, cybersecurity, blockchain and crypto, and software engineering — read hundreds of sources so you don't have to."}}, {"@type": "Question", "name": "How is the newsletter curated?", "acceptedAnswer": {"@type": "Answer", "text": "An AI pipeline called Maki scans hundreds of sources each week, reads and ranks every candidate against live trend signals, and writes a TL;DR plus a longer summary. The team reviews the shortlist before anything ships."}}, {"@type": "Question", "name": "Is Bowl of Data free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every issue is free to read on the website and via the Substack email. Running mainly on open local models keeps costs low enough to keep it that way."}}, {"@type": "Question", "name": "How often is it published, and where can I read it?", "acceptedAnswer": {"@type": "Answer", "text": "A new issue ships every week. You can read it here on the site, subscribe by email on Substack, or listen to the companion podcast on Spotify."}}]}</script>
 </head>
 <body>
 
@@ -46,10 +52,11 @@
       <nav class="header-nav">
         <a href="index.html" class="nav-link" >Home</a>
         <a href="archive.html" class="nav-link" >Archive</a>
+        <a href="topics.html" class="nav-link" >Topics</a>
         <a href="services.html" class="nav-link nav-link--services" >Services</a>
         <div class="nav-more-group">
-          <button class="nav-more-btn" aria-expanded="false" aria-haspopup="true">
-            More
+          <button class="nav-more-btn" aria-expanded="false" aria-haspopup="true" data-active="true">
+            About
             <svg class="nav-more-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
           </button>
           <div class="nav-more-panel">
@@ -177,6 +184,28 @@
     </div>
   </section>
 
+  <section class="about-section">
+    <h2 class="about-section-title">Frequently asked questions</h2>
+    <div class="faq">
+      <details class="faq-item">
+        <summary>What is Bowl of Data?</summary>
+        <div class="faq-answer">Bowl of Data is a free weekly newsletter that curates the most relevant technology stories across AI and machine learning, cybersecurity, blockchain and crypto, and software engineering — read hundreds of sources so you don&rsquo;t have to.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How is the newsletter curated?</summary>
+        <div class="faq-answer">An AI pipeline called Maki scans hundreds of sources each week, reads and ranks every candidate against live trend signals, and writes a TL;DR plus a longer summary. The team reviews the shortlist before anything ships.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Is Bowl of Data free?</summary>
+        <div class="faq-answer">Yes. Every issue is free to read on the website and via the Substack email. Running mainly on open local models keeps costs low enough to keep it that way.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How often is it published, and where can I read it?</summary>
+        <div class="faq-answer">A new issue ships every week. You can read it here on the site, subscribe by email on Substack, or listen to the companion podcast on Spotify.</div>
+      </details>
+    </div>
+  </section>
+
   <section class="about-cta-section">
     <h2 class="about-cta-title">Join the digest</h2>
     <p class="about-cta-sub">Free, weekly, no spam. Just the stories that matter.</p>
@@ -193,6 +222,7 @@
       <div class="footer-text">
         <p class="footer-name">Bowl of Data</p>
         <p class="footer-sub">A weekly digest of the most relevant tech stories</p>
+        <p class="footer-authored">Curated by Maki &amp; reviewed by the Bowl of Data team.</p>
       </div>
       <div class="footer-social">
         <a href="https://www.instagram.com/bowl_of_data" class="footer-social-link" target="_blank" rel="noopener" aria-label="Instagram">

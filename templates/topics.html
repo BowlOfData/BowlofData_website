@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Topics & Tags · {{ site_name }}{% endblock %}
+{% block og_description %}Browse Bowl of Data by topic — AI, cybersecurity, blockchain, and software engineering — and by technology tag across every weekly issue.{% endblock %}
+{% block og_url %}{{ site_url }}/topics.html{% endblock %}
+
+{% block content %}
+<div class="collection-header">
+  <div class="collection-header-inner">
+    <p class="collection-kicker">Browse</p>
+    <h1 class="collection-title">Topics &amp; tags</h1>
+    <p class="collection-intro">
+      Every issue of Bowl of Data, reorganised by beat and by technology — the fast way into
+      our weekly coverage of AI, cybersecurity, blockchain, and software engineering.
+    </p>
+  </div>
+</div>
+
+<section class="band">
+  <div class="band-inner">
+    <div class="band-head">
+      <h2 class="band-title">By topic</h2>
+      <span class="eyebrow">Four beats</span>
+    </div>
+    <div class="cov">
+      {% for hub in hubs %}
+      <a class="cov-item cov-{{ hub.slug }}" href="topic/{{ hub.slug }}.html">
+        <p class="cov-k">{{ hub.meta.label }}</p>
+        <h3 class="cov-n">{{ hub.meta.h1 }}</h3>
+        <p class="cov-d">{{ hub.count }} curated item{{ 's' if hub.count != 1 else '' }} across every issue →</p>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% if tags %}
+<section class="band">
+  <div class="band-inner">
+    <div class="band-head">
+      <h2 class="band-title">By technology</h2>
+      <span class="eyebrow">{{ tags | length }} tags</span>
+    </div>
+    <div class="tag-cloud">
+      {% for tag in tags %}
+      <a href="tag/{{ tag.slug }}.html" class="chip chip--lg">{{ tag.name }} <span>{{ tag.count }}</span></a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% set subscribe_ctx = 'topics' %}
+{% include "_subscribe.html" %}
+{% endblock %}

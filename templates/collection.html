@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page_title }}{% endblock %}
+{% block og_description %}{{ og_desc }}{% endblock %}
+{% block og_url %}{{ canonical_url }}{% endblock %}
+{% block og_type %}article{% endblock %}
+
+{% block content %}
+<div class="collection-header">
+  <div class="collection-header-inner">
+    <a href="{{ topics_href }}" class="back-link">← All topics</a>
+    <p class="collection-kicker">{{ kicker }}</p>
+    <h1 class="collection-title">{{ h1 }}</h1>
+    <p class="collection-intro">{{ intro }}</p>
+    <p class="collection-meta">{{ count }} item{{ 's' if count != 1 else '' }} · {{ groups | length }} issue{{ 's' if groups | length != 1 else '' }}</p>
+
+    {% if related_topics %}
+    <div class="collection-chips">
+      {% for c in related_topics %}
+      <a href="{{ topic_base }}{{ c.slug }}.html" class="chip chip--beat">{{ c.label }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if related_tags %}
+    <div class="collection-chips">
+      {% for t in related_tags %}
+      <a href="{{ tag_base }}{{ t.slug }}.html" class="chip">{{ t.name }} <span>{{ t.count }}</span></a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<div class="collection-body">
+  {% for g in groups %}
+  <section class="collection-group">
+    <div class="collection-group-head">
+      <h2 class="collection-group-title">{{ g.label }}</h2>
+      <a href="../{{ g.week_href }}" class="collection-group-link">Read the issue →</a>
+    </div>
+    <ul class="collection-list">
+      {% for it in g.entries %}
+      <li class="collection-item">
+        <a href="../{{ it.week_href }}#{{ it.slug }}" class="collection-item-title">{{ it.title }}</a>
+        {% if it.short_summary %}<p class="collection-item-sum">{{ it.short_summary }}</p>{% endif %}
+        <div class="collection-item-meta">
+          <span class="chip chip--beat">{{ it.category_label }}</span>
+          {% if it.source %}<span class="collection-item-src">{{ it.source }}</span>{% endif %}
+          {% if it.url %}<a href="{{ it.url }}" target="_blank" rel="noopener" class="collection-item-ext">Source ↗</a>{% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+</div>
+
+{% set subscribe_ctx = 'topic' %}
+{% include "_subscribe.html" %}
+{% endblock %}
