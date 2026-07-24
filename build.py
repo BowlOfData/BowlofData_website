@@ -1,30 +1,14 @@
 """
-BowlofData Website Builder — incremental
+BowlofData Website Builder — Postgres-backed
 
-Reads summaries_WW_YYYY.json files from the maki newsletter output directory,
-renders them into static HTML pages using Jinja2, and writes a self-contained
-site into the `site/` directory.
+Neon Postgres (Netlify DB) is the single source of truth for newsletter content.
 
-Incremental behaviour
----------------------
-- A manifest file (`weeks_manifest.json` at the repo root) tracks every week
-  that has ever been built, including its full normalised article data and the
-  mtime of the source file at the time it was last rendered.
-- On each run only weeks whose source JSON is new or has changed (mtime newer
-  than the manifest entry) are re-rendered, plus their immediate neighbours so
-  that prev/next links stay accurate.
-- Weeks whose source JSON has been removed from the maki output are kept in the
-  manifest and their HTML is left untouched — the archive index always reflects
-  every issue ever published.
+    python3 build.py --load     # maki summaries_WW_YYYY.json  ->  Postgres (upsert)
+    python3 build.py --render   # Postgres  ->  static pages + sitemap/feed/llms/robots
 
-Usage:
-    python3 build.py
-
-Override the maki output path:
-    MAKI_OUTPUT_DIR=/path/to/output python3 build.py
-
-Force a full rebuild (ignores the manifest):
-    FORCE_REBUILD=1 python3 build.py
+Dynamic pages (week / topic / tag / archive) are server-rendered on request by the
+Netlify Functions in netlify/functions/. Override the maki source path with
+MAKI_OUTPUT_DIR=/path/to/output for the --load step.
 """
 
 from __future__ import annotations
@@ -37,6 +21,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+import psycopg
+from psycopg.rows import dict_row
+from psycopg.types.json import Json
+from dotenv import load_dotenv
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 # ---------------------------------------------------------------------------
@@ -47,8 +35,8 @@ HERE          = Path(__file__).parent
 TEMPLATES_DIR = HERE / "templates"
 STATIC_DIR    = HERE / "static"
 IMGS_DIR      = HERE / "imgs"
+ROOT_STATIC_DIR = HERE / "root_static"   # verbatim files copied to site/ root (e.g. Google verification)
 SITE_DIR      = HERE / "site"
-MANIFEST_PATH = HERE / "weeks_manifest.json"   # outside site/ so it survives gitignore
 
 MAKI_OUTPUT_DIR = Path(
     os.environ.get(
@@ -56,8 +44,6 @@ MAKI_OUTPUT_DIR = Path(
         str(HERE.parent / "maki_newsletter" / "maki_newsletter" / "output"),
     )
 )
-
-FORCE_REBUILD = os.environ.get("FORCE_REBUILD", "").strip() not in ("", "0")
 
 SITE_NAME    = "Bowl of Data"
 SITE_TAGLINE = "A weekly digest of the most relevant tech stories"
@@ -871,59 +857,229 @@ def _generate_llms_txt(all_weeks: list[dict], site_url: str, site_name: str, tag
     ]
     return "\n".join(lines) + "\n"
 
-
 # ---------------------------------------------------------------------------
-# Manifest  (persistent build state)
+# Postgres (Neon / Netlify DB) — single source of truth
 # ---------------------------------------------------------------------------
 
-def _load_manifest() -> dict[tuple[int, int], dict]:
-    """
-    Load the weeks manifest from disk.
-    Returns a dict keyed by (week, year).
-    Returns an empty dict when no manifest exists yet.
-    """
-    if not MANIFEST_PATH.exists():
-        return {}
-    try:
-        entries = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
-        return {(e["week"], e["year"]): e for e in entries}
-    except (OSError, json.JSONDecodeError, KeyError) as exc:
-        print(f"  Warning: could not load manifest ({exc}) — treating all weeks as new")
-        return {}
-
-
-def _save_manifest(manifest: dict[tuple[int, int], dict]) -> None:
-    """Write the manifest to disk, sorted newest-first."""
-    entries = sorted(manifest.values(), key=lambda e: (e["year"], e["week"]), reverse=True)
-    MANIFEST_PATH.write_text(
-        json.dumps(entries, indent=2, ensure_ascii=False),
-        encoding="utf-8",
+def _db_url() -> str:
+    """Resolve the Neon connection string (Netlify DB injects NETLIFY_DATABASE_URL)."""
+    load_dotenv()  # local .env for the `--load` step; no-op on Netlify
+    url = (
+        os.environ.get("NETLIFY_DATABASE_URL")
+        or os.environ.get("NETLIFY_DATABASE_URL_UNPOOLED")
+        or os.environ.get("DATABASE_URL")
     )
+    if not url:
+        raise SystemExit(
+            "No database URL found. Set NETLIFY_DATABASE_URL (run `netlify db init`,\n"
+            "or add it to a local .env for `python3 build.py --load`)."
+        )
+    return url
+
+
+def _connect() -> "psycopg.Connection":
+    return psycopg.connect(_db_url(), row_factory=dict_row)
+
+
+def _upsert_week(conn: "psycopg.Connection", w: dict) -> None:
+    """Idempotently replace one week's rows (weeks/items/releases/item_tags)."""
+    with conn.cursor() as cur:
+        cur.execute(
+            """
+            INSERT INTO weeks (week, year, month, month_name, label, href, source_mtime)
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
+            ON CONFLICT (week, year) DO UPDATE SET
+                month = EXCLUDED.month, month_name = EXCLUDED.month_name,
+                label = EXCLUDED.label, href = EXCLUDED.href,
+                source_mtime = EXCLUDED.source_mtime
+            """,
+            (w["week"], w["year"], w.get("month"), w.get("month_name"),
+             w["label"], w["href"], w.get("source_mtime")),
+        )
+        # Full per-week replace — item_tags cascade off items.
+        cur.execute("DELETE FROM items    WHERE week = %s AND year = %s", (w["week"], w["year"]))
+        cur.execute("DELETE FROM releases WHERE week = %s AND year = %s", (w["week"], w["year"]))
+
+        for kind, coll in (("article", w["articles"]), ("paper", w.get("papers", []))):
+            for pos, it in enumerate(coll):
+                cur.execute(
+                    """
+                    INSERT INTO items
+                        (week, year, kind, position, title, slug, url, source, published,
+                         short_summary, long_resume, long_resume_paragraphs, main_topic,
+                         technologies, category, category_label)
+                    VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+                    RETURNING id
+                    """,
+                    (w["week"], w["year"], kind, pos,
+                     it.get("title"), it.get("slug"), it.get("url"), it.get("source"),
+                     it.get("published"), it.get("short_summary"), it.get("long_resume"),
+                     Json(it.get("long_resume_paragraphs", [])), it.get("main_topic"),
+                     Json(it.get("technologies", [])), it.get("category"),
+                     it.get("category_label")),
+                )
+                item_id = cur.fetchone()["id"]
+                seen: set[str] = set()
+                for tech in it.get("technologies", []):
+                    slug = _slugify(tech)
+                    if not slug or slug in seen:
+                        continue
+                    seen.add(slug)
+                    cur.execute(
+                        "INSERT INTO item_tags (item_id, slug, name) VALUES (%s, %s, %s)",
+                        (item_id, slug, tech),
+                    )
+
+        for pos, r in enumerate(w.get("model_releases", [])):
+            cur.execute(
+                """
+                INSERT INTO releases
+                    (week, year, position, slug, provider, model_name, release_date,
+                     summary, url, key_features)
+                VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+                """,
+                (w["week"], w["year"], pos, r.get("slug"), r.get("provider"),
+                 r.get("model_name"), r.get("release_date"), r.get("summary"),
+                 r.get("url"), Json(r.get("key_features", []))),
+            )
+
+
+def _canonicalize_tag_names(conn: "psycopg.Connection") -> None:
+    """Set every item_tags.name to the most common spelling of its slug across the
+    whole corpus — mirrors _tag_display_map. Runs after all weeks are upserted."""
+    with conn.cursor() as cur:
+        cur.execute("SELECT slug, name, count(*) AS c FROM item_tags GROUP BY slug, name")
+        best: dict[str, tuple[int, str]] = {}
+        for row in cur.fetchall():
+            slug, name, c = row["slug"], row["name"], row["c"]
+            cur_best = best.get(slug)
+            if cur_best is None or c > cur_best[0] or (c == cur_best[0] and name < cur_best[1]):
+                best[slug] = (c, name)
+        for slug, (_c, name) in best.items():
+            cur.execute(
+                "UPDATE item_tags SET name = %s WHERE slug = %s AND name <> %s",
+                (name, slug, name),
+            )
+
+
+def _read_all_weeks(conn: "psycopg.Connection") -> list[dict]:
+    """Reconstruct the in-memory week dicts (newest-first) the templates expect."""
+    with conn.cursor() as cur:
+        cur.execute("SELECT * FROM weeks ORDER BY year DESC, week DESC")
+        week_rows = cur.fetchall()
+
+        all_weeks: list[dict] = []
+        for w in week_rows:
+            cur.execute(
+                "SELECT * FROM items WHERE week = %s AND year = %s ORDER BY kind, position",
+                (w["week"], w["year"]),
+            )
+            items = cur.fetchall()
+            articles = [i for i in items if i["kind"] == "article"]
+            papers   = [i for i in items if i["kind"] == "paper"]
+
+            cur.execute(
+                "SELECT * FROM releases WHERE week = %s AND year = %s ORDER BY position",
+                (w["week"], w["year"]),
+            )
+            releases = cur.fetchall()
+
+            entry = dict(w)
+            entry["articles"]         = articles
+            entry["papers"]           = papers
+            entry["model_releases"]   = releases
+            entry["article_count"]    = len(articles)
+            entry["preview_titles"]   = [a["title"] for a in articles[:3] if a["title"]]
+            entry["preview_articles"] = articles[:5]
+            all_weeks.append(entry)
+        return all_weeks
+
 
 # ---------------------------------------------------------------------------
-# Builder
+# --load : maki JSON  ->  Postgres
 # ---------------------------------------------------------------------------
 
-def build() -> None:
+def load() -> None:
     print(f"Scanning: {MAKI_OUTPUT_DIR}")
-    if FORCE_REBUILD:
-        print("  FORCE_REBUILD=1 — ignoring manifest, will re-render all weeks")
     if not MAKI_OUTPUT_DIR.exists():
-        print(f"  Note: source directory not found — building from manifest only")
+        raise SystemExit(f"  Source directory not found: {MAKI_OUTPUT_DIR}")
 
-    # Ensure site output skeleton exists (safe on repeated runs)
-    (SITE_DIR / "week").mkdir(parents=True, exist_ok=True)
+    entries: list[dict] = []
+    for path in sorted(MAKI_OUTPUT_DIR.glob("summaries_*.json")):
+        parts = _parse_summaries_filename(path)
+        if parts is None:
+            continue
+        week_num, year = parts
+        source_mtime = path.stat().st_mtime
 
-    # robots.txt never changes with content — write it unconditionally so it
-    # is always present even on a first run with no newsletter data
+        try:
+            raw = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            print(f"  Warning: could not load {path.name}: {exc}")
+            continue
+
+        mr_path = MAKI_OUTPUT_DIR / f"model_releases_{week_num:02d}_{year}.json"
+        model_releases: list[dict] = []
+        if mr_path.exists():
+            try:
+                model_releases = _normalise_releases(json.loads(mr_path.read_text(encoding="utf-8")))
+            except (OSError, json.JSONDecodeError) as exc:
+                print(f"  Warning: could not load {mr_path.name}: {exc}")
+
+        papers_path = MAKI_OUTPUT_DIR / f"curated_papers_{week_num:02d}_{year}.json"
+        papers: list[dict] = []
+        if papers_path.exists():
+            try:
+                papers = _normalise_papers(json.loads(papers_path.read_text(encoding="utf-8")))
+            except (OSError, json.JSONDecodeError) as exc:
+                print(f"  Warning: could not load {papers_path.name}: {exc}")
+
+        articles = _normalise_articles(raw)
+        entry = _build_week_entry(
+            week_num, year, articles, source_mtime,
+            model_releases=model_releases, papers=papers,
+        )
+        entries.append(entry)
+        print(f"  Parsed    {_week_label(week_num, year)} "
+              f"({len(articles)} articles, {len(model_releases)} releases, {len(papers)} papers)")
+
+    if not entries:
+        print("  No newsletter data found — nothing to load.")
+        return
+
+    conn = _connect()
+    try:
+        for entry in entries:
+            _upsert_week(conn, entry)
+        _canonicalize_tag_names(conn)
+        conn.commit()
+    finally:
+        conn.close()
+    print(f"\nLoad complete: {len(entries)} week(s) upserted into Postgres.")
+
+
+# ---------------------------------------------------------------------------
+# --render : Postgres  ->  static pages + sitemap/feed/llms/robots
+# ---------------------------------------------------------------------------
+
+def render() -> None:
+    conn = _connect()
+    try:
+        all_weeks = _read_all_weeks(conn)
+    finally:
+        conn.close()
+
+    # Output skeleton + assets
+    SITE_DIR.mkdir(parents=True, exist_ok=True)
     (SITE_DIR / "robots.txt").write_text(_generate_robots_txt(SITE_URL), encoding="utf-8")
-
-    # Sync brand assets and static files on every run so edits are picked up
     if IMGS_DIR.exists():
         shutil.copytree(IMGS_DIR, SITE_DIR / "imgs", dirs_exist_ok=True)
     shutil.copytree(STATIC_DIR, SITE_DIR / "static", dirs_exist_ok=True)
+    # Verbatim root files (e.g. Google Search Console verification) that aren't
+    # rendered from data but must still be published at the site root.
+    if ROOT_STATIC_DIR.exists():
+        shutil.copytree(ROOT_STATIC_DIR, SITE_DIR, dirs_exist_ok=True)
 
-    # Jinja2 environment
     env = Environment(
         loader=FileSystemLoader(str(TEMPLATES_DIR)),
         autoescape=select_autoescape(["html"]),
@@ -939,98 +1095,10 @@ def build() -> None:
     )
     env.filters["slugify"] = _slugify
 
-    # ------------------------------------------------------------------
-    # Phase 1: load manifest and reconcile with current source files
-    # ------------------------------------------------------------------
-    manifest: dict[tuple[int, int], dict] = {} if FORCE_REBUILD else _load_manifest()
-    needs_rebuild: set[tuple[int, int]] = set()
+    if not all_weeks:
+        print("  No weeks in database — rendering static shell only.")
 
-    for path in sorted(MAKI_OUTPUT_DIR.glob("summaries_*.json")) if MAKI_OUTPUT_DIR.exists() else []:
-        parts = _parse_summaries_filename(path)
-        if parts is None:
-            continue
-        week_num, year = parts
-        key = (week_num, year)
-        source_mtime = path.stat().st_mtime
-
-        mr_path = MAKI_OUTPUT_DIR / f"model_releases_{week_num:02d}_{year}.json"
-        mr_mtime = mr_path.stat().st_mtime if mr_path.exists() else 0
-
-        papers_path = MAKI_OUTPUT_DIR / f"curated_papers_{week_num:02d}_{year}.json"
-        papers_mtime = papers_path.stat().st_mtime if papers_path.exists() else 0
-
-        html_exists = (SITE_DIR / _week_href(week_num, year)).exists()
-
-        existing = manifest.get(key)
-        if (
-            not FORCE_REBUILD
-            and existing is not None
-            and source_mtime <= existing.get("source_mtime", 0)
-            and mr_mtime <= existing.get("model_releases_mtime", 0)
-            and papers_mtime <= existing.get("papers_mtime", 0)
-            and html_exists
-        ):
-            print(f"  Skipping  {_week_label(week_num, year)} — up to date")
-            continue
-
-        try:
-            raw = json.loads(path.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError) as exc:
-            print(f"  Warning: could not load {path.name}: {exc}")
-            continue
-
-        model_releases: list[dict] = []
-        if mr_path.exists():
-            try:
-                model_releases = _normalise_releases(
-                    json.loads(mr_path.read_text(encoding="utf-8"))
-                )
-            except (OSError, json.JSONDecodeError) as exc:
-                print(f"  Warning: could not load {mr_path.name}: {exc}")
-
-        papers: list[dict] = []
-        if papers_path.exists():
-            try:
-                papers = _normalise_papers(
-                    json.loads(papers_path.read_text(encoding="utf-8"))
-                )
-            except (OSError, json.JSONDecodeError) as exc:
-                print(f"  Warning: could not load {papers_path.name}: {exc}")
-
-        articles = _normalise_articles(raw)
-        manifest[key] = _build_week_entry(
-            week_num, year, articles, source_mtime,
-            model_releases=model_releases,
-            model_releases_mtime=mr_mtime,
-            papers=papers,
-            papers_mtime=papers_mtime,
-        )
-        needs_rebuild.add(key)
-        verb = "forced" if FORCE_REBUILD else ("new" if existing is None else "updated")
-        releases_note = f", {len(model_releases)} releases" if model_releases else ""
-        papers_note = f", {len(papers)} papers" if papers else ""
-        print(f"  Queued    {_week_label(week_num, year)} ({verb}, {len(articles)} articles{releases_note}{papers_note})")
-
-    # Queue weeks whose HTML file is absent even though the manifest knows about them
-    # (e.g. first run after cloning the repo when site/ was gitignored)
-    for key, entry in manifest.items():
-        if not (SITE_DIR / entry["href"]).exists():
-            needs_rebuild.add(key)
-            print(f"  Queued    {entry['label']} (HTML missing, rebuilding from manifest)")
-
-    if not manifest:
-        print("  No newsletter data found — nothing to build.")
-        return
-
-    # ------------------------------------------------------------------
-    # Phase 2: expand render set to include neighbours of changed pages
-    # so their prev/next links stay accurate
-    # ------------------------------------------------------------------
-    all_weeks = sorted(manifest.values(), key=lambda w: (w["year"], w["week"]), reverse=True)
-    week_keys  = [(w["week"], w["year"]) for w in all_weeks]
-
-    # Backfill categories (covers weeks loaded from an older manifest) and build
-    # the topic-hub and technology-tag aggregates used by the landing pages below.
+    # Aggregates used by the topics index, sitemap and llms.txt
     for w in all_weeks:
         for it in w["articles"] + w.get("papers", []):
             _ensure_category(it)
@@ -1041,66 +1109,7 @@ def build() -> None:
     hub_slugs      = [c for c in CATEGORY_ORDER if hubs[c]["count"]]
     tag_slugs      = [s for s, _ in sorted(tags.items(), key=lambda kv: -kv[1]["count"])]
 
-    render_set: set[tuple[int, int]] = set(needs_rebuild)
-    for key in list(needs_rebuild):
-        idx = week_keys.index(key)
-        if idx > 0:
-            render_set.add(week_keys[idx - 1])   # newer neighbour
-        if idx + 1 < len(week_keys):
-            render_set.add(week_keys[idx + 1])   # older neighbour
-
-    # ------------------------------------------------------------------
-    # Phase 3: render week pages
-    # ------------------------------------------------------------------
-    week_tmpl     = env.get_template("week.html")
-    rendered_count = 0
-
-    for i, w in enumerate(all_weeks):
-        key = (w["week"], w["year"])
-        if key not in render_set:
-            continue
-
-        next_week = all_weeks[i - 1] if i > 0 else None            # newer issue
-        prev_week = all_weeks[i + 1] if i + 1 < len(all_weeks) else None  # older issue
-
-        out_path = SITE_DIR / w["href"]
-        html = week_tmpl.render(
-            week=w["week"],
-            year=w["year"],
-            label=w["label"],
-            articles=w["articles"],
-            model_releases=w.get("model_releases", []),
-            papers=w.get("papers", []),
-            all_weeks=all_weeks,
-            prev_week=prev_week,
-            next_week=next_week,
-            css_path="../static/style.css",
-            logo_path="../imgs/logo.png",
-            index_href="../index.html",
-            archive_href="../archive.html",
-            topics_href="../topics.html",
-            about_href="../about.html",
-            contact_href="../contact.html",
-            team_href="../team.html",
-            services_href="../services.html",
-            tag_base="../tag/",
-            topic_base="../topic/",
-            linkable_tags=kept_tag_slugs,
-            jsonld_str=_make_week_jsonld(w, SITE_URL, SITE_NAME),
-            breadcrumb_jsonld_str=_make_breadcrumb_jsonld([
-                (SITE_NAME, f"{SITE_URL}/"),
-                ("Archive", f"{SITE_URL}/archive.html"),
-                (w["label"], f"{SITE_URL}/{w['href']}"),
-            ]),
-        )
-        out_path.write_text(html, encoding="utf-8")
-        print(f"  Rendered  {w['label']} ({w['article_count']} articles) → {out_path.relative_to(HERE)}")
-        rendered_count += 1
-
-    # ------------------------------------------------------------------
-    # Phase 4: always regenerate the landing page and archive index
-    # ------------------------------------------------------------------
-    latest_week = all_weeks[0] if all_weeks else None
+    latest_week        = all_weeks[0] if all_weeks else None
     website_jsonld_str = _make_website_jsonld(SITE_URL, SITE_NAME, SITE_TAGLINE)
 
     shared = dict(
@@ -1126,111 +1135,23 @@ def build() -> None:
         total_articles=sum(w["article_count"] for w in all_weeks),
     )
     (SITE_DIR / "index.html").write_text(landing_html, encoding="utf-8")
-    print(f"  Rendered  landing → site/index.html")
-
-    archive_html = env.get_template("archive.html").render(
-        **shared,
-        weeks=all_weeks,
-        weeks_by_year=_group_weeks_by_year_month(all_weeks),
-        total_count=len(all_weeks),
-        current_page="archive",
-    )
-    (SITE_DIR / "archive.html").write_text(archive_html, encoding="utf-8")
-    print(f"  Rendered  archive → site/archive.html")
+    print("  Rendered  landing → site/index.html")
 
     contact_html = env.get_template("contact.html").render(**shared, current_page="contact")
     (SITE_DIR / "contact.html").write_text(contact_html, encoding="utf-8")
-    print(f"  Rendered  contact → site/contact.html")
 
     about_html = env.get_template("about.html").render(
-        **shared, current_page="about",
-        faq_jsonld_str=_make_faq_jsonld(ABOUT_FAQ),
+        **shared, current_page="about", faq_jsonld_str=_make_faq_jsonld(ABOUT_FAQ),
     )
     (SITE_DIR / "about.html").write_text(about_html, encoding="utf-8")
-    print(f"  Rendered  about   → site/about.html")
 
     team_html = env.get_template("team.html").render(**shared, current_page="team", imgs_path="imgs/")
     (SITE_DIR / "team.html").write_text(team_html, encoding="utf-8")
-    print(f"  Rendered  team → site/team.html")
 
     services_html = env.get_template("services.html").render(
-        **shared, current_page="services",
-        faq_jsonld_str=_make_faq_jsonld(SERVICES_FAQ),
+        **shared, current_page="services", faq_jsonld_str=_make_faq_jsonld(SERVICES_FAQ),
     )
     (SITE_DIR / "services.html").write_text(services_html, encoding="utf-8")
-    print(f"  Rendered  services → site/services.html")
-
-    # ------------------------------------------------------------------
-    # Phase 4b: topic hubs, technology tag pages, and the topics index
-    # ------------------------------------------------------------------
-    (SITE_DIR / "topic").mkdir(parents=True, exist_ok=True)
-    (SITE_DIR / "tag").mkdir(parents=True, exist_ok=True)
-
-    collection_nav = dict(
-        css_path="../static/style.css",
-        logo_path="../imgs/logo.png",
-        index_href="../index.html",
-        archive_href="../archive.html",
-        topics_href="../topics.html",
-        about_href="../about.html",
-        contact_href="../contact.html",
-        team_href="../team.html",
-        services_href="../services.html",
-        tag_base="../tag/",
-        topic_base="../topic/",
-    )
-    collection_tmpl = env.get_template("collection.html")
-
-    for cat in hub_slugs:
-        hub = hubs[cat]
-        meta = hub["meta"]
-        url = f"{SITE_URL}/topic/{cat}.html"
-        flat = [it for g in hub["groups"] for it in g["entries"]]
-        og_desc = (f"{meta['h1']} coverage from {SITE_NAME} — {hub['count']} curated items "
-                   "across every weekly issue.")
-        html = collection_tmpl.render(
-            **collection_nav, current_page="topics",
-            kicker="Topic", h1=meta["h1"], page_title=f"{meta['h1']} News · {SITE_NAME}",
-            intro=meta["intro"], og_desc=og_desc, canonical_url=url,
-            count=hub["count"], groups=hub["groups"],
-            related_tags=hub["related_tags"], related_topics=None,
-            jsonld_str=_make_collection_jsonld(
-                f"{meta['h1']} · {SITE_NAME}", og_desc, url, flat, SITE_URL, SITE_NAME),
-            breadcrumb_jsonld_str=_make_breadcrumb_jsonld([
-                (SITE_NAME, f"{SITE_URL}/"),
-                ("Topics", f"{SITE_URL}/topics.html"),
-                (meta["h1"], url),
-            ]),
-        )
-        (SITE_DIR / "topic" / f"{cat}.html").write_text(html, encoding="utf-8")
-    print(f"  Rendered  {len(hub_slugs)} topic hub(s) → site/topic/")
-
-    for slug in tag_slugs:
-        tag = tags[slug]
-        url = f"{SITE_URL}/tag/{slug}.html"
-        flat = [it for g in tag["groups"] for it in g["entries"]]
-        og_desc = (f"Weekly {tag['name']} coverage curated by {SITE_NAME} — "
-                   f"{tag['count']} items across our tech newsletter issues.")
-        intro = (f"Every {tag['name']} story we've curated in {SITE_NAME}, newest issue "
-                 "first — part of our weekly digest across AI, security, blockchain, and "
-                 "engineering.")
-        html = collection_tmpl.render(
-            **collection_nav, current_page="topics",
-            kicker="Tag", h1=tag["name"],
-            page_title=f"{tag['name']} — weekly coverage · {SITE_NAME}",
-            intro=intro, og_desc=og_desc, canonical_url=url,
-            count=tag["count"], groups=tag["groups"],
-            related_tags=None, related_topics=tag["categories"],
-            jsonld_str=_make_collection_jsonld(
-                f"{tag['name']} · {SITE_NAME}", og_desc, url, flat, SITE_URL, SITE_NAME),
-            breadcrumb_jsonld_str=_make_breadcrumb_jsonld([
-                (SITE_NAME, f"{SITE_URL}/"),
-                ("Topics", f"{SITE_URL}/topics.html"),
-                (tag["name"], url),
-            ]),
-        )
-        (SITE_DIR / "tag" / f"{slug}.html").write_text(html, encoding="utf-8")
-    print(f"  Rendered  {len(tag_slugs)} tag page(s) → site/tag/")
 
     topics_index_html = env.get_template("topics.html").render(
         **{**shared, "jsonld_str": _make_breadcrumb_jsonld([
@@ -1242,47 +1163,32 @@ def build() -> None:
         tags=[tags[s] for s in tag_slugs],
     )
     (SITE_DIR / "topics.html").write_text(topics_index_html, encoding="utf-8")
-    print(f"  Rendered  topics index → site/topics.html")
+    print("  Rendered  static pages → index, topics, about, team, contact, services")
 
-    # ------------------------------------------------------------------
-    # Phase 5: generate LLM-friendly and crawler files
-    # ------------------------------------------------------------------
     build_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-
     (SITE_DIR / "sitemap.xml").write_text(
-        _generate_sitemap(all_weeks, SITE_URL, build_date, hub_slugs, tag_slugs),
-        encoding="utf-8",
+        _generate_sitemap(all_weeks, SITE_URL, build_date, hub_slugs, tag_slugs), encoding="utf-8",
     )
-    print(f"  Generated sitemap → site/sitemap.xml")
-
     (SITE_DIR / "llms.txt").write_text(
-        _generate_llms_txt(all_weeks, SITE_URL, SITE_NAME, SITE_TAGLINE, hubs, tags),
-        encoding="utf-8",
+        _generate_llms_txt(all_weeks, SITE_URL, SITE_NAME, SITE_TAGLINE, hubs, tags), encoding="utf-8",
     )
-    print(f"  Generated llms.txt → site/llms.txt")
-
     (SITE_DIR / "feed.xml").write_text(
-        _generate_rss(all_weeks, SITE_URL, SITE_NAME, SITE_TAGLINE), encoding="utf-8"
+        _generate_rss(all_weeks, SITE_URL, SITE_NAME, SITE_TAGLINE), encoding="utf-8",
     )
-    print(f"  Generated feed    → site/feed.xml")
-
-    # ------------------------------------------------------------------
-    # Phase 6: persist the manifest
-    # ------------------------------------------------------------------
-    _save_manifest(manifest)
-    print(f"  Saved     manifest → {MANIFEST_PATH.relative_to(HERE)}")
-
-    total   = len(all_weeks)
-    skipped = total - len(render_set)
-    print(
-        f"\nBuild complete: {rendered_count} week(s) rendered, "
-        f"{skipped} skipped, {total} total in archive."
-    )
-    if rendered_count == 0 and skipped == total:
-        print("Everything is up to date.")
-    else:
-        print("Open: site/index.html")
+    print("  Generated sitemap.xml, llms.txt, feed.xml, robots.txt")
+    print(f"\nRender complete: {len(all_weeks)} week(s) in archive. Dynamic pages served by functions.")
 
 
 if __name__ == "__main__":
-    build()
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Bowl of Data build — Postgres-backed")
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument("--load", action="store_true", help="maki JSON -> Postgres")
+    group.add_argument("--render", action="store_true", help="Postgres -> static pages")
+    args = parser.parse_args()
+
+    if args.load:
+        load()
+    else:
+        render()

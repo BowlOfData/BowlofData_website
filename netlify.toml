@@ -1,6 +1,38 @@
 [build]
-  command = "pip install -r requirements.txt && python3 build.py"
+  # Reads content back from Neon (NETLIFY_DATABASE_URL) and renders the static
+  # surface (index, topics, about, team, contact, services + sitemap/feed/llms/robots).
+  # Dynamic pages (week/topic/tag/archive) are served by the functions below.
+  command = "pip install -r requirements.txt && python3 build.py --render"
   publish = "site"
+
+[functions]
+  # .mjs functions in netlify/functions/ ; node_modules bundled automatically.
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# ---------------------------------------------------------------------------
+# Dynamic routes — rewrite (200) the public .html URLs to functions so the
+# indexed URLs never change. The function recovers the slug from the request path.
+# ---------------------------------------------------------------------------
+[[redirects]]
+  from = "/week/*"
+  to = "/.netlify/functions/week"
+  status = 200
+
+[[redirects]]
+  from = "/topic/*"
+  to = "/.netlify/functions/topic"
+  status = 200
+
+[[redirects]]
+  from = "/tag/*"
+  to = "/.netlify/functions/tag"
+  status = 200
+
+[[redirects]]
+  from = "/archive.html"
+  to = "/.netlify/functions/archive"
+  status = 200
 
 [[headers]]
   for = "/*"
