@@ -2,17 +2,12 @@
 site/.DS_Store
 .venv/*
 
-# Generated output — regenerated on every Netlify deploy from Neon.
-site/
+# Note: site/ and weeks_manifest.json are deliberately NOT ignored — the built
+# site is what Netlify publishes, and the manifest is the archive's source of
+# truth (the maki output directory only keeps recent issues).
 
-# Retired: Neon Postgres is now the source of truth.
-weeks_manifest.json
-
-# Local secrets (NETLIFY_DATABASE_URL for `build.py --load`).
+# Local secrets
 .env
-
-# Node / functions
-node_modules/
 
 # Python bytecode
 __pycache__/
