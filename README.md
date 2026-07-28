@@ -2,59 +2,62 @@
 [![Substack](https://img.shields.io/badge/Substack-bowlofdata-orange?logo=substack&logoColor=white)](https://substack.com/@bowlofdata)
 # Bowl of Data — Website
 
-Website for the [Bowl of Data](https://bowlofdata.net) tech newsletter. **Postgres-backed hybrid site** — low-churn pages are pre-rendered from Jinja2; the content pages that used to explode into hundreds of files (weeks, tags, topics, archive) are now served on request by JavaScript Netlify Functions from a Neon Postgres database.
+Website for the [Bowl of Data](https://bowlofdata.net) tech newsletter. **A plain static site** — every page is rendered ahead of time from Jinja2 templates into `site/` and committed to the repo. No database, no serverless functions, nothing to run at request time.
 
 ## Overview
 
-Newsletter content lives in **Postgres** (Netlify DB, powered by Neon) — the single source of truth. The data flows in two directions:
+Newsletter content comes from the `summaries_WW_YYYY.json` files produced by the [maki](https://github.com/bowlofdata/maki) pipeline. Because that output directory only keeps recent issues, every week the builder has ever seen is cached in **`weeks_manifest.json`** — that file is the archive's real source of truth and is committed alongside the built site.
 
-- **Ingestion (local):** `python3 build.py --load` reads the `summaries_WW_YYYY.json` files produced by the [maki](https://github.com/bowlofdata/maki) pipeline and upserts them into Postgres (weeks, items, releases, tags).
-- **Static render (Netlify build):** `python3 build.py --render` reads Postgres back and renders the handful of low-churn pages (`index`, `topics`, `about`, `team`, `contact`, `services`) plus `sitemap.xml` / `feed.xml` / `llms.txt` / `robots.txt` into `site/`.
-- **Dynamic pages (runtime):** Netlify Functions (`netlify/functions/*.mjs`) query Postgres and server-render full HTML — same markup and SEO (JSON-LD, OG, canonical) as before — for `/week/*`, `/topic/*`, `/tag/*`, and `/archive.html`, cached at the edge.
+```
+maki output ──┐
+              ├──> build.py ──> weeks_manifest.json  (archive of record)
+manifest ─────┘              └─> site/               (what Netlify publishes)
+```
 
-Nothing generated is committed: `site/` is git-ignored and regenerated on every deploy. The maki pipeline lives in the separate `maki` repo.
+One command does everything:
+
+```bash
+python3 build.py                  # render only what changed since the last run
+FORCE_REBUILD=1 python3 build.py  # re-render every week in the manifest
+```
+
+Both `site/` and `weeks_manifest.json` are **committed**. Netlify has no build command — it just publishes `site/`.
 
 ---
 
 ## Pages
 
-| URL | Served by | Description |
-|---|---|---|
-| `index.html`, `topics.html`, `about/team/contact/services.html` | **static** (`build.py --render`) | Landing, topics index, and marketing pages |
-| `week/WW_YYYY.html` | **function** `week.mjs` | Full issue — article cards, TL;DR, releases, papers, prev/next nav |
-| `topic/<slug>.html` | **function** `topic.mjs` | One of the four beats (ai / security / blockchain / engineering) |
-| `tag/<slug>.html` | **function** `tag.mjs` | Every item tagged with a technology (≥ 3 items) |
-| `archive.html` | **function** `archive.mjs` | Index of all issues, grouped year → month |
+Every URL below is a real file on disk under `site/`.
+
+| URL | Description |
+|---|---|
+| `index.html` | Landing — hero, latest issue, recent issues |
+| `week/WW_YYYY.html` | Full issue — article cards, TL;DR, releases, papers, prev/next nav |
+| `topic/<slug>.html` | One editorial beat (ai / governance / security / blockchain / engineering) |
+| `tag/<slug>.html` | Every item tagged with a technology (≥ 3 items) |
+| `archive.html` | Index of all issues, grouped year → month |
+| `topics.html` | Index of every topic hub and tag page |
+| `about/team/contact/services.html` | Marketing pages |
+| `sitemap.xml`, `feed.xml`, `llms.txt`, `robots.txt` | Crawler + LLM surface |
 
 ---
 
 ## First-time setup
 
-**Prerequisites:** Python 3.10+, Node 18+, the [Netlify CLI](https://docs.netlify.com/cli/get-started/), and the `maki` repo cloned as a sibling directory (`../maki/`).
+**Prerequisites:** Python 3.10+, and the `maki` repo cloned as a sibling directory.
 
 ```bash
-# 1. Provision the Neon Postgres database (one time). This links the repo to a
-#    Netlify DB and injects NETLIFY_DATABASE_URL into build + function runtimes.
-netlify db init
-
-# 2. Apply the schema
-psql "$NETLIFY_DATABASE_URL" -f scripts/schema.sql
-
-# 3. Python + Node deps
-pip install -r requirements.txt
-npm install
-
-# 4. For the local --load step, put the connection string in a .env file (git-ignored):
-echo "NETLIFY_DATABASE_URL=postgres://…" > .env
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
 ```
 
-Preview the whole site locally (static pages + functions + redirects) with:
+The builder looks for newsletter data in `../maki_newsletter/maki_newsletter/output/` by default; override with `MAKI_OUTPUT_DIR=/path/to/output`.
+
+Preview locally by opening `site/index.html`, or serve the directory:
 
 ```bash
-netlify dev      # serves /week/*, /tag/*, /topic/*, /archive.html from Postgres
+python3 -m http.server -d site 8000
 ```
-
-The loader looks for newsletter data in `../maki/maki_newsletter/output/` by default; override with `MAKI_OUTPUT_DIR=/path/... python3 build.py --load`.
 
 ---
 
@@ -65,51 +68,119 @@ The loader looks for newsletter data in `../maki/maki_newsletter/output/` by def
 python -m maki_newsletter.main
 python -m maki_newsletter.generate
 
-# 2. Load the new issue into Postgres (in this repo)
-python3 build.py --load
+# 2. Build (in this repo). Only the new week and its neighbours re-render;
+#    the landing page, archive, topic hubs, tag pages and feeds always do.
+.venv/bin/python build.py
 
-# 3. Deploy — no generated files to commit
-git commit -am "newsletter week WW YYYY"   # only source/code changes, if any
-git push
-# Netlify runs `build.py --render` (Postgres → static pages) and deploys the
-# functions. New week/tag/topic content appears immediately, served from Postgres.
+# 3. Deploy
+git add site weeks_manifest.json
+git commit -m "week WW YYYY"
+git push        # Netlify publishes site/ as-is
 ```
 
-Because the data lives in Postgres, a new issue often needs **no repo change at all** — `build.py --load` publishes it. Push only when you also change code/templates, or trigger a redeploy from the Netlify UI to refresh the cached static pages and edge cache.
+---
+
+## WordPress mirror (Altervista)
+
+`bowlofdata.altervista.org` runs a **mirror** of this site on WordPress. Netlify stays primary: every mirrored page emits a `rel=canonical` pointing back at `bowlofdata.net`, so the two never compete in search.
+
+The mirror is a Blocksy child theme in `wordpress/bowlofdata-child/` that re-implements the layout in PHP and stores newsletter content as custom post types.
+
+| This repo | WordPress |
+|---|---|
+| a week entry | `bod_issue` — `/week/30_2026.html` |
+| `articles` / `papers` | `bod_story` (child of the issue, `bod_kind` = article \| paper) |
+| `model_releases` | `bod_release` (child of the issue) |
+| item `category` | `bod_beat` taxonomy — `/topic/ai.html` |
+| item `technologies` | `bod_tech` taxonomy — `/tag/python.html` (≥ 3 items, as everywhere else) |
+
+URLs match bowlofdata.net exactly, `.html` suffix included.
+
+### Installing or updating the theme on Altervista
+
+Two host quirks make the obvious routes fail, so follow this order:
+
+- **wp-admin's "Upload Theme" form does not work** on this install.
+- **PHP cannot fetch URLs on its own domain** — Altervista's egress proxy answers
+  `cURL error 56: CONNECT tunnel failed, response 403`. So `Theme_Upgrader` cannot
+  download the ZIP from a link, and WP-Cron/loopback requests fail for the same reason.
+  Only wordpress.org is reachable, which is why plugins install normally.
+
+What does work is handing `Theme_Upgrader` a **local path**:
+
+```bash
+python3 scripts/build_wp_theme.py                    # build + lint + zip
+```
+
+1. Upload `wordpress/dist/bowlofdata-child.zip` to the media library (REST accepts it;
+   the ceiling is ~7 MB). Note the resulting `wp-content/uploads/YYYY/MM/` path.
+2. Activate the **Code Snippets** plugin (left installed for exactly this) and run a
+   single-use snippet:
+   ```php
+   require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+   $up = wp_upload_dir();
+   $upgrader = new Theme_Upgrader( new Automatic_Upgrader_Skin() );
+   $upgrader->install( $up['basedir'] . '/2026/07/bowlofdata-child.zip',
+                       array( 'overwrite_package' => true ) );
+   switch_theme( 'bowlofdata-child' );
+   ```
+3. Deactivate Code Snippets and delete the ZIP attachment again.
+
+```bash
+# Ordinary rebuild once the theme is installed
+
+# Prepare the install: back up, wipe old pages, create pages + menu
+.venv/bin/python scripts/wp_migrate.py --dry-run
+.venv/bin/python scripts/wp_migrate.py --confirm-wipe
+
+# Seed every historical issue from weeks_manifest.json (one time)
+.venv/bin/python scripts/wp_backfill.py --limit 1     # check one week first
+.venv/bin/python scripts/wp_backfill.py
+.venv/bin/python scripts/wp_backfill.py --purge       # rebuild from scratch
+```
+
+`--purge` deletes every `bod_issue`/`bod_story`/`bod_release` first; without it each
+week is replaced in place, so re-running is safe and resumable.
+
+Weekly publishing to the mirror lives in the maki repo:
+
+```bash
+python -m maki_newsletter.wp_sync            # newest week
+```
+
+**Two renderers, one markup.** `templates/*.html` (Jinja) and `wordpress/bowlofdata-child/inc/render.php` (PHP) emit the same HTML.
+
+> ⚠️ `wordpress/tests/parity.sh` and `wordpress/tests/render_js.mjs` still diff PHP against the retired `netlify/functions/_shared/render.mjs`, which no longer exists. The parity harness needs porting to render its fixture through Jinja instead. Recover the old JS renderer from git history (`git show d031fe4:netlify/functions/_shared/render.mjs`) if you need it as a reference.
+
+Likewise `maki_newsletter/taxonomy.py` duplicates this repo's beat classification, guarded by `tests/test_wp_taxonomy_parity.py` in the maki repo.
 
 ---
 
 ## Project structure details
 
-### `build.py` — two modes
+### `build.py`
 
-- **`--load`** — scans `MAKI_OUTPUT_DIR` for `summaries_WW_YYYY.json` (plus `model_releases_*` and `curated_papers_*`), normalises and classifies each item (reusing `_classify_article`, `_slugify`, `_normalise_*`), and **upserts** into Postgres. Each week is replaced atomically (`weeks` upsert + delete/re-insert of that week's `items`/`releases`/`item_tags`), so re-running is idempotent. Removing a source file does **not** delete the week from Postgres.
-- **`--render`** — reads every week back from Postgres and renders the static surface (`index`, `topics`, `about`, `team`, `contact`, `services`) plus `sitemap.xml` / `feed.xml` / `llms.txt` / `robots.txt`. This is the Netlify build command.
+A single incremental build:
 
-### `netlify/functions/` — dynamic pages (JS)
+1. **Reconcile** — load `weeks_manifest.json`, then scan `MAKI_OUTPUT_DIR` for `summaries_WW_YYYY.json` (plus `model_releases_*` and `curated_papers_*`). A week is re-parsed when its source files are newer than the manifest records, when it is new, or when its HTML is missing. Weeks the pipeline has rotated away survive in the manifest untouched.
+2. **Expand** — a changed week also re-renders its two neighbours so prev/next links stay accurate.
+3. **Render** — week pages, then the landing page, archive, marketing pages, topic hubs, tag pages and topics index (these last ones are regenerated on every run).
+4. **Emit** — `sitemap.xml`, `llms.txt`, `feed.xml`, `robots.txt`.
+5. **Persist** — write the manifest back.
 
-Server-render full HTML from Postgres via the `@netlify/neon` driver. `_shared/render.mjs` mirrors the Jinja templates so the output markup and JSON-LD are byte-identical to the static build; `_shared/db.mjs` holds the connection + cache headers; `_shared/topics.mjs` holds the beat metadata.
+`FORCE_REBUILD=1` re-renders every week in the manifest. It does **not** discard the manifest: the maki output directory no longer holds old issues, so that would drop them from the archive permanently.
 
-| Function | Route (via `netlify.toml` rewrites) |
-|---|---|
-| `week.mjs` | `/week/*` |
-| `topic.mjs` | `/topic/*` |
-| `tag.mjs` | `/tag/*` |
-| `archive.mjs` | `/archive.html` |
-
-> **Two shells to keep in sync:** the page shell (header/footer/nav) exists in `templates/base.html` (static pages) **and** `render.mjs` `shell()` (dynamic pages). Change both together — a function page and its Jinja counterpart should differ only in whitespace.
-
-### Database (`scripts/schema.sql`)
-
-`weeks`, `items` (articles + papers), `releases`, and `item_tags` (one row per item×technology). Topics are derived from `items.category`; tag pages from `item_tags`. See the file for the full DDL.
+Classification (`_classify_article`) assigns each item to a beat using the pipeline's `is_governance` flag when present, otherwise a weighted keyword match over `technologies` → `title` → `main_topic`.
 
 ### Templates
 
 | Template | Extends | Purpose |
 |---|---|---|
-| `base.html` | — | Sticky header, footer, Google Fonts (static pages) |
+| `base.html` | — | Sticky header, footer, Google Fonts |
 | `index.html` | `base.html` | Hero, latest-issue card, register |
-| `week.html` / `collection.html` / `archive.html` | `base.html` | Reference markup the JS functions mirror |
+| `week.html` | `base.html` | One issue |
+| `collection.html` | `base.html` | Topic hubs and tag pages |
+| `archive.html` | `base.html` | All issues by year → month |
 
 ### CSS (`static/style.css`)
 
@@ -120,6 +191,7 @@ Design tokens are defined as CSS custom properties at `:root`. Key palette:
 | `--yellow` | `#F5C518` | Accents, header underline, card hover stripe |
 | `--yellow-dark` | `#D97706` | Tags, article numbers |
 | `--orange` | `#E8613A` | Gradient accents |
+| `--gov` | `#6C63C4` | Data & AI Governance beat |
 | `--tldr-border` | `#c47f00` | TL;DR box left border |
 | `--dark` | `#111827` | Header, footer, dark backgrounds |
 
@@ -127,11 +199,10 @@ Design tokens are defined as CSS custom properties at `:root`. Key palette:
 
 ```toml
 [build]
-  command = "pip install -r requirements.txt && python3 build.py --render"
   publish = "site"
 ```
 
-The build renders the static pages from Postgres; `[[redirects]]` rewrite (status `200`) `/week/*`, `/topic/*`, `/tag/*`, and `/archive.html` to the functions so the **public URLs are unchanged**. Security headers (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`) apply to all routes.
+No build command — `site/` is committed. Security headers (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`) apply to all routes.
 
 ---
 
@@ -149,3 +220,4 @@ Each newsletter issue is driven by a `summaries_WW_YYYY.json` file from the maki
 | `main_topic` | Italic topic line |
 | `technologies` | Tag pills |
 | `quality_score` | Score badge (green ≥ 8, amber otherwise) |
+| `is_governance` | Routes the item to the governance beat (optional) |
