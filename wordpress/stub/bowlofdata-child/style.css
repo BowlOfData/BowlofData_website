@@ -1,0 +1,33 @@
+/*
+Theme Name: Bowl of Data
+Theme URI: https://bowlofdata.net
+Description: Pixel-faithful port of the Bowl of Data "Signal, plated" design system. Child theme of Blocksy. This is the Phase 0 upload-gate stub — it only proves that Altervista accepts a custom theme ZIP.
+Author: Bowl of Data
+Author URI: https://bowlofdata.net
+Template: blocksy
+Version: 0.0.1-stub
+Requires at least: 6.0
+Tested up to: 7.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: bowlofdata
+*/
+
+/* Phase 0 stub: no styles of its own. The parent (Blocksy) stylesheet is
+   enqueued by functions.php so the existing site renders unchanged while we
+   verify that theme upload is permitted. */
+
+/* One harmless visible marker so activation is unmistakable in the browser. */
+body::after {
+  content: "bowlofdata-child active";
+  position: fixed;
+  bottom: 8px;
+  right: 8px;
+  z-index: 99999;
+  padding: 4px 10px;
+  font: 600 11px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: #1A1613;
+  background: #F5C518;
+  border-radius: 7px;
+  pointer-events: none;
+}

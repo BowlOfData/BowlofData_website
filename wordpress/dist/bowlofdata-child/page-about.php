@@ -1,0 +1,184 @@
+<?php
+/**
+ * About — /about.html
+ *
+ * Port of templates/about.html. The FAQ array below mirrors the <details>
+ * markup exactly, the same discipline build.py's ABOUT_FAQ follows, so the
+ * FAQPage schema always matches what a reader actually sees.
+ *
+ * @package bowlofdata
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+$bod_about_faq = array(
+	array(
+		'What is Bowl of Data?',
+		'Bowl of Data is a free weekly newsletter that curates the most relevant technology stories across AI and machine learning, cybersecurity, blockchain and crypto, and software engineering — read hundreds of sources so you don\'t have to.',
+	),
+	array(
+		'How is the newsletter curated?',
+		'An AI pipeline called Maki scans hundreds of sources each week, reads and ranks every candidate against live trend signals, and writes a TL;DR plus a longer summary. The team reviews the shortlist before anything ships.',
+	),
+	array(
+		'Is Bowl of Data free?',
+		'Yes. Every issue is free to read on the website and via the Substack email. Running mainly on open local models keeps costs low enough to keep it that way.',
+	),
+	array(
+		'How often is it published, and where can I read it?',
+		'A new issue ships every week. You can read it here on the site, subscribe by email on Substack, or listen to the companion podcast on Spotify.',
+	),
+);
+
+bod_page_context(
+	array(
+		'title'        => 'About · ' . BOD_SITE_NAME,
+		'description'  => 'How Bowl of Data works: an AI-powered pipeline reads hundreds of sources every week across AI, security, blockchain, and engineering — running mainly on local open models for privacy and cost — reviewed by humans before it ships.',
+		'og_type'      => 'website',
+		'canonical'    => bod_canonical( '/about.html' ),
+		'current_page' => 'about',
+		'jsonld'       => array( bod_faq_jsonld( $bod_about_faq ) ),
+	)
+);
+
+get_header();
+?>
+<div class="about-header">
+  <div class="about-header-inner">
+    <h1 class="about-title">About Bowl of Data</h1>
+    <p class="about-sub">A weekly digest at the intersection of AI, security, blockchain, and engineering — curated by humans, powered by Maki, and run mostly on local models.</p>
+  </div>
+</div>
+
+<div class="about-body">
+
+  <section class="about-section">
+    <h2 class="about-section-title">Our mission</h2>
+    <p class="about-text">Staying current with technology should take minutes, not hours. Every week, hundreds of articles, papers, and release notes compete for your attention — and most of it is noise. Bowl of Data reads all of it so you don&rsquo;t have to, then hands you the short list that actually matters.</p>
+    <p class="about-text">Our focus is deliberate: breakthroughs in AI and machine learning, exploits that reshape security, meaningful moves in blockchain, and engineering worth adopting. No hype, no filler — just the signal.</p>
+  </section>
+
+  <section class="about-section">
+    <h2 class="about-section-title">What&rsquo;s in every issue</h2>
+    <p class="about-text">Each issue is built from three independent streams, curated on their own tracks so one never crowds out the others.</p>
+    <div class="about-streams">
+      <div class="about-stream about-stream--news">
+        <p class="about-stream-k">This week in tech</p>
+        <h3 class="about-stream-t">Stories</h3>
+        <p class="about-stream-d">The strongest reads from across the web, each with a TL;DR, a longer write-up, and a link to the source.</p>
+      </div>
+      <div class="about-stream about-stream--papers">
+        <p class="about-stream-k">Research</p>
+        <h3 class="about-stream-t">Papers</h3>
+        <p class="about-stream-d">Notable work from arXiv and Hugging Face, selected on its own track for significance and novelty.</p>
+      </div>
+      <div class="about-stream about-stream--releases">
+        <p class="about-stream-k">Model watch</p>
+        <h3 class="about-stream-t">Releases</h3>
+        <p class="about-stream-d">Every new model and major update from the labs — Anthropic, OpenAI, Google, Meta, Mistral, NVIDIA, and more.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <h2 class="about-section-title">How it works</h2>
+    <div class="about-steps">
+      <div class="about-step">
+        <div class="about-step-num">01</div>
+        <div class="about-step-body">
+          <h3 class="about-step-title">Gather</h3>
+          <p class="about-step-text">Maki, our multi-agent framework, scans hundreds of sources every week: RSS feeds, Hacker News, Reddit, GitHub, Lobste.rs, arXiv, Hugging Face, and the announcement pages of every major AI lab. Live trend signals from Google Trends, Reddit, and GitHub steer what earns a closer look.</p>
+        </div>
+      </div>
+      <div class="about-step">
+        <div class="about-step-num">02</div>
+        <div class="about-step-body">
+          <h3 class="about-step-title">Read &amp; rank</h3>
+          <p class="about-step-text">Every candidate is read by a language model that extracts its topic, key points, technologies, and a quality score, then ranks the field — weighted by what the wider community is actually talking about that week.</p>
+        </div>
+      </div>
+      <div class="about-step">
+        <div class="about-step-num">03</div>
+        <div class="about-step-body">
+          <h3 class="about-step-title">Summarise</h3>
+          <p class="about-step-text">Each surviving story earns a two-sentence TL;DR and a three-paragraph long-form resume, so you can skim the gist or go deep without ever leaving the page.</p>
+        </div>
+      </div>
+      <div class="about-step">
+        <div class="about-step-num">04</div>
+        <div class="about-step-body">
+          <h3 class="about-step-title">Curate</h3>
+          <p class="about-step-text">Separate curation passes pick the best articles and the best papers, guided by eight weeks of editorial memory — so the mix stays fresh, balanced across topics, and never repeats itself.</p>
+        </div>
+      </div>
+      <div class="about-step">
+        <div class="about-step-num">05</div>
+        <div class="about-step-body">
+          <h3 class="about-step-title">Review &amp; publish</h3>
+          <p class="about-step-text">The team reviews the shortlist — the last gate before anything ships. Then the same selection goes out three ways: here on the site, as a Substack digest, and as a weekly podcast with a locally synthesised voice.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <h2 class="about-section-title">Local by design</h2>
+    <div class="about-local">
+      <p class="about-local-lead">Almost all of that work runs on open models on our own hardware — not a commercial AI API. The articles we process, the prompts we send, and the summaries we write never leave our machines, and even the podcast voice is synthesised locally.</p>
+      <p class="about-local-lead">Two things follow from that. Your data and ours stays private — nothing is handed to a third-party model provider to log or train on. And with no per-token API bills, we can read far more sources, far more thoroughly, at a fraction of what the same pipeline would cost on a hosted service — savings that keep the newsletter free.</p>
+      <div class="about-points">
+        <div class="about-point">
+          <p class="about-point-t">Private</p>
+          <p class="about-point-d">Processing stays on our own hardware. No third-party AI service sits in the loop.</p>
+        </div>
+        <div class="about-point">
+          <p class="about-point-t">Low-cost</p>
+          <p class="about-point-d">Open local models mean no per-token bills, so coverage stays broad and the newsletter stays free.</p>
+        </div>
+        <div class="about-point">
+          <p class="about-point-t">Open models</p>
+          <p class="about-point-d">Built on open-weight models we run ourselves, with the podcast voice synthesised locally too.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-note">
+      <p class="about-note-label">Get involved with Maki</p>
+      <p class="about-note-text">Maki is currently in private development: the repository is not yet public, as the project is still in its early stages. That said, we believe in building with the right people from the start, and collaboration is already open.</p>
+      <p class="about-note-text">Whether you are a developer interested in contributing to the framework, a technical writer who wants to document AI agent systems, or a reviewer who can help sharpen the newsletter&rsquo;s quality: send a request through the <a href="<?php echo esc_url( bod_url( '/contact.html' ) ); ?>" class="about-note-link">contact page</a> and we will get back to you.</p>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <h2 class="about-section-title">Frequently asked questions</h2>
+    <div class="faq">
+      <details class="faq-item">
+        <summary>What is Bowl of Data?</summary>
+        <div class="faq-answer">Bowl of Data is a free weekly newsletter that curates the most relevant technology stories across AI and machine learning, cybersecurity, blockchain and crypto, and software engineering — read hundreds of sources so you don&rsquo;t have to.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How is the newsletter curated?</summary>
+        <div class="faq-answer">An AI pipeline called Maki scans hundreds of sources each week, reads and ranks every candidate against live trend signals, and writes a TL;DR plus a longer summary. The team reviews the shortlist before anything ships.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Is Bowl of Data free?</summary>
+        <div class="faq-answer">Yes. Every issue is free to read on the website and via the Substack email. Running mainly on open local models keeps costs low enough to keep it that way.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How often is it published, and where can I read it?</summary>
+        <div class="faq-answer">A new issue ships every week. You can read it here on the site, subscribe by email on Substack, or listen to the companion podcast on Spotify.</div>
+      </details>
+    </div>
+  </section>
+
+  <section class="about-cta-section">
+    <h2 class="about-cta-title">Join the digest</h2>
+    <p class="about-cta-sub">Free, weekly, no spam. Just the stories that matter.</p>
+    <a href="<?php echo esc_url( BOD_SUBSTACK_URL ); ?>" class="cta-primary" target="_blank" rel="noopener">Subscribe on Substack</a>
+  </section>
+
+</div>
+<?php
+get_footer();

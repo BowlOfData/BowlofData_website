@@ -1,0 +1,17 @@
+{
+  "slug": "openai-ships-gpt-6-with-native-tool-use",
+  "title": "OpenAI ships GPT-6 with \"native\" tool use & a 2M context",
+  "url": "https://example.com/posts/gpt-6?ref=bod&x=1",
+  "source": "Ars Technica",
+  "published": "2026-07-24",
+  "short_summary": "The model runs tools without a scaffold. Benchmarks are up, but the pricing isn't.",
+  "main_topic": "Frontier model releases & agentic tool use",
+  "long_resume_paragraphs": [
+    "First paragraph with an ampersand & a <script> tag and an 'apostrophe'.",
+    "Second paragraph — with an em dash and a \"quoted\" phrase."
+  ],
+  "technologies": ["OpenAI", "GPT-6", "Tool Use", "Rust"],
+  "category": "ai",
+  "category_label": "AI & ML",
+  "quality_score": 9
+}

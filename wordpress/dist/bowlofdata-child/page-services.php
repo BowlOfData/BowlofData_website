@@ -1,0 +1,259 @@
+<?php
+/**
+ * Services — /services.html
+ *
+ * Port of templates/services.html.
+ *
+ * One deliberate fix: the hero's "11 issues shipped" is hard-coded in the Jinja
+ * template and has been stale for months. Here it counts published issues.
+ *
+ * @package bowlofdata
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+$bod_issue_count = count( bod_all_issues() );
+
+$bod_services_faq = array(
+	array(
+		'What does “done-for-you” actually mean?',
+		'We configure the pipeline to your niche, run it every week, and review each issue before it reaches you. You approve; we handle sourcing, curation, writing, and delivery. There\'s nothing for you to operate.',
+	),
+	array(
+		'Whose audience is it?',
+		'Yours. Your brand, your platform, your subscriber list. We\'re the engine behind the scenes — you keep every subscriber you earn.',
+	),
+	array(
+		'Is our data private?',
+		'Yes. The pipeline runs mainly on open models on our own hardware, so your sources, prompts, and drafts aren\'t handed to a commercial AI API to log or train on. That\'s especially important for competitive and market intelligence.',
+	),
+	array(
+		'How fast can we launch?',
+		'A first sample issue lands in days, not a sales cycle. Once you\'re happy with the voice and the sources, we set the weekly cadence and go.',
+	),
+);
+
+bod_page_context(
+	array(
+		'title'        => 'Newsletter on Demand · ' . BOD_SITE_NAME,
+		'description'  => 'We build and run a fully AI-powered newsletter, podcast, or private intelligence brief tailored to your niche — editorially curated, private by design, and delivered every week. You own the audience.',
+		'og_type'      => 'website',
+		'canonical'    => bod_canonical( '/services.html' ),
+		'current_page' => 'services',
+		'jsonld'       => array( bod_faq_jsonld( $bod_services_faq ) ),
+	)
+);
+
+$bod_contact = bod_url( '/contact.html' );
+
+get_header();
+?>
+<div class="services-hero">
+  <div class="services-hero-inner">
+    <span class="services-hero-badge">Newsletter on Demand</span>
+    <h1 class="services-hero-title">
+      Your Brand.<br>
+      Your Topics.<br>
+      <span>Your Newsletter.</span>
+    </h1>
+    <p class="services-hero-sub">
+      We build and run a fully AI-powered content pipeline tuned to your niche —
+      so you own the audience without owning the workload.
+    </p>
+    <div class="services-hero-ctas">
+      <a href="<?php echo esc_url( $bod_contact ); ?>" class="cta-primary">Request your newsletter</a>
+      <a href="#packages" class="cta-secondary">See packages ↓</a>
+    </div>
+    <div class="services-stats">
+      <span class="services-stat"><strong><?php echo (int) $bod_issue_count; ?></strong> issues shipped</span>
+      <span class="services-stat"><strong>Hundreds</strong> of sources / week</span>
+      <span class="services-stat"><strong>0</strong> weeks missed</span>
+    </div>
+  </div>
+</div>
+
+<div class="services-body">
+
+  <section class="services-section">
+    <h2 class="services-section-title">What we deliver</h2>
+    <div class="services-props">
+
+      <div class="services-prop services-prop--yellow">
+        <div class="services-prop-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>
+          </svg>
+        </div>
+        <h3 class="services-prop-title">A weekly newsletter</h3>
+        <p class="services-prop-text">Curated stories in your voice, each with a TL;DR and a longer write-up, delivered on your platform — Substack, web, or email.</p>
+      </div>
+
+      <div class="services-prop services-prop--orange">
+        <div class="services-prop-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="17" x2="12" y2="22"/>
+          </svg>
+        </div>
+        <h3 class="services-prop-title">A weekly podcast</h3>
+        <p class="services-prop-text">The same selection, turned into a spoken-word episode with a natural synthesised voice and a ready-to-host RSS feed.</p>
+      </div>
+
+      <div class="services-prop services-prop--amber">
+        <div class="services-prop-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><path d="M9 13h6M9 17h4"/>
+          </svg>
+        </div>
+        <h3 class="services-prop-title">A private brief</h3>
+        <p class="services-prop-text">A confidential intelligence digest for your team — competitor and market tracking, delivered as a report, doc, or straight to your inbox.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="services-section" id="how-it-works">
+    <h2 class="services-section-title">How it works</h2>
+    <div class="about-steps">
+
+      <div class="about-step">
+        <div class="about-step-num">01</div>
+        <div class="about-step-body">
+          <h3 class="about-step-title">Discovery</h3>
+          <p class="about-step-text">Tell us your niche, audience, and goals — a short email or a 20-minute call. We scope the pipeline around your exact needs: topics to track, sources to prioritise, the tone to hit.</p>
+        </div>
+      </div>
+
+      <div class="about-step">
+        <div class="about-step-num">02</div>
+        <div class="about-step-body">
+          <h3 class="about-step-title">Build &amp; sample</h3>
+          <p class="about-step-text">We configure the sources, voice, and format, then send a real sample issue within days — not a mockup. You react to something concrete before anything goes live.</p>
+        </div>
+      </div>
+
+      <div class="about-step">
+        <div class="about-step-num">03</div>
+        <div class="about-step-body">
+          <h3 class="about-step-title">Launch &amp; run</h3>
+          <p class="about-step-text">Your first issue ships. From there we handle everything — sourcing, curation, writing, and delivery — every single week. You focus on your audience; we run the engine.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="services-section" id="packages">
+    <h2 class="services-section-title">Packages</h2>
+    <div class="pricing">
+
+      <div class="plan">
+        <div class="plan-name">Essential</div>
+        <p class="plan-tagline">A weekly newsletter, done for you.</p>
+        <p class="plan-price">Flat monthly · scoped to you</p>
+        <ul class="plan-features">
+          <li>Sources &amp; topics tuned to your niche</li>
+          <li>Written in your brand voice</li>
+          <li>TL;DR plus a long-form write-up per story</li>
+          <li>Delivered on your platform</li>
+          <li>Reviewed by a human every week</li>
+        </ul>
+        <a href="<?php echo esc_url( $bod_contact ); ?>" class="cta-secondary">Start a conversation</a>
+      </div>
+
+      <div class="plan plan--featured">
+        <span class="plan-flag">Most popular</span>
+        <div class="plan-name">Signature</div>
+        <p class="plan-tagline">Newsletter and podcast, every week.</p>
+        <p class="plan-price">Flat monthly · scoped to you</p>
+        <ul class="plan-features">
+          <li>Everything in Essential</li>
+          <li>A weekly podcast episode, natural voice</li>
+          <li>Research &amp; model-watch sections</li>
+          <li>Multi-channel delivery: site, Substack, RSS</li>
+          <li>Priority turnaround on edits</li>
+        </ul>
+        <a href="<?php echo esc_url( $bod_contact ); ?>" class="cta-primary">Request your newsletter</a>
+      </div>
+
+      <div class="plan">
+        <div class="plan-name">Intelligence</div>
+        <p class="plan-tagline">A private feed for your team.</p>
+        <p class="plan-price">Custom · per team</p>
+        <ul class="plan-features">
+          <li>Competitor &amp; market tracking</li>
+          <li>Delivered as a report, email, or doc</li>
+          <li>Confidential — your data stays private</li>
+          <li>An ROI-framed brief, not a raw feed</li>
+          <li>Scoped to your sources and cadence</li>
+        </ul>
+        <a href="<?php echo esc_url( $bod_contact ); ?>" class="cta-secondary">Talk to us</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="services-section">
+    <h2 class="services-section-title">Why work with us</h2>
+    <div class="svc-why">
+      <div class="svc-reason">
+        <p class="svc-reason-t">Editorial quality gates</p>
+        <p class="svc-reason-d">Not a raw AI feed. Every issue is deduplicated, ranked against real trend signals, and style-checked before it ships — so it reads like an editor made the calls, because one did.</p>
+      </div>
+      <div class="svc-reason">
+        <p class="svc-reason-t">Private by design</p>
+        <p class="svc-reason-d">The pipeline runs mainly on open models on our own hardware. Your sources, drafts, and data never go to a third-party AI service — which matters most when the topic is your market or your competitors.</p>
+      </div>
+      <div class="svc-reason">
+        <p class="svc-reason-t">You own the audience</p>
+        <p class="svc-reason-d">Your brand, your platform, your subscriber list. We stay behind the scenes — every reader you earn and every relationship you build is yours to keep.</p>
+      </div>
+      <div class="svc-reason">
+        <p class="svc-reason-t">Live in days, not a sales cycle</p>
+        <p class="svc-reason-d">We point the pipeline at your niche and send a real sample within days. It&rsquo;s a configuration, not a build project — you see the real thing before you commit.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-section">
+    <div class="services-proof">
+      <div class="services-proof-text">
+        <p class="services-proof-label">Proven pipeline</p>
+        <p class="services-proof-body">Bowl of Data runs on the exact pipeline we would build for you — a curated tech digest shipped every week, without missing an issue. What changes for your project is the topic, the audience, and the brand.</p>
+      </div>
+      <a href="<?php echo esc_url( bod_url( '/about.html' ) ); ?>" class="services-proof-link">See how it works →</a>
+    </div>
+  </section>
+
+  <section class="services-section">
+    <h2 class="services-section-title">Common questions</h2>
+    <div class="faq">
+      <details class="faq-item">
+        <summary>What does &ldquo;done-for-you&rdquo; actually mean?</summary>
+        <div class="faq-answer">We configure the pipeline to your niche, run it every week, and review each issue before it reaches you. You approve; we handle sourcing, curation, writing, and delivery. There&rsquo;s nothing for you to operate.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Whose audience is it?</summary>
+        <div class="faq-answer">Yours. Your brand, your platform, your subscriber list. We&rsquo;re the engine behind the scenes — you keep every subscriber you earn.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Is our data private?</summary>
+        <div class="faq-answer">Yes. The pipeline runs mainly on open models on our own hardware, so your sources, prompts, and drafts aren&rsquo;t handed to a commercial AI API to log or train on. That&rsquo;s especially important for competitive and market intelligence.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How fast can we launch?</summary>
+        <div class="faq-answer">A first sample issue lands in days, not a sales cycle. Once you&rsquo;re happy with the voice and the sources, we set the weekly cadence and go.</div>
+      </details>
+    </div>
+  </section>
+
+  <section class="services-cta-section">
+    <h2 class="services-cta-title">Ready to own your audience?</h2>
+    <p class="services-cta-sub">Tell us your niche and we&rsquo;ll get back to you within 48 hours.</p>
+    <a href="<?php echo esc_url( $bod_contact ); ?>" class="cta-primary">Request your newsletter</a>
+  </section>
+
+</div>
+<?php
+get_footer();
