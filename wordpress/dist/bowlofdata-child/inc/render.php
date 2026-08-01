@@ -66,13 +66,32 @@ function bod_url( $path = '/' ) {
 }
 
 /**
- * The canonical twin of a path on bowlofdata.net.
- *
- * This install is a mirror, so every page points search engines back at the
- * Netlify original rather than competing with it.
+ * The canonical twin of a path. See BOD_CANONICAL_ORIGIN in functions.php.
  */
 function bod_canonical( $path = '/' ) {
 	return BOD_CANONICAL_ORIGIN . '/' . ltrim( $path, '/' );
+}
+
+/**
+ * Absolute URL of a theme image.
+ *
+ * Always served from this install rather than from BOD_CANONICAL_ORIGIN . '/imgs/'.
+ * That path only exists on the Netlify build; pointed at .net it 301s to a
+ * homepage, so og:image, the favicon and the JSON-LD logo were all resolving to
+ * an HTML document. An og:image does not need to share an origin with the page.
+ */
+function bod_image_url( $name ) {
+	return get_stylesheet_directory_uri() . '/imgs/' . ltrim( $name, '/' );
+}
+
+/**
+ * The feed this site advertises.
+ *
+ * A mirror defers to the canonical origin's feed; a self-canonical install has
+ * no feed there to defer to, so WordPress's own is the right one.
+ */
+function bod_feed_url() {
+	return BOD_IS_MIRROR ? BOD_CANONICAL_ORIGIN . '/feed.xml' : get_feed_link();
 }
 
 /** JSON for a ld+json block. */
@@ -87,23 +106,33 @@ function bod_json( $data ) {
 /**
  * Stash the head/nav context for the current request.
  *
+ * The defaults apply on read as well as on write. A template that never calls
+ * the setter — anything falling through to index.php — must still hand
+ * header.php a complete context, or the page ships an empty <title> and an
+ * empty rel=canonical.
+ *
  * @param array $context title, description, og_type, canonical, current_page, jsonld[].
  */
 function bod_page_context( $context = null ) {
-	static $current = array();
-	if ( is_array( $context ) ) {
-		$current = wp_parse_args(
-			$context,
-			array(
-				'title'        => BOD_SITE_NAME,
-				'description'  => BOD_SITE_TAGLINE,
-				'og_type'      => 'website',
-				'canonical'    => bod_canonical( '/' ),
-				'current_page' => null,
-				'jsonld'       => array(),
-			)
+	static $current = null;
+
+	if ( is_array( $context ) || null === $current ) {
+		// An empty canonical means "emit no <link rel=canonical>". Every real
+		// template passes one; what falls through to index.php is content with
+		// no bowlofdata.net twin, and pointing it at a .net URL that 404s would
+		// be worse than staying silent. Those pages are noindex anyway (inc/seo.php).
+		$defaults = array(
+			'title'        => BOD_SITE_NAME,
+			'description'  => BOD_SITE_TAGLINE,
+			'og_type'      => 'website',
+			'canonical'    => '',
+			'current_page' => null,
+			'jsonld'       => array(),
 		);
+
+		$current = is_array( $context ) ? wp_parse_args( $context, $defaults ) : $defaults;
 	}
+
 	return $current;
 }
 
@@ -119,7 +148,7 @@ function bod_organization_jsonld() {
 			'name'        => BOD_SITE_NAME,
 			'description' => BOD_SITE_TAGLINE,
 			'url'         => BOD_CANONICAL_ORIGIN,
-			'logo'        => BOD_CANONICAL_ORIGIN . '/imgs/logo.png',
+			'logo'        => bod_image_url( 'logo.png' ),
 			'sameAs'      => array(
 				'https://bowlofdata.substack.com/',
 				'https://www.instagram.com/bowl_of_data',
@@ -148,7 +177,7 @@ function bod_publisher_node() {
 		'url'   => BOD_CANONICAL_ORIGIN,
 		'logo'  => array(
 			'@type' => 'ImageObject',
-			'url'   => BOD_CANONICAL_ORIGIN . '/imgs/logo.png',
+			'url'   => bod_image_url( 'logo.png' ),
 		),
 	);
 }
@@ -164,7 +193,7 @@ function bod_week_jsonld( $issue, $articles ) {
 	$week_url  = BOD_CANONICAL_ORIGIN . '/' . $issue['href'];
 	$publisher = bod_publisher_node();
 	$week_date = bod_date_from_mtime( $issue['source_mtime'] );
-	$og_image  = BOD_CANONICAL_ORIGIN . '/imgs/bowl.png';
+	$og_image  = bod_image_url( 'bowl.png' );
 
 	$items = array();
 	foreach ( $articles as $i => $a ) {
@@ -226,7 +255,7 @@ function bod_week_jsonld( $issue, $articles ) {
  */
 function bod_collection_jsonld( $name, $description, $url, $items ) {
 	$publisher = bod_publisher_node();
-	$og_image  = BOD_CANONICAL_ORIGIN . '/imgs/bowl.png';
+	$og_image  = bod_image_url( 'bowl.png' );
 
 	$list = array();
 	foreach ( $items as $i => $it ) {

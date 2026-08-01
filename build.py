@@ -716,6 +716,39 @@ def _collect_tags(all_weeks: list[dict], tag_display: dict[str, str],
     return tags
 
 
+def _assert_sitemap_matches_disk(sitemap_xml: str) -> None:
+    """The sitemap and site/ must describe the same set of pages.
+
+    Both halves have been wrong in production: the sitemap once advertised URLs
+    with no file behind them, and site/tag/ once held 26 files no sitemap listed.
+    Checking both directions here costs nothing and catches either drift at build
+    time rather than in Search Console weeks later.
+    """
+    listed = {
+        loc[len(SITE_URL) + 1:] or "index.html"
+        for loc in re.findall(r"<loc>([^<]+)</loc>", sitemap_xml)
+    }
+
+    missing = sorted(p for p in listed if not (SITE_DIR / p).exists())
+    if missing:
+        raise SystemExit(
+            f"sitemap lists {len(missing)} URL(s) with no file in site/: "
+            + ", ".join(missing[:10])
+        )
+
+    unlisted = sorted(
+        f"{d}/{path.name}"
+        for d in ("tag", "topic")
+        for path in (SITE_DIR / d).glob("*.html")
+        if f"{d}/{path.name}" not in listed
+    )
+    if unlisted:
+        raise SystemExit(
+            f"{len(unlisted)} page(s) on disk are absent from the sitemap: "
+            + ", ".join(unlisted[:10])
+        )
+
+
 def _generate_robots_txt(site_url: str) -> str:
     bots = ["GPTBot", "ClaudeBot", "PerplexityBot", "Applebot-Extended", "Googlebot"]
     lines = ["User-agent: *", "Allow: /", ""]
@@ -725,22 +758,55 @@ def _generate_robots_txt(site_url: str) -> str:
     return "\n".join(lines) + "\n"
 
 
-def _generate_sitemap(all_weeks: list[dict], site_url: str, build_date: str,
+def _collection_lastmod(collection: dict) -> str | None:
+    """Newest issue date among a hub's or tag's items.
+
+    Groups arrive newest-issue-first from _collect_hubs/_collect_tags, so the
+    first dated entry is the answer.
+    """
+    for group in collection["groups"]:
+        for entry in group["entries"]:
+            if entry["date"]:
+                return entry["date"]
+    return None
+
+
+def _generate_sitemap(all_weeks: list[dict], site_url: str,
                       hub_slugs: list[str] | None = None,
-                      tag_slugs: list[str] | None = None) -> str:
+                      tag_slugs: list[str] | None = None,
+                      hub_lastmod: dict[str, str | None] | None = None,
+                      tag_lastmod: dict[str, str | None] | None = None) -> str:
+    """Sitemap for every page the build publishes.
+
+    lastmod is the date the page's content actually changed, never the build
+    date: stamping every URL with "today" on each run tells Google the field is
+    noise. Hubs and tags inherit the newest issue they aggregate; the marketing
+    pages carry no lastmod at all, because they genuinely do not change.
+    """
+    hub_lastmod = hub_lastmod or {}
+    tag_lastmod = tag_lastmod or {}
+
+    newest = next(
+        (
+            datetime.fromtimestamp(w["source_mtime"], tz=timezone.utc).strftime("%Y-%m-%d")
+            for w in all_weeks if w.get("source_mtime")
+        ),
+        None,
+    )
+
     entries = [
-        (f"{site_url}/",                 "weekly",  "1.0", build_date),
-        (f"{site_url}/archive.html",     "weekly",  "0.9", build_date),
-        (f"{site_url}/topics.html",      "weekly",  "0.8", build_date),
-        (f"{site_url}/services.html",    "monthly", "0.7", build_date),
-        (f"{site_url}/about.html",       "monthly", "0.6", build_date),
-        (f"{site_url}/team.html",        "monthly", "0.5", build_date),
-        (f"{site_url}/contact.html",     "monthly", "0.5", build_date),
+        (f"{site_url}/",                 "weekly",  "1.0", newest),
+        (f"{site_url}/archive.html",     "weekly",  "0.9", newest),
+        (f"{site_url}/topics.html",      "weekly",  "0.8", newest),
+        (f"{site_url}/services.html",    "monthly", "0.7", None),
+        (f"{site_url}/about.html",       "monthly", "0.6", None),
+        (f"{site_url}/team.html",        "monthly", "0.5", None),
+        (f"{site_url}/contact.html",     "monthly", "0.5", None),
     ]
     for slug in (hub_slugs or []):
-        entries.append((f"{site_url}/topic/{slug}.html", "weekly", "0.8", build_date))
+        entries.append((f"{site_url}/topic/{slug}.html", "weekly", "0.8", hub_lastmod.get(slug)))
     for slug in (tag_slugs or []):
-        entries.append((f"{site_url}/tag/{slug}.html", "weekly", "0.6", build_date))
+        entries.append((f"{site_url}/tag/{slug}.html", "weekly", "0.6", tag_lastmod.get(slug)))
     for w in all_weeks:
         mtime = w.get("source_mtime")
         lastmod = (
@@ -1263,6 +1329,22 @@ def build() -> None:
         (SITE_DIR / "tag" / f"{slug}.html").write_text(html, encoding="utf-8")
     print(f"  Rendered  {len(tag_slugs)} tag page(s) → site/tag/")
 
+    # A tag that drops below the threshold (or whose slug changes) stops being
+    # rendered, but its file used to survive: unlinked, absent from the sitemap,
+    # and still served by Netlify with whatever it said the last time it
+    # qualified. Reconcile the directory against what we just wrote.
+    for directory, kept in (("tag", set(tag_slugs)), ("topic", set(hub_slugs))):
+        stale = sorted(
+            path for path in (SITE_DIR / directory).glob("*.html")
+            if path.stem not in kept
+        )
+        for path in stale:
+            path.unlink()
+        if stale:
+            print(f"  Pruned    {len(stale)} stale page(s) → site/{directory}/ "
+                  f"({', '.join(p.stem for p in stale[:5])}"
+                  f"{', …' if len(stale) > 5 else ''})")
+
     topics_index_html = env.get_template("topics.html").render(
         **{**shared, "jsonld_str": _make_breadcrumb_jsonld([
             (SITE_NAME, f"{SITE_URL}/"),
@@ -1278,12 +1360,13 @@ def build() -> None:
     # ------------------------------------------------------------------
     # Phase 5: generate LLM-friendly and crawler files
     # ------------------------------------------------------------------
-    build_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-
-    (SITE_DIR / "sitemap.xml").write_text(
-        _generate_sitemap(all_weeks, SITE_URL, build_date, hub_slugs, tag_slugs),
-        encoding="utf-8",
+    sitemap_xml = _generate_sitemap(
+        all_weeks, SITE_URL, hub_slugs, tag_slugs,
+        hub_lastmod={c: _collection_lastmod(hubs[c]) for c in hub_slugs},
+        tag_lastmod={s: _collection_lastmod(tags[s]) for s in tag_slugs},
     )
+    (SITE_DIR / "sitemap.xml").write_text(sitemap_xml, encoding="utf-8")
+    _assert_sitemap_matches_disk(sitemap_xml)
     print(f"  Generated sitemap → site/sitemap.xml")
 
     (SITE_DIR / "llms.txt").write_text(

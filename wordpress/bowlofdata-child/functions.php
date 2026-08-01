@@ -23,10 +23,23 @@ define( 'BOD_PODCAST_URL', 'https://open.spotify.com/show/033Mqus9YAIssepHakRIIk
 define( 'BOD_SUBSTACK_URL', 'https://bowlofdata.substack.com/' );
 
 /**
- * This install is a mirror: bowlofdata.net stays canonical. Every page emits a
- * canonical (and og:url) pointing at the matching .net URL.
+ * The origin every canonical points at.
+ *
+ * Interim, 2026-08-01. This was 'https://bowlofdata.net' on the premise that
+ * .net is the Netlify original and this install mirrors it. That premise no
+ * longer holds: .net is an Aruba domain-forward that 302s here and *strips the
+ * path*, so /tag/python.html canonicalised to a URL resolving to the homepage —
+ * telling Google all 133 pages are duplicates of one page. The Netlify build is
+ * live at bowofdata.netlify.app but the domain is not attached to it.
+ *
+ * Until .net serves real paths, the install canonicalises to itself, which is
+ * always a defensible signal. Restore the mirror by setting this back to
+ * 'https://bowlofdata.net' — BOD_IS_MIRROR and everything downstream follow.
  */
-define( 'BOD_CANONICAL_ORIGIN', 'https://bowlofdata.net' );
+define( 'BOD_CANONICAL_ORIGIN', untrailingslashit( home_url() ) );
+
+/** True when canonicals point at some other install (the mirror arrangement). */
+define( 'BOD_IS_MIRROR', BOD_CANONICAL_ORIGIN !== untrailingslashit( home_url() ) );
 
 /** A technology term needs this many stories before it gets a public page. */
 define( 'BOD_MIN_TAG_ITEMS', 3 );
@@ -72,6 +85,18 @@ add_action(
 			wp_dequeue_style( $handle );
 		}
 
+		// Not dequeued here: blocksy-dynamic-global-css (12 KB from
+		// wp-content/uploads/blocksy/). Blocksy Companion re-adds it after this
+		// hook and after wp_print_styles, so neither dequeue nor deregister
+		// sticks. Left loading deliberately rather than shipping a no-op.
+
+		// Contact Form 7 ships on every page for the sake of one form.
+		if ( ! is_page( 'contact' ) ) {
+			wp_dequeue_style( 'contact-form-7' );
+			wp_dequeue_script( 'contact-form-7' );
+			wp_dequeue_script( 'swv' );
+		}
+
 		wp_enqueue_style(
 			'bod-fonts',
 			'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@500;600&display=swap',
@@ -84,7 +109,11 @@ add_action(
 	100
 );
 
-/** Emoji detection scripts add nothing here and cost a request. */
+/**
+ * Head cruft that costs requests and says nothing about the content: emoji
+ * detection, the generator tag, and the oEmbed/REST/shortlink discovery links
+ * for endpoints no mirrored page uses.
+ */
 add_action(
 	'init',
 	static function () {
@@ -93,7 +122,32 @@ add_action(
 		remove_action( 'wp_head', 'wp_generator' );
 		remove_action( 'wp_head', 'wlwmanifest_link' );
 		remove_action( 'wp_head', 'rsd_link' );
+		remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+		remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
+		remove_action( 'wp_head', 'wp_shortlink_wp_head', 10 );
 	}
+);
+
+/**
+ * Never render a Blocksy template.
+ *
+ * index.php alone is not enough: the hierarchy checks page.php and singular.php
+ * first, and both exist in the parent, so untemplated content rendered Blocksy's
+ * body markup inside our shell. Every real URL here resolves to a child
+ * template (front-page, page-*, single-bod_issue, taxonomy-*, 404), so a
+ * template that resolved out of the parent means content we do not mirror —
+ * hand it to our fallback instead.
+ */
+add_filter(
+	'template_include',
+	static function ( $template ) {
+		$parent = trailingslashit( get_template_directory() );
+		if ( $template && 0 === strpos( $template, $parent ) ) {
+			return get_stylesheet_directory() . '/index.php';
+		}
+		return $template;
+	},
+	99
 );
 
 /**

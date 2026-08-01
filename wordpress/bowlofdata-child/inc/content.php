@@ -251,6 +251,9 @@ function bod_register_rewrites() {
 	add_rewrite_rule( '^tag/([^/]+)\.html$', 'index.php?bod_tech=$matches[1]', 'top' );
 	add_rewrite_rule( '^index\.html$', 'index.php', 'top' );
 
+	// Our own sitemap, not Yoast's. See inc/seo.php.
+	add_rewrite_rule( '^sitemap\.xml$', 'index.php?bod_sitemap=1', 'top' );
+
 	foreach ( array_keys( bod_static_pages() ) as $slug ) {
 		add_rewrite_rule( '^' . $slug . '\.html$', 'index.php?pagename=' . $slug, 'top' );
 	}

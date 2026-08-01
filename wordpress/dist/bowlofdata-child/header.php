@@ -17,8 +17,16 @@ $bod_ctx     = bod_page_context();
 $bod_title   = bod_esc( $bod_ctx['title'] );
 $bod_desc    = bod_esc( $bod_ctx['description'] );
 $bod_url     = bod_esc( $bod_ctx['canonical'] );
-$bod_origin  = BOD_CANONICAL_ORIGIN;
 $bod_current = $bod_ctx['current_page'];
+
+/**
+ * Whether to advertise a canonical at all.
+ *
+ * Suppressed on 404s — a dead URL must not nominate a live page as its
+ * canonical version — and whenever the context carries no canonical, which
+ * means the request has no bowlofdata.net twin. See bod_page_context().
+ */
+$bod_has_canonical = ! is_404() && '' !== $bod_ctx['canonical'];
 
 /** aria-current="page" for the active nav item. */
 $bod_cur = static function ( $page ) use ( $bod_current ) {
@@ -33,9 +41,11 @@ $bod_about_active = in_array( $bod_current, array( 'about', 'team', 'contact' ),
   <title><?php echo $bod_title; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped by bod_esc(). ?></title>
   <meta name="description" content="<?php echo $bod_desc; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>">
   <meta name="author" content="<?php echo bod_esc( BOD_SITE_NAME ); ?> team">
+<?php if ( $bod_has_canonical ) : ?>
   <link rel="canonical" href="<?php echo $bod_url; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>">
-  <link rel="icon" type="image/png" href="<?php echo esc_url( $bod_origin . '/imgs/logo.png' ); ?>">
-  <link rel="apple-touch-icon" href="<?php echo esc_url( $bod_origin . '/imgs/logo.png' ); ?>">
+<?php endif; ?>
+  <link rel="icon" type="image/png" href="<?php echo esc_url( bod_image_url( 'logo.png' ) ); ?>">
+  <link rel="apple-touch-icon" href="<?php echo esc_url( bod_image_url( 'logo.png' ) ); ?>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Open Graph -->
@@ -43,17 +53,19 @@ $bod_about_active = in_array( $bod_current, array( 'about', 'team', 'contact' ),
   <meta property="og:type" content="<?php echo bod_esc( $bod_ctx['og_type'] ); ?>">
   <meta property="og:title" content="<?php echo $bod_title; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>">
   <meta property="og:description" content="<?php echo $bod_desc; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>">
-  <meta property="og:image" content="<?php echo esc_url( $bod_origin . '/imgs/bowl.png' ); ?>">
+  <meta property="og:image" content="<?php echo esc_url( bod_image_url( 'bowl.png' ) ); ?>">
   <meta property="og:image:width" content="2560">
   <meta property="og:image:height" content="1440">
   <meta property="og:image:alt" content="<?php echo bod_esc( BOD_SITE_NAME ); ?> — weekly tech newsletter">
+<?php if ( $bod_has_canonical ) : ?>
   <meta property="og:url" content="<?php echo $bod_url; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>">
+<?php endif; ?>
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="<?php echo $bod_title; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>">
   <meta name="twitter:description" content="<?php echo $bod_desc; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>">
-  <meta name="twitter:image" content="<?php echo esc_url( $bod_origin . '/imgs/bowl.png' ); ?>">
-  <link rel="alternate" type="application/rss+xml" title="<?php echo bod_esc( BOD_SITE_NAME ); ?> RSS Feed" href="<?php echo esc_url( $bod_origin . '/feed.xml' ); ?>">
+  <meta name="twitter:image" content="<?php echo esc_url( bod_image_url( 'bowl.png' ) ); ?>">
+  <link rel="alternate" type="application/rss+xml" title="<?php echo bod_esc( BOD_SITE_NAME ); ?> RSS Feed" href="<?php echo esc_url( bod_feed_url() ); ?>">
   <script type="application/ld+json"><?php echo bod_organization_jsonld(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON. ?></script>
 <?php foreach ( $bod_ctx['jsonld'] as $bod_block ) : ?>
   <script type="application/ld+json"><?php echo $bod_block; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON. ?></script>

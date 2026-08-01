@@ -10,11 +10,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// No canonical on purpose: a dead URL must not nominate a live page as its
+// canonical version. header.php suppresses the tag on is_404() regardless.
 bod_page_context(
 	array(
 		'title'        => 'Not found · ' . BOD_SITE_NAME,
 		'description'  => 'That page does not exist. Browse the archive for every past issue.',
-		'canonical'    => bod_canonical( '/archive.html' ),
+		'canonical'    => '',
 		'current_page' => null,
 	)
 );
