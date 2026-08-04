@@ -21,6 +21,7 @@ define( 'BOD_SITE_NAME', 'Bowl of Data' );
 define( 'BOD_SITE_TAGLINE', 'A weekly digest of the most relevant tech stories' );
 define( 'BOD_PODCAST_URL', 'https://open.spotify.com/show/033Mqus9YAIssepHakRIIk' );
 define( 'BOD_SUBSTACK_URL', 'https://bowlofdata.substack.com/' );
+define( 'BOD_YOUTUBE_URL', 'https://www.youtube.com/@bowlofdata' );
 
 /**
  * The origin every canonical points at.

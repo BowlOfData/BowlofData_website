@@ -106,6 +106,12 @@ $bod_about_active = in_array( $bod_current, array( 'about', 'team', 'contact' ),
               </svg>
               Podcast
             </a>
+            <a href="<?php echo esc_url( BOD_YOUTUBE_URL ); ?>" class="nav-link nav-link--youtube" target="_blank" rel="noopener">
+              <svg class="nav-youtube-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.376.505A3.016 3.016 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.376-.505a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              YouTube
+            </a>
           </div>
         </div>
         <a href="<?php echo esc_url( BOD_SUBSTACK_URL ); ?>" class="nav-subscribe" target="_blank" rel="noopener">Subscribe</a>

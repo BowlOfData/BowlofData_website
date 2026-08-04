@@ -175,8 +175,10 @@ img { display: block; max-width: 100%; }
 .nav-link--services:hover,
 .nav-link--services[aria-current="page"] { color: var(--signal-2); background: rgba(245,197,24,.1); }
 
-.nav-link--podcast { display: flex; align-items: center; gap: .4rem; }
-.nav-podcast-icon { width: 14px; height: 14px; flex-shrink: 0; }
+.nav-link--podcast,
+.nav-link--youtube { display: flex; align-items: center; gap: .4rem; }
+.nav-podcast-icon,
+.nav-youtube-icon { width: 14px; height: 14px; flex-shrink: 0; }
 
 /* About dropdown (desktop + tablet; flattens into the hamburger on mobile) */
 .nav-more-group { display: contents; }

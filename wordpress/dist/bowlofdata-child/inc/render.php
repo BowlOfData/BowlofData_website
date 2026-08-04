@@ -153,6 +153,7 @@ function bod_organization_jsonld() {
 				'https://bowlofdata.substack.com/',
 				'https://www.instagram.com/bowl_of_data',
 				BOD_PODCAST_URL,
+				BOD_YOUTUBE_URL,
 			),
 		)
 	);

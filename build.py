@@ -53,6 +53,7 @@ SITE_TAGLINE = "A weekly digest of the most relevant tech stories"
 SITE_URL     = "https://bowlofdata.net"
 PODCAST_URL  = "https://open.spotify.com/show/033Mqus9YAIssepHakRIIk"
 SUBSTACK_URL = "https://bowlofdata.substack.com/"
+YOUTUBE_URL  = "https://www.youtube.com/@bowlofdata"
 OG_IMAGE     = f"{SITE_URL}/imgs/bowl.png"   # 2560x1440
 
 # ---------------------------------------------------------------------------
@@ -472,6 +473,7 @@ def _make_organization_jsonld(site_url: str, site_name: str, tagline: str) -> st
             "https://bowlofdata.substack.com/",
             "https://www.instagram.com/bowl_of_data",
             PODCAST_URL,
+            YOUTUBE_URL,
         ],
     }, ensure_ascii=False)
 
@@ -959,6 +961,7 @@ def _generate_llms_txt(all_weeks: list[dict], site_url: str, site_name: str, tag
         "- [Subscribe](https://bowlofdata.substack.com/): Free weekly newsletter on Substack",
         "- [Instagram](https://www.instagram.com/bowl_of_data): Follow on Instagram",
         f"- [Podcast (Spotify)]({PODCAST_URL}): Listen to Bowl of Data as a podcast",
+        f"- [YouTube]({YOUTUBE_URL}): Watch Bowl of Data on YouTube",
     ]
     return "\n".join(lines) + "\n"
 
@@ -1028,6 +1031,7 @@ def build() -> None:
         site_url=SITE_URL,
         podcast_url=PODCAST_URL,
         substack_url=SUBSTACK_URL,
+        youtube_url=YOUTUBE_URL,
         build_date=datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         organization_jsonld_str=_make_organization_jsonld(SITE_URL, SITE_NAME, SITE_TAGLINE),
     )
