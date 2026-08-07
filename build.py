@@ -321,6 +321,30 @@ def _normalise_releases(raw: list[dict]) -> list[dict]:
     return result
 
 
+# The pipeline's summaries_WW_YYYY.json is the union of the week's curated
+# stories *and* its curated papers, so any week that also has a
+# curated_papers_WW_YYYY.json carries those papers twice. Mirrors
+# _PAPER_SOURCES / _is_paper_source in maki_newsletter/publish.py, which drops
+# them from the article stream the same way for the Altervista page; keep the
+# two in sync.
+_PAPER_SOURCES = {"arXiv", "HuggingFace Papers"}
+
+
+def _is_paper_source(source: str) -> bool:
+    return source in _PAPER_SOURCES
+
+
+def _dedupe_paper_articles(articles: list[dict], papers: list[dict]) -> list[dict]:
+    """Drop paper-sourced entries from `articles` when they render as papers.
+
+    A week with no papers file keeps every article, so historical weeks that
+    predate the papers section do not silently lose their arXiv stories.
+    """
+    if not papers:
+        return articles
+    return [a for a in articles if not _is_paper_source(a.get("source", ""))]
+
+
 def _normalise_papers(raw_papers: list[dict]) -> list[dict]:
     """Normalise raw paper dicts from a curated_papers_WW_YYYY.json file."""
     result = []
@@ -1046,6 +1070,24 @@ def build() -> None:
     manifest: dict[tuple[int, int], dict] = _load_manifest()
     needs_rebuild: set[tuple[int, int]] = set(manifest) if FORCE_REBUILD else set()
 
+    # Repair entries written before papers were de-duplicated. Weeks whose source
+    # files have rotated away can only be fixed here, and weeks still on disk would
+    # otherwise be skipped as "up to date" and keep their duplicated papers.
+    for key, entry in manifest.items():
+        deduped = _dedupe_paper_articles(entry["articles"], entry.get("papers", []))
+        if len(deduped) == len(entry["articles"]):
+            continue
+        dropped = len(entry["articles"]) - len(deduped)
+        manifest[key] = _build_week_entry(
+            entry["week"], entry["year"], deduped, entry.get("source_mtime", 0),
+            model_releases=entry.get("model_releases", []),
+            model_releases_mtime=entry.get("model_releases_mtime", 0),
+            papers=entry.get("papers", []),
+            papers_mtime=entry.get("papers_mtime", 0),
+        )
+        needs_rebuild.add(key)
+        print(f"  Repaired  {entry['label']} — dropped {dropped} papers duplicated in the article list")
+
     for path in sorted(MAKI_OUTPUT_DIR.glob("summaries_*.json")) if MAKI_OUTPUT_DIR.exists() else []:
         parts = _parse_summaries_filename(path)
         if parts is None:
@@ -1098,7 +1140,7 @@ def build() -> None:
             except (OSError, json.JSONDecodeError) as exc:
                 print(f"  Warning: could not load {papers_path.name}: {exc}")
 
-        articles = _normalise_articles(raw)
+        articles = _dedupe_paper_articles(_normalise_articles(raw), papers)
         manifest[key] = _build_week_entry(
             week_num, year, articles, source_mtime,
             model_releases=model_releases,

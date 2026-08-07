@@ -87,12 +87,6 @@
     <lastmod>2026-08-07</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/large-language-models-llms.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-08-07</lastmod>
-  </url>
-  <url>
     <loc>https://bowlofdata.net/tag/quantum-computing.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -105,19 +99,19 @@
     <lastmod>2026-07-31</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/anthropic.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-08-07</lastmod>
-  </url>
-  <url>
     <loc>https://bowlofdata.net/tag/openai.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <lastmod>2026-08-07</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/claude-code.html</loc>
+    <loc>https://bowlofdata.net/tag/anthropic.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-08-07</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/large-language-models-llms.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <lastmod>2026-08-07</lastmod>
@@ -136,6 +130,12 @@
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/solana.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-08-07</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/claude-code.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <lastmod>2026-08-07</lastmod>
@@ -195,28 +195,10 @@
     <lastmod>2026-07-17</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/grpo.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-08-07</lastmod>
-  </url>
-  <url>
     <loc>https://bowlofdata.net/tag/shors-algorithm.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <lastmod>2026-08-07</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/on-policy-distillation-opd.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-07-31</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/windows.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-07-31</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/go.html</loc>
@@ -249,46 +231,10 @@
     <lastmod>2026-07-31</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/kv-cache.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-07-24</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/qwen3.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-07-24</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/transformer.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-07-10</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/lora.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-07-10</lastmod>
-  </url>
-  <url>
     <loc>https://bowlofdata.net/tag/docker.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <lastmod>2026-07-10</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/vllm.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-08-07</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/codex.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-08-07</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/usdc.html</loc>
@@ -303,7 +249,7 @@
     <lastmod>2026-07-31</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/javascript.html</loc>
+    <loc>https://bowlofdata.net/tag/windows.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <lastmod>2026-07-31</lastmod>
@@ -333,24 +279,6 @@
     <lastmod>2026-05-20</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/bm25.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-08-07</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/large-language-models.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-08-07</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/aispa-artificial-intelligence-system-prompt-assurance.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-08-07</lastmod>
-  </url>
-  <url>
     <loc>https://bowlofdata.net/tag/superconducting-qubits.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -375,25 +303,19 @@
     <lastmod>2026-08-07</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/openvla.html</loc>
+    <loc>https://bowlofdata.net/tag/codex.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <lastmod>2026-07-31</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/qwen3-06b.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-07-31</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/ubuntu.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-08-07</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/nvidia.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-07-31</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/javascript.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <lastmod>2026-07-31</lastmod>
@@ -441,36 +363,6 @@
     <lastmod>2026-07-24</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/llama.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-07-24</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/qwen.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-07-24</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/libero.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-07-24</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/reinforcement-learning-rl.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-07-24</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/diffusion-transformer-dit.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-07-24</lastmod>
-  </url>
-  <url>
     <loc>https://bowlofdata.net/tag/nodejs.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -478,12 +370,6 @@
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/taproot.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-07-17</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/lora-low-rank-adaptation.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <lastmod>2026-07-17</lastmod>
@@ -543,18 +429,6 @@
     <lastmod>2026-05-20</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/json.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-08-07</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/anthropic-claude.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-08-07</lastmod>
-  </url>
-  <url>
     <loc>https://bowlofdata.net/tag/fiber-optic-cables.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -597,22 +471,16 @@
     <lastmod>2026-08-07</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/openclaw.html</loc>
+    <loc>https://bowlofdata.net/tag/vllm.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <lastmod>2026-08-07</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/claude-opus-48.html</loc>
+    <loc>https://bowlofdata.net/tag/grpo.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <lastmod>2026-07-31</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/gpt-55.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-08-07</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/quantum-error-correction.html</loc>
@@ -657,10 +525,16 @@
     <lastmod>2026-07-31</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/llms.html</loc>
+    <loc>https://bowlofdata.net/tag/on-policy-distillation-opd.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <lastmod>2026-07-24</lastmod>
+    <lastmod>2026-07-31</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/ubuntu.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-07-31</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/nasa.html</loc>
@@ -675,25 +549,37 @@
     <lastmod>2026-07-24</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/reinforcement-learning-with-verifiable-rewards-rlvr.html</loc>
+    <loc>https://bowlofdata.net/tag/llama.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-24</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/markdown.html</loc>
+    <loc>https://bowlofdata.net/tag/qwen.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-24</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/html.html</loc>
+    <loc>https://bowlofdata.net/tag/kv-cache.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-24</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/qwen3.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-07-24</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/op-cat.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-07-17</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/lora-low-rank-adaptation.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <lastmod>2026-07-17</lastmod>
@@ -735,16 +621,16 @@
     <lastmod>2026-07-10</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/webassembly.html</loc>
+    <loc>https://bowlofdata.net/tag/transformer.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-10</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/gguf.html</loc>
+    <loc>https://bowlofdata.net/tag/lora.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-10</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/quantinuum.html</loc>
