@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}Newsletter on Demand · {{ site_name }}{% endblock %}
+{% block title %}Newsletter as a Service — Done-For-You, White-Label · {{ site_name }}{% endblock %}
+{% block og_title %}Newsletter as a Service — Done-For-You & White-Label{% endblock %}
 
-{% block og_description %}We build and run a fully AI-powered newsletter, podcast, or private intelligence brief tailored to your niche — editorially curated, private by design, and delivered every week. You own the audience.{% endblock %}
+{% block og_description %}Newsletter as a service: we build and run a white-label, done-for-you newsletter, podcast, or private intelligence brief for your niche — editorially curated, private by design, shipped every week. You own the audience.{% endblock %}
 {% block og_url %}{{ site_url }}/services.html{% endblock %}
 
 {% block content %}
@@ -16,8 +17,9 @@
       <span>Your Newsletter.</span>
     </h1>
     <p class="services-hero-sub">
-      We build and run a fully AI-powered content pipeline tuned to your niche —
-      so you own the audience without owning the workload.
+      Newsletter as a service: we build and run a white-label, AI-powered content
+      pipeline tuned to your niche — so you own the audience without owning the
+      workload. Done for you, every week, under your brand.
     </p>
     <div class="services-hero-ctas">
       <a href="{{ contact_href }}" class="cta-primary">Request your newsletter</a>
@@ -152,8 +154,12 @@
   </section>
 
   <section class="services-section">
-    <h2 class="services-section-title">Why work with us</h2>
+    <h2 class="services-section-title">Why us, not a newsletter agency</h2>
     <div class="svc-why">
+      <div class="svc-reason">
+        <p class="svc-reason-t">Agency output, pipeline economics</p>
+        <p class="svc-reason-d">A traditional newsletter agency bills for the hours a human spends reading. We built the reading into a pipeline and kept the human on the editorial calls, which is why a white-label weekly costs a flat monthly fee instead of a retainer that scales with your topic count.</p>
+      </div>
       <div class="svc-reason">
         <p class="svc-reason-t">Editorial quality gates</p>
         <p class="svc-reason-d">Not a raw AI feed. Every issue is deduplicated, ranked against real trend signals, and style-checked before it ships — so it reads like an editor made the calls, because one did.</p>
@@ -163,8 +169,8 @@
         <p class="svc-reason-d">The pipeline runs mainly on open models on our own hardware. Your sources, drafts, and data never go to a third-party AI service — which matters most when the topic is your market or your competitors.</p>
       </div>
       <div class="svc-reason">
-        <p class="svc-reason-t">You own the audience</p>
-        <p class="svc-reason-d">Your brand, your platform, your subscriber list. We stay behind the scenes — every reader you earn and every relationship you build is yours to keep.</p>
+        <p class="svc-reason-t">White-label: you own the audience</p>
+        <p class="svc-reason-d">Your brand, your platform, your subscriber list. We stay behind the scenes and take no byline — every reader you earn and every relationship you build is yours to keep, and nothing on the page says it came from us.</p>
       </div>
       <div class="svc-reason">
         <p class="svc-reason-t">Live in days, not a sales cycle</p>
@@ -177,7 +183,7 @@
     <div class="services-proof">
       <div class="services-proof-text">
         <p class="services-proof-label">Proven pipeline</p>
-        <p class="services-proof-body">Bowl of Data runs on the exact pipeline we would build for you — a curated tech digest shipped every week, without missing an issue. What changes for your project is the topic, the audience, and the brand.</p>
+        <p class="services-proof-body">Bowl of Data runs on the exact pipeline we would build for you — a curated tech digest shipped every week, without missing an issue. What changes for your project is the topic, the audience, and the brand. {% if latest_week %}Read <a href="{{ latest_week.href }}">this week&rsquo;s issue</a> to see the output before you ask for a sample.{% endif %}</p>
       </div>
       <a href="{{ about_href }}" class="services-proof-link">See how it works →</a>
     </div>
@@ -201,6 +207,22 @@
       <details class="faq-item">
         <summary>How fast can we launch?</summary>
         <div class="faq-answer">A first sample issue lands in days, not a sales cycle. Once you&rsquo;re happy with the voice and the sources, we set the weekly cadence and go.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What is newsletter as a service?</summary>
+        <div class="faq-answer">You get the newsletter without running one. We own the sourcing, curation, writing, editing and delivery as an ongoing service, billed as a flat monthly fee rather than per issue or per hour, and it ships under your brand on your platform.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Is the newsletter white-label?</summary>
+        <div class="faq-answer">Yes. It carries your brand, your voice and your domain, and we take no byline or credit line anywhere in it. Readers see your publication, not ours.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How is this different from a newsletter agency?</summary>
+        <div class="faq-answer">An agency bills for the hours a person spends reading and writing, so the cost grows with the number of topics you track. We built the reading into a pipeline and kept a human on the editorial decisions, which holds the price flat as the scope grows.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What does it cost?</summary>
+        <div class="faq-answer">A flat monthly fee, scoped to your niche, the number of sections, and whether you want the podcast or the private brief alongside the newsletter. Tell us the scope and you get a fixed number back — there is no per-issue or per-word billing.</div>
       </details>
     </div>
   </section>

@@ -350,6 +350,7 @@ img { display: block; max-width: 100%; }
 .back-link:hover { color: var(--signal); text-decoration: none; }
 .week-title { font-family: var(--display); font-size: clamp(2rem, 4.5vw, 2.9rem); font-weight: 800; color: var(--text); letter-spacing: -.035em; line-height: 1.02; margin-bottom: .5rem; }
 .week-title-accent { color: var(--signal); font-variant-numeric: tabular-nums; }
+.week-dateline { font-family: var(--mono); font-size: .78rem; color: var(--signal); letter-spacing: .04em; text-transform: uppercase; font-variant-numeric: tabular-nums; margin-bottom: .3rem; }
 .week-meta { font-family: var(--mono); font-size: .78rem; color: var(--muted); font-variant-numeric: tabular-nums; }
 
 /* Band header for the three issue sections */

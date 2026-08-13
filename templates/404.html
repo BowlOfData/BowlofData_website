@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{# Netlify serves this for any unmatched path, at any directory depth, so every
+   asset and link here must be root-absolute. build.py renders it with absolute
+   *_href and css_path for exactly that reason — do not switch them to relative. #}
+
+{% block title %}Page not found · {{ site_name }}{% endblock %}
+{% block og_title %}Page not found{% endblock %}
+{% block og_description %}That page doesn't exist. Browse the archive of every {{ site_name }} issue instead.{% endblock %}
+{% block og_url %}{{ site_url }}/404.html{% endblock %}
+
+{% block content %}
+<div class="week-header">
+  <div class="week-header-inner">
+    <p class="week-dateline">Error 404</p>
+    <h1 class="week-title">This page isn&rsquo;t on the menu.</h1>
+    <p class="week-meta">The link may be old, or we may have moved the page.</p>
+    <div class="hero-ctas" style="margin-top:1.5rem">
+      {% if latest_week %}
+      <a href="{{ site_url }}/{{ latest_week.href }}" class="cta-primary">Read the latest issue</a>
+      {% endif %}
+      <a href="{{ archive_href }}" class="cta-secondary">Browse the archive</a>
+      <a href="{{ topics_href }}" class="cta-secondary">All topics</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -9,3 +9,11 @@
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Images change rarely, but the filenames are not fingerprinted — a year-long
+# max-age would strand an updated logo in caches for a year. A week is the
+# compromise: repeat visitors skip the download, a change still propagates.
+[[headers]]
+  for = "/imgs/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"

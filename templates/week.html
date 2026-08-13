@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}{{ label }} · {{ site_name }}{% endblock %}
-{% block og_description %}{{ articles | length }} article{{ 's' if articles | length != 1 else '' }} curated this week: AI, cybersecurity, blockchain and engineering.{% endblock %}
+{% block title %}Tech News Roundup: {{ date_range_short }} (Week {{ "%02d"|format(week) }}) · {{ site_name }}{% endblock %}
+{# Share cards already show the site name, so drop the suffix there. #}
+{% block og_title %}Tech News Roundup: {{ date_range_short }} (Week {{ "%02d"|format(week) }}){% endblock %}
+{% block og_description %}{{ meta_description }}{% endblock %}
 {% block og_url %}{{ site_url }}/week/{{ "%02d"|format(week) }}_{{ year }}.html{% endblock %}
 {% block og_type %}article{% endblock %}
 
@@ -12,6 +14,7 @@
     <h1 class="week-title">
       Week <span class="week-title-accent">{{ "%02d"|format(week) }}</span> · {{ year }}
     </h1>
+    <p class="week-dateline">{{ date_range_long }}</p>
     <p class="week-meta">{{ articles | length }} article{{ 's' if articles | length != 1 else '' }}{% if model_releases %} · {{ model_releases | length }} model release{{ 's' if model_releases | length != 1 else '' }}{% endif %}{% if papers %} · {{ papers | length }} paper{{ 's' if papers | length != 1 else '' }}{% endif %}</p>
     {% if prev_week or next_week %}
     <div class="week-nav week-nav--header">
@@ -52,13 +55,9 @@
               <span class="release-date-pill">{{ item.release_date }}</span>
               {% endif %}
             </div>
-            <h3 class="release-name">
-              {% if item.url %}
-              <a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.model_name }}</a>
-              {% else %}
-              {{ item.model_name }}
-              {% endif %}
-            </h3>
+            {# Plain text on purpose: the announcement link lives in the card
+               footer, so the heading is not a second way off the page. #}
+            <h3 class="release-name">{{ item.model_name }}</h3>
           </div>
 
           <div class="release-card-body">
@@ -110,13 +109,8 @@
 
           <div class="article-card-top">
             <p class="article-number">Paper {{ loop.index }}</p>
-            <h2 class="article-title">
-              {% if p.url %}
-              <a href="{{ p.url }}" target="_blank" rel="noopener">{{ p.title }}</a>
-              {% else %}
-              {{ p.title }}
-              {% endif %}
-            </h2>
+            {# Plain text on purpose — see the release cards above. #}
+            <h2 class="article-title">{{ p.title }}</h2>
             <div class="article-meta">
               {% if p.category_label %}
               <a class="beat-badge beat-badge--{{ p.category }}" href="{{ topic_base }}{{ p.category }}.html">{{ p.category_label }}</a>
@@ -197,13 +191,8 @@
 
         <div class="article-card-top">
           <p class="article-number">Article {{ loop.index }}</p>
-          <h2 class="article-title">
-            {% if a.url %}
-            <a href="{{ a.url }}" target="_blank" rel="noopener">{{ a.title }}</a>
-            {% else %}
-            {{ a.title }}
-            {% endif %}
-          </h2>
+          {# Plain text on purpose — see the release cards above. #}
+          <h2 class="article-title">{{ a.title }}</h2>
           <div class="article-meta">
             {% if a.category_label %}
             <a class="beat-badge beat-badge--{{ a.category }}" href="{{ topic_base }}{{ a.category }}.html">{{ a.category_label }}</a>

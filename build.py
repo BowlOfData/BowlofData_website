@@ -21,7 +21,7 @@ import json
 import os
 import re
 import shutil
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -55,6 +55,18 @@ PODCAST_URL  = "https://open.spotify.com/show/033Mqus9YAIssepHakRIIk"
 SUBSTACK_URL = "https://bowlofdata.substack.com/"
 YOUTUBE_URL  = "https://www.youtube.com/@bowlofdata"
 OG_IMAGE     = f"{SITE_URL}/imgs/bowl.png"   # 2560x1440
+
+# How many items a hub or tag needs before its page is worth *indexing*.
+#
+# Deliberately separate from _collect_tags(min_items=...), which decides whether
+# the page EXISTS. Raising that one deletes files and 404s URLs Google already
+# knows; this one leaves the page in place, still reachable and still passing
+# link equity, and only adds noindex + drops it from the sitemap.
+#
+# 0 disables the whole mechanism. It ships at 0 on purpose: 70 of 105 tag pages
+# hold 3-4 items and look thin, but pruning them before Search Console has
+# impression data for them would be guessing. Raise this once that data exists.
+MIN_INDEXABLE_ITEMS = 0
 
 # ---------------------------------------------------------------------------
 # Topic taxonomy — the site's editorial "beats" (see CATEGORY_ORDER below).
@@ -173,6 +185,21 @@ SERVICES_FAQ = [
     ("How fast can we launch?",
      "A first sample issue lands in days, not a sales cycle. Once you're happy with the "
      "voice and the sources, we set the weekly cadence and go."),
+    ("What is newsletter as a service?",
+     "You get the newsletter without running one. We own the sourcing, curation, writing, "
+     "editing and delivery as an ongoing service, billed as a flat monthly fee rather than "
+     "per issue or per hour, and it ships under your brand on your platform."),
+    ("Is the newsletter white-label?",
+     "Yes. It carries your brand, your voice and your domain, and we take no byline or "
+     "credit line anywhere in it. Readers see your publication, not ours."),
+    ("How is this different from a newsletter agency?",
+     "An agency bills for the hours a person spends reading and writing, so the cost grows "
+     "with the number of topics you track. We built the reading into a pipeline and kept a "
+     "human on the editorial decisions, which holds the price flat as the scope grows."),
+    ("What does it cost?",
+     "A flat monthly fee, scoped to your niche, the number of sections, and whether you "
+     "want the podcast or the private brief alongside the newsletter. Tell us the scope "
+     "and you get a fixed number back — there is no per-issue or per-word billing."),
 ]
 
 ABOUT_FAQ = [
@@ -511,6 +538,67 @@ def _publisher_node(site_url: str, site_name: str) -> dict:
     }
 
 
+def _week_coverage_range(w: dict) -> tuple[date, date]:
+    """The span of days an issue actually covers.
+
+    The manifest stores no issue date — only the ISO week, the year, and
+    `source_mtime` (the maki output's write time, cached here rather than
+    stat'd, so it is stable across rebuilds). The ISO week runs Mon-Sun but
+    maki writes on the Friday, so the full Mon-Sun span would advertise two
+    days the issue cannot have covered — and for the newest issue those days
+    are still in the future when it publishes. End on the write date instead.
+    """
+    start = date.fromisocalendar(w["year"], w["week"], 1)
+    mtime = w.get("source_mtime")
+    if mtime:
+        end = datetime.fromtimestamp(mtime, tz=timezone.utc).date()
+        # A malformed or back-dated mtime must never produce a reversed range.
+        if start <= end <= start + timedelta(days=6):
+            return start, end
+    return start, start + timedelta(days=6)
+
+
+def _format_range_short(start: date, end: date) -> str:
+    """`Aug 3-7, 2026`, or `Aug 31 - Sep 4, 2026` when the week spans months."""
+    if start.month == end.month:
+        return f"{start:%b} {start.day}–{end.day}, {end.year}"
+    return f"{start:%b} {start.day} – {end:%b} {end.day}, {end.year}"
+
+
+def _format_range_long(start: date, end: date) -> str:
+    """`3-7 August 2026`, or `31 August - 4 September 2026` across months."""
+    if start.month == end.month:
+        return f"{start.day}–{end.day} {end:%B} {end.year}"
+    return f"{start.day} {start:%B} – {end.day} {end:%B} {end.year}"
+
+
+def _week_meta_description(w: dict, range_long: str) -> str:
+    """One meta description per issue, dated so no two are identical.
+
+    Search engines truncate around 155 characters, so the model-release and
+    paper tallies are appended only when they still fit — a long month-spanning
+    range plus a big issue would otherwise push the sentence past the cut.
+    """
+    count = w["article_count"]
+    base = (
+        f"The week in tech, {range_long}: {count} curated "
+        f"{'stories' if count != 1 else 'story'} across AI, cybersecurity, "
+        "blockchain and engineering"
+    )
+    extras = []
+    if w.get("model_releases"):
+        n = len(w["model_releases"])
+        extras.append(f"{n} model release{'s' if n != 1 else ''}")
+    if w.get("papers"):
+        n = len(w["papers"])
+        extras.append(f"{n} paper{'s' if n != 1 else ''}")
+    if extras:
+        tail = f", plus {' and '.join(extras)}."
+        if len(base) + len(tail) <= 155:
+            return base + tail
+    return base + "."
+
+
 def _make_week_jsonld(w: dict, site_url: str, site_name: str) -> str:
     count = w["article_count"]
     week_url = f"{site_url}/{w['href']}"
@@ -521,14 +609,22 @@ def _make_week_jsonld(w: dict, site_url: str, site_name: str) -> str:
     )
     items: list[dict[str, Any]] = []
     for i, a in enumerate(w["articles"], 1):
+        # The node describes *our* summary card, not the publisher's article —
+        # which is why url points at our anchor and the source is represented
+        # as isBasedOn/citation. Pointing url off-site while naming ourselves as
+        # author and publisher claimed someone else's journalism as our own.
         article_node: dict[str, Any] = {
             "@type": "NewsArticle",
             "headline": a["title"],
-            "url": a["url"] or f"{week_url}#{a['slug']}",
+            "url": f"{week_url}#{a['slug']}",
             "image": OG_IMAGE,
             "publisher": publisher,
             "author": {"@type": "Organization", "name": site_name, "url": site_url},
         }
+        if a.get("url"):
+            article_node["isBasedOn"] = a["url"]
+        if a.get("source"):
+            article_node["citation"] = a["source"]
         if a.get("short_summary"):
             article_node["description"] = a["short_summary"]
         if a.get("published"):
@@ -762,16 +858,20 @@ def _assert_sitemap_matches_disk(sitemap_xml: str) -> None:
             + ", ".join(missing[:10])
         )
 
+    # A page may be absent from the sitemap only if it says so itself. That
+    # keeps the original check honest — an accidentally unlisted page still
+    # fails — while allowing the deliberate noindex tier (MIN_INDEXABLE_ITEMS).
     unlisted = sorted(
         f"{d}/{path.name}"
         for d in ("tag", "topic")
         for path in (SITE_DIR / d).glob("*.html")
         if f"{d}/{path.name}" not in listed
+        and 'name="robots" content="noindex' not in path.read_text(encoding="utf-8")
     )
     if unlisted:
         raise SystemExit(
-            f"{len(unlisted)} page(s) on disk are absent from the sitemap: "
-            + ", ".join(unlisted[:10])
+            f"{len(unlisted)} page(s) on disk are absent from the sitemap "
+            "and are not noindexed: " + ", ".join(unlisted[:10])
         )
 
 
@@ -795,6 +895,16 @@ def _collection_lastmod(collection: dict) -> str | None:
             if entry["date"]:
                 return entry["date"]
     return None
+
+
+def _is_indexable(collection: dict) -> bool:
+    """Whether a hub/tag page is substantial enough to belong in the index."""
+    return collection["count"] >= MIN_INDEXABLE_ITEMS
+
+
+def _robots_for(collection: dict) -> str | None:
+    """`noindex,follow` for a thin page: dropped from search, kept in the graph."""
+    return None if _is_indexable(collection) else "noindex,follow"
 
 
 def _generate_sitemap(all_weeks: list[dict], site_url: str,
@@ -1207,10 +1317,16 @@ def build() -> None:
         prev_week = all_weeks[i + 1] if i + 1 < len(all_weeks) else None  # older issue
 
         out_path = SITE_DIR / w["href"]
+        cov_start, cov_end = _week_coverage_range(w)
         html = week_tmpl.render(
             week=w["week"],
             year=w["year"],
             label=w["label"],
+            date_range_short=_format_range_short(cov_start, cov_end),
+            date_range_long=_format_range_long(cov_start, cov_end),
+            meta_description=_week_meta_description(
+                w, _format_range_long(cov_start, cov_end)
+            ),
             articles=w["articles"],
             model_releases=w.get("model_releases", []),
             papers=w.get("papers", []),
@@ -1296,8 +1412,28 @@ def build() -> None:
     (SITE_DIR / "team.html").write_text(team_html, encoding="utf-8")
     print(f"  Rendered  team → site/team.html")
 
+    # 404 is the one page that can be served from any depth, so it gets
+    # absolute paths rather than the relative ones every other page uses.
+    not_found_html = env.get_template("404.html").render(
+        **{**shared,
+           "css_path":     f"{SITE_URL}/static/style.css",
+           "logo_path":    f"{SITE_URL}/imgs/logo.png",
+           "index_href":   f"{SITE_URL}/index.html",
+           "archive_href": f"{SITE_URL}/archive.html",
+           "topics_href":  f"{SITE_URL}/topics.html",
+           "about_href":   f"{SITE_URL}/about.html",
+           "contact_href": f"{SITE_URL}/contact.html",
+           "team_href":    f"{SITE_URL}/team.html",
+           "services_href": f"{SITE_URL}/services.html"},
+        latest_week=latest_week,
+        robots="noindex,follow",
+    )
+    (SITE_DIR / "404.html").write_text(not_found_html, encoding="utf-8")
+    print(f"  Rendered  404 → site/404.html")
+
     services_html = env.get_template("services.html").render(
         **shared, current_page="services",
+        latest_week=latest_week,   # the "see a real issue" proof link
         faq_jsonld_str=_make_faq_jsonld(SERVICES_FAQ),
     )
     (SITE_DIR / "services.html").write_text(services_html, encoding="utf-8")
@@ -1334,6 +1470,7 @@ def build() -> None:
         html = collection_tmpl.render(
             **collection_nav, current_page="topics",
             kicker="Topic", h1=meta["h1"], page_title=f"{meta['h1']} News · {SITE_NAME}",
+            robots=_robots_for(hub), subscribe_ctx="topic",
             intro=meta["intro"], og_desc=og_desc, canonical_url=url,
             count=hub["count"], groups=hub["groups"],
             related_tags=hub["related_tags"], related_topics=None,
@@ -1361,6 +1498,7 @@ def build() -> None:
             **collection_nav, current_page="topics",
             kicker="Tag", h1=tag["name"],
             page_title=f"{tag['name']} — weekly coverage · {SITE_NAME}",
+            robots=_robots_for(tag), subscribe_ctx="tag",
             intro=intro, og_desc=og_desc, canonical_url=url,
             count=tag["count"], groups=tag["groups"],
             related_tags=None, related_topics=tag["categories"],
@@ -1406,10 +1544,14 @@ def build() -> None:
     # ------------------------------------------------------------------
     # Phase 5: generate LLM-friendly and crawler files
     # ------------------------------------------------------------------
+    # Noindexed pages stay on disk and keep their internal links; they just do
+    # not belong in a sitemap, which is a list of pages we want crawled.
+    indexed_hubs = [c for c in hub_slugs if _is_indexable(hubs[c])]
+    indexed_tags = [s for s in tag_slugs if _is_indexable(tags[s])]
     sitemap_xml = _generate_sitemap(
-        all_weeks, SITE_URL, hub_slugs, tag_slugs,
-        hub_lastmod={c: _collection_lastmod(hubs[c]) for c in hub_slugs},
-        tag_lastmod={s: _collection_lastmod(tags[s]) for s in tag_slugs},
+        all_weeks, SITE_URL, indexed_hubs, indexed_tags,
+        hub_lastmod={c: _collection_lastmod(hubs[c]) for c in indexed_hubs},
+        tag_lastmod={s: _collection_lastmod(tags[s]) for s in indexed_tags},
     )
     (SITE_DIR / "sitemap.xml").write_text(sitemap_xml, encoding="utf-8")
     _assert_sitemap_matches_disk(sitemap_xml)

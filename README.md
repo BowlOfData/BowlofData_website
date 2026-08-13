@@ -80,32 +80,39 @@ git push        # Netlify publishes site/ as-is
 
 ---
 
-## WordPress mirror (Altervista)
+## WordPress mirror (Altervista) — retired
 
-`bowlofdata.altervista.org` runs a WordPress port of this site.
+`bowlofdata.altervista.org` ran a WordPress port of this site. **It is retired as of
+2026-08-12 and 301s every front-end request to `bowlofdata.net`.**
 
-> ⚠️ **The domain is not wired up the way this section used to claim.** It said Netlify
-> stays primary and the mirror canonicals back to `bowlofdata.net`. As of 2026-08-01 that
-> is not what is deployed:
+> **Why it existed, and why it doesn't any more.** Until 2026-08-01 `bowlofdata.net` was an
+> Aruba domain-forward (`62.149.189.54`) that 302'd to Altervista **with the path stripped** —
+> `/week/31_2026.html` landed on the homepage, and so did `/imgs/*` and `/feed.xml`. A
+> canonical pointing at a path-stripping redirect tells Google every page duplicates the
+> homepage, so the WordPress install was made self-canonical as a stopgap.
 >
-> - `bowlofdata.net` resolves to `62.149.189.54` (Aruba), **not** Netlify, and 302-redirects
->   to `bowlofdata.altervista.org` **with the path stripped** — `/week/31_2026.html` lands
->   on the homepage. `/imgs/*` and `/feed.xml` do too, which is why `og:image`, the favicon
->   and the JSON-LD logo were all resolving to an HTML document.
-> - The Netlify build is live and healthy at `bowofdata.netlify.app`; the custom domain was
->   never attached to it.
->
-> Because a canonical pointing at a path-stripping redirect tells Google every page is a
-> duplicate of the homepage, the WordPress install **now canonicalises to itself**.
-> `BOD_CANONICAL_ORIGIN` in `wordpress/bowlofdata-child/functions.php` defaults to
-> `home_url()`; set it back to `'https://bowlofdata.net'` to restore mirror behaviour once
-> `.net` serves real paths. `BOD_IS_MIRROR` derives from it and switches the feed handling
-> and canonical strategy together — nothing else needs editing.
->
-> **To restore the intended architecture:** point `bowlofdata.net` at Netlify (replace
-> Aruba's forward with Netlify's DNS records), then flip `BOD_CANONICAL_ORIGIN` back.
+> The domain now points at Netlify and serves real deep paths, which turned that stopgap
+> into the problem: two sites publishing identical titles and identical sitemaps at
+> identical paths, splitting the authority for every query. So the mirror was retired
+> rather than re-mirrored.
 
-The mirror is a Blocksy child theme in `wordpress/bowlofdata-child/` that re-implements the layout in PHP and stores newsletter content as custom post types.
+**How the retirement is wired** (`wordpress/bowlofdata-child/functions.php`):
+
+- `BOD_RETIRED_TO` drives a `template_redirect` that 301s `REQUEST_URI` to the same path on
+  `.net`. It fires only on front-end template loading, so wp-admin, wp-login and the REST
+  API — and therefore `scripts/deploy_wp_theme.py` — are untouched.
+- `is_robots()` is **exempt on purpose.** WordPress serves robots.txt through the template
+  loader *after* `template_redirect`, and a crawler that cannot fetch robots.txt never
+  crawls the pages, never sees the 301s, and never consolidates anything.
+- `BOD_CANONICAL_ORIGIN` is back to `'https://bowlofdata.net'`; it is now only a fallback
+  for the case where `BOD_RETIRED_TO` is set to `''` to bring the install back.
+
+Verify with `python3 scripts/check_mirror_parity.py`, which asserts the 301s and that
+robots.txt still answers 200. To revive the mirror, set `BOD_RETIRED_TO` to `''` — but
+rebuild the theme from the current templates first, since `inc/render.php` mirrors them by
+hand and has not tracked changes made since retirement.
+
+The theme is a Blocksy child theme in `wordpress/bowlofdata-child/` that re-implements the layout in PHP and stores newsletter content as custom post types.
 
 | This repo | WordPress |
 |---|---|
