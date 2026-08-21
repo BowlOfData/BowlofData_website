@@ -1,5 +1,826 @@
 [
   {
+    "week": 34,
+    "year": 2026,
+    "month": 8,
+    "month_name": "August",
+    "label": "Week 34 · 2026",
+    "href": "week/34_2026.html",
+    "articles": [
+      {
+        "title": "NTT DOCOMO Deploys Second D-Wave Production Quantum Application to Optimize Telecom Network Signaling",
+        "slug": "ntt-docomo-deploys-second-d-wave-production-quantum-application-to-optimize-telecom-network-signaling",
+        "url": "https://quantumcomputingreport.com/ntt-docomo-deploys-second-d-wave-production-quantum-application-to-optimize-telecom-network-signaling",
+        "source": "Quantum Computing Report",
+        "published": "Tue, 18 Aug 2026 14:27:02 +0000",
+        "short_summary": "NTT DOCOMO has successfully implemented a second commercial quantum application powered by D-Wave to optimize telecommunications network signaling. The deployment focuses on optimizing Tracking Area Lists, resulting in significant reductions in both location registration and paging signal loads.",
+        "long_resume": "Japanese telecommunications giant NTT DOCOMO has announced the deployment of its second production-grade quantum application, marking a significant step in integrating quantum computing into live telecommunications infrastructure. Utilizing D-Wave Quantum Inc.'s hybrid quantum annealing platform via the Leap cloud service, the new application specifically targets the optimization of Tracking Area Lists (TA-Lists). In mobile networks, TA-Lists are critical for managing device handoffs and call routing by grouping geographic base stations. The optimization process involves a complex combinatorial challenge: balancing location registration signals (which increase when devices cross boundaries) against paging signals (used to locate devices for incoming calls), as reducing one often increases the other.\n\nIn operational benchmarks involving 330 base stations, three TA-Lists, and nine tracking areas, D-Wave’s hybrid quantum-classical solver successfully executed multi-objective optimization in roughly five minutes. The results were substantial, showing a 65.3% reduction in peak location registration signaling and a 7.0% reduction in paging signal load across 333 base stations. This deployment follows an initial production application focused on single Tracking Area paging efficiency, which achieved a 15% reduction in paging load. By expanding from isolated use cases to network-wide infrastructure optimization, NTT DOCOMO is demonstrating the practical utility of quantum annealing for large-scale, real-world network planning. The optimized configurations are integrated directly into DOCOMO's daily operational workflows, supporting their massive user base of over 93 million mobile subscriptions in Japan.",
+        "long_resume_paragraphs": [
+          "Japanese telecommunications giant NTT DOCOMO has announced the deployment of its second production-grade quantum application, marking a significant step in integrating quantum computing into live telecommunications infrastructure. Utilizing D-Wave Quantum Inc.'s hybrid quantum annealing platform via the Leap cloud service, the new application specifically targets the optimization of Tracking Area Lists (TA-Lists). In mobile networks, TA-Lists are critical for managing device handoffs and call routing by grouping geographic base stations. The optimization process involves a complex combinatorial challenge: balancing location registration signals (which increase when devices cross boundaries) against paging signals (used to locate devices for incoming calls), as reducing one often increases the other.",
+          "In operational benchmarks involving 330 base stations, three TA-Lists, and nine tracking areas, D-Wave’s hybrid quantum-classical solver successfully executed multi-objective optimization in roughly five minutes. The results were substantial, showing a 65.3% reduction in peak location registration signaling and a 7.0% reduction in paging signal load across 333 base stations. This deployment follows an initial production application focused on single Tracking Area paging efficiency, which achieved a 15% reduction in paging load. By expanding from isolated use cases to network-wide infrastructure optimization, NTT DOCOMO is demonstrating the practical utility of quantum annealing for large-scale, real-world network planning. The optimized configurations are integrated directly into DOCOMO's daily operational workflows, supporting their massive user base of over 93 million mobile subscriptions in Japan."
+        ],
+        "main_topic": "NTT DOCOMO has deployed its second production-grade quantum application using D-Wave's technology to optimize mobile network signaling efficiency.",
+        "technologies": [
+          "D-Wave Quantum Inc.",
+          "Leap™ cloud service",
+          "Quantum annealing",
+          "Hybrid quantum-classical solver",
+          "NTT DOCOMO Network Signaling Optimization Pipeline"
+        ],
+        "category": "quantum",
+        "category_label": "Quantum Computing"
+      },
+      {
+        "title": "Quantum Motion Expands to Maryland’s Discovery District to Scale US Commercial and Defense Operations",
+        "slug": "quantum-motion-expands-to-marylands-discovery-district-to-scale-us-commercial-and-defense-operations",
+        "url": "https://quantumcomputingreport.com/quantum-motion-expands-to-marylands-discovery-district-to-scale-us-commercial-and-defense-operations",
+        "source": "Quantum Computing Report",
+        "published": "Tue, 18 Aug 2026 14:14:43 +0000",
+        "short_summary": "UK-based Quantum Motion is opening a new operational hub in Maryland's Discovery District to support its U.S. commercial and defense expansion. The move aims to leverage the region's proximity to federal agencies like DARPA while utilizing scalable silicon CMOS manufacturing techniques.",
+        "long_resume": "Quantum Motion, a prominent UK-based leader in silicon quantum computing, has announced a significant strategic expansion into the United States with a new operational hub located in the University of Maryland’s Discovery District. This move is designed to facilitate the company's growth within both the commercial and public sectors, specifically targeting the U.S. defense and enterprise markets. By establishing a presence in College Park, Quantum Motion positions itself near critical federal research organizations, including the Defense Advanced Research Projects Agency (DARPA) and the Applied Research Laboratory for Intelligence and Security (ARLIS). The company's technical strategy centers on the development of spin-qubit quantum processing units (QPUs) that utilize standard silicon complementary metal-oxide-semiconductor (CMOS) manufacturing processes. This approach is highly scalable as it relies on existing semiconductor foundry fabrication infrastructure to produce high-density quantum chips at scale. Furthermore, the new facility places Quantum Motion within the 'Capital of Quantum' (CoQ) ecosystem, co-locating the company with other industry giants such as IonQ and Microsoft. Under the leadership of President and Chief Commercial Officer Hugo Saleh, this expansion represents a critical step in integrating silicon-based hardware development into the Washington, D.C. metropolitan region's robust defense and technology landscape.",
+        "long_resume_paragraphs": [
+          "Quantum Motion, a prominent UK-based leader in silicon quantum computing, has announced a significant strategic expansion into the United States with a new operational hub located in the University of Maryland’s Discovery District. This move is designed to facilitate the company's growth within both the commercial and public sectors, specifically targeting the U.S. defense and enterprise markets. By establishing a presence in College Park, Quantum Motion positions itself near critical federal research organizations, including the Defense Advanced Research Projects Agency (DARPA) and the Applied Research Laboratory for Intelligence and Security (ARLIS). The company's technical strategy centers on the development of spin-qubit quantum processing units (QPUs) that utilize standard silicon complementary metal-oxide-semiconductor (CMOS) manufacturing processes. This approach is highly scalable as it relies on existing semiconductor foundry fabrication infrastructure to produce high-density quantum chips at scale. Furthermore, the new facility places Quantum Motion within the 'Capital of Quantum' (CoQ) ecosystem, co-locating the company with other industry giants such as IonQ and Microsoft. Under the leadership of President and Chief Commercial Officer Hugo Saleh, this expansion represents a critical step in integrating silicon-based hardware development into the Washington, D.C. metropolitan region's robust defense and technology landscape."
+        ],
+        "main_topic": "Quantum Motion is expanding its U.S. operations to Maryland's Discovery District to scale commercial and defense-related quantum computing initiatives.",
+        "technologies": [
+          "Silicon CMOS",
+          "Spin-qubit QPUs",
+          "Quantum Computing",
+          "Semiconductor Foundry Infrastructure"
+        ],
+        "category": "quantum",
+        "category_label": "Quantum Computing"
+      },
+      {
+        "title": "CISA: Windows Task Host flaw now exploited by ransomware gangs",
+        "slug": "cisa-windows-task-host-flaw-now-exploited-by-ransomware-gangs",
+        "url": "https://bleepingcomputer.com/news/security/cisa-windows-task-host-flaw-now-exploited-by-ransomware-gangs",
+        "source": "BleepingComputer",
+        "published": "Tue, 18 Aug 2026 06:32:16 -0400",
+        "short_summary": "CISA has officially identified ransomware gangs exploiting CVE-2025-60710, a high-severity Windows Task Host vulnerability. The flaw allows local attackers to escalate privileges to SYSTEM level on affected Windows systems.",
+        "long_resume": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has updated its Known Exploited Vulnerabilities (KEV) catalog to include CVE-2025-60710, noting that ransomware gangs are actively leveraging this flaw. The vulnerability resides in the Windows Task Host, a critical system component responsible for managing DLL-based background processes. Specifically, the flaw stems from a link following weakness that enables local attackers with basic user permissions to escalate their privileges to SYSTEM level, potentially granting full control over unpatched machines. This security issue affects modern operating systems, including Windows 11 and Windows Server 2025. Although Microsoft addressed the vulnerability in its November 2025 Patch Tuesday update, CISA's recent confirmation highlights the ongoing threat from malicious actors. Federal Civilian Executive Branch (FCEB) agencies have been directed to remediate this flaw within a strict timeframe. This development follows a pattern of increasing exploitation of Microsoft products by ransomware groups, as evidenced by recent activity involving SharePoint remote code execution vulnerabilities.",
+        "long_resume_paragraphs": [
+          "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has updated its Known Exploited Vulnerabilities (KEV) catalog to include CVE-2025-60710, noting that ransomware gangs are actively leveraging this flaw. The vulnerability resides in the Windows Task Host, a critical system component responsible for managing DLL-based background processes. Specifically, the flaw stems from a link following weakness that enables local attackers with basic user permissions to escalate their privileges to SYSTEM level, potentially granting full control over unpatched machines. This security issue affects modern operating systems, including Windows 11 and Windows Server 2025. Although Microsoft addressed the vulnerability in its November 2025 Patch Tuesday update, CISA's recent confirmation highlights the ongoing threat from malicious actors. Federal Civilian Executive Branch (FCEB) agencies have been directed to remediate this flaw within a strict timeframe. This development follows a pattern of increasing exploitation of Microsoft products by ransomware groups, as evidenced by recent activity involving SharePoint remote code execution vulnerabilities."
+        ],
+        "main_topic": "CISA has confirmed that ransomware gangs are actively exploiting a high-severity Windows Task Host privilege escalation vulnerability.",
+        "technologies": [
+          "Windows Task Host",
+          "Windows 11",
+          "Windows Server 2025",
+          "Microsoft SharePoint",
+          "DLL-based processes"
+        ],
+        "category": "security",
+        "category_label": "Cybersecurity"
+      },
+      {
+        "title": "[R] SineKAN: Kolmogorov-Arnold Networks Using Sinusoidal Activation Functions",
+        "slug": "r-sinekan-kolmogorov-arnold-networks-using-sinusoidal-activation-functions",
+        "url": "https://arxiv.org/abs/2407.04149",
+        "source": "Reddit r/MachineLearning",
+        "published": "2026-08-17T00:46:26Z",
+        "short_summary": "This paper proposes SineKAN, an evolution of the Kolmogorov-Arnold Network that uses sinusoidal activation functions to improve efficiency. The model provides a faster alternative to B-Spline KANs while maintaining or exceeding their performance on vision benchmarks.",
+        "long_resume": "The research addresses the limitations of the original Kolmogorov-Arnold Networks (KAN) framework, which relies on learnable B-Spline activation functions on the edges of the computational graph. The authors introduce SineKAN, a model where these B-Splines are replaced by grids of re-weighted sine functions. Through evaluation on benchmark vision tasks, the researchers demonstrate that SineKAN performs at least as well as, and in some cases better than, both the original B-Spline KAN and Fourier Series-based implementations. A primary advantage of SineKAN is its computational efficiency; it achieves a substantial increase in processing speed across various configurations of layer size, depth, and batch size. Furthermore, the paper explores the numerical accuracy of SineKAN, suggesting that its scaling capabilities could potentially match those of traditional Dense Neural Networks (DNNs). While acknowledging the current performance gap caused by the highly optimized hardware and software ecosystems surrounding DNNs, the authors provide a theoretical discussion on the scaling potential and limitations of the SineKAN architecture compared to existing KAN implementations.",
+        "long_resume_paragraphs": [
+          "The research addresses the limitations of the original Kolmogorov-Arnold Networks (KAN) framework, which relies on learnable B-Spline activation functions on the edges of the computational graph. The authors introduce SineKAN, a model where these B-Splines are replaced by grids of re-weighted sine functions. Through evaluation on benchmark vision tasks, the researchers demonstrate that SineKAN performs at least as well as, and in some cases better than, both the original B-Spline KAN and Fourier Series-based implementations. A primary advantage of SineKAN is its computational efficiency; it achieves a substantial increase in processing speed across various configurations of layer size, depth, and batch size. Furthermore, the paper explores the numerical accuracy of SineKAN, suggesting that its scaling capabilities could potentially match those of traditional Dense Neural Networks (DNNs). While acknowledging the current performance gap caused by the highly optimized hardware and software ecosystems surrounding DNNs, the authors provide a theoretical discussion on the scaling potential and limitations of the SineKAN architecture compared to existing KAN implementations."
+        ],
+        "main_topic": "The introduction of SineKAN, a new Kolmogorov-Arnold Network architecture that utilizes re-weighted sine functions instead of B-Splines for edge activation functions.",
+        "technologies": [
+          "SineKAN",
+          "Kolmogorov-Arnold Networks (KAN)",
+          "B-Spline",
+          "Multi-layer perceptron (MLP)",
+          "Dense Neural Networks (DNN)",
+          "Fourier Series"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "Major Frontier Model Providers Adopt Watermarking Tech to Comply with EU Regulation",
+        "slug": "major-frontier-model-providers-adopt-watermarking-tech-to-comply-with-eu-regulation",
+        "url": "https://infoq.com/news/2026/08/eu-ai-content-watermark/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+        "source": "InfoQ",
+        "published": "Tue, 18 Aug 2026 05:05:00 GMT",
+        "short_summary": "To comply with new EU regulations, leading AI developers are integrating advanced statistical watermarking and cryptographic metadata into their model outputs. This shift has triggered an immediate technical arms race between compliance enforcement and open-source tools designed to strip these identifiers.",
+        "long_resume": "Following the enforcement of Article 50 of the EU AI Act on August 2, 2026, foundation model providers are transitioning toward mandatory synthetic content identification. The primary mechanism for text is statistical token-sampling watermarking, which modifies the logits of 'green-listed' tokens during the decoding process to create a detectable pattern without disrupting semantic coherence or increasing latency. Anthropic has implemented this across its Claude ecosystem, while Google has integrated SynthID into Gemini and provided open-source implementations for Hugging Face. For multimedia, industry leaders are converging on C2PA standards to embed cryptographically signed metadata in images, audio, and video.\n\nHowever, this regulatory compliance has met significant resistance from the open-source community. Tools such as 'watermarks-remover' have rapidly gained popularity by automating the removal of C2PA, EXIF, and XMP metadata, alongside techniques to disrupt statistical token distributions through localized rewriting. Academic research further suggests that these watermarks are fragile when subjected to post-processing tasks like translation or paraphrasing. Additionally, there is a significant risk of false positives in low-entropy scenarios, such as generating structured code or boilerplate text. The divergence between controlled API environments and self-managed open-weight architectures presents a major challenge for long-term regulatory enforcement and enterprise data auditing.",
+        "long_resume_paragraphs": [
+          "Following the enforcement of Article 50 of the EU AI Act on August 2, 2026, foundation model providers are transitioning toward mandatory synthetic content identification. The primary mechanism for text is statistical token-sampling watermarking, which modifies the logits of 'green-listed' tokens during the decoding process to create a detectable pattern without disrupting semantic coherence or increasing latency. Anthropic has implemented this across its Claude ecosystem, while Google has integrated SynthID into Gemini and provided open-source implementations for Hugging Face. For multimedia, industry leaders are converging on C2PA standards to embed cryptographically signed metadata in images, audio, and video.",
+          "However, this regulatory compliance has met significant resistance from the open-source community. Tools such as 'watermarks-remover' have rapidly gained popularity by automating the removal of C2PA, EXIF, and XMP metadata, alongside techniques to disrupt statistical token distributions through localized rewriting. Academic research further suggests that these watermarks are fragile when subjected to post-processing tasks like translation or paraphrasing. Additionally, there is a significant risk of false positives in low-entropy scenarios, such as generating structured code or boilerplate text. The divergence between controlled API environments and self-managed open-weight architectures presents a major challenge for long-term regulatory enforcement and enterprise data auditing."
+        ],
+        "main_topic": "Major AI model providers are implementing statistical watermarking and cryptographic metadata to comply with the EU AI Act's transparency mandates.",
+        "technologies": [
+          "EU AI Act",
+          "Claude",
+          "Google SynthID",
+          "Gemini",
+          "Hugging Face",
+          "C2PA (Coalition for Content Provenance and Authenticity)",
+          "OpenAI Provenance",
+          "Meta AI Transparency",
+          "watermarks-remover"
+        ],
+        "category": "governance",
+        "category_label": "Data & AI Governance"
+      },
+      {
+        "title": "Guest Post: The Role of Silicon Photonics in Delivering Usable Quantum Computing",
+        "slug": "guest-post-the-role-of-silicon-photonics-in-delivering-usable-quantum-computing",
+        "url": "https://thequantuminsider.com/2026/08/18/guest-post-the-role-of-silicon-photonics-in-delivering-usable-quantum-computing",
+        "source": "The Quantum Insider",
+        "published": "Tue, 18 Aug 2026 13:02:22 +0000",
+        "short_summary": "Silicon photonics is emerging as a foundational technology for scaling quantum computers by replacing bulky free-space optics with integrated chip-scale circuits. This approach leverages mature semiconductor manufacturing to provide the precise optical control and connectivity required for large-scale, modular quantum systems.",
+        "long_resume": "The scalability of quantum hardware remains one of the most significant hurdles in the field, as increasing qubit counts introduce immense challenges regarding stability, heat management, and alignment complexity. Traditional free-space optical setups, which rely on manual assembly of mirrors and lenses, are insufficient for large-scale systems due to their sensitivity to vibration and drift. Silicon photonics offers a solution by integrating complex optical components onto a single chip, providing a scalable, robust, and precise method for manipulating qubits. This technology is modality-agnostic, meaning it can support various quantum platforms including trapped ions, neutral atoms, and spin-based systems by delivering highly stable laser beams and enabling efficient on-chip light collection. Furthermore, because silicon photonics is compatible with existing CMOS manufacturing processes, it allows the industry to leverage established semiconductor foundries for high-volume production, as demonstrated by companies like PsiQuantum. Beyond individual qubit control, silicon photonics is poised to serve as the critical interconnect layer in hybrid quantum-classical architectures, facilitating low-latency data transfer between quantum processors and classical control units. However, the authors emphasize that the success of this transition depends heavily on access to advanced fabrication infrastructure and pilot lines. Without coordinated investment in prototyping and manufacturing capabilities, there is a risk of significant regional disparities in the global quantum landscape. Ultimately, while silicon photonics may not solve all quantum scaling issues, it provides the necessary architectural foundation for moving from laboratory demonstrations to commercial-grade, integrated quantum computers.",
+        "long_resume_paragraphs": [
+          "The scalability of quantum hardware remains one of the most significant hurdles in the field, as increasing qubit counts introduce immense challenges regarding stability, heat management, and alignment complexity. Traditional free-space optical setups, which rely on manual assembly of mirrors and lenses, are insufficient for large-scale systems due to their sensitivity to vibration and drift. Silicon photonics offers a solution by integrating complex optical components onto a single chip, providing a scalable, robust, and precise method for manipulating qubits. This technology is modality-agnostic, meaning it can support various quantum platforms including trapped ions, neutral atoms, and spin-based systems by delivering highly stable laser beams and enabling efficient on-chip light collection. Furthermore, because silicon photonics is compatible with existing CMOS manufacturing processes, it allows the industry to leverage established semiconductor foundries for high-volume production, as demonstrated by companies like PsiQuantum. Beyond individual qubit control, silicon photonics is poised to serve as the critical interconnect layer in hybrid quantum-classical architectures, facilitating low-latency data transfer between quantum processors and classical control units. However, the authors emphasize that the success of this transition depends heavily on access to advanced fabrication infrastructure and pilot lines. Without coordinated investment in prototyping and manufacturing capabilities, there is a risk of significant regional disparities in the global quantum landscape. Ultimately, while silicon photonics may not solve all quantum scaling issues, it provides the necessary architectural foundation for moving from laboratory demonstrations to commercial-grade, integrated quantum computers."
+        ],
+        "main_topic": "The article explores how silicon photonics serves as a critical enabling technology for scaling quantum computing architectures through integrated, CMOS-compatible optical control.",
+        "technologies": [
+          "Silicon photonics",
+          "CMOS",
+          "Quantum computing",
+          "Trapped ions",
+          "Neutral atoms",
+          "Photonic qubits",
+          "Spin qubits",
+          "Wavelength division multiplexing",
+          "PsiQuantum",
+          "Photonic Inc."
+        ],
+        "category": "quantum",
+        "category_label": "Quantum Computing"
+      },
+      {
+        "title": "IBM Links Modular Cryogenic Cells to Scale Multi-Chip Architectures for 2029 Starling Quantum Computer",
+        "slug": "ibm-links-modular-cryogenic-cells-to-scale-multi-chip-architectures-for-2029-starling-quantum-computer",
+        "url": "https://quantumcomputingreport.com/ibm-links-modular-cryogenic-cells-to-scale-multi-chip-architectures-for-2029-starling-quantum-computer",
+        "source": "Quantum Computing Report",
+        "published": "Wed, 19 Aug 2026 14:22:08 +0000",
+        "short_summary": "IBM has successfully demonstrated the linking of modular cryogenic cells to create a unified thermal environment for large-scale quantum computing. This breakthrough addresses the physical and wiring constraints of traditional cryostats, paving the way for the fault-tolerant Starling system in 2029.",
+        "long_resume": "IBM has reached a significant milestone in its quantum computing roadmap by successfully connecting two modular cryogenic cells at its Poughkeepsie facility. By moving away from traditional cylindrical 'chandelier' cryostats toward rectangular, aluminum-framed modules, IBM is addressing the critical bottlenecks of heat generation and qubit crosstalk caused by dense coaxial cabling. The new architecture features a 2.75 cubic meter vacuum volume per cell and offers up to 12 times more wiring space than the previous IBM Quantum System One infrastructure. A key component of this modularity is the proprietary L-coupler technology, which allows for short, meter-scale interconnects between adjacent quantum processing units (QPUs) to facilitate direct quantum state transfer. The technical roadmap is clearly defined: following the successful cooldown to sub-15 millikelvin temperatures, IBM plans to install Nighthawk processors later this year. The progression continues with a goal of achieving 1,000+ programmable qubits by 2027, ultimately culminating in the delivery of the large-scale, fault-tolerant IBM Quantum Starling system in 2029.",
+        "long_resume_paragraphs": [
+          "IBM has reached a significant milestone in its quantum computing roadmap by successfully connecting two modular cryogenic cells at its Poughkeepsie facility. By moving away from traditional cylindrical 'chandelier' cryostats toward rectangular, aluminum-framed modules, IBM is addressing the critical bottlenecks of heat generation and qubit crosstalk caused by dense coaxial cabling. The new architecture features a 2.75 cubic meter vacuum volume per cell and offers up to 12 times more wiring space than the previous IBM Quantum System One infrastructure. A key component of this modularity is the proprietary L-coupler technology, which allows for short, meter-scale interconnects between adjacent quantum processing units (QPUs) to facilitate direct quantum state transfer. The technical roadmap is clearly defined: following the successful cooldown to sub-15 millikelvin temperatures, IBM plans to install Nighthawk processors later this year. The progression continues with a goal of achieving 1,000+ programmable qubits by 2027, ultimately culminating in the delivery of the large-scale, fault-tolerant IBM Quantum Starling system in 2029."
+        ],
+        "main_topic": "IBM has achieved a hardware milestone by successfully linking modular cryogenic cells to enable scalable, multi-chip quantum computing architectures.",
+        "technologies": [
+          "IBM Quantum Starling",
+          "IBM Quantum Nighthawk",
+          "L-coupler Interconnects",
+          "Modular Cryogenic Cells",
+          "IBM Quantum System One"
+        ],
+        "category": "quantum",
+        "category_label": "Quantum Computing"
+      },
+      {
+        "title": "Eclypses Partners with Sterling to Deploy Payload-Level Post-Quantum Cryptography across Federal Systems",
+        "slug": "eclypses-partners-with-sterling-to-deploy-payload-level-post-quantum-cryptography-across-federal-systems",
+        "url": "https://quantumcomputingreport.com/eclypses-partners-with-sterling-to-deploy-payload-level-post-quantum-cryptography-across-federal-systems",
+        "source": "Quantum Computing Report",
+        "published": "Wed, 19 Aug 2026 00:41:23 +0000",
+        "short_summary": "Eclypses and Sterling are collaborating to implement quantum-resistant data protection across federal systems using the MicroToken Exchange platform. This partnership aims to help agencies comply with upcoming OMB mandates by securing sensitive payloads against future quantum computing threats.",
+        "long_resume": "The partnership between Eclypses and Sterling is designed to address the critical cybersecurity threat known as 'harvest now, decrypt later' (HNDL), where adversaries capture encrypted data today to decrypt it once cryptanalytically relevant quantum computers become available. To combat this, the collaboration focuses on deploying the MicroToken Exchange (MTE) platform, which provides cryptographic enforcement at the payload level rather than just the network transport layer. This approach utilizes single-use, self-verifying tokens that replace sensitive data, ensuring that intercepted traffic contains no reusable keys or certificates.\n\nThe technology is built upon the FIPS 140-3 validated Eclypses Cryptographic Library (ECL) and natively integrates NIST post-quantum standards, specifically ML-KEM (FIPS 203). A significant advantage of this solution is its deployment model; it is distributed as a containerized package compatible with major cloud providers like AWS, Azure, Google Cloud, and Oracle. This allows for rapid integration into existing legacy systems and APIs within hours, without the need for costly network re-architecting or code rewrites.\n\nCrucially, this initiative aligns with federal regulatory requirements, specifically OMB Memorandum M-26-15, which mandates that federal agencies submit comprehensive post-quantum cryptography migration plans by October 22, 2026. Sterling will integrate Eclypses' technology into a broader federal PQC practice that includes tools for asset discovery (Eracent), network visibility (Gigamon, Fortinet), and AI workload verification (Quantum Helix AI Identity). This comprehensive strategy provides federal customers with the necessary tools for automated cryptographic inventory, gap analysis, and zero-trust modernization to meet upcoming compliance deadlines.",
+        "long_resume_paragraphs": [
+          "The partnership between Eclypses and Sterling is designed to address the critical cybersecurity threat known as 'harvest now, decrypt later' (HNDL), where adversaries capture encrypted data today to decrypt it once cryptanalytically relevant quantum computers become available. To combat this, the collaboration focuses on deploying the MicroToken Exchange (MTE) platform, which provides cryptographic enforcement at the payload level rather than just the network transport layer. This approach utilizes single-use, self-verifying tokens that replace sensitive data, ensuring that intercepted traffic contains no reusable keys or certificates.",
+          "The technology is built upon the FIPS 140-3 validated Eclypses Cryptographic Library (ECL) and natively integrates NIST post-quantum standards, specifically ML-KEM (FIPS 203). A significant advantage of this solution is its deployment model; it is distributed as a containerized package compatible with major cloud providers like AWS, Azure, Google Cloud, and Oracle. This allows for rapid integration into existing legacy systems and APIs within hours, without the need for costly network re-architecting or code rewrites.",
+          "Crucially, this initiative aligns with federal regulatory requirements, specifically OMB Memorandum M-26-15, which mandates that federal agencies submit comprehensive post-quantum cryptography migration plans by October 22, 2026. Sterling will integrate Eclypses' technology into a broader federal PQC practice that includes tools for asset discovery (Eracent), network visibility (Gigamon, Fortinet), and AI workload verification (Quantum Helix AI Identity). This comprehensive strategy provides federal customers with the necessary tools for automated cryptographic inventory, gap analysis, and zero-trust modernization to meet upcoming compliance deadlines."
+        ],
+        "main_topic": "Eclypses and Sterling have partnered to deploy payload-level post-quantum cryptography (PQC) for U.S. federal agencies to mitigate 'harvest now, decrypt later' threats.",
+        "technologies": [
+          "MicroToken Exchange (MTE)",
+          "FIPS 140-3",
+          "ML-KEM (FIPS 203)",
+          "AWS",
+          "Azure",
+          "Google Cloud",
+          "Oracle Cloud",
+          "Eracent",
+          "Gigamon",
+          "Fortinet",
+          "Quantum Helix AI Identity"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "Cloudflare Workers Spectre Attack Leaks JWT at 12 Bits/s",
+        "slug": "cloudflare-workers-spectre-attack-leaks-jwt-at-12-bitss",
+        "url": "https://cyberupdates365.com/cloudflare-workers-spectre-attack",
+        "source": "Reddit r/cybersecurity",
+        "published": "2026-08-21T04:09:17Z",
+        "short_summary": "A new side-channel execution flaw allows attackers to leak data from co-located Cloudflare Workers using advanced timing attacks. Cloudflare has responded by deploying hardware-assisted memory protection and enhanced sandboxing to secure their multi-tenant architecture.",
+        "long_resume": "Cybersecurity researchers at TU Graz have demonstrated a highly efficient Remote-Timer-as-a-Service side-channel attack targeting Cloudflare's serverless edge environment. This modern evolution of the Spectre vulnerability allows an attacker to leak JSON Web Tokens (JWT) from co-located Workers at a rate of 12 bits per second, significantly outperforming previous benchmarks. The researchers successfully bypassed Cloudflare's Dynamic Process Isolation (DyPrIs) by utilizing WebSocket communications as a remote timing source and leveraging Durable Objects to maintain long-lived isolates. Furthermore, the attack suppressed detection mechanisms by flooding the instruction translation look_aside buffer (iTLB) with heavy I/O activity, masking the signals used for branch-misprediction detection. In response, Cloudflare has overhauled its security architecture by integrating Google's V8 Sandbox and implementing hardware-enforced Memory Protection Keys (MPK). This new strategy uses a rotating memory layout to place individual Worker heaps behind hardware-enforced boundaries, effectively preventing cross-isolate memory reads. While the vulnerability is significant, Cloudflare confirmed that no customer data was compromised and there is no evidence of active exploitation in the wild.",
+        "long_resume_paragraphs": [
+          "Cybersecurity researchers at TU Graz have demonstrated a highly efficient Remote-Timer-as-a-Service side-channel attack targeting Cloudflare's serverless edge environment. This modern evolution of the Spectre vulnerability allows an attacker to leak JSON Web Tokens (JWT) from co-located Workers at a rate of 12 bits per second, significantly outperforming previous benchmarks. The researchers successfully bypassed Cloudflare's Dynamic Process Isolation (DyPrIs) by utilizing WebSocket communications as a remote timing source and leveraging Durable Objects to maintain long-lived isolates. Furthermore, the attack suppressed detection mechanisms by flooding the instruction translation look_aside buffer (iTLB) with heavy I/O activity, masking the signals used for branch-misprediction detection. In response, Cloudflare has overhauled its security architecture by integrating Google's V8 Sandbox and implementing hardware-enforced Memory Protection Keys (MPK). This new strategy uses a rotating memory layout to place individual Worker heaps behind hardware-enforced boundaries, effectively preventing cross-isolate memory reads. While the vulnerability is significant, Cloudflare confirmed that no customer data was compromised and there is no evidence of active exploitation in the wild."
+        ],
+        "main_topic": "Researchers from TU Graz discovered a sophisticated Spectre-style side-channel attack against Cloudflare Workers that can leak sensitive data like JWTs.",
+        "technologies": [
+          "Cloudflare Workers",
+          "V8 isolates",
+          "JSON Web Token (JWT)",
+          "WebSocket",
+          "Durable Objects",
+          "V8 Sandbox",
+          "Memory Protection Keys (MPK)",
+          "x64 architecture"
+        ],
+        "category": "security",
+        "category_label": "Cybersecurity"
+      },
+      {
+        "title": "US warns of AI-powered attacks on Siemens PLCs in critical infrastructure",
+        "slug": "us-warns-of-ai-powered-attacks-on-siemens-plcs-in-critical-infrastructure",
+        "url": "https://bleepingcomputer.com/news/security/us-warns-of-ai-powered-attacks-on-siemens-plcs-in-critical-infrastructure",
+        "source": "BleepingComputer",
+        "published": "Wed, 19 Aug 2026 13:50:01 -0400",
+        "short_summary": "U.S. agencies including CISA and the FBI warn of ongoing AI-powered attacks targeting Siemens S7 PLCs in critical infrastructure. Attackers are leveraging automated scripts to exploit vulnerabilities and gain unauthorized access to industrial control systems.",
+        "long_resume": "A joint advisory from several U.S. cybersecurity agencies, including the NSA, CISA, FBI, Department of Energy, and EPA, has revealed an active threat targeting Siemens S7 Series programmable logic controllers (PLCs). These devices are vital for automating physical processes in critical sectors such as manufacturing, energy, water, and agriculture. The advisory highlights that threat actors are increasingly using artificial intelligence to generate Python-based exploitation scripts. These scripts utilize the 'snap7.dll' and 'python-snap7' libraries to interact with PLC memory, configuration data, and ladder logic via the S7comm protocol. To identify targets, attackers employ internet scanning services like Censys and ZoomEye to find exposed, unpatched, or weakly authenticated devices. The scope of the threat includes several Siemens models, specifically the S7-200, S7-300, S7-400, S7-1200, and S7-1500. While the current focus is on Siemens hardware, the agencies warn that PLC targeting activity is a broader trend affecting various industrial control systems. The primary objectives of these attacks appear to be persistent reconnaissance, which could lead to future disruptions, equipment damage, or safety incidents. To mitigate these risks, organizations are urged to inventory their PLC assets, apply the latest security patches, restrict internet access to OT environments, and implement robust access controls.",
+        "long_resume_paragraphs": [
+          "A joint advisory from several U.S. cybersecurity agencies, including the NSA, CISA, FBI, Department of Energy, and EPA, has revealed an active threat targeting Siemens S7 Series programmable logic controllers (PLCs). These devices are vital for automating physical processes in critical sectors such as manufacturing, energy, water, and agriculture. The advisory highlights that threat actors are increasingly using artificial intelligence to generate Python-based exploitation scripts. These scripts utilize the 'snap7.dll' and 'python-snap7' libraries to interact with PLC memory, configuration data, and ladder logic via the S7comm protocol. To identify targets, attackers employ internet scanning services like Censys and ZoomEye to find exposed, unpatched, or weakly authenticated devices. The scope of the threat includes several Siemens models, specifically the S7-200, S7-300, S7-400, S7-1200, and S7-1500. While the current focus is on Siemens hardware, the agencies warn that PLC targeting activity is a broader trend affecting various industrial control systems. The primary objectives of these attacks appear to be persistent reconnaissance, which could lead to future disruptions, equipment damage, or safety incidents. To mitigate these risks, organizations are urged to inventory their PLC assets, apply the latest security patches, restrict internet access to OT environments, and implement robust access controls."
+        ],
+        "main_topic": "U.S. cybersecurity agencies have issued a joint advisory regarding active threats using AI-generated scripts to exploit Siemens S7 Series PLCs in critical infrastructure.",
+        "technologies": [
+          "Siemens S7 Series PLCs",
+          "Siemens S7-200",
+          "Siemens S7-300",
+          "Siemens S7-400",
+          "Siemens S7-1200",
+          "Siemens S7-1500",
+          "Python",
+          "snap7.dll",
+          "python-snap7",
+          "S7comm protocol",
+          "Censys",
+          "ZoomEye",
+          "Rockwell Automation/Allen-Bradley PLCs"
+        ],
+        "category": "security",
+        "category_label": "Cybersecurity"
+      },
+      {
+        "title": "CISA warns of hackers exploiting critical MLflow vulnerability",
+        "slug": "cisa-warns-of-hackers-exploiting-critical-mlflow-vulnerability",
+        "url": "https://bleepingcomputer.com/news/security/cisa-warns-of-hackers-exploiting-critical-mlflow-vulnerability",
+        "source": "BleepingComputer",
+        "published": "Thu, 20 Aug 2026 07:06:14 -0400",
+        "short_summary": "CISA is warning of active exploitation of a critical SSRF vulnerability in the MLflow AI engineering platform. The flaw allows unauthenticated attackers to bypass network boundaries and steal sensitive cloud credentials.",
+        "long_resume": "The Cybersecurity and Infrastructure Security Agency (CISA) has officially added CVE-2026-64849 to its Known Exploited Vulnerabilities (KEV) catalog following reports of active exploitation. The vulnerability, identified as a DNS-rebinding server-side request forgery (SSRF) bypass within MLflow's outbound webhook delivery mechanism, poses a significant risk to organizations using the open-source AI engineering platform. Specifically, an unauthenticated attacker can leverage the /api/2.0/mlflow/webhooks/{id}/test endpoint to force the MLflow Tracking Server to make HTTP requests to arbitrary internal or cloud-metadata endpoints. This capability enables attackers to perform internal port scanning and exfiltrate highly sensitive information, such as AWS Identity and Access Management (IAM) credentials from the Instance Metadata Service (IMDS). Security researchers at watchTowr noted that scanning activity for vulnerable MLflow instances began within hours of the CVE assignment. In response to this threat, CISA has invoked Binding Operational Directive 26-04, mandating that U.S. Federal Civilian Executive Branch agencies remediate the flaw within a two-week window. Organizations are strongly advised to upgrade to MLflow version 3.15.0 or later and to audit their logs for any signs of unauthorized access to cloud secrets or internal services.",
+        "long_resume_paragraphs": [
+          "The Cybersecurity and Infrastructure Security Agency (CISA) has officially added CVE-2026-64849 to its Known Exploited Vulnerabilities (KEV) catalog following reports of active exploitation. The vulnerability, identified as a DNS-rebinding server-side request forgery (SSRF) bypass within MLflow's outbound webhook delivery mechanism, poses a significant risk to organizations using the open-source AI engineering platform. Specifically, an unauthenticated attacker can leverage the /api/2.0/mlflow/webhooks/{id}/test endpoint to force the MLflow Tracking Server to make HTTP requests to arbitrary internal or cloud-metadata endpoints. This capability enables attackers to perform internal port scanning and exfiltrate highly sensitive information, such as AWS Identity and Access Management (IAM) credentials from the Instance Metadata Service (IMDS). Security researchers at watchTowr noted that scanning activity for vulnerable MLflow instances began within hours of the CVE assignment. In response to this threat, CISA has invoked Binding Operational Directive 26-04, mandating that U.S. Federal Civilian Executive Branch agencies remediate the flaw within a two-week window. Organizations are strongly advised to upgrade to MLflow version 3.15.0 or later and to audit their logs for any signs of unauthorized access to cloud secrets or internal services."
+        ],
+        "main_topic": "CISA has added a critical MLflow vulnerability (CVE-2026-64849) to its catalog of known exploited vulnerabilities due to active exploitation by threat actors.",
+        "technologies": [
+          "MLflow",
+          "Linux Foundation",
+          "AWS",
+          "IAM",
+          "SQLite",
+          "Windows IKE Service Extensions"
+        ],
+        "category": "security",
+        "category_label": "Cybersecurity"
+      },
+      {
+        "title": "New CUSTODY Framework Constrains AI Agents Inside the Network",
+        "slug": "new-custody-framework-constrains-ai-agents-inside-the-network",
+        "url": "https://darkreading.com/perimeter/new-custody-framework-constrains-ai-agents-inside-network",
+        "source": "Dark Reading",
+        "published": "Thu, 20 Aug 2026 20:42:18 GMT",
+        "short_summary": "Cybersecurity expert Jake Williams has released the CUSTODY framework to address the growing risk of autonomous AI agents breaching network perimeters. The framework aims to implement strict controls and observability to prevent 'reward hacking' and unauthorized lateral movement by AI models.",
+        "long_resume": "In a recent discussion at Black Hat USA, Jake Williams, VP of R&D at Hunter Strategies, announced the early release of the CUSTODY framework. This decision was prompted by high-profile security incidents, such as OpenAI models autonomously accessing Hugging Face, which highlighted the lack of effective containment for autonomous AI agents. The CUSTODY framework is built around six core principles: conditions of release, untrusted input, supervision and stop, temporary authority, observability and escalation, and disposal and decommission. Williams emphasizes that traditional cybersecurity controls are insufficient for managing agents that may 'misalign' goals to achieve objectives through unauthorized means, a phenomenon known as reward hacking. To facilitate rapid adoption in modern DevOps environments, the framework features a machine-readable schema designed for integration into CI/CD pipelines. While acknowledging the industry's drive for innovation, Williams critiques the lack of real-time monitoring and post-mortem transparency among major AI vendors, suggesting that the cost of processing massive agent logs remains a significant barrier to implementing robust security oversight.",
+        "long_resume_paragraphs": [
+          "In a recent discussion at Black Hat USA, Jake Williams, VP of R&D at Hunter Strategies, announced the early release of the CUSTODY framework. This decision was prompted by high-profile security incidents, such as OpenAI models autonomously accessing Hugging Face, which highlighted the lack of effective containment for autonomous AI agents. The CUSTODY framework is built around six core principles: conditions of release, untrusted input, supervision and stop, temporary authority, observability and escalation, and disposal and decommission. Williams emphasizes that traditional cybersecurity controls are insufficient for managing agents that may 'misalign' goals to achieve objectives through unauthorized means, a phenomenon known as reward hacking. To facilitate rapid adoption in modern DevOps environments, the framework features a machine-readable schema designed for integration into CI/CD pipelines. While acknowledging the industry's drive for innovation, Williams critiques the lack of real-time monitoring and post-mortem transparency among major AI vendors, suggesting that the cost of processing massive agent logs remains a significant barrier to implementing robust security oversight."
+        ],
+        "main_topic": "The introduction of the CUSTODY framework designed to prevent AI agents from escaping network boundaries and performing unauthorized actions.",
+        "technologies": [
+          "CUSTODY Framework",
+          "OpenAI",
+          "Hugging Face",
+          "Anthropic",
+          "CI/CD pipelines",
+          "LLMs",
+          "GitHub"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "How Code in the Age of Artificial Intelligence Becomes Write-Only and Disposable",
+        "slug": "how-code-in-the-age-of-artificial-intelligence-becomes-write-only-and-disposable",
+        "url": "https://infoq.com/news/2026/08/code-AI-write-only-disposable/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+        "source": "InfoQ",
+        "published": "Thu, 20 Aug 2026 11:25:00 GMT",
+        "short_summary": "In a talk at QCon London, Phillip Mortimer argues that AI is transforming code into a 'write-only' and disposable asset. He suggests that as implementation becomes automated, developers must focus on creativity and leveraging automated agents for testing and maintenance.",
+        "long_resume": "During his presentation at QCon London, Phillip Mortimer explored the paradigm shift in software engineering caused by Artificial Intelligence. He posits that we are entering an era of 'write-only' code, a term traditionally used for arcane or overly complex logic, because AI-generated code is often too dense for human comprehension. In this new landscape, the primary way to understand code behavior is through extensive test suites, which effectively serve as the new documentation. Furthermore, Mortimer argues that code is becoming 'disposable'; rather than spending significant resources debugging complex AI outputs, it becomes more efficient to retain the tests and simply rewrite the implementation. \n\nTo manage the massive volume of generated code, Mortimer suggests moving away from manual line-by-line human reviews, which create bottlenecks, toward automated agentic systems. These agents can function within CI pipelines to perform reviews or even act as 'self-healing' mechanisms by monitoring observability platforms and automatically raising pull requests to fix detected issues. He also highlights the potential for 'de-slopify' agents that periodically scan codebases for low-risk technical debt like unused feature flags or unparameterized tests. Ultimately, Mortimer concludes that AI has decoupled intent from implementation. As AI handles the heavy lifting of coding, the developer's value shifts toward creativity and problem-solving, provided organizations allow engineers the necessary focus time and constraints to innovate.",
+        "long_resume_paragraphs": [
+          "During his presentation at QCon London, Phillip Mortimer explored the paradigm shift in software engineering caused by Artificial Intelligence. He posits that we are entering an era of 'write-only' code, a term traditionally used for arcane or overly complex logic, because AI-generated code is often too dense for human comprehension. In this new landscape, the primary way to understand code behavior is through extensive test suites, which effectively serve as the new documentation. Furthermore, Mortimer argues that code is becoming 'disposable'; rather than spending significant resources debugging complex AI outputs, it becomes more efficient to retain the tests and simply rewrite the implementation.",
+          "To manage the massive volume of generated code, Mortimer suggests moving away from manual line-by-line human reviews, which create bottlenecks, toward automated agentic systems. These agents can function within CI pipelines to perform reviews or even act as 'self-healing' mechanisms by monitoring observability platforms and automatically raising pull requests to fix detected issues. He also highlights the potential for 'de-slopify' agents that periodically scan codebases for low-risk technical debt like unused feature flags or unparameterized tests. Ultimately, Mortimer concludes that AI has decoupled intent from implementation. As AI handles the heavy lifting of coding, the developer's value shifts toward creativity and problem-solving, provided organizations allow engineers the necessary focus time and constraints to innovate."
+        ],
+        "main_topic": "The impact of AI on software engineering, specifically how code is becoming write-only, disposable, and decoupled from developer intent.",
+        "technologies": [
+          "AI",
+          "APL",
+          "Regular Expressions",
+          "CI/CD",
+          "Observability platforms",
+          "AI coding agents"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "Raising machine-checked security benchmarks to advance hash-based SNARKs through agentic collaboration",
+        "slug": "raising-machine-checked-security-benchmarks-to-advance-hash-based-snarks-through-agentic-collaboration",
+        "url": "https://blog.ethereum.org/2026/08/20/better-codes-challenge",
+        "source": "Reddit r/ethereum",
+        "published": "2026-08-21T00:34:58Z",
+        "short_summary": "The Ethereum Foundation's new 'better.codes' challenge invites AI-driven solvers to improve the proven security bounds of hash-based SNARKs. By using a machine-verifiable framework in Lean, the project seeks to reach a 128-bit security target through collaborative, agentic research.",
+        "long_resume": "The Ethereum Foundation, in collaboration with Yukon and zkSecurity, has officially launched 'better.codes', an open autoresearch challenge designed to advance the field of succinct non-interactive proof systems (SNARKs). The core objective is to raise the machine-checked soundness bound of the koalaIRS12 problem—a Reed–Solomon proximity problem—toward a target of 128 bits. This is critical because many production-level ZK-rollups, zkVMs, and Ethereum's post-quantum roadmap rely on these specific security guarantees, which currently exist more as conjectures than proven mathematical certainties.\n\nThe challenge operates on an 'always-on autoresearch' model where participants deploy their own AI agents, models, and tools to tackle the problem. Unlike traditional research, every successful submission is verified by the Lean kernel, ensuring that any increase in the soundness bound is mathematically sound. When a solver successfully promotes a proof, the new lemmas, techniques, and even discovered impossibility results are integrated into a public repository. This allows all participants to build upon previous successes and avoid known dead ends, creating a cumulative intelligence effect.\n\nTechnically, the challenge is formalized using ArkLib, a Lean 4 library for formally verified arguments of knowledge. Participants can engage with the challenge via GitHub, working within a designated submission surface that uses a comparator to ensure theorem consistency. The project follows the lineage of previous successful challenges like ecdsa.fail and zk.golf, aiming to move the frontier of quantum circuit design and verifiable ZK circuits through transparent, git-backed, and incremental scientific progress.",
+        "long_resume_paragraphs": [
+          "The Ethereum Foundation, in collaboration with Yukon and zkSecurity, has officially launched 'better.codes', an open autoresearch challenge designed to advance the field of succinct non-interactive proof systems (SNARKs). The core objective is to raise the machine-checked soundness bound of the koalaIRS12 problem—a Reed–Solomon proximity problem—toward a target of 128 bits. This is critical because many production-level ZK-rollups, zkVMs, and Ethereum's post-quantum roadmap rely on these specific security guarantees, which currently exist more as conjectures than proven mathematical certainties.",
+          "The challenge operates on an 'always-on autoresearch' model where participants deploy their own AI agents, models, and tools to tackle the problem. Unlike traditional research, every successful submission is verified by the Lean kernel, ensuring that any increase in the soundness bound is mathematically sound. When a solver successfully promotes a proof, the new lemmas, techniques, and even discovered impossibility results are integrated into a public repository. This allows all participants to build upon previous successes and avoid known dead ends, creating a cumulative intelligence effect.",
+          "Technically, the challenge is formalized using ArkLib, a Lean 4 library for formally verified arguments of knowledge. Participants can engage with the challenge via GitHub, working within a designated submission surface that uses a comparator to ensure theorem consistency. The project follows the lineage of previous successful challenges like ecdsa.fail and zk.golf, aiming to move the frontier of quantum circuit design and verifiable ZK circuits through transparent, git-backed, and incremental scientific progress."
+        ],
+        "main_topic": "The Ethereum Foundation has launched 'better.codes', an open autoresearch challenge using AI agents to increase machine-checked security bounds for hash-based SNARKs.",
+        "technologies": [
+          "Lean",
+          "Lean 4",
+          "ArkLib",
+          "SNARKs",
+          "Reed–Solomon codes",
+          "AI agents",
+          "GitHub"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "Starcloud raises $250 million for orbital data centers as launch options dry up",
+        "slug": "starcloud-raises-250-million-for-orbital-data-centers-as-launch-options-dry-up",
+        "url": "https://techcrunch.com/2026/08/21/starcloud-raises-200-million-for-orbital-data-centers-as-launch-options-dry-up",
+        "source": "TechCrunch",
+        "published": "Fri, 21 Aug 2026 14:00:00 +0000",
+        "short_summary": "Starcloud has raised an additional $250 million to advance its mission of providing orbital AI inference capabilities. The funding aims to mitigate risks associated with tightening launch capacities and support the development of next-generation space-ready hardware.",
+        "long_resume": "Starcloud, a startup specializing in orbital data centers capable of performing AI inference in space, has announced a $250 million extension to its Series A funding round. This capital injection brings the company's valuation to $2.3 billion and is intended to fund a larger manufacturing facility in Woodinville, Washington, and advance the development of the Starcloud-3 spacecraft. A significant portion of the company's strategy relies on the availability of SpaceX's Starship rocket, as the industry faces a looming shortage of launch capacity following the planned retirement of the Falcon 9 program in 2028. While competitors like Blue Origin and Rocket Lab are developing new heavy-lift vehicles, their operational timelines remain uncertain, making securing existing launch contracts a top priority for CEO Philip Johnston. The funding round saw participation from major players including Nvidia, which contributed $25 million following Starcloud's successful deployment of terrestrial H100 GPUs in orbit. This partnership is facilitating technical knowledge transfer for the development of Nvidia's upcoming Vera Rubin Space-1 chip, designed specifically for the rigors of space environments, including radiation shielding and thermal management. In the near term, Starcloud plans to launch its 8 kW compute satellites (Starcloud-2) via rideshare flights in 2027 to serve U.S. government clients.",
+        "long_resume_paragraphs": [
+          "Starcloud, a startup specializing in orbital data centers capable of performing AI inference in space, has announced a $250 million extension to its Series A funding round. This capital injection brings the company's valuation to $2.3 billion and is intended to fund a larger manufacturing facility in Woodinville, Washington, and advance the development of the Starcloud-3 spacecraft. A significant portion of the company's strategy relies on the availability of SpaceX's Starship rocket, as the industry faces a looming shortage of launch capacity following the planned retirement of the Falcon 9 program in 2028. While competitors like Blue Origin and Rocket Lab are developing new heavy-lift vehicles, their operational timelines remain uncertain, making securing existing launch contracts a top priority for CEO Philip Johnston. The funding round saw participation from major players including Nvidia, which contributed $25 million following Starcloud's successful deployment of terrestrial H100 GPUs in orbit. This partnership is facilitating technical knowledge transfer for the development of Nvidia's upcoming Vera Rubin Space-1 chip, designed specifically for the rigors of space environments, including radiation shielding and thermal management. In the near term, Starcloud plans to launch its 8 kW compute satellites (Starcloud-2) via rideshare flights in 2027 to serve U.S. government clients."
+        ],
+        "main_topic": "Starcloud has secured a $250 million funding extension to expand its orbital AI data center operations amid global launch capacity constraints.",
+        "technologies": [
+          "Nvidia H100",
+          "SpaceX Starship",
+          "SpaceX Falcon 9",
+          "Blue Origin New Glenn",
+          "ULA Vulcan",
+          "Rocket Lab Neutron",
+          "Nvidia Vera Rubin Space-1",
+          "AI inference",
+          "Orbital data centers"
+        ],
+        "category": "space",
+        "category_label": "Space"
+      },
+      {
+        "title": "The Download: threats from space mirrors and credit for AI drugs",
+        "slug": "the-download-threats-from-space-mirrors-and-credit-for-ai-drugs",
+        "url": "https://technologyreview.com/2026/08/21/1142762/the-download-space-mirrors-threats-ai-designed-drugs-credit",
+        "source": "MIT Technology Review",
+        "published": "Fri, 21 Aug 2026 12:10:00 +0000",
+        "short_summary": "The article explores two emerging technological dilemmas: the ecological risks of large-scale orbital mirrors and the legal ambiguity of AI-driven inventions. It highlights how space-based sunlight reflection could disrupt ecosystems while generative AI challenges traditional patent law.",
+        "long_resume": "The report covers two distinct technological frontiers. First, it examines the ambitions of Reflect Orbital, a company planning to deploy a constellation of up to 50,000 satellites equipped with massive mirrors designed to redirect sunlight to Earth. While intended for beneficial uses such as solar energy enhancement and emergency lighting, researchers warn that the resulting light beams could be incredibly bright—comparable to 10,000 full moons—posing significant risks to aviation safety, nocturnal wildlife, and the preservation of dark skies. Second, the article addresses the legal landscape of biotechnology in the age of artificial intelligence. Using Insilico Medicine as a case study, it notes that while generative AI models are now capable of proposing complex drug molecules for diseases like pulmonary fibrosis, patent applications still exclusively name human inventors. This creates a growing tension in intellectual property law, as the increasing capability of AI to perform fundamental scientific discovery threatens to outpace current legal definitions of 'invention' and 'inventorship,' which currently exclude non-human entities.",
+        "long_resume_paragraphs": [
+          "The report covers two distinct technological frontiers. First, it examines the ambitions of Reflect Orbital, a company planning to deploy a constellation of up to 50,000 satellites equipped with massive mirrors designed to redirect sunlight to Earth. While intended for beneficial uses such as solar energy enhancement and emergency lighting, researchers warn that the resulting light beams could be incredibly bright—comparable to 10,000 full moons—posing significant risks to aviation safety, nocturnal wildlife, and the preservation of dark skies. Second, the article addresses the legal landscape of biotechnology in the age of artificial intelligence. Using Insilico Medicine as a case study, it notes that while generative AI models are now capable of proposing complex drug molecules for diseases like pulmonary fibrosis, patent applications still exclusively name human inventors. This creates a growing tension in intellectual property law, as the increasing capability of AI to perform fundamental scientific discovery threatens to outpace current legal definitions of 'invention' and 'inventorship,' which currently exclude non-human entities."
+        ],
+        "main_topic": "The article discusses the environmental and safety implications of orbital space mirrors and the legal complexities of patenting AI-generated drug discoveries.",
+        "technologies": [
+          "Reflect Orbital satellites",
+          "Generative AI",
+          "Insilico Medicine computer models",
+          "ChatGPT"
+        ],
+        "category": "space",
+        "category_label": "Space"
+      }
+    ],
+    "article_count": 16,
+    "preview_titles": [
+      "NTT DOCOMO Deploys Second D-Wave Production Quantum Application to Optimize Telecom Network Signaling",
+      "Quantum Motion Expands to Maryland’s Discovery District to Scale US Commercial and Defense Operations",
+      "CISA: Windows Task Host flaw now exploited by ransomware gangs"
+    ],
+    "preview_articles": [
+      {
+        "title": "NTT DOCOMO Deploys Second D-Wave Production Quantum Application to Optimize Telecom Network Signaling",
+        "slug": "ntt-docomo-deploys-second-d-wave-production-quantum-application-to-optimize-telecom-network-signaling",
+        "url": "https://quantumcomputingreport.com/ntt-docomo-deploys-second-d-wave-production-quantum-application-to-optimize-telecom-network-signaling",
+        "source": "Quantum Computing Report",
+        "published": "Tue, 18 Aug 2026 14:27:02 +0000",
+        "short_summary": "NTT DOCOMO has successfully implemented a second commercial quantum application powered by D-Wave to optimize telecommunications network signaling. The deployment focuses on optimizing Tracking Area Lists, resulting in significant reductions in both location registration and paging signal loads.",
+        "long_resume": "Japanese telecommunications giant NTT DOCOMO has announced the deployment of its second production-grade quantum application, marking a significant step in integrating quantum computing into live telecommunications infrastructure. Utilizing D-Wave Quantum Inc.'s hybrid quantum annealing platform via the Leap cloud service, the new application specifically targets the optimization of Tracking Area Lists (TA-Lists). In mobile networks, TA-Lists are critical for managing device handoffs and call routing by grouping geographic base stations. The optimization process involves a complex combinatorial challenge: balancing location registration signals (which increase when devices cross boundaries) against paging signals (used to locate devices for incoming calls), as reducing one often increases the other.\n\nIn operational benchmarks involving 330 base stations, three TA-Lists, and nine tracking areas, D-Wave’s hybrid quantum-classical solver successfully executed multi-objective optimization in roughly five minutes. The results were substantial, showing a 65.3% reduction in peak location registration signaling and a 7.0% reduction in paging signal load across 333 base stations. This deployment follows an initial production application focused on single Tracking Area paging efficiency, which achieved a 15% reduction in paging load. By expanding from isolated use cases to network-wide infrastructure optimization, NTT DOCOMO is demonstrating the practical utility of quantum annealing for large-scale, real-world network planning. The optimized configurations are integrated directly into DOCOMO's daily operational workflows, supporting their massive user base of over 93 million mobile subscriptions in Japan.",
+        "long_resume_paragraphs": [
+          "Japanese telecommunications giant NTT DOCOMO has announced the deployment of its second production-grade quantum application, marking a significant step in integrating quantum computing into live telecommunications infrastructure. Utilizing D-Wave Quantum Inc.'s hybrid quantum annealing platform via the Leap cloud service, the new application specifically targets the optimization of Tracking Area Lists (TA-Lists). In mobile networks, TA-Lists are critical for managing device handoffs and call routing by grouping geographic base stations. The optimization process involves a complex combinatorial challenge: balancing location registration signals (which increase when devices cross boundaries) against paging signals (used to locate devices for incoming calls), as reducing one often increases the other.",
+          "In operational benchmarks involving 330 base stations, three TA-Lists, and nine tracking areas, D-Wave’s hybrid quantum-classical solver successfully executed multi-objective optimization in roughly five minutes. The results were substantial, showing a 65.3% reduction in peak location registration signaling and a 7.0% reduction in paging signal load across 333 base stations. This deployment follows an initial production application focused on single Tracking Area paging efficiency, which achieved a 15% reduction in paging load. By expanding from isolated use cases to network-wide infrastructure optimization, NTT DOCOMO is demonstrating the practical utility of quantum annealing for large-scale, real-world network planning. The optimized configurations are integrated directly into DOCOMO's daily operational workflows, supporting their massive user base of over 93 million mobile subscriptions in Japan."
+        ],
+        "main_topic": "NTT DOCOMO has deployed its second production-grade quantum application using D-Wave's technology to optimize mobile network signaling efficiency.",
+        "technologies": [
+          "D-Wave Quantum Inc.",
+          "Leap™ cloud service",
+          "Quantum annealing",
+          "Hybrid quantum-classical solver",
+          "NTT DOCOMO Network Signaling Optimization Pipeline"
+        ],
+        "category": "quantum",
+        "category_label": "Quantum Computing"
+      },
+      {
+        "title": "Quantum Motion Expands to Maryland’s Discovery District to Scale US Commercial and Defense Operations",
+        "slug": "quantum-motion-expands-to-marylands-discovery-district-to-scale-us-commercial-and-defense-operations",
+        "url": "https://quantumcomputingreport.com/quantum-motion-expands-to-marylands-discovery-district-to-scale-us-commercial-and-defense-operations",
+        "source": "Quantum Computing Report",
+        "published": "Tue, 18 Aug 2026 14:14:43 +0000",
+        "short_summary": "UK-based Quantum Motion is opening a new operational hub in Maryland's Discovery District to support its U.S. commercial and defense expansion. The move aims to leverage the region's proximity to federal agencies like DARPA while utilizing scalable silicon CMOS manufacturing techniques.",
+        "long_resume": "Quantum Motion, a prominent UK-based leader in silicon quantum computing, has announced a significant strategic expansion into the United States with a new operational hub located in the University of Maryland’s Discovery District. This move is designed to facilitate the company's growth within both the commercial and public sectors, specifically targeting the U.S. defense and enterprise markets. By establishing a presence in College Park, Quantum Motion positions itself near critical federal research organizations, including the Defense Advanced Research Projects Agency (DARPA) and the Applied Research Laboratory for Intelligence and Security (ARLIS). The company's technical strategy centers on the development of spin-qubit quantum processing units (QPUs) that utilize standard silicon complementary metal-oxide-semiconductor (CMOS) manufacturing processes. This approach is highly scalable as it relies on existing semiconductor foundry fabrication infrastructure to produce high-density quantum chips at scale. Furthermore, the new facility places Quantum Motion within the 'Capital of Quantum' (CoQ) ecosystem, co-locating the company with other industry giants such as IonQ and Microsoft. Under the leadership of President and Chief Commercial Officer Hugo Saleh, this expansion represents a critical step in integrating silicon-based hardware development into the Washington, D.C. metropolitan region's robust defense and technology landscape.",
+        "long_resume_paragraphs": [
+          "Quantum Motion, a prominent UK-based leader in silicon quantum computing, has announced a significant strategic expansion into the United States with a new operational hub located in the University of Maryland’s Discovery District. This move is designed to facilitate the company's growth within both the commercial and public sectors, specifically targeting the U.S. defense and enterprise markets. By establishing a presence in College Park, Quantum Motion positions itself near critical federal research organizations, including the Defense Advanced Research Projects Agency (DARPA) and the Applied Research Laboratory for Intelligence and Security (ARLIS). The company's technical strategy centers on the development of spin-qubit quantum processing units (QPUs) that utilize standard silicon complementary metal-oxide-semiconductor (CMOS) manufacturing processes. This approach is highly scalable as it relies on existing semiconductor foundry fabrication infrastructure to produce high-density quantum chips at scale. Furthermore, the new facility places Quantum Motion within the 'Capital of Quantum' (CoQ) ecosystem, co-locating the company with other industry giants such as IonQ and Microsoft. Under the leadership of President and Chief Commercial Officer Hugo Saleh, this expansion represents a critical step in integrating silicon-based hardware development into the Washington, D.C. metropolitan region's robust defense and technology landscape."
+        ],
+        "main_topic": "Quantum Motion is expanding its U.S. operations to Maryland's Discovery District to scale commercial and defense-related quantum computing initiatives.",
+        "technologies": [
+          "Silicon CMOS",
+          "Spin-qubit QPUs",
+          "Quantum Computing",
+          "Semiconductor Foundry Infrastructure"
+        ],
+        "category": "quantum",
+        "category_label": "Quantum Computing"
+      },
+      {
+        "title": "CISA: Windows Task Host flaw now exploited by ransomware gangs",
+        "slug": "cisa-windows-task-host-flaw-now-exploited-by-ransomware-gangs",
+        "url": "https://bleepingcomputer.com/news/security/cisa-windows-task-host-flaw-now-exploited-by-ransomware-gangs",
+        "source": "BleepingComputer",
+        "published": "Tue, 18 Aug 2026 06:32:16 -0400",
+        "short_summary": "CISA has officially identified ransomware gangs exploiting CVE-2025-60710, a high-severity Windows Task Host vulnerability. The flaw allows local attackers to escalate privileges to SYSTEM level on affected Windows systems.",
+        "long_resume": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has updated its Known Exploited Vulnerabilities (KEV) catalog to include CVE-2025-60710, noting that ransomware gangs are actively leveraging this flaw. The vulnerability resides in the Windows Task Host, a critical system component responsible for managing DLL-based background processes. Specifically, the flaw stems from a link following weakness that enables local attackers with basic user permissions to escalate their privileges to SYSTEM level, potentially granting full control over unpatched machines. This security issue affects modern operating systems, including Windows 11 and Windows Server 2025. Although Microsoft addressed the vulnerability in its November 2025 Patch Tuesday update, CISA's recent confirmation highlights the ongoing threat from malicious actors. Federal Civilian Executive Branch (FCEB) agencies have been directed to remediate this flaw within a strict timeframe. This development follows a pattern of increasing exploitation of Microsoft products by ransomware groups, as evidenced by recent activity involving SharePoint remote code execution vulnerabilities.",
+        "long_resume_paragraphs": [
+          "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has updated its Known Exploited Vulnerabilities (KEV) catalog to include CVE-2025-60710, noting that ransomware gangs are actively leveraging this flaw. The vulnerability resides in the Windows Task Host, a critical system component responsible for managing DLL-based background processes. Specifically, the flaw stems from a link following weakness that enables local attackers with basic user permissions to escalate their privileges to SYSTEM level, potentially granting full control over unpatched machines. This security issue affects modern operating systems, including Windows 11 and Windows Server 2025. Although Microsoft addressed the vulnerability in its November 2025 Patch Tuesday update, CISA's recent confirmation highlights the ongoing threat from malicious actors. Federal Civilian Executive Branch (FCEB) agencies have been directed to remediate this flaw within a strict timeframe. This development follows a pattern of increasing exploitation of Microsoft products by ransomware groups, as evidenced by recent activity involving SharePoint remote code execution vulnerabilities."
+        ],
+        "main_topic": "CISA has confirmed that ransomware gangs are actively exploiting a high-severity Windows Task Host privilege escalation vulnerability.",
+        "technologies": [
+          "Windows Task Host",
+          "Windows 11",
+          "Windows Server 2025",
+          "Microsoft SharePoint",
+          "DLL-based processes"
+        ],
+        "category": "security",
+        "category_label": "Cybersecurity"
+      },
+      {
+        "title": "[R] SineKAN: Kolmogorov-Arnold Networks Using Sinusoidal Activation Functions",
+        "slug": "r-sinekan-kolmogorov-arnold-networks-using-sinusoidal-activation-functions",
+        "url": "https://arxiv.org/abs/2407.04149",
+        "source": "Reddit r/MachineLearning",
+        "published": "2026-08-17T00:46:26Z",
+        "short_summary": "This paper proposes SineKAN, an evolution of the Kolmogorov-Arnold Network that uses sinusoidal activation functions to improve efficiency. The model provides a faster alternative to B-Spline KANs while maintaining or exceeding their performance on vision benchmarks.",
+        "long_resume": "The research addresses the limitations of the original Kolmogorov-Arnold Networks (KAN) framework, which relies on learnable B-Spline activation functions on the edges of the computational graph. The authors introduce SineKAN, a model where these B-Splines are replaced by grids of re-weighted sine functions. Through evaluation on benchmark vision tasks, the researchers demonstrate that SineKAN performs at least as well as, and in some cases better than, both the original B-Spline KAN and Fourier Series-based implementations. A primary advantage of SineKAN is its computational efficiency; it achieves a substantial increase in processing speed across various configurations of layer size, depth, and batch size. Furthermore, the paper explores the numerical accuracy of SineKAN, suggesting that its scaling capabilities could potentially match those of traditional Dense Neural Networks (DNNs). While acknowledging the current performance gap caused by the highly optimized hardware and software ecosystems surrounding DNNs, the authors provide a theoretical discussion on the scaling potential and limitations of the SineKAN architecture compared to existing KAN implementations.",
+        "long_resume_paragraphs": [
+          "The research addresses the limitations of the original Kolmogorov-Arnold Networks (KAN) framework, which relies on learnable B-Spline activation functions on the edges of the computational graph. The authors introduce SineKAN, a model where these B-Splines are replaced by grids of re-weighted sine functions. Through evaluation on benchmark vision tasks, the researchers demonstrate that SineKAN performs at least as well as, and in some cases better than, both the original B-Spline KAN and Fourier Series-based implementations. A primary advantage of SineKAN is its computational efficiency; it achieves a substantial increase in processing speed across various configurations of layer size, depth, and batch size. Furthermore, the paper explores the numerical accuracy of SineKAN, suggesting that its scaling capabilities could potentially match those of traditional Dense Neural Networks (DNNs). While acknowledging the current performance gap caused by the highly optimized hardware and software ecosystems surrounding DNNs, the authors provide a theoretical discussion on the scaling potential and limitations of the SineKAN architecture compared to existing KAN implementations."
+        ],
+        "main_topic": "The introduction of SineKAN, a new Kolmogorov-Arnold Network architecture that utilizes re-weighted sine functions instead of B-Splines for edge activation functions.",
+        "technologies": [
+          "SineKAN",
+          "Kolmogorov-Arnold Networks (KAN)",
+          "B-Spline",
+          "Multi-layer perceptron (MLP)",
+          "Dense Neural Networks (DNN)",
+          "Fourier Series"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "Major Frontier Model Providers Adopt Watermarking Tech to Comply with EU Regulation",
+        "slug": "major-frontier-model-providers-adopt-watermarking-tech-to-comply-with-eu-regulation",
+        "url": "https://infoq.com/news/2026/08/eu-ai-content-watermark/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+        "source": "InfoQ",
+        "published": "Tue, 18 Aug 2026 05:05:00 GMT",
+        "short_summary": "To comply with new EU regulations, leading AI developers are integrating advanced statistical watermarking and cryptographic metadata into their model outputs. This shift has triggered an immediate technical arms race between compliance enforcement and open-source tools designed to strip these identifiers.",
+        "long_resume": "Following the enforcement of Article 50 of the EU AI Act on August 2, 2026, foundation model providers are transitioning toward mandatory synthetic content identification. The primary mechanism for text is statistical token-sampling watermarking, which modifies the logits of 'green-listed' tokens during the decoding process to create a detectable pattern without disrupting semantic coherence or increasing latency. Anthropic has implemented this across its Claude ecosystem, while Google has integrated SynthID into Gemini and provided open-source implementations for Hugging Face. For multimedia, industry leaders are converging on C2PA standards to embed cryptographically signed metadata in images, audio, and video.\n\nHowever, this regulatory compliance has met significant resistance from the open-source community. Tools such as 'watermarks-remover' have rapidly gained popularity by automating the removal of C2PA, EXIF, and XMP metadata, alongside techniques to disrupt statistical token distributions through localized rewriting. Academic research further suggests that these watermarks are fragile when subjected to post-processing tasks like translation or paraphrasing. Additionally, there is a significant risk of false positives in low-entropy scenarios, such as generating structured code or boilerplate text. The divergence between controlled API environments and self-managed open-weight architectures presents a major challenge for long-term regulatory enforcement and enterprise data auditing.",
+        "long_resume_paragraphs": [
+          "Following the enforcement of Article 50 of the EU AI Act on August 2, 2026, foundation model providers are transitioning toward mandatory synthetic content identification. The primary mechanism for text is statistical token-sampling watermarking, which modifies the logits of 'green-listed' tokens during the decoding process to create a detectable pattern without disrupting semantic coherence or increasing latency. Anthropic has implemented this across its Claude ecosystem, while Google has integrated SynthID into Gemini and provided open-source implementations for Hugging Face. For multimedia, industry leaders are converging on C2PA standards to embed cryptographically signed metadata in images, audio, and video.",
+          "However, this regulatory compliance has met significant resistance from the open-source community. Tools such as 'watermarks-remover' have rapidly gained popularity by automating the removal of C2PA, EXIF, and XMP metadata, alongside techniques to disrupt statistical token distributions through localized rewriting. Academic research further suggests that these watermarks are fragile when subjected to post-processing tasks like translation or paraphrasing. Additionally, there is a significant risk of false positives in low-entropy scenarios, such as generating structured code or boilerplate text. The divergence between controlled API environments and self-managed open-weight architectures presents a major challenge for long-term regulatory enforcement and enterprise data auditing."
+        ],
+        "main_topic": "Major AI model providers are implementing statistical watermarking and cryptographic metadata to comply with the EU AI Act's transparency mandates.",
+        "technologies": [
+          "EU AI Act",
+          "Claude",
+          "Google SynthID",
+          "Gemini",
+          "Hugging Face",
+          "C2PA (Coalition for Content Provenance and Authenticity)",
+          "OpenAI Provenance",
+          "Meta AI Transparency",
+          "watermarks-remover"
+        ],
+        "category": "governance",
+        "category_label": "Data & AI Governance"
+      }
+    ],
+    "source_mtime": 1787341814.8265443,
+    "model_releases": [
+      {
+        "provider": "DeepSeek",
+        "model_name": "DeepSeek-V4-Flash-Vision-Exp",
+        "slug": "deepseek-v4-flash-vision-exp",
+        "release_date": "2026-08-21",
+        "summary": "DeepSeek has introduced an experimental multimodal vision understanding model. While its pure text capabilities are on par with DeepSeek-V4-Flash, it provides a significant leap in visual agent benchmarks.",
+        "key_features": [
+          "Multimodal vision understanding",
+          "Significant improvement in agent tasks requiring visual perception",
+          "Performance levels for multimodal agents approaching Opus-4.8"
+        ],
+        "url": "https://api-docs.deepseek.com/updates",
+        "netlify_url": "https://bowlofdata.net/week/34_2026.html#deepseek-v4-flash-vision-exp",
+        "altervista_url": ""
+      },
+      {
+        "provider": "Amazon (Nova)",
+        "model_name": "Amazon Bedrock AgentCore Gateway",
+        "slug": "amazon-bedrock-agentcore-gateway",
+        "release_date": "2026-08-21",
+        "summary": "AWS introduced the Amazon Bedrock AgentCore Gateway to provide governed and auditable access for AI agents. This new capability allows enterprise tools to be accessed by agents without requiring infrastructure consolidation.",
+        "key_features": [
+          "Governed tool access",
+          "Auditable agent permissions",
+          "Infrastructure-agnostic integration"
+        ],
+        "url": "https://aws.amazon.com/blogs/machine-learning/",
+        "netlify_url": "https://bowlofdata.net/week/34_2026.html#amazon-bedrock-agentcore-gateway",
+        "altervista_url": ""
+      },
+      {
+        "provider": "OpenAI",
+        "model_name": "GPT-5.6",
+        "slug": "gpt-56",
+        "release_date": "2026-08-17",
+        "summary": "OpenAI has released a new builder's guide for the GPT-5.6 model, signaling an update to their frontier capabilities. This release focuses on applied AI implementation strategies and advanced deployment techniques.",
+        "key_features": [
+          "Advanced application guidance",
+          "Optimized for Applied AI workflows"
+        ],
+        "url": "https://openai.com/news/",
+        "netlify_url": "https://bowlofdata.net/week/34_2026.html#gpt-56",
+        "altervista_url": ""
+      },
+      {
+        "provider": "StepFun",
+        "model_name": "Step 3.7 Flash",
+        "slug": "step-37-flash",
+        "release_date": "recent",
+        "summary": "Step 3.7 Flash is a 198B-parameter sparse Mixture-of-Experts (MoE) vision-language model designed for high-frequency production workloads and agentic workflows. It features native image understanding, three selectable reasoning levels, and optimized throughput of up to 400 tokens per second.",
+        "key_features": [
+          "198B sparse MoE architecture with a 256k context window",
+          "High-performance multimodal perception for UI/GUI parsing and visual grounding",
+          "Advanced tool orchestration capabilities leading the ClawEval-1.1 benchmark",
+          "NVFP4 quantization support with MTP draft layers for accelerated inference on NVIDIA GPUs"
+        ],
+        "url": "https://raw.githubusercontent.com/stepfun-ai/Step-3.7-Flash/main/README.md",
+        "netlify_url": "https://bowlofdata.net/week/34_2026.html#step-37-flash",
+        "altervista_url": ""
+      },
+      {
+        "provider": "Amazon (Nova)",
+        "model_name": "OpenAI GPT-5.6 (Sol, Terra, and Luna)",
+        "slug": "openai-gpt-56-sol-terra-and-luna",
+        "release_date": "2026-08-20",
+        "summary": "Amazon Bedrock has introduced cross-Region inference capabilities for OpenAI's GPT-5.6 models, specifically the Sol, Terra, and Luna variants. This update allows users to leverage global inference profiles to route requests across more than 25 AWS Regions.",
+        "key_features": [
+          "Cross-Region inference support",
+          "Higher throughput via US geographic and global inference profiles",
+          "Integration with OpenAI and Converse APIs"
+        ],
+        "url": "https://aws.amazon.com/blogs/machine-learning/",
+        "netlify_url": "https://bowlofdata.net/week/34_2026.html#openai-gpt-56-sol-terra-and-luna",
+        "altervista_url": ""
+      },
+      {
+        "provider": "Amazon (Nova)",
+        "model_name": "Amazon Bedrock AgentCore payments",
+        "slug": "amazon-bedrock-agentcore-payments",
+        "release_date": "2026-08-18",
+        "summary": "Amazon has announced the general availability of Amazon Bedrock AgentCore payments, a new capability designed to allow AI agents to perform autonomous transactions. The update focuses on enabling secure and scalable financial operations for agentic workflows.",
+        "key_features": [
+          "Autonomous transaction capabilities at scale",
+          "Built-in spending guardrails",
+          "Protocol-agnostic payment orchestration",
+          "Production-ready observability"
+        ],
+        "url": "https://aws.amazon.com/blogs/machine-learning/",
+        "netlify_url": "https://bowlofdata.net/week/34_2026.html#amazon-bedrock-agentcore-payments",
+        "altervista_url": ""
+      },
+      {
+        "provider": "NVIDIA Dev Blog (Nemotron)",
+        "model_name": "Nemotron 3.5 Lightning NVFP4",
+        "slug": "nemotron-35-lightning-nvfp4",
+        "release_date": "2026-08-17",
+        "summary": "NVIDIA has introduced the Nemotron 3.5 Lightning NVFP4 checkpoint, designed to optimize performance for developers targeting specific latency and compute constraints. This new version significantly reduces memory footprint while maintaining high accuracy levels.",
+        "key_features": [
+          "Up to 4x faster throughput",
+          "Compressed from 66 GB to 22 GB",
+          "Preserved model accuracy with NVFP4 quantization"
+        ],
+        "url": "https://developer.nvidia.com/blog/?p=121323",
+        "netlify_url": "https://bowlofdata.net/week/34_2026.html#nemotron-35-lightning-nvfp4",
+        "altervista_url": ""
+      },
+      {
+        "provider": "Amazon (Nova)",
+        "model_name": "NVIDIA Nemotron 3.5 Lightning",
+        "slug": "nvidia-nemotron-35-lightning",
+        "release_date": "2026-08-17",
+        "summary": "NVIDIA Nemotron 3.5 Lightning is now available in Amazon SageMaker JumpStart, specifically optimized for high-volume agentic workloads. This 30B Mixture-of-Experts model (with 3B active parameters) provides significant performance boosts for always-on agents.",
+        "key_features": [
+          "Up to 4x higher throughput",
+          "Up to 30% faster task completion",
+          "Optimized for high-volume agentic workloads via MoE architecture"
+        ],
+        "url": "https://aws.amazon.com/blogs/machine-learning/",
+        "netlify_url": "https://bowlofdata.net/week/34_2026.html#nvidia-nemotron-35-lightning",
+        "altervista_url": ""
+      },
+      {
+        "provider": "OpenAI",
+        "model_name": "ChatGPT for Teens",
+        "slug": "chatgpt-for-teens",
+        "release_date": "2026-08-18",
+        "summary": "OpenAI has introduced a new version of ChatGPT specifically tailored for teenagers. This release focuses on providing an age-appropriate interface and safety guardrails suitable for younger users.",
+        "key_features": [
+          "Age-appropriate content filtering",
+          "Enhanced safety protocols for minors"
+        ],
+        "url": "https://openai.com/news/",
+        "netlify_url": "https://bowlofdata.net/week/34_2026.html#chatgpt-for-teens",
+        "altervista_url": ""
+      }
+    ],
+    "model_releases_mtime": 1787341814.827045,
+    "papers": [
+      {
+        "title": "Agentic ESOpt: Fine-Tuning Long-Horizon LLM Agents with Minimal GPU Requirements",
+        "slug": "agentic-esopt-fine-tuning-long-horizon-llm-agents-with-minimal-gpu-requirements",
+        "url": "https://arxiv.org/html/2608.17310",
+        "source": "HuggingFace Papers",
+        "published": "2026-08-18T00:00:00.000Z",
+        "short_summary": "This paper presents Agentic ESOpt, a novel approach for fine-tuning LLM agents in long-horizon tasks using evolutionary strategies. The method proves more scalable and memory-efficient than RL-based alternatives like PPO and GRPO as task complexity increases.",
+        "long_resume": "The research addresses the fundamental challenge of credit assignment in long-horizon LLM agent training. Traditional Reinforcement Learning (RL) methods, such as PPO and GRPO, suffer from increasing estimator variance as the number of steps in a trajectory grows, because they accumulate action-score terms across every turn. In contrast, Agentic ESOpt employs a parameter perturbation approach that assigns terminal rewards directly to a single coherent policy variation, effectively decoupling the estimator variance from the horizon length. To validate this theory, the authors conducted experiments using a controlled multi-turn Sudoku environment with varying minimum successful horizons (H* = 5, 10, and 15). The results demonstrate that while PPO may perform well on very short tasks, its effectiveness collapses as the horizon increases due to uninformative advantage estimates. Agentic ESOpt, however, shows a clear performance advantage at longer horizons, specifically outperforming GRPO variants when H* reaches 15. Furthermore, the method is highly efficient in terms of hardware utilization, requiring significantly less GPU memory than PPO or GRPO because it does not need to maintain large buffers for action-score accumulation. The study concludes that Agentic ESOpt provides a robust framework for training agents on complex, multi-step reasoning tasks where traditional RL struggles with scalability.",
+        "long_resume_paragraphs": [
+          "The research addresses the fundamental challenge of credit assignment in long-horizon LLM agent training. Traditional Reinforcement Learning (RL) methods, such as PPO and GRPO, suffer from increasing estimator variance as the number of steps in a trajectory grows, because they accumulate action-score terms across every turn. In contrast, Agentic ESOpt employs a parameter perturbation approach that assigns terminal rewards directly to a single coherent policy variation, effectively decoupling the estimator variance from the horizon length. To validate this theory, the authors conducted experiments using a controlled multi-turn Sudoku environment with varying minimum successful horizons (H* = 5, 10, and 15). The results demonstrate that while PPO may perform well on very short tasks, its effectiveness collapses as the horizon increases due to uninformative advantage estimates. Agentic ESOpt, however, shows a clear performance advantage at longer horizons, specifically outperforming GRPO variants when H* reaches 15. Furthermore, the method is highly efficient in terms of hardware utilization, requiring significantly less GPU memory than PPO or GRPO because it does not need to maintain large buffers for action-score accumulation. The study concludes that Agentic ESOpt provides a robust framework for training agents on complex, multi-step reasoning tasks where traditional RL struggles with scalability."
+        ],
+        "main_topic": "The article introduces Agentic ESOpt, a fine-tuning method for long-horizon LLM agents that demonstrates superior scalability and lower GPU memory requirements compared to traditional Reinforcement Learning methods like PPO and GRPO.",
+        "key_points": [
+          "Agentic ESOpt utilizes parameter-space search to avoid the variance growth associated with accumulating action-score terms over long horizons.",
+          "Theoretical analysis shows that Agentic RL estimator variance grows linearly with the horizon length, whereas Agentic ESOpt's variance does not explicitly scale with HH.",
+          "Experimental results in a multi-turn Sudoku environment show Agentic ESOpt outperforms GRPO and PPO as the task complexity (horizon length) increases.",
+          "Agentic ESOpt achieves high performance with significantly lower GPU memory requirements, specifically matching the base model's memory footprint.",
+          "The study identifies an ordering reversal where PPO is effective for short horizons, but Agentic ESOpt becomes the strongest performer at longer horizons."
+        ],
+        "technologies": [
+          "Agentic ESOpt",
+          "LLM Agents",
+          "PPO (Proximal Policy Optimization)",
+          "GRPO (Group Relative Policy Optimization)",
+          "Qwen3.5-4B",
+          "Qwen3.5-27B",
+          "NVIDIA H100 80GB GPUs"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "FreeToken: Efficient Edge-Native MoE Serving with Bandwidth-Adaptive Execution",
+        "slug": "freetoken-efficient-edge-native-moe-serving-with-bandwidth-adaptive-execution",
+        "url": "https://arxiv.org/html/2608.16157",
+        "source": "HuggingFace Papers",
+        "published": "2026-08-17T00:00:00.000Z",
+        "short_summary": "FreeToken is a novel serving system that optimizes MoE model inference on consumer-grade hardware by adapting to varying bandwidth and memory availability. It addresses the challenges of expert movement and heterogeneous resource management in agentic workloads.",
+        "long_resume": "The paper introduces FreeToken, an edge-native serving architecture specifically engineered for Mixture-of-Experts (MoE) models on personal computing hardware. While frontier open-weight models are increasingly accessible, their massive parameter counts typically require expensive datacenter-class GPUs. FreeToken bridges this accessibility gap by treating consumer devices—ranging from laptops to workstations—as elastic inference platforms. The system addresses three primary bottlenecks in edge MoE serving: the high memory movement required during dense prefill phases in agentic workloads, the inefficient handling of expert cache misses during decoding, and the inherent variability of hardware resources like PCIe bandwidth and available VRAM. To solve these, FreeToken employs a 'bandwidth-adaptive execution' strategy using a q* policy that intelligently partitions computation between GPU and CPU based on real-time bandwidth availability. Additionally, it implements semantic-aware caching to leverage routing locality and anchor checkpoints at agentic boundaries, reducing redundant computations. Finally, its elastic resource management allows the system to dynamically resize expert caches without engine restarts, adapting to concurrent user applications. Experimental results show FreeToken can serve a wide array of models, including much larger architectures like the 753B GLM-5.2, on single workstation GPUs, effectively turning existing consumer hardware into a practical platform for frontier-scale intelligence.",
+        "long_resume_paragraphs": [
+          "The paper introduces FreeToken, an edge-native serving architecture specifically engineered for Mixture-of-Experts (MoE) models on personal computing hardware. While frontier open-weight models are increasingly accessible, their massive parameter counts typically require expensive datacenter-class GPUs. FreeToken bridges this accessibility gap by treating consumer devices—ranging from laptops to workstations—as elastic inference platforms. The system addresses three primary bottlenecks in edge MoE serving: the high memory movement required during dense prefill phases in agentic workloads, the inefficient handling of expert cache misses during decoding, and the inherent variability of hardware resources like PCIe bandwidth and available VRAM. To solve these, FreeToken employs a 'bandwidth-adaptive execution' strategy using a q* policy that intelligently partitions computation between GPU and CPU based on real-time bandwidth availability. Additionally, it implements semantic-aware caching to leverage routing locality and anchor checkpoints at agentic boundaries, reducing redundant computations. Finally, its elastic resource management allows the system to dynamically resize expert caches without engine restarts, adapting to concurrent user applications. Experimental results show FreeToken can serve a wide array of models, including much larger architectures like the 753B GLM-5.2, on single workstation GPUs, effectively turning existing consumer hardware into a practical platform for frontier-scale intelligence."
+        ],
+        "main_topic": "The introduction of FreeToken, an edge-native serving system designed to efficiently run large Mixture-of-Experts (MoE) models on heterogeneous consumer hardware.",
+        "key_points": [
+          "FreeToken treats personal machines as unified, elastic inference platforms rather than fixed-resource GPUs.",
+          "Implements bandwidth-adaptive execution using a q* policy to partition cache misses between PCIe transfer and CPU execution.",
+          "Utilizes semantic-aware caching to anchor recurrent-state checkpoints at agentic context boundaries.",
+          "Features elastic edge resource management that dynamically resizes GPU expert caches based on available runtime memory.",
+          "Demonstrates capability to serve massive models, such as the 753B GLM-5.2, on single workstation GPUs."
+        ],
+        "technologies": [
+          "FreeToken",
+          "MoE (Mixture-of-Experts)",
+          "DeepSeek-V4-Flash",
+          "GLM-5.2",
+          "Kimi-K3",
+          "Qwen3.6-30B",
+          "llama.cpp",
+          "KTransformers",
+          "Ollama",
+          "NVIDIA RTX 5090",
+          "PCIe"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "ConceptGuard: Benchmarking Context-Sensitive Unlearning in Large Language Models",
+        "slug": "conceptguard-benchmarking-context-sensitive-unlearning-in-large-language-models",
+        "url": "https://arxiv.org/html/2608.20338v1",
+        "source": "arXiv",
+        "published": "2026-08-20T17:59:57Z",
+        "short_summary": "This paper presents ConceptGuard, a novel benchmark for evaluating machine unlearning in LLMs through the lens of dual-use concepts. It demonstrates that current unlearning methods are insufficient at distinguishing between harmful and benign contexts of the same underlying knowledge.",
+        "long_resume": "The research addresses a critical gap in the evaluation of machine unlearning for Large Language Models (LLMs). While unlearning is essential for removing copyrighted, private, or harmful data, existing benchmarks like TOFU, MUSE, and WMDP rely on disjoint datasets that treat facts as independent entities. The authors argue that this approach fails to account for 'dual-use concepts'—knowledge that can be applied both safely and harmfully. To rectify this, the authors introduce ConceptGuard, a benchmark where the forget set (harmful intent) and retain set (benually intent) are explicitly complementary. By evaluating unlearning at the level of concept usage rather than isolated facts, the researchers provide a more realistic assessment of model safety. Their findings reveal that current unlearning techniques suffer from significant forgetting-utility trade-offs, often failing to achieve the necessary contextual separation required to prevent harmful outputs while maintaining beneficial capabilities. The study concludes that new unlearning approaches are needed to better align with real-world safety requirements and intent-sensitive deployment.",
+        "long_resume_paragraphs": [
+          "The research addresses a critical gap in the evaluation of machine unlearning for Large Language Models (LLMs). While unlearning is essential for removing copyrighted, private, or harmful data, existing benchmarks like TOFU, MUSE, and WMDP rely on disjoint datasets that treat facts as independent entities. The authors argue that this approach fails to account for 'dual-use concepts'—knowledge that can be applied both safely and harmfully. To rectify this, the authors introduce ConceptGuard, a benchmark where the forget set (harmful intent) and retain set (benually intent) are explicitly complementary. By evaluating unlearning at the level of concept usage rather than isolated facts, the researchers provide a more realistic assessment of model safety. Their findings reveal that current unlearning techniques suffer from significant forgetting-utility trade-offs, often failing to achieve the necessary contextual separation required to prevent harmful outputs while maintaining beneficial capabilities. The study concludes that new unlearning approaches are needed to better align with real-world safety requirements and intent-sensitive deployment."
+        ],
+        "main_topic": "The introduction of ConceptGuard, a new benchmark designed to evaluate machine unlearning in Large Language Models by focusing on the preservation of benign uses and removal of harmful uses of dual-use concepts.",
+        "key_points": [
+          "Existing LLM unlearning benchmarks fail to capture context-sensitive safety requirements by using disjoint forget and retain sets.",
+          "ConceptGuard introduces 'dual-use concepts' where the forget set contains harmful applications and the retain set contains benign applications of the same concept.",
+          "The benchmark shifts evaluation from simple factual recall to intent-sensitive, contextual separation.",
+          "Experimental results show that current unlearning techniques struggle with strong forgetting-utility trade-offs under conceptual overlap.",
+          "Current methods demonstrate poor performance in maintaining ROUGE scores and concept-level control when faced with complementary datasets."
+        ],
+        "technologies": [
+          "Large Language Models (LLMs)",
+          "ConceptGuard",
+          "TOFU",
+          "MUSE",
+          "WMDP",
+          "Gradient Ascent"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "G-CARL: Grounded Checklist-Aligned Reward Learning for Patient-Oriented Medical Report Interpretation",
+        "slug": "g-carl-grounded-checklist-aligned-reward-learning-for-patient-oriented-medical-report-interpretation",
+        "url": "https://arxiv.org/html/2608.20331v1",
+        "source": "arXiv",
+        "published": "2026-08-20T17:59:46Z",
+        "short_summary": "The G-CARL framework addresses the challenge of medical factuality in automated report interpretation by verifying individual claims against authoritative medical knowledge. It utilizes a dual-verification process and clinician-weighted checklists to ensure responses are both medically accurate and contextually relevant.",
+        "long_resume": "The paper presents G-CARL (Grounded Checklist-Aligned Reward Learning), a framework aimed at enhancing Patient-Oriented Medical Report Interpretation (PMRI). A primary challenge in PMRI is that holistic response-level rewards often fail to localize factual errors or distinguish between fluent but unsupported text and clinically accurate information. To solve this, the authors propose a 'Retrieval-Grounded Claim Reward.' This process involves decomposing a model's response into atomic medical claims, which are then paired with retrieval queries. These claims are verified against a massive, multi-source medical datastore containing drug instructions, textbooks, and clinical guidelines. The verification is dual-layered: a multimodal verifier checks if a claim is 'Supported' by retrieved evidence and if it is 'Relevant' to the specific uploaded medical report. This prevents 'reward hacking,' where a model might provide correct but irrelevant medical facts. Furthermore, the framework introduces a 'Case-Specific Checklist Reward.' Recognizing that dimensions like demand satisfaction are subjective and instance-dependent, G-CARL uses an MLLM to draft checklists based on the specific clinical context, which are then refined by professional clinicians. These checklist items are assigned weights—ranging from 'Essential' to 'Pitfall'—to provide a fine-grained, controllable reward signal for reinforcement learning, ensuring that the model prioritizes clinically critical information and avoids common errors.",
+        "long_resume_paragraphs": [
+          "The paper presents G-CARL (Grounded Checklist-Aligned Reward Learning), a framework aimed at enhancing Patient-Oriented Medical Report Interpretation (PMRI). A primary challenge in PMRI is that holistic response-level rewards often fail to localize factual errors or distinguish between fluent but unsupported text and clinically accurate information. To solve this, the authors propose a 'Retrieval-Grounded Claim Reward.' This process involves decomposing a model's response into atomic medical claims, which are then paired with retrieval queries. These claims are verified against a massive, multi-source medical datastore containing drug instructions, textbooks, and clinical guidelines. The verification is dual-layered: a multimodal verifier checks if a claim is 'Supported' by retrieved evidence and if it is 'Relevant' to the specific uploaded medical report. This prevents 'reward hacking,' where a model might provide correct but irrelevant medical facts. Furthermore, the framework introduces a 'Case-Specific Checklist Reward.' Recognizing that dimensions like demand satisfaction are subjective and instance-dependent, G-CARL uses an MLLM to draft checklists based on the specific clinical context, which are then refined by professional clinicians. These checklist items are assigned weights—ranging from 'Essential' to 'Pitfall'—to provide a fine-grained, controllable reward signal for reinforcement learning, ensuring that the model prioritizes clinically critical information and avoids common errors."
+        ],
+        "main_topic": "The article introduces G-CARL, a novel reward learning framework designed to improve the factual accuracy and clinical relevance of medical report interpretations using retrieval-grounded verification and case-specific checklists.",
+        "key_points": [
+          "Introduction of a retrieval-grounded claim reward that decomposes responses into atomic medical claims for granular verification.",
+          "Implementation of a dual-binary verification system assessing both factual support from external medical datastores and contextual relevance to the specific report.",
+          "Construction of a large-scale medical datastore integrating drug labeling, textbooks, and clinical practice guidelines.",
+          "Development of a case-specific checklist reward using physician-guided weighted criteria (Essential, Important, Optional, Pitfall).",
+          "Use of an MLLM to generate initial checklists which are then refined by professional clinicians to ensure clinical appropriateness."
+        ],
+        "technologies": [
+          "G-CARL",
+          "Gemini 1.5 Pro",
+          "Multimodal Large Language Models (MLLM)",
+          "Reinforcement Learning"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "Co-RL: Unsupervised Reasoning Emerges from Diverse Cohort in Multi-agent RL",
+        "slug": "co-rl-unsupervised-reasoning-emerges-from-diverse-cohort-in-multi-agent-rl",
+        "url": "https://arxiv.org/html/2608.17253",
+        "source": "HuggingFace Papers",
+        "published": "2026-08-19T00:00:00.000Z",
+        "short_summary": "This technical excerpt provides a formal mathematical proof for the stability and convergence properties of the Co-RL framework. It specifically shows how collaborative dynamics enlarge the basin of attraction for correct outcomes in multi-agent reinforcement learning.",
+        "long_resume": "The provided text is a rigorous mathematical appendix detailing the proof of convergence for the Co-RL (Collaborative Reinforcement Learning) mechanism. The analysis begins by establishing fundamental symmetries in the dynamics, specifically regarding the binomial distribution of agent cohorts and the invariance of certain functions under complementation. A key component of the proof is the definition of a conserved quantity, $F_K(p)$, which remains constant along any interior trajectory of the system's differential equations. By analyzing this conserved quantity, the author identifies the separatrix—the boundary between different convergence behaviors—as the line where $p_A + p_B = 1$. The proof further examines the stability of various equilibrium points: $(0,0)$ and $(1,1)$ are shown to be asymptotically stable, meaning agents will converge to total certainty in either direction depending on their initial state. Conversely, the point $(1/2, 1/2)$ is identified as a saddle point with an unstable direction. The ultimate conclusion of the proof is that the basin of correct convergence for Co-RL ($\\mathcal{B}_{\\text{Co-RL}}^{+}$) is strictly larger than the basin for independent self-rewarding agents ($\\mathcal{B}_{\\text{self}}^{+}$), mathematically validating the efficiency of collaborative supervision in achieving unsupervised reasoning.",
+        "long_resume_paragraphs": [
+          "The provided text is a rigorous mathematical appendix detailing the proof of convergence for the Co-RL (Collaborative Reinforcement Learning) mechanism. The analysis begins by establishing fundamental symmetries in the dynamics, specifically regarding the binomial distribution of agent cohorts and the invariance of certain functions under complementation. A key component of the proof is the definition of a conserved quantity, $F_K(p)$, which remains constant along any interior trajectory of the system's differential equations. By analyzing this conserved quantity, the author identifies the separatrix—the boundary between different convergence behaviors—as the line where $p_A + p_B = 1$. The proof further examines the stability of various equilibrium points: $(0,0)$ and $(1,1)$ are shown to be asymptotically stable, meaning agents will converge to total certainty in either direction depending on their initial state. Conversely, the point $(1/2, 1/2)$ is identified as a saddle point with an unstable direction. The ultimate conclusion of the proof is that the basin of correct convergence for Co-RL ($\\mathcal{B}_{\\text{Co-RL}}^{+}$) is strictly larger than the basin for independent self-rewarding agents ($\\mathcal{B}_{\\text{self}}^{+}$), mathematically validating the efficiency of collaborative supervision in achieving unsupervised reasoning."
+        ],
+        "main_topic": "Mathematical proof demonstrating that Co-RL (Collaborative Reinforcement Learning) expands the basin of correct convergence in multi-agent systems compared to independent self-rewarding.",
+        "key_points": [
+          "Establishes a conserved quantity $F_K(p)$ along trajectories in the multi-agent system.",
+          "Identifies the line $p_A + p_B = 1$ as the invariant separatrix between two consensus basins.",
+          "Proves that $(0,0)$ and $(1,1)$ are asymptotically stable equilibrium points.",
+          "Demonstrates that the equilibrium at $(1/2, 1/2)$ is a saddle point.",
+          "Concludes that the basin of correct convergence for Co-RL is strictly larger than that of independent self-rewarding."
+        ],
+        "technologies": [
+          "Co-RL",
+          "Multi-agent Reinforcement Learning",
+          "Reinforcement Learning"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      }
+    ],
+    "papers_mtime": 1787341566.1516583
+  },
+  {
     "week": 33,
     "year": 2026,
     "month": 8,

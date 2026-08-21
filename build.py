@@ -75,7 +75,8 @@ MIN_INDEXABLE_ITEMS = 0
 # tag pages (tag/<slug>.html) aggregate by the raw `technologies` values.
 # ---------------------------------------------------------------------------
 
-CATEGORY_ORDER = ["ai", "governance", "security", "blockchain", "engineering"]
+CATEGORY_ORDER = ["ai", "governance", "security", "blockchain", "engineering",
+                  "quantum", "space"]
 
 CATEGORY_META = {
     "ai": {
@@ -162,7 +163,49 @@ CATEGORY_META = {
             "kubernetes", "docker", "python", "javascript", "typescript", "rust", "golang",
             "database", "postgres", "redis", "compiler", "kernel",
             "ebpf", "linux", "devops", "ci/cd", "observability", "webassembly", "wasm",
-            "runtime", "developer", "tooling", "github", "quantum", "qubit", "photonic",
+            "runtime", "developer", "tooling", "github",
+        ],
+    },
+    # "quantum", "qubit" and "photonic" used to live in engineering's list above.
+    # They move here wholesale: _classify_article breaks ties with
+    # max(CATEGORY_ORDER, ...), which returns the FIRST maximum, so engineering
+    # (earlier in the order) would win every tie and this beat would never fire.
+    "quantum": {
+        "label": "Quantum Computing",
+        "h1":    "Quantum Computing",
+        "intro": (
+            "Every week, Bowl of Data tracks quantum computing as it moves from the lab "
+            "toward a roadmap: hardware milestones, error correction, and which claims "
+            "actually hold up. Here is every issue's quantum coverage, newest first."
+        ),
+        # Deliberately no "post-quantum" or "pqc" here: those stay in security.
+        # _category_patterns compiles longer keywords as r"\b<kw>", and the hyphen in
+        # "post-quantum" is a word boundary, so "quantum" already matches inside it and
+        # such an article scores for both beats. security precedes quantum in
+        # CATEGORY_ORDER, so it wins that tie, which is the outcome we want.
+        "keywords": [
+            "quantum", "qubit", "qubits", "photonic", "qpu", "superconducting",
+            "trapped ion", "annealing", "entanglement", "superposition", "decoherence",
+            "quantum advantage", "quantum error correction", "quantum supremacy",
+        ],
+    },
+    "space": {
+        "label": "Space",
+        "h1":    "Space & Spaceflight",
+        "intro": (
+            "Every week, Bowl of Data tracks launch, orbit and the space industry: "
+            "vehicles and engines, satellite constellations, and the missions shaping "
+            "who reaches orbit. Here is every issue's space coverage, newest first."
+        ),
+        # Deliberately no bare "space": _category_patterns compiles longer keywords as
+        # r"\b<kw>", so "space" would match "latent space" and "vector space" and pull
+        # AI articles into this beat. Bare "launch" (product launches) and bare
+        # "payload" (a security term) are omitted for the same reason.
+        "keywords": [
+            "spacecraft", "spaceflight", "satellite", "orbit", "orbital", "rocket",
+            "launch vehicle", "nasa", "esa", "spacex", "starship", "lunar", "mars",
+            "astronaut", "space station", "telescope", "asteroid", "propulsion",
+            "reentry", "deorbit",
         ],
     },
 }
