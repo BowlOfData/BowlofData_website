@@ -1,14 +1,30 @@
 # Bowl of Data — SEO, GEO & Growth Strategy
 
-_Last updated: 2026-08-12. Owner: Marco. Companion to the code changes shipped in
+_Last updated: 2026-09-02. Owner: Marco. Companion to the code changes shipped in
 `build.py` and the `templates/`. This is the "why and what next" — the code is the "how"._
 
 > **2026-08-12 — the domain question is settled.** `bowlofdata.net` now resolves to Netlify
 > and serves real deep paths. The Altervista WordPress mirror, which existed only because
-> the domain previously could not, has been **retired to a blanket 301**. Until that
+> the domain previously could not, was **written up as retired to a blanket 301**. Until that
 > happened, two sites published identical titles and identical sitemaps at identical paths
 > and split the authority for every query — the single largest loss on the site, larger
 > than anything on-page. §4 below is rewritten around one canonical domain.
+>
+> **2026-09-02 — the retirement is now DEPLOYED and verified live.** Every front-end path on
+> `bowlofdata.altervista.org` 301s single-hop to its `.net` twin (25/25 sampled by
+> `check_mirror_parity.py`), `robots.txt` still answers 200 so crawlers can still reach the
+> 301s, and `/feed/` lands on `https://bowlofdata.net/feed.xml`. What follows is the state
+> found immediately before that deploy, kept because it explains the symptom and the lesson.
+>
+> **The retirement had been written up as shipped since 2026-08-12 but never deployed.** Verified
+> live: `bowlofdata.altervista.org/` answers **200**, self-canonicalises to
+> `https://bowlofdata.altervista.org/`, and serves its own 144-URL `sitemap.xml` with
+> `robots.txt: Disallow:` (allow all). The theme running there is *older* than the code in
+> `wordpress/` — the repo's `BOD_CANONICAL_ORIGIN` is already `bowlofdata.net`, so the live
+> install predates even the 2026-08-12 canonical change. The split described above is not
+> historical; it is happening right now, and it is why the query `bowlofdata` returns the
+> Altervista copy while `bowl of data` returns `.net`. **The single largest loss on the site
+> remains open.** See §9's first blocking action.
 
 ---
 
@@ -36,8 +52,8 @@ authority.
 
 | Area | Change | Where |
 |---|---|---|
-| Topic hubs | 5 beat landing pages aggregating every issue | `site/topic/{ai,governance,security,blockchain,engineering}.html` |
-| Tag pages | 120 auto-generated technology pages (≥3 items each) | `site/tag/<slug>.html` |
+| Topic hubs | 7 beat landing pages aggregating every issue | `site/topic/{ai,governance,security,blockchain,engineering,quantum,space}.html` |
+| Tag pages | 140 auto-generated technology pages (≥3 items each) | `site/tag/<slug>.html` |
 | Topics index | Hub-of-hubs for internal linking + discovery | `site/topics.html` |
 | Structured data | NewsArticle w/ publisher+author+image; BreadcrumbList; FAQPage; CollectionPage | `build.py` JSON-LD helpers |
 | — *correction* | **FAQPage earns no rich result.** Google restricted them to government and health sites in 2023. It stays because AI answer engines still parse it, but it is not a ranking win and should not be counted as one | `about.html`, `services.html` |
@@ -51,6 +67,12 @@ authority.
 | **Schema honesty** (2026-08-12) | `NewsArticle.url` points at our own anchor with `isBasedOn`/`citation` for the source, instead of claiming the publisher's article as ours | `build.py` `_make_week_jsonld` |
 | **Commercial page** (2026-08-12) | `services.html` rewritten around "newsletter as a service", "white-label", "agency"; 5 new FAQ entries | `templates/services.html`, `SERVICES_FAQ` |
 | **404** (2026-08-12) | Branded 404 with absolute asset paths, linking back into archive/topics | `templates/404.html` |
+| **Tag cross-links** (2026-09-02) | Every tag page now links to the 10 tags it most often shares an item with. Tag pages were leaf nodes: 129 pages with inbound links and *zero* outbound links to each other. Median inbound links per tag page 9 → 10, and the long tail is now a connected cluster instead of 140 dead ends | `build.py` `_collect_tags` co-occurrence, `collection.html` |
+| **Dead internal links** (2026-09-02) | 16 dead `../tag/*.html` links across five issues, from skipped week pages whose chips pointed at slugs the classifier had since renamed. Fixed by re-rendering any week whose on-disk chips go stale, and asserted at build time | `build.py` `_assert_no_dead_internal_links` |
+| **Aggregation snippets** (2026-09-02) | Hub and tag meta descriptions were a bare item count. They now carry issue span **and recency** (`… 44 stories across 14 issues, latest 29 August 2026`), trimmed to 155 chars — recency is the one thing these pages have that a static page does not | `build.py` `_collection_freshness`, `_fit_meta` |
+| **`article:*` OG tags** (2026-09-02) | Week pages declared `og:type=article` with no `published_time`/`modified_time`, leaving scrapers and answer engines to guess at freshness. Now stamped, plus `article:section` and the issue's 8 most-repeated technologies as `article:tag` | `base.html` `og_article_meta`, `week.html`, `_week_og_tags` |
+| **Collection `og:type`** (2026-09-02) | Hub and tag pages claimed `og:type=article`. They are indexes of other pages; they now declare `website` | `templates/collection.html` |
+| **E-E-A-T attribution** (2026-09-02) | "Reviewed by humans" was an unattributed claim. `Organization.founder` now carries `Person` nodes with the LinkedIn `sameAs` already public on `team.html` — `sameAs` is what resolves a name to a known entity | `build.py` `FOUNDERS`, `_founder_nodes` |
 
 **Anti-duplication rule (keep this):** hub and tag pages show a title + short summary + a link
 to the canonical week-page anchor. They must **never** render the full `long_resume` — that
@@ -74,9 +96,17 @@ reality in Search Console after 4–8 weeks and adjust.
 | `tag/<x>` | "\<tech\> news weekly" | "\<tech\> \<recent event\>" (bitcoin, ethereum, quantum computing, llms, npm…) |
 | `services` | newsletter as a service; done-for-you newsletter | AI newsletter agency; white-label newsletter |
 
-The tag pages are the volume play: 120 of them, each a small, focused net for a long-tail
+The tag pages are the volume play: 140 of them, each a small, focused net for a long-tail
 query. They cost nothing extra per issue — new tags appear automatically once a technology
 hits 3 items.
+
+**As of 2026-09-02 they are also a graph, not a pile.** Each tag page links to the ten tags
+it most often shares an item with, so `bitcoin` reaches `etf`, `post-quantum-cryptography`
+and `stablecoins` directly. This matters more than it looks: a page that nothing links *out
+of* is a dead end for crawl depth and passes none of its equity onward, and 129 of them were
+exactly that. Only tags that survived `min_items` are eligible as link targets — linking to
+a slug that was never rendered would put a 404 inside our own graph, which is precisely the
+bug the same pass found and fixed on the week pages.
 
 **The volume play needs a quality gate, and it now has one — switched off.** As of
 2026-08-12, 70 of 105 tag pages held only 3–4 items, many of them one-off entities the
@@ -105,8 +135,17 @@ on data. Expect roughly 131 → 85 sitemap URLs on a first cut at the 3-item tie
    rank the Substack copy and we lose the on-site funnel.
 3. Never publish a tag/hub page's aggregated text as a standalone Substack post — it would
    duplicate the issue pages.
-4. **The Altervista mirror is retired** and 301s to `.net`. Do not revive it as a live site;
-   see the README's WordPress section.
+4. **The Altervista mirror is retired**, as of 2026-09-02 and verified in production, not
+   just in the repo. `BOD_RETIRED_TO` in `wordpress/bowlofdata-child/functions.php` 301s
+   every front-end request to its `.net` twin. Do not revive it as a live site, and do not
+   delete the install or free the subdomain — a 301 has to keep answering for months for
+   Google to transfer the signals. Re-verify after any WordPress or host change with
+   `python3 scripts/check_mirror_parity.py`.
+   Two exemptions in that redirect are load-bearing: `is_robots()`, because WordPress serves
+   `robots.txt` through the template loader *after* `template_redirect` and a crawler that
+   cannot read it never sees the 301s; and `is_feed()`, because the blanket redirect
+   preserves the path and `.net` publishes `/feed.xml`, not `/feed/` — without the
+   exemption every RSS subscriber is 301'd into a 404.
 5. **`bowofdata.netlify.app` still answers 200** and is the last remaining duplicate host.
    Close it by setting the **apex** as the primary domain in Netlify → Site configuration →
    Domain management, which auto-301s the subdomain. Choosing `www` as primary would invert
@@ -193,16 +232,29 @@ week/hub/tag page, UTM-tagged so it's measurable. Next levers, in order of ROI:
 
 ## 9. Checklist
 
+**Shipped 2026-09-02** — tag co-occurrence cross-links, dead-internal-link fix + build
+assertion, recency in hub/tag meta descriptions, `article:*` OG timestamps and tags,
+`og:type` corrected on collection pages, `Organization.founder` Person nodes.
+
 **Shipped 2026-08-12** — dated week titles + unique descriptions, `og_title` decoupling,
 headlines unlinked, JSON-LD attribution, `MIN_INDEXABLE_ITEMS` (inert), tag UTM fix,
 services page rewrite, branded 404, image dimensions + `marco.jpg` 566 KB → 109 KB,
-`/imgs/*` cache header, WordPress mirror retired to a 301.
+`/imgs/*` cache header. The WordPress mirror 301 was written on this date but **not actually
+deployed until 2026-09-02** — see the banner at the top.
 
 **Owner actions, blocking:**
 
-- [ ] Deploy the WordPress theme (`build_wp_theme.py` then `deploy_wp_theme.py`), then run
-      `python3 scripts/check_mirror_parity.py` — it asserts the 301s and that robots.txt
-      still answers 200.
+- [x] **Deploy the WordPress retirement theme — done 2026-09-02.** `build_wp_theme.py` →
+      `deploy_wp_theme.py` → `check_mirror_parity.py`, credentials from
+      `../maki_newsletter/.env` (`ALTERVISTA_*`). 25/25 sampled paths 301 single-hop;
+      `robots.txt` still 200; `/feed/` → `.net/feed.xml`. The feed exemption was added in
+      the same pass after the first deploy 301'd subscribers to a 404.
+- [ ] Leave the Altervista Search Console property in place and watch its impressions decay
+      to zero — that is the consolidation working. Expect weeks, not days. Do **not** delete
+      the WordPress install or release the subdomain; the 301 must keep answering.
+- [ ] Re-check the `bowlofdata` (one word) query in a few weeks. That query returning the
+      Altervista copy while `bowl of data` returned `.net` is the symptom this deploy fixes;
+      it is the cleanest available signal that authority has consolidated.
 - [ ] Set the **apex** as primary domain in Netlify to close `bowofdata.netlify.app`.
 - [ ] Submit `sitemap.xml` in Search Console; request indexing for `topics.html` + the hubs.
 - [ ] Add `bowlofdata.altervista.org` as a Search Console property and watch its impressions
@@ -216,6 +268,19 @@ services page rewrite, branded 404, image dimensions + `marco.jpg` 566 KB → 10
       better and unlocks pricing-shaped queries. Nothing was invented here on purpose.
 - [ ] Submit to 4–5 newsletter directories.
 - [ ] Run the GEO spot-check and record a baseline.
-- [ ] After 4–8 weeks of Search Console data: raise `MIN_INDEXABLE_ITEMS` per §3.
-- [ ] Look at `Week 21 · 2026` (51 articles) and `Week 33 · 2026` (42) — every other issue
-      holds 11–20. Likely predates the `fix duplicates` work.
+- [ ] After 4–8 weeks of Search Console data: raise `MIN_INDEXABLE_ITEMS` per §3. Set
+      2026-08-12; **not yet due** — three weeks of data is still guessing.
+- [ ] **`topic/space.html` holds 2 items from 1 issue** — thinner than any tag page, since
+      hubs are created for any beat with ≥1 item while tags need 3. It is the one page on
+      the site that is thin on its face rather than on a hunch. Do not delete the file (that
+      404s a URL Google may already know); decide it with `MIN_INDEXABLE_ITEMS`, or give the
+      hub tier its own floor that noindexes without unrendering. `topic/governance.html`
+      (8 items) and `topic/quantum.html` (10) are no longer in this category.
+- [ ] Per-issue OG images. All 18 week pages share one static `bowl.png` share card, so
+      every Substack and social post for every issue looks identical. This is the largest
+      remaining conversion lever and the only one needing a new dependency (Pillow).
+- [ ] Consider full names in `FOUNDERS`. The `Person` nodes currently use the first names
+      `team.html` displays; full names would resolve the entities harder, but that publishes
+      more about a third party than the site does today — owner's call, not the build's.
+- [ ] Look at `Week 21 · 2026` (51 articles) — every other issue holds 11–26. Likely
+      predates the `fix duplicates` work.

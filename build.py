@@ -555,6 +555,32 @@ def _make_website_jsonld(site_url: str, site_name: str, tagline: str) -> str:
     }, ensure_ascii=False)
 
 
+# The humans the About page credits with reviewing every issue. Named in the
+# Organization node because "reviewed by humans" is an E-E-A-T claim, and an
+# unattributed one is worth little to a search engine or an answer engine.
+# `sameAs` is what actually resolves each to a known entity; the display names
+# deliberately match what team.html already shows, nothing more.
+FOUNDERS = [
+    {"name": "Marco", "role": "Creator",
+     "url": "https://www.linkedin.com/in/marco-parrillo-phd-30ba9933/"},
+    {"name": "Luigi", "role": "Visionary",
+     "url": "https://www.linkedin.com/in/luigi-laura/"},
+]
+
+
+def _founder_nodes(site_url: str) -> list[dict]:
+    return [
+        {
+            "@type": "Person",
+            "name": f["name"],
+            "jobTitle": f["role"],
+            "sameAs": [f["url"]],
+            "url": f"{site_url}/team.html",
+        }
+        for f in FOUNDERS
+    ]
+
+
 def _make_organization_jsonld(site_url: str, site_name: str, tagline: str) -> str:
     return json.dumps({
         "@context": "https://schema.org",
@@ -563,6 +589,7 @@ def _make_organization_jsonld(site_url: str, site_name: str, tagline: str) -> st
         "description": tagline,
         "url": site_url,
         "logo": f"{site_url}/imgs/logo.png",
+        "founder": _founder_nodes(site_url),
         "sameAs": [
             "https://bowlofdata.substack.com/",
             "https://www.instagram.com/bowl_of_data",
@@ -640,6 +667,21 @@ def _week_meta_description(w: dict, range_long: str) -> str:
         if len(base) + len(tail) <= 155:
             return base + tail
     return base + "."
+
+
+def _week_og_tags(w: dict, limit: int = 8) -> list[str]:
+    """The issue's most-repeated technologies, for `article:tag`.
+
+    Ordered by how many items in the issue carry them, so the list reads as
+    what the week was actually about rather than whatever the classifier
+    happened to emit first.
+    """
+    counts: dict[str, int] = {}
+    for item in _week_items(w):
+        for tech in dict.fromkeys(item["technologies"]):
+            if tech:
+                counts[tech] = counts.get(tech, 0) + 1
+    return [t for t, _ in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))[:limit]]
 
 
 def _make_week_jsonld(w: dict, site_url: str, site_name: str) -> str:
@@ -847,15 +889,25 @@ def _collect_tags(all_weeks: list[dict], tag_display: dict[str, str],
                   min_items: int = 3) -> dict[str, dict]:
     """Aggregate items by technology tag; keep only tags with >= min_items."""
     raw: dict[str, list] = {}
+    # How often two tags land on the same item. Tag pages used to be leaf nodes
+    # in the internal link graph -- 129 pages linking out to issues and hubs but
+    # never to each other -- so co-occurrence is what wires the long tail
+    # together into topical clusters instead of 129 dead ends.
+    cooccur: dict[str, dict[str, int]] = {}
     for w in all_weeks:  # newest-first
         for item in _week_items(w):
-            seen_here: set[str] = set()
+            seen_here: list[str] = []
             for tech in item["technologies"]:
                 slug = _slugify(tech)
                 if not slug or slug in seen_here:
                     continue
-                seen_here.add(slug)
+                seen_here.append(slug)
                 raw.setdefault(slug, []).append(item)
+            for a in seen_here:
+                pairs = cooccur.setdefault(a, {})
+                for b in seen_here:
+                    if a != b:
+                        pairs[b] = pairs.get(b, 0) + 1
 
     tags: dict[str, dict] = {}
     for slug, items in raw.items():
@@ -878,6 +930,18 @@ def _collect_tags(all_weeks: list[dict], tag_display: dict[str, str],
             "groups": groups,
             "categories": [{"slug": c, "label": CATEGORY_META[c]["label"]} for c in cats],
         }
+
+    # Cross-link each tag to the tags it most often shares an item with. Only
+    # tags that survived min_items qualify: linking to a slug that was never
+    # rendered would put a 404 into our own internal graph.
+    for slug, tag in tags.items():
+        ranked = sorted(
+            ((s, n) for s, n in cooccur.get(slug, {}).items() if s in tags),
+            key=lambda kv: (-kv[1], -tags[kv[0]]["count"], kv[0]),
+        )
+        tag["related_tags"] = [
+            {"slug": s, "name": tags[s]["name"], "count": n} for s, n in ranked[:10]
+        ]
     return tags
 
 
@@ -918,6 +982,26 @@ def _assert_sitemap_matches_disk(sitemap_xml: str) -> None:
         )
 
 
+def _assert_no_dead_internal_links() -> None:
+    """Every internal .html link must resolve to a file we actually wrote.
+
+    Dead links inside our own graph waste crawl budget and strand the long-tail
+    tag pages they were meant to feed. This has been wrong in production once
+    already (stale tag chips on skipped week pages), so it is asserted, not
+    trusted.
+    """
+    dead: list[str] = []
+    for path in sorted(SITE_DIR.rglob("*.html")):
+        for href in re.findall(r'href="([^":#?]+\.html)(?:#[^"]*)?"',
+                               path.read_text(encoding="utf-8")):
+            if not (path.parent / href).exists():
+                dead.append(f"{path.relative_to(SITE_DIR)} -> {href}")
+    if dead:
+        raise SystemExit(
+            f"BUILD ABORTED: {len(dead)} dead internal link(s): " + ", ".join(dead[:10])
+        )
+
+
 def _generate_robots_txt(site_url: str) -> str:
     bots = ["GPTBot", "ClaudeBot", "PerplexityBot", "Applebot-Extended", "Googlebot"]
     lines = ["User-agent: *", "Allow: /", ""]
@@ -938,6 +1022,29 @@ def _collection_lastmod(collection: dict) -> str | None:
             if entry["date"]:
                 return entry["date"]
     return None
+
+
+def _collection_freshness(collection: dict) -> str:
+    """`, latest 28 August 2026` for a meta description, or `` when undated.
+
+    Recency is the one thing an aggregation page has that a static page does
+    not, and a bare item count does not convey it. Regenerated every build, so
+    a tag whose newest item is months old says exactly that -- which is honest,
+    and still the most useful thing the snippet can tell a searcher.
+    """
+    iso = _collection_lastmod(collection)
+    if not iso:
+        return ""
+    try:
+        d = date.fromisoformat(iso)
+    except ValueError:
+        return ""
+    return f", latest {d.day} {d:%B %Y}"
+
+
+def _fit_meta(base: str, tail: str, limit: int = 155) -> str:
+    """`base + tail + "."` when it fits inside the snippet, else `base + "."`."""
+    return f"{base}{tail}." if len(base) + len(tail) + 1 <= limit else f"{base}."
 
 
 def _is_indexable(collection: dict) -> bool:
@@ -1345,6 +1452,24 @@ def build() -> None:
         if idx + 1 < len(week_keys):
             render_set.add(week_keys[idx + 1])   # older neighbour
 
+    # A week page is skipped when its own source has not changed -- but its tag
+    # chips were rendered against whatever tag set existed *then*. Tag slugs are
+    # not stable: the classifier emits "DeFi" one week and "Decentralized
+    # Finance (DeFi)" the next, so a tag can stop being rendered under the slug
+    # an untouched week page still points at. That left 16 dead internal links
+    # across five issues. Re-render any week whose on-disk chips have gone stale.
+    for w in all_weeks:
+        key = (w["week"], w["year"])
+        if key in render_set:
+            continue
+        path = SITE_DIR / w["href"]
+        if not path.exists():
+            continue
+        linked = set(re.findall(r'href="\.\./tag/([a-z0-9-]+)\.html"',
+                                path.read_text(encoding="utf-8")))
+        if linked - kept_tag_slugs:
+            render_set.add(key)
+
     # ------------------------------------------------------------------
     # Phase 3: render week pages
     # ------------------------------------------------------------------
@@ -1388,6 +1513,12 @@ def build() -> None:
             tag_base="../tag/",
             topic_base="../topic/",
             linkable_tags=kept_tag_slugs,
+            published_iso=(
+                datetime.fromtimestamp(w["source_mtime"], tz=timezone.utc)
+                .replace(microsecond=0).isoformat()
+                if w.get("source_mtime") else None
+            ),
+            og_article_tags=_week_og_tags(w),
             jsonld_str=_make_week_jsonld(w, SITE_URL, SITE_NAME),
             breadcrumb_jsonld_str=_make_breadcrumb_jsonld([
                 (SITE_NAME, f"{SITE_URL}/"),
@@ -1508,8 +1639,12 @@ def build() -> None:
         meta = hub["meta"]
         url = f"{SITE_URL}/topic/{cat}.html"
         flat = [it for g in hub["groups"] for it in g["entries"]]
-        og_desc = (f"{meta['h1']} coverage from {SITE_NAME} — {hub['count']} curated items "
-                   "across every weekly issue.")
+        issues = len(hub["groups"])
+        og_desc = _fit_meta(
+            f"{meta['h1']} news curated by {SITE_NAME} — {hub['count']} stories "
+            f"across {issues} weekly issue{'s' if issues != 1 else ''}",
+            _collection_freshness(hub),
+        )
         html = collection_tmpl.render(
             **collection_nav, current_page="topics",
             kicker="Topic", h1=meta["h1"], page_title=f"{meta['h1']} News · {SITE_NAME}",
@@ -1517,6 +1652,7 @@ def build() -> None:
             intro=meta["intro"], og_desc=og_desc, canonical_url=url,
             count=hub["count"], groups=hub["groups"],
             related_tags=hub["related_tags"], related_topics=None,
+            related_tags_label="Most covered",
             jsonld_str=_make_collection_jsonld(
                 f"{meta['h1']} · {SITE_NAME}", og_desc, url, flat, SITE_URL, SITE_NAME),
             breadcrumb_jsonld_str=_make_breadcrumb_jsonld([
@@ -1532,8 +1668,13 @@ def build() -> None:
         tag = tags[slug]
         url = f"{SITE_URL}/tag/{slug}.html"
         flat = [it for g in tag["groups"] for it in g["entries"]]
-        og_desc = (f"Weekly {tag['name']} coverage curated by {SITE_NAME} — "
-                   f"{tag['count']} items across our tech newsletter issues.")
+        issues = len(tag["groups"])
+        og_desc = _fit_meta(
+            f"Weekly {tag['name']} coverage curated by {SITE_NAME} — {tag['count']} "
+            f"stor{'ies' if tag['count'] != 1 else 'y'} across "
+            f"{issues} issue{'s' if issues != 1 else ''}",
+            _collection_freshness(tag),
+        )
         intro = (f"Every {tag['name']} story we've curated in {SITE_NAME}, newest issue "
                  "first — part of our weekly digest across AI, security, blockchain, and "
                  "engineering.")
@@ -1544,7 +1685,8 @@ def build() -> None:
             robots=_robots_for(tag), subscribe_ctx="tag",
             intro=intro, og_desc=og_desc, canonical_url=url,
             count=tag["count"], groups=tag["groups"],
-            related_tags=None, related_topics=tag["categories"],
+            related_tags=tag["related_tags"], related_topics=tag["categories"],
+            related_topics_label="Beats", related_tags_label="Often covered with",
             jsonld_str=_make_collection_jsonld(
                 f"{tag['name']} · {SITE_NAME}", og_desc, url, flat, SITE_URL, SITE_NAME),
             breadcrumb_jsonld_str=_make_breadcrumb_jsonld([
@@ -1598,6 +1740,7 @@ def build() -> None:
     )
     (SITE_DIR / "sitemap.xml").write_text(sitemap_xml, encoding="utf-8")
     _assert_sitemap_matches_disk(sitemap_xml)
+    _assert_no_dead_internal_links()
     print(f"  Generated sitemap → site/sitemap.xml")
 
     (SITE_DIR / "llms.txt").write_text(

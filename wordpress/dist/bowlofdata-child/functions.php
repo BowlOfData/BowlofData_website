@@ -26,21 +26,62 @@ define( 'BOD_YOUTUBE_URL', 'https://www.youtube.com/@bowlofdata' );
 /**
  * The origin every canonical points at.
  *
- * Interim, 2026-08-01. This was 'https://bowlofdata.net' on the premise that
- * .net is the Netlify original and this install mirrors it. That premise no
- * longer holds: .net is an Aruba domain-forward that 302s here and *strips the
- * path*, so /tag/python.html canonicalised to a URL resolving to the homepage —
- * telling Google all 133 pages are duplicates of one page. The Netlify build is
- * live at bowofdata.netlify.app but the domain is not attached to it.
- *
- * Until .net serves real paths, the install canonicalises to itself, which is
- * always a defensible signal. Restore the mirror by setting this back to
- * 'https://bowlofdata.net' — BOD_IS_MIRROR and everything downstream follow.
+ * Resolved 2026-08-12. Between 2026-08-01 and now, bowlofdata.net was pointed
+ * at Netlify and serves real deep paths again (/week/32_2026.html returns 200),
+ * so the interim self-canonical put in place while .net was an Aruba
+ * domain-forward is no longer needed — and this install no longer has a job.
+ * See BOD_RETIRED_TO below.
  */
-define( 'BOD_CANONICAL_ORIGIN', untrailingslashit( home_url() ) );
+define( 'BOD_CANONICAL_ORIGIN', 'https://bowlofdata.net' );
 
 /** True when canonicals point at some other install (the mirror arrangement). */
 define( 'BOD_IS_MIRROR', BOD_CANONICAL_ORIGIN !== untrailingslashit( home_url() ) );
+
+/**
+ * Where this install has been retired to, or '' to keep serving pages.
+ *
+ * This WordPress port existed only because bowlofdata.net could not serve deep
+ * paths. It can now, so two sites were publishing identical titles and identical
+ * sitemaps at identical paths, splitting the authority for every query between
+ * them. Everything here 301s to its .net twin; the canonical above is only a
+ * fallback for the case where this is switched back off.
+ */
+define( 'BOD_RETIRED_TO', 'https://bowlofdata.net' );
+
+/**
+ * Send every front-end request to the canonical site.
+ *
+ * template_redirect only fires while loading a front-end template, so wp-admin,
+ * wp-login and the REST API are untouched and scripts/deploy_wp_theme.py keeps
+ * working. robots.txt is the one front-end response that must survive: WordPress
+ * serves it through the template loader *after* this hook, and a crawler that
+ * cannot fetch robots.txt never crawls the pages, never sees these 301s, and
+ * never consolidates anything. Feeds and the sitemap redirect on purpose — that
+ * carries subscribers and crawlers to the real equivalents.
+ *
+ * The feed is the one path that cannot be carried across by preserving it. This
+ * hook runs at priority 0, ahead of the feed handler in inc/seo.php at 5, so it
+ * used to win and 301 /feed/ to .net/feed/ — which is a 404, because the static
+ * site publishes /feed.xml. Every RSS subscriber on the old WordPress feed was
+ * silently redirected into a dead end. Resolve it here instead of reordering the
+ * hooks: this handler must stay first so nothing else can render a page.
+ */
+add_action(
+	'template_redirect',
+	static function () {
+		if ( ! BOD_RETIRED_TO || is_robots() || is_favicon() ) {
+			return;
+		}
+		if ( is_feed() ) {
+			wp_redirect( bod_feed_url(), 301 ); // phpcs:ignore WordPress.Security.SafeRedirect.wp_redirect_wp_redirect -- deliberate cross-domain redirect to the canonical origin.
+			exit;
+		}
+		$path = isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '/';
+		wp_redirect( untrailingslashit( BOD_RETIRED_TO ) . $path, 301 );
+		exit;
+	},
+	0
+);
 
 /** A technology term needs this many stories before it gets a public page. */
 define( 'BOD_MIN_TAG_ITEMS', 3 );

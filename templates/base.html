@@ -29,6 +29,10 @@
   <meta property="og:image:height" content="1440">
   <meta property="og:image:alt" content="{{ site_name }} — weekly tech newsletter">
   <meta property="og:url" content="{{ self.og_url() }}">
+  {# og:type=article without the article:* timestamps leaves scrapers and answer
+     engines to guess how current the page is. Only pages that set og:type
+     article fill this in. #}
+  {% block og_article_meta %}{% endblock %}
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ social_title }}">

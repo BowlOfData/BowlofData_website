@@ -6,6 +6,14 @@
 {% block og_description %}{{ meta_description }}{% endblock %}
 {% block og_url %}{{ site_url }}/week/{{ "%02d"|format(week) }}_{{ year }}.html{% endblock %}
 {% block og_type %}article{% endblock %}
+{% block og_article_meta %}{% if published_iso %}
+  <meta property="article:published_time" content="{{ published_iso }}">
+  <meta property="article:modified_time" content="{{ published_iso }}">{% endif %}
+  <meta property="article:section" content="Technology">
+  {%- for t in og_article_tags %}
+  <meta property="article:tag" content="{{ t }}">
+  {%- endfor %}
+{% endblock %}
 
 {% block content %}
 <div class="week-header">

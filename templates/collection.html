@@ -3,7 +3,10 @@
 {% block title %}{{ page_title }}{% endblock %}
 {% block og_description %}{{ og_desc }}{% endblock %}
 {% block og_url %}{{ canonical_url }}{% endblock %}
-{% block og_type %}article{% endblock %}
+{# A hub or tag page is an index of other pages, not an article. Declaring it
+   as one invited scrapers to look for a byline and a publication date it does
+   not have. #}
+{% block og_type %}website{% endblock %}
 
 {% block content %}
 <div class="collection-header">
@@ -16,6 +19,7 @@
 
     {% if related_topics %}
     <div class="collection-chips">
+      <span class="collection-chips-label">{{ related_topics_label|default('Beats') }}</span>
       {% for c in related_topics %}
       <a href="{{ topic_base }}{{ c.slug }}.html" class="chip chip--beat">{{ c.label }}</a>
       {% endfor %}
@@ -24,6 +28,7 @@
 
     {% if related_tags %}
     <div class="collection-chips">
+      <span class="collection-chips-label">{{ related_tags_label|default('Related') }}</span>
       {% for t in related_tags %}
       <a href="{{ tag_base }}{{ t.slug }}.html" class="chip">{{ t.name }} <span>{{ t.count }}</span></a>
       {% endfor %}

@@ -58,12 +58,23 @@ define( 'BOD_RETIRED_TO', 'https://bowlofdata.net' );
  * cannot fetch robots.txt never crawls the pages, never sees these 301s, and
  * never consolidates anything. Feeds and the sitemap redirect on purpose — that
  * carries subscribers and crawlers to the real equivalents.
+ *
+ * The feed is the one path that cannot be carried across by preserving it. This
+ * hook runs at priority 0, ahead of the feed handler in inc/seo.php at 5, so it
+ * used to win and 301 /feed/ to .net/feed/ — which is a 404, because the static
+ * site publishes /feed.xml. Every RSS subscriber on the old WordPress feed was
+ * silently redirected into a dead end. Resolve it here instead of reordering the
+ * hooks: this handler must stay first so nothing else can render a page.
  */
 add_action(
 	'template_redirect',
 	static function () {
 		if ( ! BOD_RETIRED_TO || is_robots() || is_favicon() ) {
 			return;
+		}
+		if ( is_feed() ) {
+			wp_redirect( bod_feed_url(), 301 ); // phpcs:ignore WordPress.Security.SafeRedirect.wp_redirect_wp_redirect -- deliberate cross-domain redirect to the canonical origin.
+			exit;
 		}
 		$path = isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '/';
 		wp_redirect( untrailingslashit( BOD_RETIRED_TO ) . $path, 301 );

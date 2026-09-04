@@ -809,6 +809,7 @@ img { display: block; max-width: 100%; }
 .collection-intro { font-family: var(--serif); font-size: 1.08rem; line-height: 1.6; color: var(--muted); max-width: var(--reading); margin: 0 0 1.1rem; }
 .collection-meta { font-family: var(--mono); font-size: .74rem; color: var(--faint); text-transform: uppercase; letter-spacing: .06em; }
 .collection-chips { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.1rem; }
+.collection-chips-label { font-family: var(--mono); font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); align-self: center; margin-right: .15rem; }
 
 /* Collection body — grouped by issue */
 .collection-body { max-width: var(--wrap); margin: 0 auto; padding: 2.2rem 1.5rem 1rem; }
