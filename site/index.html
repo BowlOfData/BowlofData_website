@@ -36,8 +36,8 @@
   <meta name="twitter:description" content="Bowl of Data is a weekly tech newsletter covering AI, cybersecurity, blockchain, and engineering — curated by an AI-powered pipeline that reads hundreds of sources so you don't have to.">
   <meta name="twitter:image" content="https://bowlofdata.net/imgs/bowl.png">
   <link rel="alternate" type="application/rss+xml" title="Bowl of Data RSS Feed" href="https://bowlofdata.net/feed.xml">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Bowl of Data", "description": "A weekly digest of the most relevant tech stories", "url": "https://bowlofdata.net", "logo": "https://bowlofdata.net/imgs/logo.png", "founder": [{"@type": "Person", "name": "Marco", "jobTitle": "Creator", "sameAs": ["https://www.linkedin.com/in/marco-parrillo-phd-30ba9933/"], "url": "https://bowlofdata.net/team.html"}, {"@type": "Person", "name": "Luigi", "jobTitle": "Visionary", "sameAs": ["https://www.linkedin.com/in/luigi-laura/"], "url": "https://bowlofdata.net/team.html"}], "sameAs": ["https://bowlofdata.substack.com/", "https://www.instagram.com/bowl_of_data", "https://open.spotify.com/show/033Mqus9YAIssepHakRIIk", "https://www.youtube.com/@bowlofdata"]}</script>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Bowl of Data", "description": "A weekly digest of the most relevant tech stories", "url": "https://bowlofdata.net"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://bowlofdata.net/#organization", "name": "Bowl of Data", "alternateName": ["bowlofdata", "Bowl of Data Newsletter"], "description": "A weekly digest of the most relevant tech stories", "url": "https://bowlofdata.net", "logo": "https://bowlofdata.net/imgs/logo.png", "founder": [{"@type": "Person", "name": "Marco", "jobTitle": "Creator", "sameAs": ["https://www.linkedin.com/in/marco-parrillo-phd-30ba9933/"], "url": "https://bowlofdata.net/team.html"}, {"@type": "Person", "name": "Luigi", "jobTitle": "Visionary", "sameAs": ["https://www.linkedin.com/in/luigi-laura/"], "url": "https://bowlofdata.net/team.html"}], "publishingPrinciples": "https://bowlofdata.net/about.html", "sameAs": ["https://bowlofdata.substack.com/", "https://www.instagram.com/bowl_of_data", "https://open.spotify.com/show/033Mqus9YAIssepHakRIIk", "https://www.youtube.com/@bowlofdata"]}, {"@type": "Periodical", "@id": "https://bowlofdata.net/#newsletter", "name": "Bowl of Data", "alternateName": ["bowlofdata", "Bowl of Data Newsletter"], "url": "https://bowlofdata.net/", "description": "Bowl of Data is a free weekly technology newsletter. One issue ships every Saturday covering AI and machine learning, cybersecurity, blockchain, and software engineering — curated from hundreds of sources by the Maki pipeline and reviewed by humans before it goes out.", "inLanguage": "en", "isAccessibleForFree": true, "publishingPrinciples": "https://bowlofdata.net/about.html", "genre": ["Technology news", "Artificial intelligence", "Cybersecurity", "Blockchain", "Software engineering"], "publisher": {"@id": "https://bowlofdata.net/#organization"}, "archivedAt": "https://bowlofdata.net/archive.html", "sameAs": ["https://bowlofdata.substack.com/"]}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://bowlofdata.net/#website", "name": "Bowl of Data", "alternateName": ["bowlofdata", "Bowl of Data Newsletter"], "description": "A weekly digest of the most relevant tech stories", "url": "https://bowlofdata.net/", "inLanguage": "en", "publisher": {"@id": "https://bowlofdata.net/#organization"}, "about": {"@id": "https://bowlofdata.net/#newsletter"}, "mainEntity": {"@id": "https://bowlofdata.net/#newsletter"}}</script>
   
   
 </head>
@@ -236,6 +236,21 @@
   </div>
 </section>
 
+
+
+
+<section class="subscribe-cta" aria-label="Subscribe to Bowl of Data">
+  <div class="subscribe-cta-inner">
+    <p class="subscribe-cta-kicker">Free weekly digest</p>
+    <h2 class="subscribe-cta-title">Get next Saturday&rsquo;s issue in your inbox</h2>
+    <p class="subscribe-cta-sub">
+      The week&rsquo;s most relevant AI, security, blockchain, and engineering stories —
+      curated, summarised, and reviewed by humans. No spam, unsubscribe anytime.
+    </p>
+    <a href="https://bowlofdata.substack.com/?utm_source=bowlofdata&amp;utm_medium=site&amp;utm_campaign=home"
+       class="cta-primary" target="_blank" rel="noopener">Subscribe — it&rsquo;s free</a>
+  </div>
+</section>
 
 
   </main>

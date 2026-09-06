@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 
-{% block title %}Archive · {{ site_name }}{% endblock %}
-{% block og_description %}Browse every past issue of Bowl of Data, the weekly tech newsletter covering AI, cybersecurity, blockchain, and engineering.{% endblock %}
+{% block title %}Newsletter Archive{% if total_count %} — All {{ total_count }} Issues{% endif %} · {{ site_name }}{% endblock %}
+{% block og_title %}Newsletter Archive{% if total_count %} — All {{ total_count }} Issues{% endif %}{% endblock %}
+{% block og_description %}Read every past issue of Bowl of Data, the free weekly tech newsletter{% if total_count %} — {{ total_count }} issues{% endif %} covering AI, cybersecurity, blockchain, and software engineering. New issue every Saturday.{% endblock %}
 {% block og_url %}{{ site_url }}/archive.html{% endblock %}
 
 {% block content %}
 <div class="archive-header">
   <div class="archive-header-inner">
     <div class="archive-header-text">
-      <h1 class="archive-title">All issues</h1>
-      <p class="archive-sub">Every weekly digest, from the first bowl to the latest.</p>
+      <h1 class="archive-title">Newsletter archive</h1>
+      <p class="archive-sub">Every weekly issue, from the first bowl to the latest — free to read, no signup.</p>
     </div>
     {% if total_count %}
     <div class="archive-header-stat">
@@ -80,4 +81,7 @@
   <p class="empty-state">No newsletters found yet. Run the Maki pipeline to generate the first issue.</p>
 </div>
 {% endif %}
+
+{% set subscribe_ctx = 'archive' %}
+{% include "_subscribe.html" %}
 {% endblock %}

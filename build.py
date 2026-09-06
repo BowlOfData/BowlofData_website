@@ -546,12 +546,25 @@ def _group_weeks_by_year_month(all_weeks: list[dict]) -> list[dict]:
 # ---------------------------------------------------------------------------
 
 def _make_website_jsonld(site_url: str, site_name: str, tagline: str) -> str:
+    """The site as a WebSite node, pinned to the newsletter it exists to serve.
+
+    `about` and `mainEntity` both point at the Periodical rather than repeating
+    its fields: this site is not a publication in its own right, it is where one
+    newsletter's issues live. No `potentialAction`/SearchAction — the site has
+    no search endpoint and claiming one is a lie a validator will catch.
+    """
     return json.dumps({
         "@context": "https://schema.org",
         "@type": "WebSite",
+        "@id": f"{site_url}/#website",
         "name": site_name,
+        "alternateName": ALTERNATE_NAMES,
         "description": tagline,
-        "url": site_url,
+        "url": f"{site_url}/",
+        "inLanguage": "en",
+        "publisher": {"@id": f"{site_url}/#organization"},
+        "about": {"@id": f"{site_url}/#newsletter"},
+        "mainEntity": {"@id": f"{site_url}/#newsletter"},
     }, ensure_ascii=False)
 
 
@@ -581,27 +594,93 @@ def _founder_nodes(site_url: str) -> list[dict]:
     ]
 
 
+# Names the brand is actually searched and written as. "bowlofdata" (no spaces)
+# is the query that used to surface the retired Altervista mirror, so it is worth
+# stating explicitly as an alias of this entity.
+ALTERNATE_NAMES = ["bowlofdata", "Bowl of Data Newsletter"]
+
+
+def _periodical_node(site_url: str, site_name: str) -> dict:
+    """The newsletter itself — an entity distinct from the site and the org.
+
+    Schema.org models a serial publication as `Periodical` and each dated
+    instalment as a `PublicationIssue` that `isPartOf` it. That is exactly what a
+    weekly newsletter and its week pages are, and until this node existed the
+    site described N unrelated CollectionPages instead of N issues of one
+    publication. The whole point of bowlofdata.net is to be the entry point for
+    the newsletter, so the newsletter has to be a thing the machines can resolve.
+
+    `sameAs` names the Substack deliberately: it is the same publication pushed
+    by email, not a separate one, and consolidating the two is worth more than
+    keeping them as competing entities.
+    """
+    return {
+        "@type": "Periodical",
+        "@id": f"{site_url}/#newsletter",
+        "name": site_name,
+        "alternateName": ALTERNATE_NAMES,
+        "url": f"{site_url}/",
+        "description": (
+            f"{site_name} is a free weekly technology newsletter. One issue ships "
+            "every Saturday covering AI and machine learning, cybersecurity, "
+            "blockchain, and software engineering — curated from hundreds of sources "
+            "by the Maki pipeline and reviewed by humans before it goes out."
+        ),
+        "inLanguage": "en",
+        "isAccessibleForFree": True,
+        "publishingPrinciples": f"{site_url}/about.html",
+        "genre": ["Technology news", "Artificial intelligence", "Cybersecurity",
+                  "Blockchain", "Software engineering"],
+        "publisher": {"@id": f"{site_url}/#organization"},
+        "archivedAt": f"{site_url}/archive.html",
+        "sameAs": [SUBSTACK_URL],
+    }
+
+
 def _make_organization_jsonld(site_url: str, site_name: str, tagline: str) -> str:
+    """Organization + Periodical, emitted on *every* page.
+
+    The newsletter node rides along with the organization node because every page
+    on this site is an entry point to the same newsletter — a tag page reached
+    from a long-tail query should resolve to the publication just as the homepage
+    does. Both carry stable `@id`s so every other node on the page references
+    them instead of restating them.
+    """
     return json.dumps({
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": site_name,
-        "description": tagline,
-        "url": site_url,
-        "logo": f"{site_url}/imgs/logo.png",
-        "founder": _founder_nodes(site_url),
-        "sameAs": [
-            "https://bowlofdata.substack.com/",
-            "https://www.instagram.com/bowl_of_data",
-            PODCAST_URL,
-            YOUTUBE_URL,
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": f"{site_url}/#organization",
+                "name": site_name,
+                "alternateName": ALTERNATE_NAMES,
+                "description": tagline,
+                "url": site_url,
+                "logo": f"{site_url}/imgs/logo.png",
+                "founder": _founder_nodes(site_url),
+                "publishingPrinciples": f"{site_url}/about.html",
+                "sameAs": [
+                    "https://bowlofdata.substack.com/",
+                    "https://www.instagram.com/bowl_of_data",
+                    PODCAST_URL,
+                    YOUTUBE_URL,
+                ],
+            },
+            _periodical_node(site_url, site_name),
         ],
     }, ensure_ascii=False)
 
 
 def _publisher_node(site_url: str, site_name: str) -> dict:
+    """Publisher stub for nested nodes.
+
+    Carries the same `@id` as the full Organization node emitted on every page,
+    so a consumer merges the two instead of seeing two organizations of the
+    same name.
+    """
     return {
         "@type": "Organization",
+        "@id": f"{site_url}/#organization",
         "name": site_name,
         "url": site_url,
         "logo": {"@type": "ImageObject", "url": f"{site_url}/imgs/logo.png"},
@@ -717,15 +796,24 @@ def _make_week_jsonld(w: dict, site_url: str, site_name: str) -> str:
         elif week_date:
             article_node["datePublished"] = week_date
         items.append({"@type": "ListItem", "position": i, "item": article_node})
+    # Multi-typed on purpose. The page IS a collection of summary cards, and it
+    # IS one numbered instalment of a weekly publication — dropping either type
+    # loses a true claim. `isPartOf` is what turns 36 standalone pages into 36
+    # issues of one newsletter.
     page = {
         "@context": "https://schema.org",
-        "@type": "CollectionPage",
+        "@type": ["CollectionPage", "PublicationIssue"],
+        "@id": week_url,
         "name": f"{w['label']} · {site_name}",
         "description": (
             f"{count} article{'s' if count != 1 else ''} curated this week "
             "covering AI, cybersecurity, blockchain and engineering."
         ),
         "url": week_url,
+        "issueNumber": w["week"],
+        "inLanguage": "en",
+        "isAccessibleForFree": True,
+        "isPartOf": {"@id": f"{site_url}/#newsletter"},
         "publisher": publisher,
         "mainEntity": {
             "@type": "ItemList",
@@ -737,6 +825,55 @@ def _make_week_jsonld(w: dict, site_url: str, site_name: str) -> str:
         page["datePublished"] = week_date
         page["dateModified"] = week_date
     return json.dumps(page, ensure_ascii=False)
+
+
+def _make_archive_jsonld(all_weeks: list[dict], site_url: str, site_name: str) -> str:
+    """The archive page as the issue index of the Periodical.
+
+    The archive was rendering the generic WebSite node every other static page
+    gets, which said nothing about what is on it. It is the one page whose whole
+    content is "every issue of this newsletter, in order", so it lists them as
+    PublicationIssue nodes keyed by the same `@id` the week pages declare — a
+    consumer merges the stub here with the full node there rather than seeing two.
+    """
+    publisher = _publisher_node(site_url, site_name)
+    elements: list[dict[str, Any]] = []
+    for i, w in enumerate(all_weeks, 1):
+        week_url = f"{site_url}/{w['href']}"
+        node: dict[str, Any] = {
+            "@type": "PublicationIssue",
+            "@id": week_url,
+            "name": w["label"],
+            "url": week_url,
+            "issueNumber": w["week"],
+            "isPartOf": {"@id": f"{site_url}/#newsletter"},
+        }
+        if w.get("source_mtime"):
+            node["datePublished"] = datetime.fromtimestamp(
+                w["source_mtime"], tz=timezone.utc).strftime("%Y-%m-%d")
+        elements.append({"@type": "ListItem", "position": i, "item": node})
+    n = len(all_weeks)
+    return json.dumps({
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "@id": f"{site_url}/archive.html",
+        "name": f"Newsletter archive · {site_name}",
+        "description": (
+            f"Every issue of {site_name}, the free weekly technology newsletter — "
+            f"{n} issue{'s' if n != 1 else ''} covering AI, cybersecurity, blockchain "
+            "and software engineering."
+        ),
+        "url": f"{site_url}/archive.html",
+        "inLanguage": "en",
+        "isPartOf": {"@id": f"{site_url}/#website"},
+        "about": {"@id": f"{site_url}/#newsletter"},
+        "publisher": publisher,
+        "mainEntity": {
+            "@type": "ItemList",
+            "numberOfItems": n,
+            "itemListElement": elements,
+        },
+    }, ensure_ascii=False)
 
 
 def _make_collection_jsonld(
@@ -1189,9 +1326,16 @@ def _generate_llms_txt(all_weeks: list[dict], site_url: str, site_name: str, tag
         f"> {tagline}",
         "",
         (
-            f"{site_name} is a weekly newsletter powered by Maki, an AI pipeline that curates "
-            "and summarises the most relevant tech stories from hundreds of sources each week. "
-            "Coverage spans AI & machine learning, cybersecurity, blockchain & crypto, and software engineering."
+            f"{site_name} is a free weekly technology newsletter powered by Maki, an AI pipeline "
+            "that curates and summarises the most relevant tech stories from hundreds of sources "
+            "each week. One issue ships every Saturday. Coverage spans AI & machine learning, "
+            "cybersecurity, blockchain & crypto, and software engineering."
+        ),
+        "",
+        (
+            f"{site_url} is the newsletter's home: every issue is published here in full, free "
+            "and without a signup wall, and the email edition goes out on Substack. To subscribe: "
+            f"{SUBSTACK_URL}"
         ),
         "",
         (
@@ -1201,6 +1345,8 @@ def _generate_llms_txt(all_weeks: list[dict], site_url: str, site_name: str, tag
         ),
         "",
         "## Issues",
+        "",
+        f"One issue per ISO week, newest first. {len(all_weeks)} published so far.",
         "",
     ]
     for w in all_weeks:
@@ -1234,7 +1380,7 @@ def _generate_llms_txt(all_weeks: list[dict], site_url: str, site_name: str, tag
         "## Pages",
         "",
         f"- [Topics]({site_url}/topics.html): Browse coverage by beat and technology",
-        f"- [Archive]({site_url}/archive.html): Index of all past issues",
+        f"- [Archive]({site_url}/archive.html): Every issue of the newsletter, newest first",
         f"- [Services]({site_url}/services.html): Newsletter on Demand — we build and run your newsletter",
         f"- [About]({site_url}/about.html): Mission, topics covered, and how the pipeline works",
         f"- [Team]({site_url}/team.html): About the people and AI behind {site_name}",
@@ -1242,7 +1388,7 @@ def _generate_llms_txt(all_weeks: list[dict], site_url: str, site_name: str, tag
         "",
         "## Optional",
         "",
-        "- [Subscribe](https://bowlofdata.substack.com/): Free weekly newsletter on Substack",
+        f"- [Subscribe]({SUBSTACK_URL}): Free email edition, one issue every Saturday",
         "- [Instagram](https://www.instagram.com/bowl_of_data): Follow on Instagram",
         f"- [Podcast (Spotify)]({PODCAST_URL}): Listen to Bowl of Data as a podcast",
         f"- [YouTube]({YOUTUBE_URL}): Watch Bowl of Data on YouTube",
@@ -1562,11 +1708,18 @@ def build() -> None:
     print(f"  Rendered  landing → site/index.html")
 
     archive_html = env.get_template("archive.html").render(
-        **shared,
+        # The archive gets its own CollectionPage node instead of the generic
+        # WebSite one in `shared` — it is the newsletter's issue index, and that
+        # is the single most useful thing it can tell a crawler about itself.
+        **{**shared, "jsonld_str": _make_archive_jsonld(all_weeks, SITE_URL, SITE_NAME)},
         weeks=all_weeks,
         weeks_by_year=_group_weeks_by_year_month(all_weeks),
         total_count=len(all_weeks),
         current_page="archive",
+        breadcrumb_jsonld_str=_make_breadcrumb_jsonld([
+            (SITE_NAME, f"{SITE_URL}/"),
+            ("Archive", f"{SITE_URL}/archive.html"),
+        ]),
     )
     (SITE_DIR / "archive.html").write_text(archive_html, encoding="utf-8")
     print(f"  Rendered  archive → site/archive.html")
