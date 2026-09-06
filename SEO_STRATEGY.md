@@ -28,6 +28,18 @@ _Last updated: 2026-09-02. Owner: Marco. Companion to the code changes shipped i
 
 ---
 
+> **2026-09-06 — the Substack is not a duplicate-content problem, verified.** Worth stating
+> because the Altervista split (§4) was exactly this failure mode and the suspicion is a
+> natural one. Fetched live: `bowlofdata.substack.com/p/bowl-of-data-week-36-2026` is a
+> **teaser**, not a copy — a headline and 2-3 sentences per story — and it links to
+> `bowlofdata.net/week/36_2026.html` six times, after each story and again under "Full
+> issue". The full `long_resume` text exists only on `.net`. The email push and the canonical
+> home are correctly split, and nothing needs fixing here. Do not "add a canonical" to the
+> Substack on the strength of the resemblance to the mirror problem — there is no duplication
+> to resolve, and the six per-issue backlinks are an asset.
+
+---
+
 ## 1. Positioning
 
 **One line:** Bowl of Data is the *source of record* for the week in technology — AI,
@@ -79,6 +91,9 @@ authority.
 | **Archive keywords** (2026-09-06) | Title/H1/description were `Archive` / "All issues" / a generic sentence — zero newsletter intent on the one page that indexes the whole publication. Now `Newsletter Archive — All 18 Issues` and an H1 to match | `templates/archive.html` |
 | **Subscribe CTA on home + archive** (2026-09-06) | The reusable CTA was on every week, hub and tag page but **not** on the two pages most likely to be the entry point. Added with `utm_campaign=home` / `archive` | `templates/index.html`, `templates/archive.html` |
 | **`llms.txt` lead** (2026-09-06) | The file described the pipeline before it described the product, and buried the subscribe link under "Optional". It now leads with "free weekly newsletter, one issue every Saturday", names `.net` as the newsletter's home, and states the subscribe URL in prose an answer engine can quote | `build.py` `_generate_llms_txt` |
+| **Page types** (2026-09-06) | `about`, `contact`, `team`, `services` and `404` all rendered the generic `WebSite` node from `shared` — five pages each claiming to *be* the whole site. Now `AboutPage` / `ContactPage` / `AboutPage` / `WebPage` / none, each `isPartOf` the one `#website` and `about` the org and/or the newsletter. Only the homepage is a `WebSite` now | `build.py` `_make_webpage_jsonld` |
+| **Topics index node** (2026-09-06) | It was passing its breadcrumb through the `jsonld_str` slot, leaving it the only content page with nothing describing the page itself. Now a `CollectionPage`, breadcrumb moved to its own slot | `build.py` topics render |
+| **Static-page breadcrumbs** (2026-09-06) | `about`, `team`, `contact`, `services` and `archive` had none; week, hub and tag pages always did | `build.py` |
 
 **Anti-duplication rule (keep this):** hub and tag pages show a title + short summary + a link
 to the canonical week-page anchor. They must **never** render the full `long_resume` — that

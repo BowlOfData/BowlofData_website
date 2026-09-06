@@ -916,6 +916,39 @@ def _make_collection_jsonld(
     }, ensure_ascii=False)
 
 
+def _make_webpage_jsonld(
+    page_type: str, name: str, description: str, url: str,
+    site_url: str, site_name: str, about: list[str] | None = None,
+) -> str:
+    """A single static page, typed for what it actually is.
+
+    about/contact/team/services/404 all rendered the generic WebSite node from
+    `shared`, so five pages each claimed to *be* the whole site rather than to be
+    a page on it. `isPartOf` now points at the one real WebSite node, and `about`
+    names the entity the page is genuinely about — for About and Team that is the
+    organization behind the newsletter, which is the entire E-E-A-T claim those
+    pages exist to make.
+
+    `description` here is deliberately independent of the template's
+    `og_description` block: this one describes the page to a knowledge graph, the
+    other is snippet copy, and forcing them to be the same string helps neither.
+    """
+    node: dict[str, Any] = {
+        "@context": "https://schema.org",
+        "@type": page_type,
+        "@id": url,
+        "name": name,
+        "description": description,
+        "url": url,
+        "inLanguage": "en",
+        "isPartOf": {"@id": f"{site_url}/#website"},
+        "publisher": _publisher_node(site_url, site_name),
+    }
+    if about:
+        node["about"] = [{"@id": a} for a in about]
+    return json.dumps(node, ensure_ascii=False)
+
+
 def _make_breadcrumb_jsonld(crumbs: list[tuple[str, str | None]]) -> str:
     """BreadcrumbList from (name, absolute_url_or_None) pairs, in order."""
     elements = []
@@ -1681,6 +1714,9 @@ def build() -> None:
     # ------------------------------------------------------------------
     latest_week = all_weeks[0] if all_weeks else None
     website_jsonld_str = _make_website_jsonld(SITE_URL, SITE_NAME, SITE_TAGLINE)
+    # The two entities every static page below points back at.
+    ORG_ID  = f"{SITE_URL}/#organization"
+    NEWS_ID = f"{SITE_URL}/#newsletter"
 
     shared = dict(
         css_path="static/style.css",
@@ -1724,18 +1760,43 @@ def build() -> None:
     (SITE_DIR / "archive.html").write_text(archive_html, encoding="utf-8")
     print(f"  Rendered  archive → site/archive.html")
 
-    contact_html = env.get_template("contact.html").render(**shared, current_page="contact")
+    contact_html = env.get_template("contact.html").render(
+        **{**shared, "jsonld_str": _make_webpage_jsonld(
+            "ContactPage", f"Contact · {SITE_NAME}",
+            f"How to reach the {SITE_NAME} team with feedback, article suggestions, or "
+            "questions about the weekly newsletter.",
+            f"{SITE_URL}/contact.html", SITE_URL, SITE_NAME, about=[ORG_ID])},
+        current_page="contact",
+        breadcrumb_jsonld_str=_make_breadcrumb_jsonld([
+            (SITE_NAME, f"{SITE_URL}/"), ("Contact", f"{SITE_URL}/contact.html")]),
+    )
     (SITE_DIR / "contact.html").write_text(contact_html, encoding="utf-8")
     print(f"  Rendered  contact → site/contact.html")
 
     about_html = env.get_template("about.html").render(
-        **shared, current_page="about",
+        **{**shared, "jsonld_str": _make_webpage_jsonld(
+            "AboutPage", f"About · {SITE_NAME}",
+            f"What {SITE_NAME} is, what each weekly issue contains, and how the Maki "
+            "pipeline curates it before humans review and ship it.",
+            f"{SITE_URL}/about.html", SITE_URL, SITE_NAME, about=[ORG_ID, NEWS_ID])},
+        current_page="about",
         faq_jsonld_str=_make_faq_jsonld(ABOUT_FAQ),
+        breadcrumb_jsonld_str=_make_breadcrumb_jsonld([
+            (SITE_NAME, f"{SITE_URL}/"), ("About", f"{SITE_URL}/about.html")]),
     )
     (SITE_DIR / "about.html").write_text(about_html, encoding="utf-8")
     print(f"  Rendered  about   → site/about.html")
 
-    team_html = env.get_template("team.html").render(**shared, current_page="team", imgs_path="imgs/")
+    team_html = env.get_template("team.html").render(
+        **{**shared, "jsonld_str": _make_webpage_jsonld(
+            "AboutPage", f"Team · {SITE_NAME}",
+            f"The people and the AI pipeline behind {SITE_NAME} — who reviews each "
+            "weekly issue before it ships.",
+            f"{SITE_URL}/team.html", SITE_URL, SITE_NAME, about=[ORG_ID])},
+        current_page="team", imgs_path="imgs/",
+        breadcrumb_jsonld_str=_make_breadcrumb_jsonld([
+            (SITE_NAME, f"{SITE_URL}/"), ("Team", f"{SITE_URL}/team.html")]),
+    )
     (SITE_DIR / "team.html").write_text(team_html, encoding="utf-8")
     print(f"  Rendered  team → site/team.html")
 
@@ -1751,7 +1812,9 @@ def build() -> None:
            "about_href":   f"{SITE_URL}/about.html",
            "contact_href": f"{SITE_URL}/contact.html",
            "team_href":    f"{SITE_URL}/team.html",
-           "services_href": f"{SITE_URL}/services.html"},
+           "services_href": f"{SITE_URL}/services.html",
+           # noindex — a page node here would describe something no index holds.
+           "jsonld_str": None},
         latest_week=latest_week,
         robots="noindex,follow",
     )
@@ -1759,9 +1822,16 @@ def build() -> None:
     print(f"  Rendered  404 → site/404.html")
 
     services_html = env.get_template("services.html").render(
-        **shared, current_page="services",
+        **{**shared, "jsonld_str": _make_webpage_jsonld(
+            "WebPage", f"Newsletter as a Service · {SITE_NAME}",
+            "Done-for-you, white-label newsletters, podcasts and private intelligence "
+            f"briefs built and run by the {SITE_NAME} team.",
+            f"{SITE_URL}/services.html", SITE_URL, SITE_NAME, about=[ORG_ID])},
+        current_page="services",
         latest_week=latest_week,   # the "see a real issue" proof link
         faq_jsonld_str=_make_faq_jsonld(SERVICES_FAQ),
+        breadcrumb_jsonld_str=_make_breadcrumb_jsonld([
+            (SITE_NAME, f"{SITE_URL}/"), ("Services", f"{SITE_URL}/services.html")]),
     )
     (SITE_DIR / "services.html").write_text(services_html, encoding="utf-8")
     print(f"  Rendered  services → site/services.html")
@@ -1867,11 +1937,20 @@ def build() -> None:
                   f"({', '.join(p.stem for p in stale[:5])}"
                   f"{', …' if len(stale) > 5 else ''})")
 
+    # The topics index was passing its breadcrumb through the `jsonld_str` slot,
+    # which left it as the only content page with no node describing the page
+    # itself. It is the hub-of-hubs for the newsletter's coverage, so it gets a
+    # CollectionPage and the breadcrumb moves to its own slot.
     topics_index_html = env.get_template("topics.html").render(
-        **{**shared, "jsonld_str": _make_breadcrumb_jsonld([
+        **{**shared, "jsonld_str": _make_webpage_jsonld(
+            "CollectionPage", f"Topics & Tags · {SITE_NAME}",
+            f"Every beat and technology {SITE_NAME} covers — {len(hub_slugs)} topic hubs "
+            f"and {len(tag_slugs)} technology tags drawn from every weekly issue.",
+            f"{SITE_URL}/topics.html", SITE_URL, SITE_NAME, about=[NEWS_ID])},
+        breadcrumb_jsonld_str=_make_breadcrumb_jsonld([
             (SITE_NAME, f"{SITE_URL}/"),
             ("Topics", f"{SITE_URL}/topics.html"),
-        ])},
+        ]),
         current_page="topics",
         hubs=[hubs[c] for c in hub_slugs],
         tags=[tags[s] for s in tag_slugs],
