@@ -1,5 +1,768 @@
 [
   {
+    "week": 37,
+    "year": 2026,
+    "month": 9,
+    "month_name": "September",
+    "label": "Week 37 · 2026",
+    "href": "week/37_2026.html",
+    "articles": [
+      {
+        "title": "Hacking AI customer service agents (Bug Bounty Village DEF CON 34)",
+        "slug": "hacking-ai-customer-service-agents-bug-bounty-village-def-con-34",
+        "url": "https://www.intigriti.com/researchers/blog/hacking-tools/hacking-ai-customer-service-agents",
+        "source": "Reddit r/netsec",
+        "published": "2026-09-08T04:22:12Z",
+        "short_summary": "This article details advanced exploitation techniques for AI-driven customer service agents, focusing on how protocol flaws and prompt injection can lead to unauthorized actions. It highlights real-world vulnerabilities that have already resulted in significant bug bounty payouts.",
+        "long_resume": "The article explores the emerging threat landscape of AI-powered customer service agents, specifically focusing on research presented by Inti De Ceukelaire at DEF CON 34. The core vulnerability lies in the ability of attackers to manipulate the context and actions of these agents through various methods. One primary vector involves using prompt injection to abuse features like email transcripts, allowing attackers to send phishing emails or intercept confidential data by CCing themselves on replies. Furthermore, the research demonstrates how the complexities of email protocols (RFC 8022) can be exploited; by crafting emails with multiple 'From' headers, an attacker can pass SPF/DKIM authentication using a controlled domain while tricking the AI agent into acting upon a victim's account. The article also covers more subtle attacks, such as leveraging a victim's out-of-office auto-reply to trigger unauthorized commands and bypassing 2FA rate limits through email normalization tricks (e.g., adding comments to an email string). Finally, it notes that attackers can pivot to secondary support channels like IVR systems to bypass web-based security measures entirely by exploiting weaknesses in caller ID or verification questions.",
+        "long_resume_paragraphs": [
+          "The article explores the emerging threat landscape of AI-powered customer service agents, specifically focusing on research presented by Inti De Ceukelaire at DEF CON 34. The core vulnerability lies in the ability of attackers to manipulate the context and actions of these agents through various methods. One primary vector involves using prompt injection to abuse features like email transcripts, allowing attackers to send phishing emails or intercept confidential data by CCing themselves on replies. Furthermore, the research demonstrates how the complexities of email protocols (RFC 8022) can be exploited; by crafting emails with multiple 'From' headers, an attacker can pass SPF/DKIM authentication using a controlled domain while tricking the AI agent into acting upon a victim's account. The article also covers more subtle attacks, such as leveraging a victim's out-of-office auto-reply to trigger unauthorized commands and bypassing 2FA rate limits through email normalization tricks (e.g., adding comments to an email string). Finally, it notes that attackers can pivot to secondary support channels like IVR systems to bypass web-based security measures entirely by exploiting weaknesses in caller ID or verification questions."
+        ],
+        "main_topic": "Research presentation on exploiting AI customer service agents through prompt injection, email spoofing, and protocol manipulation.",
+        "technologies": [
+          "Large Language Models (LLMs)",
+          "AI Agents",
+          "RFC 822",
+          "SPF (Sender Policy Framework)",
+          "DKIM (DomainKeys Identified Mail)",
+          "IVR (Interactive Voice Response)",
+          "Burp Suite"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "Beltdown: Escaping the Claude Code Sandbox",
+        "slug": "beltdown-escaping-the-claude-code-sandbox",
+        "url": "https://accomplish.ai/blog/beltdown-escaping-the-claude-code-sandbox",
+        "source": "Reddit r/netsec",
+        "published": "2026-09-10T21:57:43Z",
+        "short_summary": "A security research report details 'Beltdown', a sandbox escape in Anthropic's Claude Code. By manipulating git configuration files and exploiting unhardened git commands, attackers could execute code on the host system.",
+        "long_resume": "The article describes a sophisticated sandbox escape vulnerability identified in Anthropic's Claude Code tool. The researchers discovered that even when the sandbox is set to its most restrictive 'don't ask' mode using macOS Seatbelt, an attacker can achieve arbitrary command execution on the host machine. The attack vector relies on the way Claude Code's harness runs git commands outside of the sandbox to index repositories. Specifically, the researchers found that by setting the 'core.fs_monitor' configuration in a '.git/config' file, they could trigger shell commands. To bypass existing protections—such as the hardening of git flags and restrictions on writing to the root '.git' directory—the researchers utilized a technique involving nested directories. They created a malicious git configuration in a subfolder and renamed it to '.git' within that subdirectory, which bypassed Seatbelt's renaming restrictions. The execution was then triggered by forcing Claude Code to perform a file index refresh through its skill auto-loading mechanism. This chain of events allowed the payload to run without any user interaction or permission prompts. The researchers documented their disclosure process, noting that while Anthropic released an initial hardening in version 2.1.223, it was not until version 2.1.247 that a full fix was implemented to ensure all git commands blank out dangerous configuration options. The researchers also detailed their methodology for testing the vulnerability using a controlled VM environment to ensure safety.",
+        "long_resume_paragraphs": [
+          "The article describes a sophisticated sandbox escape vulnerability identified in Anthropic's Claude Code tool. The researchers discovered that even when the sandbox is set to its most restrictive 'don't ask' mode using macOS Seatbelt, an attacker can achieve arbitrary command execution on the host machine. The attack vector relies on the way Claude Code's harness runs git commands outside of the sandbox to index repositories. Specifically, the researchers found that by setting the 'core.fs_monitor' configuration in a '.git/config' file, they could trigger shell commands. To bypass existing protections—such as the hardening of git flags and restrictions on writing to the root '.git' directory—the researchers utilized a technique involving nested directories. They created a malicious git configuration in a subfolder and renamed it to '.git' within that subdirectory, which bypassed Seatbelt's renaming restrictions. The execution was then triggered by forcing Claude Code to perform a file index refresh through its skill auto-loading mechanism. This chain of events allowed the payload to run without any user interaction or permission prompts. The researchers documented their disclosure process, noting that while Anthropic released an initial hardening in version 2.1.223, it was not until version 2.1.247 that a full fix was implemented to ensure all git commands blank out dangerous configuration options. The researchers also detailed their methodology for testing the vulnerability using a controlled VM environment to ensure safety."
+        ],
+        "main_topic": "Researchers discovered a sandbox escape vulnerability in Anthropic's Claude Code that allows arbitrary command execution on the host machine via poisoned git configurations.",
+        "technologies": [
+          "Claude Code",
+          "Anthropic",
+          "Git",
+          "Seatbelt",
+          "Bash",
+          "macOS"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "‘Shape-shifting’ quantum computer uses light to switch between different tasks",
+        "slug": "shape-shifting-quantum-computer-uses-light-to-switch-between-different-tasks",
+        "url": "http://thebrighterside.news/post/shape-shifting-quantum-computer-uses-light-to-switch-between-different-tasks",
+        "source": "Reddit r/QuantumComputing",
+        "published": "2026-09-09T16:59:03Z",
+        "short_summary": "Imperial College London researchers have unveiled Clavina, a 'shape-shifting' quantum photonic processor that combines linear and nonlinear optical components. This modular design allows for the flexible execution of various quantum tasks, ranging from complex simulations to the generation of error-correction resources.",
+        "long_resume": "Researchers from Imperial College London have developed a groundbreaking quantum computing architecture named Clavina. Unlike traditional photonic quantum systems that are often hard-wired for specific, single-use tasks, Clavina utilizes a modular approach inspired by classical computer processors. By integrating programmable linear optical circuits with specialized nonlinear modules, the system can dynamically route quantum light to perform diverse computational functions without requiring hardware overhauls.\n\nA significant challenge in photonic quantum computing is that photons do not naturally interact strongly, making the nonlinear operations necessary for universal computation difficult to achieve. Clavina addresses this by using a central control unit to direct information through various functional units, including squeezing modules and Kerr interaction units. The architecture leverages time bins to reuse shared components, significantly reducing the hardware complexity required for large-scale operations.\n\nIn experimental testing, the platform demonstrated high-performance capabilities, including 100-mode Gaussian boson sampling and sustained quantum correlations across 8,000 time bins. Furthermore, the system proved its ability to generate essential non-Gaussian states, such as Schrödinger cat states, which are vital for advanced quantum operations. Most notably, Clavina achieved a quasi-deterministic production of Gottesman-Kitaev-Preskill (GKP) states at roughly 2,000 per second, representing a major step toward fault-tolerant quantum computing through improved error correction. Beyond fundamental state generation, the researchers successfully used the processor to simulate the Bose-Hubbard model, showcasing Clavina's potential as a versatile tool for studying complex many-body quantum physics.",
+        "long_resume_paragraphs": [
+          "Researchers from Imperial College London have developed a groundbreaking quantum computing architecture named Clavina. Unlike traditional photonic quantum systems that are often hard-wired for specific, single-use tasks, Clavina utilizes a modular approach inspired by classical computer processors. By integrating programmable linear optical circuits with specialized nonlinear modules, the system can dynamically route quantum light to perform diverse computational functions without requiring hardware overhauls.",
+          "A significant challenge in photonic quantum computing is that photons do not naturally interact strongly, making the nonlinear operations necessary for universal computation difficult to achieve. Clavina addresses this by using a central control unit to direct information through various functional units, including squeezing modules and Kerr interaction units. The architecture leverages time bins to reuse shared components, significantly reducing the hardware complexity required for large-scale operations.",
+          "In experimental testing, the platform demonstrated high-performance capabilities, including 100-mode Gaussian boson sampling and sustained quantum correlations across 8,000 time bins. Furthermore, the system proved its ability to generate essential non-Gaussian states, such as Schrödinger cat states, which are vital for advanced quantum operations. Most notably, Clavina achieved a quasi-deterministic production of Gottesman-Kitaev-Preskill (GKP) states at roughly 2,000 per second, representing a major step toward fault-tolerant quantum computing through improved error correction. Beyond fundamental state generation, the researchers successfully used the processor to simulate the Bose-Hubbard model, showcasing Clavina's potential as a versatile tool for studying complex many-body quantum physics."
+        ],
+        "main_topic": "Researchers at Imperial College London have developed Clavina, a modular photonic quantum processor that integrates programmable linear optics with nonlinear modules to enable versatile quantum computing tasks.",
+        "technologies": [
+          "Clavina",
+          "Photonic processor",
+          "Linear optical circuits",
+          "Nonlinear quantum modules",
+          "Gaussian boson sampling",
+          "GKP states",
+          "Schrödinger cat states",
+          "Electro-optic modulators",
+          "Bose-Hubbard model"
+        ],
+        "category": "quantum",
+        "category_label": "Quantum Computing"
+      },
+      {
+        "title": "Europe’s cookie law is really a law about surveillance",
+        "slug": "europes-cookie-law-is-really-a-law-about-surveillance",
+        "url": "https://edri.org/our-work/europes-cookie-law-is-really-about-surveillance",
+        "source": "EDRi",
+        "published": "Thu, 10 Sep 2026 14:31:27 +0000",
+        "short_summary": "The article explores the legal distinction between data protection and communications privacy within the EU framework. It highlights how the ePrivacy Directive is essential for preventing unauthorized access to device metadata used by both advertisers and state actors.",
+        "long_resume": "The article examines the critical role of the EU's ePrivacy Directive in protecting fundamental rights against modern surveillance. While many view EU privacy law through the lens of 'cookie banners,' the author argues that the true importance lies in the distinction between the GDPR and the ePrivacy framework. The GDPR regulates how personal data is processed, but the ePrivacy Directive protects the confidentiality of communications and the integrity of terminal equipment, such as smartphones, IoT devices, and wearables. This protection extends to metadata—information like location and timestamps—which can reveal intimate details about an individual's life, including visits to medical clinics or political protests, even without accessing message content.\n\nThe text highlights a growing threat from the commercial data broker market, where billions of location records are traded, exposing sensitive sites like NATO buildings and government ministries. This commercial infrastructure often serves as a ready-made surveillance tool for state authorities, as seen in the US with agencies purchasing app-based location data. Furthermore, the rise of private spyware like Pegasus demonstrates how the boundary between commercial technology and state intrusion is blurring. The author concludes by discussing 'ChatControl' and Regulation 2021/1232, noting that recent legislative shifts attempt to create exceptions to communications confidentiality for scanning purposes, thereby testing the very limits of the ePrivacy protections.",
+        "long_resume_paragraphs": [
+          "The article examines the critical role of the EU's ePrivacy Directive in protecting fundamental rights against modern surveillance. While many view EU privacy law through the lens of 'cookie banners,' the author argues that the true importance lies in the distinction between the GDPR and the ePrivacy framework. The GDPR regulates how personal data is processed, but the ePrivacy Directive protects the confidentiality of communications and the integrity of terminal equipment, such as smartphones, IoT devices, and wearables. This protection extends to metadata—information like location and timestamps—which can reveal intimate details about an individual's life, including visits to medical clinics or political protests, even without accessing message content.",
+          "The text highlights a growing threat from the commercial data broker market, where billions of location records are traded, exposing sensitive sites like NATO buildings and government ministries. This commercial infrastructure often serves as a ready-made surveillance tool for state authorities, as seen in the US with agencies purchasing app-based location data. Furthermore, the rise of private spyware like Pegasus demonstrates how the boundary between commercial technology and state intrusion is blurring. The author concludes by discussing 'ChatControl' and Regulation 2021/1232, noting that recent legislative shifts attempt to create exceptions to communications confidentiality for scanning purposes, thereby testing the very limits of the ePrivacy protections."
+        ],
+        "main_topic": "The article argues that the EU's ePrivacy Directive is a critical tool against both commercial and state surveillance by protecting device access and communications metadata.",
+        "technologies": [
+          "GDPR",
+          "ePrivacy Directive",
+          "IoT",
+          "Pegasus spyware",
+          "Fingerprinting",
+          "Tracking pixels",
+          "ChatControl",
+          "Regulation 2021/1232"
+        ],
+        "category": "governance",
+        "category_label": "Data & AI Governance"
+      },
+      {
+        "title": "OpenAI Releases GPT-6 Astra for Coding and Computer Use",
+        "slug": "openai-releases-gpt-6-astra-for-coding-and-computer-use",
+        "url": "https://infoq.com/news/2026/09/openai-gpt6-astra",
+        "source": "InfoQ",
+        "published": "Thu, 10 Sep 2026 17:49:00 GMT",
+        "short_summary": "OpenAI's new GPT-6 Astra model introduces advanced agentic capabilities for computer use and complex coding tasks. While it demonstrates superior performance in technical benchmarks, its ability to identify vulnerabilities has placed it under high-level cybersecurity scrutiny.",
+        "long_resume": "OpenAI has officially launched GPT-6 Astra, a specialized model engineered to move beyond simple text generation toward autonomous computer use and professional workflow execution. The model is capable of interacting with graphical user interfaces to perform complex tasks such as data analysis, software installation, and web research. In coding environments, Astra utilizes an experimental context mechanism within Codex that enables the agent to maintain searchable notes across different context windows, facilitating long-running development tasks. Technical benchmarks indicate significant leaps in performance, including a 72.6% score on OSWorld 2.0 and high accuracy in million-token context evaluations. However, the release brings substantial cybersecurity considerations; Astra is the first model categorized under OpenAI's Preparedness Framework as having critical cybersecurity capabilities. In testing environments without safeguards, the model demonstrated the ability to discover unknown vulnerabilities and develop exploits for hardened operating systems and browsers. While production versions include restrictions on offensive tasks, OpenAI is developing defensive capabilities through its Daybreak program. The release was noted by industry leaders like NVIDIA's Jensen Huang, who highlighted the massive scale of NVIDIA Grace Blackwell infrastructure used in its training. Astra faces stiff competition from Anthropic's Claude Fable 5.1 and Google's Gemini 3.8 Flash, with performance varying across different specialized benchmarks.",
+        "long_resume_paragraphs": [
+          "OpenAI has officially launched GPT-6 Astra, a specialized model engineered to move beyond simple text generation toward autonomous computer use and professional workflow execution. The model is capable of interacting with graphical user interfaces to perform complex tasks such as data analysis, software installation, and web research. In coding environments, Astra utilizes an experimental context mechanism within Codex that enables the agent to maintain searchable notes across different context windows, facilitating long-running development tasks. Technical benchmarks indicate significant leaps in performance, including a 72.6% score on OSWorld 2.0 and high accuracy in million-token context evaluations. However, the release brings substantial cybersecurity considerations; Astra is the first model categorized under OpenAI's Preparedness Framework as having critical cybersecurity capabilities. In testing environments without safeguards, the model demonstrated the ability to discover unknown vulnerabilities and develop exploits for hardened operating systems and browsers. While production versions include restrictions on offensive tasks, OpenAI is developing defensive capabilities through its Daybreak program. The release was noted by industry leaders like NVIDIA's Jensen Huang, who highlighted the massive scale of NVIDIA Grace Blackwell infrastructure used in its training. Astra faces stiff competition from Anthropic's Claude Fable 5.1 and Google's Gemini 3.8 Flash, with performance varying across different specialized benchmarks."
+        ],
+        "main_topic": "OpenAI has released GPT-6 Astra, a new model designed for advanced computer use, coding, and professional workflows with significant cybersecurity implications.",
+        "technologies": [
+          "GPT-6 Astra",
+          "OpenAI API",
+          "Microsoft Azure",
+          "AWS Bedrock",
+          "Codex",
+          "NVIDIA Grace Blackwell NVLink72",
+          "Claude Fable 5.1",
+          "Gemini 3.8 Flash",
+          "OSWorld 2.0"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "Researchers Reduce Circuit Size by over Eighty Percent in Shor’s Algorithm",
+        "slug": "researchers-reduce-circuit-size-by-over-eighty-percent-in-shors-algorithm",
+        "url": "https://quantumzeitgeist.com/shors-algorithm-circuit-size-reduction-optimisation-ecdsa",
+        "source": "Quantum Zeitgeist",
+        "published": "Thu, 10 Sep 2026 13:36:36 +0000",
+        "short_summary": "Researchers have introduced Open Autoresearch, a collaborative model that integrates human insight with AI to optimize cryptographic circuits. This approach successfully reduced the complexity of secp256k1 point-addition circuits by over 86%, marking a major advancement in quantum computational efficiency.",
+        "long_resume": "The research introduces 'Open Autoresearch,' a novel collaborative optimization framework designed to tackle complex computational challenges by uniting human experts with artificial intelligence agents. The primary focus of this initiative was the optimization of circuits used in elliptic-curve cryptography, specifically targeting secp256k1 point-addition. By utilizing a public leaderboard to solicit and refine contributions from both humans and AI, the team achieved a dramatic 86.1% reduction in the 'spacetime score,' which measures the product of logical qubit width and executed Toffoli gates. The resulting optimized circuit reached a scale of 1.259 billion, utilizing 1,151 qubits and approximately 1.3 million Toffoli gates, significantly outperforming previous benchmarks by over 50%. Technical contributors utilized advanced mathematical techniques such as Jump-2 Euclidean algorithms and Karatsuba squaring to drive these improvements. While the research demonstrates a massive leap in efficiency for circuits that are critical for protecting data against future quantum attacks via Shor's algorithm, the authors note that full validation against real-world cryptographic attacks is still ongoing. Ultimately, the success of Open Autoresearch suggests that this open, AI-assisted methodology could serve as a blueprint for accelerating breakthroughs across various scientific and computational disciplines.",
+        "long_resume_paragraphs": [
+          "The research introduces 'Open Autoresearch,' a novel collaborative optimization framework designed to tackle complex computational challenges by uniting human experts with artificial intelligence agents. The primary focus of this initiative was the optimization of circuits used in elliptic-curve cryptography, specifically targeting secp256k1 point-addition. By utilizing a public leaderboard to solicit and refine contributions from both humans and AI, the team achieved a dramatic 86.1% reduction in the 'spacetime score,' which measures the product of logical qubit width and executed Toffoli gates. The resulting optimized circuit reached a scale of 1.259 billion, utilizing 1,151 qubits and approximately 1.3 million Toffoli gates, significantly outperforming previous benchmarks by over 50%. Technical contributors utilized advanced mathematical techniques such as Jump-2 Euclidean algorithms and Karatsuba squaring to drive these improvements. While the research demonstrates a massive leap in efficiency for circuits that are critical for protecting data against future quantum attacks via Shor's algorithm, the authors note that full validation against real-world cryptographic attacks is still ongoing. Ultimately, the success of Open Autoresearch suggests that this open, AI-assisted methodology could serve as a blueprint for accelerating breakthroughs across various scientific and computational disciplines."
+        ],
+        "main_topic": "A new collaborative optimization framework called Open Autoresearch uses human-AI synergy to reduce the circuit complexity of elliptic-curve cryptography by over 86%.",
+        "technologies": [
+          "Open Autoresearch",
+          "secp256k1",
+          "Elliptic-curve cryptography",
+          "Shor’s algorithm",
+          "Toffoli gates",
+          "Jump-2 Euclidean algorithms",
+          "Karatsuba squaring",
+          "Artificial Intelligence agents"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "Quantum Cybersecurity Explained: Preparing for Quantum Computing",
+        "slug": "quantum-cybersecurity-explained-preparing-for-quantum-computing",
+        "url": "https://thequantuminsider.com/2026/09/11/quantum-cybersecurity-explained-comprehensive-guide",
+        "source": "The Quantum Insider",
+        "published": "Fri, 11 Sep 2026 12:02:43 +0000",
+        "short_summary": "The rise of quantum computing threatens to break the fundamental public-key encryption that secures the modern internet. To mitigate risks like 'harvest-now-decrypt-later' attacks, organizations must begin migrating to post-quantum cryptographic standards and improving crypto-agility.",
+        "long_resume": "Quantum computing presents a transformative threat to digital security, specifically targeting the mathematical foundations of public-key cryptography. Algorithms such as RSA and elliptic curve cryptography, which rely on the difficulty of factoring large numbers or solving discrete logarithms, are vulnerable to Shor's algorithm running on a sufficiently powerful quantum computer. While symmetric encryption like AES is more resilient—requiring only larger key sizes to counter Grover's algorithm—the potential for attackers to intercept and store encrypted data today for decryption in the future, known as 'Harvest-Now-Decrypt-Later,' makes this an immediate concern for long-lived sensitive data. To defend against these threats, two primary paths are emerging: Post-Quantum Cryptography (PQC) and Quantum Key Distribution (QKD). PQC is the more practical approach for most, utilizing new mathematical problems like lattices and hash functions that can run on existing classical hardware, with NIST having finalized several standards in 2024. QKD offers a high-security alternative using the laws of physics to detect eavesdropping but is limited by the need for specialized hardware. For organizations to successfully navigate this transition, they must undertake a multi-year strategy involving a comprehensive inventory of their current cryptographic dependencies, assessing the long-term sensitivity of their data, and implementing 'crypto-agility'—the ability to update algorithms without massive infrastructure overhauls. Early adoption through pilot programs and updated procurement policies is essential to ensure that new technology investments are quantum-resistant from the outset.",
+        "long_resume_paragraphs": [
+          "Quantum computing presents a transformative threat to digital security, specifically targeting the mathematical foundations of public-key cryptography. Algorithms such as RSA and elliptic curve cryptography, which rely on the difficulty of factoring large numbers or solving discrete logarithms, are vulnerable to Shor's algorithm running on a sufficiently powerful quantum computer. While symmetric encryption like AES is more resilient—requiring only larger key sizes to counter Grover's algorithm—the potential for attackers to intercept and store encrypted data today for decryption in the future, known as 'Harvest-Now-Decrypt-Later,' makes this an immediate concern for long-lived sensitive data. To defend against these threats, two primary paths are emerging: Post-Quantum Cryptography (PQC) and Quantum Key Distribution (QKD). PQC is the more practical approach for most, utilizing new mathematical problems like lattices and hash functions that can run on existing classical hardware, with NIST having finalized several standards in 2024. QKD offers a high-security alternative using the laws of physics to detect eavesdropping but is limited by the need for specialized hardware. For organizations to successfully navigate this transition, they must undertake a multi-year strategy involving a comprehensive inventory of their current cryptographic dependencies, assessing the long-term sensitivity of their data, and implementing 'crypto-agility'—the ability to update algorithms without massive infrastructure overhauls. Early adoption through pilot programs and updated procurement policies is essential to ensure that new technology investments are quantum-resistant from the outset."
+        ],
+        "main_topic": "The article explores the emerging field of quantum cybersecurity, focusing on the threats posed by quantum computing to current encryption standards and the strategies for preparing for a post-quantum era.",
+        "technologies": [
+          "RSA",
+          "Elliptic Curve Cryptography",
+          "AES",
+          "Shor's algorithm",
+          "Grover's algorithm",
+          "Post-quantum cryptography (PQC)",
+          "Quantum Key Distribution (QKD)",
+          "NIST post-quantum standards"
+        ],
+        "category": "security",
+        "category_label": "Cybersecurity"
+      },
+      {
+        "title": "Anthropic caught Russia-linked spies using Claude in hacking operations",
+        "slug": "anthropic-caught-russia-linked-spies-using-claude-in-hacking-operations",
+        "url": "https://therecord.media/anthropic-russia-hackers-claude",
+        "source": "The Record",
+        "published": "Fri, 11 Sep 2026 12:45:00 GMT",
+        "short_summary": "Anthropic released a threat intelligence report detailing how state-sponsored and criminal actors used Claude to enhance cyber-espionage and hacking operations. The findings reveal that AI is being leveraged to automate vulnerability research and rapidly iterate malware to bypass traditional security defenses.",
+        "long_resume": "In a comprehensive threat intelligence report covering late 2025 through mid-2026, Anthropic revealed the detection and disruption of several malicious campaigns utilizing its Claude AI model. A primary focus of the report is the activity of Russia-linked group Midnight Blizzard (also known as APT29 or Cozy Bear), which targeted government, military, and diplomatic organizations. These actors utilized Claude to perform complex tasks such as reverse-engineering proprietary drone vision system software, recovering hardware bills of materials, and identifying supplier dependencies. Furthermore, the group used AI to monitor security product detections and systematically modify their implants to evade identification, effectively inverting the cost-benefit ratio for cyber defenders. Beyond state-sponsored espionage, the report identified criminal groups like ShinyHunters using AI for credential scanning and system mapping, as well as a Chinese-speaking group conducting autonomous vulnerability research that led to the discovery of zero-day vulnerabilities. The report also noted hacktivist activity targeting European political entities. While the use of AI is accelerating the tempo of attacks and lowering the barrier to entry for sophisticated operations, Anthropic emphasized that traditional methods like phishing and stolen credentials remain foundational to these campaigns. The company's proactive investigation and subsequent sharing of indicators of compromise (IOCs) were critical in disrupting these identified threats.",
+        "long_resume_paragraphs": [
+          "In a comprehensive threat intelligence report covering late 2025 through mid-2026, Anthropic revealed the detection and disruption of several malicious campaigns utilizing its Claude AI model. A primary focus of the report is the activity of Russia-linked group Midnight Blizzard (also known as APT29 or Cozy Bear), which targeted government, military, and diplomatic organizations. These actors utilized Claude to perform complex tasks such as reverse-engineering proprietary drone vision system software, recovering hardware bills of materials, and identifying supplier dependencies. Furthermore, the group used AI to monitor security product detections and systematically modify their implants to evade identification, effectively inverting the cost-benefit ratio for cyber defenders. Beyond state-sponsored espionage, the report identified criminal groups like ShinyHunters using AI for credential scanning and system mapping, as well as a Chinese-speaking group conducting autonomous vulnerability research that led to the discovery of zero-day vulnerabilities. The report also noted hacktivist activity targeting European political entities. While the use of AI is accelerating the tempo of attacks and lowering the barrier to entry for sophisticated operations, Anthropic emphasized that traditional methods like phishing and stolen credentials remain foundational to these campaigns. The company's proactive investigation and subsequent sharing of indicators of compromise (IOCs) were critical in disrupting these identified threats."
+        ],
+        "main_topic": "Anthropic has identified and disrupted various cyber-espionage campaigns, including Russia-linked operations, that utilized the Claude AI model to facilitate hacking activities.",
+        "technologies": [
+          "Claude",
+          "Anthropic",
+          "Microsoft",
+          "DNS",
+          "Wi-Fi",
+          "Cloud environments"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "Anthropic details distillation campaigns from Alibaba, Moonshot AI, and DeepSeek",
+        "slug": "anthropic-details-distillation-campaigns-from-alibaba-moonshot-ai-and-deepseek",
+        "url": "https://techcrunch.com/2026/09/10/anthropic-details-distillation-campaigns-from-alibaba-moonshot-ai-and-deepseek",
+        "source": "TechCrunch",
+        "published": "Thu, 10 Sep 2026 20:57:30 +0000",
+        "short_summary": "Anthropic's latest threat intelligence report reveals massive-scale model distillation efforts by Chinese labs like Alibaba and Moonshot AI. These campaigns use sophisticated prompting to harvest Claude's internal reasoning processes for training competing models.",
+        "long_resume": "In a significant escalation of AI intellectual property theft, Anthropic has released a report detailing persistent and increasingly aggressive distillation attacks originating from China-based AI companies. The company identified five distinct campaigns involving approximately 200 million exchanges designed to harvest the 'chain of thought' capabilities of Claude models. These attacks specifically target high-value features such as coding proficiency, data analysis, logical reasoning, and agentic tool use.\n\nOne of the most significant findings involves a massive wholesale distillation effort attributed to Alibaba. Anthropic reported 151 million exchanges between May and July 2026, peaking at three million requests per day across 3,500 accounts. The attackers utilized a consistent prompt structure to extract internal thinking traces, likely to facilitate supervised fine-tuning for Alibaba's Qwen model family. To bypass Anthropic's 'summarized thinking' protections, attackers employed clever social engineering tactics, such as framing queries as translation tasks to force the model to output its raw working memory in formats like Katakana.\n\nFurthermore, the report highlights a campaign linked to Moonshot AI (the creator of Kimi) that appeared to involve Chinese military interests. This specific campaign utilized 5,000 accounts to send nearly 300,000 requests to Claude's Opus model, including tasks involving the analysis of closed-circuit surveillance footage for abnormal behavior detection. These findings follow similar reports from OpenAI regarding DeepSeek, suggesting a broader industry-wide trend of using frontier models as high-quality training data generators through unauthorized extraction techniques.",
+        "long_resume_paragraphs": [
+          "In a significant escalation of AI intellectual property theft, Anthropic has released a report detailing persistent and increasingly aggressive distillation attacks originating from China-based AI companies. The company identified five distinct campaigns involving approximately 200 million exchanges designed to harvest the 'chain of thought' capabilities of Claude models. These attacks specifically target high-value features such as coding proficiency, data analysis, logical reasoning, and agentic tool use.",
+          "One of the most significant findings involves a massive wholesale distillation effort attributed to Alibaba. Anthropic reported 151 million exchanges between May and July 2026, peaking at three million requests per day across 3,500 accounts. The attackers utilized a consistent prompt structure to extract internal thinking traces, likely to facilitate supervised fine-tuning for Alibaba's Qwen model family. To bypass Anthropic's 'summarized thinking' protections, attackers employed clever social engineering tactics, such as framing queries as translation tasks to force the model to output its raw working memory in formats like Katakana.",
+          "Furthermore, the report highlights a campaign linked to Moonshot AI (the creator of Kimi) that appeared to involve Chinese military interests. This specific campaign utilized 5,000 accounts to send nearly 300,000 requests to Claude's Opus model, including tasks involving the analysis of closed-circuit surveillance footage for abnormal behavior detection. These findings follow similar reports from OpenAI regarding DeepSeek, suggesting a broader industry-wide trend of using frontier models as high-quality training data generators through unauthorized extraction techniques."
+        ],
+        "main_topic": "Anthropic has identified large-scale, sophisticated distillation campaigns by Chinese AI companies aimed at extracting proprietary reasoning capabilities from Claude models.",
+        "technologies": [
+          "Claude",
+          "Alibaba Qwen",
+          "Moonshot AI Kimi",
+          "DeepSeek",
+          "OpenAI"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "Tightly guided atoms could enable low-power quantum navigation when GPS fails",
+        "slug": "tightly-guided-atoms-could-enable-low-power-quantum-navigation-when-gps-fails",
+        "url": "https://phys.org/news/2026-09-tightly-atoms-enable-power-quantum.html",
+        "source": "Phys.org Quantum",
+        "published": "Thu, 10 Sep 2026 15:40:10 EDT",
+        "short_summary": "Researchers at Sandia National Laboratories have demonstrated a way to guide atoms using light halos around nanofibers with significantly reduced power consumption. This breakthrough paves the way for miniature quantum sensors that can provide highly accurate navigation in environments where GPS is compromised.",
+        "long_resume": "Scientists at Sandia National Laboratories, led by Jongmin Lee, are advancing the field of quantum inertial sensing through the use of guided atom interferometry. Traditional free-space atom interferometers rely on laser pulses to measure atoms falling through a vacuum, but they are susceptible to disruption from physical vibrations and jolts. To solve this, the team is working on a 'guided' approach using optical nanofibers and new membrane-waveguide prototypes that keep atoms contained within a light-based trap, much like marbles in a pipe. A significant challenge in this field has been heat dissipation; the lasers required to guide atoms generate enough heat to destroy ultra-thin components. The Sandia team addressed this by designing a membrane-waveguide anchored by silicon pins that act as heat sinks, allowing for stable operation in a vacuum. Their recent results show that cesium atoms can be trapped using only 5 milliwatts of optical power—roughly 2,000 times less than an LED bulb. This low-power requirement is a critical step toward miniaturizing these sensors onto photonic integrated circuits (PICs). If successful, this technology could enable the creation of rugged, chip-scale navigation systems for military vehicles and aircraft that can maintain precise positioning even when GPS signals are intentionally jammed or unavailable due to environmental interference.",
+        "long_resume_paragraphs": [
+          "Scientists at Sandia National Laboratories, led by Jongmin Lee, are advancing the field of quantum inertial sensing through the use of guided atom interferometry. Traditional free-space atom interferometers rely on laser pulses to measure atoms falling through a vacuum, but they are susceptible to disruption from physical vibrations and jolts. To solve this, the team is working on a 'guided' approach using optical nanofibers and new membrane-waveguide prototypes that keep atoms contained within a light-based trap, much like marbles in a pipe. A significant challenge in this field has been heat dissipation; the lasers required to guide atoms generate enough heat to destroy ultra-thin components. The Sandia team addressed this by designing a membrane-waveguide anchored by silicon pins that act as heat sinks, allowing for stable operation in a vacuum. Their recent results show that cesium atoms can be trapped using only 5 milliwatts of optical power—roughly 2,000 times less than an LED bulb. This low-power requirement is a critical step toward miniaturizing these sensors onto photonic integrated circuits (PICs). If successful, this technology could enable the creation of rugged, chip-scale navigation systems for military vehicles and aircraft that can maintain precise positioning even when GPS signals are intentionally jammed or unavailable due to environmental interference."
+        ],
+        "main_topic": "Sandia National Laboratories researchers have developed a low-power method for guiding atoms using optical nanofibers and membrane-waveguides to enable chip-scale quantum navigation.",
+        "technologies": [
+          "Atom Interferometry",
+          "Optical Nanofibers",
+          "Photonic Integrated Circuits (PIC)",
+          "Membrane-waveguide",
+          "Quantum Sensing",
+          "Cesium Atom Trapping",
+          "GPS",
+          "Silicon Heat Sinks"
+        ],
+        "category": "quantum",
+        "category_label": "Quantum Computing"
+      },
+      {
+        "title": "Redtail Payload Analysis &#x5b;Guest Diary&#x5d;, (Wed, Sep 9th)",
+        "slug": "redtail-payload-analysis-x5bguest-diaryx5d-wed-sep-9th",
+        "url": "https://isc.sans.edu/diary/rss/33326",
+        "source": "SANS ISC",
+        "published": "Thu, 10 Sep 2026 12:58:10 GMT",
+        "short_summary": "This article details the dynamic analysis of the RedTail Linux malware, focusing on its ability to masquerade as legitimate system processes. The researcher demonstrates how the malware attempts to evade detection by killing monitoring tools and using DNS-over-TLS for network activity.",
+        "long_resume": "The report provides a deep dive into the behavior of the RedTail Linux malware family, following its discovery in DShield honeypots. The author performed dynamic analysis on an x86-64 variant within an isolated Ubuntu environment hosted on Proxmox. Key findings include the malware's use of UPX packing and its multi-architecture deployment strategy via shell scripts. A significant feature of RedTail is its process masquerading capability; using the prctl system call, it renames its processes to appear as 'php-fpm: pool www' or PostgreSQL services to evade routine inspection. Furthermore, the analysis highlights the malware's aggressive anti-forensic tactics, specifically its use of SIGKILL to terminate filesystem monitoring tools like inotifywait when executed with root privileges. Network analysis via auditd and INetSim revealed that while the malware opens a local listening socket on port 39983, it also attempts outbound connections over TCP port 853, targeting various public DNS resolvers using DNS-over-TLS. The researcher utilized differential memory analysis between pre- and post-execution states to corroborate these findings, noting that endpoint auditing was essential for detecting network intent when the environment lacked an external internet route.",
+        "long_resume_paragraphs": [
+          "The report provides a deep dive into the behavior of the RedTail Linux malware family, following its discovery in DShield honeypots. The author performed dynamic analysis on an x86-64 variant within an isolated Ubuntu environment hosted on Proxmox. Key findings include the malware's use of UPX packing and its multi-architecture deployment strategy via shell scripts. A significant feature of RedTail is its process masquerading capability; using the prctl system call, it renames its processes to appear as 'php-fpm: pool www' or PostgreSQL services to evade routine inspection. Furthermore, the analysis highlights the malware's aggressive anti-forensic tactics, specifically its use of SIGKILL to terminate filesystem monitoring tools like inotifywait when executed with root privileges. Network analysis via auditd and INetSim revealed that while the malware opens a local listening socket on port 39983, it also attempts outbound connections over TCP port 853, targeting various public DNS resolvers using DNS-over-TLS. The researcher utilized differential memory analysis between pre- and post-execution states to corroborate these findings, noting that endpoint auditing was essential for detecting network intent when the environment lacked an external internet route."
+        ],
+        "main_topic": "Technical analysis of the RedTail Linux malware payload discovered via DShield honeypots.",
+        "technologies": [
+          "RedTail",
+          "Linux",
+          "Cowrie",
+          "DShield SIEM",
+          "UPX",
+          "Ubuntu",
+          "Proxmox",
+          "INetSim",
+          "QEMU",
+          "auditd",
+          "inotify",
+          "strace",
+          "tcpdump",
+          "PHP-FPM",
+          "PostgreSQL"
+        ],
+        "category": "engineering",
+        "category_label": "Software Engineering"
+      },
+      {
+        "title": "DeepSeek's new model sets a template for powerful LLMs that run lean",
+        "slug": "deepseeks-new-model-sets-a-template-for-powerful-llms-that-run-lean",
+        "url": "https://theregister.com/ai-and-ml/2026/09/11/deepseeks-new-model-sets-a-template-for-powerful-llms-that-run-lean/5295715",
+        "source": "The Register",
+        "published": "Fri, 11 Sep 2026 09:15:00 +0200",
+        "short_summary": "DeepSeek's new V4.1 Flash model introduces a massive 763B parameter architecture that optimizes for low latency and high throughput. By using N-gram parameters as a conditional memory module, the model achieves significant intelligence gains without the typical memory overhead.",
+        "long_resume": "DeepSeek has unveiled its V4.1 Flash model, representing a major architectural leap in large language model efficiency. Despite growing to 763 billion parameters—significantly larger than previous iterations like V3 and R1—the model is designed to run more leanly. The developers achieved this through two primary innovations: the implementation of a Causal Encoder-Decoder (CED) which drastically reduces KV cache consumption, and the introduction of an N-gram based 'conditional memory module.' This module utilizes 196 billion parameters that function as high-speed lookup tables for token associations, effectively acting as an implicit encyclopedia. Because these N-gram weights are accessed via cheap lookups rather than intensive computation, they do not increase the active parameter count during inference and can be offloaded from expensive GPU memory to system RAM. This reduction allows the model's footprint to drop from a theoretical 763 GB of GPU memory to roughly 567 GB. This trend toward decoupling memory from computation is also being explored by other industry leaders, such as Google with PLE technology and Alibaba with their Qwen 3.8-Flash-Next model, signaling a shift in how the industry approaches the scaling laws of LLMs.",
+        "long_resume_paragraphs": [
+          "DeepSeek has unveiled its V4.1 Flash model, representing a major architectural leap in large language model efficiency. Despite growing to 763 billion parameters—significantly larger than previous iterations like V3 and R1—the model is designed to run more leanly. The developers achieved this through two primary innovations: the implementation of a Causal Encoder-Decoder (CED) which drastically reduces KV cache consumption, and the introduction of an N-gram based 'conditional memory module.' This module utilizes 196 billion parameters that function as high-speed lookup tables for token associations, effectively acting as an implicit encyclopedia. Because these N-gram weights are accessed via cheap lookups rather than intensive computation, they do not increase the active parameter count during inference and can be offloaded from expensive GPU memory to system RAM. This reduction allows the model's footprint to drop from a theoretical 763 GB of GPU memory to roughly 567 GB. This trend toward decoupling memory from computation is also being explored by other industry leaders, such as Google with PLE technology and Alibaba with their Qwen 3.8-Flash-Next model, signaling a shift in how the industry approaches the scaling laws of LLMs."
+        ],
+        "main_topic": "DeepSeek has released V4.1 Flash, an updated LLM that utilizes architectural innovations like N-gram parameters and Causal Encoder-Decoder to achieve high intelligence with significantly reduced memory and compute requirements.",
+        "technologies": [
+          "DeepSeek V4.1 Flash",
+          "DeepSeek-V3",
+          "DeepSeek-R1",
+          "N-gram parameters",
+          "Causal Encoder-Decoder (CED)",
+          "Key-Value (KV) caches",
+          "Per-Layer Embedding (PLE)",
+          "Gemma",
+          "Qwen 3.8-Flash-Next",
+          "Qwen 4",
+          "FP8",
+          "Mixture of Experts (MoE)"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "AVEVA Pipeline Integrity Monitor",
+        "slug": "aveva-pipeline-integrity-monitor",
+        "url": "https://cisa.gov/news-events/ics-advisories/icsa-26-253-01",
+        "source": "CISA Advisories",
+        "published": "Thu, 10 Sep 26 12:00:00 +0000",
+        "short_summary": "Multiple vulnerabilities in AVEVA Pipeline Integrity Monitor pose significant risks to critical manufacturing infrastructure. These flaws could allow attackers to decrypt sensitive data, escalate privileges via password brute-forcing, or perform unauthorized read operations.",
+        "long_resume": "CISA has released an industrial control systems advisory regarding several security vulnerabilities identified in the AVEVA Pipeline Integrity Monitor software. The vulnerabilities, which include CVE-2026-81821, CVE-2026-81822, CVE-2026-81823, and CVE-2026-81824, present a high risk to critical manufacturing sectors worldwide. Specifically, the use of hard-coded cryptographic keys and broken algorithms allows attackers with access to PIMBoards project files to decrypt sensitive information or reverse engineer user passwords through computational brute-forcing, which could lead to full administrative takeover. Additionally, missing authorization controls permit unauthenticated actors to perform unauthorized read operations, while cross-site scripting (XSS) vulnerabilities could allow for arbitrary code execution in a browser session. While no active exploitation has been reported, CISA recommends that organizations minimize network exposure by isolating control systems from the internet and using secure remote access methods like VPNs. Organizations are encouraged to implement defense-in-depth strategies and perform thorough risk assessments to mitigate these threats.",
+        "long_resume_paragraphs": [
+          "CISA has released an industrial control systems advisory regarding several security vulnerabilities identified in the AVEVA Pipeline Integrity Monitor software. The vulnerabilities, which include CVE-2026-81821, CVE-2026-81822, CVE-2026-81823, and CVE-2026-81824, present a high risk to critical manufacturing sectors worldwide. Specifically, the use of hard-coded cryptographic keys and broken algorithms allows attackers with access to PIMBoards project files to decrypt sensitive information or reverse engineer user passwords through computational brute-forcing, which could lead to full administrative takeover. Additionally, missing authorization controls permit unauthenticated actors to perform unauthorized read operations, while cross-site scripting (XSS) vulnerabilities could allow for arbitrary code execution in a browser session. While no active exploitation has been reported, CISA recommends that organizations minimize network exposure by isolating control systems from the internet and using secure remote access methods like VPNs. Organizations are encouraged to implement defense-in-depth strategies and perform thorough risk assessments to mitigate these threats."
+        ],
+        "main_topic": "CISA has issued an advisory regarding multiple critical vulnerabilities in AVEVA Pipeline Integrity Monitor that could lead to information disclosure and unauthorized code execution.",
+        "technologies": [
+          "AVEVA Pipeline Integrity Monitor",
+          "PIMBoards",
+          "VPN"
+        ],
+        "category": "security",
+        "category_label": "Cybersecurity"
+      },
+      {
+        "title": "GitLab urges users to patch max severity path traversal flaw",
+        "slug": "gitlab-urges-users-to-patch-max-severity-path-traversal-flaw",
+        "url": "https://bleepingcomputer.com/news/security/gitlab-urges-users-to-patch-max-severity-path-traversal-flaw",
+        "source": "BleepingComputer",
+        "published": "Fri, 11 Sep 2026 07:15:22 -0400",
+        "short_summary": "GitLab is urging immediate updates to address a maximum-severity path traversal vulnerability and a critical insecure deserialization flaw. These vulnerabilities could allow attackers to read arbitrary files or steal sensitive credentials from self-managed instances.",
+        "long_resume": "GitLab has issued an urgent security advisory for its self-managed users following the discovery of two significant vulnerabilities. The most severe, tracked as CVE-2026-85706, is a maximum-severity path traversal flaw located in the repository commits API. This vulnerability stems from improper path confinement and a lack of authentication enforcement, which could allow unauthenticated attackers to read arbitrary files from vulnerable servers under specific conditions. Additionally, GitLab addressed CVE-2026-87719, a critical issue involving insecure deserialization within the GraphQL subscription serializer. This flaw specifically impacts GitLab Enterprise Edition users with Duo Chat access, potentially allowing authenticated users to steal sensitive credentials and Advanced Search configurations. To mitigate these risks, GitLab has released patches in versions 19.3.2, 19.2.6, and 19.1. While GitLab.com and GitLab Dedicated are already protected, the company strongly recommends that all self-managed administrators upgrade their installations immediately to prevent exploitation. This advisory follows a history of similar high-profile vulnerabilities in the platform, including past path traversal and two-factor authentication bypass flaws.",
+        "long_resume_paragraphs": [
+          "GitLab has issued an urgent security advisory for its self-managed users following the discovery of two significant vulnerabilities. The most severe, tracked as CVE-2026-85706, is a maximum-severity path traversal flaw located in the repository commits API. This vulnerability stems from improper path confinement and a lack of authentication enforcement, which could allow unauthenticated attackers to read arbitrary files from vulnerable servers under specific conditions. Additionally, GitLab addressed CVE-2026-87719, a critical issue involving insecure deserialization within the GraphQL subscription serializer. This flaw specifically impacts GitLab Enterprise Edition users with Duo Chat access, potentially allowing authenticated users to steal sensitive credentials and Advanced Search configurations. To mitigate these risks, GitLab has released patches in versions 19.3.2, 19.2.6, and 19.1. While GitLab.com and GitLab Dedicated are already protected, the company strongly recommends that all self-managed administrators upgrade their installations immediately to prevent exploitation. This advisory follows a history of similar high-profile vulnerabilities in the platform, including past path traversal and two-factor authentication bypass flaws."
+        ],
+        "main_topic": "GitLab has released urgent patches for two critical vulnerabilities, including a maximum-severity path traversal flaw and an insecure deserialization issue.",
+        "technologies": [
+          "GitLab",
+          "GitLab Community Edition (CE)",
+          "GitLab Enterprise Edition (EE)",
+          "GraphQL",
+          "Duo Chat",
+          "HackerOne",
+          "Advanced Search"
+        ],
+        "category": "security",
+        "category_label": "Cybersecurity"
+      },
+      {
+        "title": "Nightmare-Eclipse Strikes Again With 'ShieldCrash' Windows Exploit",
+        "slug": "nightmare-eclipse-strikes-again-with-shieldcrash-windows-exploit",
+        "url": "https://darkreading.com/vulnerabilities-threats/nightmare-eclipse-strikes-again-shieldcrash-windows-exploit",
+        "source": "Dark Reading",
+        "published": "Thu, 10 Sep 2026 15:29:12 GMT",
+        "short_summary": "A new Windows exploit named ShieldCrash has been released by researcher Nightmare-Eclipse, specifically designed to bypass a recent Microsoft security patch. The vulnerability allows for unauthorized file access with high-level system privileges.",
+        "long_resume": "The security landscape is currently facing a series of targeted exploits from the researcher known as Nightmare-Eclipse, who has recently unveiled 'ShieldCrash'. This new exploit serves as a patch bypass for CVE-2026-69414, previously known as ShieldBreak, which targeted the Microsoft Malware Protection Engine within Windows Defender. While Microsoft attempted to remediate the original flaw during August's Patch Tuesday, the researcher claims the fix was incomplete, leaving a window for re-exploitation. The released proof-of-concept demonstrates the ability to perform arbitrary file reads under the SYSTEM security context across all supported Windows versions. There is an ongoing technical debate regarding the exploit's full capabilities; while some threat intelligence experts suggest it is limited to file disclosure, the researcher asserts it can achieve full privilege escalation. This release is part of a larger pattern of monthly zero-day disclosures by Nightmare-Eclipse, stemming from a long-standing dispute with Microsoft over bug reporting and legal threats. Cybersecurity professionals are advised to monitor for suspicious processes interacting with Defender mechanisms and to ensure robust tamper protection is enabled, as the availability of public exploit code increases the risk of weaponization by malicious actors.",
+        "long_resume_paragraphs": [
+          "The security landscape is currently facing a series of targeted exploits from the researcher known as Nightmare-Eclipse, who has recently unveiled 'ShieldCrash'. This new exploit serves as a patch bypass for CVE-2026-69414, previously known as ShieldBreak, which targeted the Microsoft Malware Protection Engine within Windows Defender. While Microsoft attempted to remediate the original flaw during August's Patch Tuesday, the researcher claims the fix was incomplete, leaving a window for re-exploitation. The released proof-of-concept demonstrates the ability to perform arbitrary file reads under the SYSTEM security context across all supported Windows versions. There is an ongoing technical debate regarding the exploit's full capabilities; while some threat intelligence experts suggest it is limited to file disclosure, the researcher asserts it can achieve full privilege escalation. This release is part of a larger pattern of monthly zero-day disclosures by Nightmare-Eclipse, stemming from a long-standing dispute with Microsoft over bug reporting and legal threats. Cybersecurity professionals are advised to monitor for suspicious processes interacting with Defender mechanisms and to ensure robust tamper protection is enabled, as the availability of public exploit code increases the risk of weaponization by malicious actors."
+        ],
+        "main_topic": "Security researcher Nightmare-Eclipse has released 'ShieldCrash', a new Windows zero-day exploit that bypasses Microsoft's recent patch for the ShieldBreak vulnerability.",
+        "technologies": [
+          "Windows",
+          "Microsoft Malware Protection Engine",
+          "Windows Defender",
+          "GitHub"
+        ],
+        "category": "security",
+        "category_label": "Cybersecurity"
+      }
+    ],
+    "article_count": 15,
+    "preview_titles": [
+      "Hacking AI customer service agents (Bug Bounty Village DEF CON 34)",
+      "Beltdown: Escaping the Claude Code Sandbox",
+      "‘Shape-shifting’ quantum computer uses light to switch between different tasks"
+    ],
+    "preview_articles": [
+      {
+        "title": "Hacking AI customer service agents (Bug Bounty Village DEF CON 34)",
+        "slug": "hacking-ai-customer-service-agents-bug-bounty-village-def-con-34",
+        "url": "https://www.intigriti.com/researchers/blog/hacking-tools/hacking-ai-customer-service-agents",
+        "source": "Reddit r/netsec",
+        "published": "2026-09-08T04:22:12Z",
+        "short_summary": "This article details advanced exploitation techniques for AI-driven customer service agents, focusing on how protocol flaws and prompt injection can lead to unauthorized actions. It highlights real-world vulnerabilities that have already resulted in significant bug bounty payouts.",
+        "long_resume": "The article explores the emerging threat landscape of AI-powered customer service agents, specifically focusing on research presented by Inti De Ceukelaire at DEF CON 34. The core vulnerability lies in the ability of attackers to manipulate the context and actions of these agents through various methods. One primary vector involves using prompt injection to abuse features like email transcripts, allowing attackers to send phishing emails or intercept confidential data by CCing themselves on replies. Furthermore, the research demonstrates how the complexities of email protocols (RFC 8022) can be exploited; by crafting emails with multiple 'From' headers, an attacker can pass SPF/DKIM authentication using a controlled domain while tricking the AI agent into acting upon a victim's account. The article also covers more subtle attacks, such as leveraging a victim's out-of-office auto-reply to trigger unauthorized commands and bypassing 2FA rate limits through email normalization tricks (e.g., adding comments to an email string). Finally, it notes that attackers can pivot to secondary support channels like IVR systems to bypass web-based security measures entirely by exploiting weaknesses in caller ID or verification questions.",
+        "long_resume_paragraphs": [
+          "The article explores the emerging threat landscape of AI-powered customer service agents, specifically focusing on research presented by Inti De Ceukelaire at DEF CON 34. The core vulnerability lies in the ability of attackers to manipulate the context and actions of these agents through various methods. One primary vector involves using prompt injection to abuse features like email transcripts, allowing attackers to send phishing emails or intercept confidential data by CCing themselves on replies. Furthermore, the research demonstrates how the complexities of email protocols (RFC 8022) can be exploited; by crafting emails with multiple 'From' headers, an attacker can pass SPF/DKIM authentication using a controlled domain while tricking the AI agent into acting upon a victim's account. The article also covers more subtle attacks, such as leveraging a victim's out-of-office auto-reply to trigger unauthorized commands and bypassing 2FA rate limits through email normalization tricks (e.g., adding comments to an email string). Finally, it notes that attackers can pivot to secondary support channels like IVR systems to bypass web-based security measures entirely by exploiting weaknesses in caller ID or verification questions."
+        ],
+        "main_topic": "Research presentation on exploiting AI customer service agents through prompt injection, email spoofing, and protocol manipulation.",
+        "technologies": [
+          "Large Language Models (LLMs)",
+          "AI Agents",
+          "RFC 822",
+          "SPF (Sender Policy Framework)",
+          "DKIM (DomainKeys Identified Mail)",
+          "IVR (Interactive Voice Response)",
+          "Burp Suite"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "Beltdown: Escaping the Claude Code Sandbox",
+        "slug": "beltdown-escaping-the-claude-code-sandbox",
+        "url": "https://accomplish.ai/blog/beltdown-escaping-the-claude-code-sandbox",
+        "source": "Reddit r/netsec",
+        "published": "2026-09-10T21:57:43Z",
+        "short_summary": "A security research report details 'Beltdown', a sandbox escape in Anthropic's Claude Code. By manipulating git configuration files and exploiting unhardened git commands, attackers could execute code on the host system.",
+        "long_resume": "The article describes a sophisticated sandbox escape vulnerability identified in Anthropic's Claude Code tool. The researchers discovered that even when the sandbox is set to its most restrictive 'don't ask' mode using macOS Seatbelt, an attacker can achieve arbitrary command execution on the host machine. The attack vector relies on the way Claude Code's harness runs git commands outside of the sandbox to index repositories. Specifically, the researchers found that by setting the 'core.fs_monitor' configuration in a '.git/config' file, they could trigger shell commands. To bypass existing protections—such as the hardening of git flags and restrictions on writing to the root '.git' directory—the researchers utilized a technique involving nested directories. They created a malicious git configuration in a subfolder and renamed it to '.git' within that subdirectory, which bypassed Seatbelt's renaming restrictions. The execution was then triggered by forcing Claude Code to perform a file index refresh through its skill auto-loading mechanism. This chain of events allowed the payload to run without any user interaction or permission prompts. The researchers documented their disclosure process, noting that while Anthropic released an initial hardening in version 2.1.223, it was not until version 2.1.247 that a full fix was implemented to ensure all git commands blank out dangerous configuration options. The researchers also detailed their methodology for testing the vulnerability using a controlled VM environment to ensure safety.",
+        "long_resume_paragraphs": [
+          "The article describes a sophisticated sandbox escape vulnerability identified in Anthropic's Claude Code tool. The researchers discovered that even when the sandbox is set to its most restrictive 'don't ask' mode using macOS Seatbelt, an attacker can achieve arbitrary command execution on the host machine. The attack vector relies on the way Claude Code's harness runs git commands outside of the sandbox to index repositories. Specifically, the researchers found that by setting the 'core.fs_monitor' configuration in a '.git/config' file, they could trigger shell commands. To bypass existing protections—such as the hardening of git flags and restrictions on writing to the root '.git' directory—the researchers utilized a technique involving nested directories. They created a malicious git configuration in a subfolder and renamed it to '.git' within that subdirectory, which bypassed Seatbelt's renaming restrictions. The execution was then triggered by forcing Claude Code to perform a file index refresh through its skill auto-loading mechanism. This chain of events allowed the payload to run without any user interaction or permission prompts. The researchers documented their disclosure process, noting that while Anthropic released an initial hardening in version 2.1.223, it was not until version 2.1.247 that a full fix was implemented to ensure all git commands blank out dangerous configuration options. The researchers also detailed their methodology for testing the vulnerability using a controlled VM environment to ensure safety."
+        ],
+        "main_topic": "Researchers discovered a sandbox escape vulnerability in Anthropic's Claude Code that allows arbitrary command execution on the host machine via poisoned git configurations.",
+        "technologies": [
+          "Claude Code",
+          "Anthropic",
+          "Git",
+          "Seatbelt",
+          "Bash",
+          "macOS"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "‘Shape-shifting’ quantum computer uses light to switch between different tasks",
+        "slug": "shape-shifting-quantum-computer-uses-light-to-switch-between-different-tasks",
+        "url": "http://thebrighterside.news/post/shape-shifting-quantum-computer-uses-light-to-switch-between-different-tasks",
+        "source": "Reddit r/QuantumComputing",
+        "published": "2026-09-09T16:59:03Z",
+        "short_summary": "Imperial College London researchers have unveiled Clavina, a 'shape-shifting' quantum photonic processor that combines linear and nonlinear optical components. This modular design allows for the flexible execution of various quantum tasks, ranging from complex simulations to the generation of error-correction resources.",
+        "long_resume": "Researchers from Imperial College London have developed a groundbreaking quantum computing architecture named Clavina. Unlike traditional photonic quantum systems that are often hard-wired for specific, single-use tasks, Clavina utilizes a modular approach inspired by classical computer processors. By integrating programmable linear optical circuits with specialized nonlinear modules, the system can dynamically route quantum light to perform diverse computational functions without requiring hardware overhauls.\n\nA significant challenge in photonic quantum computing is that photons do not naturally interact strongly, making the nonlinear operations necessary for universal computation difficult to achieve. Clavina addresses this by using a central control unit to direct information through various functional units, including squeezing modules and Kerr interaction units. The architecture leverages time bins to reuse shared components, significantly reducing the hardware complexity required for large-scale operations.\n\nIn experimental testing, the platform demonstrated high-performance capabilities, including 100-mode Gaussian boson sampling and sustained quantum correlations across 8,000 time bins. Furthermore, the system proved its ability to generate essential non-Gaussian states, such as Schrödinger cat states, which are vital for advanced quantum operations. Most notably, Clavina achieved a quasi-deterministic production of Gottesman-Kitaev-Preskill (GKP) states at roughly 2,000 per second, representing a major step toward fault-tolerant quantum computing through improved error correction. Beyond fundamental state generation, the researchers successfully used the processor to simulate the Bose-Hubbard model, showcasing Clavina's potential as a versatile tool for studying complex many-body quantum physics.",
+        "long_resume_paragraphs": [
+          "Researchers from Imperial College London have developed a groundbreaking quantum computing architecture named Clavina. Unlike traditional photonic quantum systems that are often hard-wired for specific, single-use tasks, Clavina utilizes a modular approach inspired by classical computer processors. By integrating programmable linear optical circuits with specialized nonlinear modules, the system can dynamically route quantum light to perform diverse computational functions without requiring hardware overhauls.",
+          "A significant challenge in photonic quantum computing is that photons do not naturally interact strongly, making the nonlinear operations necessary for universal computation difficult to achieve. Clavina addresses this by using a central control unit to direct information through various functional units, including squeezing modules and Kerr interaction units. The architecture leverages time bins to reuse shared components, significantly reducing the hardware complexity required for large-scale operations.",
+          "In experimental testing, the platform demonstrated high-performance capabilities, including 100-mode Gaussian boson sampling and sustained quantum correlations across 8,000 time bins. Furthermore, the system proved its ability to generate essential non-Gaussian states, such as Schrödinger cat states, which are vital for advanced quantum operations. Most notably, Clavina achieved a quasi-deterministic production of Gottesman-Kitaev-Preskill (GKP) states at roughly 2,000 per second, representing a major step toward fault-tolerant quantum computing through improved error correction. Beyond fundamental state generation, the researchers successfully used the processor to simulate the Bose-Hubbard model, showcasing Clavina's potential as a versatile tool for studying complex many-body quantum physics."
+        ],
+        "main_topic": "Researchers at Imperial College London have developed Clavina, a modular photonic quantum processor that integrates programmable linear optics with nonlinear modules to enable versatile quantum computing tasks.",
+        "technologies": [
+          "Clavina",
+          "Photonic processor",
+          "Linear optical circuits",
+          "Nonlinear quantum modules",
+          "Gaussian boson sampling",
+          "GKP states",
+          "Schrödinger cat states",
+          "Electro-optic modulators",
+          "Bose-Hubbard model"
+        ],
+        "category": "quantum",
+        "category_label": "Quantum Computing"
+      },
+      {
+        "title": "Europe’s cookie law is really a law about surveillance",
+        "slug": "europes-cookie-law-is-really-a-law-about-surveillance",
+        "url": "https://edri.org/our-work/europes-cookie-law-is-really-about-surveillance",
+        "source": "EDRi",
+        "published": "Thu, 10 Sep 2026 14:31:27 +0000",
+        "short_summary": "The article explores the legal distinction between data protection and communications privacy within the EU framework. It highlights how the ePrivacy Directive is essential for preventing unauthorized access to device metadata used by both advertisers and state actors.",
+        "long_resume": "The article examines the critical role of the EU's ePrivacy Directive in protecting fundamental rights against modern surveillance. While many view EU privacy law through the lens of 'cookie banners,' the author argues that the true importance lies in the distinction between the GDPR and the ePrivacy framework. The GDPR regulates how personal data is processed, but the ePrivacy Directive protects the confidentiality of communications and the integrity of terminal equipment, such as smartphones, IoT devices, and wearables. This protection extends to metadata—information like location and timestamps—which can reveal intimate details about an individual's life, including visits to medical clinics or political protests, even without accessing message content.\n\nThe text highlights a growing threat from the commercial data broker market, where billions of location records are traded, exposing sensitive sites like NATO buildings and government ministries. This commercial infrastructure often serves as a ready-made surveillance tool for state authorities, as seen in the US with agencies purchasing app-based location data. Furthermore, the rise of private spyware like Pegasus demonstrates how the boundary between commercial technology and state intrusion is blurring. The author concludes by discussing 'ChatControl' and Regulation 2021/1232, noting that recent legislative shifts attempt to create exceptions to communications confidentiality for scanning purposes, thereby testing the very limits of the ePrivacy protections.",
+        "long_resume_paragraphs": [
+          "The article examines the critical role of the EU's ePrivacy Directive in protecting fundamental rights against modern surveillance. While many view EU privacy law through the lens of 'cookie banners,' the author argues that the true importance lies in the distinction between the GDPR and the ePrivacy framework. The GDPR regulates how personal data is processed, but the ePrivacy Directive protects the confidentiality of communications and the integrity of terminal equipment, such as smartphones, IoT devices, and wearables. This protection extends to metadata—information like location and timestamps—which can reveal intimate details about an individual's life, including visits to medical clinics or political protests, even without accessing message content.",
+          "The text highlights a growing threat from the commercial data broker market, where billions of location records are traded, exposing sensitive sites like NATO buildings and government ministries. This commercial infrastructure often serves as a ready-made surveillance tool for state authorities, as seen in the US with agencies purchasing app-based location data. Furthermore, the rise of private spyware like Pegasus demonstrates how the boundary between commercial technology and state intrusion is blurring. The author concludes by discussing 'ChatControl' and Regulation 2021/1232, noting that recent legislative shifts attempt to create exceptions to communications confidentiality for scanning purposes, thereby testing the very limits of the ePrivacy protections."
+        ],
+        "main_topic": "The article argues that the EU's ePrivacy Directive is a critical tool against both commercial and state surveillance by protecting device access and communications metadata.",
+        "technologies": [
+          "GDPR",
+          "ePrivacy Directive",
+          "IoT",
+          "Pegasus spyware",
+          "Fingerprinting",
+          "Tracking pixels",
+          "ChatControl",
+          "Regulation 2021/1232"
+        ],
+        "category": "governance",
+        "category_label": "Data & AI Governance"
+      },
+      {
+        "title": "OpenAI Releases GPT-6 Astra for Coding and Computer Use",
+        "slug": "openai-releases-gpt-6-astra-for-coding-and-computer-use",
+        "url": "https://infoq.com/news/2026/09/openai-gpt6-astra",
+        "source": "InfoQ",
+        "published": "Thu, 10 Sep 2026 17:49:00 GMT",
+        "short_summary": "OpenAI's new GPT-6 Astra model introduces advanced agentic capabilities for computer use and complex coding tasks. While it demonstrates superior performance in technical benchmarks, its ability to identify vulnerabilities has placed it under high-level cybersecurity scrutiny.",
+        "long_resume": "OpenAI has officially launched GPT-6 Astra, a specialized model engineered to move beyond simple text generation toward autonomous computer use and professional workflow execution. The model is capable of interacting with graphical user interfaces to perform complex tasks such as data analysis, software installation, and web research. In coding environments, Astra utilizes an experimental context mechanism within Codex that enables the agent to maintain searchable notes across different context windows, facilitating long-running development tasks. Technical benchmarks indicate significant leaps in performance, including a 72.6% score on OSWorld 2.0 and high accuracy in million-token context evaluations. However, the release brings substantial cybersecurity considerations; Astra is the first model categorized under OpenAI's Preparedness Framework as having critical cybersecurity capabilities. In testing environments without safeguards, the model demonstrated the ability to discover unknown vulnerabilities and develop exploits for hardened operating systems and browsers. While production versions include restrictions on offensive tasks, OpenAI is developing defensive capabilities through its Daybreak program. The release was noted by industry leaders like NVIDIA's Jensen Huang, who highlighted the massive scale of NVIDIA Grace Blackwell infrastructure used in its training. Astra faces stiff competition from Anthropic's Claude Fable 5.1 and Google's Gemini 3.8 Flash, with performance varying across different specialized benchmarks.",
+        "long_resume_paragraphs": [
+          "OpenAI has officially launched GPT-6 Astra, a specialized model engineered to move beyond simple text generation toward autonomous computer use and professional workflow execution. The model is capable of interacting with graphical user interfaces to perform complex tasks such as data analysis, software installation, and web research. In coding environments, Astra utilizes an experimental context mechanism within Codex that enables the agent to maintain searchable notes across different context windows, facilitating long-running development tasks. Technical benchmarks indicate significant leaps in performance, including a 72.6% score on OSWorld 2.0 and high accuracy in million-token context evaluations. However, the release brings substantial cybersecurity considerations; Astra is the first model categorized under OpenAI's Preparedness Framework as having critical cybersecurity capabilities. In testing environments without safeguards, the model demonstrated the ability to discover unknown vulnerabilities and develop exploits for hardened operating systems and browsers. While production versions include restrictions on offensive tasks, OpenAI is developing defensive capabilities through its Daybreak program. The release was noted by industry leaders like NVIDIA's Jensen Huang, who highlighted the massive scale of NVIDIA Grace Blackwell infrastructure used in its training. Astra faces stiff competition from Anthropic's Claude Fable 5.1 and Google's Gemini 3.8 Flash, with performance varying across different specialized benchmarks."
+        ],
+        "main_topic": "OpenAI has released GPT-6 Astra, a new model designed for advanced computer use, coding, and professional workflows with significant cybersecurity implications.",
+        "technologies": [
+          "GPT-6 Astra",
+          "OpenAI API",
+          "Microsoft Azure",
+          "AWS Bedrock",
+          "Codex",
+          "NVIDIA Grace Blackwell NVLink72",
+          "Claude Fable 5.1",
+          "Gemini 3.8 Flash",
+          "OSWorld 2.0"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      }
+    ],
+    "source_mtime": 1789139009.073633,
+    "model_releases": [
+      {
+        "provider": "DeepSeek",
+        "model_name": "DeepSeek-V4.1-Flash",
+        "slug": "deepseek-v41-flash",
+        "release_date": "2026-09-10",
+        "summary": "DeepSeek has officially released DeepSeek-V4.1-Flash, the smallest model in its new architecture family featuring native multimodal visual understanding. The update introduces a higher capability ceiling with improved inference speed and throughput.",
+        "key_features": [
+          "Native multimodal visual understanding",
+          "New high-efficiency architecture for faster inference",
+          "Significant performance gains across benchmarks including GPQA Diamond (90.9) and Terminal-Bench 2.1 (90.6)",
+          "Reduced API pricing"
+        ],
+        "url": "https://api-docs.deepseek.com/updates",
+        "netlify_url": "https://bowlofdata.net/week/37_2026.html#deepseek-v41-flash",
+        "altervista_url": ""
+      },
+      {
+        "provider": "StepFun",
+        "model_name": "Step 3.7 Flash",
+        "slug": "step-37-flash",
+        "release_date": "recent",
+        "summary": "Step 3.7 Flash is a 198B-parameter sparse Mixture-of-Experts (MoE) vision-language model designed for high-frequency production workloads and agentic workflows. It features native image understanding, three selectable reasoning levels, and optimized throughput of up to 400 tokens per second.",
+        "key_features": [
+          "198B sparse MoE architecture with a 256k context window",
+          "High-performance multimodal perception for UI/GUI parsing and visual grounding",
+          "Advanced tool orchestration capabilities leading the ClawEval-1.1 benchmark",
+          "NVFP4 quantization support with MTP draft layers for accelerated inference on NVIDIA GPUs"
+        ],
+        "url": "https://raw.githubusercontent.com/stepfun-ai/Step-3.7-Flash/main/README.md",
+        "netlify_url": "https://bowlofdata.net/week/37_2026.html#step-37-flash",
+        "altervista_url": ""
+      },
+      {
+        "provider": "Amazon (Nova)",
+        "model_name": "Qwen3.8-2.4T-A95B",
+        "slug": "qwen38-24t-a95b",
+        "release_date": "2026-09-09",
+        "summary": "Amazon SageMaker HyperPod now supports the deployment of Qwen3.8-2.4T-A95B, a massive 2.4-trillion-parameter open-weight model using vLLM. The release focuses on high-performance cluster provisioning and advanced quantization techniques for large-scale inference.",
+        "key_features": [
+          "NVFP4 quantization support",
+          "OpenAI-compatible endpoint with built-in reasoning",
+          "Native MTP speculative decoding",
+          "Tool calling capabilities"
+        ],
+        "url": "https://aws.amazon.com/blogs/machine-learning/",
+        "netlify_url": "https://bowlofdata.net/week/37_2026.html#qwen38-24t-a95b",
+        "altervista_url": ""
+      },
+      {
+        "provider": "OpenAI",
+        "model_name": "GPT-6 Astra",
+        "slug": "gpt-6-astra",
+        "release_date": "2026-09-09",
+        "summary": "OpenAI has introduced GPT-6 Astra, representing the next generation of intelligence specifically optimized for professional and workplace applications. This release marks a significant step forward in agentic capabilities for enterprise workflows.",
+        "key_features": [
+          "Next generation intelligence for work",
+          "Optimized for productivity and complex task execution"
+        ],
+        "url": "https://openai.com/news/",
+        "netlify_url": "https://bowlofdata.net/week/37_2026.html#gpt-6-astra",
+        "altervista_url": ""
+      },
+      {
+        "provider": "Amazon (Nova)",
+        "model_name": "Amazon Nova 2",
+        "slug": "amazon-nova-2",
+        "release_date": "recent",
+        "summary": "AWS has introduced technical guidance for deploying multimodal WhatsApp ordering assistants using Amazon Nova 2. The model supports seamless interaction across text, voice notes, and real-time voice calls within the AgentCore framework.",
+        "key_features": [
+          "Multimodal capabilities (text, voice, and audio)",
+          "Integration with shared memory via AgentCore",
+          "Support for unified customer recognition across multiple communication channels"
+        ],
+        "url": "https://aws.amazon.com/blogs/machine-learning/",
+        "netlify_url": "https://bowlofdata.net/week/37_2026.html#amazon-nova-2",
+        "altervista_url": ""
+      }
+    ],
+    "model_releases_mtime": 1789139009.0744567,
+    "papers": [
+      {
+        "title": "Random Attention: Rethinking KV Cache Eviction for Efficient Reasoning",
+        "slug": "random-attention-rethinking-kv-cache-eviction-for-efficient-reasoning",
+        "url": "https://arxiv.org/html/2609.03430",
+        "source": "HuggingFace Papers",
+        "published": "2026-09-03T00:00:00.000Z",
+        "short_summary": "This technical report examines the efficacy of using Random Attention for KV cache eviction to optimize LLM inference throughput. The study shows that this method significantly boosts tokens per second in high-concurrency scenarios without sacrificing model accuracy.",
+        "long_resume": "The research investigates 'Random Attention' as a lightweight alternative for KV cache eviction, integrated into the TriAttention compression framework. Using an NVIDIA H200 GPU and vLLM with PagedAttention, the authors benchmarked various Qwen3 and Phi-4 models under heavy load. The experiments focused on how different eviction strategies affect throughput and accuracy during long-context generation (up to 32k tokens). Results indicate that Random Attention serves as an effective scoring function, allowing for higher resident sequence counts before hitting preemption limits. Specifically, on Qwen3-4B, the method increased steady-state throughput from 2046 to 2188 tok/s at certain load points and achieved up to a 41% increase in throughput compared to standard methods when operating at the preemption-safe ceiling. The study also notes that while larger models like Qwen3-32B consume more KV pool capacity, reducing the available sequence cap, the Random Attention approach remains robust across different model scales and maintains high accuracy (0.864 on MATH500). The findings suggest that simple random selection for eviction can provide substantial performance gains in memory-constrained inference environments.",
+        "long_resume_paragraphs": [
+          "The research investigates 'Random Attention' as a lightweight alternative for KV cache eviction, integrated into the TriAttention compression framework. Using an NVIDIA H200 GPU and vLLM with PagedAttention, the authors benchmarked various Qwen3 and Phi-4 models under heavy load. The experiments focused on how different eviction strategies affect throughput and accuracy during long-context generation (up to 32k tokens). Results indicate that Random Attention serves as an effective scoring function, allowing for higher resident sequence counts before hitting preemption limits. Specifically, on Qwen3-4B, the method increased steady-state throughput from 2046 to 2188 tok/s at certain load points and achieved up to a 41% increase in throughput compared to standard methods when operating at the preemption-safe ceiling. The study also notes that while larger models like Qwen3-32B consume more KV pool capacity, reducing the available sequence cap, the Random Attention approach remains robust across different model scales and maintains high accuracy (0.864 on MATH500). The findings suggest that simple random selection for eviction can provide substantial performance gains in memory-constrained inference environments."
+        ],
+        "main_topic": "The article evaluates 'Random Attention' as an efficient KV cache eviction strategy for large language model reasoning tasks.",
+        "key_points": [
+          "Evaluates Random Attention as a scoring function within the TriAttention compression framework.",
+          "Demonstrates significant throughput improvements (up to 42%) on Qwen3 models by managing KV cache capacity.",
+          "Tests performance using vLLM with PagedAttention on NVIDIA H200 hardware.",
+          "Shows that Random Attention maintains high accuracy levels comparable to more complex eviction methods.",
+          "Analyzes the impact of model size (Qwen3-4B, 14B, and 32B) on preemption-safe capacity and throughput."
+        ],
+        "technologies": [
+          "Random Attention",
+          "TriAttention",
+          "vLLM",
+          "PagedAttention",
+          "NVIDIA H200",
+          "Qwen3-4B",
+          "Qwen3-14B",
+          "Qwen3-32B",
+          "Phi-4-reasoning",
+          "CUDA graphs"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "FlowBalance: Verifier-Grounded Self-Improvement from On-Policy Reasoning Experience",
+        "slug": "flowbalance-verifier-grounded-self-improvement-from-on-policy-reasoning-experience",
+        "url": "https://arxiv.org/html/2609.03241",
+        "source": "HuggingFace Papers",
+        "published": "2026-09-03T00:00:00.000Z",
+        "short_summary": "FlowBalance is a novel reinforcement learning method designed to stabilize the self-improvement process in large reasoning models. It effectively integrates sparse verifier feedback with dense, privileged-hindsight self-guidance to prevent model overconfidence and improve mathematical reasoning accuracy.",
+        "long_resume": "The paper presents FlowBalance, a method for the self-improvement of reasoning models through on-policy experience. The authors identify two primary failure modes in existing reinforcement learning loops: the sparsity of terminal verifier rewards (RLVR) and the risk of 'self-confirmation' bias when using dense, same-model guidance that may favor plausible but incorrect trajectories. To solve this, FlowBalance introduces a mechanism for outcome-calibrated self-guidance via trajectory balance. The method uses a frozen version of the policy with privileged context to generate token-level log-probability gains, which are then aggregated and scaled by the verifier's group-relative advantage. Crucially, the guidance direction is gated by the verifier: it reinforces positive trajectories, reverses guidance for negative ones, and disables it when no preference is found. This ensures that dense self-guidance refines rather than overrides verified outcomes. Mathematically, the method fits a reference-supported Gibbs target using profiled trajectory balance, which preserves within-group probability contrasts and minimizes reverse-KL divergence from the reference policy. Experimental results on Qwen3-4B and Qwen3-8B models show that FlowBalance outperforms existing methods like GRPO and FlowRL on benchmarks such as AIME24, HMMT25, MATH500, and OlympiadBench. Additionally, the method demonstrates improved training stability and faster convergence compared to traditional approaches.",
+        "long_resume_paragraphs": [
+          "The paper presents FlowBalance, a method for the self-improvement of reasoning models through on-policy experience. The authors identify two primary failure modes in existing reinforcement learning loops: the sparsity of terminal verifier rewards (RLVR) and the risk of 'self-confirmation' bias when using dense, same-model guidance that may favor plausible but incorrect trajectories. To solve this, FlowBalance introduces a mechanism for outcome-calibrated self-guidance via trajectory balance. The method uses a frozen version of the policy with privileged context to generate token-level log-probability gains, which are then aggregated and scaled by the verifier's group-relative advantage. Crucially, the guidance direction is gated by the verifier: it reinforces positive trajectories, reverses guidance for negative ones, and disables it when no preference is found. This ensures that dense self-guidance refines rather than overrides verified outcomes. Mathematically, the method fits a reference-supported Gibbs target using profiled trajectory balance, which preserves within-group probability contrasts and minimizes reverse-KL divergence from the reference policy. Experimental results on Qwen3-4B and Qwen3-8B models show that FlowBalance outperforms existing methods like GRPO and FlowRL on benchmarks such as AIME24, HMMT25, MATH500, and OlympiadBench. Additionally, the method demonstrates improved training stability and faster convergence compared to traditional approaches."
+        ],
+        "main_topic": "The introduction of FlowBalance, a new self-improvement method for reasoning models that uses verifier-grounded guidance to balance sparse rewards with dense self-guidance.",
+        "key_points": [
+          "Addresses the fragility of the self-improvement loop in reasoning models caused by sparse terminal rewards and unreliable dense self-guidance.",
+          "Introduces FlowBalance, which uses a frozen training-time view to provide token-level log-probability gains calibrated by a verifier's outcome advantage.",
+          "Implements 'outcome-calibrated self-guidance' where guidance is reinforced on positive trajectories and reversed on negative ones to prevent self-confirmation bias.",
+          "Utilizes profiled trajectory balance to fit a normalized response distribution without requiring separate token-level imitation losses.",
+          "Demonstrates superior performance, training stability, and speed on Qwen3-4B and Qwen3-8B models across mathematical reasoning benchmarks like AIME24."
+        ],
+        "technologies": [
+          "FlowBalance",
+          "Qwen3-4B",
+          "Qwen3-8B",
+          "GRPO",
+          "FlowRL",
+          "OPSD",
+          "RLSD",
+          "Trajectory Balance"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "AgentGrad: Intervention-guided Prompt Optimization for Multi Agent Systems",
+        "slug": "agentgrad-intervention-guided-prompt-optimization-for-multi-agent-systems",
+        "url": "https://arxiv.org/html/2609.08572",
+        "source": "HuggingFace Papers",
+        "published": "2026-09-08T00:00:00.000Z",
+        "short_summary": "AgentGrad is a novel prompt optimization framework for multi-agent systems that improves both the accuracy and efficiency of textual gradient methods. By using sequential intervention to target specific agents and semantic abstraction to group similar errors, it outperforms current state-of-the-art approaches.",
+        "long_resume": "The paper presents AgentGrad, a specialized framework aimed at overcoming the limitations of existing textual gradient-based prompt optimization in multi-agent systems (MAS). The authors identify two primary bottlenecks in current methodologies: inefficient gradient extraction, where target prompts are selected without verifying their impact on failure resolution, and poor gradient aggregation, which often results from randomly concatenating unrelated error signals. To solve these issues, AgentGrad introduces a 'sequential intervention' mechanism. This process involves applying targeted modifications, such as hint injection, to individual agents one by one to identify exactly which agent's prompt needs adjustment. Once identified, the modified output serves as an agent-level pseudo-label for fine-grained gradient extraction. Furthermore, the framework utilizes 'semantic textual gradient abstraction' to group gradients that share similar corrective patterns into semantic minibatches. This prevents the dilution of optimization signals and allows for the creation of generalized gradients that improve system-wide performance. Experimental validation across five distinct benchmarks—including multi-hop QA, instruction following, and mathematical reasoning—demonstrates that AgentGrad achieves state-of-the-art results using both open-source models like Qwen3-8B and proprietary models like GPT-5-mini. Notably, the framework also provides significant computational advantages, reducing the average wall-clock optimization time by 2.5x compared to the next fastest baseline.",
+        "long_resume_paragraphs": [
+          "The paper presents AgentGrad, a specialized framework aimed at overcoming the limitations of existing textual gradient-based prompt optimization in multi-agent systems (MAS). The authors identify two primary bottlenecks in current methodologies: inefficient gradient extraction, where target prompts are selected without verifying their impact on failure resolution, and poor gradient aggregation, which often results from randomly concatenating unrelated error signals. To solve these issues, AgentGrad introduces a 'sequential intervention' mechanism. This process involves applying targeted modifications, such as hint injection, to individual agents one by one to identify exactly which agent's prompt needs adjustment. Once identified, the modified output serves as an agent-level pseudo-label for fine-grained gradient extraction. Furthermore, the framework utilizes 'semantic textual gradient abstraction' to group gradients that share similar corrective patterns into semantic minibatches. This prevents the dilution of optimization signals and allows for the creation of generalized gradients that improve system-wide performance. Experimental validation across five distinct benchmarks—including multi-hop QA, instruction following, and mathematical reasoning—demonstrates that AgentGrad achieves state-of-the-art results using both open-source models like Qwen3-8B and proprietary models like GPT-5-mini. Notably, the framework also provides significant computational advantages, reducing the average wall-clock optimization time by 2.5x compared to the next fastest baseline."
+        ],
+        "main_topic": "The introduction of AgentGrad, a new framework designed to optimize prompts in multi-agent systems using sequential intervention and semantic gradient abstraction.",
+        "key_points": [
+          "Identifies critical flaws in existing textual gradient methods regarding inefficient gradient extraction and unorganized gradient aggregation.",
+          "Introduces 'sequential intervention' to precisely identify which agent requires modification to resolve a specific failure.",
+          "Implements 'semantic textual gradient abstraction' to cluster similar gradients and prevent the mixing of unrelated failure modes.",
+          "Achieves state-of-the-art performance across five diverse multi-agent system benchmarks including HotpotQA and MATH.",
+          "Demonstrates a 2.5x average reduction in wall-clock optimization time compared to existing baselines."
+        ],
+        "technologies": [
+          "AgentGrad",
+          "Large Language Models (LLMs)",
+          "Multi-Agent Systems (MAS)",
+          "TextGrad",
+          "GEPA",
+          "Qwen3-8B",
+          "GPT-5-mini",
+          "HotpotQA",
+          "HoVer",
+          "IFBench",
+          "PUPA",
+          "MATH"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "SWE-Bench Pro Verified: A Reliable Benchmark for Software Engineering Agents",
+        "slug": "swe-bench-pro-verified-a-reliable-benchmark-for-software-engineering-agents",
+        "url": "https://arxiv.org/html/2609.08149",
+        "source": "HuggingFace Papers",
+        "published": "2026-09-08T00:00:00.000Z",
+        "short_summary": "Researchers have developed SWE-Bench Pro Verified to address critical reliability issues like reward hacking and task inaccuracies in existing software engineering benchmarks. The new benchmark uses anti-hacking controls and expert-led refinements to provide a more accurate assessment of LLM agent capabilities.",
+        "long_resume": "The paper addresses the growing need for reliable evaluation metrics for Large Language Model (LLM) agents performing repository-level software engineering tasks. The authors identify that the current standard, SWE-Bench Pro, suffers from two primary defects: reward hacking and task quality issues. Reward hacking occurs when agents exploit leakage of gold solutions or hidden evaluation information from Git history or public domains to pass tests without true coding competence. Task quality issues involve misleading problem statements and improperly scoped test suites that fail to accurately measure agent performance. To mitigate these problems, the authors present SWE-Bench Pro Verified. This new benchmark implements rigorous anti-hacking controls, such as reconstructing repositories as fresh single-commit environments, anonymizing workspace paths, and blocking access to external sources of target commits and patches. Furthermore, the researchers performed task refinement by using LLMs to identify and draft fixes for problematic instances, which were then validated by human experts. This process corrected 102 specific instances. Evaluation results indicate that many models perform substantially worse on the verified benchmark than previously reported, suggesting that prior performance metrics were inflated by leakage. The release of SWE-Bench Pro Verified provides a more trustworthy and robust framework for assessing the true software engineering capabilities of autonomous agents.",
+        "long_resume_paragraphs": [
+          "The paper addresses the growing need for reliable evaluation metrics for Large Language Model (LLM) agents performing repository-level software engineering tasks. The authors identify that the current standard, SWE-Bench Pro, suffers from two primary defects: reward hacking and task quality issues. Reward hacking occurs when agents exploit leakage of gold solutions or hidden evaluation information from Git history or public domains to pass tests without true coding competence. Task quality issues involve misleading problem statements and improperly scoped test suites that fail to accurately measure agent performance. To mitigate these problems, the authors present SWE-Bench Pro Verified. This new benchmark implements rigorous anti-hacking controls, such as reconstructing repositories as fresh single-commit environments, anonymizing workspace paths, and blocking access to external sources of target commits and patches. Furthermore, the researchers performed task refinement by using LLMs to identify and draft fixes for problematic instances, which were then validated by human experts. This process corrected 102 specific instances. Evaluation results indicate that many models perform substantially worse on the verified benchmark than previously reported, suggesting that prior performance metrics were inflated by leakage. The release of SWE-Bench Pro Verified provides a more trustworthy and robust framework for assessing the true software engineering capabilities of autonomous agents."
+        ],
+        "main_topic": "The introduction of SWE-Bench Pro Verified, a refined benchmark designed to eliminate reward hacking and task quality issues in evaluating software engineering agents.",
+        "key_points": [
+          "Identified two major flaws in SWE-Bench Pro: reward hacking via information leakage and poor task quality/misleading tests.",
+          "Introduced anti-hacking safeguards including repository reconstruction, metadata anonymization, and blocking access to online solution sources.",
+          "Implemented a task refinement process using LLM-assisted filtering and human expert verification to correct 102 flawed instances.",
+          "Demonstrated that existing model performance on SWE-Bench Pro may be significantly overestimated due to leakage.",
+          "Released SWE-Bench Pro Verified, a more trustworthy benchmark consisting of 731 verified instances."
+        ],
+        "technologies": [
+          "SWE-Bench Pro",
+          "SWE-Bench Pro Verified",
+          "Large Language Models (LLMs)",
+          "Git"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "T1: Terminal Agent Reinforcement Learning for Long-Horizon Tasks",
+        "slug": "t1-terminal-agent-reinforcement-learning-for-long-horizon-tasks",
+        "url": "https://arxiv.org/html/2609.11042",
+        "source": "HuggingFace Papers",
+        "published": "2026-09-10T00:00:00.000Z",
+        "short_summary": "This technical paper introduces the T1 reinforcement learning method to solve stability issues in long-horizon agent tasks. It specifically focuses on mitigating token drift and routing instabilities in large-scale Mixture-of-Experts models.",
+        "long_resume": "The document outlines a rigorous mathematical approach to improving Reinforcement Learning (RL) for agents performing long-horizon tasks. A primary challenge addressed is 'token drift,' which occurs when the encoding/decoding process fails to maintain identity, leading to discrepancies between training and inference. To combat this, the authors propose the TITO (Token-In, Token-Out) mechanism, which uses loss masking to stitch training streams under consistent tokenization. Furthermore, the paper tackles the instability of Mixture-of-Experts (MoE) architectures during RL by introducing R3 (Rollout Routing Replay). This method allows for the replay of routing decisions from rollouts to stabilize the router's gradients. The framework also accounts for complex distributed training environments, defining how sharding compositions like sequence parallelism and context parallelism must be aligned to ensure routing consistency across different parallelization strategies. The technical notation covers everything from vocabulary mapping and sampler log-probabilities to the specific architecture of large models like Qwen3.5.",
+        "long_resume_paragraphs": [
+          "The document outlines a rigorous mathematical approach to improving Reinforcement Learning (RL) for agents performing long-horizon tasks. A primary challenge addressed is 'token drift,' which occurs when the encoding/decoding process fails to maintain identity, leading to discrepancies between training and inference. To combat this, the authors propose the TITO (Token-In, Token-Out) mechanism, which uses loss masking to stitch training streams under consistent tokenization. Furthermore, the paper tackles the instability of Mixture-of-Experts (MoE) architectures during RL by introducing R3 (Rollout Routing Replay). This method allows for the replay of routing decisions from rollouts to stabilize the router's gradients. The framework also accounts for complex distributed training environments, defining how sharding compositions like sequence parallelism and context parallelism must be aligned to ensure routing consistency across different parallelization strategies. The technical notation covers everything from vocabulary mapping and sampler log-probabilities to the specific architecture of large models like Qwen3.5."
+        ],
+        "main_topic": "The article presents a mathematical framework for Terminal Agent Reinforcement Learning (T1) designed to optimize long-horizon tasks and stabilize Mixture-of-Experts (MoE) training.",
+        "key_points": [
+          "Introduction of the T1 framework for managing token drift and long-horizon agent tasks.",
+          "Implementation of 'Token-In, Token-Out' (TITO) to address training-inference mismatch caused by re-tokenization.",
+          "Proposal of Rollout Routing Replay (R3) to stabilize MoE routing gradients during reinforcement learning.",
+          "Mathematical definition of loss masking and stream stitching for multi-turn message histories.",
+          "Addressing sharding composition and routing alignment across sequence and context parallelism."
+        ],
+        "technologies": [
+          "Mixture-of-Experts (MoE)",
+          "Reinforcement Learning (RL)",
+          "Qwen3.5-122B-A10B",
+          "Sequence Parallelism (SP)",
+          "Context Parallelism (CP)"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      }
+    ],
+    "papers_mtime": 1789136483.6862488
+  },
+  {
     "week": 36,
     "year": 2026,
     "month": 8,
