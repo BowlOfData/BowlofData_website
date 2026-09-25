@@ -68,6 +68,105 @@ OG_IMAGE     = f"{SITE_URL}/imgs/bowl.png"   # 2560x1440
 # impression data for them would be guessing. Raise this once that data exists.
 MIN_INDEXABLE_ITEMS = 0
 
+# Technology tag synonyms. The classifier spells one concept many ways -- "LLM",
+# "LLMs", "Large Language Models (LLMs)", "LLM (Large Language Models)" -- and
+# each spelling slugified to its own tag page, so the site ran five weak pages
+# competing for the same query instead of one strong one.
+#
+# Keys are the canonical slug (normally the variant that already held the most
+# items, so the strongest indexed URL survives); values are the slugs folded
+# into it. Retired slugs are never simply dropped: _generate_redirects() 301s
+# each one to its canonical page, because Google already knows those URLs.
+# Add a spelling here when the classifier invents a new one.
+TAG_ALIASES: dict[str, list[str]] = {
+    "large-language-models-llms":     ["llm", "llms", "large-language-models",
+                                       "large-language-models-llm",
+                                       "llm-large-language-models",
+                                       "llm-large-language-model"],
+    "bitcoin":                        ["bitcoin-btc", "btc"],
+    "ethereum":                       ["ethereum-eth", "ether", "eth"],
+    "stellar":                        ["stellar-xlm", "xlm"],
+    "evm":                            ["ethereum-virtual-machine-evm"],
+    "etf":                            ["etfs"],
+    "ai-agents":                      ["agentic-ai"],
+    "claude":                         ["anthropic-claude"],
+    "claude-mythos":                  ["anthropic-mythos", "claude-mythos-5"],
+    "codex":                          ["openai-codex", "codex-cli"],
+    "gemini":                         ["google-gemini"],
+    "post-quantum-cryptography-pqc":  ["post-quantum-cryptography"],
+    "elliptic-curve-cryptography-ecc": ["elliptic-curve-cryptography",
+                                        "ecc-elliptic-curve-cryptography"],
+    "ml-kem":                         ["ml-kem-fips-203", "fips-203"],
+    "zero-knowledge-proofs":          ["zero-knowledge-proofs-zkps"],
+    "sha-256":                        ["sha256"],
+    "quantum-error-correction":       ["quantum-error-correction-qec"],
+    "quantum-processing-unit-qpu":    ["quantum-processing-units",
+                                       "quantum-processing-units-qpus", "qpu"],
+    "high-performance-computing-hpc": ["high-performance-computing",
+                                       "hpc-high-performance-computing"],
+    "data-centers":                   ["data-center"],
+    "gpu":                            ["gpus"],
+    "transformer":                    ["transformers"],
+    "reinforcement-learning-rl":      ["reinforcement-learning"],
+    "lora":                           ["lora-low-rank-adaptation"],
+    "grpo":                           ["grpo-group-relative-policy-optimization",
+                                       "grouped-reinforcement-learning-grpo"],
+    "ppo":                            ["ppo-proximal-policy-optimization",
+                                       "proximal-policy-optimization-ppo"],
+    "dpo":                            ["dpo-direct-preference-optimization",
+                                       "direct-preference-optimization-dpo"],
+    "on-policy-self-distillation-opsd": ["opsd"],
+    "retrieval-augmented-generation-rag": ["rag", "rag-retrieval-augmented-generation"],
+    "mixture-of-experts-moe":         ["moe-mixture-of-experts"],
+    "model-context-protocol-mcp":     ["mcp-model-context-protocol"],
+    "diffusion-transformer-dit":      ["diffusion-transformers-dits"],
+    "cve":                            ["cve-common-vulnerabilities-and-exposures"],
+    "oidc":                           ["oidc-openid-connect"],
+    "edr":                            ["endpoint-detection-and-response-edr"],
+    "tls":                            ["transport-layer-security-tls"],
+    "identity-and-access-management-iam": ["iam"],
+    "low-earth-orbit-leo":            ["low-earth-orbit", "low-earth-orbit-leo-networks",
+                                       "low-earth-orbit-leo-satellites"],
+    "github-actions":                 ["github-actions-cicd"],
+    "python":                         ["python-implied-by-code-context"],
+}
+
+# Tags that restate a topic hub. tag/ai.html ("AI", 8 items) competed with
+# topic/ai.html (every AI item in the archive) for "AI newsletter"-shaped
+# queries and could only ever lose. These tags get no page of their own: their
+# chips link to the hub and their old URLs 301 there.
+TAG_TO_HUB: dict[str, str] = {
+    "ai":                         "ai",
+    "ai-artificial-intelligence": "ai",
+    "artificial-intelligence":    "ai",
+    "artificial-intelligence-ai": "ai",
+    "machine-learning":           "ai",
+    "deep-learning":              "ai",
+    "blockchain":                 "blockchain",
+}
+
+_TAG_CANONICAL = {v: canon for canon, vs in TAG_ALIASES.items() for v in vs}
+
+# Tag slugs whose page may disappear with a plain 404 -- a deliberate decision,
+# not a default. Empty on purpose: the build refuses to drop a live tag page
+# that is neither merged (301) nor listed here. The 43 thin tags pruned in the
+# early-August dedupe (btc, gguf, starship, ...) predate this guard and are
+# already 404; the real synonyms among them are folded into TAG_ALIASES above,
+# and the rest held 1-2 items for 1-3 weeks, mostly before bowlofdata.net served
+# real paths, so a 404 is the honest answer and a redirect would be a soft 404.
+ACCEPTED_TAG_404S: set[str] = set()
+
+# Groups _tag_synonym_candidates() flags that were reviewed and are genuinely
+# different things, so the build stops re-suggesting them.
+TAG_NOT_SYNONYMS: list[set[str]] = [
+    {"github-actions", "cicd"},                      # a product vs a practice
+    {"identity-and-access-management-iam",
+     "aws-identity-and-access-management-iam"},     # generic IAM vs AWS IAM
+    {"java", "spring-java"},                         # a language vs a framework
+    {"quantum-processing-unit-qpu",
+     "trapped-ion-quantum-processing-units-qpus"},  # one hardware family
+]
+
 # ---------------------------------------------------------------------------
 # Topic taxonomy — the site's editorial "beats" (see CATEGORY_ORDER below).
 # Articles carry no category field, so each item is classified into one of
@@ -324,17 +423,26 @@ def _category_patterns() -> dict[str, list[re.Pattern]]:
 
 
 def _tag_display_map(all_weeks: list[dict]) -> dict[str, str]:
-    """Map each technology slug to its most common original display spelling."""
+    """Map each tag slug to its most common original display spelling.
+
+    A merged tag prefers a spelling that slugifies to the canonical slug itself,
+    so the page for large-language-models-llms is titled "Large Language Models
+    (LLMs)" even in a week when the bare "LLM" spelling outnumbers it.
+    """
     from collections import Counter
     counts: dict[str, Counter] = {}
     for w in all_weeks:
         for item in w["articles"] + w.get("papers", []):
             for tech in item.get("technologies", []):
-                slug = _slugify(tech)
+                slug = _tag_slug(tech)
                 if not slug:
                     continue
                 counts.setdefault(slug, Counter())[tech] += 1
-    return {slug: c.most_common(1)[0][0] for slug, c in counts.items()}
+    display = {}
+    for slug, c in counts.items():
+        own = [t for t, _ in c.most_common() if _slugify(t) == slug]
+        display[slug] = own[0] if own else c.most_common(1)[0][0]
+    return display
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -360,6 +468,46 @@ def _slugify(text: str) -> str:
     slug = re.sub(r"[\s_]+", "-", slug)
     slug = re.sub(r"-+", "-", slug)
     return slug.strip("-")
+
+
+def _tag_slug(tech: str) -> str:
+    """The tag page a technology name belongs to, after folding synonyms.
+
+    Use this, never bare _slugify, for anything tag-shaped: the aggregation,
+    the co-occurrence links and the week-page chips must all agree on it, or a
+    chip points at a variant slug that no longer has a page.
+    """
+    slug = _slugify(tech)
+    return _TAG_CANONICAL.get(slug, slug)
+
+
+# Source-platform residue in scraped headlines: Reddit's [P]/[R]/[D]/[N] post
+# flair and InfoQ's "Article:" type prefix. They read as noise in an <h2>, in
+# search snippets and in llms.txt, and say nothing about the story. Only the
+# displayed headline is cleaned: the stored title, and the anchor slug derived
+# from it, stay exactly as ingested, so every #anchor already linked from
+# Substack keeps resolving.
+_HEADLINE_CRUFT = re.compile(
+    r"^\s*\[(?:P|R|D|N)\]\s*"
+    r"|\s*\[(?:P|R|D|N)\]\s*$"
+    r"|^(?:Article|Video|Podcast):\s+"
+)
+
+
+def _headline(title: str) -> str:
+    """A scraped title with platform flair removed, for display only."""
+    cleaned = _HEADLINE_CRUFT.sub("", title or "").strip()
+    return cleaned or title
+
+
+def _tag_href(tech: str, linkable: set[str], tag_base: str, topic_base: str) -> str | None:
+    """Where a technology chip links: its tag page, its topic hub, or nowhere."""
+    slug = _tag_slug(tech)
+    if slug in TAG_TO_HUB:
+        return f"{topic_base}{TAG_TO_HUB[slug]}.html"
+    if slug in linkable:
+        return f"{tag_base}{slug}.html"
+    return None
 
 
 def _week_label(week: int, year: int) -> str:
@@ -721,19 +869,44 @@ def _format_range_long(start: date, end: date) -> str:
     return f"{start.day} {start:%B} – {end.day} {end:%B} {end.year}"
 
 
-def _week_meta_description(w: dict, range_long: str) -> str:
-    """One meta description per issue, dated so no two are identical.
+def _week_top_tags(w: dict, tag_display: dict[str, str], limit: int,
+                   specific_only: bool = False) -> list[str]:
+    """The issue's most-carried technologies, synonyms folded, display-named.
 
-    Search engines truncate around 155 characters, so the model-release and
-    paper tallies are appended only when they still fit — a long month-spanning
-    range plus a big issue would otherwise push the sentence past the cut.
+    Ordered by how many items in the issue carry them, so the list reads as
+    what the week was actually about rather than whatever the classifier
+    happened to emit first. `specific_only` drops the hub-level tags (AI,
+    Blockchain, ...) that every issue carries and so tell a reader nothing.
+    """
+    counts: dict[str, int] = {}
+    for item in _week_items(w):
+        for slug in dict.fromkeys(_tag_slug(t) for t in item["technologies"]):
+            if slug and not (specific_only and slug in TAG_TO_HUB):
+                counts[slug] = counts.get(slug, 0) + 1
+    ranked = sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))[:limit]
+    return [tag_display.get(slug, slug) for slug, _ in ranked]
+
+
+def _week_meta_description(w: dict, range_long: str, tag_display: dict[str, str]) -> str:
+    """One meta description per issue, naming what that issue actually covered.
+
+    It used to be the same sentence for every issue with only the date and the
+    counts changed -- twenty near-identical snippets that gave a searcher no
+    reason to pick one issue over another, and gave the page nothing to match
+    on. The issue's top technologies go in instead, dropping from three toward
+    none until the sentence fits the ~155-character snippet; the model-release
+    and paper tallies are appended only if they still fit after that.
     """
     count = w["article_count"]
-    base = (
-        f"The week in tech, {range_long}: {count} curated "
-        f"{'stories' if count != 1 else 'story'} across AI, cybersecurity, "
-        "blockchain and engineering"
-    )
+    stories = f"{count} curated {'stories' if count != 1 else 'story'}"
+    top = _week_top_tags(w, tag_display, limit=3, specific_only=True)
+    base = f"The week in tech, {range_long}: {stories} across AI, cybersecurity, blockchain and engineering"
+    for n in range(len(top), 0, -1):
+        names = top[:n]
+        candidate = f"The week in tech, {range_long}: {stories} on {', '.join(names)} and more"
+        if len(candidate) + 1 <= 155:
+            base = candidate
+            break
     extras = []
     if w.get("model_releases"):
         n = len(w["model_releases"])
@@ -748,19 +921,13 @@ def _week_meta_description(w: dict, range_long: str) -> str:
     return base + "."
 
 
-def _week_og_tags(w: dict, limit: int = 8) -> list[str]:
+def _week_og_tags(w: dict, tag_display: dict[str, str], limit: int = 8) -> list[str]:
     """The issue's most-repeated technologies, for `article:tag`.
 
-    Ordered by how many items in the issue carry them, so the list reads as
-    what the week was actually about rather than whatever the classifier
-    happened to emit first.
+    Synonyms are folded first, so an issue whose items say "LLM", "LLMs" and
+    "Large Language Models (LLMs)" emits one tag, not three.
     """
-    counts: dict[str, int] = {}
-    for item in _week_items(w):
-        for tech in dict.fromkeys(item["technologies"]):
-            if tech:
-                counts[tech] = counts.get(tech, 0) + 1
-    return [t for t, _ in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))[:limit]]
+    return _week_top_tags(w, tag_display, limit)
 
 
 def _make_week_jsonld(w: dict, site_url: str, site_name: str) -> str:
@@ -779,7 +946,7 @@ def _make_week_jsonld(w: dict, site_url: str, site_name: str) -> str:
         # author and publisher claimed someone else's journalism as our own.
         article_node: dict[str, Any] = {
             "@type": "NewsArticle",
-            "headline": a["title"],
+            "headline": _headline(a["title"]),
             "url": f"{week_url}#{a['slug']}",
             "image": OG_IMAGE,
             "publisher": publisher,
@@ -890,7 +1057,7 @@ def _make_collection_jsonld(
     for i, it in enumerate(items, 1):
         node: dict[str, Any] = {
             "@type": "NewsArticle",
-            "headline": it["title"],
+            "headline": _headline(it["title"]),
             "url": f"{site_url}/{it['week_href']}#{it['slug']}",
             "image": OG_IMAGE,
             "publisher": publisher,
@@ -1006,7 +1173,7 @@ def _week_items(w: dict) -> list[dict]:
                 continue
             _ensure_category(it)
             items.append({
-                "title":          it["title"],
+                "title":          _headline(it["title"]),
                 "slug":           it["slug"],
                 "short_summary":  it.get("short_summary", ""),
                 "url":            it.get("url", ""),
@@ -1042,8 +1209,8 @@ def _collect_hubs(all_weeks: list[dict], tag_display: dict[str, str],
             )
             hubs[cat]["count"] += len(items)
             for item in items:
-                for tech in item["technologies"]:
-                    slug = _slugify(tech)
+                # dict.fromkeys: an item tagged "LLM" and "LLMs" counts once.
+                for slug in dict.fromkeys(_tag_slug(t) for t in item["technologies"]):
                     if slug in kept_tag_slugs:
                         hubs[cat]["tag_counts"][slug] = hubs[cat]["tag_counts"].get(slug, 0) + 1
     # Attach a sorted "related tags" list per hub for cross-linking
@@ -1068,7 +1235,7 @@ def _collect_tags(all_weeks: list[dict], tag_display: dict[str, str],
         for item in _week_items(w):
             seen_here: list[str] = []
             for tech in item["technologies"]:
-                slug = _slugify(tech)
+                slug = _tag_slug(tech)
                 if not slug or slug in seen_here:
                     continue
                 seen_here.append(slug)
@@ -1081,7 +1248,7 @@ def _collect_tags(all_weeks: list[dict], tag_display: dict[str, str],
 
     tags: dict[str, dict] = {}
     for slug, items in raw.items():
-        if len(items) < min_items:
+        if len(items) < min_items or slug in TAG_TO_HUB:
             continue
         # Group the (already newest-first) items by issue
         groups: list[dict] = []
@@ -1170,6 +1337,79 @@ def _assert_no_dead_internal_links() -> None:
         raise SystemExit(
             f"BUILD ABORTED: {len(dead)} dead internal link(s): " + ", ".join(dead[:10])
         )
+
+
+def _retired_tag_targets(kept_tag_slugs: set[str], hub_slugs: list[str]) -> dict[str, str]:
+    """Every tag slug retired by a synonym merge, mapped to the page that absorbed it.
+
+    A slug only gets a target when that target was actually rendered: a merged
+    tag still below min_items has no page, and a redirect to a 404 is worse than
+    a plain 404.
+    """
+    chained = sorted(set(TAG_ALIASES) & set(_TAG_CANONICAL))
+    overlap = sorted(set(TAG_TO_HUB) & (set(TAG_ALIASES) | set(_TAG_CANONICAL)))
+    if chained or overlap:
+        raise SystemExit(
+            f"BUILD ABORTED: tag alias chains {chained} / alias-hub overlap {overlap}; "
+            "every retired slug must point straight at a final page."
+        )
+    targets: dict[str, str] = {}
+    for variant, canon in sorted(_TAG_CANONICAL.items()):
+        if canon in kept_tag_slugs:
+            targets[variant] = f"/tag/{canon}.html"
+    for slug, hub in sorted(TAG_TO_HUB.items()):
+        if hub in hub_slugs:
+            targets[slug] = f"/topic/{hub}.html"
+    return targets
+
+
+def _generate_redirects(targets: dict[str, str]) -> str:
+    """Netlify `_redirects` for the retired tag URLs in `targets`.
+
+    Both the `.html` and the extensionless form (Pretty URLs serves both, so
+    either may be indexed). `301!` forces the rule even if a stale file were
+    ever left behind.
+    """
+    lines = ["# Generated by build.py from TAG_ALIASES / TAG_TO_HUB. Do not edit."]
+    for slug, to in targets.items():
+        lines.append(f"/tag/{slug}.html  {to}  301!")
+        lines.append(f"/tag/{slug}  {to}  301!")
+    return "\n".join(lines) + "\n"
+
+
+def _tag_synonym_candidates(all_weeks: list[dict]) -> list[list[str]]:
+    """Spellings that look like one concept but still land on different tag pages.
+
+    Advisory only -- it cannot tell "Transformers" the architecture from
+    "Transformers" the library -- but it turns the per-issue habit of checking
+    for new classifier spellings into a line in the build output. Two spellings
+    group when they match after dropping a parenthetical, punctuation and a
+    plural "s", or when one is the other's parenthesised acronym.
+    """
+    counts: dict[str, int] = {}
+    groups: dict[str, set[str]] = {}
+    for w in all_weeks:
+        for item in w["articles"] + w.get("papers", []):
+            for tech in dict.fromkeys(item.get("technologies") or []):
+                final = _tag_slug(tech)
+                if not final:
+                    continue
+                counts[final] = counts.get(final, 0) + 1
+                outside = re.sub(r"\s*\(.*?\)", "", tech).lower().replace("-", " ")
+                keys = [outside] + [a.lower() for a in re.findall(r"\((.*?)\)", tech)]
+                for k in keys:
+                    k = re.sub(r"s\b", "", re.sub(r"[^a-z0-9 ]", "", k)).strip()
+                    k = re.sub(r"\s+", " ", k)
+                    if k:
+                        groups.setdefault(k, set()).add(final)
+    found: set[tuple[str, ...]] = set()
+    for finals in groups.values():
+        live = {f for f in finals if f not in TAG_TO_HUB}
+        if any(live <= reviewed for reviewed in TAG_NOT_SYNONYMS):
+            continue
+        if len(live) > 1 and sum(counts[f] for f in live) >= 3:
+            found.add(tuple(sorted(live, key=lambda f: -counts[f])))
+    return sorted(list(c) for c in found)
 
 
 def _generate_robots_txt(site_url: str) -> str:
@@ -1330,7 +1570,7 @@ def _generate_rss(all_weeks: list[dict], site_url: str, site_name: str, tagline:
             article_url = a.get("url") or week_url
             summary = a.get("short_summary", "")
             desc_parts.append(
-                f'  <li><a href="{_esc(article_url)}">{_esc(a["title"])}</a>'
+                f'  <li><a href="{_esc(article_url)}">{_esc(_headline(a["title"]))}</a>'
                 + (f": {_esc(summary)}" if summary else "")
                 + "</li>"
             )
@@ -1385,7 +1625,7 @@ def _generate_llms_txt(all_weeks: list[dict], site_url: str, site_name: str, tag
     for w in all_weeks:
         week_url = f"{site_url}/{w['href']}"
         count = w["article_count"]
-        titles = w.get("preview_titles", [])
+        titles = [_headline(t) for t in w.get("preview_titles", [])]
         desc = f"{count} article{'s' if count != 1 else ''}"
         if titles:
             desc += ". Highlights: " + "; ".join(titles)
@@ -1499,6 +1739,8 @@ def build() -> None:
         organization_jsonld_str=_make_organization_jsonld(SITE_URL, SITE_NAME, SITE_TAGLINE),
     )
     env.filters["slugify"] = _slugify
+    env.filters["tag_href"] = _tag_href
+    env.filters["headline"] = _headline
 
     # ------------------------------------------------------------------
     # Phase 1: load manifest and reconcile with current source files
@@ -1637,6 +1879,10 @@ def build() -> None:
     # Finance (DeFi)" the next, so a tag can stop being rendered under the slug
     # an untouched week page still points at. That left 16 dead internal links
     # across five issues. Re-render any week whose on-disk chips have gone stale.
+    #
+    # Compared as a whole set, not just "links to a dropped slug": a TAG_ALIASES
+    # merge can also turn a formerly unlinked chip ("LLM", 1 item) into a link,
+    # and a page that is merely missing a link would never be caught otherwise.
     for w in all_weeks:
         key = (w["week"], w["year"])
         if key in render_set:
@@ -1644,9 +1890,13 @@ def build() -> None:
         path = SITE_DIR / w["href"]
         if not path.exists():
             continue
-        linked = set(re.findall(r'href="\.\./tag/([a-z0-9-]+)\.html"',
-                                path.read_text(encoding="utf-8")))
-        if linked - kept_tag_slugs:
+        on_disk = set(re.findall(r'class="tag tag--link" href="([^"]+)"',
+                                 path.read_text(encoding="utf-8")))
+        expected = {
+            href for item in _week_items(w) for tech in item["technologies"]
+            if (href := _tag_href(tech, kept_tag_slugs, "../tag/", "../topic/"))
+        }
+        if on_disk != expected:
             render_set.add(key)
 
     # ------------------------------------------------------------------
@@ -1672,7 +1922,7 @@ def build() -> None:
             date_range_short=_format_range_short(cov_start, cov_end),
             date_range_long=_format_range_long(cov_start, cov_end),
             meta_description=_week_meta_description(
-                w, _format_range_long(cov_start, cov_end)
+                w, _format_range_long(cov_start, cov_end), tag_display
             ),
             articles=w["articles"],
             model_releases=w.get("model_releases", []),
@@ -1697,7 +1947,7 @@ def build() -> None:
                 .replace(microsecond=0).isoformat()
                 if w.get("source_mtime") else None
             ),
-            og_article_tags=_week_og_tags(w),
+            og_article_tags=_week_og_tags(w, tag_display),
             jsonld_str=_make_week_jsonld(w, SITE_URL, SITE_NAME),
             breadcrumb_jsonld_str=_make_breadcrumb_jsonld([
                 (SITE_NAME, f"{SITE_URL}/"),
@@ -1925,6 +2175,26 @@ def build() -> None:
     # rendered, but its file used to survive: unlinked, absent from the sitemap,
     # and still served by Netlify with whatever it said the last time it
     # qualified. Reconcile the directory against what we just wrote.
+    #
+    # A live tag page must not become a 404 by accident. Early-August dedupe
+    # work dropped 43 tags below min_items and deleted their pages silently;
+    # nobody decided it, it just happened. Now a disappearing tag page has to be
+    # either a TAG_ALIASES/TAG_TO_HUB merge (it gets a 301) or listed in
+    # ACCEPTED_TAG_404S (a deliberate choice), or the build stops.
+    retired_targets = _retired_tag_targets(set(tag_slugs), hub_slugs)
+    vanishing = sorted(
+        p.stem for p in (SITE_DIR / "tag").glob("*.html")
+        if p.stem not in tag_slugs
+        and p.stem not in retired_targets
+        and p.stem not in ACCEPTED_TAG_404S
+    )
+    if vanishing:
+        raise SystemExit(
+            f"BUILD ABORTED: {len(vanishing)} live tag page(s) would become 404s: "
+            + ", ".join(vanishing[:10])
+            + ". Fold each into a real synonym via TAG_ALIASES / TAG_TO_HUB, or add "
+            "it to ACCEPTED_TAG_404S if a 404 is the honest answer."
+        )
     for directory, kept in (("tag", set(tag_slugs)), ("topic", set(hub_slugs))):
         stale = sorted(
             path for path in (SITE_DIR / directory).glob("*.html")
@@ -1974,6 +2244,18 @@ def build() -> None:
     _assert_sitemap_matches_disk(sitemap_xml)
     _assert_no_dead_internal_links()
     print(f"  Generated sitemap → site/sitemap.xml")
+
+    (SITE_DIR / "_redirects").write_text(
+        _generate_redirects(retired_targets), encoding="utf-8"
+    )
+    print(f"  Generated redirects → site/_redirects")
+
+    candidates = _tag_synonym_candidates(all_weeks)
+    if candidates:
+        print(f"  Check     {len(candidates)} possible tag synonym group(s) — "
+              "add real ones to TAG_ALIASES:")
+        for group in candidates:
+            print(f"              {' / '.join(group)}")
 
     (SITE_DIR / "llms.txt").write_text(
         _generate_llms_txt(all_weeks, SITE_URL, SITE_NAME, SITE_TAGLINE, hubs, tags),

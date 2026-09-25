@@ -62,7 +62,7 @@
           {% if w.preview_titles %}
           <ul class="week-card-preview">
             {% for t in w.preview_titles %}
-            <li>{{ t }}</li>
+            <li>{{ t | headline }}</li>
             {% endfor %}
           </ul>
           {% endif %}

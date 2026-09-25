@@ -118,7 +118,7 @@
           <div class="article-card-top">
             <p class="article-number">Paper {{ loop.index }}</p>
             {# Plain text on purpose — see the release cards above. #}
-            <h2 class="article-title">{{ p.title }}</h2>
+            <h2 class="article-title">{{ p.title | headline }}</h2>
             <div class="article-meta">
               {% if p.category_label %}
               <a class="beat-badge beat-badge--{{ p.category }}" href="{{ topic_base }}{{ p.category }}.html">{{ p.category_label }}</a>
@@ -154,9 +154,9 @@
             {% if p.technologies %}
             <div class="article-tags">
               {% for tech in p.technologies %}
-              {% set tslug = tech | slugify %}
-              {% if tslug in linkable_tags %}
-              <a class="tag tag--link" href="{{ tag_base }}{{ tslug }}.html">{{ tech }}</a>
+              {% set thref = tech | tag_href(linkable_tags, tag_base, topic_base) %}
+              {% if thref %}
+              <a class="tag tag--link" href="{{ thref }}">{{ tech }}</a>
               {% else %}
               <span class="tag">{{ tech }}</span>
               {% endif %}
@@ -200,7 +200,7 @@
         <div class="article-card-top">
           <p class="article-number">Article {{ loop.index }}</p>
           {# Plain text on purpose — see the release cards above. #}
-          <h2 class="article-title">{{ a.title }}</h2>
+          <h2 class="article-title">{{ a.title | headline }}</h2>
           <div class="article-meta">
             {% if a.category_label %}
             <a class="beat-badge beat-badge--{{ a.category }}" href="{{ topic_base }}{{ a.category }}.html">{{ a.category_label }}</a>
@@ -236,9 +236,9 @@
           {% if a.technologies %}
           <div class="article-tags">
             {% for tech in a.technologies %}
-            {% set tslug = tech | slugify %}
-            {% if tslug in linkable_tags %}
-            <a class="tag tag--link" href="{{ tag_base }}{{ tslug }}.html">{{ tech }}</a>
+            {% set thref = tech | tag_href(linkable_tags, tag_base, topic_base) %}
+            {% if thref %}
+            <a class="tag tag--link" href="{{ thref }}">{{ tech }}</a>
             {% else %}
             <span class="tag">{{ tech }}</span>
             {% endif %}

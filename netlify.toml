@@ -3,6 +3,16 @@
   # so Netlify only publishes the directory. Nothing here needs a database.
   publish = "site"
 
+# The default Netlify subdomain serves the same files as the apex and Google has
+# indexed pages on it. Domain-scoped, so deploy previews
+# (deploy-preview-N--bowofdata.netlify.app) are unaffected. force = true is required:
+# every path exists as a real file, and without it Netlify serves the file.
+[[redirects]]
+  from = "https://bowofdata.netlify.app/*"
+  to = "https://bowlofdata.net/:splat"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]

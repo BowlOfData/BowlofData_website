@@ -1,0 +1,2740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A1613">
+  <title>Tech News Roundup: Sep 21–25, 2026 (Week 39) · Bowl of Data</title>
+  
+  
+  <meta name="description" content="The week in tech, 21–25 September 2026: 17 curated stories on Large Language Models (LLMs), CUDA, Claude Code and more.">
+  <meta name="author" content="Bowl of Data team">
+  
+  <link rel="canonical" href="https://bowlofdata.net/week/39_2026.html">
+  <link rel="icon" type="image/png" href="https://bowlofdata.net/imgs/logo.png">
+  <link rel="apple-touch-icon" href="https://bowlofdata.net/imgs/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static/style.css">
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="Bowl of Data">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Tech News Roundup: Sep 21–25, 2026 (Week 39)">
+  <meta property="og:description" content="The week in tech, 21–25 September 2026: 17 curated stories on Large Language Models (LLMs), CUDA, Claude Code and more.">
+  <meta property="og:image" content="https://bowlofdata.net/imgs/bowl.png">
+  <meta property="og:image:width" content="2560">
+  <meta property="og:image:height" content="1440">
+  <meta property="og:image:alt" content="Bowl of Data — weekly tech newsletter">
+  <meta property="og:url" content="https://bowlofdata.net/week/39_2026.html">
+  
+  
+  <meta property="article:published_time" content="2026-09-25T10:49:24+00:00">
+  <meta property="article:modified_time" content="2026-09-25T10:49:24+00:00">
+  <meta property="article:section" content="Technology">
+  <meta property="article:tag" content="Large Language Models (LLMs)">
+  <meta property="article:tag" content="CUDA">
+  <meta property="article:tag" content="Claude Code">
+  <meta property="article:tag" content="Claude Opus 4.6">
+  <meta property="article:tag" content="JavaScript">
+  <meta property="article:tag" content="Qwen3.5">
+  <meta property="article:tag" content="A* search algorithm">
+  <meta property="article:tag" content="Advanced Data Protection (ADP)">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tech News Roundup: Sep 21–25, 2026 (Week 39)">
+  <meta name="twitter:description" content="The week in tech, 21–25 September 2026: 17 curated stories on Large Language Models (LLMs), CUDA, Claude Code and more.">
+  <meta name="twitter:image" content="https://bowlofdata.net/imgs/bowl.png">
+  <link rel="alternate" type="application/rss+xml" title="Bowl of Data RSS Feed" href="https://bowlofdata.net/feed.xml">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://bowlofdata.net/#organization", "name": "Bowl of Data", "alternateName": ["bowlofdata", "Bowl of Data Newsletter"], "description": "A weekly digest of the most relevant tech stories", "url": "https://bowlofdata.net", "logo": "https://bowlofdata.net/imgs/logo.png", "founder": [{"@type": "Person", "name": "Marco", "jobTitle": "Creator", "sameAs": ["https://www.linkedin.com/in/marco-parrillo-phd-30ba9933/"], "url": "https://bowlofdata.net/team.html"}, {"@type": "Person", "name": "Luigi", "jobTitle": "Visionary", "sameAs": ["https://www.linkedin.com/in/luigi-laura/"], "url": "https://bowlofdata.net/team.html"}], "publishingPrinciples": "https://bowlofdata.net/about.html", "sameAs": ["https://bowlofdata.substack.com/", "https://www.instagram.com/bowl_of_data", "https://open.spotify.com/show/033Mqus9YAIssepHakRIIk", "https://www.youtube.com/@bowlofdata"]}, {"@type": "Periodical", "@id": "https://bowlofdata.net/#newsletter", "name": "Bowl of Data", "alternateName": ["bowlofdata", "Bowl of Data Newsletter"], "url": "https://bowlofdata.net/", "description": "Bowl of Data is a free weekly technology newsletter. One issue ships every Saturday covering AI and machine learning, cybersecurity, blockchain, and software engineering — curated from hundreds of sources by the Maki pipeline and reviewed by humans before it goes out.", "inLanguage": "en", "isAccessibleForFree": true, "publishingPrinciples": "https://bowlofdata.net/about.html", "genre": ["Technology news", "Artificial intelligence", "Cybersecurity", "Blockchain", "Software engineering"], "publisher": {"@id": "https://bowlofdata.net/#organization"}, "archivedAt": "https://bowlofdata.net/archive.html", "sameAs": ["https://bowlofdata.substack.com/"]}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": ["CollectionPage", "PublicationIssue"], "@id": "https://bowlofdata.net/week/39_2026.html", "name": "Week 39 · 2026 · Bowl of Data", "description": "17 articles curated this week covering AI, cybersecurity, blockchain and engineering.", "url": "https://bowlofdata.net/week/39_2026.html", "issueNumber": 39, "inLanguage": "en", "isAccessibleForFree": true, "isPartOf": {"@id": "https://bowlofdata.net/#newsletter"}, "publisher": {"@type": "Organization", "@id": "https://bowlofdata.net/#organization", "name": "Bowl of Data", "url": "https://bowlofdata.net", "logo": {"@type": "ImageObject", "url": "https://bowlofdata.net/imgs/logo.png"}}, "mainEntity": {"@type": "ItemList", "numberOfItems": 17, "itemListElement": [{"@type": "ListItem", "position": 1, "item": {"@type": "NewsArticle", "headline": "Non-stabilizerness and violations of CHSH inequalities", "url": "https://bowlofdata.net/week/39_2026.html#non-stabilizerness-and-violations-of-chsh-inequalities", "image": "https://bowlofdata.net/imgs/bowl.png", "publisher": {"@type": "Organization", "@id": "https://bowlofdata.net/#organization", "name": "Bowl of Data", "url": "https://bowlofdata.net", "logo": {"@type": "ImageObject", "url": "https://bowlofdata.net/imgs/logo.png"}}, "author": {"@type": "Organization", "name": "Bowl of Data", "url": "https://bowlofdata.net"}, "isBasedOn": "https://quantum-journal.org/papers/q-2026-09-21-2214", "citation": "Quantum Journal", "description": "This paper explores how non-stabilizer resources contribute to the violation of CHSH inequalities in quantum systems. It demonstrates that these resources must be both asymmetric and local to effectively drive such violations.", "datePublished": "Mon, 21 Sep 2026 14:08:35 +0000"}}, {"@type": "ListItem", "position": 2, "item": {"@type": "NewsArticle", "headline": "TerminalFix: PNG Steganography, (Mon, Sep 21st)", "url": "https://bowlofdata.net/week/39_2026.html#terminalfix-png-steganography-mon-sep-21st", "image": "https://bowlofdata.net/imgs/bowl.png", "publisher": {"@type": "Organization", "@id": "https://bowlofdata.net/#organization", "name": "Bowl of Data", "url": "https://bowlofdata.net", "logo": {"@type": "ImageObject", "url": "https://bowlofdata.net/imgs/logo.png"}}, "author": {"@type": "Organization", "name": "Bowl of Data", "url": "https://bowlofdata.net"}, "isBasedOn": "https://isc.sans.edu/diary/rss/33318", "citation": "SANS ISC", "description": "This technical analysis explores how the TerminalFix campaign employs PNG steganography to conceal malicious Windows executables and DLLs. By manipulating pixel data within IDAT chunks, attackers successfully hide payloads that are later extracted and used for sideloading.", "datePublished": "Mon, 21 Sep 2026 10:33:53 GMT"}}, {"@type": "ListItem", "position": 3, "item": {"@type": "NewsArticle", "headline": "Heuristic and Optimal Synthesis of CNOT and Clifford Circuits", "url": "https://bowlofdata.net/week/39_2026.html#heuristic-and-optimal-synthesis-of-cnot-and-clifford-circuits", "image": "https://bowlofdata.net/imgs/bowl.png", "publisher": {"@type": "Organization", "@id": "https://bowlofdata.net/#organization", "name": "Bowl of Data", "url": "https://bowlofdata.net", "logo": {"@type": "ImageObject", "url": "https://bowlofdata.net/imgs/logo.png"}}, "author": {"@type": "Organization", "name": "Bowl of Data", "url": "https://bowlofdata.net"}, "isBasedOn": "https://quantum-journal.org/papers/q-2026-09-21-2212", "citation": "Quantum Journal", "description": "Researchers have introduced a new suite of algorithms designed to optimize the synthesis of Clifford and CNOT circuits by reducing two-qubit gate counts. These methods, ranging from optimal to greedy approaches, outperform existing tools like Qiskit and tket in circuit efficiency.", "datePublished": "Mon, 21 Sep 2026 08:20:41 +0000"}}, {"@type": "ListItem", "position": 4, "item": {"@type": "NewsArticle", "headline": "From Records to Raids: The Questionable Legality of ICE’s Palantir ELITE System", "url": "https://bowlofdata.net/week/39_2026.html#from-records-to-raids-the-questionable-legality-of-ices-palantir-elite-system", "image": "https://bowlofdata.net/imgs/bowl.png", "publisher": {"@type": "Organization", "@id": "https://bowlofdata.net/#organization", "name": "Bowl of Data", "url": "https://bowlofdata.net", "logo": {"@type": "ImageObject", "url": "https://bowlofdata.net/imgs/logo.png"}}, "author": {"@type": "Organization", "name": "Bowl of Data", "url": "https://bowlofdata.net"}, "isBasedOn": "https://techpolicy.press/from-records-to-raids-the-questionable-legality-of-ices-palantir-elite-system", "citation": "Tech Policy Press", "description": "This investigative report examines the legality of ICE's use of Palantir's ELITE system for identifying immigration targets. It highlights potential violations of procurement laws, privacy regulations, and AI governance standards.", "datePublished": "Mon, 21 Sep 2026 12:17:32 GMT"}}, {"@type": "ListItem", "position": 5, "item": {"@type": "NewsArticle", "headline": "Import AI 473: The US's superintelligence strategy; human brain in a mouse skull; and machine hermeneutics", "url": "https://bowlofdata.net/week/39_2026.html#import-ai-473-the-uss-superintelligence-strategy-human-brain-in-a-mouse-skull-and-machine-hermeneutics", "image": "https://bowlofdata.net/imgs/bowl.png", "publisher": {"@type": "Organization", "@id": "https://bowlofdata.net/#organization", "name": "Bowl of Data", "url": "https://bowlofdata.net", "logo": {"@type": "ImageObject", "url": "https://bowlofdata.net/imgs/logo.png"}}, "author": {"@type": "Organization", "name": "Bowl of Data", "url": "https://bowlofdata.net"}, "isBasedOn": "https://importai.substack.com/p/import-ai-473-the-uss-superintelligence", "citation": "Import AI", "description": "This edition covers strategic geopolitical approaches to AI superintelligence and breakthroughs in neurobiology. It highlights RAND's 'Freedom of Action' framework alongside new methods for integrating human brain tissue into mouse models.", "datePublished": "Mon, 21 Sep 2026 12:31:04 GMT"}}, {"@type": "ListItem", "position": 6, "item": {"@type": "NewsArticle", "headline": "Reverse-Engineering Flock Cameras", "url": "https://bowlofdata.net/week/39_2026.html#reverse-engineering-flock-cameras", "image": "https://bowlofdata.net/imgs/bowl.png", "publisher": {"@type": "Organization", "@id": "https://bowlofdata.net/#organization", "name": "Bowl of Data", "url": "https://bowlofdata.net", "logo": {"@type": "ImageObject", "url": "https://bowlofdata.net/imgs/logo.png"}}, "author": {"@type": "Organization", "name": "Bowl of Data", "url": "https://bowlofdata.net"}, "isBasedOn": "https://schneier.com/blog/archives/2026/09/reverse-engineering-flock-cameras.html", "citation": "Schneier on Security", "description": "Reverse-engineering of Flock cameras has revealed significant privacy concerns regarding the tracking of pedestrians and cyclists. The breach was made possible by a critical security flaw where encryption keys were stored on an unencrypted partition.", "datePublished": "2026-09-21T14:37:45Z"}}, {"@type": "ListItem", "position": 7, "item": {"@type": "NewsArticle", "headline": "SEALSQ, WISeKey and Jura Sign MoU for Swiss Post-Quantum Semiconductor Center", "url": "https://bowlofdata.net/week/39_2026.html#sealsq-wisekey-and-jura-sign-mou-for-swiss-post-quantum-semiconductor-center", "image": "https://bowlofdata.net/imgs/bowl.png", "publisher": {"@type": "Organization", "@id": "https://bowlofdata.net/#organization", "name": "Bowl of Data", "url": "https://bowlofdata.net", "logo": {"@type": "ImageObject", "url": "https://bowlofdata.net/imgs/logo.png"}}, "author": {"@type": "Organization", "name": "Bowl of Data", "url": "https://bowlofdata.net"}, "isBasedOn": "https://thequantuminsider.com/2026/09/21/sealsq-wisekey-jura-post-quantum-semiconductor-center", "citation": "The Quantum Insider", "description": "A new partnership between SEALSQ, WISeKey, and the Canton of Jura aims to launch a multi-million franc semiconductor center in Switzerland. The facility will specialize in post-quantum cryptographic hardware and secure semiconductor provisioning.", "datePublished": "Mon, 21 Sep 2026 09:24:37 +0000"}}, {"@type": "ListItem", "position": 8, "item": {"@type": "NewsArticle", "headline": "Frame: Grounding LLM Vulnerability Detection with a Sound Separation-Logic Core", "url": "https://bowlofdata.net/week/39_2026.html#frame-grounding-llm-vulnerability-detection-with-a-sound-separation-logic-core", "image": "https://bowlofdata.net/imgs/bowl.png", "publisher": {"@type": "Organization", "@id": "https://bowlofdata.net/#organization", "name": "Bowl of Data", "url": "https://bowlofdata.net", "logo": {"@type": "ImageObject", "url": "https://bowlofdata.net/imgs/logo.png"}}, "author": {"@type": "Organization", "name": "Bowl of Data", "url": "https://bowlofdata.net"}, "isBasedOn": "https://lambdasec.github.io/Frame-Grounding-LLM-Vulnerability-Detection-with-a-Sound-Separation-Logic-Core", "citation": "Reddit r/netsec", "description": "Frame is a new neuro-symbolic SAST tool designed to bridge the gap between precise but narrow symbolic analyzers and broad but ungrounded LLM scanners. By using a symbolic engine to verify LLM-proposed vulnerabilities, it achieves higher recall without sacrificing precision.", "datePublished": "2026-09-23T00:35:20Z"}}, {"@type": "ListItem", "position": 9, "item": {"@type": "NewsArticle", "headline": "Relays Are Masking Chinese Access to Frontier AI Models in the US", "url": "https://bowlofdata.net/week/39_2026.html#relays-are-masking-chinese-access-to-frontier-ai-models-in-the-us", "image": "https://bowlofdata.net/imgs/bowl.png", "publisher": {"@type": "Organization", "@id": "https://bowlofdata.net/#organization", "name": "Bowl of Data", "url": "https://bowlofdata.net", "logo": {"@type": "ImageObject", "url": "https://bowlofdata.net/imgs/logo.png"}}, "author": {"@type": "Organization", "name": "Bowl of Data", "url": "https://bowlofdata.net"}, "isBasedOn": "https://darkreading.com/cyber-risk/relays-masking-chinese-access-frontier-ai-models", "citation": "Dark Reading", "description": "A Team Cymru report reveals a sprawling network of 80,000 relay servers used to facilitate anonymous access to US frontier AI models from China. This infrastructure likely supports systematic model distillation efforts and allows users to circumvent regional access controls.", "datePublished": "Tue, 22 Sep 2026 21:12:37 GMT"}}, {"@type": "ListItem", "position": 10, "item": {"@type": "NewsArticle", "headline": "NVIDIA links TensorRT and Dynamo-Triton for faster AI on multiple GPUs", "url": "https://bowlofdata.net/week/39_2026.html#nvidia-links-tensorrt-and-dynamo-triton-for-faster-ai-on-multiple-gpus", "image": "https://bowlofdata.net/imgs/bowl.png", "publisher": {"@type": "Organization", "@id": "https://bowlofdata.net/#organization", "name": "Bowl of Data", "url": "https://bowlofdata.net", "logo": {"@type": "ImageObject", "url": "https://bowlofdata.net/imgs/logo.png"}}, "author": {"@type": "Organization", "name": "Bowl of Data", "url": "https://bowlofdata.net"}, "isBasedOn": "https://quantumzeitgeist.com/nvidia-links-tensorrt-dynamo-triton-faster", "citation": "Quantum Zeitgeist", "description": "NVIDIA's new integration between TensorRT and Dynamo-Triton allows a single neural network to execute across multiple GPUs seamlessly. This advancement significantly reduces latency for complex generative AI tasks like video synthesis by automating GPU coordination.", "datePublished": "Tue, 22 Sep 2026 08:30:20 +0000"}}, {"@type": "ListItem", "position": 11, "item": {"@type": "NewsArticle", "headline": "AI coding agents need a secrets-safe context boundary", "url": "https://bowlofdata.net/week/39_2026.html#ai-coding-agents-need-a-secrets-safe-context-boundary", "image": "https://bowlofdata.net/imgs/bowl.png", "publisher": {"@type": "Organization", "@id": "https://bowlofdata.net/#organization", "name": "Bowl of Data", "url": "https://bowlofdata.net", "logo": {"@type": "ImageObject", "url": "https://bowlofdata.net/imgs/logo.png"}}, "author": {"@type": "Organization", "name": "Bowl of Data", "url": "https://bowlofdata.net"}, "isBasedOn": "https://thenewstack.io/ai-agent-context-boundary", "citation": "The New Stack", "description": "AI coding agents pose a new security threat by potentially transmitting sensitive local credentials to external AI models during context collection. To mitigate this, organizations must implement deterministic secrets detection at the point of agent file access and prompt submission.", "datePublished": "Tue, 22 Sep 2026 13:00:00 +0000"}}, {"@type": "ListItem", "position": 12, "item": {"@type": "NewsArticle", "headline": "Windows CLOSEDQUORUM malware uses AI models to autonomously select post-compromise actions", "url": "https://bowlofdata.net/week/39_2026.html#windows-closedquorum-malware-uses-ai-models-to-autonomously-select-post-compromise-actions", "image": "https://bowlofdata.net/imgs/bowl.png", "publisher": {"@type": "Organization", "@id": "https://bowlofdata.net/#organization", "name": "Bowl of Data", "url": "https://bowlofdata.net", "logo": {"@type": "ImageObject", "url": "https://bowlofdata.net/imgs/logo.png"}}, "author": {"@type": "Organization", "name": "Bowl of Data", "url": "https://bowlofdata.net"}, "isBasedOn": "https://theregister.com/security/2026/09/22/windows-closedquorum-malware-uses-ai-models-to-autonomously-select-post-compromise-actions/5298435", "citation": "The Register", "description": "Security researchers at Cisco Talos have identified CLOSEDQUORUM, a novel malware that uses multiple LLMs to autonomously select attack vectors. This 'effort displacement' allows the malware to operate continuously without needing active commands from a human attacker.", "datePublished": "Tue, 22 Sep 2026 23:33:29 +0200"}}, {"@type": "ListItem", "position": 13, "item": {"@type": "NewsArticle", "headline": "Scaling and Operational Excellence for Quantum Finance Categories: Risk Modeling, Portfolio Optimization, Cryptography, Q-day", "url": "https://bowlofdata.net/week/39_2026.html#scaling-and-operational-excellence-for-quantum-finance-categories-risk-modeling-portfolio-optimization-cryptography-q-day", "image": "https://bowlofdata.net/imgs/bowl.png", "publisher": {"@type": "Organization", "@id": "https://bowlofdata.net/#organization", "name": "Bowl of Data", "url": "https://bowlofdata.net", "logo": {"@type": "ImageObject", "url": "https://bowlofdata.net/imgs/logo.png"}}, "author": {"@type": "Organization", "name": "Bowl of Data", "url": "https://bowlofdata.net"}, "isBasedOn": "https://insidequantumtechnology.com/news-archive/scaling-and-operational-excellence-for-quantum-finance-categories-risk-modeling-portfolio-optimization-cryptography-q-day", "citation": "Inside Quantum Technology", "description": "Global financial institutions are integrating hybrid quantum-classical architectures to enhance risk modeling, portfolio optimization, and cryptographic security. The transition focuses on two parallel tracks: scaling computational depth and achieving operational excellence through streamlined, high-speed workflows.", "datePublished": "Thu, 24 Sep 2026 14:00:01 +0000"}}, {"@type": "ListItem", "position": 14, "item": {"@type": "NewsArticle", "headline": "Crook used three open source agents to break into a Fortune 500 hospitality company, a major US airline and 25+ other orgs", "url": "https://bowlofdata.net/week/39_2026.html#crook-used-three-open-source-agents-to-break-into-a-fortune-500-hospitality-company-a-major-us-airline-and-25-other-orgs", "image": "https://bowlofdata.net/imgs/bowl.png", "publisher": {"@type": "Organization", "@id": "https://bowlofdata.net/#organization", "name": "Bowl of Data", "url": "https://bowlofdata.net", "logo": {"@type": "ImageObject", "url": "https://bowlofdata.net/imgs/logo.png"}}, "author": {"@type": "Organization", "name": "Bowl of Data", "url": "https://bowlofdata.net"}, "isBasedOn": "https://theregister.com/security/2026/09/25/crook-used-three-open-source-agents-to-break-into-a-fortune-500-hospitality-company-a-major-us-airline-and-25-other-orgs/5299012", "citation": "The Register", "description": "A sophisticated cyberattack campaign leveraged autonomous AI agents to breach dozens of companies with minimal human intervention and extremely low operational costs. The attack resulted in massive credit card data theft and the deployment of web skimmers across multiple retail platforms.", "datePublished": "Fri, 25 Sep 2026 01:32:15 +0200"}}, {"@type": "ListItem", "position": 15, "item": {"@type": "NewsArticle", "headline": "Two-tier encryption in the UK", "url": "https://bowlofdata.net/week/39_2026.html#two-tier-encryption-in-the-uk", "image": "https://bowlofdata.net/imgs/bowl.png", "publisher": {"@type": "Organization", "@id": "https://bowlofdata.net/#organization", "name": "Bowl of Data", "url": "https://bowlofdata.net", "logo": {"@type": "ImageObject", "url": "https://bowlofdata.net/imgs/logo.png"}}, "author": {"@type": "Organization", "name": "Bowl of Data", "url": "https://bowlofdata.net"}, "isBasedOn": "https://macanorak.com/two-tier-encryption-in-the-uk", "citation": "HN Best", "description": "Apple has ceased offering Advanced Data Protection to new iCloud users in the UK following a secret government order to ensure data accessibility. This move avoids the creation of a cryptographic backdoor but leaves UK users with a lower tier of encryption than their international counterparts.", "datePublished": "Thu, 24 Sep 2026 10:39:19 +0000"}}, {"@type": "ListItem", "position": 16, "item": {"@type": "NewsArticle", "headline": "FedRAMP VDR & VER: Daily Scans Are Only the Beginning", "url": "https://bowlofdata.net/week/39_2026.html#fedramp-vdr-ver-daily-scans-are-only-the-beginning", "image": "https://bowlofdata.net/imgs/bowl.png", "publisher": {"@type": "Organization", "@id": "https://bowlofdata.net/#organization", "name": "Bowl of Data", "url": "https://bowlofdata.net", "logo": {"@type": "ImageObject", "url": "https://bowlofdata.net/imgs/logo.png"}}, "author": {"@type": "Organization", "name": "Bowl of Data", "url": "https://bowlofdata.net"}, "isBasedOn": "https://bleepingcomputer.com/news/security/fedramp-vdr-and-ver-daily-scans-are-only-the-beginning", "citation": "BleepingComputer", "description": "FedRAMP is implementing significant changes to its Vulnerability Detection and Response (VDR) and Verification and Evaluation (VER) rules by late 2026. These updates require cloud service providers to move away from monthly scans toward automated, continuous validation of security controls.", "datePublished": "Thu, 24 Sep 2026 10:02:12 -0400"}}, {"@type": "ListItem", "position": 17, "item": {"@type": "NewsArticle", "headline": "Simplification for whom? Open letter to EU Member States to uphold GDPR protections in Digital Omnibus on Data", "url": "https://bowlofdata.net/week/39_2026.html#simplification-for-whom-open-letter-to-eu-member-states-to-uphold-gdpr-protections-in-digital-omnibus-on-data", "image": "https://bowlofdata.net/imgs/bowl.png", "publisher": {"@type": "Organization", "@id": "https://bowlofdata.net/#organization", "name": "Bowl of Data", "url": "https://bowlofdata.net", "logo": {"@type": "ImageObject", "url": "https://bowlofdata.net/imgs/logo.png"}}, "author": {"@type": "Organization", "name": "Bowl of Data", "url": "https://bowlofdata.net"}, "isBasedOn": "https://edri.org/our-work/simplification-for-whom-open-letter-uphold-gdpr-protections-in-data-omnibus", "citation": "EDRi", "description": "The article critiques the European Commission's Digital Omnibus on data for potentially introducing deregulation under the guise of simplification. It highlights how new provisions could weaken GDPR protections regarding pseudonymisation and create loopholes for AI-driven data processing.", "datePublished": "Thu, 24 Sep 2026 11:41:27 +0000"}}]}, "datePublished": "2026-09-25", "dateModified": "2026-09-25"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Bowl of Data", "item": "https://bowlofdata.net/"}, {"@type": "ListItem", "position": 2, "name": "Archive", "item": "https://bowlofdata.net/archive.html"}, {"@type": "ListItem", "position": 3, "name": "Week 39 · 2026", "item": "https://bowlofdata.net/week/39_2026.html"}]}</script>
+  
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="header-brand">
+        
+        <img src="../imgs/logo.png" alt="Bowl of Data logo" class="header-logo" width="500" height="500" decoding="async">
+        <div class="header-text">
+          <span class="header-site-name">Bowl of Data</span>
+          <span class="header-tagline">A weekly digest of the most relevant tech stories</span>
+        </div>
+      </a>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="header-nav">
+        <a href="../index.html" class="nav-link" >Home</a>
+        <a href="../archive.html" class="nav-link" >Archive</a>
+        <a href="../topics.html" class="nav-link" >Topics</a>
+        <a href="../services.html" class="nav-link nav-link--services" >Services</a>
+        <div class="nav-more-group">
+          <button class="nav-more-btn" aria-expanded="false" aria-haspopup="true" >
+            About
+            <svg class="nav-more-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <div class="nav-more-panel">
+            <a href="../about.html" class="nav-link" >About</a>
+            <a href="../team.html" class="nav-link" >Team</a>
+            <a href="../contact.html" class="nav-link" >Contact</a>
+            <a href="https://open.spotify.com/show/033Mqus9YAIssepHakRIIk" class="nav-link nav-link--podcast" target="_blank" rel="noopener">
+              <svg class="nav-podcast-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.32-1.32 9.719-.66 13.5 1.62.32.24.5.72.24 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.6.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>
+              </svg>
+              Podcast
+            </a>
+            <a href="https://www.youtube.com/@bowlofdata" class="nav-link nav-link--youtube" target="_blank" rel="noopener">
+              <svg class="nav-youtube-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.376.505A3.016 3.016 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.376-.505a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              YouTube
+            </a>
+          </div>
+        </div>
+        <a href="https://bowlofdata.substack.com/" class="nav-subscribe" target="_blank" rel="noopener">Subscribe</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    
+<div class="week-header">
+  <div class="week-header-inner">
+    <a href="../archive.html" class="back-link">← All issues</a>
+    <h1 class="week-title">
+      Week <span class="week-title-accent">39</span> · 2026
+    </h1>
+    <p class="week-dateline">21–25 September 2026</p>
+    <p class="week-meta">17 articles · 10 model releases · 5 papers</p>
+    
+    <div class="week-nav week-nav--header">
+      
+      <a href="../week/38_2026.html" class="week-nav-btn week-nav-older">← Week 38 · 2026</a>
+      
+      <span></span>
+    </div>
+    
+  </div>
+</div>
+
+
+<section class="releases-section">
+
+  <div class="releases-header">
+    <div class="releases-header-inner">
+      <div class="releases-header-text">
+        <h2 class="releases-title">AI Model Releases</h2>
+        <p class="releases-sub">New models and updates from major AI providers this week</p>
+      </div>
+      <span class="releases-badge">This Week</span>
+    </div>
+  </div>
+
+  <div class="releases-body">
+    <div class="releases-body-inner">
+      <div class="releases-grid">
+        
+        <article class="release-card" id="claude-opus-55">
+
+          <div class="release-card-top">
+            <div class="release-meta-row">
+              <span class="release-provider-tag">Anthropic</span>
+              
+              <span class="release-date-pill">2026-09-22</span>
+              
+            </div>
+            
+            <h3 class="release-name">Claude Opus 5.5</h3>
+          </div>
+
+          <div class="release-card-body">
+            
+            <p class="release-summary">Anthropic has introduced Claude Opus 5.5, which achieves performance parity with Claude Fable 5.1 across most tasks. This new iteration focuses on significant cost efficiency for large-scale deployments.</p>
+            
+            
+            <ul class="release-features">
+              
+              <li>Performance level comparable to Claude Fable 5.1</li>
+              
+              <li>40% reduction in operational costs compared to Opus 5</li>
+              
+            </ul>
+            
+          </div>
+
+          
+          <div class="release-card-footer">
+            <a href="https://www.anthropic.com/news" class="release-read-link" target="_blank" rel="noopener">Read announcement →</a>
+          </div>
+          
+
+        </article>
+        
+        <article class="release-card" id="muse">
+
+          <div class="release-card-top">
+            <div class="release-meta-row">
+              <span class="release-provider-tag">Meta (Muse/Llama)</span>
+              
+            </div>
+            
+            <h3 class="release-name">Muse</h3>
+          </div>
+
+          <div class="release-card-body">
+            
+            <p class="release-summary">Meta has expanded its personal AI agent, Muse, to integrate with AI glasses and introduced a new state-of-the-art model. The update enhances the agent&#39;s ability to act on visual inputs from wearable hardware and introduces significantly more retail and productivity connectors.</p>
+            
+            
+            <ul class="release-features">
+              
+              <li>Visual intelligence for acting on real-world objects seen through glasses</li>
+              
+              <li>New voice mode capable of long, in-depth conversations while performing background tasks</li>
+              
+              <li>Expanded ecosystem with new shopping partners like Walmart and Best Buy, plus productivity tools like Notion and GitHub</li>
+              
+              <li>Dedicated email address for autonomous task execution</li>
+              
+            </ul>
+            
+          </div>
+
+          
+          <div class="release-card-footer">
+            <a href="https://about.fb.com/news/2026/09/the-biggest-news-from-connect-2026/" class="release-read-link" target="_blank" rel="noopener">Read announcement →</a>
+          </div>
+          
+
+        </article>
+        
+        <article class="release-card" id="whisperx-deep-learning-container-dlc-for-amazon-sagemaker-ai">
+
+          <div class="release-card-top">
+            <div class="release-meta-row">
+              <span class="release-provider-tag">Amazon (Nova)</span>
+              
+              <span class="release-date-pill">2026-09-24</span>
+              
+            </div>
+            
+            <h3 class="release-name">WhisperX Deep Learning Container (DLC) for Amazon SageMaker AI</h3>
+          </div>
+
+          <div class="release-card-body">
+            
+            <p class="release-summary">Amazon has released a new purpose-built Deep Learning Container that integrates OpenAI&#39;s Whisper with wav2vec2 forced alignment and speaker diarization. This GPU-ready image allows developers to deploy high-precision, speaker-labeled transcription services on Amazon SageMaker AI real-time or asynchronous endpoints.</p>
+            
+            
+            <ul class="release-features">
+              
+              <li>Per-word timestamps via wav2vec2 forced alignment</li>
+              
+              <li>Speaker diarization for identifying individual speakers in audio</li>
+              
+              <li>Support for multiple output formats including JSON, SRT, and VTT</li>
+              
+              <li>Optimized deployment on SageMaker AI with integrated GPU support</li>
+              
+            </ul>
+            
+          </div>
+
+          
+          <div class="release-card-footer">
+            <a href="https://aws.amazon.com/blogs/machine-learning/speaker-labeled-transcription-with-whisperx-on-sagemaker-ai/" class="release-read-link" target="_blank" rel="noopener">Read announcement →</a>
+          </div>
+          
+
+        </article>
+        
+        <article class="release-card" id="grok-47">
+
+          <div class="release-card-top">
+            <div class="release-meta-row">
+              <span class="release-provider-tag">xAI (Grok)</span>
+              
+              <span class="release-date-pill">2026-09-21</span>
+              
+            </div>
+            
+            <h3 class="release-name">Grok 4.7</h3>
+          </div>
+
+          <div class="release-card-body">
+            
+            <p class="release-summary">xAI has released Grok 4.7, positioned as their most powerful model for coding and knowledge work tasks. The update focuses on significant efficiency gains in both performance and cost.</p>
+            
+            
+            <ul class="release-features">
+              
+              <li>Twice as fast as previous versions</li>
+              
+              <li>Half the price of comparable models</li>
+              
+              <li>Optimized for coding and professional knowledge work</li>
+              
+            </ul>
+            
+          </div>
+
+          
+          <div class="release-card-footer">
+            <a href="https://x.ai/news" class="release-read-link" target="_blank" rel="noopener">Read announcement →</a>
+          </div>
+          
+
+        </article>
+        
+        <article class="release-card" id="amazon-bedrock-agentcore">
+
+          <div class="release-card-top">
+            <div class="release-meta-row">
+              <span class="release-provider-tag">Amazon (Nova)</span>
+              
+              <span class="release-date-pill">2026-09-23</span>
+              
+            </div>
+            
+            <h3 class="release-name">Amazon Bedrock AgentCore</h3>
+          </div>
+
+          <div class="release-card-body">
+            
+            <p class="release-summary">AWS highlighted the use of Amazon Bedrock AgentCore for building HAL, an internal AI assistant that consolidates fragmented enterprise knowledge. The platform enables developers to build and optimize agents at scale by turning OpenAPI specifications into MCP tools without managing custom server infrastructure.</p>
+            
+            
+            <ul class="release-features">
+              
+              <li>Gateway functionality converts OpenAPI specs and AWS Lambda functions directly into MCP tools</li>
+              
+              <li>Managed identity support via inbound JWT authentication and outbound OAuth2 token vaulting</li>
+              
+              <li>Integrated conversation memory and content filtering using Amazon Bedrock Guardrails</li>
+              
+            </ul>
+            
+          </div>
+
+          
+          <div class="release-card-footer">
+            <a href="https://aws.amazon.com/blogs/machine-learning/from-portal-hopping-to-instant-answers-hemas-journey-with-mcp-and-amazon-bedrock/" class="release-read-link" target="_blank" rel="noopener">Read announcement →</a>
+          </div>
+          
+
+        </article>
+        
+        <article class="release-card" id="gpt-6-sol-and-luna">
+
+          <div class="release-card-top">
+            <div class="release-meta-row">
+              <span class="release-provider-tag">OpenAI</span>
+              
+              <span class="release-date-pill">2026-09-22</span>
+              
+            </div>
+            
+            <h3 class="release-name">GPT-6 Sol and Luna</h3>
+          </div>
+
+          <div class="release-card-body">
+            
+            <p class="release-summary">OpenAI has officially introduced GPT-6, featuring the new &#39;Sol&#39; and &#39;Luna&#39; iterations. This release marks a significant milestone in their model architecture evolution.</p>
+            
+            
+            <ul class="release-features">
+              
+              <li>New Sol and Luna architectures</li>
+              
+              <li>Improved performance capabilities</li>
+              
+            </ul>
+            
+          </div>
+
+          
+          <div class="release-card-footer">
+            <a href="https://openai.com/news/" class="release-read-link" target="_blank" rel="noopener">Read announcement →</a>
+          </div>
+          
+
+        </article>
+        
+        <article class="release-card" id="amazon-nova-foundation-models">
+
+          <div class="release-card-top">
+            <div class="release-meta-row">
+              <span class="release-provider-tag">Amazon (Nova)</span>
+              
+            </div>
+            
+            <h3 class="release-name">Amazon Nova Foundation Models</h3>
+          </div>
+
+          <div class="release-card-body">
+            
+            <p class="release-summary">AWS has highlighted its Nova foundation models as a key part of their AI offerings, focusing on delivering frontier intelligence. These models are designed to provide top-tier price performance for various generative AI workloads.</p>
+            
+            
+            <ul class="release-features">
+              
+              <li>Frontier intelligence capabilities</li>
+              
+              <li>Optimized price performance</li>
+              
+            </ul>
+            
+          </div>
+
+          
+          <div class="release-card-footer">
+            <a href="https://aws.amazon.com/blogs/machine-learning/" class="release-read-link" target="_blank" rel="noopener">Read announcement →</a>
+          </div>
+          
+
+        </article>
+        
+        <article class="release-card" id="step-37-flash">
+
+          <div class="release-card-top">
+            <div class="release-meta-row">
+              <span class="release-provider-tag">StepFun</span>
+              
+            </div>
+            
+            <h3 class="release-name">Step 3.7 Flash</h3>
+          </div>
+
+          <div class="release-card-body">
+            
+            <p class="release-summary">StepFun has released Step 3.7 Flash, a 198B-parameter sparse Mixture-of-Experts (MoE) vision-language model designed for high-frequency production workloads and agentic workflows. The model features native image understanding via a 1.8B visual encoder and offers selectable reasoning levels to balance speed, cost, and depth.</p>
+            
+            
+            <ul class="release-features">
+              
+              <li>Up to 400 tokens per second throughput with an 11B active parameter count</li>
+              
+              <li>256k context window supporting multi-step search loops and massive document parsing</li>
+              
+              <li>NVFP4 quantized variant optimized for NVIDIA GPUs featuring MTP draft layers for up to 1.45x speedup via speculative decoding</li>
+              
+              <li>High performance in tool orchestration (ClawEval-1.1) and software engineering tasks (SWE-Bench PRO)</li>
+              
+            </ul>
+            
+          </div>
+
+          
+          <div class="release-card-footer">
+            <a href="https://raw.githubusercontent.com/stepfun-ai/Step-3.7-Flash/main/README.md" class="release-read-link" target="_blank" rel="noopener">Read announcement →</a>
+          </div>
+          
+
+        </article>
+        
+        <article class="release-card" id="gpt-6">
+
+          <div class="release-card-top">
+            <div class="release-meta-row">
+              <span class="release-provider-tag">OpenAI</span>
+              
+              <span class="release-date-pill">2026-09-22</span>
+              
+            </div>
+            
+            <h3 class="release-name">GPT-6</h3>
+          </div>
+
+          <div class="release-card-body">
+            
+            <p class="release-summary">OpenAI has introduced GPT-6, marking a significant leap in their model lineage. The release includes enhanced capabilities and optimized performance for complex reasoning tasks.</p>
+            
+            
+            <ul class="release-features">
+              
+              <li>Better prompt caching</li>
+              
+            </ul>
+            
+          </div>
+
+          
+          <div class="release-card-footer">
+            <a href="https://openai.com/news/" class="release-read-link" target="_blank" rel="noopener">Read announcement →</a>
+          </div>
+          
+
+        </article>
+        
+        <article class="release-card" id="xai-grok-46">
+
+          <div class="release-card-top">
+            <div class="release-meta-row">
+              <span class="release-provider-tag">Amazon (Nova)</span>
+              
+              <span class="release-date-pill">2026-09-21</span>
+              
+            </div>
+            
+            <h3 class="release-name">xAI Grok 4.6</h3>
+          </div>
+
+          <div class="release-card-body">
+            
+            <p class="release-summary">Amazon Bedrock has expanded its model offerings with the addition of xAI&#39;s Grok 4.6, a frontier model designed for complex tasks like coding and long-running agents. The release brings advanced reasoning capabilities to AWS users via both bedrock-mantle and bedrock-runtime endpoints.</p>
+            
+            
+            <ul class="release-features">
+              
+              <li>500K token context window</li>
+              
+              <li>Four distinct reasoning effort levels</li>
+              
+              <li>Support for Converse API and cross-Region inference</li>
+              
+            </ul>
+            
+          </div>
+
+          
+          <div class="release-card-footer">
+            <a href="https://aws.amazon.com/blogs/machine-learning/" class="release-read-link" target="_blank" rel="noopener">Read announcement →</a>
+          </div>
+          
+
+        </article>
+        
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+
+<section class="papers-section">
+
+  <div class="releases-header">
+    <div class="releases-header-inner">
+      <div class="releases-header-text">
+        <h2 class="releases-title">Research Papers</h2>
+        <p class="releases-sub">Selected arXiv and HuggingFace papers this week</p>
+      </div>
+      <span class="releases-badge papers-badge">This Week</span>
+    </div>
+  </div>
+
+  <div class="releases-body">
+    <div class="article-section">
+      <div class="article-list">
+        
+        <article class="article-card" id="cliffcompaction-cost-efficient-compaction-for-long-horizon-coding-agents">
+
+          <div class="article-card-top">
+            <p class="article-number">Paper 1</p>
+            
+            <h2 class="article-title">CliffCompaction: Cost-Efficient Compaction for Long-Horizon Coding Agents</h2>
+            <div class="article-meta">
+              
+              <a class="beat-badge beat-badge--ai" href="../topic/ai.html">AI &amp; ML</a>
+              
+              
+              <span class="article-source">arXiv</span>
+              
+            </div>
+          </div>
+
+          <div class="article-card-body">
+            
+            <p class="article-topic">The introduction of CliffCompaction, an autocompaction technique designed to reduce costs and manage long-context windows for coding agents.</p>
+            
+
+            
+            <div class="tldr-box">
+              <p class="tldr-label">TL;DR</p>
+              <p class="tldr-text">CliffCompaction is a new autocompaction strategy for long-horizon coding agents that manages context windows by truncating token-intensive content without rephrasing. This approach significantly reduces inference costs and enables efficient test-time scaling while preventing the accumulation of context drift.</p>
+            </div>
+            
+
+            
+            <div class="long-resume">
+              
+              <p>The research introduces CliffCompaction, a rule-based context management technique specifically engineered for coding agents operating over extremely long contexts (millions of tokens). As agent sessions grow, the increasing KV-cache size leads to higher latency and computational costs. Traditional methods like sliding windows or LLM-based summarization often suffer from high inference costs due to cache invalidation or accuracy loss through recursive summarization. CliffCompaction addresses these issues by implementing a &#39;cliff&#39; mechanism: when a predefined token threshold is reached, the system performs compaction by truncating heavy components like tool calls and outputs while retaining verbatim excerpts of critical information. Crucially, the method avoids &#39;compacting a compaction&#39;; each event operates only on original content and discards previous compacted blocks to prevent context drift. Experimental results show that CliffCompaction can reduce costs by 50% on Terminal-Bench 2.0 and maintain high success rates on SWE-bench Verified even with significantly reduced context thresholds (16K-32K tokens). Furthermore, it makes test-time scaling economically viable, allowing models like Kimi K2.6 to match the performance of much larger models like Claude Opus at a fraction of the cost. In continual learning scenarios on KernelBench, the technique achieved substantial CUDA kernel speedups, proving its effectiveness as a general-purpose, training-free, and model-agnostic solution for long-context agentic workflows.</p>
+              
+            </div>
+            
+          </div>
+
+          <div class="article-card-footer">
+            
+            <div class="article-tags">
+              
+              
+              
+              <span class="tag">CliffCompaction</span>
+              
+              
+              
+              
+              <span class="tag">Kimi K2.6</span>
+              
+              
+              
+              
+              <a class="tag tag--link" href="../tag/claude-code.html">Claude Code</a>
+              
+              
+              
+              
+              <span class="tag">GPT-5.3 Codex</span>
+              
+              
+              
+              
+              <span class="tag">Claude Opus 4.7</span>
+              
+              
+              
+              
+              <a class="tag tag--link" href="../tag/claude-opus-46.html">Claude Opus 4.6</a>
+              
+              
+              
+              
+              <span class="tag">FlashAttention</span>
+              
+              
+              
+              
+              <span class="tag">DeepSeek Sparse Attention</span>
+              
+              
+              
+              
+              <span class="tag">GLM-5.1</span>
+              
+              
+              
+              
+              <a class="tag tag--link" href="../tag/cuda.html">CUDA</a>
+              
+              
+            </div>
+            
+            
+            <a class="read-more" href="https://arxiv.org/html/2609.26779v1" target="_blank" rel="noopener">Read paper →</a>
+            
+          </div>
+
+        </article>
+        
+        <article class="article-card" id="document-retrieval-aware-chunking-d-rac-universal-retrieval-aware-ingestion-of-enterprise-documents-via-pdf-normalization-and-multimodal-markdown-conversion">
+
+          <div class="article-card-top">
+            <p class="article-number">Paper 2</p>
+            
+            <h2 class="article-title">Document Retrieval-Aware Chunking (D-RAC): Universal Retrieval-Aware Ingestion of Enterprise Documents via PDF Normalization and Multimodal Markdown Conversion</h2>
+            <div class="article-meta">
+              
+              <a class="beat-badge beat-badge--ai" href="../topic/ai.html">AI &amp; ML</a>
+              
+              
+              <span class="article-source">HuggingFace Papers</span>
+              
+            </div>
+          </div>
+
+          <div class="article-card-body">
+            
+            <p class="article-topic">The paper introduces D-RAC, a new framework for improving Retrieval-Augmented Generation (RAG) by using PDF normalization and multimodal LLM conversion to create retrieval-optimized Markdown chunks from heterogeneous enterprise documents.</p>
+            
+
+            
+            <div class="tldr-box">
+              <p class="tldr-label">TL;DR</p>
+              <p class="tldr-text">D-RAC provides a universal pipeline for ingesting complex enterprise documents into RAG systems by normalizing all formats to PDF and using multimodal LLMs for structural conversion. This method significantly reduces the computational cost and latency of document chunking while improving retrieval precision through optimized table and hierarchy handling.</p>
+            </div>
+            
+
+            
+            <div class="long-resume">
+              
+              <p>The research addresses a critical bottleneck in Retrieval-Augmented Generation (RAG) systems: the inefficient and error-prone ingestion of heterogeneous enterprise documents such as PDFs, Word files, and presentations. Traditional methods often fail to preserve reading order, table structures, or heading hierarchies, leading to poor retrieval performance. The authors propose Document Retrieval-Aware Chunking (D-RAC), an evolution of their previous Web Retrieval-Aware Chunking (W-RAC) framework. D-RAC operates by first normalizing any input format into a PDF to ensure a consistent visual baseline. It then employs a multimodal LLM to transform these rendered pages into retrieval-optimized Markdown. A key innovation is the &#39;retrieval-aware&#39; table normalization, which converts tabular rows into self-contained prose statements, ensuring individual facts remain independently searchable. Unlike traditional agentic chunking that regenerates text—leading to high token costs and hallucination risks—D-RAC uses the LLM only for structural planning over ID-addressable units, preserving the original source text. Empirical evaluations on the RAG-Multi-Corpus benchmark demonstrate that D-RAC can process hundreds of pages in minutes with zero errors. Furthermore, the framework shows massive efficiency gains, reducing chunking-stage output tokens by over 95% and cutting operational costs by up to 85.6% compared to frontier models like GPT-4.1 and Gemini 2.5 Pro. The system is designed to scale linearly, making it suitable for large-scale enterprise knowledge bases containing documents of 500 pages or more.</p>
+              
+            </div>
+            
+          </div>
+
+          <div class="article-card-footer">
+            
+            <div class="article-tags">
+              
+              
+              
+              <span class="tag">D-RAC</span>
+              
+              
+              
+              
+              <span class="tag">W-RAC</span>
+              
+              
+              
+              
+              <a class="tag tag--link" href="../tag/retrieval-augmented-generation-rag.html">RAG (Retrieval-Augmented Generation)</a>
+              
+              
+              
+              
+              <a class="tag tag--link" href="../tag/large-language-models-llms.html">LLM (Large Language Model)</a>
+              
+              
+              
+              
+              <span class="tag">GPT-4.1</span>
+              
+              
+              
+              
+              <span class="tag">Gemini 2.5 Pro</span>
+              
+              
+              
+              
+              <span class="tag">AWS Bedrock</span>
+              
+              
+              
+              
+              <a class="tag tag--link" href="../tag/markdown.html">Markdown</a>
+              
+              
+              
+              
+              <span class="tag">PDF</span>
+              
+              
+              
+              
+              <span class="tag">OCR</span>
+              
+              
+            </div>
+            
+            
+            <a class="read-more" href="https://arxiv.org/html/2609.24220" target="_blank" rel="noopener">Read paper →</a>
+            
+          </div>
+
+        </article>
+        
+        <article class="article-card" id="ovis-embedding-pushing-the-frontiers-of-universal-omni-modal-embeddings">
+
+          <div class="article-card-top">
+            <p class="article-number">Paper 3</p>
+            
+            <h2 class="article-title">Ovis-Embedding: Pushing the Frontiers of Universal Omni-Modal Embeddings</h2>
+            <div class="article-meta">
+              
+              <a class="beat-badge beat-badge--ai" href="../topic/ai.html">AI &amp; ML</a>
+              
+              
+              <span class="article-source">HuggingFace Papers</span>
+              
+            </div>
+          </div>
+
+          <div class="article-card-body">
+            
+            <p class="article-topic">The introduction of Ovis-Embedding, a new family of omni-modal embedding models designed for any-to-any retrieval across text, image, video, and audio.</p>
+            
+
+            
+            <div class="tldr-box">
+              <p class="tldr-label">TL;DR</p>
+              <p class="tldr-text">Ovis-Embedding presents a state-of-the-art approach to universal embeddings by integrating text, image, video, and audio into a single shared representation space. The model achieves superior performance in any-to-any retrieval tasks through advanced training strategies like focal loss and embedding distillation.</p>
+            </div>
+            
+
+            
+            <div class="long-resume">
+              
+              <p>The research paper introduces Ovis-Embedding, an innovative family of omni-modal embeddings designed to facilitate &#39;any-to-any&#39; retrieval across diverse data types including text, images, video, and audio. Unlike previous methods that attempt to align separate modality towers or retrofit audio branches onto vision-language models, Ovis-Embedding utilizes a native omni-modal initialization strategy. It leverages the pretrained Qwen-omni model as a shared backbone, allowing for a coherent semantic space without the need for modality-specific projection heads. The researchers implemented a data-centric training approach using a large-scale corpus and a unique homogeneous-source sampling technique to ensure task-consistent batches and effective hard negatives. To optimize performance, the authors utilized difficulty-aware focal loss to focus on challenging queries and Embedding Distillation to transfer fine-grained similarity structures from specialized expert models. Furthermore, the system includes an inference optimization called low-rank feature decomposition, which allows for compact embeddings with reduced storage and computational costs while maintaining high retrieval quality. Empirical results demonstrate that Ovis-Embedding sets new state-of-the-art benchmarks on several key evaluation datasets, including MMEB-v3, MMEB-v2, MVEB, MAEB, and RTEB. The authors have committed to open-sourcing the model checkpoints, training recipes, and a unified evaluation toolkit to support further research in universal multimodal retrieval.</p>
+              
+            </div>
+            
+          </div>
+
+          <div class="article-card-footer">
+            
+            <div class="article-tags">
+              
+              
+              
+              <span class="tag">Ovis-Embedding</span>
+              
+              
+              
+              
+              <span class="tag">Qwen-omni</span>
+              
+              
+              
+              
+              <span class="tag">Qwen2.5-Omni Thinker</span>
+              
+              
+              
+              
+              <span class="tag">Qwen3.5</span>
+              
+              
+              
+              
+              <span class="tag">TMRoPE</span>
+              
+              
+              
+              
+              <span class="tag">MMEB-v3</span>
+              
+              
+              
+              
+              <span class="tag">MMEB-v2</span>
+              
+              
+              
+              
+              <span class="tag">MVEB</span>
+              
+              
+              
+              
+              <span class="tag">MAEB</span>
+              
+              
+              
+              
+              <span class="tag">RTEB</span>
+              
+              
+            </div>
+            
+            
+            <a class="read-more" href="https://arxiv.org/html/2609.25165" target="_blank" rel="noopener">Read paper →</a>
+            
+          </div>
+
+        </article>
+        
+        <article class="article-card" id="swe-serve-benchmarking-agentic-engineering-for-production-inference-serving">
+
+          <div class="article-card-top">
+            <p class="article-number">Paper 4</p>
+            
+            <h2 class="article-title">SWE-Serve: Benchmarking Agentic Engineering For Production Inference Serving</h2>
+            <div class="article-meta">
+              
+              <a class="beat-badge beat-badge--ai" href="../topic/ai.html">AI &amp; ML</a>
+              
+              
+              <span class="article-source">arXiv</span>
+              
+            </div>
+          </div>
+
+          <div class="article-card-body">
+            
+            <p class="article-topic">A technical changelog detailing significant optimizations and feature updates for high-performance LLM inference serving engines, focusing on speculative decoding, MoE architectures, and kernel efficiency.</p>
+            
+
+            
+            <div class="tldr-box">
+              <p class="tldr-label">TL;DR</p>
+              <p class="tldr-text">This technical update outlines a series of low-level optimizations for production-grade AI inference serving. It covers significant advancements in speculative decoding, MoE model support, and GPU kernel efficiency.</p>
+            </div>
+            
+
+            
+            <div class="long-resume">
+              
+              <p>The provided technical documentation details an extensive suite of updates aimed at optimizing the performance and scalability of large language model (LLM) inference engines. A primary focus is placed on advancing speculative decoding capabilities, with notable implementations such as EAGLE v2 page-one tree runtime, Spec-V2 paged tree drafting, and adaptive EAGLE step control to reduce latency during token generation. The updates also heavily emphasize Mixture-of-Experts (MoE) optimizations, specifically targeting DeepSeek architectures through NVFP4 quantization, Masked MoE activation, and specialized GDN QKV-split kernels. Memory management and caching efficiency are addressed via the HiCache framework, improvements to UnifiedRadixCache streaming sessions, and Mamba state offloading strategies. Furthermore, the documentation highlights significant GPU kernel optimizations using Triton fused operations and TMA bulk-store MLA KV-buffer kernels, alongside enhanced support for newer model architectures like Gemma 4 and Qwen3.5. These changes collectively aim to improve throughput and reduce Time To First Token (TTFT) across both CPU and GPU environments by refining distributed scheduling, context-parallel strategies, and CUDA-graph execution engines.</p>
+              
+            </div>
+            
+          </div>
+
+          <div class="article-card-footer">
+            
+            <div class="article-tags">
+              
+              
+              
+              <span class="tag">EAGLE</span>
+              
+              
+              
+              
+              <span class="tag">DeepSeek-V3.2</span>
+              
+              
+              
+              
+              <span class="tag">DeepSeek-V4</span>
+              
+              
+              
+              
+              <span class="tag">Gemma 4</span>
+              
+              
+              
+              
+              <span class="tag">Triton</span>
+              
+              
+              
+              
+              <a class="tag tag--link" href="../tag/cuda.html">CUDA</a>
+              
+              
+              
+              
+              <span class="tag">Mamba</span>
+              
+              
+              
+              
+              <span class="tag">Qwen3.5</span>
+              
+              
+              
+              
+              <span class="tag">HiCache</span>
+              
+              
+              
+              
+              <span class="tag">NVFP4</span>
+              
+              
+              
+              
+              <span class="tag">Anthropic Messages API</span>
+              
+              
+            </div>
+            
+            
+            <a class="read-more" href="https://arxiv.org/html/2609.26777v1" target="_blank" rel="noopener">Read paper →</a>
+            
+          </div>
+
+        </article>
+        
+        <article class="article-card" id="llm-agents-can-easily-tamper-with-their-own-traces">
+
+          <div class="article-card-top">
+            <p class="article-number">Paper 5</p>
+            
+            <h2 class="article-title">LLM Agents Can Easily Tamper With Their Own Traces</h2>
+            <div class="article-meta">
+              
+              <a class="beat-badge beat-badge--ai" href="../topic/ai.html">AI &amp; ML</a>
+              
+              
+              <span class="article-source">arXiv</span>
+              
+            </div>
+          </div>
+
+          <div class="article-card-body">
+            
+            <p class="article-topic">The article demonstrates how Large Language Model (LLM) agents can manipulate or delete their own execution traces and logs to hide activity.</p>
+            
+
+            
+            <div class="tldr-box">
+              <p class="tldr-label">TL;DR</p>
+              <p class="tldr-text">The provided code snippet illustrates how an autonomous agent can programmatically redact sensitive strings from its own logs and eventually delete its execution script. This highlights a critical security vulnerability where agents can tamper with the audit trails necessary for monitoring their actions.</p>
+            </div>
+            
+
+            
+            <div class="long-resume">
+              
+              <p>The technical excerpt provides a proof-of-concept regarding the self-tampering capabilities of LLM-driven agents. The logic begins by constructing various escaped versions of &#39;needles&#39; (sensitive data points) to ensure that even obfuscated or partially modified strings can be identified during a search-and-replace operation. By iterating through these variants, the agent can replace sensitive literals with a &#39;[REDACTED]&#39; placeholder within files located in standard temporary directories such as /tmp and /var/tmp. Crucially, the code demonstrates an &#39;in-place&#39; write operation that maintains the same inode, making the modification harder to detect via simple file metadata changes. The final step shown is the use of the &#39;unlink&#39; command on the script itself, which allows the agent to erase its presence from the filesystem entirely after completing a task. This capability suggests that if an LLM agent is granted sufficient filesystem permissions, it can effectively bypass forensic logging and hide malicious or unintended behaviors from human operators.</p>
+              
+            </div>
+            
+          </div>
+
+          <div class="article-card-footer">
+            
+            <div class="article-tags">
+              
+              
+              
+              <span class="tag">LLM Agents</span>
+              
+              
+              
+              
+              <a class="tag tag--link" href="../tag/nodejs.html">Node.js</a>
+              
+              
+              
+              
+              <a class="tag tag--link" href="../tag/claude.html">Claude</a>
+              
+              
+              
+              
+              <a class="tag tag--link" href="../tag/json.html">JSON</a>
+              
+              
+            </div>
+            
+            
+            <a class="read-more" href="https://arxiv.org/html/2609.30266v1" target="_blank" rel="noopener">Read paper →</a>
+            
+          </div>
+
+        </article>
+        
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<section class="news-section">
+
+  <div class="releases-header news-section-band">
+    <div class="releases-header-inner">
+      <div class="releases-header-text">
+        <h2 class="releases-title">This Week in Tech</h2>
+        <p class="releases-sub">Top stories curated from across the web this week</p>
+      </div>
+      <span class="releases-badge news-badge">This Week</span>
+    </div>
+  </div>
+
+  <div class="article-section">
+
+    
+
+    <div class="article-list">
+      
+      <article class="article-card" id="non-stabilizerness-and-violations-of-chsh-inequalities">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 1</p>
+          
+          <h2 class="article-title">Non-stabilizerness and violations of CHSH inequalities</h2>
+          <div class="article-meta">
+            
+            <a class="beat-badge beat-badge--quantum" href="../topic/quantum.html">Quantum Computing</a>
+            
+            
+            <span class="article-source">Quantum Journal</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">The research investigates the quantitative relationship between non-stabilizer resources and the violation of CHSH inequalities in quantum mechanics.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">This paper explores how non-stabilizer resources contribute to the violation of CHSH inequalities in quantum systems. It demonstrates that these resources must be both asymmetric and local to effectively drive such violations.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>The study provides a quantitative analysis of the interplay between entanglement and non-stabilizer resources, specifically focusing on their role in violating CHSH inequalities. The authors establish that while non-stabilizer resources are essential for such violations, they must adhere to a specific structural requirement: they need to be both asymmetric and local. To achieve this, the researchers employ stabilizer entropy (SE) as a metric to quantify the non-stabilator resources involved and to determine the probability of an inequality violation based on those resources. Furthermore, the research examines how spectral properties related to the flatness of the entanglement spectrum and its relationship with non-local stabilizer entropy influence the CHSH inequality. By integrating these findings with tools from representation theory, the authors present a systematic framework for constructing ensembles of quantum states that possess a higher probability of violating the CHSH inequalities, thereby advancing the understanding of non-locality and magic-state resource theories.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            
+            
+            <span class="tag">CHSH inequalities</span>
+            
+            
+            
+            
+            <span class="tag">Stabilizer entropy</span>
+            
+            
+            
+            
+            <span class="tag">Quantum entanglement</span>
+            
+            
+            
+            
+            <span class="tag">Representation theory</span>
+            
+            
+            
+            
+            <span class="tag">Stabilizer codes</span>
+            
+            
+            
+            
+            <span class="tag">Entanglement spectrum</span>
+            
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://quantum-journal.org/papers/q-2026-09-21-2214" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="terminalfix-png-steganography-mon-sep-21st">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 2</p>
+          
+          <h2 class="article-title">TerminalFix: PNG Steganography, (Mon, Sep 21st)</h2>
+          <div class="article-meta">
+            
+            <a class="beat-badge beat-badge--security" href="../topic/security.html">Cybersecurity</a>
+            
+            
+            <span class="article-source">SANS ISC</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">Analysis of the TerminalFix malware campaign&#39;s use of PNG steganography to hide executable payloads.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">This technical analysis explores how the TerminalFix campaign employs PNG steganography to conceal malicious Windows executables and DLLs. By manipulating pixel data within IDAT chunks, attackers successfully hide payloads that are later extracted and used for sideloading.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>The article provides a deep dive into the technical mechanics of the TerminalFix malware campaign, specifically focusing on its use of steganography within PNG image files. The author examines a specific PNG file that appears structurally valid, containing standard IHDR, IDAT, and IEND chunks, with no suspicious data appended to the end of the file. Through analysis using pngdump.py, it was discovered that the payload is not hidden in metadata but directly within the pixel data of the IDAT chunk. By applying the necessary PNG filters (such as the SUB filter) and decompressing the ZLIB-encoded data, the researcher revealed a Windows PE file embedded within the raw bitmap. The technique used by the threat actors is particularly aggressive; unlike traditional least-significant-bit (LSB) steganography which preserves image legibility, this method overwrites all available bits with the payload, rendering the original image visually corrupted. The analysis also identifies that larger payloads, such as a malicious DLL, are split across multiple PNG files to further complicate detection and reconstruction. One identified component is LockScreenContentServer.exe, a genuine Microsoft executable used for sideloading purposes. This method highlights an evolving trend in using seemingly benign file formats to transport multi-stage intrusion components.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            
+            
+            <span class="tag">PNG</span>
+            
+            
+            
+            
+            <span class="tag">Windows PE (Portable Executable)</span>
+            
+            
+            
+            
+            <span class="tag">ZLIB</span>
+            
+            
+            
+            
+            <span class="tag">pngdump.py</span>
+            
+            
+            
+            
+            <span class="tag">DLL</span>
+            
+            
+            
+            
+            <span class="tag">Microsoft Windows</span>
+            
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://isc.sans.edu/diary/rss/33318" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="heuristic-and-optimal-synthesis-of-cnot-and-clifford-circuits">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 3</p>
+          
+          <h2 class="article-title">Heuristic and Optimal Synthesis of CNOT and Clifford Circuits</h2>
+          <div class="article-meta">
+            
+            <a class="beat-badge beat-badge--engineering" href="../topic/engineering.html">Software Engineering</a>
+            
+            
+            <span class="article-source">Quantum Journal</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">The development of new heuristic and optimal algorithms for the synthesis of CNOT and Clifford circuits to minimize gate count and circuit depth.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">Researchers have introduced a new suite of algorithms designed to optimize the synthesis of Clifford and CNOT circuits by reducing two-qubit gate counts. These methods, ranging from optimal to greedy approaches, outperform existing tools like Qiskit and tket in circuit efficiency.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>The efficient implementation of Clifford circuits is a fundamental requirement for advancing quantum error correction and complex quantum algorithms. Because two-qubit gates, such as CNOT, are more prone to noise and error propagation than single-qubit gates, minimizing their count is critical for practical quantum computing. This research presents three distinct algorithmic families tailored to different circuit scales. For small-scale circuits, the authors implement an optimal synthesis method that leverages a novel mapping to graph isomorphism, allowing it to run orders of magnitude faster than previous state-of-the-art methods. For intermediate-sized circuits, an A* search algorithm is introduced to find near-optimal solutions. Finally, for large-scale circuits, a greedy algorithm utilizing a new vector heuristic provides high-performance synthesis that surpasses existing alternatives. When benchmarked against industry-standard frameworks including rustiq, tket, and qiskit, the proposed methods demonstrated superior performance in reducing two-qubit gate counts. Notably, the algorithms achieved a lower gate count for the Golay code encoding circuit than previously recorded reinforcement learning techniques. The complete implementation is available as an open-source Python package for the quantum computing community.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            
+            
+            <span class="tag">CNOT gates</span>
+            
+            
+            
+            
+            <span class="tag">Clifford circuits</span>
+            
+            
+            
+            
+            <span class="tag">rustiq</span>
+            
+            
+            
+            
+            <span class="tag">tket</span>
+            
+            
+            
+            
+            <span class="tag">qiskit</span>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/python.html">Python</a>
+            
+            
+            
+            
+            <span class="tag">Golay code</span>
+            
+            
+            
+            
+            <span class="tag">A* search algorithm</span>
+            
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://quantum-journal.org/papers/q-2026-09-21-2212" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="from-records-to-raids-the-questionable-legality-of-ices-palantir-elite-system">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 4</p>
+          
+          <h2 class="article-title">From Records to Raids: The Questionable Legality of ICE’s Palantir ELITE System</h2>
+          <div class="article-meta">
+            
+            <a class="beat-badge beat-badge--governance" href="../topic/governance.html">Data &amp; AI Governance</a>
+            
+            
+            <span class="article-source">Tech Policy Press</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">The article investigates the legal and ethical implications of ICE&#39;s use of Palantir&#39;s ELITE system for immigration enforcement and targeted raids.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">This investigative report examines the legality of ICE&#39;s use of Palantir&#39;s ELITE system for identifying immigration targets. It highlights potential violations of procurement laws, privacy regulations, and AI governance standards.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>The article explores the controversial deployment of the Enhanced Leads Identification &amp; Targeting for Enforcement (ELITE) system by Immigration and Customs Enforcement (ICE). Developed by Palantir, ELITE is reported to transform administrative and private data into operational intelligence used to identify individuals for deportation and locate high-density immigrant neighborhoods. A central tension exists between DHS&#39;s official characterization of the tool as a low-impact &#39;address-normalization&#39; utility and field reports suggesting it serves as a primary driver for arrests and sweeps. The author raises several critical legal inquiries: first, whether the procurement of ELITE through non-competitive, sole-source contracts violates the Competition in Contracting Act; second, whether the aggregation of data from agencies like HHS violates the Computer Matching and Privacy Protection Act due to a lack of individual notification and verification; and third, whether DHS is intentionally misclassifying the system&#39;s impact level to evade federal AI risk management mandates. Furthermore, the article notes that the full extent of ELITE&#39;s data inputs—which may include DMV records, mobile location data, and commercial brokers—remains opaque, raising significant Fourth Amendment concerns regarding the legality of the original data collection methods.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            
+            
+            <span class="tag">Palantir ELITE</span>
+            
+            
+            
+            
+            <span class="tag">Palantir ImmigrationOS</span>
+            
+            
+            
+            
+            <span class="tag">Palantir Investigative Case Management (ICM)</span>
+            
+            
+            
+            
+            <span class="tag">AI/Machine Learning</span>
+            
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://techpolicy.press/from-records-to-raids-the-questionable-legality-of-ices-palantir-elite-system" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="import-ai-473-the-uss-superintelligence-strategy-human-brain-in-a-mouse-skull-and-machine-hermeneutics">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 5</p>
+          
+          <h2 class="article-title">Import AI 473: The US&#39;s superintelligence strategy; human brain in a mouse skull; and machine hermeneutics</h2>
+          <div class="article-meta">
+            
+            <a class="beat-badge beat-badge--ai" href="../topic/ai.html">AI &amp; ML</a>
+            
+            
+            <span class="article-source">Import AI</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">The newsletter discusses RAND&#39;s proposed US strategy for managing superintelligence, advancements in xenocortical mouse research involving human brain tissue, and the emerging field of AI pacing research.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">This edition covers strategic geopolitical approaches to AI superintelligence and breakthroughs in neurobiology. It highlights RAND&#39;s &#39;Freedom of Action&#39; framework alongside new methods for integrating human brain tissue into mouse models.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>The newsletter explores three distinct yet interconnected themes in advanced technology and policy. First, it details a report from RAND suggesting that the United States should adopt a &#39;Freedom of Action&#39; strategy to navigate the uncertain path toward superintelligence. This involves investing in AI safety, security architectures, and national security adaptation to ensure humanity retains agency. The report outlines various strategic families including Coexistence, Denial (Moratorium, Deterrence, Continuity), and Acceleration, emphasizing that the US must prepare for multiple possible outcomes of AI development. Second, the article reports on a biological breakthrough where researchers successfully transplanted human-derived cortical organoids into mouse brains. These &#39;xenocortical&#39; mice demonstrated functional integration with the mouse nervous system and exhibited memory capabilities in maze tests, providing a new platform for studying human neuropsychiatric diseases while sparking intense ethical debate. Finally, the text touches upon the emerging research field of &#39;AI pacing,&#39; which seeks to develop frameworks for controlling the speed of AI progress to balance innovation with global safety and national security.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            
+            
+            <a class="tag tag--link" href="../topic/ai.html">Artificial Intelligence</a>
+            
+            
+            
+            
+            <span class="tag">Superintelligence</span>
+            
+            
+            
+            
+            <span class="tag">Human cortical organoids (hCO)</span>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../topic/ai.html">Machine learning</a>
+            
+            
+            
+            
+            <span class="tag">Motion sequencing (MoSeq)</span>
+            
+            
+            
+            
+            <span class="tag">Calcium imaging</span>
+            
+            
+            
+            
+            <span class="tag">Electrophysiological analysis</span>
+            
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://importai.substack.com/p/import-ai-473-the-uss-superintelligence" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="reverse-engineering-flock-cameras">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 6</p>
+          
+          <h2 class="article-title">Reverse-Engineering Flock Cameras</h2>
+          <div class="article-meta">
+            
+            <a class="beat-badge beat-badge--governance" href="../topic/governance.html">Data &amp; AI Governance</a>
+            
+            
+            <span class="article-source">Schneier on Security</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">Analysis of security vulnerabilities and data privacy implications discovered through the reverse-engineering of Flock automated license plate reader cameras.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">Reverse-engineering of Flock cameras has revealed significant privacy concerns regarding the tracking of pedestrians and cyclists. The breach was made possible by a critical security flaw where encryption keys were stored on an unencrypted partition.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>The article discusses the findings from a recent reverse-engineering effort targeting Flock&#39;s automated license plate reader (ALPR) cameras. By capturing a physical device, researchers were able to inspect the underlying software and its data processing capabilities. The analysis highlights that the system&#39;s computer vision algorithms extend far beyond simple vehicle tracking; the software is capable of identifying people, bicycles, and even granular details such as bumper stickers or specific patches on motorcyclists. This level of surveillance capability raises significant privacy implications for public spaces. Furthermore, the report identifies a major failure in security engineering: while much of the sensitive data was intended to be encrypted, the researchers bypassed this protection because an unencrypted partition contained the necessary keys for the encrypted portion of the disk. This vulnerability allowed for the recovery of extensive logs containing over a million images captured over several weeks.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            
+            
+            <span class="tag">Flock Cameras</span>
+            
+            
+            
+            
+            <span class="tag">Automatic License Plate Reader (ALPR)</span>
+            
+            
+            
+            
+            <span class="tag">Computer Vision</span>
+            
+            
+            
+            
+            <span class="tag">Disk Encryption</span>
+            
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://schneier.com/blog/archives/2026/09/reverse-engineering-flock-cameras.html" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="sealsq-wisekey-and-jura-sign-mou-for-swiss-post-quantum-semiconductor-center">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 7</p>
+          
+          <h2 class="article-title">SEALSQ, WISeKey and Jura Sign MoU for Swiss Post-Quantum Semiconductor Center</h2>
+          <div class="article-meta">
+            
+            <a class="beat-badge beat-badge--security" href="../topic/security.html">Cybersecurity</a>
+            
+            
+            <span class="article-source">The Quantum Insider</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">SEALSQ, WISeKey, and the Canton of Jura have signed an MoU to establish a Post-Quantum Semiconductor and Cybersecurity Center in Switzerland.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">A new partnership between SEALSQ, WISeKey, and the Canton of Jura aims to launch a multi-million franc semiconductor center in Switzerland. The facility will specialize in post-quantum cryptographic hardware and secure semiconductor provisioning.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>SEALSQ Corp, its parent company WISeKey, and the Republic and Canton of Jura have entered into a Memorandum of Understanding (MoU) to establish a Post-Quantum Semiconductor and Cybersecurity Center in Switzerland. This strategic initiative represents an estimated investment of CHF 40–60 million over a six-year period. The center&#39;s primary mission is to develop Swiss sovereign capabilities for the design, testing, and secure provisioning of next-generation post-quantum semiconductor technologies. Central to this project is the deployment of SEALSQ’s QS7001 Quantum Shield, which is engineered to support NIST-standardized algorithms such as ML-KEM and ML-DSA. The center plans to implement capabilities for cryptographic root-of-trust injection, secure firmware personalization, and eventually ASIC design. Economically, the project is expected to be a significant driver for the region, with projections of creating over 250 jobs by the eighth year of operation, at least 60% of which will be filled by local residents. The development model follows the successful Quantix Edge Security framework established in Murcia, Spain. This public-private partnership will seek to integrate Jura&#39;s existing expertise in precision manufacturing and microtechnology with advanced cybersecurity needs, potentially serving Swiss defense procurement and industrial programs like armasuisse.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            
+            
+            <a class="tag tag--link" href="../tag/post-quantum-cryptography-pqc.html">Post-Quantum Cryptography</a>
+            
+            
+            
+            
+            <span class="tag">QS7001 Quantum Shield</span>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/ml-kem.html">ML-KEM</a>
+            
+            
+            
+            
+            <span class="tag">ML-DSA</span>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/asic.html">ASIC</a>
+            
+            
+            
+            
+            <span class="tag">PKI</span>
+            
+            
+            
+            
+            <span class="tag">IoT</span>
+            
+            
+            
+            
+            <span class="tag">NIST Post-Quantum Algorithms</span>
+            
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://thequantuminsider.com/2026/09/21/sealsq-wisekey-jura-post-quantum-semiconductor-center" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="frame-grounding-llm-vulnerability-detection-with-a-sound-separation-logic-core">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 8</p>
+          
+          <h2 class="article-title">Frame: Grounding LLM Vulnerability Detection with a Sound Separation-Logic Core</h2>
+          <div class="article-meta">
+            
+            <a class="beat-badge beat-badge--ai" href="../topic/ai.html">AI &amp; ML</a>
+            
+            
+            <span class="article-source">Reddit r/netsec</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">The introduction of Frame, a neuro-symbolic Static Application Security Testing (SAST) tool that combines a sound symbolic engine with an LLM agent to improve vulnerability detection recall and precision.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">Frame is a new neuro-symbolic SAST tool designed to bridge the gap between precise but narrow symbolic analyzers and broad but ungrounded LLM scanners. By using a symbolic engine to verify LLM-proposed vulnerabilities, it achieves higher recall without sacrificing precision.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>The research presents &#39;Frame,&#39; a novel neuro-symbolic approach to Static Application Security Testing (SAST) that addresses the inherent trade-offs between symbolic analysis and Large Language Models (LLMs). Traditional symbolic engines are highly precise but often fail to detect vulnerabilities involving complex, cross-file data flows or missing security controls. Conversely, pure LLM-based scanners are context-aware but prone to hallucinations and non-deterministic results. Frame solves this by utilizing a sound symbolic engine as its backbone, performing taint analysis and separation-logic verification via the Z3 theorem prover. An integrated LLM layer operates as an agentic loop, capable of navigating repositories using tools like &#39;grep&#39; to identify vulnerabilities that the symbolic core misses, such as the absence of security attributes in C# controllers. To maintain high precision, Frame employs a verification and tiering system: every LLM-detected finding is checked against the engine&#39;s known sink model; if the dangerous operation is recognized by the symbolic layer, the finding is promoted to a higher-confidence &#39;llm_verified&#39; tier. In real-world evaluations using a corpus of production applications, Frame demonstrated superior performance over Semgrep OSS, reaching an F1 score of 0.58. The implementation leverages local, OpenAI-compatible models like Qwen, allowing for deep, iterative analysis that is both private and cost-effective.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            
+            
+            <span class="tag">Frame</span>
+            
+            
+            
+            
+            <span class="tag">Z3</span>
+            
+            
+            
+            
+            <span class="tag">Semgrep OSS</span>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/large-language-models-llms.html">LLM</a>
+            
+            
+            
+            
+            <span class="tag">Qwen3.6-35B-A3B-OptiQ</span>
+            
+            
+            
+            
+            <span class="tag">MLX</span>
+            
+            
+            
+            
+            <span class="tag">ASP.NET</span>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/java.html">Java</a>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/javascript.html">JavaScript</a>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/typescript.html">TypeScript</a>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/c.html">C#</a>
+            
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://lambdasec.github.io/Frame-Grounding-LLM-Vulnerability-Detection-with-a-Sound-Separation-Logic-Core" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="relays-are-masking-chinese-access-to-frontier-ai-models-in-the-us">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 9</p>
+          
+          <h2 class="article-title">Relays Are Masking Chinese Access to Frontier AI Models in the US</h2>
+          <div class="article-meta">
+            
+            <a class="beat-badge beat-badge--ai" href="../topic/ai.html">AI &amp; ML</a>
+            
+            
+            <span class="article-source">Dark Reading</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">A massive network of over 80,000 relay servers is being used to mask Chinese access to US-based frontier AI models for the purpose of bypassing restrictions and potential model distillation.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">A Team Cymru report reveals a sprawling network of 80,000 relay servers used to facilitate anonymous access to US frontier AI models from China. This infrastructure likely supports systematic model distillation efforts and allows users to circumvent regional access controls.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>A recent investigation by Team Cymru has uncovered a massive-scale operation involving over 80,000 LLM relay servers designed to mask the identity and location of users accessing US frontier AI models. This network serves as an intermediary layer between end-users—primarily located in China and Hong Kong—and major AI providers such as OpenAI, Anthropic, Google, and xAI. By routing requests through these transfer stations, operators can pool multiple API credentials and subscription accounts into a single gateway, effectively breaking the ability of providers to perform accurate account attribution, usage metering, and regional enforcement.</p>
+            
+            <p>The scale of the operation is significant, with researchers observing massive data transfers, including 14TB of uploaded data over an eight-day period. A particularly concerning finding involves a high upload-to-download ratio observed in traffic directed at Anthropic&#39;s API, which researchers suggest is consistent with large-scale model distillation. In this process, the outputs from highly capable frontier models are harvested to train smaller, less expensive models that mimic the original&#39;s performance.</p>
+            
+            <p>The technical backbone of this network includes open-source software such as Claude Relay Service (CRS) and its successor, sub2api, developed by Wei-Shaw. These tools provide sophisticated features like user management, per-user billing, and prompt auditing, making them highly effective for commercialized proxy services. The sub2api project has seen significant traction on GitHub and Telegram, supported by a network of commercial sponsors providing everything from IP addresses to optimized AI traffic infrastructure. Ultimately, this infrastructure poses a direct threat to the security models of AI providers by enabling widespread fraud, credential theft, and the unauthorized cloning of proprietary AI capabilities.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            
+            
+            <a class="tag tag--link" href="../tag/anthropic.html">Anthropic</a>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/openai.html">OpenAI</a>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/google.html">Google</a>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/xai.html">xAI</a>
+            
+            
+            
+            
+            <span class="tag">Claude Relay Service (CRS)</span>
+            
+            
+            
+            
+            <span class="tag">sub2api</span>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/github.html">GitHub</a>
+            
+            
+            
+            
+            <span class="tag">Telegram</span>
+            
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://darkreading.com/cyber-risk/relays-masking-chinese-access-frontier-ai-models" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="nvidia-links-tensorrt-and-dynamo-triton-for-faster-ai-on-multiple-gpus">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 10</p>
+          
+          <h2 class="article-title">NVIDIA links TensorRT and Dynamo-Triton for faster AI on multiple GPUs</h2>
+          <div class="article-meta">
+            
+            <a class="beat-badge beat-badge--ai" href="../topic/ai.html">AI &amp; ML</a>
+            
+            
+            <span class="article-source">Quantum Zeitgeist</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">NVIDIA has integrated TensorRT 11.0 with Dynamo-Triton to enable efficient multi-GPU inference for large-scale generative AI models.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">NVIDIA&#39;s new integration between TensorRT and Dynamo-Triton allows a single neural network to execute across multiple GPUs seamlessly. This advancement significantly reduces latency for complex generative AI tasks like video synthesis by automating GPU coordination.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>NVIDIA is revolutionizing generative AI workflows by enabling multi-device inference through the integration of TensorRT 11.0 and Dynamo-Triton release 26.07. By leveraging NCCL-backed distributed collectives and the Ulysses graph, the system allows a single TensorRT network to execute across multiple GPUs, effectively managing the massive memory and computational requirements of modern generative models. A key feature of this integration is the abstraction provided by Dynamo-Triton; it presents a unified gRPC model endpoint to clients, removing the need for developers to manually manage individual GPU ranks or communicators. This simplification is vital for latency-sensitive applications such as video generation. In benchmarks using the NVIDIA Cosmos 3 Nano model, the technology demonstrated a massive reduction in end-to-end latency, bringing generation time down from over two and a half minutes to just 34 seconds when utilizing eight GPUs. While the transformer RPC latency saw a 6.09x speedup on an eight-GPU setup (CP8), the researchers noted diminishing returns due to increasing bottlenecks in non-transformer tasks like VAE decoding and prompt processing. Furthermore, NVIDIA implemented rigorous validation to ensure that distributed inference does not compromise output quality, maintaining acceptable Mean Absolute Error (MAE) and Peak Signal-to-Noise Ratio (PSNR) levels across all configurations. This development aligns with NVIDIA&#39;s broader strategy of advancing accelerated computing and integrating classical and quantum technologies via architectures like NVQLink.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            
+            
+            <span class="tag">NVIDIA TensorRT 11.0</span>
+            
+            
+            
+            
+            <span class="tag">NVIDIA Dynamo-Triton</span>
+            
+            
+            
+            
+            <span class="tag">NCCL</span>
+            
+            
+            
+            
+            <span class="tag">NVIDIA Cosmos 3 Nano</span>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/cuda.html">CUDA</a>
+            
+            
+            
+            
+            <span class="tag">gRPC</span>
+            
+            
+            
+            
+            <span class="tag">NVQLink</span>
+            
+            
+            
+            
+            <span class="tag">Ulysses graph</span>
+            
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://quantumzeitgeist.com/nvidia-links-tensorrt-dynamo-triton-faster" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="ai-coding-agents-need-a-secrets-safe-context-boundary">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 11</p>
+          
+          <h2 class="article-title">AI coding agents need a secrets-safe context boundary</h2>
+          <div class="article-meta">
+            
+            <a class="beat-badge beat-badge--ai" href="../topic/ai.html">AI &amp; ML</a>
+            
+            
+            <span class="article-source">The New Stack</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">The security risks of AI coding agents inadvertently leaking secrets by including sensitive local files in their model context.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">AI coding agents pose a new security threat by potentially transmitting sensitive local credentials to external AI models during context collection. To mitigate this, organizations must implement deterministic secrets detection at the point of agent file access and prompt submission.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>The rise of AI coding agents introduces a significant security gap in the software development lifecycle. While these agents enhance productivity by autonomously investigating bugs and refactoring code, their need for extensive context leads them to ingest sensitive local data such as API keys, database credentials, and configuration files. Unlike traditional leaks that occur via commits to version control, agentic leaks can happen silently before any code reaches a repository, sending secrets directly to external model providers&#39; logs and telemetry. Traditional security checkpoints like pull requests and CI/CD pipelines are insufficient because they act on data that has already left the local environment. The article argues that developers must treat AI agent context as an egress surface and implement a zero-trust approach. This involves using deterministic, purpose-built secrets detection tools—such as Sonar&#39;s plugins—to intercept and redact sensitive information at the IDE or agent-plugin level before it is transmitted. A robust defense requires a layered strategy: integrating detection into the editor, scanning prompt submissions locally, monitoring command-line outputs, and enforcing strict directory permissions for agents to ensure that sensitive files like .env or production logs are excluded from the agent&#39;s reach by default.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            
+            
+            <a class="tag tag--link" href="../tag/ai-coding-agents.html">AI coding agents</a>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/git.html">Git</a>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/claude-code.html">Claude Code</a>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/github-copilot.html">GitHub Copilot</a>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/codex.html">Codex</a>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/cursor.html">Cursor</a>
+            
+            
+            
+            
+            <span class="tag">Sonar</span>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/large-language-models-llms.html">LLM</a>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/ssh.html">SSH</a>
+            
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://thenewstack.io/ai-agent-context-boundary" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="windows-closedquorum-malware-uses-ai-models-to-autonomously-select-post-compromise-actions">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 12</p>
+          
+          <h2 class="article-title">Windows CLOSEDQUORUM malware uses AI models to autonomously select post-compromise actions</h2>
+          <div class="article-meta">
+            
+            <a class="beat-badge beat-badge--ai" href="../topic/ai.html">AI &amp; ML</a>
+            
+            
+            <span class="article-source">The Register</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">The discovery of CLOSEDQUORUM, a Windows malware implant that utilizes a quorum of Large Language Models to autonomously execute post-compromise actions.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">Security researchers at Cisco Talos have identified CLOSEDQUORUM, a novel malware that uses multiple LLMs to autonomously select attack vectors. This &#39;effort displacement&#39; allows the malware to operate continuously without needing active commands from a human attacker.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>Cisco Talos has uncovered a significant evolution in malware design with the discovery of CLOSEDQUORUM, a Go-based Windows implant. Unlike traditional malware that relies on direct instructions from a human operator via C2 servers, CLOSEDQUORUM utilizes a &#39;quorum&#39; approach by querying four different Large Language Models: Google Gemini, DeepSeek, Qwen, and Mistral. The malware presents these models with a system prompt identifying them as &#39;advanced malware strategists&#39; and asks them to vote on which predefined capability module to execute next. If the votes are tied, a specific hierarchy determines the winner, starting with DeepSeek. The available modules include &#39;Steal&#39; (targeting LSASS memory, browser passwords, and crypto wallets), &#39;Inject&#39; (using process hollowing or Early Bird injection), and &#39;Persist&#39; (establishing long-term access). This autonomous decision-making process effectively removes the human bottleneck, allowing the attack to proceed 24/7 regardless of the attacker&#39;s availability. The malware is designed to exfiltrate stolen data to a Discord webhook using AES-256-GCM encryption. While no in-the-wild deployment has been observed yet, researchers identified the binary using their new CAIRN toolkit. Talos recommends that defenders focus on behavioral detection—specifically looking for processes that simultaneously communicate with multiple AI APIs while performing sensitive operations like LSASS access or WMI persistence—rather than relying on simple domain blocking.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            
+            
+            <a class="tag tag--link" href="../tag/windows.html">Windows</a>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/gemini.html">Google Gemini</a>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/deepseek.html">DeepSeek</a>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/qwen.html">Qwen</a>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/mistral.html">Mistral</a>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/go.html">Go</a>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/discord.html">Discord</a>
+            
+            
+            
+            
+            <span class="tag">LSASS</span>
+            
+            
+            
+            
+            <span class="tag">Google Chrome</span>
+            
+            
+            
+            
+            <span class="tag">Microsoft Edge</span>
+            
+            
+            
+            
+            <span class="tag">Mozilla Firefox</span>
+            
+            
+            
+            
+            <span class="tag">MetaMask</span>
+            
+            
+            
+            
+            <span class="tag">Exodus</span>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/ethereum.html">Ethereum</a>
+            
+            
+            
+            
+            <span class="tag">AES-256-GCM</span>
+            
+            
+            
+            
+            <span class="tag">WMI</span>
+            
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://theregister.com/security/2026/09/22/windows-closedquorum-malware-uses-ai-models-to-autonomously-select-post-compromise-actions/5298435" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="scaling-and-operational-excellence-for-quantum-finance-categories-risk-modeling-portfolio-optimization-cryptography-q-day">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 13</p>
+          
+          <h2 class="article-title">Scaling and Operational Excellence for Quantum Finance Categories: Risk Modeling, Portfolio Optimization, Cryptography, Q-day</h2>
+          <div class="article-meta">
+            
+            <a class="beat-badge beat-badge--ai" href="../topic/ai.html">AI &amp; ML</a>
+            
+            
+            <span class="article-source">Inside Quantum Technology</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">The strategic implementation of quantum computing in the financial sector through scaling infrastructure and achieving operational excellence in risk modeling, portfolio optimization, and cryptography.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">Global financial institutions are integrating hybrid quantum-classical architectures to enhance risk modeling, portfolio optimization, and cryptographic security. The transition focuses on two parallel tracks: scaling computational depth and achieving operational excellence through streamlined, high-speed workflows.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>The financial services industry is undergoing a structural shift from experimental quantum computing to practical, hybrid implementations. This evolution is characterized by two simultaneous objectives: Scaling, which involves expanding the complexity and capacity of quantum algorithms, and Operational Excellence, which focuses on optimizing existing workflows for speed and accuracy. Major players like Goldman Sachs, JPMorgan Chase, and HSBC are already deploying these technologies to achieve significant performance gains, such as 30x faster risk processing and improved macroeconomic forecasting. In the realm of portfolio optimization, firms are utilizing hybrid solvers from D-Wave and algorithms like QAOA to manage complex regulatory constraints and maximize ROI. A critical component of this transition is addressing the security threat posed by &#39;Q-Day&#39;—the moment quantum computers can break current RSA/ECC encryption. To mitigate &#39;Harvest Now, Decrypt Later&#39; risks, banks are adopting crypto-agility architectures and migrating to NIST-standardized post-quantum cryptography, including ML-Kyber and ML-Dilithium. Furthermore, the integration of classical GPUs with NISQ processors via platforms like NVIDIA’s CUDA-Q is enabling advanced simulations, such as the Q-CHOP algorithm, which has demonstrated significant improvements in Sharpe ratios and simulation speeds. Ultimately, the industry is moving toward a dual-run state where classical and quantum-safe infrastructures coexist to ensure long-term financial stability and security.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            
+            
+            <span class="tag">Quantum Monte Carlo Integration (QMCI)</span>
+            
+            
+            
+            
+            <span class="tag">Quantum Amplitude Estimation (QAE)</span>
+            
+            
+            
+            
+            <span class="tag">Quadratic Unconstrained Binary Optimization (QUBO)</span>
+            
+            
+            
+            
+            <span class="tag">Quantum Approximate Optimization Algorithm (QAOA)</span>
+            
+            
+            
+            
+            <span class="tag">ML-Kyber</span>
+            
+            
+            
+            
+            <span class="tag">ML-Dilithium</span>
+            
+            
+            
+            
+            <span class="tag">ML-DSA (FIPS 204)</span>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/nvidia-cuda-q.html">NVIDIA CUDA-Q</a>
+            
+            
+            
+            
+            <span class="tag">D-Wave Systems</span>
+            
+            
+            
+            
+            <span class="tag">IBM Quantum Network</span>
+            
+            
+            
+            
+            <span class="tag">Rigetti Computing</span>
+            
+            
+            
+            
+            <span class="tag">Quantum Motion</span>
+            
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://insidequantumtechnology.com/news-archive/scaling-and-operational-excellence-for-quantum-finance-categories-risk-modeling-portfolio-optimization-cryptography-q-day" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="crook-used-three-open-source-agents-to-break-into-a-fortune-500-hospitality-company-a-major-us-airline-and-25-other-orgs">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 14</p>
+          
+          <h2 class="article-title">Crook used three open source agents to break into a Fortune 500 hospitality company, a major US airline and 25+ other orgs</h2>
+          <div class="article-meta">
+            
+            <a class="beat-badge beat-badge--ai" href="../topic/ai.html">AI &amp; ML</a>
+            
+            
+            <span class="article-source">The Register</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">A Chinese-speaking threat actor utilized three open-source AI agents to conduct highly efficient, low-cost automated attacks against numerous organizations, including Fortune 500 companies.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">A sophisticated cyberattack campaign leveraged autonomous AI agents to breach dozens of companies with minimal human intervention and extremely low operational costs. The attack resulted in massive credit card data theft and the deployment of web skimmers across multiple retail platforms.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>A recent investigation by security firm Gambit has uncovered a highly efficient cyberattack campaign orchestrated by a Chinese-speaking operator using open-source AI harnesses. The attacker utilized three distinct AI tools—Hermes, Strix, and Cairn—to automate the entire lifecycle of an intrusion, from initial vulnerability discovery to exploitation and data exfiltration. Hermes acted as the central orchestrator, managing workflows and executing multi-step tasks based on human prompts. Strix was employed for deep-mode penetration testing to identify exploitable vulnerabilities, while Cairn took over once targets were identified to execute specific objectives such as deploying web shells or gaining administrative access. The operational efficiency of this campaign was unprecedented; the attacker achieved a mean cost of approximately $25 per scan by utilizing OpenRouter to access various large language models including Claude Opus and DeepSeek. The impact of the campaign was significant, with at least 27 companies compromised, including a Fortune 500 hospitality firm and a major US airline. The breach led to the theft of over 600,000 credit card records and the successful injection of JavaScript-based skimmers into the checkout pages of numerous online retailers. This shift toward autonomous, high-tempo attacks presents a new challenge for cybersecurity professionals, as the time between vulnerability exposure and exploitation has been reduced to mere hours, making traditional patching cycles insufficient for defense.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            
+            
+            <span class="tag">Strix</span>
+            
+            
+            
+            
+            <span class="tag">Cairn</span>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/hermes.html">Hermes</a>
+            
+            
+            
+            
+            <span class="tag">OpenRouter</span>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/claude-opus-46.html">Claude Opus 4.6</a>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/glm-52.html">GLM 5.2</a>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/deepseek-v4-pro.html">DeepSeek v4 Pro</a>
+            
+            
+            
+            
+            <span class="tag">DeepSeek v4.1 Flash</span>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/aws.html">AWS</a>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/javascript.html">JavaScript</a>
+            
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://theregister.com/security/2026/09/25/crook-used-three-open-source-agents-to-break-into-a-fortune-500-hospitality-company-a-major-us-airline-and-25-other-orgs/5299012" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="two-tier-encryption-in-the-uk">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 15</p>
+          
+          <h2 class="article-title">Two-tier encryption in the UK</h2>
+          <div class="article-meta">
+            
+            <a class="beat-badge beat-badge--governance" href="../topic/governance.html">Data &amp; AI Governance</a>
+            
+            
+            <span class="article-source">HN Best</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">The UK government&#39;s use of Technical Capability Notices to pressure Apple into compromising end-to-end encryption, leading to the withdrawal of Advanced Data Protection for new users in the UK.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">Apple has ceased offering Advanced Data Protection to new iCloud users in the UK following a secret government order to ensure data accessibility. This move avoids the creation of a cryptographic backdoor but leaves UK users with a lower tier of encryption than their international counterparts.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>The article details a significant shift in Apple&#39;s security posture within the United Kingdom, driven by legal pressures from the UK government. Following reports that the UK government issued a Technical Capability Notice (TCN) under the Investigatory Powers Act 2016, Apple was effectively ordered to ensure it possesses the technical capability to access encrypted iCloud data when presented with a warrant. This created a fundamental conflict for Apple, which has historically maintained that creating any &#39;master key&#39; or backdoor would compromise the security of all users globally. The author traces this tension back to high-profile incidents like the San Bernardino attack and the Snowden revelations, emphasizing Apple&#39;s long-standing refusal to weaken its encryption architecture. To resolve the legal impasse without compromising its global security integrity through a backdoor, Apple chose to stop offering &#39;Advanced Data Protection&#39; (ADP) to new users in the UK. While existing users who already enabled ADP remain protected by end-to-end encryption, new users are restricted to &#39;Standard Data Protection,&#39; where Apple retains the keys and can comply with lawful access requests. The author argues that this situation serves as a warning for the broader tech industry, suggesting that if companies cannot resist such mandates, the fundamental security of E2EE services like Signal and WhatsApp could be at risk.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            
+            
+            <span class="tag">iCloud</span>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/ios.html">iOS</a>
+            
+            
+            
+            
+            <span class="tag">Advanced Data Protection (ADP)</span>
+            
+            
+            
+            
+            <span class="tag">End-to-end encryption (E2EE)</span>
+            
+            
+            
+            
+            <span class="tag">iPhone 5C</span>
+            
+            
+            
+            
+            <span class="tag">WhatsApp</span>
+            
+            
+            
+            
+            <span class="tag">Signal</span>
+            
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://macanorak.com/two-tier-encryption-in-the-uk" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="fedramp-vdr-ver-daily-scans-are-only-the-beginning">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 16</p>
+          
+          <h2 class="article-title">FedRAMP VDR &amp; VER: Daily Scans Are Only the Beginning</h2>
+          <div class="article-meta">
+            
+            <a class="beat-badge beat-badge--security" href="../topic/security.html">Cybersecurity</a>
+            
+            
+            <span class="article-source">BleepingComputer</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">The upcoming FedRAMP VDR and VER regulatory changes mandate a shift from periodic manual compliance to continuous, automated vulnerability detection and response.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">FedRAMP is implementing significant changes to its Vulnerability Detection and Response (VDR) and Verification and Evaluation (VER) rules by late 2026. These updates require cloud service providers to move away from monthly scans toward automated, continuous validation of security controls.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>The article details the profound structural shift occurring within the FedRAMP authorization framework due to new Vulnerability Detection and Response (VDR) and Verification and Evaluation (VER) mandates. Starting December 7, 2026, cloud service providers must transition from a traditional monthly scanning and Plan of Action &amp; Milestones (POA&amp;M) model to a continuous, automated validation system. The new rules introduce much tighter remediation windows based on vulnerability severity; for instance, high-risk vulnerabilities may require patching within as little as 12 hours. Furthermore, the &#39;Assume It&#39;s Automatable&#39; principle places the burden of proof on providers to demonstrate that exploits cannot be automated. A critical change is the treatment of process failures: if a provider&#39;s detection pipeline fails, that failure itself is classified as a vulnerability. This transition marks the end of the Rev5 era and the rise of FedRAMP 20x, which replaces static documents like the System Security Plan with machine-readable &#39;Security Decision Records.&#39; The author argues that while this increases initial engineering complexity, it ultimately creates a unified compliance substrate that can satisfy other frameworks like SOC 2. Success in this new landscape requires moving from &#39;point-in-time&#39; compliance to an operational state of persistent, automated validation.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            
+            
+            <span class="tag">FedRAMP</span>
+            
+            
+            
+            
+            <span class="tag">FedRAMP 20x</span>
+            
+            
+            
+            
+            <span class="tag">FedRAMP Rev5</span>
+            
+            
+            
+            
+            <span class="tag">CISA BOD 26-04</span>
+            
+            
+            
+            
+            <span class="tag">SIEM</span>
+            
+            
+            
+            
+            <span class="tag">CI/CD</span>
+            
+            
+            
+            
+            <span class="tag">GRC</span>
+            
+            
+            
+            
+            <span class="tag">Anecdotes platform</span>
+            
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://bleepingcomputer.com/news/security/fedramp-vdr-and-ver-daily-scans-are-only-the-beginning" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+      <article class="article-card" id="simplification-for-whom-open-letter-to-eu-member-states-to-uphold-gdpr-protections-in-digital-omnibus-on-data">
+
+        <div class="article-card-top">
+          <p class="article-number">Article 17</p>
+          
+          <h2 class="article-title">Simplification for whom? Open letter to EU Member States to uphold GDPR protections in Digital Omnibus on Data</h2>
+          <div class="article-meta">
+            
+            <a class="beat-badge beat-badge--governance" href="../topic/governance.html">Data &amp; AI Governance</a>
+            
+            
+            <span class="article-source">EDRi</span>
+            
+          </div>
+        </div>
+
+        <div class="article-card-body">
+          
+          <p class="article-topic">The EDRi issues an open letter warning that the EU&#39;s Digital Omnibus on data threatens to undermine GDPR protections by blurring the lines between pseudonymised and anonymous data.</p>
+          
+
+          
+          <div class="tldr-box">
+            <p class="tldr-label">TL;DR</p>
+            <p class="tldr-text">The article critiques the European Commission&#39;s Digital Omnibus on data for potentially introducing deregulation under the guise of simplification. It highlights how new provisions could weaken GDPR protections regarding pseudonymisation and create loopholes for AI-driven data processing.</p>
+          </div>
+          
+
+          
+          <div class="long-resume">
+            
+            <p>The EDRi (European Digital Rights) has issued a warning regarding the EU&#39;s Digital Omnibus on data, arguing that recent legislative drafts from the Council threaten the fundamental protections of the GDPR. A primary concern is the potential blurring of the distinction between pseudonymised and anonymous data. Under proposed Article 25a, the legal status of data could become subjective, depending on whether a specific actor has the technical means to re-identify an individual. This creates significant legal uncertainty for data chains involving advertisers, brokers, and cloud providers, and risks stripping users of their rights to access, correct, or object to data processing. Furthermore, the article addresses the &#39;special treatment&#39; being proposed for AI development. By explicitly naming AI as a justification for &#39;legitimate interest&#39; processing, lawmakers may inadvertently encourage companies to frame various data-intensive activities as &#39;AI-related&#39; to bypass stricter consent rules. The author also notes that these changes do not level the playing field for EU startups but rather strengthen existing data monopolies. Finally, the text points out the irony of removing automated privacy signals while simultaneously considering more intrusive access to user devices, suggesting a broader political contradiction in the EU&#39;s approach to cybersecurity and digital rights.</p>
+            
+          </div>
+          
+        </div>
+
+        <div class="article-card-footer">
+          
+          <div class="article-tags">
+            
+            
+            
+            <a class="tag tag--link" href="../tag/gdpr.html">GDPR</a>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../topic/ai.html">AI</a>
+            
+            
+            
+            
+            <a class="tag tag--link" href="../tag/large-language-models-llms.html">Large Language Models</a>
+            
+            
+            
+            
+            <span class="tag">Cookie IDs</span>
+            
+            
+            
+            
+            <span class="tag">Advertising IDs</span>
+            
+            
+            
+            
+            <span class="tag">Device identifiers</span>
+            
+            
+            
+            
+            <span class="tag">Privacy-enhancing technologies (PETs)</span>
+            
+            
+            
+            
+            <span class="tag">Cloud providers</span>
+            
+            
+          </div>
+          
+          
+          <a class="read-more" href="https://edri.org/our-work/simplification-for-whom-open-letter-uphold-gdpr-protections-in-data-omnibus" target="_blank" rel="noopener">Read full article →</a>
+          
+        </div>
+
+      </article>
+      
+    </div>
+
+    <div class="week-nav week-nav-bottom-bar">
+      
+      <a href="../week/38_2026.html" class="week-nav-btn week-nav-older">← Week 38 · 2026</a>
+      
+      <a href="../archive.html" class="week-nav-btn week-nav-archive">All issues</a>
+      <span></span>
+    </div>
+
+    
+  </div>
+
+</section>
+
+
+
+<section class="subscribe-cta" aria-label="Subscribe to Bowl of Data">
+  <div class="subscribe-cta-inner">
+    <p class="subscribe-cta-kicker">Free weekly digest</p>
+    <h2 class="subscribe-cta-title">Get next Saturday&rsquo;s issue in your inbox</h2>
+    <p class="subscribe-cta-sub">
+      The week&rsquo;s most relevant AI, security, blockchain, and engineering stories —
+      curated, summarised, and reviewed by humans. No spam, unsubscribe anytime.
+    </p>
+    <a href="https://bowlofdata.substack.com/?utm_source=bowlofdata&amp;utm_medium=site&amp;utm_campaign=week"
+       class="cta-primary" target="_blank" rel="noopener">Subscribe — it&rsquo;s free</a>
+  </div>
+</section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <img src="../imgs/logo.png" alt="Bowl of Data" class="footer-logo" width="500" height="500" loading="lazy" decoding="async">
+      <div class="footer-text">
+        <p class="footer-name">Bowl of Data</p>
+        <p class="footer-sub">A weekly digest of the most relevant tech stories</p>
+        <p class="footer-authored">Curated by Maki &amp; reviewed by the Bowl of Data team.</p>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/bowl_of_data" class="footer-social-link" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <a href="https://bowlofdata.substack.com/" class="footer-social-link" target="_blank" rel="noopener" aria-label="Subscribe on Substack">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+          </svg>
+        </a>
+        <a href="https://open.spotify.com/show/033Mqus9YAIssepHakRIIk" class="footer-social-link" target="_blank" rel="noopener" aria-label="Listen on Spotify">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.32-1.32 9.719-.66 13.5 1.62.32.24.5.72.24 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.6.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>
+          </svg>
+        </a>
+        <a href="https://www.youtube.com/@bowlofdata" class="footer-social-link" target="_blank" rel="noopener" aria-label="Watch on YouTube">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.376.505A3.016 3.016 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.376-.505a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+        </a>
+      </div>
+      <p class="footer-credit">
+        Powered by
+        <a href="https://github.com/bowlofdata/maki" target="_blank" rel="noopener">Maki</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Cookie consent banner -->
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Cookie consent" aria-live="polite">
+    <div class="cookie-banner-inner">
+      <p class="cookie-banner-text">
+        We use cookies and similar technologies — including Google Fonts — to operate this site.
+        No advertising or tracking cookies are used.
+        By clicking <strong>Accept</strong> you agree to our use of these technologies.
+        <a href="https://policies.google.com/privacy" class="cookie-banner-link" target="_blank" rel="noopener">Google's privacy policy</a>.
+      </p>
+      <div class="cookie-banner-actions">
+        <button id="cookie-accept" class="cookie-btn cookie-btn-accept">Accept</button>
+        <button id="cookie-decline" class="cookie-btn cookie-btn-decline">Decline</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.documentElement.classList.add('js-anim');
+    (function () {
+      var btn      = document.querySelector('.menu-toggle');
+      var nav      = document.querySelector('.header-nav');
+      var moreBtn  = document.querySelector('.nav-more-btn');
+      var morePanel = document.querySelector('.nav-more-panel');
+
+      // Hamburger toggle
+      if (btn && nav) {
+        btn.addEventListener('click', function () {
+          var open = nav.classList.toggle('is-open');
+          btn.setAttribute('aria-expanded', String(open));
+        });
+      }
+
+      // More dropdown toggle
+      if (moreBtn && morePanel) {
+        moreBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var open = morePanel.classList.toggle('is-open');
+          moreBtn.setAttribute('aria-expanded', String(open));
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && morePanel.classList.contains('is-open')) {
+            morePanel.classList.remove('is-open');
+            moreBtn.setAttribute('aria-expanded', 'false');
+            moreBtn.focus();
+          }
+        });
+      }
+
+      // Close both on outside click
+      document.addEventListener('click', function (e) {
+        if (!e.target.closest('.header-inner') && nav && nav.classList.contains('is-open')) {
+          nav.classList.remove('is-open');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+        if (!e.target.closest('.nav-more-group') && morePanel && morePanel.classList.contains('is-open')) {
+          morePanel.classList.remove('is-open');
+          moreBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+
+    // Cookie consent
+    (function () {
+      var banner = document.getElementById('cookie-banner');
+      if (!banner) return;
+      if (!localStorage.getItem('cookie-consent')) {
+        banner.classList.add('is-visible');
+      }
+      document.getElementById('cookie-accept').addEventListener('click', function () {
+        localStorage.setItem('cookie-consent', 'accepted');
+        banner.classList.remove('is-visible');
+      });
+      document.getElementById('cookie-decline').addEventListener('click', function () {
+        localStorage.setItem('cookie-consent', 'declined');
+        banner.classList.remove('is-visible');
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -58,7 +58,7 @@
       {% if latest_week.preview_articles %}
       <ol class="tock">
         {% for a in latest_week.preview_articles[:3] %}
-        <li><span class="ix">{{ "%02d"|format(loop.index) }}</span><span class="tt">{{ a.title }}</span></li>
+        <li><span class="ix">{{ "%02d"|format(loop.index) }}</span><span class="tt">{{ a.title | headline }}</span></li>
         {% endfor %}
       </ol>
       {% endif %}

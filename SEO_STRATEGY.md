@@ -253,6 +253,35 @@ week/hub/tag page, UTM-tagged so it's measurable. Next levers, in order of ROI:
 
 ## 9. Checklist
 
+**Shipped 2026-09-25** — tag synonym merge. The classifier spelled one concept many ways
+(five separate LLM pages; `ai`/`artificial-intelligence`/`machine-learning` tags competing with
+`topic/ai.html`). `TAG_ALIASES` in `build.py` folds each variant into one canonical page,
+`TAG_TO_HUB` sends the generic AI/ML/blockchain tags to their hubs, and `site/_redirects` 301s
+every retired URL. Tag pages: 164 → 155; `large-language-models-llms` went from 24 to 47
+stories. Two guards keep it that way: the build **aborts** if a live tag page would vanish
+without a 301 (unless listed in `ACCEPTED_TAG_404S`), and it **prints** likely new synonym
+groups each run — fold real ones into `TAG_ALIASES`, silence false ones in `TAG_NOT_SYNONYMS`.
+Of the 43 tag URLs that had silently 404'd since the early-August dedupe, the four real
+synonyms (`btc`, `ether`, `codex-cli`, `deep-learning`) now 301; the other 39 held 1–2 items
+for 1–3 weeks, mostly before `.net` served real paths, and stay 404 on purpose — redirecting
+them to a hub would only be a soft 404.
+Same pass: **issue meta descriptions now name the week's top technologies** ("…20 curated
+stories on Bitcoin, Large Language Models (LLMs), AI Agents and more…") instead of one templated
+sentence with only the date and counts changed — all 20 are now distinct and ≤155 chars.
+`article:tag` folds synonyms. **Reddit flair (`[P]`/`[R]`/`[D]`) and InfoQ's `Article:` prefix are
+stripped from displayed headlines** (h2, JSON-LD, RSS, llms.txt, archive) — display only: the stored
+title and its anchor slug are untouched, so Substack's `#anchor` links still resolve.
+**Not fixable in the build:** first-person Reddit titles ("my new video on…", "I built…") need
+rewriting, which belongs in Maki as a generated `headline` field; and the per-issue editor's note
+needs Marco's own words.
+`netlify.toml` 301s this site's own default host, `bowofdata.netlify.app`, to the
+apex. **Not the same host** as the indexed duplicate seen in search: that one is
+`bowlofdata.netlify.app` (with an *l*), a separate Netlify site answering 503
+`usage_exceeded`, which only the Netlify dashboard can retire (see owner actions).
+**Per-issue habit:** when a new week adds a variant spelling, add it to `TAG_ALIASES`.
+`bowlofdata.com` is an unrelated site outside our control, so there is nothing to redirect.
+Say "Bowl of Data newsletter" in full wherever the brand is written.
+
 **Shipped 2026-09-02** — tag co-occurrence cross-links, dead-internal-link fix + build
 assertion, recency in hub/tag meta descriptions, `article:*` OG timestamps and tags,
 `og:type` corrected on collection pages, `Organization.founder` Person nodes.
@@ -277,6 +306,9 @@ deployed until 2026-09-02** — see the banner at the top.
       Altervista copy while `bowl of data` returned `.net` is the symptom this deploy fixes;
       it is the cleanest available signal that authority has consolidated.
 - [ ] Set the **apex** as primary domain in Netlify to close `bowofdata.netlify.app`.
+- [ ] Retire the old **`bowlofdata.netlify.app`** site (503 `usage_exceeded`, still indexed with
+      old-format titles). A 503 tells Google "come back later", so it lingers; deleting the site
+      turns it into a 404 and it drops out. Check it is the Postgres-era site first.
 - [ ] Submit `sitemap.xml` in Search Console; request indexing for `topics.html` + the hubs.
 - [ ] Add `bowlofdata.altervista.org` as a Search Console property and watch its impressions
       decay to zero — that is the consolidation working.
