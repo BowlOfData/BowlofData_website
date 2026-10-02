@@ -15,7 +15,7 @@
     <p class="collection-kicker">{{ kicker }}</p>
     <h1 class="collection-title">{{ h1 }}</h1>
     <p class="collection-intro">{{ intro }}</p>
-    <p class="collection-meta">{{ count }} item{{ 's' if count != 1 else '' }} · {{ groups | length }} issue{{ 's' if groups | length != 1 else '' }}</p>
+    <p class="collection-meta">{{ count }} item{{ 's' if count != 1 else '' }} · {% set n_issues = total_issues|default(groups | length) %}{{ n_issues }} issue{{ 's' if n_issues != 1 else '' }}</p>
 
     {% if related_topics %}
     <div class="collection-chips">
@@ -59,6 +59,9 @@
     </ul>
   </section>
   {% endfor %}
+  {% if total_issues and total_issues > groups | length %}
+  <p class="collection-more">Showing the latest {{ groups | length }} of {{ total_issues }} issues. Earlier {{ h1 }} coverage is in <a href="{{ archive_href }}">the archive</a>{% if related_tags %} and on the tag pages above{% endif %}.</p>
+  {% endif %}
 </div>
 
 {# subscribe_ctx comes from the render call — this template serves both the

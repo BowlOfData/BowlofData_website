@@ -253,6 +253,29 @@ week/hub/tag page, UTM-tagged so it's measurable. Next levers, in order of ROI:
 
 ## 9. Checklist
 
+**Shipped 2026-09-25 (later)**: issues now lead with the newsletter's own ranking.
+`summaries_WW_YYYY.json` is an unranked pool, and the site rendered it as-is: week 39 opened
+with two quantum papers while Substack and the podcast led with the three-agent breach (14th of
+17 on the page). The first three stories feed `preview_titles`, so the archive, the landing
+preview and `llms.txt` highlights described a different issue than every other channel.
+`_lead_with_selection` now orders by `channel_selection_WW_YYYY.json`. Older weeks' selection
+files had rotated out of the pipeline's output directory, so `scripts/backfill_story_order.py`
+recovered their ranking from the Substack posts (bold headlines, in ranked order) and
+rewrote `weeks_manifest.json`: **weeks 26-38 fixed**. Weeks 23, 24, 25 and 32 used editorial
+section headings instead of story titles and weeks 19-22 have no Substack post, so those 8
+keep the pool order rather than a guessed one.
+Same pass: **week pages now open with "This Week in Tech"**, ahead of AI Model Releases and
+Research Papers. The page used to show about 15 third-party release and paper cards before
+the issue's own lead story; the bottom week navigation moved to the end of the page with it.
+
+**Correction to §5 (GEO):** `llms.txt` does nothing for Google. Google's AI optimisation guide
+(June 2026) says it neither helps nor harms visibility in Search, AI Overviews or AI Mode, which
+use the normal index. Keep it for other engines, but do not count it as Google work.
+**Observed 2026-09-25:** Google indexes `.net` and ranks it #1 for "bowl of data newsletter";
+AI Mode describes the brand correctly on a named query, but on the unnamed category query
+("weekly newsletter covering AI, cybersecurity and blockchain") recommends four other
+newsletters, all known from third-party pages. That is an off-page gap (§6), not an indexing one.
+
 **Shipped 2026-09-25** — tag synonym merge. The classifier spelled one concept many ways
 (five separate LLM pages; `ai`/`artificial-intelligence`/`machine-learning` tags competing with
 `topic/ai.html`). `TAG_ALIASES` in `build.py` folds each variant into one canonical page,

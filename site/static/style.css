@@ -28,12 +28,12 @@
   /* Text on ink */
   --text:       #ECE3D4;
   --muted:      #A99A85;
-  --faint:      #786B5B;
+  --faint:      #9A8B79;   /* 4.6:1 on --ink-3, 5.4:1 on --ink (WCAG AA) */
 
   /* Text on paper */
   --ink-text:   #241D16;
   --ink-soft:   #5A4F42;
-  --ink-faint:  #8B7E6D;
+  --ink-faint:  #74695B;   /* 4.6:1 on --paper (WCAG AA) */
 
   /* Signal + accents */
   --signal:      #F5C518;
@@ -176,9 +176,11 @@ img { display: block; max-width: 100%; }
 .nav-link--services[aria-current="page"] { color: var(--signal-2); background: rgba(245,197,24,.1); }
 
 .nav-link--podcast,
-.nav-link--youtube { display: flex; align-items: center; gap: .4rem; }
+.nav-link--youtube,
+.nav-link--x { display: flex; align-items: center; gap: .4rem; }
 .nav-podcast-icon,
-.nav-youtube-icon { width: 14px; height: 14px; flex-shrink: 0; }
+.nav-youtube-icon,
+.nav-x-icon { width: 14px; height: 14px; flex-shrink: 0; }
 
 /* About dropdown (desktop + tablet; flattens into the hamburger on mobile) */
 .nav-more-group { display: contents; }
@@ -700,6 +702,16 @@ img { display: block; max-width: 100%; }
    ======================================================================= */
 :focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; border-radius: 3px; }
 
+/* Touch targets: only on touch devices, so the mouse layout keeps its density.
+   The hamburger gets the full 44px; tags and chips get 36px plus wider gaps,
+   well above WCAG 2.2's 24px target-size minimum. */
+@media (pointer: coarse) {
+  .menu-toggle { min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
+  .tag--link, a.chip { display: inline-flex; align-items: center; min-height: 36px; }
+  .tag--link { padding: .2rem .75rem; }
+  .article-tags, .collection-chips, .tag-cloud { gap: .5rem; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
   .js-anim .mark::before { transform: rotate(-1.6deg) scaleX(1); }
@@ -814,6 +826,8 @@ img { display: block; max-width: 100%; }
 /* Collection body — grouped by issue */
 .collection-body { max-width: var(--wrap); margin: 0 auto; padding: 2.2rem 1.5rem 1rem; }
 .collection-group { margin-bottom: 2.4rem; }
+.collection-more { font-family: var(--mono); font-size: .78rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 1.1rem; margin: 0 0 2rem; }
+.collection-more a { color: var(--signal); }
 .collection-group-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--line); padding-bottom: .6rem; margin-bottom: 1rem; flex-wrap: wrap; }
 .collection-group-title { font-family: var(--display); font-weight: 700; font-size: 1.2rem; color: var(--text); margin: 0; }
 .collection-group-link { font-family: var(--mono); font-size: .72rem; color: var(--muted); text-decoration: none; white-space: nowrap; transition: color .15s; }

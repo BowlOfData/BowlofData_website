@@ -17,6 +17,7 @@ Override the pipeline path with MAKI_OUTPUT_DIR=/path/to/output.
 
 from __future__ import annotations
 
+import email.utils
 import json
 import os
 import re
@@ -54,7 +55,11 @@ SITE_URL     = "https://bowlofdata.net"
 PODCAST_URL  = "https://open.spotify.com/show/033Mqus9YAIssepHakRIIk"
 SUBSTACK_URL = "https://bowlofdata.substack.com/"
 YOUTUBE_URL  = "https://www.youtube.com/@bowlofdata"
-OG_IMAGE     = f"{SITE_URL}/imgs/bowl.png"   # 2560x1440
+X_HANDLE     = "@BowlOfData"
+X_URL        = f"https://x.com/{X_HANDLE[1:]}"
+IMGS_SOURCE_ONLY = ("new_logo.png", "new_header.png")   # kept in imgs/, never deployed
+HUB_MAX_ISSUES = 8   # topic hubs show this many recent issues; tag pages show all
+OG_IMAGE     = f"{SITE_URL}/imgs/og-card.jpg"   # 1200x630, cropped from new_header.png
 
 # How many items a hub or tag needs before its page is worth *indexing*.
 #
@@ -184,7 +189,7 @@ CATEGORY_META = {
         "intro": (
             "Every week, Bowl of Data tracks the AI and machine-learning stories that "
             "matter — new model releases, research that holds up, and where large models "
-            "actually land in real products. Here is every issue's AI coverage, newest first."
+            "actually land in real products. Below is the latest AI coverage, newest first."
         ),
         "keywords": [
             "ai", "artificial intelligence", "machine learning", "ml", "llm", "llms",
@@ -201,7 +206,7 @@ CATEGORY_META = {
         "intro": (
             "Every week, Bowl of Data tracks the rules now shaping how data and AI get "
             "built and shipped — privacy regulation, the EU AI Act, automated-decision "
-            "and data-broker law, and algorithmic accountability. Here is every issue's "
+            "and data-broker law, and algorithmic accountability. Below is the latest "
             "governance coverage, newest first."
         ),
         # Fallback classification only: items are normally routed here by the
@@ -221,7 +226,7 @@ CATEGORY_META = {
         "intro": (
             "Every week, Bowl of Data tracks the vulnerabilities, exploits, and threat "
             "intelligence worth acting on — what to patch before it becomes someone else's "
-            "headline. Here is every issue's security coverage, newest first."
+            "headline. Below is the latest security coverage, newest first."
         ),
         "keywords": [
             "security", "cybersecurity", "vulnerability", "vulnerabilities", "exploit",
@@ -238,8 +243,8 @@ CATEGORY_META = {
         "h1":    "Blockchain & Crypto",
         "intro": (
             "Every week, Bowl of Data tracks the meaningful moves in blockchain and crypto — "
-            "protocol upgrades, market shifts, and the regulation worth watching. Here is "
-            "every issue's blockchain coverage, newest first."
+            "protocol upgrades, market shifts, and the regulation worth watching. Below is the latest "
+            "blockchain coverage, newest first."
         ),
         "keywords": [
             "blockchain", "crypto", "cryptocurrency", "bitcoin", "btc", "ethereum", "eth",
@@ -254,7 +259,7 @@ CATEGORY_META = {
         "h1":    "Software Engineering",
         "intro": (
             "Every week, Bowl of Data tracks the tools, frameworks, and open-source releases "
-            "that change how we build software. Here is every issue's engineering coverage, "
+            "that change how we build software. Below is the latest engineering coverage, "
             "newest first."
         ),
         "keywords": [
@@ -275,7 +280,7 @@ CATEGORY_META = {
         "intro": (
             "Every week, Bowl of Data tracks quantum computing as it moves from the lab "
             "toward a roadmap: hardware milestones, error correction, and which claims "
-            "actually hold up. Here is every issue's quantum coverage, newest first."
+            "actually hold up. Below is the latest quantum coverage, newest first."
         ),
         # Deliberately no "post-quantum" or "pqc" here: those stay in security.
         # _category_patterns compiles longer keywords as r"\b<kw>", and the hyphen in
@@ -294,7 +299,7 @@ CATEGORY_META = {
         "intro": (
             "Every week, Bowl of Data tracks launch, orbit and the space industry: "
             "vehicles and engines, satellite constellations, and the missions shaping "
-            "who reaches orbit. Here is every issue's space coverage, newest first."
+            "who reaches orbit. Below is the latest space coverage, newest first."
         ),
         # Deliberately no bare "space": _category_patterns compiles longer keywords as
         # r"\b<kw>", so "space" would match "latent space" and "vector space" and pull
@@ -563,6 +568,31 @@ def _dedupe_paper_articles(articles: list[dict], papers: list[dict]) -> list[dic
     return [a for a in articles if not _is_paper_source(a.get("source", ""))]
 
 
+def _lead_with_selection(articles: list[dict], selection: dict | None) -> list[dict]:
+    """Put the newsletter's flagship stories first, in the order it ranked them.
+
+    summaries_WW_YYYY.json is the week's unranked pool; the ranking lives in
+    channel_selection_WW_YYYY.json, which Substack and the podcast already lead
+    with. Rendering the pool as-is opened week 39 with two quantum papers and
+    let them set preview_titles (llms.txt highlights, archive) while the story
+    every other channel led with sat 14th of 17. Everything the selection does not
+    name keeps its existing relative order.
+    """
+    if not selection:
+        return articles
+    rank = {
+        str(s.get("url", "")).strip(): i
+        for i, s in enumerate(selection.get("stories") or [])
+        if s.get("url")
+    }
+    if not rank:
+        return articles
+    return sorted(
+        articles,
+        key=lambda a: rank.get(str(a.get("url", "")).strip(), len(rank)),
+    )
+
+
 def _normalise_papers(raw_papers: list[dict]) -> list[dict]:
     """Normalise raw paper dicts from a curated_papers_WW_YYYY.json file."""
     result = []
@@ -629,6 +659,7 @@ def _build_week_entry(
     model_releases_mtime: float = 0,
     papers: list[dict] | None = None,
     papers_mtime: float = 0,
+    selection_mtime: float = 0,
 ) -> dict:
     """Build a complete week entry for storage in the manifest."""
     try:
@@ -654,6 +685,7 @@ def _build_week_entry(
         "model_releases_mtime":  model_releases_mtime,
         "papers":                papers or [],
         "papers_mtime":          papers_mtime,
+        "selection_mtime":       selection_mtime,
     }
 
 
@@ -812,6 +844,7 @@ def _make_organization_jsonld(site_url: str, site_name: str, tagline: str) -> st
                     "https://www.instagram.com/bowl_of_data",
                     PODCAST_URL,
                     YOUTUBE_URL,
+                    X_URL,
                 ],
             },
             _periodical_node(site_url, site_name),
@@ -930,6 +963,31 @@ def _week_og_tags(w: dict, tag_display: dict[str, str], limit: int = 8) -> list[
     return _week_top_tags(w, tag_display, limit)
 
 
+def _iso_datetime(raw: str) -> str | None:
+    """Normalise a source feed's `published` value to ISO 8601, or None.
+
+    The pipeline copies whatever each feed emitted: RFC 2822 from RSS
+    ("Fri, 25 Sep 2026 01:32:15 +0200", "... GMT") alongside ISO from Atom
+    ("2026-09-25T01:32:15.000Z"). schema.org dates must be ISO 8601, and a
+    consumer that cannot parse one silently drops it.
+    """
+    raw = (raw or "").strip()
+    if not raw:
+        return None
+    try:
+        dt = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+    except ValueError:
+        try:
+            dt = email.utils.parsedate_to_datetime(raw)
+        except (TypeError, ValueError):
+            return None
+        if dt.tzinfo is None:            # RFC 2822 "-0000": UTC, source zone unknown
+            dt = dt.replace(tzinfo=timezone.utc)
+    if len(raw) == 10:
+        return dt.date().isoformat()   # a bare "2026-09-25" stays a bare date
+    return dt.isoformat(timespec="seconds")
+
+
 def _make_week_jsonld(w: dict, site_url: str, site_name: str) -> str:
     count = w["article_count"]
     week_url = f"{site_url}/{w['href']}"
@@ -958,8 +1016,9 @@ def _make_week_jsonld(w: dict, site_url: str, site_name: str) -> str:
             article_node["citation"] = a["source"]
         if a.get("short_summary"):
             article_node["description"] = a["short_summary"]
-        if a.get("published"):
-            article_node["datePublished"] = a["published"]
+        published = _iso_datetime(a.get("published", ""))
+        if published:
+            article_node["datePublished"] = published
         elif week_date:
             article_node["datePublished"] = week_date
         items.append({"@type": "ListItem", "position": i, "item": article_node})
@@ -1665,6 +1724,7 @@ def _generate_llms_txt(all_weeks: list[dict], site_url: str, site_name: str, tag
         "- [Instagram](https://www.instagram.com/bowl_of_data): Follow on Instagram",
         f"- [Podcast (Spotify)]({PODCAST_URL}): Listen to Bowl of Data as a podcast",
         f"- [YouTube]({YOUTUBE_URL}): Watch Bowl of Data on YouTube",
+        f"- [X]({X_URL}): Follow {X_HANDLE} on X",
     ]
     return "\n".join(lines) + "\n"
 
@@ -1716,7 +1776,12 @@ def build() -> None:
 
     # Sync brand assets and static files on every run so edits are picked up
     if IMGS_DIR.exists():
-        shutil.copytree(IMGS_DIR, SITE_DIR / "imgs", dirs_exist_ok=True)
+        # new_logo.png / new_header.png are the ~900 KB master artworks that
+        # logo.png, logo-mark.png and og-card.jpg are cut from; nothing links them.
+        shutil.copytree(IMGS_DIR, SITE_DIR / "imgs", dirs_exist_ok=True,
+                        ignore=shutil.ignore_patterns(*IMGS_SOURCE_ONLY))
+        for name in IMGS_SOURCE_ONLY:
+            (SITE_DIR / "imgs" / name).unlink(missing_ok=True)
     shutil.copytree(STATIC_DIR, SITE_DIR / "static", dirs_exist_ok=True)
     # Verbatim root files (e.g. Google Search Console verification) that aren't
     # rendered from data but must still be published at the site root.
@@ -1735,6 +1800,8 @@ def build() -> None:
         podcast_url=PODCAST_URL,
         substack_url=SUBSTACK_URL,
         youtube_url=YOUTUBE_URL,
+        x_url=X_URL,
+        x_handle=X_HANDLE,
         build_date=datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         organization_jsonld_str=_make_organization_jsonld(SITE_URL, SITE_NAME, SITE_TAGLINE),
     )
@@ -1765,6 +1832,7 @@ def build() -> None:
             model_releases_mtime=entry.get("model_releases_mtime", 0),
             papers=entry.get("papers", []),
             papers_mtime=entry.get("papers_mtime", 0),
+            selection_mtime=entry.get("selection_mtime", 0),
         )
         needs_rebuild.add(key)
         print(f"  Repaired  {entry['label']} — dropped {dropped} papers duplicated in the article list")
@@ -1783,6 +1851,9 @@ def build() -> None:
         papers_path = MAKI_OUTPUT_DIR / f"curated_papers_{week_num:02d}_{year}.json"
         papers_mtime = papers_path.stat().st_mtime if papers_path.exists() else 0
 
+        selection_path = MAKI_OUTPUT_DIR / f"channel_selection_{week_num:02d}_{year}.json"
+        selection_mtime = selection_path.stat().st_mtime if selection_path.exists() else 0
+
         html_exists = (SITE_DIR / _week_href(week_num, year)).exists()
 
         existing = manifest.get(key)
@@ -1792,6 +1863,7 @@ def build() -> None:
             and source_mtime <= existing.get("source_mtime", 0)
             and mr_mtime <= existing.get("model_releases_mtime", 0)
             and papers_mtime <= existing.get("papers_mtime", 0)
+            and selection_mtime <= existing.get("selection_mtime", 0)
             and html_exists
         ):
             print(f"  Skipping  {_week_label(week_num, year)} — up to date")
@@ -1821,13 +1893,23 @@ def build() -> None:
             except (OSError, json.JSONDecodeError) as exc:
                 print(f"  Warning: could not load {papers_path.name}: {exc}")
 
-        articles = _dedupe_paper_articles(_normalise_articles(raw), papers)
+        selection: dict | None = None
+        if selection_path.exists():
+            try:
+                selection = json.loads(selection_path.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError) as exc:
+                print(f"  Warning: could not load {selection_path.name}: {exc}")
+
+        articles = _lead_with_selection(
+            _dedupe_paper_articles(_normalise_articles(raw), papers), selection
+        )
         manifest[key] = _build_week_entry(
             week_num, year, articles, source_mtime,
             model_releases=model_releases,
             model_releases_mtime=mr_mtime,
             papers=papers,
             papers_mtime=papers_mtime,
+            selection_mtime=selection_mtime,
         )
         needs_rebuild.add(key)
         verb = "forced" if FORCE_REBUILD else ("new" if existing is None else "updated")
@@ -1931,7 +2013,7 @@ def build() -> None:
             prev_week=prev_week,
             next_week=next_week,
             css_path="../static/style.css",
-            logo_path="../imgs/logo.png",
+            logo_path="../imgs/logo-mark.png",
             index_href="../index.html",
             archive_href="../archive.html",
             topics_href="../topics.html",
@@ -1970,7 +2052,7 @@ def build() -> None:
 
     shared = dict(
         css_path="static/style.css",
-        logo_path="imgs/logo.png",
+        logo_path="imgs/logo-mark.png",
         index_href="index.html",
         archive_href="archive.html",
         topics_href="topics.html",
@@ -2055,7 +2137,7 @@ def build() -> None:
     not_found_html = env.get_template("404.html").render(
         **{**shared,
            "css_path":     f"{SITE_URL}/static/style.css",
-           "logo_path":    f"{SITE_URL}/imgs/logo.png",
+           "logo_path":    f"{SITE_URL}/imgs/logo-mark.png",
            "index_href":   f"{SITE_URL}/index.html",
            "archive_href": f"{SITE_URL}/archive.html",
            "topics_href":  f"{SITE_URL}/topics.html",
@@ -2094,7 +2176,7 @@ def build() -> None:
 
     collection_nav = dict(
         css_path="../static/style.css",
-        logo_path="../imgs/logo.png",
+        logo_path="../imgs/logo-mark.png",
         index_href="../index.html",
         archive_href="../archive.html",
         topics_href="../topics.html",
@@ -2111,7 +2193,11 @@ def build() -> None:
         hub = hubs[cat]
         meta = hub["meta"]
         url = f"{SITE_URL}/topic/{cat}.html"
-        flat = [it for g in hub["groups"] for it in g["entries"]]
+        # Hubs list only the latest issues: topic/ai.html had grown to 480 KB and
+        # 500+ links by listing the whole archive. Older items stay reachable via
+        # their week page (all linked from the archive) and their tag pages.
+        shown = hub["groups"][:HUB_MAX_ISSUES]
+        flat = [it for g in shown for it in g["entries"]]
         issues = len(hub["groups"])
         og_desc = _fit_meta(
             f"{meta['h1']} news curated by {SITE_NAME} — {hub['count']} stories "
@@ -2123,7 +2209,7 @@ def build() -> None:
             kicker="Topic", h1=meta["h1"], page_title=f"{meta['h1']} News · {SITE_NAME}",
             robots=_robots_for(hub), subscribe_ctx="topic",
             intro=meta["intro"], og_desc=og_desc, canonical_url=url,
-            count=hub["count"], groups=hub["groups"],
+            count=hub["count"], groups=shown, total_issues=issues,
             related_tags=hub["related_tags"], related_topics=None,
             related_tags_label="Most covered",
             jsonld_str=_make_collection_jsonld(
