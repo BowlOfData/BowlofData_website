@@ -134,6 +134,9 @@ TAG_ALIASES: dict[str, list[str]] = {
                                        "low-earth-orbit-leo-satellites"],
     "github-actions":                 ["github-actions-cicd"],
     "python":                         ["python-implied-by-code-context"],
+    "starship":                       ["spacex-starship", "starship-v3"],
+    "microsoft-copilot":              ["microsoft-365-copilot",
+                                       "microsoft-365-copilot-enterprise"],
 }
 
 # Tags that restate a topic hub. tag/ai.html ("AI", 8 items) competed with
@@ -153,13 +156,19 @@ TAG_TO_HUB: dict[str, str] = {
 _TAG_CANONICAL = {v: canon for canon, vs in TAG_ALIASES.items() for v in vs}
 
 # Tag slugs whose page may disappear with a plain 404 -- a deliberate decision,
-# not a default. Empty on purpose: the build refuses to drop a live tag page
+# not a default. The build refuses to drop a live tag page
 # that is neither merged (301) nor listed here. The 43 thin tags pruned in the
 # early-August dedupe (btc, gguf, starship, ...) predate this guard and are
 # already 404; the real synonyms among them are folded into TAG_ALIASES above,
 # and the rest held 1-2 items for 1-3 weeks, mostly before bowlofdata.net served
 # real paths, so a 404 is the honest answer and a redirect would be a soft 404.
-ACCEPTED_TAG_404S: set[str] = set()
+#
+# Added 2026-10-02: a week-40 re-ingest dropped these from 3 items to 2. Each is a
+# single product/protocol with no sibling tag to fold into, so a 404 is honest.
+ACCEPTED_TAG_404S: set[str] = {
+    "bun", "eip-8037", "firefox", "gpt-54", "iot", "metamask", "nginx",
+    "oracle-peoplesoft", "passkeys", "smtp", "swe-bench-pro", "telegram",
+}
 
 # Groups _tag_synonym_candidates() flags that were reviewed and are genuinely
 # different things, so the build stops re-suggesting them.
@@ -2277,7 +2286,7 @@ def build() -> None:
     if vanishing:
         raise SystemExit(
             f"BUILD ABORTED: {len(vanishing)} live tag page(s) would become 404s: "
-            + ", ".join(vanishing[:10])
+            + ", ".join(vanishing)
             + ". Fold each into a real synonym via TAG_ALIASES / TAG_TO_HUB, or add "
             "it to ACCEPTED_TAG_404S if a 404 is the honest answer."
         )
