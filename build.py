@@ -8,8 +8,9 @@ serverless functions.
     python3 build.py                  # render only what changed since the last run
     FORCE_REBUILD=1 python3 build.py  # ignore the manifest, re-render everything
 
-Content comes from the maki pipeline's summaries_WW_YYYY.json (plus the matching
-model_releases_ and curated_papers_ files). Because that output directory only
+Content comes from the maki pipeline's curated_WW_YYYY.json (plus the matching
+model_releases_ and curated_papers_ files). Weeks that predate curation fall back
+to summaries_WW_YYYY.json. Because that output directory only
 keeps recent issues, every week it has ever seen is cached in weeks_manifest.json,
 which is the archive's real source of truth and is committed alongside site/.
 Override the pipeline path with MAKI_OUTPUT_DIR=/path/to/output.
@@ -165,9 +166,15 @@ _TAG_CANONICAL = {v: canon for canon, vs in TAG_ALIASES.items() for v in vs}
 #
 # Added 2026-10-02: a week-40 re-ingest dropped these from 3 items to 2. Each is a
 # single product/protocol with no sibling tag to fold into, so a 404 is honest.
+#
+# Added 2026-10-09: week 41 now builds from curated_41_2026.json (20 stories)
+# instead of the 25-story summaries pool, so tags whose only support was an
+# uncurated story dropped below min_items.
 ACCEPTED_TAG_404S: set[str] = {
     "bun", "eip-8037", "firefox", "gpt-54", "iot", "metamask", "nginx",
     "oracle-peoplesoft", "passkeys", "smtp", "swe-bench-pro", "telegram",
+    "facebook", "litellm", "photonic-quantum-computing", "quantum-algorithms",
+    "superconducting-circuits", "trivy", "usdg", "usdt",
 }
 
 # Groups _tag_synonym_candidates() flags that were reviewed and are genuinely
@@ -385,7 +392,7 @@ def _classify_article(
     """Assign an item to one of the editorial beats.
 
     The pipeline's authoritative `is_governance` flag (stamped into
-    summaries_*.json) wins first — governance detection is kept in sync with
+    curated_*.json) wins first — governance detection is kept in sync with
     maki_newsletter.config.is_governance_article, the single source of truth,
     rather than re-derived here. Older manifests written before the flag existed
     fall back to weighted keyword matching (governance keywords live in
@@ -462,12 +469,29 @@ def _tag_display_map(all_weeks: list[dict]) -> dict[str, str]:
 # Helpers
 # ---------------------------------------------------------------------------
 
-def _parse_summaries_filename(path: Path) -> tuple[int, int] | None:
-    """Return (week_num, year) from `summaries_WW_YYYY.json`, or None."""
-    match = re.fullmatch(r"summaries_(\d{2})_(\d{4})\.json", path.name)
+def _parse_week_filename(path: Path, prefix: str) -> tuple[int, int] | None:
+    """Return (week_num, year) from `<prefix>_WW_YYYY.json`, or None."""
+    match = re.fullmatch(rf"{prefix}_(\d{{2}})_(\d{{4}})\.json", path.name)
     if not match:
         return None
     return int(match.group(1)), int(match.group(2))
+
+
+def _find_week_sources(output_dir: Path) -> dict[tuple[int, int], Path]:
+    """Map each (week, year) to the file its articles come from.
+
+    curated_WW_YYYY.json (the reviewed selection) wins over the unranked
+    summaries_WW_YYYY.json pool; summaries is only used for weeks without one.
+    """
+    if not output_dir.exists():
+        return {}
+    sources: dict[tuple[int, int], Path] = {}
+    for prefix in ("summaries", "curated"):  # curated last, so it overrides
+        for path in sorted(output_dir.glob(f"{prefix}_*.json")):
+            parts = _parse_week_filename(path, prefix)
+            if parts is not None:
+                sources[parts] = path
+    return sources
 
 
 def _slugify(text: str) -> str:
@@ -475,7 +499,7 @@ def _slugify(text: str) -> str:
 
     Must stay in sync with the identical function in
     maki_newsletter/pipeline.py so that anchor IDs on the rendered pages
-    match the netlify_url values written into summaries_*.json.
+    match the netlify_url values written into curated_*.json.
     """
     slug = text.lower().strip()
     slug = re.sub(r"[^\w\s-]", "", slug)
@@ -580,7 +604,7 @@ def _dedupe_paper_articles(articles: list[dict], papers: list[dict]) -> list[dic
 def _lead_with_selection(articles: list[dict], selection: dict | None) -> list[dict]:
     """Put the newsletter's flagship stories first, in the order it ranked them.
 
-    summaries_WW_YYYY.json is the week's unranked pool; the ranking lives in
+    curated_WW_YYYY.json is the week's unranked pool; the ranking lives in
     channel_selection_WW_YYYY.json, which Substack and the podcast already lead
     with. Rendering the pool as-is opened week 39 with two quantum papers and
     let them set preview_titles (llms.txt highlights, archive) while the story
@@ -633,7 +657,7 @@ def _normalise_papers(raw_papers: list[dict]) -> list[dict]:
 
 
 def _normalise_articles(raw_articles: list[dict]) -> list[dict]:
-    """Normalise raw article dicts from a pipeline summaries JSON."""
+    """Normalise raw article dicts from a pipeline curated (or legacy summaries) JSON."""
     result = []
     for a in raw_articles:
         resume_raw = (a.get("long_resume") or "").strip()
@@ -669,6 +693,7 @@ def _build_week_entry(
     papers: list[dict] | None = None,
     papers_mtime: float = 0,
     selection_mtime: float = 0,
+    source_file: str = "",
 ) -> dict:
     """Build a complete week entry for storage in the manifest."""
     try:
@@ -690,6 +715,7 @@ def _build_week_entry(
         "preview_titles":        [a["title"] for a in articles[:3] if a["title"]],
         "preview_articles":      articles[:5],
         "source_mtime":          source_mtime,
+        "source_file":           source_file,
         "model_releases":        model_releases or [],
         "model_releases_mtime":  model_releases_mtime,
         "papers":                papers or [],
@@ -1290,6 +1316,13 @@ def _collect_hubs(all_weeks: list[dict], tag_display: dict[str, str],
     return hubs
 
 
+def _tag_page_title(name: str, limit: int = 60) -> str:
+    """Tag <title>, dropping the brand suffix when the tag name would push it past `limit`
+    (search results truncate around 60 characters)."""
+    full = f"{name} — weekly coverage · {SITE_NAME}"
+    return full if len(full) <= limit else f"{name} — weekly coverage"
+
+
 def _collect_tags(all_weeks: list[dict], tag_display: dict[str, str],
                   min_items: int = 3) -> dict[str, dict]:
     """Aggregate items by technology tag; keep only tags with >= min_items."""
@@ -1842,15 +1875,12 @@ def build() -> None:
             papers=entry.get("papers", []),
             papers_mtime=entry.get("papers_mtime", 0),
             selection_mtime=entry.get("selection_mtime", 0),
+            source_file=entry.get("source_file", ""),
         )
         needs_rebuild.add(key)
         print(f"  Repaired  {entry['label']} — dropped {dropped} papers duplicated in the article list")
 
-    for path in sorted(MAKI_OUTPUT_DIR.glob("summaries_*.json")) if MAKI_OUTPUT_DIR.exists() else []:
-        parts = _parse_summaries_filename(path)
-        if parts is None:
-            continue
-        week_num, year = parts
+    for (week_num, year), path in sorted(_find_week_sources(MAKI_OUTPUT_DIR).items()):
         key = (week_num, year)
         source_mtime = path.stat().st_mtime
 
@@ -1869,6 +1899,7 @@ def build() -> None:
         if (
             not FORCE_REBUILD
             and existing is not None
+            and existing.get("source_file") == path.name
             and source_mtime <= existing.get("source_mtime", 0)
             and mr_mtime <= existing.get("model_releases_mtime", 0)
             and papers_mtime <= existing.get("papers_mtime", 0)
@@ -1919,6 +1950,7 @@ def build() -> None:
             papers=papers,
             papers_mtime=papers_mtime,
             selection_mtime=selection_mtime,
+            source_file=path.name,
         )
         needs_rebuild.add(key)
         verb = "forced" if FORCE_REBUILD else ("new" if existing is None else "updated")
@@ -2249,7 +2281,7 @@ def build() -> None:
         html = collection_tmpl.render(
             **collection_nav, current_page="topics",
             kicker="Tag", h1=tag["name"],
-            page_title=f"{tag['name']} — weekly coverage · {SITE_NAME}",
+            page_title=_tag_page_title(tag["name"]),
             robots=_robots_for(tag), subscribe_ctx="tag",
             intro=intro, og_desc=og_desc, canonical_url=url,
             count=tag["count"], groups=tag["groups"],

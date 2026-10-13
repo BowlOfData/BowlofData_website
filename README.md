@@ -6,7 +6,7 @@ Website for the [Bowl of Data](https://bowlofdata.net) tech newsletter. **A plai
 
 ## Overview
 
-Newsletter content comes from the `summaries_WW_YYYY.json` files produced by the [maki](https://github.com/bowlofdata/maki) pipeline. Because that output directory only keeps recent issues, every week the builder has ever seen is cached in **`weeks_manifest.json`** — that file is the archive's real source of truth and is committed alongside the built site.
+Newsletter content comes from the `curated_WW_YYYY.json` files (falling back to `summaries_WW_YYYY.json` for weeks without one) produced by the [maki](https://github.com/bowlofdata/maki) pipeline. Because that output directory only keeps recent issues, every week the builder has ever seen is cached in **`weeks_manifest.json`** — that file is the archive's real source of truth and is committed alongside the built site.
 
 ```
 maki output ──┐
@@ -64,7 +64,7 @@ python3 -m http.server -d site 8000
 ## Full weekly workflow
 
 ```bash
-# 1. Run the maki pipeline (in the maki repo) → summaries_WW_YYYY.json
+# 1. Run the maki pipeline (in the maki repo) → curated_WW_YYYY.json (run curate)
 python -m maki_newsletter.main
 python -m maki_newsletter.generate
 
@@ -202,7 +202,7 @@ Likewise `maki_newsletter/taxonomy.py` duplicates this repo's beat classificatio
 
 A single incremental build:
 
-1. **Reconcile** — load `weeks_manifest.json`, then scan `MAKI_OUTPUT_DIR` for `summaries_WW_YYYY.json` (plus `model_releases_*` and `curated_papers_*`). A week is re-parsed when its source files are newer than the manifest records, when it is new, or when its HTML is missing. Weeks the pipeline has rotated away survive in the manifest untouched.
+1. **Reconcile** — load `weeks_manifest.json`, then scan `MAKI_OUTPUT_DIR` for `curated_WW_YYYY.json` (or `summaries_WW_YYYY.json` when a week has none) (plus `model_releases_*` and `curated_papers_*`). A week is re-parsed when its source files are newer than the manifest records, when it is new, or when its HTML is missing. Weeks the pipeline has rotated away survive in the manifest untouched.
 2. **Expand** — a changed week also re-renders its two neighbours so prev/next links stay accurate.
 3. **Render** — week pages, then the landing page, archive, marketing pages, topic hubs, tag pages and topics index (these last ones are regenerated on every run).
 4. **Emit** — `sitemap.xml`, `llms.txt`, `feed.xml`, `robots.txt`.
@@ -248,7 +248,7 @@ No build command — `site/` is committed. Security headers (`X-Frame-Options`, 
 
 ## Data source
 
-Each newsletter issue is driven by a `summaries_WW_YYYY.json` file from the maki pipeline. Relevant fields used by the website:
+Each newsletter issue is driven by a `curated_WW_YYYY.json` file from the maki pipeline. Relevant fields used by the website:
 
 | Field | Used for |
 |---|---|

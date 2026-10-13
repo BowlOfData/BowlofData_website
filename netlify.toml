@@ -20,6 +20,14 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
+# The stylesheet is likewise unfingerprinted, so keep the cache short: an hour spares
+# repeat views a revalidation round-trip on every page while a CSS change still lands
+# within the hour.
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
 # Images change rarely, but the filenames are not fingerprinted — a year-long
 # max-age would strand an updated logo in caches for a year. A week is the
 # compromise: repeat visitors skip the download, a change still propagates.
