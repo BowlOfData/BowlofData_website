@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A1613">
+  <title>Maki — Open-Source Multi-Agent Framework Behind Bowl of Data</title>
+  
+  
+  <meta name="description" content="Maki is the MIT-licensed Python multi-agent LLM framework that curates and drafts every Bowl of Data issue. Source on GitHub, docs on GitHub Pages.">
+  <meta name="author" content="Bowl of Data team">
+  
+  <link rel="canonical" href="https://bowlofdata.net/maki.html">
+  <link rel="icon" type="image/png" href="https://bowlofdata.net/imgs/logo-mark.png">
+  <link rel="apple-touch-icon" href="https://bowlofdata.net/imgs/logo-mark.png">
+  
+  <link rel="preload" href="static/fonts/bricolage-grotesque-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="static/fonts/newsreader-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="static/style.css">
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="Bowl of Data">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Maki — the open-source multi-agent framework behind Bowl of Data">
+  <meta property="og:description" content="Maki is the MIT-licensed Python multi-agent LLM framework that curates and drafts every Bowl of Data issue. Source on GitHub, docs on GitHub Pages.">
+  <meta property="og:image" content="https://bowlofdata.net/imgs/og-card.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Bowl of Data — weekly tech newsletter">
+  <meta property="og:url" content="https://bowlofdata.net/maki.html">
+  
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@BowlOfData">
+  <meta name="twitter:title" content="Maki — the open-source multi-agent framework behind Bowl of Data">
+  <meta name="twitter:description" content="Maki is the MIT-licensed Python multi-agent LLM framework that curates and drafts every Bowl of Data issue. Source on GitHub, docs on GitHub Pages.">
+  <meta name="twitter:image" content="https://bowlofdata.net/imgs/og-card.jpg">
+  <link rel="alternate" type="application/rss+xml" title="Bowl of Data RSS Feed" href="https://bowlofdata.net/feed.xml">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://bowlofdata.net/#organization", "name": "Bowl of Data", "alternateName": ["bowlofdata", "Bowl of Data Newsletter"], "description": "A weekly digest of the most relevant tech stories", "url": "https://bowlofdata.net", "logo": "https://bowlofdata.net/imgs/logo.png", "founder": [{"@type": "Person", "name": "Marco", "jobTitle": "Creator", "sameAs": ["https://www.linkedin.com/in/marco-parrillo-phd-30ba9933/"], "url": "https://bowlofdata.net/team.html"}, {"@type": "Person", "name": "Luigi", "jobTitle": "Visionary", "sameAs": ["https://www.linkedin.com/in/luigi-laura/"], "url": "https://bowlofdata.net/team.html"}], "publishingPrinciples": "https://bowlofdata.net/about.html", "sameAs": ["https://bowlofdata.substack.com/", "https://www.instagram.com/bowl_of_data", "https://open.spotify.com/show/033Mqus9YAIssepHakRIIk", "https://www.youtube.com/@bowlofdata", "https://www.linkedin.com/in/bowl-of-data-b591a5338/", "https://www.crunchbase.com/organization/bowl-of-data", "https://x.com/BowlOfData"]}, {"@type": "Periodical", "@id": "https://bowlofdata.net/#newsletter", "name": "Bowl of Data", "alternateName": ["bowlofdata", "Bowl of Data Newsletter"], "url": "https://bowlofdata.net/", "description": "Bowl of Data is a free weekly technology newsletter. One issue ships every Saturday covering AI and machine learning, cybersecurity, blockchain, and software engineering. Bowl of Data is curated by Maki, an open-source multi-agent pipeline that scans hundreds of sources every week and drafts the summaries; the Bowl of Data team reviews and publishes every issue.", "inLanguage": "en", "isAccessibleForFree": true, "publishingPrinciples": "https://bowlofdata.net/about.html", "genre": ["Technology news", "Artificial intelligence", "Cybersecurity", "Blockchain", "Software engineering"], "publisher": {"@id": "https://bowlofdata.net/#organization"}, "archivedAt": "https://bowlofdata.net/archive.html", "sameAs": ["https://bowlofdata.substack.com/"]}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://bowlofdata.net/maki.html", "name": "Maki · Bowl of Data", "url": "https://bowlofdata.net/maki.html", "inLanguage": "en", "isPartOf": {"@id": "https://bowlofdata.net/#website"}, "about": {"@id": "https://bowlofdata.net/maki.html#software"}, "publisher": {"@type": "Organization", "@id": "https://bowlofdata.net/#organization", "name": "Bowl of Data", "url": "https://bowlofdata.net", "logo": {"@type": "ImageObject", "url": "https://bowlofdata.net/imgs/logo.png"}}}, {"@type": "SoftwareApplication", "@id": "https://bowlofdata.net/maki.html#software", "name": "Maki", "description": "A Python framework for multi-agent LLM applications that run wherever the models do: local backends, hosted APIs, or a mix. It curates and drafts each Bowl of Data issue.", "applicationCategory": "DeveloperApplication", "operatingSystem": "Cross-platform", "programmingLanguage": "Python", "softwareRequirements": "Python 3.10+", "license": "https://opensource.org/license/mit", "isAccessibleForFree": true, "url": "https://bowlofdata.github.io/maki/", "codeRepository": "https://github.com/BowlOfData/maki", "sameAs": ["https://github.com/BowlOfData/maki", "https://bowlofdata.github.io/maki/"], "author": {"@id": "https://bowlofdata.net/#organization"}, "publisher": {"@id": "https://bowlofdata.net/#organization"}}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Bowl of Data", "item": "https://bowlofdata.net/"}, {"@type": "ListItem", "position": 2, "name": "Maki", "item": "https://bowlofdata.net/maki.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is Maki?", "acceptedAnswer": {"@type": "Answer", "text": "Maki is a Python framework for multi-agent LLM applications. It puts several model backends (Ollama, llama.cpp, OpenAI, Anthropic, OpenRouter and in-process Hugging Face models) behind one interface, and adds role-based agents, a plugin system and a workflow engine with retries and checkpoint/resume."}}, {"@type": "Question", "name": "What does Maki do for Bowl of Data?", "acceptedAnswer": {"@type": "Answer", "text": "It is the pipeline behind each weekly issue: it gathers hundreds of sources, de-duplicates and ranks them against live trend signals, and drafts a TL;DR and a longer summary for each story. The Bowl of Data team reviews the shortlist and publishes it."}}, {"@type": "Question", "name": "Is Maki open source?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Maki is released under the MIT license and requires Python 3.10 or newer. The source is on GitHub, and the project documentation is hosted on GitHub Pages."}}, {"@type": "Question", "name": "How do I try Maki?", "acceptedAnswer": {"@type": "Answer", "text": "Clone the repository and install it with pip from the source folder, then follow the documentation site. The project describes itself as young (0.x), so expect the interfaces to keep changing."}}]}</script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="header-brand">
+        
+        <img src="imgs/logo-mark.png" alt="Bowl of Data logo" class="header-logo" width="256" height="256" decoding="async">
+        <div class="header-text">
+          <span class="header-site-name">Bowl of Data</span>
+          <span class="header-tagline">A weekly digest of the most relevant tech stories</span>
+        </div>
+      </a>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="header-nav">
+        <a href="index.html" class="nav-link" >Home</a>
+        <a href="archive.html" class="nav-link" >Archive</a>
+        <a href="topics.html" class="nav-link" >Topics</a>
+        <a href="services.html" class="nav-link nav-link--services" >Services</a>
+        <div class="nav-more-group">
+          <button class="nav-more-btn" aria-expanded="false" aria-haspopup="true" data-active="true">
+            About
+            <svg class="nav-more-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <div class="nav-more-panel">
+            <a href="about.html" class="nav-link" aria-current="page">About</a>
+            <a href="team.html" class="nav-link" >Team</a>
+            <a href="contact.html" class="nav-link" >Contact</a>
+            <a href="https://open.spotify.com/show/033Mqus9YAIssepHakRIIk" class="nav-link nav-link--podcast" target="_blank" rel="noopener">
+              <svg class="nav-podcast-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.32-1.32 9.719-.66 13.5 1.62.32.24.5.72.24 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.6.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>
+              </svg>
+              Podcast
+            </a>
+            <a href="https://www.youtube.com/@bowlofdata" class="nav-link nav-link--youtube" target="_blank" rel="noopener">
+              <svg class="nav-youtube-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.376.505A3.016 3.016 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.376-.505a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              YouTube
+            </a>
+            <a href="https://x.com/BowlOfData" class="nav-link nav-link--x" target="_blank" rel="noopener">
+              <svg class="nav-x-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
+              </svg>
+              X
+            </a>
+          </div>
+        </div>
+        <a href="https://bowlofdata.substack.com/" class="nav-subscribe" target="_blank" rel="noopener">Subscribe</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    
+<div class="about-header">
+  <div class="about-header-inner">
+    <h1 class="about-title">Maki</h1>
+    <p class="about-sub">The open-source multi-agent framework that curates and drafts every Bowl of Data issue.</p>
+    <div class="maki-links">
+      <a href="https://bowlofdata.github.io/maki/" class="cta-primary" target="_blank" rel="noopener">Documentation site</a>
+      <a href="https://github.com/BowlOfData/maki" class="cta-secondary" target="_blank" rel="noopener">Source on GitHub</a>
+    </div>
+  </div>
+</div>
+
+<div class="about-body">
+
+  <section class="about-section">
+    <h2 class="about-section-title">What Maki is</h2>
+    <p class="about-text">Maki is a Python framework for building multi-agent LLM applications that run wherever your models do: on your own machine, through a hosted API, or a mix of both. It takes you from a single model call to coordinated, tool-using agents without tying you to one provider.</p>
+    <dl class="about-facts">
+      <div><dt>Language</dt><dd>Python 3.10+</dd></div>
+      <div><dt>License</dt><dd>MIT, free to use and modify</dd></div>
+      <div><dt>Backends</dt><dd>Ollama, llama.cpp, OpenAI, Anthropic, OpenRouter, in-process Hugging Face Transformers</dd></div>
+      <div><dt>Status</dt><dd>Young (0.x): interfaces still change</dd></div>
+      <div><dt>Maintained by</dt><dd><a href="about.html">Bowl of Data</a></dd></div>
+      <div><dt>Source</dt><dd><a href="https://github.com/BowlOfData/maki" target="_blank" rel="noopener">github.com/BowlOfData/maki</a></dd></div>
+      <div><dt>Documentation</dt><dd><a href="https://bowlofdata.github.io/maki/" target="_blank" rel="noopener">bowlofdata.github.io/maki</a> (GitHub Pages)</dd></div>
+    </dl>
+  </section>
+
+  <section class="about-section">
+    <h2 class="about-section-title">What it can do</h2>
+    <div class="about-points">
+      <div class="about-point">
+        <p class="about-point-t">One interface, many models</p>
+        <p class="about-point-d">Local and hosted backends sit behind the same API, so switching a model is a configuration change.</p>
+      </div>
+      <div class="about-point">
+        <p class="about-point-t">Agents and workflows</p>
+        <p class="about-point-d">Role-based agents with memory, and a workflow engine with dependency ordering, retries and checkpoint/resume.</p>
+      </div>
+      <div class="about-point">
+        <p class="about-point-t">Plugins and serving</p>
+        <p class="about-point-d">Built-in plugins gated by allowlists, plus a layer that serves agents over HTTP for other services to call.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <h2 class="about-section-title">How Maki makes Bowl of Data</h2>
+    <p class="about-text">Bowl of Data is curated by Maki, an open-source multi-agent pipeline that scans hundreds of sources every week and drafts the summaries; the Bowl of Data team reviews and publishes every issue.</p>
+    <p class="about-text">Maki reads RSS feeds, Hacker News, Reddit, GitHub, arXiv, Hugging Face and vendor announcement pages, removes duplicates, ranks every candidate against live trend signals, and writes a TL;DR plus a longer summary for each story. People make the editorial calls: the team reviews the shortlist, and the same selection then goes out on this site, on Substack and as the weekly podcast. The full process is on the <a href="about.html">about page</a>, and the people behind it are on the <a href="team.html">team page</a>.</p>
+  </section>
+
+  <section class="about-section">
+    <h2 class="about-section-title">Frequently asked questions</h2>
+    <div class="faq">
+      
+      <details class="faq-item">
+        <summary>What is Maki?</summary>
+        <div class="faq-answer">Maki is a Python framework for multi-agent LLM applications. It puts several model backends (Ollama, llama.cpp, OpenAI, Anthropic, OpenRouter and in-process Hugging Face models) behind one interface, and adds role-based agents, a plugin system and a workflow engine with retries and checkpoint/resume.</div>
+      </details>
+      
+      <details class="faq-item">
+        <summary>What does Maki do for Bowl of Data?</summary>
+        <div class="faq-answer">It is the pipeline behind each weekly issue: it gathers hundreds of sources, de-duplicates and ranks them against live trend signals, and drafts a TL;DR and a longer summary for each story. The Bowl of Data team reviews the shortlist and publishes it.</div>
+      </details>
+      
+      <details class="faq-item">
+        <summary>Is Maki open source?</summary>
+        <div class="faq-answer">Yes. Maki is released under the MIT license and requires Python 3.10 or newer. The source is on GitHub, and the project documentation is hosted on GitHub Pages.</div>
+      </details>
+      
+      <details class="faq-item">
+        <summary>How do I try Maki?</summary>
+        <div class="faq-answer">Clone the repository and install it with pip from the source folder, then follow the documentation site. The project describes itself as young (0.x), so expect the interfaces to keep changing.</div>
+      </details>
+      
+    </div>
+  </section>
+
+  <div class="about-note">
+    <p class="about-note-label">Contribute</p>
+    <p class="about-note-text">Developers, technical writers and reviewers are welcome. Open an issue or pull request on <a href="https://github.com/BowlOfData/maki" class="about-note-link" target="_blank" rel="noopener">GitHub</a>, or send a note through the <a href="contact.html" class="about-note-link">contact page</a>.</p>
+  </div>
+
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <img src="imgs/logo-mark.png" alt="Bowl of Data" class="footer-logo" width="256" height="256" loading="lazy" decoding="async">
+      <div class="footer-text">
+        <p class="footer-name">Bowl of Data</p>
+        <p class="footer-sub">A weekly digest of the most relevant tech stories</p>
+        <p class="footer-authored">Curated by Maki &amp; reviewed by the Bowl of Data team.</p>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/bowl_of_data" class="footer-social-link" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <a href="https://bowlofdata.substack.com/" class="footer-social-link" target="_blank" rel="noopener" aria-label="Subscribe on Substack">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+          </svg>
+        </a>
+        <a href="https://open.spotify.com/show/033Mqus9YAIssepHakRIIk" class="footer-social-link" target="_blank" rel="noopener" aria-label="Listen on Spotify">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.32-1.32 9.719-.66 13.5 1.62.32.24.5.72.24 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.6.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>
+          </svg>
+        </a>
+        <a href="https://www.youtube.com/@bowlofdata" class="footer-social-link" target="_blank" rel="noopener" aria-label="Watch on YouTube">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.376.505A3.016 3.016 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.376-.505a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+        </a>
+        <a href="https://x.com/BowlOfData" class="footer-social-link" target="_blank" rel="noopener" aria-label="Follow @BowlOfData on X">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
+          </svg>
+        </a>
+      </div>
+      <p class="footer-credit">
+        Powered by
+        
+        <a href="maki.html">Maki</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Privacy notice: nothing here needs consent (no cookies, no third-party requests),
+       so it is a dismissible notice, not an accept/decline choice. The storage key keeps
+       its old name so visitors who already answered are not shown it again. -->
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Privacy notice" aria-live="polite">
+    <div class="cookie-banner-inner">
+      <p class="cookie-banner-text">
+        <strong>No cookies, no tracking.</strong>
+        This site sets no cookies, runs no analytics or ads, and loads its fonts from its own
+        server. Your browser only remembers that you dismissed this notice.
+      </p>
+      <div class="cookie-banner-actions">
+        <button id="cookie-accept" class="cookie-btn cookie-btn-accept">Got it</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.documentElement.classList.add('js-anim');
+    (function () {
+      var btn      = document.querySelector('.menu-toggle');
+      var nav      = document.querySelector('.header-nav');
+      var moreBtn  = document.querySelector('.nav-more-btn');
+      var morePanel = document.querySelector('.nav-more-panel');
+
+      // Hamburger toggle
+      if (btn && nav) {
+        btn.addEventListener('click', function () {
+          var open = nav.classList.toggle('is-open');
+          btn.setAttribute('aria-expanded', String(open));
+        });
+      }
+
+      // More dropdown toggle
+      if (moreBtn && morePanel) {
+        moreBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var open = morePanel.classList.toggle('is-open');
+          moreBtn.setAttribute('aria-expanded', String(open));
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && morePanel.classList.contains('is-open')) {
+            morePanel.classList.remove('is-open');
+            moreBtn.setAttribute('aria-expanded', 'false');
+            moreBtn.focus();
+          }
+        });
+      }
+
+      // Close both on outside click
+      document.addEventListener('click', function (e) {
+        if (!e.target.closest('.header-inner') && nav && nav.classList.contains('is-open')) {
+          nav.classList.remove('is-open');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+        if (!e.target.closest('.nav-more-group') && morePanel && morePanel.classList.contains('is-open')) {
+          morePanel.classList.remove('is-open');
+          moreBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+
+    // Privacy notice
+    (function () {
+      var banner = document.getElementById('cookie-banner');
+      if (!banner) return;
+      if (!localStorage.getItem('cookie-consent')) {
+        banner.classList.add('is-visible');
+      }
+      document.getElementById('cookie-accept').addEventListener('click', function () {
+        localStorage.setItem('cookie-consent', 'dismissed');
+        banner.classList.remove('is-visible');
+      });
+    })();
+  </script>
+</body>
+</html>

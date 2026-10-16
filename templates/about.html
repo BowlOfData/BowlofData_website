@@ -15,6 +15,19 @@
 <div class="about-body">
 
   <section class="about-section">
+    <h2 class="about-section-title">{{ site_name }} at a glance</h2>
+    <dl class="about-facts">
+      <div><dt>What it is</dt><dd>A free weekly technology newsletter</dd></div>
+      <div><dt>Published</dt><dd>One issue every Saturday, on this site and by email on Substack</dd></div>
+      <div><dt>Topics</dt><dd>AI &amp; machine learning, cybersecurity, blockchain &amp; crypto, software engineering</dd></div>
+      <div><dt>Each issue</dt><dd>Curated stories, research papers and model releases, counted separately</dd></div>
+      <div><dt>How it is made</dt><dd>{{ curation_statement }}</dd></div>
+      <div><dt>Created by</dt><dd><a href="{{ team_href }}">Marco and Luigi</a></dd></div>
+      <div><dt>Price</dt><dd>Free, no signup wall</dd></div>
+    </dl>
+  </section>
+
+  <section class="about-section">
     <h2 class="about-section-title">Our mission</h2>
     <p class="about-text">Staying current with technology should take minutes, not hours. Every week, hundreds of articles, papers, and release notes compete for your attention — and most of it is noise. Bowl of Data reads all of it so you don&rsquo;t have to, then hands you the short list that actually matters.</p>
     <p class="about-text">Our focus is deliberate: breakthroughs in AI and machine learning, exploits that reshape security, meaningful moves in blockchain, and engineering worth adopting. No hype, no filler — just the signal.</p>
@@ -106,30 +119,20 @@
 
     <div class="about-note">
       <p class="about-note-label">Get involved with Maki</p>
-      <p class="about-note-text">Maki is currently in private development: the repository is not yet public, as the project is still in its early stages. That said, we believe in building with the right people from the start, and collaboration is already open.</p>
-      <p class="about-note-text">Whether you are a developer interested in contributing to the framework, a technical writer who wants to document AI agent systems, or a reviewer who can help sharpen the newsletter&rsquo;s quality: send a request through the <a href="{{ contact_href }}" class="about-note-link">contact page</a> and we will get back to you.</p>
+      <p class="about-note-text">Maki is open source (MIT). Read what it is on the <a href="{{ about_href | replace('about.html', 'maki.html') }}" class="about-note-link">Maki page</a>, browse the <a href="{{ maki_repo_url }}" class="about-note-link" target="_blank" rel="noopener">source on GitHub</a>, or start from its <a href="{{ maki_docs_url }}" class="about-note-link" target="_blank" rel="noopener">documentation site</a>.</p>
+      <p class="about-note-text">Whether you are a developer interested in contributing to the framework, a technical writer who wants to document AI agent systems, or a reviewer who can help sharpen the newsletter&rsquo;s quality: open an issue on GitHub or send a request through the <a href="{{ contact_href }}" class="about-note-link">contact page</a> and we will get back to you.</p>
     </div>
   </section>
 
   <section class="about-section">
     <h2 class="about-section-title">Frequently asked questions</h2>
     <div class="faq">
+      {% for q, a in faq %}
       <details class="faq-item">
-        <summary>What is Bowl of Data?</summary>
-        <div class="faq-answer">Bowl of Data is a free weekly newsletter that curates the most relevant technology stories across AI and machine learning, cybersecurity, blockchain and crypto, and software engineering — read hundreds of sources so you don&rsquo;t have to.</div>
+        <summary>{{ q }}</summary>
+        <div class="faq-answer">{{ a }}</div>
       </details>
-      <details class="faq-item">
-        <summary>How is the newsletter curated?</summary>
-        <div class="faq-answer">An AI pipeline called Maki scans hundreds of sources each week, reads and ranks every candidate against live trend signals, and writes a TL;DR plus a longer summary. The team reviews the shortlist before anything ships.</div>
-      </details>
-      <details class="faq-item">
-        <summary>Is Bowl of Data free?</summary>
-        <div class="faq-answer">Yes. Every issue is free to read on the website and via the Substack email. Running mainly on open local models keeps costs low enough to keep it that way.</div>
-      </details>
-      <details class="faq-item">
-        <summary>How often is it published, and where can I read it?</summary>
-        <div class="faq-answer">A new issue ships every week. You can read it here on the site, subscribe by email on Substack, or listen to the companion podcast on Spotify.</div>
-      </details>
+      {% endfor %}
     </div>
   </section>
 

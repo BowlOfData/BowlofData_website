@@ -360,3 +360,38 @@ deployed until 2026-09-02** — see the banner at the top.
       more about a third party than the site does today — owner's call, not the build's.
 - [ ] Look at `Week 21 · 2026` (51 articles) — every other issue holds 11–26. Likely
       predates the `fix duplicates` work.
+
+---
+
+## 10. AI-visibility pass (2026-10-13)
+
+Live search showed the brand queries working (`bowlofdata.net` returns the site, the Substack
+issues and the repo) while every category query ("best weekly AI and cybersecurity
+newsletter") returned Talos, Krebs, SANS @RISK, Import AI and no mention of us. The engines
+also flagged that the homepage and the Substack describe the curation differently.
+
+**Shipped in code**
+
+- `CURATION_STATEMENT` in `build.py` is the one sentence for how an issue is made. It is used
+  verbatim on the about page (at-a-glance block and FAQ), the Maki page, `llms.txt`,
+  `llms-full.txt` and the Periodical JSON-LD. Change it there, not in a template.
+- `/maki.html`: SoftwareApplication JSON-LD (MIT, Python 3.10+, no invented version), links to
+  the repo and to the GitHub Pages docs site (`MAKI_DOCS_URL`). The footer and team page link
+  to it; it is in the sitemap. The about page used to say the repo was private. It is not.
+- Issue counts have one definition, `_issue_counts()`: articles, then papers, then model
+  releases, never summed. `llms.txt` states the rule.
+- `llms-full.txt`: the six latest issues with short summaries and card links.
+
+**Needs a person (cannot be done from the repo)**
+
+- [ ] Substack: use the `CURATION_STATEMENT` wording in the post footer and About page, and
+      stop quoting "22 articles" for an issue that is 17 articles + 5 papers.
+- [ ] EveryDev.ai listing: fix the Week 36 date ("10/01/2004"), the duplicated Maki sources,
+      and the Essential/Signature vs "Intelligence package" mismatch (edit link on the page).
+- [ ] Submit to InboxReads and the roundups that rank for "best AI / cybersecurity
+      newsletters" (pillar.security, fast.io, thectoclub, decryptiondigest): one factual line,
+      one sample issue.
+- [ ] Share individual issues where they are on topic (r/netsec, Hacker News). No campaigns.
+- [ ] Wikidata/Crunchbase only if notability is met; unverified.
+- [ ] Monthly: run ~15 category prompts in real assistants and log whether we appear
+      (§8's spot-check, still not baselined).

@@ -192,38 +192,12 @@
   <section class="services-section">
     <h2 class="services-section-title">Common questions</h2>
     <div class="faq">
+      {% for q, a in faq %}
       <details class="faq-item">
-        <summary>What does &ldquo;done-for-you&rdquo; actually mean?</summary>
-        <div class="faq-answer">We configure the pipeline to your niche, run it every week, and review each issue before it reaches you. You approve; we handle sourcing, curation, writing, and delivery. There&rsquo;s nothing for you to operate.</div>
+        <summary>{{ q }}</summary>
+        <div class="faq-answer">{{ a }}</div>
       </details>
-      <details class="faq-item">
-        <summary>Whose audience is it?</summary>
-        <div class="faq-answer">Yours. Your brand, your platform, your subscriber list. We&rsquo;re the engine behind the scenes — you keep every subscriber you earn.</div>
-      </details>
-      <details class="faq-item">
-        <summary>Is our data private?</summary>
-        <div class="faq-answer">Yes. The pipeline runs mainly on open models on our own hardware, so your sources, prompts, and drafts aren&rsquo;t handed to a commercial AI API to log or train on. That&rsquo;s especially important for competitive and market intelligence.</div>
-      </details>
-      <details class="faq-item">
-        <summary>How fast can we launch?</summary>
-        <div class="faq-answer">A first sample issue lands in days, not a sales cycle. Once you&rsquo;re happy with the voice and the sources, we set the weekly cadence and go.</div>
-      </details>
-      <details class="faq-item">
-        <summary>What is newsletter as a service?</summary>
-        <div class="faq-answer">You get the newsletter without running one. We own the sourcing, curation, writing, editing and delivery as an ongoing service, billed as a flat monthly fee rather than per issue or per hour, and it ships under your brand on your platform.</div>
-      </details>
-      <details class="faq-item">
-        <summary>Is the newsletter white-label?</summary>
-        <div class="faq-answer">Yes. It carries your brand, your voice and your domain, and we take no byline or credit line anywhere in it. Readers see your publication, not ours.</div>
-      </details>
-      <details class="faq-item">
-        <summary>How is this different from a newsletter agency?</summary>
-        <div class="faq-answer">An agency bills for the hours a person spends reading and writing, so the cost grows with the number of topics you track. We built the reading into a pipeline and kept a human on the editorial decisions, which holds the price flat as the scope grows.</div>
-      </details>
-      <details class="faq-item">
-        <summary>What does it cost?</summary>
-        <div class="faq-answer">A flat monthly fee, scoped to your niche, the number of sections, and whether you want the podcast or the private brief alongside the newsletter. Tell us the scope and you get a fixed number back — there is no per-issue or per-word billing.</div>
-      </details>
+      {% endfor %}
     </div>
   </section>
 

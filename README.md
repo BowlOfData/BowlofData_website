@@ -38,7 +38,7 @@ Every URL below is a real file on disk under `site/`.
 | `archive.html` | Index of all issues, grouped year → month |
 | `topics.html` | Index of every topic hub and tag page |
 | `about/team/contact/services.html` | Marketing pages |
-| `sitemap.xml`, `feed.xml`, `llms.txt`, `robots.txt` | Crawler + LLM surface |
+| `sitemap.xml`, `feed.xml`, `llms.txt`, `llms-full.txt`, `robots.txt` | Crawler + LLM surface |
 
 ---
 
@@ -205,7 +205,7 @@ A single incremental build:
 1. **Reconcile** — load `weeks_manifest.json`, then scan `MAKI_OUTPUT_DIR` for `curated_WW_YYYY.json` (or `summaries_WW_YYYY.json` when a week has none) (plus `model_releases_*` and `curated_papers_*`). A week is re-parsed when its source files are newer than the manifest records, when it is new, or when its HTML is missing. Weeks the pipeline has rotated away survive in the manifest untouched.
 2. **Expand** — a changed week also re-renders its two neighbours so prev/next links stay accurate.
 3. **Render** — week pages, then the landing page, archive, marketing pages, topic hubs, tag pages and topics index (these last ones are regenerated on every run).
-4. **Emit** — `sitemap.xml`, `llms.txt`, `feed.xml`, `robots.txt`.
+4. **Emit** — `sitemap.xml`, `llms.txt`, `llms-full.txt`, `feed.xml`, `robots.txt`.
 5. **Persist** — write the manifest back.
 
 `FORCE_REBUILD=1` re-renders every week in the manifest. It does **not** discard the manifest: the maki output directory no longer holds old issues, so that would drop them from the archive permanently.

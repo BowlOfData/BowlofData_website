@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}Maki — Open-Source Multi-Agent Framework Behind Bowl of Data{% endblock %}
+{% block og_title %}Maki — the open-source multi-agent framework behind Bowl of Data{% endblock %}
+{% block og_description %}Maki is the MIT-licensed Python multi-agent LLM framework that curates and drafts every Bowl of Data issue. Source on GitHub, docs on GitHub Pages.{% endblock %}
+{% block og_url %}{{ site_url }}/maki.html{% endblock %}
+
+{% block content %}
+<div class="about-header">
+  <div class="about-header-inner">
+    <h1 class="about-title">Maki</h1>
+    <p class="about-sub">The open-source multi-agent framework that curates and drafts every {{ site_name }} issue.</p>
+    <div class="maki-links">
+      <a href="{{ maki_docs_url }}" class="cta-primary" target="_blank" rel="noopener">Documentation site</a>
+      <a href="{{ maki_repo_url }}" class="cta-secondary" target="_blank" rel="noopener">Source on GitHub</a>
+    </div>
+  </div>
+</div>
+
+<div class="about-body">
+
+  <section class="about-section">
+    <h2 class="about-section-title">What Maki is</h2>
+    <p class="about-text">Maki is a Python framework for building multi-agent LLM applications that run wherever your models do: on your own machine, through a hosted API, or a mix of both. It takes you from a single model call to coordinated, tool-using agents without tying you to one provider.</p>
+    <dl class="about-facts">
+      <div><dt>Language</dt><dd>Python 3.10+</dd></div>
+      <div><dt>License</dt><dd>MIT, free to use and modify</dd></div>
+      <div><dt>Backends</dt><dd>Ollama, llama.cpp, OpenAI, Anthropic, OpenRouter, in-process Hugging Face Transformers</dd></div>
+      <div><dt>Status</dt><dd>Young (0.x): interfaces still change</dd></div>
+      <div><dt>Maintained by</dt><dd><a href="{{ about_href }}">{{ site_name }}</a></dd></div>
+      <div><dt>Source</dt><dd><a href="{{ maki_repo_url }}" target="_blank" rel="noopener">github.com/BowlOfData/maki</a></dd></div>
+      <div><dt>Documentation</dt><dd><a href="{{ maki_docs_url }}" target="_blank" rel="noopener">bowlofdata.github.io/maki</a> (GitHub Pages)</dd></div>
+    </dl>
+  </section>
+
+  <section class="about-section">
+    <h2 class="about-section-title">What it can do</h2>
+    <div class="about-points">
+      <div class="about-point">
+        <p class="about-point-t">One interface, many models</p>
+        <p class="about-point-d">Local and hosted backends sit behind the same API, so switching a model is a configuration change.</p>
+      </div>
+      <div class="about-point">
+        <p class="about-point-t">Agents and workflows</p>
+        <p class="about-point-d">Role-based agents with memory, and a workflow engine with dependency ordering, retries and checkpoint/resume.</p>
+      </div>
+      <div class="about-point">
+        <p class="about-point-t">Plugins and serving</p>
+        <p class="about-point-d">Built-in plugins gated by allowlists, plus a layer that serves agents over HTTP for other services to call.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <h2 class="about-section-title">How Maki makes {{ site_name }}</h2>
+    <p class="about-text">{{ curation_statement }}</p>
+    <p class="about-text">Maki reads RSS feeds, Hacker News, Reddit, GitHub, arXiv, Hugging Face and vendor announcement pages, removes duplicates, ranks every candidate against live trend signals, and writes a TL;DR plus a longer summary for each story. People make the editorial calls: the team reviews the shortlist, and the same selection then goes out on this site, on Substack and as the weekly podcast. The full process is on the <a href="{{ about_href }}">about page</a>, and the people behind it are on the <a href="{{ team_href }}">team page</a>.</p>
+  </section>
+
+  <section class="about-section">
+    <h2 class="about-section-title">Frequently asked questions</h2>
+    <div class="faq">
+      {% for q, a in faq %}
+      <details class="faq-item">
+        <summary>{{ q }}</summary>
+        <div class="faq-answer">{{ a }}</div>
+      </details>
+      {% endfor %}
+    </div>
+  </section>
+
+  <div class="about-note">
+    <p class="about-note-label">Contribute</p>
+    <p class="about-note-text">Developers, technical writers and reviewers are welcome. Open an issue or pull request on <a href="{{ maki_repo_url }}" class="about-note-link" target="_blank" rel="noopener">GitHub</a>, or send a note through the <a href="{{ contact_href }}" class="about-note-link">contact page</a>.</p>
+  </div>
+
+</div>
+{% endblock %}
