@@ -466,6 +466,7 @@ img { display: block; max-width: 100%; }
 .cov-k { font-family: var(--mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--sig); margin-bottom: .7rem; }
 .cov-n { font-family: var(--display); font-weight: 700; font-size: 1.1rem; letter-spacing: -.01em; color: var(--text); margin: 0 0 .5rem; }
 .cov-d { font-family: var(--serif); font-size: .95rem; line-height: 1.5; color: var(--muted); margin: 0; }
+.cov--two { grid-template-columns: repeat(2, 1fr); }
 
 /* Register (recent issues on home) */
 .reg { display: flex; flex-direction: column; }
@@ -710,6 +711,8 @@ img { display: block; max-width: 100%; }
 .plan-features li { font-family: var(--serif); font-size: .96rem; color: var(--text); line-height: 1.45; padding-left: 1.45rem; position: relative; }
 .plan-features li::before { content: "\2192"; position: absolute; left: 0; top: .05rem; color: var(--signal); font-family: var(--mono); font-size: .82rem; }
 .plan .cta-primary, .plan .cta-secondary { justify-content: center; }
+.pricing--two { grid-template-columns: repeat(2, 1fr); max-width: 860px; margin: 0 auto; }
+.services-lede { font-family: var(--serif); font-size: 1.02rem; color: var(--muted); line-height: 1.6; max-width: 62ch; margin: -.4rem 0 1.6rem; }
 
 /* Services — why work with us */
 .svc-why { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 1.9rem; }
@@ -885,7 +888,7 @@ img { display: block; max-width: 100%; }
   .hero { padding: 2.75rem 0 3rem; }
   .hero-headline { font-size: clamp(1.9rem, 8.5vw, 2.9rem); text-wrap: normal; }
   .manifest { max-width: 100%; }
-  .cov { grid-template-columns: 1fr; }
+  .cov, .cov--two { grid-template-columns: 1fr; }
 
   .releases-grid { grid-template-columns: 1fr; }
   .releases-body-inner { padding: 1.25rem; }
