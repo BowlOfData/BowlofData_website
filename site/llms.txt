@@ -14,7 +14,7 @@ Bowl of Data is a source of record for weekly technology news: each issue is de-
 
 One issue per ISO week, newest first. 24 published so far. Counts follow one definition everywhere: articles are the curated stories; papers and model releases are separate sections of the same issue and are never added into the article count.
 
-- [Week 42 · 2026](https://bowlofdata.net/week/42_2026.html): 20 articles, 5 papers, 3 model releases. Highlights: Google paid me $90,000 for this RCE; CVE-2026-91768: FastCGI allowed_clients compared only 96 of an IPv6 address's 128 bits; frontier class vulnerabilities: it gets worse before it (maybe) gets better.
+- [Week 42 · 2026](https://bowlofdata.net/week/42_2026.html): 20 articles, 5 papers, 7 model releases. Highlights: Linus Torvalds let Claude Code fix the Linux page cache. Then reviewers found a race.; Anthropic takes risky AI tests offline after models breach govt sites; AI Governance Is Being Decided Now, and the Public Isn’t in the Room.
 - [Week 41 · 2026](https://bowlofdata.net/week/41_2026.html): 20 articles, 5 papers, 10 model releases. Highlights: 'AgentCorruption' Puts AWS Environments At Risk With Single Prompt; When AI agents act outside their remit; The Platform Engineering Playbook for Production LLMs.
 - [Week 40 · 2026](https://bowlofdata.net/week/40_2026.html): 18 articles, 5 papers, 10 model releases. Highlights: DIVD says Zammad zero-days enabled AI-driven network breach; Quoting Anthropic Frontier Red Team; AI cryptanalysis compresses flaw-finding time from months to hours..
 - [Week 39 · 2026](https://bowlofdata.net/week/39_2026.html): 17 articles, 5 papers, 10 model releases. Highlights: Crook used three open source agents to break into a Fortune 500 hospitality company, a major US airline and 25+ other orgs; Windows CLOSEDQUORUM malware uses AI models to autonomously select post-compromise actions; Relays Are Masking Chinese Access to Frontier AI Models in the US.
@@ -41,62 +41,62 @@ One issue per ISO week, newest first. 24 published so far. Counts follow one def
 
 ## Topics
 
-- [AI & Machine Learning](https://bowlofdata.net/topic/ai.html): 252 items on ai & ml across every issue.
+- [AI & Machine Learning](https://bowlofdata.net/topic/ai.html): 248 items on ai & ml across every issue.
 - [Data & AI Governance](https://bowlofdata.net/topic/governance.html): 23 items on data & ai governance across every issue.
 - [Cybersecurity](https://bowlofdata.net/topic/security.html): 73 items on cybersecurity across every issue.
-- [Blockchain & Crypto](https://bowlofdata.net/topic/blockchain.html): 85 items on blockchain & crypto across every issue.
+- [Blockchain & Crypto](https://bowlofdata.net/topic/blockchain.html): 87 items on blockchain & crypto across every issue.
 - [Software Engineering](https://bowlofdata.net/topic/engineering.html): 74 items on software engineering across every issue.
-- [Quantum Computing](https://bowlofdata.net/topic/quantum.html): 25 items on quantum computing across every issue.
+- [Quantum Computing](https://bowlofdata.net/topic/quantum.html): 27 items on quantum computing across every issue.
 - [Space & Spaceflight](https://bowlofdata.net/topic/space.html): 2 items on space across every issue.
 
 ## Tags
 
 - [Large Language Models (LLMs)](https://bowlofdata.net/tag/large-language-models-llms.html): 56 items tagged Large Language Models (LLMs).
-- [Bitcoin](https://bowlofdata.net/tag/bitcoin.html): 50 items tagged Bitcoin.
-- [Ethereum](https://bowlofdata.net/tag/ethereum.html): 40 items tagged Ethereum.
+- [Bitcoin](https://bowlofdata.net/tag/bitcoin.html): 51 items tagged Bitcoin.
+- [Ethereum](https://bowlofdata.net/tag/ethereum.html): 41 items tagged Ethereum.
 - [Python](https://bowlofdata.net/tag/python.html): 38 items tagged Python.
-- [OpenAI](https://bowlofdata.net/tag/openai.html): 32 items tagged OpenAI.
-- [Quantum Computing](https://bowlofdata.net/tag/quantum-computing.html): 31 items tagged Quantum Computing.
+- [Quantum Computing](https://bowlofdata.net/tag/quantum-computing.html): 33 items tagged Quantum Computing.
+- [OpenAI](https://bowlofdata.net/tag/openai.html): 30 items tagged OpenAI.
 - [Anthropic](https://bowlofdata.net/tag/anthropic.html): 24 items tagged Anthropic.
 - [AI Agents](https://bowlofdata.net/tag/ai-agents.html): 21 items tagged AI Agents.
-- [Claude Code](https://bowlofdata.net/tag/claude-code.html): 18 items tagged Claude Code.
-- [Post-Quantum Cryptography (PQC)](https://bowlofdata.net/tag/post-quantum-cryptography-pqc.html): 17 items tagged Post-Quantum Cryptography (PQC).
+- [Claude Code](https://bowlofdata.net/tag/claude-code.html): 19 items tagged Claude Code.
+- [Post-Quantum Cryptography (PQC)](https://bowlofdata.net/tag/post-quantum-cryptography-pqc.html): 18 items tagged Post-Quantum Cryptography (PQC).
 - [Hugging Face](https://bowlofdata.net/tag/hugging-face.html): 17 items tagged Hugging Face.
 - [GitHub](https://bowlofdata.net/tag/github.html): 17 items tagged GitHub.
 - [Claude](https://bowlofdata.net/tag/claude.html): 17 items tagged Claude.
 - [AWS](https://bowlofdata.net/tag/aws.html): 16 items tagged AWS.
 - [Solana](https://bowlofdata.net/tag/solana.html): 15 items tagged Solana.
 - [Codex](https://bowlofdata.net/tag/codex.html): 14 items tagged Codex.
-- [Quantum error correction](https://bowlofdata.net/tag/quantum-error-correction.html): 12 items tagged Quantum error correction.
+- [Quantum error correction](https://bowlofdata.net/tag/quantum-error-correction.html): 13 items tagged Quantum error correction.
+- [Reinforcement Learning (RL)](https://bowlofdata.net/tag/reinforcement-learning-rl.html): 13 items tagged Reinforcement Learning (RL).
 - [Gemini](https://bowlofdata.net/tag/gemini.html): 12 items tagged Gemini.
-- [Windows](https://bowlofdata.net/tag/windows.html): 11 items tagged Windows.
-- [Reinforcement Learning (RL)](https://bowlofdata.net/tag/reinforcement-learning-rl.html): 11 items tagged Reinforcement Learning (RL).
 - [Stablecoins](https://bowlofdata.net/tag/stablecoins.html): 11 items tagged Stablecoins.
-- [Go](https://bowlofdata.net/tag/go.html): 10 items tagged Go.
-- [Kubernetes](https://bowlofdata.net/tag/kubernetes.html): 10 items tagged Kubernetes.
+- [Linux Kernel](https://bowlofdata.net/tag/linux-kernel.html): 10 items tagged Linux Kernel.
 - [Claude Mythos](https://bowlofdata.net/tag/claude-mythos.html): 10 items tagged Claude Mythos.
+- [Kubernetes](https://bowlofdata.net/tag/kubernetes.html): 10 items tagged Kubernetes.
+- [Go](https://bowlofdata.net/tag/go.html): 10 items tagged Go.
 - [Google](https://bowlofdata.net/tag/google.html): 10 items tagged Google.
 - [PyTorch](https://bowlofdata.net/tag/pytorch.html): 10 items tagged PyTorch.
 - [GRPO](https://bowlofdata.net/tag/grpo.html): 10 items tagged GRPO.
+- [JavaScript](https://bowlofdata.net/tag/javascript.html): 9 items tagged JavaScript.
 - [vLLM](https://bowlofdata.net/tag/vllm.html): 9 items tagged vLLM.
-- [Meta](https://bowlofdata.net/tag/meta.html): 9 items tagged Meta.
 - [LoRA](https://bowlofdata.net/tag/lora.html): 9 items tagged LoRA.
 - [GPU](https://bowlofdata.net/tag/gpu.html): 9 items tagged GPU.
 - [Azure](https://bowlofdata.net/tag/azure.html): 9 items tagged Azure.
 - [High-Performance Computing (HPC)](https://bowlofdata.net/tag/high-performance-computing-hpc.html): 9 items tagged High-Performance Computing (HPC).
+- [Windows](https://bowlofdata.net/tag/windows.html): 9 items tagged Windows.
 - [Linux](https://bowlofdata.net/tag/linux.html): 9 items tagged Linux.
 - [Elliptic Curve Cryptography (ECC)](https://bowlofdata.net/tag/elliptic-curve-cryptography-ecc.html): 9 items tagged Elliptic Curve Cryptography (ECC).
 - [Shor's algorithm](https://bowlofdata.net/tag/shors-algorithm.html): 9 items tagged Shor's algorithm.
 - [Data Centers](https://bowlofdata.net/tag/data-centers.html): 9 items tagged Data Centers.
 - [RSA](https://bowlofdata.net/tag/rsa.html): 8 items tagged RSA.
-- [Linux kernel](https://bowlofdata.net/tag/linux-kernel.html): 8 items tagged Linux kernel.
+- [Meta](https://bowlofdata.net/tag/meta.html): 8 items tagged Meta.
 - [Qwen3-4B](https://bowlofdata.net/tag/qwen3-4b.html): 8 items tagged Qwen3-4B.
-- [JavaScript](https://bowlofdata.net/tag/javascript.html): 8 items tagged JavaScript.
 - [ChatGPT](https://bowlofdata.net/tag/chatgpt.html): 8 items tagged ChatGPT.
 - [Generative AI](https://bowlofdata.net/tag/generative-ai.html): 8 items tagged Generative AI.
 - [Hyperliquid](https://bowlofdata.net/tag/hyperliquid.html): 8 items tagged Hyperliquid.
-- [GLM 5.2](https://bowlofdata.net/tag/glm-52.html): 7 items tagged GLM 5.2.
 - [ML-KEM](https://bowlofdata.net/tag/ml-kem.html): 7 items tagged ML-KEM.
+- [BIP-360](https://bowlofdata.net/tag/bip-360.html): 7 items tagged BIP-360.
 - [Rust](https://bowlofdata.net/tag/rust.html): 7 items tagged Rust.
 - [Retrieval-Augmented Generation (RAG)](https://bowlofdata.net/tag/retrieval-augmented-generation-rag.html): 7 items tagged Retrieval-Augmented Generation (RAG).
 - [Node.js](https://bowlofdata.net/tag/nodejs.html): 7 items tagged Node.js.
@@ -104,24 +104,28 @@ One issue per ISO week, newest first. 24 published so far. Counts follow one def
 - [Java](https://bowlofdata.net/tag/java.html): 7 items tagged Java.
 - [Docker](https://bowlofdata.net/tag/docker.html): 7 items tagged Docker.
 - [npm](https://bowlofdata.net/tag/npm.html): 7 items tagged npm.
-- [Qubits](https://bowlofdata.net/tag/qubits.html): 6 items tagged Qubits.
-- [SpaceX](https://bowlofdata.net/tag/spacex.html): 6 items tagged SpaceX.
+- [EVM](https://bowlofdata.net/tag/evm.html): 6 items tagged EVM.
+- [BIP-361](https://bowlofdata.net/tag/bip-361.html): 6 items tagged BIP-361.
+- [Microsoft](https://bowlofdata.net/tag/microsoft.html): 6 items tagged Microsoft.
 - [Ollama](https://bowlofdata.net/tag/ollama.html): 6 items tagged Ollama.
 - [Git](https://bowlofdata.net/tag/git.html): 6 items tagged Git.
 - [Transformer](https://bowlofdata.net/tag/transformer.html): 6 items tagged Transformer.
 - [Qwen3-8B](https://bowlofdata.net/tag/qwen3-8b.html): 6 items tagged Qwen3-8B.
+- [GLM 5.2](https://bowlofdata.net/tag/glm-52.html): 6 items tagged GLM 5.2.
 - [TLS](https://bowlofdata.net/tag/tls.html): 6 items tagged TLS.
 - [Zero-knowledge proofs](https://bowlofdata.net/tag/zero-knowledge-proofs.html): 6 items tagged Zero-knowledge proofs.
 - [Qwen3](https://bowlofdata.net/tag/qwen3.html): 6 items tagged Qwen3.
 - [macOS](https://bowlofdata.net/tag/macos.html): 6 items tagged macOS.
 - [Quantum Key Distribution (QKD)](https://bowlofdata.net/tag/quantum-key-distribution-qkd.html): 6 items tagged Quantum Key Distribution (QKD).
 - [Stellar](https://bowlofdata.net/tag/stellar.html): 6 items tagged Stellar.
-- [BIP-360](https://bowlofdata.net/tag/bip-360.html): 6 items tagged BIP-360.
-- [C](https://bowlofdata.net/tag/c.html): 5 items tagged C.
-- [CUDA](https://bowlofdata.net/tag/cuda.html): 5 items tagged CUDA.
 - [Claude Opus 4.6](https://bowlofdata.net/tag/claude-opus-46.html): 5 items tagged Claude Opus 4.6.
-- [JSON](https://bowlofdata.net/tag/json.html): 5 items tagged JSON.
-- [Nvidia](https://bowlofdata.net/tag/nvidia.html): 5 items tagged Nvidia.
+- [iOS](https://bowlofdata.net/tag/ios.html): 5 items tagged iOS.
+- [CUDA](https://bowlofdata.net/tag/cuda.html): 5 items tagged CUDA.
+- [C](https://bowlofdata.net/tag/c.html): 5 items tagged C.
+- [Qubits](https://bowlofdata.net/tag/qubits.html): 5 items tagged Qubits.
+- [Ubuntu](https://bowlofdata.net/tag/ubuntu.html): 5 items tagged Ubuntu.
+- [Quantinuum](https://bowlofdata.net/tag/quantinuum.html): 5 items tagged Quantinuum.
+- [Superconducting qubits](https://bowlofdata.net/tag/superconducting-qubits.html): 5 items tagged Superconducting qubits.
 - [Model Context Protocol (MCP)](https://bowlofdata.net/tag/model-context-protocol-mcp.html): 5 items tagged Model Context Protocol (MCP).
 - [TypeScript](https://bowlofdata.net/tag/typescript.html): 5 items tagged TypeScript.
 - [Smart Contracts](https://bowlofdata.net/tag/smart-contracts.html): 5 items tagged Smart Contracts.
@@ -134,17 +138,13 @@ One issue per ISO week, newest first. 24 published so far. Counts follow one def
 - [SHA-256](https://bowlofdata.net/tag/sha-256.html): 5 items tagged SHA-256.
 - [Uniswap](https://bowlofdata.net/tag/uniswap.html): 5 items tagged Uniswap.
 - [Cloudflare](https://bowlofdata.net/tag/cloudflare.html): 5 items tagged Cloudflare.
-- [Microsoft](https://bowlofdata.net/tag/microsoft.html): 5 items tagged Microsoft.
 - [Mixture-of-Experts (MoE)](https://bowlofdata.net/tag/mixture-of-experts-moe.html): 5 items tagged Mixture-of-Experts (MoE).
 - [Quantum Processing Unit (QPU)](https://bowlofdata.net/tag/quantum-processing-unit-qpu.html): 5 items tagged Quantum Processing Unit (QPU).
-- [EVM](https://bowlofdata.net/tag/evm.html): 5 items tagged EVM.
-- [BIP-361](https://bowlofdata.net/tag/bip-361.html): 5 items tagged BIP-361.
-- [GPT 5.6 Sol](https://bowlofdata.net/tag/gpt-56-sol.html): 4 items tagged GPT 5.6 Sol.
-- [SQLite](https://bowlofdata.net/tag/sqlite.html): 4 items tagged SQLite.
+- [SpaceX](https://bowlofdata.net/tag/spacex.html): 5 items tagged SpaceX.
 - [Claude Mythos Preview](https://bowlofdata.net/tag/claude-mythos-preview.html): 4 items tagged Claude Mythos Preview.
-- [Cloudflare Workers](https://bowlofdata.net/tag/cloudflare-workers.html): 4 items tagged Cloudflare Workers.
+- [Android](https://bowlofdata.net/tag/android.html): 4 items tagged Android.
+- [QEMU](https://bowlofdata.net/tag/qemu.html): 4 items tagged QEMU.
 - [Neural Networks](https://bowlofdata.net/tag/neural-networks.html): 4 items tagged Neural Networks.
-- [iOS](https://bowlofdata.net/tag/ios.html): 4 items tagged iOS.
 - [Solidity](https://bowlofdata.net/tag/solidity.html): 4 items tagged Solidity.
 - [VPN](https://bowlofdata.net/tag/vpn.html): 4 items tagged VPN.
 - [FOCIL](https://bowlofdata.net/tag/focil.html): 4 items tagged FOCIL.
@@ -154,41 +154,42 @@ One issue per ISO week, newest first. 24 published so far. Counts follow one def
 - [xAI](https://bowlofdata.net/tag/xai.html): 4 items tagged xAI.
 - [AI coding agents](https://bowlofdata.net/tag/ai-coding-agents.html): 4 items tagged AI coding agents.
 - [NVIDIA CUDA-Q](https://bowlofdata.net/tag/nvidia-cuda-q.html): 4 items tagged NVIDIA CUDA-Q.
+- [JSON](https://bowlofdata.net/tag/json.html): 4 items tagged JSON.
 - [KVM](https://bowlofdata.net/tag/kvm.html): 4 items tagged KVM.
 - [Arc](https://bowlofdata.net/tag/arc.html): 4 items tagged Arc.
 - [Qwen3-1.7B](https://bowlofdata.net/tag/qwen3-17b.html): 4 items tagged Qwen3-1.7B.
 - [Llama](https://bowlofdata.net/tag/llama.html): 4 items tagged Llama.
 - [DPO](https://bowlofdata.net/tag/dpo.html): 4 items tagged DPO.
 - [Bash](https://bowlofdata.net/tag/bash.html): 4 items tagged Bash.
-- [Ubuntu](https://bowlofdata.net/tag/ubuntu.html): 4 items tagged Ubuntu.
 - [On-Policy Self-Distillation (OPSD)](https://bowlofdata.net/tag/on-policy-self-distillation-opsd.html): 4 items tagged On-Policy Self-Distillation (OPSD).
 - [PowerShell](https://bowlofdata.net/tag/powershell.html): 4 items tagged PowerShell.
 - [PPO](https://bowlofdata.net/tag/ppo.html): 4 items tagged PPO.
 - [OpenClaw](https://bowlofdata.net/tag/openclaw.html): 4 items tagged OpenClaw.
 - [Neutral-atom quantum computing](https://bowlofdata.net/tag/neutral-atom-quantum-computing.html): 4 items tagged Neutral-atom quantum computing.
 - [Optical tweezers](https://bowlofdata.net/tag/optical-tweezers.html): 4 items tagged Optical tweezers.
-- [Quantinuum](https://bowlofdata.net/tag/quantinuum.html): 4 items tagged Quantinuum.
 - [Coldcard](https://bowlofdata.net/tag/coldcard.html): 4 items tagged Coldcard.
-- [Superconducting qubits](https://bowlofdata.net/tag/superconducting-qubits.html): 4 items tagged Superconducting qubits.
 - [Low Earth Orbit (LEO)](https://bowlofdata.net/tag/low-earth-orbit-leo.html): 4 items tagged Low Earth Orbit (LEO).
 - [PyPI](https://bowlofdata.net/tag/pypi.html): 4 items tagged PyPI.
+- [Nvidia](https://bowlofdata.net/tag/nvidia.html): 4 items tagged Nvidia.
 - [Microsoft Copilot](https://bowlofdata.net/tag/microsoft-copilot.html): 4 items tagged Microsoft Copilot.
 - [GitHub Actions](https://bowlofdata.net/tag/github-actions.html): 4 items tagged GitHub Actions.
 - [Taproot](https://bowlofdata.net/tag/taproot.html): 4 items tagged Taproot.
 - [CISA](https://bowlofdata.net/tag/cisa.html): 4 items tagged CISA.
 - [NIST](https://bowlofdata.net/tag/nist.html): 4 items tagged NIST.
 - [ETF](https://bowlofdata.net/tag/etf.html): 4 items tagged ETF.
-- [WordPress](https://bowlofdata.net/tag/wordpress.html): 3 items tagged WordPress.
-- [GitLab](https://bowlofdata.net/tag/gitlab.html): 3 items tagged GitLab.
-- [Trapped ions](https://bowlofdata.net/tag/trapped-ions.html): 3 items tagged Trapped ions.
-- [Neutral atoms](https://bowlofdata.net/tag/neutral-atoms.html): 3 items tagged Neutral atoms.
 - [Frontier AI models](https://bowlofdata.net/tag/frontier-ai-models.html): 3 items tagged Frontier AI models.
-- [OpenVLA](https://bowlofdata.net/tag/openvla.html): 3 items tagged OpenVLA.
+- [Lean 4](https://bowlofdata.net/tag/lean-4.html): 3 items tagged Lean 4.
+- [Photonic Quantum Computing](https://bowlofdata.net/tag/photonic-quantum-computing.html): 3 items tagged Photonic Quantum Computing.
+- [PsiQuantum](https://bowlofdata.net/tag/psiquantum.html): 3 items tagged PsiQuantum.
+- [ML-DSA](https://bowlofdata.net/tag/ml-dsa.html): 3 items tagged ML-DSA.
+- [ECDSA](https://bowlofdata.net/tag/ecdsa.html): 3 items tagged ECDSA.
+- [Multi-party computation (MPC)](https://bowlofdata.net/tag/multi-party-computation-mpc.html): 3 items tagged Multi-party computation (MPC).
 - [CyberGym](https://bowlofdata.net/tag/cybergym.html): 3 items tagged CyberGym.
-- [Android](https://bowlofdata.net/tag/android.html): 3 items tagged Android.
 - [Nvidia H100](https://bowlofdata.net/tag/nvidia-h100.html): 3 items tagged Nvidia H100.
 - [NVIDIA H200](https://bowlofdata.net/tag/nvidia-h200.html): 3 items tagged NVIDIA H200.
 - [NVIDIA RTX 5090](https://bowlofdata.net/tag/nvidia-rtx-5090.html): 3 items tagged NVIDIA RTX 5090.
+- [Cloudflare Workers](https://bowlofdata.net/tag/cloudflare-workers.html): 3 items tagged Cloudflare Workers.
+- [SQLite](https://bowlofdata.net/tag/sqlite.html): 3 items tagged SQLite.
 - [WebAssembly](https://bowlofdata.net/tag/webassembly.html): 3 items tagged WebAssembly.
 - [Llama-3.2-3B](https://bowlofdata.net/tag/llama-32-3b.html): 3 items tagged Llama-3.2-3B.
 - [AES](https://bowlofdata.net/tag/aes.html): 3 items tagged AES.
@@ -208,7 +209,7 @@ One issue per ISO week, newest first. 24 published so far. Counts follow one def
 - [SSH](https://bowlofdata.net/tag/ssh.html): 3 items tagged SSH.
 - [ASIC](https://bowlofdata.net/tag/asic.html): 3 items tagged ASIC.
 - [Markdown](https://bowlofdata.net/tag/markdown.html): 3 items tagged Markdown.
-- [QEMU](https://bowlofdata.net/tag/qemu.html): 3 items tagged QEMU.
+- [GPT-5.6 Sol](https://bowlofdata.net/tag/gpt-56-sol.html): 3 items tagged GPT-5.6 Sol.
 - [Instagram](https://bowlofdata.net/tag/instagram.html): 3 items tagged Instagram.
 - [Aave](https://bowlofdata.net/tag/aave.html): 3 items tagged Aave.
 - [Chainlink](https://bowlofdata.net/tag/chainlink.html): 3 items tagged Chainlink.

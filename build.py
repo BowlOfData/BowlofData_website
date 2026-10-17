@@ -186,7 +186,14 @@ _TAG_CANONICAL = {v: canon for canon, vs in TAG_ALIASES.items() for v in vs}
 # Added 2026-10-09: week 41 now builds from curated_41_2026.json (20 stories)
 # instead of the 25-story summaries pool, so tags whose only support was an
 # uncurated story dropped below min_items.
+#
+# Added 2026-10-17: the live week-42 pages came from an earlier curation than the
+# final curated_42_2026.json (12:56 on 2026-10-16), so one story per tag fell away
+# and these went from 3 items to 2. Single products/techniques with no sibling tag
+# to fold into; three of them (gitlab, neutral-atoms, trapped-ions) were first
+# published on 2026-10-16, so there is no indexed history to protect.
 ACCEPTED_TAG_404S: set[str] = {
+    "gitlab", "neutral-atoms", "openvla", "trapped-ions", "wordpress",
     "bun", "eip-8037", "firefox", "gpt-54", "iot", "metamask", "nginx",
     "oracle-peoplesoft", "passkeys", "smtp", "swe-bench-pro", "telegram",
     "facebook", "litellm", "photonic-quantum-computing", "quantum-algorithms",
