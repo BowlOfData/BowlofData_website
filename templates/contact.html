@@ -76,6 +76,8 @@
           <select class="form-input form-select" id="subject" name="subject">
             <option value="feedback">Feedback</option>
             <option value="article-suggestion">Article suggestion</option>
+            <option value="build-enquiry">Build enquiry (RAG, software)</option>
+            <option value="assure-enquiry">Assure enquiry (model risk, governance)</option>
             <option value="partnership">Partnership</option>
             <option value="other">Other</option>
           </select>
@@ -136,6 +138,18 @@
     var thankyou = document.getElementById('contact-thankyou');
     var errorBanner = document.getElementById('contact-error');
     var submitBtn = document.getElementById('form-submit-btn');
+
+    // ?subject=build|assure (from the Services page) preselects the matching option.
+    try {
+      var wanted = new URLSearchParams(window.location.search).get('subject');
+      var select = document.getElementById('subject');
+      if (wanted && select) {
+        var match = wanted + '-enquiry';
+        Array.prototype.forEach.call(select.options, function (o) {
+          if (o.value === match) { select.value = match; }
+        });
+      }
+    } catch (e) { /* preselect is a convenience only */ }
 
     function encode(data) {
       return Object.keys(data)

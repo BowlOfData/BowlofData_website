@@ -47,7 +47,7 @@ cybersecurity, blockchain, and software engineering — curated by an AI pipelin
 reviewed by humans, shipped every Saturday.
 
 **Primary goal:** grow the free Substack subscriber base. **Secondary:** make the
-"Newsletter on Demand" services page rank for commercial intent.
+services page (RAG, software development, LLM model risk review, AI governance readiness) rank for commercial intent. Pivoted from "Newsletter on Demand" on 2026-10-17; see `plans/pending/services-pivot.md`.
 
 **Canonical home:** `bowlofdata.net`. The full issue lives here; Substack is the email push.
 Every SEO decision assumes `.net` is the thing we want ranked.
@@ -78,6 +78,7 @@ authority.
 | **Outbound links** (2026-08-12) | Article/release headlines are plain text; the source link lives in the card footer. Cut a week page from 75 off-site links to 41 | `week.html` |
 | **Schema honesty** (2026-08-12) | `NewsArticle.url` points at our own anchor with `isBasedOn`/`citation` for the source, instead of claiming the publisher's article as ours | `build.py` `_make_week_jsonld` |
 | **Commercial page** (2026-08-12) | `services.html` rewritten around "newsletter as a service", "white-label", "agency"; 5 new FAQ entries | `templates/services.html`, `SERVICES_FAQ` |
+| **Services pivot** (2026-10-17) | `services.html` rewritten from white-label newsletters to Build (RAG pipeline review, software development) and Assure (governance readiness assessment, LLM/model risk review); contact form gained Build/Assure subjects; about/team/FAQ/llms.txt updated. Newsletter kept as the free flagship and proof. Same URL, so no redirect. | `templates/services.html`, `SERVICES_FAQ`, `contact.html` |
 | **404** (2026-08-12) | Branded 404 with absolute asset paths, linking back into archive/topics | `templates/404.html` |
 | **Tag cross-links** (2026-09-02) | Every tag page now links to the 10 tags it most often shares an item with. Tag pages were leaf nodes: 129 pages with inbound links and *zero* outbound links to each other. Median inbound links per tag page 9 → 10, and the long tail is now a connected cluster instead of 140 dead ends | `build.py` `_collect_tags` co-occurrence, `collection.html` |
 | **Dead internal links** (2026-09-02) | 16 dead `../tag/*.html` links across five issues, from skipped week pages whose chips pointed at slugs the classifier had since renamed. Fixed by re-rendering any week whose on-disk chips go stale, and asserted at build time | `build.py` `_assert_no_dead_internal_links` |
@@ -115,7 +116,7 @@ reality in Search Console after 4–8 weeks and adjust.
 | `topic/blockchain` | crypto newsletter | weekly blockchain news; stablecoin news |
 | `topic/engineering` | software engineering newsletter | open-source releases this week |
 | `tag/<x>` | "\<tech\> news weekly" | "\<tech\> \<recent event\>" (bitcoin, ethereum, quantum computing, llms, npm…) |
-| `services` | newsletter as a service; done-for-you newsletter | AI newsletter agency; white-label newsletter |
+| `services` | AI governance readiness assessment; LLM model risk review | RAG pipeline consulting; MaRisk DORA AI; model risk management LLM |
 
 The tag pages are the volume play: 140 of them, each a small, focused net for a long-tail
 query. They cost nothing extra per issue — new tags appear automatically once a technology
@@ -339,9 +340,8 @@ deployed until 2026-09-02** — see the banner at the top.
 
 **Then, in order:**
 
-- [ ] Decide on pricing for `services.html`. The page now answers "what does it cost?" with
-      "a flat monthly fee, scoped to you" — a real number, or even a "from $X", converts
-      better and unlocks pricing-shaped queries. Nothing was invented here on purpose.
+- [x] Pricing for `services.html`: superseded 2026-10-17. The pivoted page carries no pricing
+      language by owner decision; offers state scope and typical duration only.
 - [ ] Submit to 4–5 newsletter directories.
 - [ ] Run the GEO spot-check and record a baseline.
 - [ ] After 4–8 weeks of Search Console data: raise `MIN_INDEXABLE_ITEMS` per §3. Set
