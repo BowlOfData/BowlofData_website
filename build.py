@@ -1216,6 +1216,37 @@ def _make_collection_jsonld(
     }, ensure_ascii=False)
 
 
+def _make_services_jsonld(page_jsonld: str, site_url: str) -> str:
+    """The services page's WebPage node plus one Service node per offer.
+
+    Each Service names the one Organization (`#organization`) as provider, so a
+    consumer resolves them to the same entity as every other page. No `offers`
+    or price: the page states none, and schema must not claim what it doesn't show.
+    """
+    page = json.loads(page_jsonld)
+    offers = [
+        ("RAG Pipeline Review & Sprint", "build",
+         "Review or design of a retrieval-augmented generation pipeline, tuned and "
+         "measured on the client's own questions, with source attribution and an audit trail."),
+        ("Software Development", "software",
+         "Custom software and data tooling, including APIs, internal tools, data "
+         "pipelines and agentic workflows, delivered with tests and documentation."),
+        ("Governance Readiness Assessment", "governance",
+         "System inventory, risk classification, gap analysis against MaRisk and DORA "
+         "expectations, and a documentation roadmap for IT, data and AI governance."),
+        ("LLM & Model Risk Review", "model-risk",
+         "An evaluation framework for a model or LLM application, mapped to MaRisk and "
+         "DORA expectations, with validation evidence for model risk and audit teams."),
+    ]
+    page["mainEntity"] = [
+        {"@type": "Service", "@id": f"{site_url}/services.html#{slug}", "name": name,
+         "description": desc, "provider": {"@id": f"{site_url}/#organization"},
+         "url": f"{site_url}/services.html#{'build' if slug in ('build','software') else 'assure'}"}
+        for name, slug, desc in offers
+    ]
+    return json.dumps(page, ensure_ascii=False)
+
+
 def _make_webpage_jsonld(
     page_type: str, name: str, description: str, url: str,
     site_url: str, site_name: str, about: list[str] | None = None,
@@ -2357,12 +2388,12 @@ def build() -> None:
     print(f"  Rendered  404 → site/404.html")
 
     services_html = env.get_template("services.html").render(
-        **{**shared, "jsonld_str": _make_webpage_jsonld(
+        **{**shared, "jsonld_str": _make_services_jsonld(_make_webpage_jsonld(
             "WebPage", f"AI Engineering & Assurance Services · {SITE_NAME}",
             "RAG pipeline creation and software development, plus LLM and model risk "
             "review and IT, data and AI governance readiness assessments, from the "
             f"team behind {SITE_NAME}.",
-            f"{SITE_URL}/services.html", SITE_URL, SITE_NAME, about=[ORG_ID])},
+            f"{SITE_URL}/services.html", SITE_URL, SITE_NAME, about=[ORG_ID]), SITE_URL)},
         current_page="services",
         latest_week=latest_week,   # the "see a real issue" proof link
         faq_jsonld_str=_make_faq_jsonld(SERVICES_FAQ),
