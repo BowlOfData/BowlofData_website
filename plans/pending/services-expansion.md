@@ -10,11 +10,12 @@ Building is free; publishing is the push. So the page work proceeds now, and **P
 |---|---|---|
 | E1 | Three doors (Build / Secure / Assure), one entry offer each, same URL `/services.html`. | Owner call; keeps focus and the indexed URL. |
 | E2 | SOC2 review = AI vendor report review for the client's due diligence. Output is a findings memo; it is not an audit or attestation and the page says so. | Owner call; clearest EU hook; limits liability. |
-| E3 | Secure entry offer is the review; implementation is a separately scoped second step (pending owner confirmation, see Questions). | Fixed scope is only possible for the review. |
+| E3 | Secure entry offer is the review; implementation is a separately scoped second step (confirmed 2026-10-18). | Fixed scope is only possible for the review. |
 | E4 | Maki wording: "we apply allowlist-gated tool access in our own pipeline; open source, inspectable". No "trusted enforcement layer". | Owner asked for a Maki trust claim; the factual version is defensible at 0.x. |
 | E5 | Copy: "reduce and evidence", never "prevent/guarantee/block all". | Security claims are tested by the audience. |
-| E6 | Software development becomes an "also" line; Build shows RAG Sprint and Private AI. | Keeps the page to 6 cards. |
+| E6 | Software development becomes an "also" line; Build shows RAG Sprint and Private AI. | Keeps the page to 6 cards (confirmed 2026-10-18). |
 | E7 | Long-tail SEO targets only. | Head terms are owned by vendors. |
+| E8 | The push is gated by the P0 validation criteria (or a written owner override). Build and local merges are not gated. | Confirmed 2026-10-18; publishing is the irreversible step. |
 
 ## Always / Never
 - Always: reuse existing classes (`.pricing`, `.pricing--two`, `.cov`), `_make_webpage_jsonld` / `_make_services_jsonld`, stable `@id`s; no pricing language; render through `build.py`, never hand-edit `site/`.
@@ -33,7 +34,7 @@ Blocked by: none.
 - Verify: gate table in this file filled with dates and outcomes.
 
 ### P1. Services page: S
-Blocked by: owner answers to the open questions.
+Blocked by: none (open questions answered 2026-10-18).
 - Files: `templates/services.html`, `static/style.css` (only if a 3-card row is needed), `build.py` (`SERVICES_FAQ`, `_make_services_jsonld` offers).
 - Add the Secure section, the Private AI card, the AI Vendor Report Review card, the "also" line for software development; new FAQ (agent security scope, content moderation, vendor report review is not an audit, private AI).
 - Verify: full build passes; JSON-LD parses; no horizontal scroll at 375px; in-page anchors `#build #secure #assure` work; grep for "prevent|guarantee|audit opinion" in the new copy.
