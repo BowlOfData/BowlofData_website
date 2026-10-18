@@ -79,6 +79,7 @@ authority.
 | **Schema honesty** (2026-08-12) | `NewsArticle.url` points at our own anchor with `isBasedOn`/`citation` for the source, instead of claiming the publisher's article as ours | `build.py` `_make_week_jsonld` |
 | **Commercial page** (2026-08-12) | `services.html` rewritten around "newsletter as a service", "white-label", "agency"; 5 new FAQ entries | `templates/services.html`, `SERVICES_FAQ` |
 | **Services pivot** (2026-10-17) | `services.html` rewritten from white-label newsletters to Build (RAG pipeline review, software development) and Assure (governance readiness assessment, LLM/model risk review); contact form gained Build/Assure subjects; about/team/FAQ/llms.txt updated. Newsletter kept as the free flagship and proof. Same URL, so no redirect. | `templates/services.html`, `SERVICES_FAQ`, `contact.html` |
+| **Services expansion** (2026-10-18) | Secure door (Agent & Guardrail Security Review), Private AI Implementation card, AI Vendor Report Review (SOC 2) card; software development reduced to an "also" line; home band and contact subject extended; DORA Articles 28 to 30 named after verification on EUR-Lex; BAIT described as "where it still applies" (Bundesbank: repealed completely at the end of 2026) | `templates/services.html`, `SERVICES_FAQ`, `_make_services_jsonld`, `index.html`, `contact.html` |
 | **404** (2026-08-12) | Branded 404 with absolute asset paths, linking back into archive/topics | `templates/404.html` |
 | **Tag cross-links** (2026-09-02) | Every tag page now links to the 10 tags it most often shares an item with. Tag pages were leaf nodes: 129 pages with inbound links and *zero* outbound links to each other. Median inbound links per tag page 9 → 10, and the long tail is now a connected cluster instead of 140 dead ends | `build.py` `_collect_tags` co-occurrence, `collection.html` |
 | **Dead internal links** (2026-09-02) | 16 dead `../tag/*.html` links across five issues, from skipped week pages whose chips pointed at slugs the classifier had since renamed. Fixed by re-rendering any week whose on-disk chips go stale, and asserted at build time | `build.py` `_assert_no_dead_internal_links` |
@@ -116,7 +117,7 @@ reality in Search Console after 4–8 weeks and adjust.
 | `topic/blockchain` | crypto newsletter | weekly blockchain news; stablecoin news |
 | `topic/engineering` | software engineering newsletter | open-source releases this week |
 | `tag/<x>` | "\<tech\> news weekly" | "\<tech\> \<recent event\>" (bitcoin, ethereum, quantum computing, llms, npm…) |
-| `services` | AI governance readiness assessment; LLM model risk review | RAG pipeline consulting; MaRisk DORA AI; model risk management LLM |
+| `services` | AI governance readiness assessment; LLM model risk review | RAG pipeline consulting; MaRisk DORA AI; agent tool-call authorization review; RAG guardrails; private LLM on-premise; AI vendor SOC 2 report review. Long-tail only: "AI guardrails" and "private AI" as head terms are owned by vendors. |
 
 The tag pages are the volume play: 140 of them, each a small, focused net for a long-tail
 query. They cost nothing extra per issue — new tags appear automatically once a technology

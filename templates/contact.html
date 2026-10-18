@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}Contact Bowl of Data — Get in Touch with the Team{% endblock %}
-{% block og_description %}Get in touch with the Bowl of Data team — feedback, article suggestions, or an enquiry about RAG, software development, model risk review or AI governance work.{% endblock %}
+{% block og_description %}Get in touch with the Bowl of Data team — feedback, article suggestions, or an enquiry about RAG, private AI, agent security, model risk review or AI governance work.{% endblock %}
 {% block og_url %}{{ site_url }}/contact.html{% endblock %}
 
 {% block content %}
@@ -76,7 +76,8 @@
           <select class="form-input form-select" id="subject" name="subject">
             <option value="feedback">Feedback</option>
             <option value="article-suggestion">Article suggestion</option>
-            <option value="build-enquiry">Build enquiry (RAG, software)</option>
+            <option value="build-enquiry">Build enquiry (RAG, private AI, software)</option>
+            <option value="secure-enquiry">Secure enquiry (agent security, guardrails)</option>
             <option value="assure-enquiry">Assure enquiry (model risk, governance)</option>
             <option value="partnership">Partnership</option>
             <option value="other">Other</option>
