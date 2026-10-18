@@ -15,6 +15,7 @@ Building is free; publishing is the push. So the page work proceeds now, and **P
 | E5 | Copy: "reduce and evidence", never "prevent/guarantee/block all". | Security claims are tested by the audience. |
 | E6 | Software development becomes an "also" line; Build shows RAG Sprint and Private AI. | Keeps the page to 6 cards (confirmed 2026-10-18). |
 | E7 | Long-tail SEO targets only. | Head terms are owned by vendors. |
+| E9 (added) | BAIT wording is "BAIT where it still applies" (Bundesbank: repealed completely at the end of 2026), not "former". DORA Articles 28 to 30 are named (verified on EUR-Lex); paragraph numbers are not. | P0 verification, 2026-10-18; see docs/ideas/services-expansion-p0.md. |
 | E8 | The push is gated by the P0 validation criteria (or a written owner override). Build and local merges are not gated. | Confirmed 2026-10-18; publishing is the irreversible step. |
 
 ## Always / Never
@@ -69,12 +70,12 @@ As in the idea one-pager (6 months after push).
 ## Progress
 | Phase | Status |
 |---|---|
-| P0 Validation | pending (owner) |
-| P1 Services page | pending |
-| P2 Contact | pending |
-| P3 Home and About | pending |
-| P4 SEO | pending |
-| P5 Check and review | pending |
+| P0 Validation | drafts and G4 reference check done; G1, G2, G3, G5 pending (owner) |
+| P1 Services page | built, uncommitted, awaiting owner copy review |
+| P2 Contact | built, uncommitted |
+| P3 Home and About | built, uncommitted |
+| P4 SEO | built, uncommitted |
+| P5 Check and review | build, JSON-LD and 375px checks done; owner copy review pending |
 
 ## Not yet specified
 - DORA/BaFin references (fog until P0 verifies them).

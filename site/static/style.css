@@ -712,6 +712,10 @@ img { display: block; max-width: 100%; }
 .plan-features li::before { content: "\2192"; position: absolute; left: 0; top: .05rem; color: var(--signal); font-family: var(--mono); font-size: .82rem; }
 .plan .cta-primary, .plan .cta-secondary { justify-content: center; }
 .pricing--two { grid-template-columns: repeat(2, 1fr); max-width: 860px; margin: 0 auto; }
+.pricing--one { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+.services-also { font-family: var(--serif); font-size: .95rem; color: var(--muted); line-height: 1.6; max-width: 62ch; margin: 1.4rem auto 0; text-align: center; }
+.plan-note { font-family: var(--mono); font-size: .68rem; letter-spacing: .04em; color: var(--muted); margin: 0; }
+.cov--three { grid-template-columns: repeat(3, 1fr); }
 .services-lede { font-family: var(--serif); font-size: 1.02rem; color: var(--muted); line-height: 1.6; max-width: 62ch; margin: -.4rem 0 1.6rem; }
 
 /* Services — why work with us */
@@ -860,6 +864,7 @@ img { display: block; max-width: 100%; }
   .hero-inner { grid-template-columns: 1fr; gap: 2.4rem; }
   .manifest { max-width: 440px; }
   .cov { grid-template-columns: 1fr 1fr; gap: 1.6rem 1.4rem; }
+  .cov--three { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
   .services-props { grid-template-columns: 1fr; }
   .pricing { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
@@ -888,7 +893,7 @@ img { display: block; max-width: 100%; }
   .hero { padding: 2.75rem 0 3rem; }
   .hero-headline { font-size: clamp(1.9rem, 8.5vw, 2.9rem); text-wrap: normal; }
   .manifest { max-width: 100%; }
-  .cov, .cov--two { grid-template-columns: 1fr; }
+  .cov, .cov--two, .cov--three { grid-template-columns: 1fr; }
 
   .releases-grid { grid-template-columns: 1fr; }
   .releases-body-inner { padding: 1.25rem; }

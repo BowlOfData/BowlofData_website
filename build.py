@@ -364,13 +364,36 @@ SERVICES_FAQ = [
      "ordered by what an auditor will ask for first. It typically takes three to four weeks."),
     ("What does an LLM and model risk review cover?",
      "An evaluation framework for one model or LLM application, mapped to MaRisk and DORA "
-     "expectations (and the former BAIT requirements). It covers accuracy, robustness, bias "
+     "expectations, and to BAIT where it still applies. It covers accuracy, robustness, bias "
      "and data-leakage tests, validation evidence written for model risk and audit teams, "
      "and monitoring and re-validation triggers."),
+    ("What does the agent and guardrail security review cover?",
+     "It looks at what your agents and LLM applications can reach and do: which tools and "
+     "actions each agent is allowed, whether unauthorized tool calls and agent actions are "
+     "logged and blocked, and what guardrails sit around private and commercial AI and RAG "
+     "architectures. It typically takes two to three weeks and ends in prioritised findings. "
+     "Implementing the controls is scoped separately afterwards."),
+    ("Can you stop harmful or inaccurate output?",
+     "We can reduce it and show you the evidence. Content safeguards for toxic, biased or "
+     "inaccurate output are part of the security review, and measuring accuracy is part of "
+     "the evaluation work. No safeguard catches everything, so the review also sets how "
+     "failures are detected and handled."),
     ("What does “optimized RAG pipeline” mean in practice?",
      "A retrieval-augmented generation setup whose chunking, indexing and ranking are tuned "
      "on your own questions and measured against an evaluation set, so quality is shown "
      "rather than assumed. Every answer carries its sources and an audit trail."),
+    ("What is private AI, and can you implement it?",
+     "Private AI means models that run where your data stays: on your hardware or private "
+     "cloud, with no third-party AI service in the loop. We run mainly on open models on "
+     "our own hardware every week, and we implement the same approach for clients, scoped "
+     "per project."),
+    ("What does the AI vendor report review involve, and is it an audit?",
+     "We read an AI vendor's SOC 2 report in a structured way: the scope, the period "
+     "covered, any exceptions, the subservice organisations, and the controls the report "
+     "expects you to operate yourself. We then compare the gaps with your ICT third-party "
+     "risk expectations, including DORA Articles 28 to 30, and give you a findings memo for "
+     "your vendor file. It is a review of the report. It is not an audit and not an "
+     "attestation."),
     ("Is our data kept private?",
      "Yes. We run mainly on open models on our own hardware, and we can build and test on "
      "your infrastructure, so your documents are not handed to a commercial AI API to log "
@@ -401,10 +424,11 @@ ABOUT_FAQ = [
      "A new issue ships every week. You can read it here on the site, subscribe by email on "
      "Substack, or listen to the companion podcast on Spotify."),
     ("Does Bowl of Data offer services?",
-     "Yes. The team builds RAG pipelines and custom software, and reviews AI systems for "
-     "banks, insurers and their IT providers: LLM and model risk review and governance "
-     "readiness assessments. The newsletter stays free and is the public example of the "
-     "pipeline at work. See the Services page."),
+     "Yes, in three areas: building (RAG pipelines, private AI, custom software), securing "
+     "(agent and guardrail security) and assuring (LLM and model risk review, AI vendor "
+     "report review and governance readiness assessments for banks, insurers and their IT "
+     "providers). The newsletter stays free and is the public example of the pipeline at "
+     "work. See the Services page."),
 ]
 
 
@@ -1232,24 +1256,30 @@ def _make_services_jsonld(page_jsonld: str, site_url: str) -> str:
     """
     page = json.loads(page_jsonld)
     offers = [
-        ("RAG Pipeline Review & Sprint", "build",
+        ("RAG Pipeline Review & Sprint", "build", "build",
          "Review or design of a retrieval-augmented generation pipeline, tuned and "
          "measured on the client's own questions, with source attribution and an audit trail."),
-        ("Software Development", "software",
-         "Custom software and data tooling, including APIs, internal tools, data "
-         "pipelines and agentic workflows, delivered with tests and documentation."),
-        ("Governance Readiness Assessment", "governance",
+        ("Private AI Implementation", "private-ai", "build",
+         "An assistant or pipeline on open models deployed on the client's own infrastructure, "
+         "with hooks for guardrails and audit logging."),
+        ("Agent & Guardrail Security Review", "secure", "secure",
+         "Review of agent tool permissions, audit logging and blocking of unauthorized tool "
+         "calls, guardrails for private and commercial AI and RAG, and content safeguards."),
+        ("Governance Readiness Assessment", "governance", "assure",
          "System inventory, risk classification, gap analysis against MaRisk and DORA "
          "expectations, and a documentation roadmap for IT, data and AI governance."),
-        ("LLM & Model Risk Review", "model-risk",
+        ("LLM & Model Risk Review", "model-risk", "assure",
          "An evaluation framework for a model or LLM application, mapped to MaRisk and "
          "DORA expectations, with validation evidence for model risk and audit teams."),
+        ("AI Vendor Report Review", "vendor-report", "assure",
+         "Structured review of an AI vendor's SOC 2 report against ICT third-party risk "
+         "expectations, with a findings memo. Not an audit or attestation."),
     ]
     page["mainEntity"] = [
         {"@type": "Service", "@id": f"{site_url}/services.html#{slug}", "name": name,
          "description": desc, "provider": {"@id": f"{site_url}/#organization"},
-         "url": f"{site_url}/services.html#{'build' if slug in ('build','software') else 'assure'}"}
-        for name, slug, desc in offers
+         "url": f"{site_url}/services.html#{door}"}
+        for name, slug, door, desc in offers
     ]
     return json.dumps(page, ensure_ascii=False)
 
@@ -1885,9 +1915,11 @@ def _generate_llms_txt(all_weeks: list[dict], site_url: str, site_name: str, tag
         ),
         "",
         (
-            f"The team behind {site_name} also offers services: RAG pipeline creation and "
-            "software development, plus LLM and model risk review and IT, data and AI "
-            f"governance readiness assessments for regulated firms. See {site_url}/services.html"
+            f"The team behind {site_name} also offers services in three areas: building (RAG "
+            "pipelines, private AI, custom software), securing (agent and guardrail security "
+            "reviews) and assuring (LLM and model risk review, AI vendor report review and "
+            "IT, data and AI governance readiness assessments for regulated firms). "
+            f"See {site_url}/services.html"
         ),
         "",
         (
@@ -1936,7 +1968,7 @@ def _generate_llms_txt(all_weeks: list[dict], site_url: str, site_name: str, tag
         "",
         f"- [Topics]({site_url}/topics.html): Browse coverage by beat and technology",
         f"- [Archive]({site_url}/archive.html): Every issue of the newsletter, newest first",
-        f"- [Services]({site_url}/services.html): RAG pipelines and software development, plus LLM model risk review and AI governance readiness assessments",
+        f"- [Services]({site_url}/services.html): RAG pipelines, private AI, agent and guardrail security, plus LLM model risk review, AI vendor report review and AI governance readiness assessments",
         f"- [About]({site_url}/about.html): Mission, topics covered, and how the pipeline works",
         f"- [Team]({site_url}/team.html): About the people and AI behind {site_name}",
         f"- [Maki]({site_url}/maki.html): The open-source multi-agent framework that curates each issue; links to its repository and docs site",
@@ -2324,7 +2356,7 @@ def build() -> None:
         **{**shared, "jsonld_str": _make_webpage_jsonld(
             "ContactPage", f"Contact · {SITE_NAME}",
             f"How to reach the {SITE_NAME} team with feedback, article suggestions, "
-            "or an enquiry about RAG, software development, model risk review or "
+            "or an enquiry about RAG, private AI, agent security, model risk review or "
             "AI governance work.",
             f"{SITE_URL}/contact.html", SITE_URL, SITE_NAME, about=[ORG_ID])},
         current_page="contact",
@@ -2396,10 +2428,10 @@ def build() -> None:
 
     services_html = env.get_template("services.html").render(
         **{**shared, "jsonld_str": _make_services_jsonld(_make_webpage_jsonld(
-            "WebPage", f"AI Engineering & Assurance Services · {SITE_NAME}",
-            "RAG pipeline creation and software development, plus LLM and model risk "
-            "review and IT, data and AI governance readiness assessments, from the "
-            f"team behind {SITE_NAME}.",
+            "WebPage", f"AI Engineering, Security & Assurance Services · {SITE_NAME}",
+            "RAG pipelines, private AI and software development, agent and guardrail "
+            "security, LLM and model risk review, AI vendor report review and IT, data "
+            f"and AI governance readiness assessments, from the team behind {SITE_NAME}.",
             f"{SITE_URL}/services.html", SITE_URL, SITE_NAME, about=[ORG_ID]), SITE_URL)},
         current_page="services",
         latest_week=latest_week,   # the "see a real issue" proof link

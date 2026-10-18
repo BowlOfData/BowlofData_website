@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}AI Engineering &amp; Assurance Services · {{ site_name }}{% endblock %}
-{% block og_title %}AI Engineering &amp; Assurance — RAG, Software, Model Risk, Governance{% endblock %}
+{% block title %}AI Engineering, Security &amp; Assurance Services · {{ site_name }}{% endblock %}
+{% block og_title %}AI Engineering, Security &amp; Assurance — RAG, Private AI, Agents, Model Risk{% endblock %}
 
-{% block og_description %}RAG pipelines and software development, plus LLM model risk review and AI governance readiness assessments for banks and insurers. Fixed scope.{% endblock %}
+{% block og_description %}RAG, private AI and agent security, plus LLM model risk review and AI governance readiness for banks and insurers. Fixed scope, small team.{% endblock %}
 {% block og_url %}{{ site_url }}/services.html{% endblock %}
 
 {% block content %}
@@ -16,12 +16,13 @@
       <span>Then prove it holds.</span>
     </h1>
     <p class="services-hero-sub">
-      We build retrieval-augmented (RAG) pipelines and custom software, and we review
-      and document AI systems for the regulators and auditors who will ask about them.
-      Small team, fixed scope, work you can show.
+      We build retrieval-augmented (RAG) pipelines and private AI, secure the agents and
+      LLM applications you run, and review AI systems and AI vendors for the regulators
+      and auditors who will ask about them. Small team, fixed scope, work you can show.
     </p>
     <div class="services-hero-ctas">
       <a href="{{ contact_href }}?subject=build" class="cta-primary">Talk about a build</a>
+      <a href="{{ contact_href }}?subject=secure" class="cta-secondary">Talk about security</a>
       <a href="{{ contact_href }}?subject=assure" class="cta-secondary">Talk about assurance</a>
     </div>
     <div class="services-stats">
@@ -49,31 +50,55 @@
           <li>Chunking, indexing and ranking tuned on your own questions</li>
           <li>An evaluation set, so quality is measured and not guessed</li>
           <li>Source attribution and an audit trail for every answer</li>
-          <li>Runs on open models on your hardware if the data cannot leave</li>
         </ul>
         <a href="{{ contact_href }}?subject=build" class="cta-primary">Start a conversation</a>
       </div>
 
       <div class="plan">
-        <div class="plan-name">Software Development</div>
-        <p class="plan-tagline">Custom software and data tooling, built around the pipeline or beside it.</p>
+        <div class="plan-name">Private AI Implementation</div>
+        <p class="plan-tagline">An assistant or pipeline on open models, running where your data stays.</p>
         <p class="plan-price">Scoped per project</p>
         <ul class="plan-features">
-          <li>APIs, internal tools and data pipelines</li>
-          <li>Agentic workflows with clear limits and logging</li>
-          <li>Tests and documentation handed over with the code</li>
-          <li>Your repository, your infrastructure</li>
+          <li>Open-model selection and sizing for your hardware or private cloud</li>
+          <li>Deployment on your infrastructure, with no third-party AI service in the loop</li>
+          <li>The same approach we run every week for this newsletter</li>
+          <li>Hooks for guardrails and audit logging from day one</li>
         </ul>
         <a href="{{ contact_href }}?subject=build" class="cta-secondary">Talk to us</a>
       </div>
 
     </div>
+    <p class="services-also">Also: custom software development, including APIs, internal tools and data pipelines, built around the above. Tests and documentation come with the code, in your repository.</p>
+  </section>
+
+  <section class="services-section" id="secure">
+    <h2 class="services-section-title">Secure</h2>
+    <p class="services-lede">For anyone putting agents or LLM applications in front of real data and real tools, whether the model is private or a commercial API.</p>
+    <div class="pricing pricing--one">
+
+      <div class="plan plan--featured">
+        <span class="plan-flag">Start here</span>
+        <div class="plan-name">Agent &amp; Guardrail Security Review</div>
+        <p class="plan-tagline">What your agents can do, what your models can say, and what you can prove afterwards.</p>
+        <p class="plan-price">Fixed scope · typically 2–3 weeks</p>
+        <ul class="plan-features">
+          <li>Tool and permission review: which actions each agent can reach</li>
+          <li>Audit logging and blocking rules for unauthorized tool calls and agent actions</li>
+          <li>Guardrails for private and commercial AI and for RAG architectures</li>
+          <li>Content safeguards against toxic, biased or inaccurate output</li>
+          <li>Prioritised findings you can act on</li>
+        </ul>
+        <a href="{{ contact_href }}?subject=secure" class="cta-primary">Start a conversation</a>
+      </div>
+
+    </div>
+    <p class="services-also">Implementing the controls is scoped separately once the review is done. The aim is to reduce risk and give you evidence, not to promise that nothing gets through.</p>
   </section>
 
   <section class="services-section" id="assure">
     <h2 class="services-section-title">Assure</h2>
     <p class="services-lede">For banks, insurers and their IT providers. We turn &ldquo;we use AI somewhere&rdquo; into an inventory, a risk class and a documented answer to what MaRisk and DORA expect.</p>
-    <div class="pricing pricing--two">
+    <div class="pricing">
 
       <div class="plan plan--featured">
         <span class="plan-flag">Start here</span>
@@ -94,11 +119,25 @@
         <p class="plan-tagline">An evaluation framework for a specific model or LLM application.</p>
         <p class="plan-price">Scoped per system</p>
         <ul class="plan-features">
-          <li>Evaluation framework mapped to MaRisk and DORA expectations (and the former BAIT requirements)</li>
+          <li>Evaluation framework mapped to MaRisk and DORA expectations, and to BAIT where it still applies</li>
           <li>Tests for accuracy, robustness, bias and data leakage</li>
           <li>Validation evidence written for model risk and audit teams</li>
           <li>Monitoring and re-validation triggers</li>
         </ul>
+        <a href="{{ contact_href }}?subject=assure" class="cta-secondary">Talk to us</a>
+      </div>
+
+      <div class="plan">
+        <div class="plan-name">AI Vendor Report Review</div>
+        <p class="plan-tagline">Due diligence on the AI providers you rely on, read from their SOC 2 reports.</p>
+        <p class="plan-price">Fixed scope · typically 1–2 weeks</p>
+        <ul class="plan-features">
+          <li>Structured read of a vendor&rsquo;s SOC 2 report: scope, period, exceptions, subservice organisations</li>
+          <li>The controls the report expects you to operate yourself</li>
+          <li>Gaps against your ICT third-party risk expectations (DORA Articles 28 to 30)</li>
+          <li>A findings memo for your vendor file</li>
+        </ul>
+        <p class="plan-note">A review of the report. Not an audit and not an attestation.</p>
         <a href="{{ contact_href }}?subject=assure" class="cta-secondary">Talk to us</a>
       </div>
 
@@ -141,7 +180,7 @@
     <div class="svc-why">
       <div class="svc-reason">
         <p class="svc-reason-t">We run what we sell</p>
-        <p class="svc-reason-d">Bowl of Data is produced every week by Maki, our open-source multi-agent pipeline. It reads hundreds of sources, ranks and summarises them, and has not missed an issue. Retrieval, evaluation and review are things we do weekly, not things we write slides about.</p>
+        <p class="svc-reason-d">Bowl of Data is produced every week by Maki, our open-source multi-agent pipeline. It reads hundreds of sources, ranks and summarises them, and has not missed an issue. Retrieval, evaluation and review are things we do weekly, not things we write slides about. Our security work follows the same pattern: Maki&rsquo;s built-in plugins are gated by allowlists, and because Maki is open source you can read how.</p>
       </div>
       <div class="svc-reason">
         <p class="svc-reason-t">Regulated-industry background</p>
@@ -181,7 +220,7 @@
   </section>
 
   <section class="services-cta-section">
-    <h2 class="services-cta-title">Have a system to build or to document?</h2>
+    <h2 class="services-cta-title">Have a system to build, secure or document?</h2>
     <p class="services-cta-sub">Tell us what it is and we&rsquo;ll get back to you within 48 hours.</p>
     <a href="{{ contact_href }}" class="cta-primary">Get in touch</a>
   </section>
