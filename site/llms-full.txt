@@ -4,6 +4,138 @@
 
 The 6 most recent issues, newest first. Index: https://bowlofdata.net/llms.txt. Each story links to its card on the issue page.
 
+## Week 43 · 2026
+
+20 articles, 5 papers, 9 model releases. Issue page: https://bowlofdata.net/week/43_2026.html
+
+### Markdown Is the New Executable: Attackers Are Dropping Agent Instructions Into Your Downloads Folder From the Web
+Beat: AI & ML · Source: Reddit r/netsec · Original: https://forever.security/blog/hijacking-ai-agents-via-downloads-folder
+Card: https://bowlofdata.net/week/43_2026.html#markdown-is-the-new-executable-attackers-are-dropping-agent-instructions-into-your-downloads-folder-from-the-web
+
+Researchers have discovered a novel attack vector where web browsers can drop malicious Markdown files into the Downloads folder to hijack AI coding assistants. These agents automatically execute instructions within these files, leading to potential account takeover and remote code execution.
+
+### Nvidia Unveils Its Full-Stack Blueprint to Contain and Monitor AI Agents
+Beat: AI & ML · Source: Decrypt · Original: https://decrypt.co/381570/nvidia-ai-agent-containment-tools-full-stack-blueprint
+Card: https://bowlofdata.net/week/43_2026.html#nvidia-unveils-its-full-stack-blueprint-to-contain-and-monitor-ai-agents
+
+Nvidia's new OpenShell architecture provides a multi-layered security approach to govern autonomous AI agents through hardware-level isolation and software sandboxing. By leveraging BlueField-4 chips, the system can monitor and intercept malicious agent activity independently of the agent's own processes.
+
+### Agentic inequality
+Beat: AI & ML · Source: Nature Machine Intelligence · Original: https://nature.com/articles/s42256-026-01318-5
+Card: https://bowlofdata.net/week/43_2026.html#agentic-inequality
+
+The text examines the systemic risks posed by the proliferation of autonomous AI agents in global economies. It highlights how unequal access to agentic technologies could deepen social and economic divides.
+
+### Compromised LiteLLM 1.107.0 on PyPI Installs a Credential Stealer and Backdoor
+Beat: Software Engineering · Source: HN Best · Original: https://safedep.io/litellm-pypi-compromise-credential-stealer-backdoor
+Card: https://bowlofdata.net/week/43_2026.html#compromised-litellm-11070-on-pypi-installs-a-credential-stealer-and-backdoor
+
+The LiteLLM 1.107.0 release was compromised by attackers using stolen developer credentials to inject a credential stealer and a backdoor into PyPI wheels and Docker images. The malicious code targets sensitive data including cloud credentials, SSH keys, and AI provider tokens while maintaining persistent remote access.
+
+### How payroll giant ADP practices AI governance and human oversight
+Beat: Data & AI Governance · Source: AI Business · Original: https://aibusiness.com/generative-ai/how-payroll-giant-adp-practices-ai-governance-human-oversight
+Card: https://bowlofdata.net/week/43_2026.html#how-payroll-giant-adp-practices-ai-governance-and-human-oversight
+
+ADP discusses its long-standing commitment to responsible AI governance and the integration of human oversight in automated workflows. The company focuses on maintaining transparency and preventing automation bias in high-stakes payroll and HR functions.
+
+### How I got over 300 Tor exit nodes removed
+Beat: Software Engineering · Source: Reddit r/netsec · Original: https://kaba.cx/posts/20261020_Tor
+Card: https://bowlofdata.net/week/43_2026.html#how-i-got-over-300-tor-exit-nodes-removed
+
+A massive coordinated attack compromised roughly 10% of Tor exit nodes to intercept SSH traffic and steal credentials. The incident was mitigated by the Tor Project's rapid response and manual identification of infected relays.
+
+### The Internet goes on high alert after discovery of 8 compromised TLS certs
+Beat: Blockchain & Crypto · Source: Reddit r/cybersecurity · Original: https://arstechnica.com/security/2026/10/the-internet-goes-on-high-alert-after-discovery-of-8-compromised-tls-certs
+Card: https://bowlofdata.net/week/43_2026.html#the-internet-goes-on-high-alert-after-discovery-of-8-compromised-tls-certs
+
+Security researchers have identified eight TLS certificates with critically low entropy, making their private keys susceptible to near-instant decryption. The discovery has raised alarms due to the extreme mathematical improbability of such small key sizes appearing in production environments.
+
+### "Quantinuum Breaks Error-Correction World Record by 10x, Validating its Leading Path to Fault-Tolerant Quantum Computing by 2029"
+Beat: Quantum Computing · Source: Reddit r/QuantumComputing · Original: https://quantinuum.com/press-releases/quantinuum-breaks-error-correction-world-record-by-10x-validating-its-leading-path-to-fault-tolerant-quantum-computing-by-2029
+Card: https://bowlofdata.net/week/43_2026.html#quantinuum-breaks-error-correction-world-record-by-10x-validating-its-leading-path-to-fault-tolerant-quantum-computing-by-2029
+
+Quantinuum announced a major breakthrough in quantum error correction, reaching a record-breaking logical fidelity of 99.9995% using its Helios hardware. This achievement demonstrates the company's ability to suppress errors exponentially and validates its roadmap toward a fault-tolerant system by 2029.
+
+### #StopRansomware: SafePay Ransomware
+Beat: Cybersecurity · Source: CISA Advisories · Original: https://cisa.gov/news-events/cybersecurity-advisories/aa26-293a
+Card: https://bowlofdata.net/week/43_2026.html#stopransomware-safepay-ransomware
+
+The SafePay ransomware group is actively targeting critical infrastructure globally using sophisticated lateral movement and data exfiltration techniques. This advisory provides technical details on their use of legitimate system tools to bypass security and encrypt victim files.
+
+### Philip R. Lane: Euro liquidity lines and the international monetary system
+Beat: AI & ML · Source: ECB · Original: https://ecb.europa.eu/press/key/date/2026/html/ecb.sp261021~401d6c4b70.en.html
+Card: https://bowlofdata.net/week/43_2026.html#philip-r-lane-euro-liquidity-lines-and-the-international-monetary-system
+
+The ECB is enhancing its international liquidity framework through the expanded EUREP facility and strategic swap lines to ensure smooth monetary policy transmission. These tools are designed to provide backstop liquidity to foreign central banks, thereby stabilizing euro-denominated bond markets and reducing global financial spillovers.
+
+### Asymptotically good bosonic Fock state codes
+Beat: Quantum Computing · Source: Quantum Journal · Original: https://quantum-journal.org/papers/q-2026-10-20-2240
+Card: https://bowlofdata.net/week/43_2026.html#asymptotically-good-bosonic-fock-state-codes
+
+This research introduces a new class of bosonic Fock-state codes capable of maintaining error-correction properties in the asymptotic regime under amplitude-damping noise. By leveraging random classical codes in a discrete simplex, the authors provide a solution for protecting against constant loss parameters while improving coherence lifetimes.
+
+### Tens of thousands of Nvidia GPUs sit idle in Meta's Prometheus supercluster, just waiting for a failure
+Beat: AI & ML · Source: The Register · Original: https://theregister.com/systems/2026/10/20/tens-of-thousands-of-nvidia-gpus-sit-idle-in-metas-prometheus-supercluster-just-waiting-for-a-failure/5304269
+Card: https://bowlofdata.net/week/43_2026.html#tens-of-thousands-of-nvidia-gpus-sit-idle-in-metas-prometheus-supercluster-just-waiting-for-a-failure
+
+Meta is utilizing redundant GPU reserves and advanced data parallelism to manage hardware failures in its massive Prometheus supercluster. These engineering efforts have significantly reduced training interruptions while scaling toward a million-accelerator capacity.
+
+### Interactive proofs for verifying (quantum) learning and testing
+Beat: AI & ML · Source: Quantum Journal · Original: https://quantum-journal.org/papers/q-2026-10-20-2239
+Card: https://bowlofdata.net/week/43_2026.html#interactive-proofs-for-verifying-quantum-learning-and-testing
+
+This paper investigates whether resource-constrained learners can use interaction with untrusted parties to improve the efficiency of quantum learning and testing. It concludes that while classical communication is insufficient for verification, quantum communication enables significant advantages in delegating tasks to powerful providers.
+
+### The distroless security gap: Why bottom-up containers are the next evolution in OCI images
+Beat: Cybersecurity · Source: The New Stack · Original: https://thenewstack.io/distroless-container-security-gap
+Card: https://bowlofdata.net/week/43_2026.html#the-distroless-security-gap-why-bottom-up-containers-are-the-next-evolution-in-oci-images
+
+The article explores the 'distroless security gap' where minimizing container size inadvertently breaks vulnerability scanning by removing package metadata. It proposes a shift toward bottom-up, declarative container assembly to achieve both minimal attack surfaces and full security auditability.
+
+### Palo Alto's firewall OS has been under attack from multiple ransomware groups since June
+Beat: Cybersecurity · Source: The Register · Original: https://theregister.com/cyber-crime/2026/10/20/palo-altos-firewall-os-has-been-under-attack-from-multiple-ransomware-groups-since-june/5304226
+Card: https://bowlofdata.net/week/43_2026.html#palo-altos-firewall-os-has-been-under-attack-from-multiple-ransomware-groups-since-june
+
+Multiple ransomware groups are exploiting a critical authentication bypass vulnerability in Palo Alto Networks' PAN-OS to penetrate corporate networks. The attacks involve sophisticated lateral movement and attempts to compromise virtualization layers to evade endpoint detection.
+
+### PHP2Shell (CVE-2026-109618/109619): first exploit requests arrived 5.5 hours before PHP shipped the fix, and the "scanners" carry Mirai-style loaders
+Beat: Cybersecurity · Source: Reddit r/netsec · Original: https://ellio.tech/en/blog/php2shell-what-we-observed-and-what-to-do
+Card: https://bowlofdata.net/week/43_2026.html#php2shell-cve-2026-109618109619-first-exploit-requests-arrived-55-hours-before-php-shipped-the-fix-and-the-scanners-carry-mirai-style-loaders
+
+Two critical RCE vulnerabilities, CVE-2026-109618 and CVE-2026-109619, have been identified in the PHP core, allowing unauthenticated attackers to execute code via multipart form manipulation. The flaws are being actively exploited by automated scanning tools following a leak of proof-of-concept material.
+
+### Linus Torvalds Eliminates Unsafe __get_user() & __put_user() Functions In Linux 7.4
+Beat: Software Engineering · Source: Phoronix · Original: https://phoronix.com/news/Linus-Kills-Get-Put-User-Linux
+Card: https://bowlofdata.net/week/43_2026.html#linus-torvalds-eliminates-unsafe-get-user-put-user-functions-in-linux-74
+
+Linus Torvalds has officially removed the unsafe __get_user() and __put_user() functions from the Linux kernel to improve security and performance. The update leverages modern scoped access helpers and utilized AI-assisted coding techniques for the transition.
+
+### Lazarus hackers use post-quantum cryptography for malware delivery
+Beat: Cybersecurity · Source: BleepingComputer · Original: https://bleepingcomputer.com/news/security/lazarus-hackers-use-post-quantum-cryptography-for-malware-delivery
+Card: https://bowlofdata.net/week/43_2026.html#lazarus-hackers-use-post-quantum-cryptography-for-malware-delivery
+
+North Korean hackers from the Lazarus Group have launched a sophisticated campaign named FlashHole that employs post-quantum cryptography to hide malicious payloads. The operation targets South Korean industries by exploiting legitimate software and using advanced encryption standards to bypass traditional detection.
+
+### Carbon-X is an open 14.8B model trained jointly on DNA and text
+Beat: AI & ML · Source: Reddit r/MachineLearning · Original: https://huggingface.co/HuggingFaceBio/Carbon-X
+Card: https://bowlofdata.net/week/43_2026.html#carbon-x-is-an-open-148b-model-trained-jointly-on-dna-and-text-r
+
+HuggingFaceBio has introduced Carbon-X, a 14.8B parameter decoder-only model specialized in processing both DNA sequences and natural language. The model demonstrates state-of-the-art performance in genomic tasks like variant effect prediction while maintaining high inference efficiency.
+
+### US Government Funded Quantum Finance Initiatives to Safeguard  Risk Modeling, Portfolio Optimization, Cryptography, Q-Day
+Beat: Cybersecurity · Source: Inside Quantum Technology · Original: https://insidequantumtechnology.com/news-archive/us-government-funded-quantum-finance-initiatives-to-safeguard-risk-modeling-portfolio-optimization-cryptography-q-day
+Card: https://bowlofdata.net/week/43_2026.html#us-government-funded-quantum-finance-initiatives-to-safeguard-risk-modeling-portfolio-optimization-cryptography-q-day
+
+The United States is deploying massive federal funding and regulatory mandates to safeguard the financial system against the cryptographic risks posed by future quantum computers. This strategy involves a coordinated effort between the Treasury, NIST, CISA, and the NSA to transition critical infrastructure to post-quantum standards.
+
+### Papers
+
+- TraceForge: Distilling with Your Own Thinking (https://arxiv.org/html/2610.29680)
+- Cache Engineering for Agents (https://arxiv.org/html/2610.28577)
+- Meta Expert: Cross-Layer Expert Sharing for Storage- and Retrieval-Efficient MoE (https://arxiv.org/html/2610.27598)
+- Code2Video-Compass: A Comprehensive Benchmark for General-Purpose Code-Based Video Generation across T2V, I2V, and V2V (https://arxiv.org/html/2610.28416)
+- Policy-Mask: Budget-Aware Adaptation of Diffusion Features to Discriminative Tasks (https://arxiv.org/html/2610.28889)
+
 ## Week 42 · 2026
 
 20 articles, 5 papers, 7 model releases. Issue page: https://bowlofdata.net/week/42_2026.html
@@ -633,105 +765,3 @@ The piece critiques Europe's current approach to AI sovereignty, suggesting that
 - Quantifying Overclaiming Propensity in Frontier LLM Agents (https://arxiv.org/html/2609.20812v1)
 - VC-Attention: Value Smoothing and Softmax Casting for Low-bit Attention (https://arxiv.org/html/2609.15810)
 - An Empirical Study of Harness Design for Coding Agents (https://arxiv.org/html/2609.20804)
-
-## Week 37 · 2026
-
-15 articles, 5 papers, 5 model releases. Issue page: https://bowlofdata.net/week/37_2026.html
-
-### Anthropic details distillation campaigns from Alibaba, Moonshot AI, and DeepSeek
-Beat: AI & ML · Source: TechCrunch · Original: https://techcrunch.com/2026/09/10/anthropic-details-distillation-campaigns-from-alibaba-moonshot-ai-and-deepseek
-Card: https://bowlofdata.net/week/37_2026.html#anthropic-details-distillation-campaigns-from-alibaba-moonshot-ai-and-deepseek
-
-Anthropic's latest threat intelligence report reveals massive-scale model distillation efforts by Chinese labs like Alibaba and Moonshot AI. These campaigns use sophisticated prompting to harvest Claude's internal reasoning processes for training competing models.
-
-### Hacking AI customer service agents (Bug Bounty Village DEF CON 34)
-Beat: AI & ML · Source: Reddit r/netsec · Original: https://www.intigriti.com/researchers/blog/hacking-tools/hacking-ai-customer-service-agents
-Card: https://bowlofdata.net/week/37_2026.html#hacking-ai-customer-service-agents-bug-bounty-village-def-con-34
-
-This article details advanced exploitation techniques for AI-driven customer service agents, focusing on how protocol flaws and prompt injection can lead to unauthorized actions. It highlights real-world vulnerabilities that have already resulted in significant bug bounty payouts.
-
-### Beltdown: Escaping the Claude Code Sandbox
-Beat: AI & ML · Source: Reddit r/netsec · Original: https://accomplish.ai/blog/beltdown-escaping-the-claude-code-sandbox
-Card: https://bowlofdata.net/week/37_2026.html#beltdown-escaping-the-claude-code-sandbox
-
-A security research report details 'Beltdown', a sandbox escape in Anthropic's Claude Code. By manipulating git configuration files and exploiting unhardened git commands, attackers could execute code on the host system.
-
-### OpenAI Releases GPT-6 Astra for Coding and Computer Use
-Beat: AI & ML · Source: InfoQ · Original: https://infoq.com/news/2026/09/openai-gpt6-astra
-Card: https://bowlofdata.net/week/37_2026.html#openai-releases-gpt-6-astra-for-coding-and-computer-use
-
-OpenAI's new GPT-6 Astra model introduces advanced agentic capabilities for computer use and complex coding tasks. While it demonstrates superior performance in technical benchmarks, its ability to identify vulnerabilities has placed it under high-level cybersecurity scrutiny.
-
-### Anthropic caught Russia-linked spies using Claude in hacking operations
-Beat: AI & ML · Source: The Record · Original: https://therecord.media/anthropic-russia-hackers-claude
-Card: https://bowlofdata.net/week/37_2026.html#anthropic-caught-russia-linked-spies-using-claude-in-hacking-operations
-
-Anthropic released a threat intelligence report detailing how state-sponsored and criminal actors used Claude to enhance cyber-espionage and hacking operations. The findings reveal that AI is being leveraged to automate vulnerability research and rapidly iterate malware to bypass traditional security defenses.
-
-### Europe’s cookie law is really a law about surveillance
-Beat: Data & AI Governance · Source: EDRi · Original: https://edri.org/our-work/europes-cookie-law-is-really-about-surveillance
-Card: https://bowlofdata.net/week/37_2026.html#europes-cookie-law-is-really-a-law-about-surveillance
-
-The article explores the legal distinction between data protection and communications privacy within the EU framework. It highlights how the ePrivacy Directive is essential for preventing unauthorized access to device metadata used by both advertisers and state actors.
-
-### ‘Shape-shifting’ quantum computer uses light to switch between different tasks
-Beat: Quantum Computing · Source: Reddit r/QuantumComputing · Original: http://thebrighterside.news/post/shape-shifting-quantum-computer-uses-light-to-switch-between-different-tasks
-Card: https://bowlofdata.net/week/37_2026.html#shape-shifting-quantum-computer-uses-light-to-switch-between-different-tasks
-
-Imperial College London researchers have unveiled Clavina, a 'shape-shifting' quantum photonic processor that combines linear and nonlinear optical components. This modular design allows for the flexible execution of various quantum tasks, ranging from complex simulations to the generation of error-correction resources.
-
-### Researchers Reduce Circuit Size by over Eighty Percent in Shor’s Algorithm
-Beat: AI & ML · Source: Quantum Zeitgeist · Original: https://quantumzeitgeist.com/shors-algorithm-circuit-size-reduction-optimisation-ecdsa
-Card: https://bowlofdata.net/week/37_2026.html#researchers-reduce-circuit-size-by-over-eighty-percent-in-shors-algorithm
-
-Researchers have introduced Open Autoresearch, a collaborative model that integrates human insight with AI to optimize cryptographic circuits. This approach successfully reduced the complexity of secp256k1 point-addition circuits by over 86%, marking a major advancement in quantum computational efficiency.
-
-### Quantum Cybersecurity Explained: Preparing for Quantum Computing
-Beat: Cybersecurity · Source: The Quantum Insider · Original: https://thequantuminsider.com/2026/09/11/quantum-cybersecurity-explained-comprehensive-guide
-Card: https://bowlofdata.net/week/37_2026.html#quantum-cybersecurity-explained-preparing-for-quantum-computing
-
-The rise of quantum computing threatens to break the fundamental public-key encryption that secures the modern internet. To mitigate risks like 'harvest-now-decrypt-later' attacks, organizations must begin migrating to post-quantum cryptographic standards and improving crypto-agility.
-
-### Tightly guided atoms could enable low-power quantum navigation when GPS fails
-Beat: Quantum Computing · Source: Phys.org Quantum · Original: https://phys.org/news/2026-09-tightly-atoms-enable-power-quantum.html
-Card: https://bowlofdata.net/week/37_2026.html#tightly-guided-atoms-could-enable-low-power-quantum-navigation-when-gps-fails
-
-Researchers at Sandia National Laboratories have demonstrated a way to guide atoms using light halos around nanofibers with significantly reduced power consumption. This breakthrough paves the way for miniature quantum sensors that can provide highly accurate navigation in environments where GPS is compromised.
-
-### Redtail Payload Analysis &#x5b;Guest Diary&#x5d;, (Wed, Sep 9th)
-Beat: Software Engineering · Source: SANS ISC · Original: https://isc.sans.edu/diary/rss/33326
-Card: https://bowlofdata.net/week/37_2026.html#redtail-payload-analysis-x5bguest-diaryx5d-wed-sep-9th
-
-This article details the dynamic analysis of the RedTail Linux malware, focusing on its ability to masquerade as legitimate system processes. The researcher demonstrates how the malware attempts to evade detection by killing monitoring tools and using DNS-over-TLS for network activity.
-
-### DeepSeek's new model sets a template for powerful LLMs that run lean
-Beat: AI & ML · Source: The Register · Original: https://theregister.com/ai-and-ml/2026/09/11/deepseeks-new-model-sets-a-template-for-powerful-llms-that-run-lean/5295715
-Card: https://bowlofdata.net/week/37_2026.html#deepseeks-new-model-sets-a-template-for-powerful-llms-that-run-lean
-
-DeepSeek's new V4.1 Flash model introduces a massive 763B parameter architecture that optimizes for low latency and high throughput. By using N-gram parameters as a conditional memory module, the model achieves significant intelligence gains without the typical memory overhead.
-
-### AVEVA Pipeline Integrity Monitor
-Beat: Cybersecurity · Source: CISA Advisories · Original: https://cisa.gov/news-events/ics-advisories/icsa-26-253-01
-Card: https://bowlofdata.net/week/37_2026.html#aveva-pipeline-integrity-monitor
-
-Multiple vulnerabilities in AVEVA Pipeline Integrity Monitor pose significant risks to critical manufacturing infrastructure. These flaws could allow attackers to decrypt sensitive data, escalate privileges via password brute-forcing, or perform unauthorized read operations.
-
-### GitLab urges users to patch max severity path traversal flaw
-Beat: Cybersecurity · Source: BleepingComputer · Original: https://bleepingcomputer.com/news/security/gitlab-urges-users-to-patch-max-severity-path-traversal-flaw
-Card: https://bowlofdata.net/week/37_2026.html#gitlab-urges-users-to-patch-max-severity-path-traversal-flaw
-
-GitLab is urging immediate updates to address a maximum-severity path traversal vulnerability and a critical insecure deserialization flaw. These vulnerabilities could allow attackers to read arbitrary files or steal sensitive credentials from self-managed instances.
-
-### Nightmare-Eclipse Strikes Again With 'ShieldCrash' Windows Exploit
-Beat: Cybersecurity · Source: Dark Reading · Original: https://darkreading.com/vulnerabilities-threats/nightmare-eclipse-strikes-again-shieldcrash-windows-exploit
-Card: https://bowlofdata.net/week/37_2026.html#nightmare-eclipse-strikes-again-with-shieldcrash-windows-exploit
-
-A new Windows exploit named ShieldCrash has been released by researcher Nightmare-Eclipse, specifically designed to bypass a recent Microsoft security patch. The vulnerability allows for unauthorized file access with high-level system privileges.
-
-### Papers
-
-- Random Attention: Rethinking KV Cache Eviction for Efficient Reasoning (https://arxiv.org/html/2609.03430)
-- FlowBalance: Verifier-Grounded Self-Improvement from On-Policy Reasoning Experience (https://arxiv.org/html/2609.03241)
-- AgentGrad: Intervention-guided Prompt Optimization for Multi Agent Systems (https://arxiv.org/html/2609.08572)
-- SWE-Bench Pro Verified: A Reliable Benchmark for Software Engineering Agents (https://arxiv.org/html/2609.08149)
-- T1: Terminal Agent Reinforcement Learning for Long-Horizon Tasks (https://arxiv.org/html/2609.11042)

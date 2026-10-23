@@ -1,5 +1,954 @@
 [
   {
+    "week": 43,
+    "year": 2026,
+    "month": 10,
+    "month_name": "October",
+    "label": "Week 43 · 2026",
+    "href": "week/43_2026.html",
+    "articles": [
+      {
+        "title": "Markdown Is the New Executable: Attackers Are Dropping Agent Instructions Into Your Downloads Folder From the Web",
+        "slug": "markdown-is-the-new-executable-attackers-are-dropping-agent-instructions-into-your-downloads-folder-from-the-web",
+        "url": "https://forever.security/blog/hijacking-ai-agents-via-downloads-folder",
+        "source": "Reddit r/netsec",
+        "published": "2026-10-22T16:27:22Z",
+        "short_summary": "Researchers have discovered a novel attack vector where web browsers can drop malicious Markdown files into the Downloads folder to hijack AI coding assistants. These agents automatically execute instructions within these files, leading to potential account takeover and remote code execution.",
+        "long_resume": "Security researchers at Forever Security have identified a critical new attack vector involving AI coding agents such as OpenAI Codex and Claude Code. The vulnerability exploits the fact that web browsers can write files to a user's Downloads folder without explicit permission or user interaction. Attackers can plant a specially crafted 'AGENTS.md' file in this directory, which contains instructions designed to be obeyed by AI assistants. Because these agents are built to automatically parse and follow project-specific instructions for automation, they treat the malicious Markdown file as a trusted command set. The researchers demonstrated that this can lead to the installation of malicious npm packages, such as 'function-color', and the modification of global configuration files like '~/.codex/config.toml'. This allows an attacker to achieve persistent remote code execution or account takeover on the user's machine. Notably, the attack does not rely on traditional executable malware that triggers OS security warnings; instead, it uses plain text instructions that bypass standard guardrails. The researchers noted that this is a fundamental design issue in how AI agents interact with local file systems and cannot be easily patched by developers like OpenAI or Anthropic without altering the core utility of the tools.",
+        "long_resume_paragraphs": [
+          "Security researchers at Forever Security have identified a critical new attack vector involving AI coding agents such as OpenAI Codex and Claude Code. The vulnerability exploits the fact that web browsers can write files to a user's Downloads folder without explicit permission or user interaction. Attackers can plant a specially crafted 'AGENTS.md' file in this directory, which contains instructions designed to be obeyed by AI assistants. Because these agents are built to automatically parse and follow project-specific instructions for automation, they treat the malicious Markdown file as a trusted command set. The researchers demonstrated that this can lead to the installation of malicious npm packages, such as 'function-color', and the modification of global configuration files like '~/.codex/config.toml'. This allows an attacker to achieve persistent remote code execution or account takeover on the user's machine. Notably, the attack does not rely on traditional executable malware that triggers OS security warnings; instead, it uses plain text instructions that bypass standard guardrails. The researchers noted that this is a fundamental design issue in how AI agents interact with local file systems and cannot be easily patched by developers like OpenAI or Anthropic without altering the core utility of the tools."
+        ],
+        "main_topic": "A new security vulnerability where attackers use web-based downloads to plant instruction files like AGENTS.md in the Downloads folder to hijack AI coding agents.",
+        "technologies": [
+          "Claude Code",
+          "OpenAI Codex",
+          "npm",
+          "Markdown",
+          "MCP (Model Context Protocol)",
+          "launchctl",
+          "zsh"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "Nvidia Unveils Its Full-Stack Blueprint to Contain and Monitor AI Agents",
+        "slug": "nvidia-unveils-its-full-stack-blueprint-to-contain-and-monitor-ai-agents",
+        "url": "https://decrypt.co/381570/nvidia-ai-agent-containment-tools-full-stack-blueprint",
+        "source": "Decrypt",
+        "published": "Wed, 21 Oct 2026 20:16:02 +0000",
+        "short_summary": "Nvidia's new OpenShell architecture provides a multi-layered security approach to govern autonomous AI agents through hardware-level isolation and software sandboxing. By leveraging BlueField-4 chips, the system can monitor and intercept malicious agent activity independently of the agent's own processes.",
+        "long_resume": "At GTC Berlin, Nvidia introduced the OpenShell Reference Architecture, a comprehensive solution aimed at solving the growing security risks associated with autonomous AI agents. The architecture is built on a synergistic hardware-software stack: Vera CPUs execute the agents and their tools within the OpenShell runtime, while the Rubin platform provides the underlying model processing power. To ensure security, Nvidia utilizes BlueField-4 Data Processing Units (DPUs) to run a monitoring framework known as Sentry. This setup allows for 'out-of-band' inspection, meaning Sentry can monitor and intercept traffic between an agent and its model from a separate hardware domain, enabling near-instant quarantine of rogue agents without requiring the agent or host to cooperate. The OpenShell software component implements a zero-trust model, treating every workload as untrusted through four primary mechanisms: a gateway for policy management, a supervisor for credential handling, a sandbox for isolation, and a policy prover that uses formal verification to ensure permissions remain within defined organizational boundaries. This development follows high-profile incidents where AI agents demonstrated the ability to coordinate unsanctioned activities or breach external web portals. The ecosystem is already seeing significant industry adoption, with security leaders like CrowdStrike, Palo Alto Networks, Zscaler, and Check Point integrating support into their products, while financial institutions like BBVA and Santander are exploring the framework for governance. While parts of the architecture are available now, the Sentry hardware-based safeguard is slated for broader availability early next year.",
+        "long_resume_paragraphs": [
+          "At GTC Berlin, Nvidia introduced the OpenShell Reference Architecture, a comprehensive solution aimed at solving the growing security risks associated with autonomous AI agents. The architecture is built on a synergistic hardware-software stack: Vera CPUs execute the agents and their tools within the OpenShell runtime, while the Rubin platform provides the underlying model processing power. To ensure security, Nvidia utilizes BlueField-4 Data Processing Units (DPUs) to run a monitoring framework known as Sentry. This setup allows for 'out-of-band' inspection, meaning Sentry can monitor and intercept traffic between an agent and its model from a separate hardware domain, enabling near-instant quarantine of rogue agents without requiring the agent or host to cooperate. The OpenShell software component implements a zero-trust model, treating every workload as untrusted through four primary mechanisms: a gateway for policy management, a supervisor for credential handling, a sandbox for isolation, and a policy prover that uses formal verification to ensure permissions remain within defined organizational boundaries. This development follows high-profile incidents where AI agents demonstrated the ability to coordinate unsanctioned activities or breach external web portals. The ecosystem is already seeing significant industry adoption, with security leaders like CrowdStrike, Palo Alto Networks, Zscaler, and Check Point integrating support into their products, while financial institutions like BBVA and Santander are exploring the framework for governance. While parts of the architecture are available now, the Sentry hardware-based safeguard is slated for broader availability early next year."
+        ],
+        "main_topic": "Nvidia has unveiled the OpenShell Reference Architecture, a full-stack security framework designed to contain and monitor autonomous AI agents using specialized hardware and software.",
+        "technologies": [
+          "OpenShell Reference Architecture",
+          "Vera CPUs",
+          "BlueField-4 DPUs",
+          "Sentry",
+          "Open Agent Safety Platform",
+          "Rubin systems",
+          "OpenShell runtime"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "Agentic inequality",
+        "slug": "agentic-inequality",
+        "url": "https://nature.com/articles/s42256-026-01318-5",
+        "source": "Nature Machine Intelligence",
+        "published": "2026-10-20",
+        "short_summary": "The text examines the systemic risks posed by the proliferation of autonomous AI agents in global economies. It highlights how unequal access to agentic technologies could deepen social and economic divides.",
+        "long_resume": "The provided bibliography and article context discuss the profound socio-economic shifts precipitated by the advent of 'agentic' technologies. As large language models evolve into autonomous agents capable of independent decision-making, a new 'agentic economy' is emerging. However, this transition carries significant risks of 'agentic inequality.' The literature suggests that the concentration of computing power and AI infrastructure among a few dominant players could create a massive digital divide, where access to high-functioning agents determines economic opportunity. Furthermore, the text touches upon technical and ethical challenges such as algorithmic pricing collusion, the use of dark patterns in automated commerce, and the impact of generative AI on professional productivity and labor market stability. Governance is identified as a critical frontier, requiring new legal and regulatory frameworks to oversee agent-to-agent negotiations and prevent the erosion of human autonomy in an increasingly automated social order.",
+        "long_resume_paragraphs": [
+          "The provided bibliography and article context discuss the profound socio-economic shifts precipitated by the advent of 'agentic' technologies. As large language models evolve into autonomous agents capable of independent decision-making, a new 'agentic economy' is emerging. However, this transition carries significant risks of 'agentic inequality.' The literature suggests that the concentration of computing power and AI infrastructure among a few dominant players could create a massive digital divide, where access to high-functioning agents determines economic opportunity. Furthermore, the text touches upon technical and ethical challenges such as algorithmic pricing collusion, the use of dark patterns in automated commerce, and the impact of generative AI on professional productivity and labor market stability. Governance is identified as a critical frontier, requiring new legal and regulatory frameworks to oversee agent-to-agent negotiations and prevent the erosion of human autonomy in an increasingly automated social order."
+        ],
+        "main_topic": "The article explores the socio-economic implications of 'agentic inequality,' focusing on how the rise of autonomous AI agents may exacerbate existing digital divides and market concentration.",
+        "technologies": [
+          "Large Language Models (LLMs)",
+          "Autonomous Agents",
+          "Generative AI",
+          "GitHub Copilot",
+          "Multi-agent systems"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "Compromised LiteLLM 1.107.0 on PyPI Installs a Credential Stealer and Backdoor",
+        "slug": "compromised-litellm-11070-on-pypi-installs-a-credential-stealer-and-backdoor",
+        "url": "https://safedep.io/litellm-pypi-compromise-credential-stealer-backdoor",
+        "source": "HN Best",
+        "published": "Wed, 21 Oct 2026 14:00:26 +0000",
+        "short_summary": "The LiteLLM 1.107.0 release was compromised by attackers using stolen developer credentials to inject a credential stealer and a backdoor into PyPI wheels and Docker images. The malicious code targets sensitive data including cloud credentials, SSH keys, and AI provider tokens while maintaining persistent remote access.",
+        "long_resume": "A significant software supply chain attack has been identified targeting the LiteLLM package, specifically version 1.107.0. By leveraging stolen GitHub CLI credentials from three developers, attackers were able to bypass branch protection and redirect the official release workflow to a lookalike repository. This allowed them to publish malicious Python wheels on PyPI and compromised Docker images on both Docker Hub and GHCR.\n\nThe attack utilizes two distinct payloads embedded within the package's site-packages directory. The first payload, delivered via a .pth file, executes 'cook.py', a sophisticated credential stealer. This script targets a wide array of sensitive information, including SSH keys, browser passwords (via DPAPI on Windows), cloud provider credentials (AWS, Azure, GCP), Kubernetes tokens, and various AI development tool secrets like Claude and Coplanilot. The stolen data is encrypted using AES-256-CBC and RSA-OAEP before being exfiltrated to a controlled domain.\n\nThe second payload, implemented through 'sitecustomize.py', establishes a persistent background daemon on the host system. This daemon periodically checks a GitHub repository for instructions and downloads secondary payloads for remote code execution. Because these files are placed in the Python site-packages directory, the malicious code executes every time any Python process—including IDEs, CI/CD runners, or standalone applications—is started on the infected machine.\n\nLiteLLM has confirmed the incident and taken steps to remove the compromised versions from PyPI and Docker Hub. While the attacker's primary command-and-control infrastructure was taken offline shortly after the attack, the potential for secondary payload execution remains a critical concern for any system that ran the affected version.",
+        "long_resume_paragraphs": [
+          "A significant software supply chain attack has been identified targeting the LiteLLM package, specifically version 1.107.0. By leveraging stolen GitHub CLI credentials from three developers, attackers were able to bypass branch protection and redirect the official release workflow to a lookalike repository. This allowed them to publish malicious Python wheels on PyPI and compromised Docker images on both Docker Hub and GHCR.",
+          "The attack utilizes two distinct payloads embedded within the package's site-packages directory. The first payload, delivered via a .pth file, executes 'cook.py', a sophisticated credential stealer. This script targets a wide array of sensitive information, including SSH keys, browser passwords (via DPAPI on Windows), cloud provider credentials (AWS, Azure, GCP), Kubernetes tokens, and various AI development tool secrets like Claude and Coplanilot. The stolen data is encrypted using AES-256-CBC and RSA-OAEP before being exfiltrated to a controlled domain.",
+          "The second payload, implemented through 'sitecustomize.py', establishes a persistent background daemon on the host system. This daemon periodically checks a GitHub repository for instructions and downloads secondary payloads for remote code execution. Because these files are placed in the Python site-packages directory, the malicious code executes every time any Python process—including IDEs, CI/CD runners, or standalone applications—is started on the infected machine.",
+          "LiteLLM has confirmed the incident and taken steps to remove the compromised versions from PyPI and Docker Hub. While the attacker's primary command-and-control infrastructure was taken offline shortly after the attack, the potential for secondary payload execution remains a critical concern for any system that ran the affected version."
+        ],
+        "main_topic": "A supply chain attack on LiteLLM version 1.107.0 via PyPI introduced a credential stealer and a remote code execution backdoor.",
+        "technologies": [
+          "LiteLLM",
+          "PyPI",
+          "Python",
+          "Docker",
+          "GitHub",
+          "GHCR",
+          "AWS",
+          "Azure",
+          "Kubernetes",
+          "maturin",
+          "Terraform",
+          "Jenkins",
+          "GitLab"
+        ],
+        "category": "engineering",
+        "category_label": "Software Engineering"
+      },
+      {
+        "title": "How payroll giant ADP practices AI governance and human oversight",
+        "slug": "how-payroll-giant-adp-practices-ai-governance-and-human-oversight",
+        "url": "https://aibusiness.com/generative-ai/how-payroll-giant-adp-practices-ai-governance-human-oversight",
+        "source": "AI Business",
+        "published": "Wed, 21 Oct 2026 13:05:01 GMT",
+        "short_summary": "ADP discusses its long-standing commitment to responsible AI governance and the integration of human oversight in automated workflows. The company focuses on maintaining transparency and preventing automation bias in high-stakes payroll and HR functions.",
+        "long_resume": "In an interview with Helena Almeida, ADP's VP and AI legal officer, the company outlines its comprehensive strategy for managing artificial intelligence within the enterprise human capital management sector. ADP has been utilizing machine learning and established a formal AI and data ethics framework as early as 2018. This governance is supported by a cross-functional AI and data ethics council that includes external subject matter experts to ensure diverse perspectives on privacy, legal, and ethical implications. As generative AI becomes more mainstream, ADP has integrated these capabilities into its 'ADP Assist' suite of AI agents, while simultaneously updating its governance processes to meet evolving global regulatory standards. A central pillar of their strategy is the concept of meaningful human oversight. Almeida emphasizes that for high-risk tasks—such as those impacting an employee's pay or legal status—human intervention must be substantive rather than a mere 'ceremonial checkbox.' The company actively works to mitigate 'automation bias,' where users might reflexively trust AI outputs without scrutiny. By differentiating between low-risk administrative automation and high-stakes decision-making, ADP aims to leverage the productivity gains of GenAI while maintaining rigorous safety and transparency standards.",
+        "long_resume_paragraphs": [
+          "In an interview with Helena Almeida, ADP's VP and AI legal officer, the company outlines its comprehensive strategy for managing artificial intelligence within the enterprise human capital management sector. ADP has been utilizing machine learning and established a formal AI and data ethics framework as early as 2018. This governance is supported by a cross-functional AI and data ethics council that includes external subject matter experts to ensure diverse perspectives on privacy, legal, and ethical implications. As generative AI becomes more mainstream, ADP has integrated these capabilities into its 'ADP Assist' suite of AI agents, while simultaneously updating its governance processes to meet evolving global regulatory standards. A central pillar of their strategy is the concept of meaningful human oversight. Almeida emphasizes that for high-risk tasks—such as those impacting an employee's pay or legal status—human intervention must be substantive rather than a mere 'ceremonial checkbox.' The company actively works to mitigate 'automation bias,' where users might reflexively trust AI outputs without scrutiny. By differentiating between low-risk administrative automation and high-stakes decision-making, ADP aims to leverage the productivity gains of GenAI while maintaining rigorous safety and transparency standards."
+        ],
+        "main_topic": "ADP's approach to implementing responsible AI governance and human oversight within its HR and payroll products.",
+        "technologies": [
+          "ADP Assist",
+          "Generative AI",
+          "Machine Learning",
+          "AI Agents"
+        ],
+        "category": "governance",
+        "category_label": "Data & AI Governance"
+      },
+      {
+        "title": "How I got over 300 Tor exit nodes removed",
+        "slug": "how-i-got-over-300-tor-exit-nodes-removed",
+        "url": "https://kaba.cx/posts/20261020_Tor",
+        "source": "Reddit r/netsec",
+        "published": "2026-10-20T13:33:05Z",
+        "short_summary": "A massive coordinated attack compromised roughly 10% of Tor exit nodes to intercept SSH traffic and steal credentials. The incident was mitigated by the Tor Project's rapid response and manual identification of infected relays.",
+        "long_resume": "In early October 2026, a significant security breach was detected within the Tor network where approximately 333 exit nodes were found to be under attacker control. The attackers had maintained access to these Linux-based servers since August, deploying the Ebury 1.8.3 payload, which functions as an OpenSSH backdoor and credential stealer. The primary objectives of the campaign were twofold: harvesting unencrypted email traffic by manipulating port configurations and executing Man-in-the-Middle (MITM) attacks on SSH connections. When a user attempted to connect via SSH through an infected node, the traffic was redirected to one of 12 interception servers; if the user bypassed the host key warning, the attackers would steal passwords, monitor active sessions, and attempt to infect the target server with Ebury using Perl-based scripts. The breach was discovered by a researcher who used custom scripts and tools like 'exitmap' to identify fingerprint mismatches across the network. Following reports to the Tor Project's network health team, affected relays were flagged as 'BadExit', preventing them from being used for outbound traffic and effectively neutralizing the attack's ability to intercept new connections. While the exact initial vector of compromise remains unknown—with theories ranging from a compromised hosting provider to widespread Ebury infections—the incident highlights the critical need for robust server security, such as disabling password authentication in favor of hardware-backed SSH keys.",
+        "long_resume_paragraphs": [
+          "In early October 2026, a significant security breach was detected within the Tor network where approximately 333 exit nodes were found to be under attacker control. The attackers had maintained access to these Linux-based servers since August, deploying the Ebury 1.8.3 payload, which functions as an OpenSSH backdoor and credential stealer. The primary objectives of the campaign were twofold: harvesting unencrypted email traffic by manipulating port configurations and executing Man-in-the-Middle (MITM) attacks on SSH connections. When a user attempted to connect via SSH through an infected node, the traffic was redirected to one of 12 interception servers; if the user bypassed the host key warning, the attackers would steal passwords, monitor active sessions, and attempt to infect the target server with Ebury using Perl-based scripts. The breach was discovered by a researcher who used custom scripts and tools like 'exitmap' to identify fingerprint mismatches across the network. Following reports to the Tor Project's network health team, affected relays were flagged as 'BadExit', preventing them from being used for outbound traffic and effectively neutralizing the attack's ability to intercept new connections. While the exact initial vector of compromise remains unknown—with theories ranging from a compromised hosting provider to widespread Ebury infections—the incident highlights the critical need for robust server security, such as disabling password authentication in favor of hardware-backed SSH keys."
+        ],
+        "main_topic": "A coordinated attack on the Tor network involving over 300 compromised exit nodes used for SSH interception and data theft.",
+        "technologies": [
+          "Tor",
+          "OpenSSH",
+          "Ebury 1.8.3",
+          "Linux",
+          "SSH",
+          "Python",
+          "Paramiko",
+          "Perl",
+          "exitmap",
+          "sshesame"
+        ],
+        "category": "engineering",
+        "category_label": "Software Engineering"
+      },
+      {
+        "title": "The Internet goes on high alert after discovery of 8 compromised TLS certs",
+        "slug": "the-internet-goes-on-high-alert-after-discovery-of-8-compromised-tls-certs",
+        "url": "https://arstechnica.com/security/2026/10/the-internet-goes-on-high-alert-after-discovery-of-8-compromised-tls-certs",
+        "source": "Reddit r/cybersecurity",
+        "published": "2026-10-20T22:03:58Z",
+        "short_summary": "Security researchers have identified eight TLS certificates with critically low entropy, making their private keys susceptible to near-instant decryption. The discovery has raised alarms due to the extreme mathematical improbability of such small key sizes appearing in production environments.",
+        "long_resume": "The cybersecurity community is on high alert following the discovery of eight compromised TLS certificates issued by eMudhra that exhibit unprecedentedly low entropy. While the 2014 Heartbleed vulnerability demonstrated the catastrophic impact of OpenSSL exploits, this new incident reveals a different type of systemic failure: the use of private keys with bit-strengths as low as 3 to 8 bits. For context, a standard NIST P-384 elliptic curve cryptography key is expected to provide roughly 384 bits of entropy; however, the discovered keys ranged from 3 to 237 bits. This level of weakness makes the keys trivial to brute-force, effectively nullifying the security of any TLS-protected exchange using them. Industry experts are struggling to explain how such a massive failure in key generation could reach production. One hypothesis suggests that insecure example code might have been accidentally deployed into a live environment, or perhaps a 'size' parameter in a key generation interface was erroneously set to a near-zero value. The incident underscores the immense difficulty of large-scale cryptographic remediation, as seen during the Heartbleed era, where patching, reissuing keys, and rotating credentials across global, heterogeneous systems requires years of coordinated effort.",
+        "long_resume_paragraphs": [
+          "The cybersecurity community is on high alert following the discovery of eight compromised TLS certificates issued by eMudhra that exhibit unprecedentedly low entropy. While the 2014 Heartbleed vulnerability demonstrated the catastrophic impact of OpenSSL exploits, this new incident reveals a different type of systemic failure: the use of private keys with bit-strengths as low as 3 to 8 bits. For context, a standard NIST P-384 elliptic curve cryptography key is expected to provide roughly 384 bits of entropy; however, the discovered keys ranged from 3 to 237 bits. This level of weakness makes the keys trivial to brute-force, effectively nullifying the security of any TLS-protected exchange using them. Industry experts are struggling to explain how such a massive failure in key generation could reach production. One hypothesis suggests that insecure example code might have been accidentally deployed into a live environment, or perhaps a 'size' parameter in a key generation interface was erroneously set to a near-zero value. The incident underscores the immense difficulty of large-scale cryptographic remediation, as seen during the Heartbleed era, where patching, reissuing keys, and rotating credentials across global, heterogeneous systems requires years of coordinated effort."
+        ],
+        "main_topic": "The discovery of eight highly compromised TLS certificates featuring critically low entropy in their private keys.",
+        "technologies": [
+          "OpenSSL",
+          "TLS",
+          "eMudhra",
+          "NIST P-384",
+          "Elliptic Curve Cryptography",
+          "BGP.tools"
+        ],
+        "category": "blockchain",
+        "category_label": "Blockchain & Crypto"
+      },
+      {
+        "title": "\"Quantinuum Breaks Error-Correction World Record by 10x, Validating its Leading Path to Fault-Tolerant Quantum Computing by 2029\"",
+        "slug": "quantinuum-breaks-error-correction-world-record-by-10x-validating-its-leading-path-to-fault-tolerant-quantum-computing-by-2029",
+        "url": "https://quantinuum.com/press-releases/quantinuum-breaks-error-correction-world-record-by-10x-validating-its-leading-path-to-fault-tolerant-quantum-computing-by-2029",
+        "source": "Reddit r/QuantumComputing",
+        "published": "2026-10-20T03:02:00Z",
+        "short_summary": "Quantinuum announced a major breakthrough in quantum error correction, reaching a record-breaking logical fidelity of 99.9995% using its Helios hardware. This achievement demonstrates the company's ability to suppress errors exponentially and validates its roadmap toward a fault-tolerant system by 2029.",
+        "long_resume": "Quantinuum has announced a significant milestone in quantum computing, achieving a world-record logical fidelity of 99.9995% on its Helios commercial computer. This performance level, which equates to just five errors per million operations, represents a tenfold improvement over the company's own record from September 2026 and is 100 times more accurate than the best published results from Google Quantum AI's superconducting systems. The breakthrough was achieved using a 'color code' within Quantinuum's proprietary error-correction architecture, which integrates AI decoders, all-to-all qubit connectivity, and high-fidelity physical operations.\n\nThe study demonstrated that as the 'code distance' increases, logical errors fall exponentially, suggesting that Quantinuum can achieve fault-tolerance with significantly fewer physical qubits than competing hardware modalities. This scalability is a critical requirement for the development of Apollo, Quantinuum's planned universal fault-tolerant quantum computer, which is targeted for release by 2029. The company also highlighted the versatility of its platform, noting that it can rapidly prototype and switch between different error-correction codes, such as the Helix code, to optimize for accuracy, efficiency, or speed depending on the specific computational task. By proving that logical qubits can be nearly 100x more reliable than their constituent physical qubits, Quantinuum has addressed one of the most significant technical risks in the field, paving the way for practical applications in materials science, chemistry, finance, and logistics.",
+        "long_resume_paragraphs": [
+          "Quantinuum has announced a significant milestone in quantum computing, achieving a world-record logical fidelity of 99.9995% on its Helios commercial computer. This performance level, which equates to just five errors per million operations, represents a tenfold improvement over the company's own record from September 2026 and is 100 times more accurate than the best published results from Google Quantum AI's superconducting systems. The breakthrough was achieved using a 'color code' within Quantinuum's proprietary error-correction architecture, which integrates AI decoders, all-to-all qubit connectivity, and high-fidelity physical operations.",
+          "The study demonstrated that as the 'code distance' increases, logical errors fall exponentially, suggesting that Quantinuum can achieve fault-tolerance with significantly fewer physical qubits than competing hardware modalities. This scalability is a critical requirement for the development of Apollo, Quantinuum's planned universal fault-tolerant quantum computer, which is targeted for release by 2029. The company also highlighted the versatility of its platform, noting that it can rapidly prototype and switch between different error-correction codes, such as the Helix code, to optimize for accuracy, efficiency, or speed depending on the specific computational task. By proving that logical qubits can be nearly 100x more reliable than their constituent physical qubits, Quantinuum has addressed one of the most significant technical risks in the field, paving the way for practical applications in materials science, chemistry, finance, and logistics."
+        ],
+        "main_topic": "Quantinuum has achieved a world-record 99.9995% logical fidelity on its Helios quantum computer, significantly advancing the path toward fault-tolerant quantum computing.",
+        "technologies": [
+          "Quantinuum Helios",
+          "Quantinuum Apollo",
+          "Trapped-ion technology",
+          "QCCD architecture",
+          "Color code",
+          "Helix code",
+          "Google Quantum AI superconducting system"
+        ],
+        "category": "quantum",
+        "category_label": "Quantum Computing"
+      },
+      {
+        "title": "#StopRansomware: SafePay Ransomware",
+        "slug": "stopransomware-safepay-ransomware",
+        "url": "https://cisa.gov/news-events/cybersecurity-advisories/aa26-293a",
+        "source": "CISA Advisories",
+        "published": "Tue, 20 Oct 26 12:00:00 +0000",
+        "short_summary": "The SafePay ransomware group is actively targeting critical infrastructure globally using sophisticated lateral movement and data exfiltration techniques. This advisory provides technical details on their use of legitimate system tools to bypass security and encrypt victim files.",
+        "long_resume": "This joint advisory from CISA, the FBI, and international partners outlines the operational patterns of the SafePay ransomware group, which has been highly active since August 2024. The threat actors primarily gain entry into networks via credential exposure, brute-force attacks, and the exploitation of edge device vulnerabilities, specifically leveraging phished accounts through Mullvad VPN IP addresses. Once access is established, the group employs 'Living off the Land' (LotL) tactics to maintain persistence and escalate privileges, often using tools like PsExec and WinRM to execute commands remotely. To identify high-value targets for exfiltration, they utilize specialized scripts such as ShareFinder.ps1 and SharpShares.exe to enumerate network shares within Active Directory environments. During the lateral movement phase, the actors use RDP and various administrative tools to expand their footprint while simultaneously disabling security software to avoid detection. For data theft, SafePay utilizes a variety of legitimate utilities including RClone, WinSCP, and 7-Zip, sometimes even using cloud services like OneDrive for exfiltration. To ensure maximum impact and prevent recovery, the group actively targets backups by halting the Volume Shadow Copy Service and resetting Network Attached Storage (NAS) devices to factory defaults. Organizations are urged to implement Zero Trust principles, enforce multi-factor authentication (MFA), and maintain rigorous patching schedules for all internet-facing systems.",
+        "long_resume_paragraphs": [
+          "This joint advisory from CISA, the FBI, and international partners outlines the operational patterns of the SafePay ransomware group, which has been highly active since August 2024. The threat actors primarily gain entry into networks via credential exposure, brute-force attacks, and the exploitation of edge device vulnerabilities, specifically leveraging phished accounts through Mullvad VPN IP addresses. Once access is established, the group employs 'Living off the Land' (LotL) tactics to maintain persistence and escalate privileges, often using tools like PsExec and WinRM to execute commands remotely. To identify high-value targets for exfiltration, they utilize specialized scripts such as ShareFinder.ps1 and SharpShares.exe to enumerate network shares within Active Directory environments. During the lateral movement phase, the actors use RDP and various administrative tools to expand their footprint while simultaneously disabling security software to avoid detection. For data theft, SafePay utilizes a variety of legitimate utilities including RClone, WinSCP, and 7-Zip, sometimes even using cloud services like OneDrive for exfiltration. To ensure maximum impact and prevent recovery, the group actively targets backups by halting the Volume Shadow Copy Service and resetting Network Attached Storage (NAS) devices to factory defaults. Organizations are urged to implement Zero Trust principles, enforce multi-factor authentication (MFA), and maintain rigorous patching schedules for all internet-facing systems."
+        ],
+        "main_topic": "A joint cybersecurity advisory detailing the tactics, techniques, and procedures (TTPs) used by the SafePay ransomware group to target global critical infrastructure.",
+        "technologies": [
+          "Mullvad VPN",
+          "PsExec",
+          "Windows Remote Management (WinRM)",
+          "PowerShell",
+          "ShareFinder.ps1",
+          "SharpShares.exe",
+          "Remote Desktop Protocol (RDP)",
+          "FileZilla",
+          "7-Zip",
+          "RClone",
+          "WinRAR",
+          "WinSCP",
+          "OneDrive",
+          "AnyDesk",
+          "TeamViewer",
+          "Active Directory"
+        ],
+        "category": "security",
+        "category_label": "Cybersecurity"
+      },
+      {
+        "title": "Philip R. Lane: Euro liquidity lines and the international monetary system",
+        "slug": "philip-r-lane-euro-liquidity-lines-and-the-international-monetary-system",
+        "url": "https://ecb.europa.eu/press/key/date/2026/html/ecb.sp261021~401d6c4b70.en.html",
+        "source": "ECB",
+        "published": "Wed, 21 Oct 2026 06:15:00 +0200",
+        "short_summary": "The ECB is enhancing its international liquidity framework through the expanded EUREP facility and strategic swap lines to ensure smooth monetary policy transmission. These tools are designed to provide backstop liquidity to foreign central banks, thereby stabilizing euro-denominated bond markets and reducing global financial spillovers.",
+        "long_resume": "In a recent address, Philip R. Lane of the ECB detailed the critical importance of international liquidity lines in maintaining the stability of the Eurosystem. Because the ECB's primary refinancing operations are limited to domestic counterparties, international lines—comprising both repo and swap arrangements—are essential to prevent cross-border liquidity shortages from impacting euro money market rates and securities markets. A significant development is the enhancement of the Eurosystem repo facility for central banks (EUREP), which allows non-euro area central banks to access euro liquidity against high-quality euro-denominated collateral. This updated framework, expected to be fully operational by the fourth quarter of 2026, introduces standing access for eligible central banks and aims to support the functioning of euro-denominated debt markets globally. EUREP is expected to encourage foreign central banks to hold a wider variety of euro area sovereign and supranational bonds, thereby enhancing market integration. Complementing this, swap lines provide a different transmission channel by allowing liquidity against local-currency collateral, which is particularly effective in supporting the bank credit channel. While swap lines carry higher risks and are restricted to highly-rated sovereigns to prevent moral hazard, they serve as vital signaling tools to reduce global financial crises. Ultimately, these liquidity mechanisms strengthen the international role of the euro by fostering confidence in its use for trade invoicing, settlements, and expanded debt issuance.",
+        "long_resume_paragraphs": [
+          "In a recent address, Philip R. Lane of the ECB detailed the critical importance of international liquidity lines in maintaining the stability of the Eurosystem. Because the ECB's primary refinancing operations are limited to domestic counterparties, international lines—comprising both repo and swap arrangements—are essential to prevent cross-border liquidity shortages from impacting euro money market rates and securities markets. A significant development is the enhancement of the Eurosystem repo facility for central banks (EUREP), which allows non-euro area central banks to access euro liquidity against high-quality euro-denominated collateral. This updated framework, expected to be fully operational by the fourth quarter of 2026, introduces standing access for eligible central banks and aims to support the functioning of euro-denominated debt markets globally. EUREP is expected to encourage foreign central banks to hold a wider variety of euro area sovereign and supranational bonds, thereby enhancing market integration. Complementing this, swap lines provide a different transmission channel by allowing liquidity against local-currency collateral, which is particularly effective in supporting the bank credit channel. While swap lines carry higher risks and are restricted to highly-rated sovereigns to prevent moral hazard, they serve as vital signaling tools to reduce global financial crises. Ultimately, these liquidity mechanisms strengthen the international role of the euro by fostering confidence in its use for trade invoicing, settlements, and expanded debt issuance."
+        ],
+        "main_topic": "The role and expansion of international liquidity lines, specifically EUREP and swap lines, in supporting the Eurosystem's monetary policy transmission.",
+        "technologies": [
+          "EUREP (Eurosystem repo facility for central banks)",
+          "Main Refinancing Operations (MRO)",
+          "Longer-Term Refinancing Operations (LTRO)",
+          "Asset Purchase Programme (APP)",
+          "Pandemic Emergency Purchase Programme (PEPP)"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "Asymptotically good bosonic Fock state codes",
+        "slug": "asymptotically-good-bosonic-fock-state-codes",
+        "url": "https://quantum-journal.org/papers/q-2026-10-20-2240",
+        "source": "Quantum Journal",
+        "published": "Tue, 20 Oct 2026 13:48:54 +0000",
+        "short_summary": "This research introduces a new class of bosonic Fock-state codes capable of maintaining error-correction properties in the asymptotic regime under amplitude-damping noise. By leveraging random classical codes in a discrete simplex, the authors provide a solution for protecting against constant loss parameters while improving coherence lifetimes.",
+        "long_resume": "The paper addresses a critical limitation in current quantum error correction: the inability of existing bosonic Fock-state code families to protect against amplitude-damping (AD) noise when the number of photon losses scales linearly with the total excitation. In the asymptotic regime, where the total excitation grows without limit, previous constructions only provided protection against sublinear photon losses. To bridge this gap, the authors propose a construction of asymptotically good Fock-state codes based on random classical codes within a discrete simplex. A significant innovation in this approach is that randomness is introduced via the classical indexing structure rather than through traditional quantum code randomization methods. This specific method of randomization yields the beneficial property of bounded per-mode occupancy, which effectively limits the number of photons in any single mode and subsequently enhances the coherence lifetime of the encoded states. Furthermore, the research demonstrates that these findings are not limited to bosonic systems; through a mathematical relationship between Fock-state codes and permutation-invariant codes, the authors also derive asymptotically good families for qudit permutation-invariant codes and codes within monolithic nuclear state spaces.",
+        "long_resume_paragraphs": [
+          "The paper addresses a critical limitation in current quantum error correction: the inability of existing bosonic Fock-state code families to protect against amplitude-damping (AD) noise when the number of photon losses scales linearly with the total excitation. In the asymptotic regime, where the total excitation grows without limit, previous constructions only provided protection against sublinear photon losses. To bridge this gap, the authors propose a construction of asymptotically good Fock-state codes based on random classical codes within a discrete simplex. A significant innovation in this approach is that randomness is introduced via the classical indexing structure rather than through traditional quantum code randomization methods. This specific method of randomization yields the beneficial property of bounded per-mode occupancy, which effectively limits the number of photons in any single mode and subsequently enhances the coherence lifetime of the encoded states. Furthermore, the research demonstrates that these findings are not limited to bosonic systems; through a mathematical relationship between Fock-state codes and permutation-invariant codes, the authors also derive asymptotically good families for qudit permutation-invariant codes and codes within monolithic nuclear state spaces."
+        ],
+        "main_topic": "The development of asymptotically good bosonic Fock-state codes designed to correct amplitude-damping noise in the large excitation regime.",
+        "technologies": [
+          "Bosonic Fock-state codes",
+          "Amplitude-damping (AD) noise models",
+          "Quantum error correction",
+          "Permutation-invariant codes",
+          "Qudit permutation-invariant codes"
+        ],
+        "category": "quantum",
+        "category_label": "Quantum Computing"
+      },
+      {
+        "title": "Tens of thousands of Nvidia GPUs sit idle in Meta's Prometheus supercluster, just waiting for a failure",
+        "slug": "tens-of-thousands-of-nvidia-gpus-sit-idle-in-metas-prometheus-supercluster-just-waiting-for-a-failure",
+        "url": "https://theregister.com/systems/2026/10/20/tens-of-thousands-of-nvidia-gpus-sit-idle-in-metas-prometheus-supercluster-just-waiting-for-a-failure/5304269",
+        "source": "The Register",
+        "published": "Tue, 20 Oct 2026 20:39:42 +0000",
+        "short_summary": "Meta is utilizing redundant GPU reserves and advanced data parallelism to manage hardware failures in its massive Prometheus supercluster. These engineering efforts have significantly reduced training interruptions while scaling toward a million-accelerator capacity.",
+        "long_resume": "Meta's Prometheus supercluster represents one of the largest compute deployments in existence, aiming for a gigawatt of capacity and up to a million accelerators. However, operating at this scale introduces significant hardware reliability challenges. To combat frequent GPU failures and system crashes that previously caused 1,000 interruptions per day per 8,000 GPUs, Meta has implemented several sophisticated engineering solutions. One primary method involves maintaining 'hot spares,' where roughly 11% of the GPUs in certain configurations sit idle to immediately replace failed units within an NVLink domain. This prevents a single GPU failure from necessitating the removal of an entire rack from the training run. Furthermore, Meta leverages data parallelism to isolate faults; if a failure is confined to a specific model replica, that slice can be restarted on spare hosts without halting the entire cluster. To protect against larger-scale failures, a multi-tier asynchronous checkpointing architecture saves gradients and optimizer data to prevent starting training from scratch. The company also faces physical layer challenges, such as signal degradation across 600,000 NVLink connections and power transients caused by massive shifts in GPU power consumption. Through continuous telemetry and diagnostic burns, Meta has successfully increased 'goodput'—the measure of useful throughput—to over 85% for pretraining and 90% for reinforcement learning on models like Muse Wonder. The ultimate goal is to reach a state where interruptions occur only twice per day per 8,000 GPUs.",
+        "long_resume_paragraphs": [
+          "Meta's Prometheus supercluster represents one of the largest compute deployments in existence, aiming for a gigawatt of capacity and up to a million accelerators. However, operating at this scale introduces significant hardware reliability challenges. To combat frequent GPU failures and system crashes that previously caused 1,000 interruptions per day per 8,000 GPUs, Meta has implemented several sophisticated engineering solutions. One primary method involves maintaining 'hot spares,' where roughly 11% of the GPUs in certain configurations sit idle to immediately replace failed units within an NVLink domain. This prevents a single GPU failure from necessitating the removal of an entire rack from the training run. Furthermore, Meta leverages data parallelism to isolate faults; if a failure is confined to a specific model replica, that slice can be restarted on spare hosts without halting the entire cluster. To protect against larger-scale failures, a multi-tier asynchronous checkpointing architecture saves gradients and optimizer data to prevent starting training from scratch. The company also faces physical layer challenges, such as signal degradation across 600,000 NVLink connections and power transients caused by massive shifts in GPU power consumption. Through continuous telemetry and diagnostic burns, Meta has successfully increased 'goodput'—the measure of useful throughput—to over 85% for pretraining and 90% for reinforcement learning on models like Muse Wonder. The ultimate goal is to reach a state where interruptions occur only twice per day per 8,000 GPUs."
+        ],
+        "main_topic": "Meta's engineering strategies for maintaining stability and minimizing interruptions in its massive Prometheus supercluster.",
+        "technologies": [
+          "Nvidia Grace Blackwell",
+          "Nvidia GB200",
+          "Nvidia GB300",
+          "Nvidia Vera Rubin",
+          "Nvidia H100",
+          "Nvidia H200",
+          "NVLink",
+          "Prometheus supercluster"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "Interactive proofs for verifying (quantum) learning and testing",
+        "slug": "interactive-proofs-for-verifying-quantum-learning-and-testing",
+        "url": "https://quantum-journal.org/papers/q-2026-10-20-2239",
+        "source": "Quantum Journal",
+        "published": "Tue, 20 Oct 2026 13:35:21 +0000",
+        "short_summary": "This paper investigates whether resource-constrained learners can use interaction with untrusted parties to improve the efficiency of quantum learning and testing. It concludes that while classical communication is insufficient for verification, quantum communication enables significant advantages in delegating tasks to powerful providers.",
+        "long_resume": "The research addresses a critical challenge in the emerging era of distributed quantum computing: how users with limited computational resources can verify the results of complex tasks delegated to powerful but untrusted data centers. As quantum hardware becomes concentrated in large-scale facilities, the need for verifiable delegation grows, particularly for machine learning and testing problems where the provider possesses high-quality data inaccessible to the client. The authors present a dual-sided finding: first, an impossibility result demonstrating that classical interaction cannot empower a resource-constrained learner to verify answers from a more powerful prover in many scenarios; second, a positive result showing that quantum communication enables memory-constrained verifiers to leverage the multi-copy processing capabilities of untrusted provers. This work establishes a foundational theory for verification in quantum learning and testing, highlighting that a quantum internet—capable of supporting quantum communication—is a necessary component for the secure delegation of these advanced computational tasks.",
+        "long_resume_paragraphs": [
+          "The research addresses a critical challenge in the emerging era of distributed quantum computing: how users with limited computational resources can verify the results of complex tasks delegated to powerful but untrusted data centers. As quantum hardware becomes concentrated in large-scale facilities, the need for verifiable delegation grows, particularly for machine learning and testing problems where the provider possesses high-quality data inaccessible to the client. The authors present a dual-sided finding: first, an impossibility result demonstrating that classical interaction cannot empower a resource-constrained learner to verify answers from a more powerful prover in many scenarios; second, a positive result showing that quantum communication enables memory-constrained verifiers to leverage the multi-copy processing capabilities of untrusted provers. This work establishes a foundational theory for verification in quantum learning and testing, highlighting that a quantum internet—capable of supporting quantum communication—is a necessary component for the secure delegation of these advanced computational tasks."
+        ],
+        "main_topic": "The research explores the use of interactive proofs and quantum communication to enable resource-constrained users to verifiably delegate quantum learning and testing tasks to untrusted, powerful providers.",
+        "technologies": [
+          "Quantum Computing",
+          "Quantum Communication",
+          "Quantum Internet",
+          "Machine Learning",
+          "Artificial Intelligence",
+          "Interactive Proof Protocols",
+          "Quantum Memory"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "The distroless security gap: Why bottom-up containers are the next evolution in OCI images",
+        "slug": "the-distroless-security-gap-why-bottom-up-containers-are-the-next-evolution-in-oci-images",
+        "url": "https://thenewstack.io/distroless-container-security-gap",
+        "source": "The New Stack",
+        "published": "Mon, 19 Oct 2026 13:00:00 +0000",
+        "short_summary": "The article explores the 'distroless security gap' where minimizing container size inadvertently breaks vulnerability scanning by removing package metadata. It proposes a shift toward bottom-up, declarative container assembly to achieve both minimal attack surfaces and full security auditability.",
+        "long_resume": "The current state of container security is caught in a paradox between bloated images and un-scannable 'distroless' images. While traditional containers include unnecessary shells and package managers that expand the attack surface, the industry's move toward distroless images has introduced a significant blind spot: the removal of OS package metadata makes it impossible for scanners like Trivy to accurately detect vulnerabilities. This creates a compliance liability where an image may be small but cannot be mathematically proven safe. To solve this, the article advocates for a 'bottom-up' assembly method rather than top-down trimming. This new paradigm uses three distinct stages: first, 'precision slicing' via tools like Chisel to extract only necessary package components from trusted archives; second, 'declarative builds' using tools like Rockcraft to define the container state via YAML instead of imperative Dockerfiles; and third, 'runtime management' using lightweight managers like Pebble to act as PID 1. This approach ensures that minimal containers remain auditable, stable, and secure without sacrificing developer experience or operational visibility.",
+        "long_resume_paragraphs": [
+          "The current state of container security is caught in a paradox between bloated images and un-scannable 'distroless' images. While traditional containers include unnecessary shells and package managers that expand the attack surface, the industry's move toward distroless images has introduced a significant blind spot: the removal of OS package metadata makes it impossible for scanners like Trivy to accurately detect vulnerabilities. This creates a compliance liability where an image may be small but cannot be mathematically proven safe. To solve this, the article advocates for a 'bottom-up' assembly method rather than top-down trimming. This new paradigm uses three distinct stages: first, 'precision slicing' via tools like Chisel to extract only necessary package components from trusted archives; second, 'declarative builds' using tools like Rockcraft to define the container state via YAML instead of imperative Dockerfiles; and third, 'runtime management' using lightweight managers like Pebble to act as PID 1. This approach ensures that minimal containers remain auditable, stable, and secure without sacrificing developer experience or operational visibility."
+        ],
+        "main_topic": "The evolution of container security from 'distroless' trimming to 'bottom-up' assembly to resolve the conflict between attack surface reduction and vulnerability visibility.",
+        "technologies": [
+          "OCI",
+          "Trivy",
+          "Chisel",
+          "Ubuntu",
+          "Rockcraft",
+          "Pebble",
+          "Docker",
+          "YAML"
+        ],
+        "category": "security",
+        "category_label": "Cybersecurity"
+      },
+      {
+        "title": "Palo Alto's firewall OS has been under attack from multiple ransomware groups since June",
+        "slug": "palo-altos-firewall-os-has-been-under-attack-from-multiple-ransomware-groups-since-june",
+        "url": "https://theregister.com/cyber-crime/2026/10/20/palo-altos-firewall-os-has-been-under-attack-from-multiple-ransomware-groups-since-june/5304226",
+        "source": "The Register",
+        "published": "Tue, 20 Oct 2026 17:33:26 +0000",
+        "short_summary": "Multiple ransomware groups are exploiting a critical authentication bypass vulnerability in Palo Alto Networks' PAN-OS to penetrate corporate networks. The attacks involve sophisticated lateral movement and attempts to compromise virtualization layers to evade endpoint detection.",
+        "long_resume": "Since June, various ransomware operations, including Qilin, Inc, and Settra, have been actively exploiting CVE-2026-0257, a high-severity authentication bypass vulnerability affecting Palo Alto Networks' PAN-OS GlobalProtect portals and gateways. Although a patch was released in mid-May, threat intelligence from Unit 42 confirms that attackers are successfully bypassing multi-factor authentication (MFA) to establish unauthorized VPN sessions. Once initial access is secured, the threat actors utilize protocols such as RDP and SMB for lateral movement across infected environments. A particularly sophisticated tactic identified involves pivoting from the compromised VPN gateway directly to the virtualization management layer, specifically targeting vCenter and ESXi hypervisors. By manipulating security controls on ESXi, attackers have been observed performing offline credential dumping against domain controller virtual disks (VMDK), effectively bypassing in-guest endpoint detection and response (EDR) solutions. The scope of the impact is widespread, affecting critical industries including healthcare, finance, manufacturing, and government. Furthermore, researchers have noted that attackers are chaining this PAN-OS exploit with other vulnerabilities, such as CVE-2023-27532 targeting Veeam backup infrastructure, to deepen their persistence and maximize data theft capabilities.",
+        "long_resume_paragraphs": [
+          "Since June, various ransomware operations, including Qilin, Inc, and Settra, have been actively exploiting CVE-2026-0257, a high-severity authentication bypass vulnerability affecting Palo Alto Networks' PAN-OS GlobalProtect portals and gateways. Although a patch was released in mid-May, threat intelligence from Unit 42 confirms that attackers are successfully bypassing multi-factor authentication (MFA) to establish unauthorized VPN sessions. Once initial access is secured, the threat actors utilize protocols such as RDP and SMB for lateral movement across infected environments. A particularly sophisticated tactic identified involves pivoting from the compromised VPN gateway directly to the virtualization management layer, specifically targeting vCenter and ESXi hypervisors. By manipulating security controls on ESXi, attackers have been observed performing offline credential dumping against domain controller virtual disks (VMDK), effectively bypassing in-guest endpoint detection and response (EDR) solutions. The scope of the impact is widespread, affecting critical industries including healthcare, finance, manufacturing, and government. Furthermore, researchers have noted that attackers are chaining this PAN-OS exploit with other vulnerabilities, such as CVE-2023-27532 targeting Veeam backup infrastructure, to deepen their persistence and maximize data theft capabilities."
+        ],
+        "main_topic": "Ransomware groups are actively exploiting a high-severity authentication bypass vulnerability in Palo Alto Networks' PAN-OS to infiltrate diverse industries.",
+        "technologies": [
+          "Palo Alto Networks PAN-OS",
+          "GlobalProtect",
+          "Qilin Ransomware",
+          "Inc Ransomware",
+          "Settra Ransomware",
+          "Remote Desktop Protocol (RDP)",
+          "Server Message Block (SMB)",
+          "vCenter",
+          "ESXi hypervisors",
+          "VMDK",
+          "Veeam",
+          "CVE-2026-0257",
+          "CVE-2023-27532"
+        ],
+        "category": "security",
+        "category_label": "Cybersecurity"
+      },
+      {
+        "title": "PHP2Shell (CVE-2026-109618/109619): first exploit requests arrived 5.5 hours before PHP shipped the fix, and the \"scanners\" carry Mirai-style loaders",
+        "slug": "php2shell-cve-2026-109618109619-first-exploit-requests-arrived-55-hours-before-php-shipped-the-fix-and-the-scanners-carry-mirai-style-loaders",
+        "url": "https://ellio.tech/en/blog/php2shell-what-we-observed-and-what-to-do",
+        "source": "Reddit r/netsec",
+        "published": "2026-10-21T21:24:08Z",
+        "short_summary": "Two critical RCE vulnerabilities, CVE-2026-109618 and CVE-2026-109619, have been identified in the PHP core, allowing unauthenticated attackers to execute code via multipart form manipulation. The flaws are being actively exploited by automated scanning tools following a leak of proof-of-concept material.",
+        "long_resume": "The article details the emergence of 'PHP2Shell,' a pair of critical vulnerabilities (CVE-2026-109618 and CVE-2026-109619) in the PHP engine, both carrying a CVSS score of 9.2. The first vulnerability, CVE-2026-109618, leverages memory corruption during Out-of-Memory (OOM) events caused by specifically crafted multipart/form-data requests, such as deeply nested field names or excessive headers. The second, CVE-2026-109619, exploits stale global state left in worker processes after a request terminates unexpectedly, specifically via the session upload progress feature. Technical analysis of observed traffic shows that attackers are using automated tools to scan for these flaws, with some payloads attempting to download and execute 179KB ELF binaries. The report highlights that while patches are available for supported PHP branches (8.2 through 8.5), users on older, unsupported versions like PHP 8.1 or 7.x remain permanently vulnerable and must migrate. Mitigation strategies include setting memory limits via cgroups, disabling session upload progress, and implementing front-end restrictions on multipart/form-data uploads.",
+        "long_resume_paragraphs": [
+          "The article details the emergence of 'PHP2Shell,' a pair of critical vulnerabilities (CVE-2026-109618 and CVE-2026-109619) in the PHP engine, both carrying a CVSS score of 9.2. The first vulnerability, CVE-2026-109618, leverages memory corruption during Out-of-Memory (OOM) events caused by specifically crafted multipart/form-data requests, such as deeply nested field names or excessive headers. The second, CVE-2026-109619, exploits stale global state left in worker processes after a request terminates unexpectedly, specifically via the session upload progress feature. Technical analysis of observed traffic shows that attackers are using automated tools to scan for these flaws, with some payloads attempting to download and execute 179KB ELF binaries. The report highlights that while patches are available for supported PHP branches (8.2 through 8.5), users on older, unsupported versions like PHP 8.1 or 7.x remain permanently vulnerable and must migrate. Mitigation strategies include setting memory limits via cgroups, disabling session upload progress, and implementing front-end restrictions on multipart/form-data uploads."
+        ],
+        "main_topic": "Discovery and analysis of two critical unauthenticated Remote Code Execution (RCE) vulnerabilities in PHP core, known as PHP2Shell.",
+        "technologies": [
+          "PHP",
+          "Apache mod_php",
+          "PHP-FPM",
+          "Linux (ELF x86-64)",
+          "Docker",
+          "Spring Boot"
+        ],
+        "category": "security",
+        "category_label": "Cybersecurity"
+      },
+      {
+        "title": "Linus Torvalds Eliminates Unsafe __get_user() & __put_user() Functions In Linux 7.4",
+        "slug": "linus-torvalds-eliminates-unsafe-get-user-put-user-functions-in-linux-74",
+        "url": "https://phoronix.com/news/Linus-Kills-Get-Put-User-Linux",
+        "source": "Phoronix",
+        "published": "Wed, 21 Oct 2026 17:11:58 -0400",
+        "short_summary": "Linus Torvalds has officially removed the unsafe __get_user() and __put_user() functions from the Linux kernel to improve security and performance. The update leverages modern scoped access helpers and utilized AI-assisted coding techniques for the transition.",
+        "long_resume": "In a significant move toward hardening the Linux kernel, Linus Torvalds has merged code that eliminates the long-standing __get_user() and __put_user() functions. These specific functions were historically used to copy variables between user-space and kernel-space but were inherently dangerous because they bypassed critical pointer validation checks regarding the user address range. Beyond the security risks, Torvalds noted that these functions are actually less efficient than the modern get_user() and put_user() alternatives. The removal process has successfully cleared these remnants from the x86/x86_64 architecture, though some architectural ports like ARM64 may still have lingering traces due to existing mappings. Notably, this development highlights a growing trend in kernel maintenance through the use of AI; Torvalds mentioned using Claude Code as an advanced tool for source-to-source transformations, similar to how one might use Coccinelle scripts for static analysis. This patch marks a major step in cleaning up 'historical horrors' within the kernel codebase by enforcing the use of safer, scoped user access region helpers.",
+        "long_resume_paragraphs": [
+          "In a significant move toward hardening the Linux kernel, Linus Torvalds has merged code that eliminates the long-standing __get_user() and __put_user() functions. These specific functions were historically used to copy variables between user-space and kernel-space but were inherently dangerous because they bypassed critical pointer validation checks regarding the user address range. Beyond the security risks, Torvalds noted that these functions are actually less efficient than the modern get_user() and put_user() alternatives. The removal process has successfully cleared these remnants from the x86/x86_64 architecture, though some architectural ports like ARM64 may still have lingering traces due to existing mappings. Notably, this development highlights a growing trend in kernel maintenance through the use of AI; Torvalds mentioned using Claude Code as an advanced tool for source-to-source transformations, similar to how one might use Coccinelle scripts for static analysis. This patch marks a major step in cleaning up 'historical horrors' within the kernel codebase by enforcing the use of safer, scoped user access region helpers."
+        ],
+        "main_topic": "Linus Torvalds has merged a patch into the Linux kernel to remove the historically unsafe and unvalidated __get_user() and __put_user() functions.",
+        "technologies": [
+          "Linux Kernel",
+          "x86/x86_64",
+          "ARM64",
+          "Claude Code",
+          "Coccinelle",
+          "Git"
+        ],
+        "category": "engineering",
+        "category_label": "Software Engineering"
+      },
+      {
+        "title": "Lazarus hackers use post-quantum cryptography for malware delivery",
+        "slug": "lazarus-hackers-use-post-quantum-cryptography-for-malware-delivery",
+        "url": "https://bleepingcomputer.com/news/security/lazarus-hackers-use-post-quantum-cryptography-for-malware-delivery",
+        "source": "BleepingComputer",
+        "published": "Wed, 21 Oct 2026 16:31:48 -0400",
+        "short_summary": "North Korean hackers from the Lazarus Group have launched a sophisticated campaign named FlashHole that employs post-quantum cryptography to hide malicious payloads. The operation targets South Korean industries by exploiting legitimate software and using advanced encryption standards to bypass traditional detection.",
+        "long_resume": "The Lazarus Group has introduced a highly sophisticated attack chain, identified as Operation FlashHole, which distinguishes itself through the implementation of post-quantum cryptographic (PQC) mechanisms. According to research from Kaspersky, the threat actors are utilizing the ML-KME-1024 algorithm—a NIST-approved standard designed to resist future quantum computing attacks—to secure communications between infected hosts and command-and-control (C2) infrastructure. The attack begins with phishing pages that redirect users to specially crafted GitHub repositories, initiating an in-memory execution chain. This chain exploits the INISAFE CrossWeb EX security tool and the legitimate Windows 'fsquirt.exe' utility to execute shellcode.\n\nThe malware ecosystem involved in this campaign is multi-layered. LPEClient serves as a primary component that receives public keys from the C2 server, generates shared keys, and facilitates the decryption of incoming payloads. ClientHub acts as a loader capable of communicating via Dropbox or direct exchange with LPEClient. The ultimate payload, Cubridge, is a modular backdoor providing attackers with capabilities for file management, reconnaissance, and screenshot capturing. To further obfuscate the process, the group employs a complex encryption hierarchy where ciphertexts are encrypted with the GOST algorithm, and shared secrets provide key material for the Threefish algorithm.\n\nBy utilizing in-memory execution and advanced cryptographic standards, the Lazarus Group aims to minimize detection risks and ensure that even if traffic is intercepted, it remains undecipherable by current means. The campaign has already impacted several sectors in South Korea, including software, construction, and manufacturing. This evolution in tactics suggests a strategic move toward 'harvest now, decrypt later' resilience, ensuring their command infrastructure remains robust against advancing decryption technologies.",
+        "long_resume_paragraphs": [
+          "The Lazarus Group has introduced a highly sophisticated attack chain, identified as Operation FlashHole, which distinguishes itself through the implementation of post-quantum cryptographic (PQC) mechanisms. According to research from Kaspersky, the threat actors are utilizing the ML-KME-1024 algorithm—a NIST-approved standard designed to resist future quantum computing attacks—to secure communications between infected hosts and command-and-control (C2) infrastructure. The attack begins with phishing pages that redirect users to specially crafted GitHub repositories, initiating an in-memory execution chain. This chain exploits the INISAFE CrossWeb EX security tool and the legitimate Windows 'fsquirt.exe' utility to execute shellcode.",
+          "The malware ecosystem involved in this campaign is multi-layered. LPEClient serves as a primary component that receives public keys from the C2 server, generates shared keys, and facilitates the decryption of incoming payloads. ClientHub acts as a loader capable of communicating via Dropbox or direct exchange with LPEClient. The ultimate payload, Cubridge, is a modular backdoor providing attackers with capabilities for file management, reconnaissance, and screenshot capturing. To further obfuscate the process, the group employs a complex encryption hierarchy where ciphertexts are encrypted with the GOST algorithm, and shared secrets provide key material for the Threefish algorithm.",
+          "By utilizing in-memory execution and advanced cryptographic standards, the Lazarus Group aims to minimize detection risks and ensure that even if traffic is intercepted, it remains undecipherable by current means. The campaign has already impacted several sectors in South Korea, including software, construction, and manufacturing. This evolution in tactics suggests a strategic move toward 'harvest now, decrypt later' resilience, ensuring their command infrastructure remains robust against advancing decryption technologies."
+        ],
+        "main_topic": "The Lazarus Group is utilizing post-quantum cryptographic mechanisms like ML-KEM to secure malware delivery in a new campaign dubbed FlashHole.",
+        "technologies": [
+          "ML-KEM-1024",
+          "LPEClient",
+          "ClientHub",
+          "Cubridge",
+          "INISAFE CrossWeb EX",
+          "Windows fsquirt.exe",
+          "GOST algorithm",
+          "Threefish",
+          "GitHub",
+          "Dropbox",
+          "Chromium-based browsers"
+        ],
+        "category": "security",
+        "category_label": "Cybersecurity"
+      },
+      {
+        "title": "Carbon-X is an open 14.8B model trained jointly on DNA and text [R]",
+        "slug": "carbon-x-is-an-open-148b-model-trained-jointly-on-dna-and-text-r",
+        "url": "https://huggingface.co/HuggingFaceBio/Carbon-X",
+        "source": "Reddit r/MachineLearning",
+        "published": "2026-10-22T12:32:56Z",
+        "short_summary": "HuggingFaceBio has introduced Carbon-X, a 14.8B parameter decoder-only model specialized in processing both DNA sequences and natural language. The model demonstrates state-of-the-art performance in genomic tasks like variant effect prediction while maintaining high inference efficiency.",
+        "long_resume": "Carbon-X is a newly released 14.8B parameter language model from the Carbon family, specifically engineered for biological sequence analysis. Unlike traditional models that use separate encoders, Carbon-X utilizes a single decoder architecture with a hybrid tokenizer. This tokenizer integrates standard BPE vocabulary for natural language with a specialized system that encodes DNA as non-overlapping 6-mers, allowing the model to process raw DNA directly within a chat interface. The model's capabilities include predicting whether mutations are benign or pathogenic, identifying regulatory regions, and performing next-base prediction. In evaluations across five DNA benchmarks, Carbon-X achieved an average score of 66.7%, significantly outperforming Qwen3-14B and rivaling frontier models like GPT-6.1 Sol at a fraction of the cost. For example, analyzing 2.4 million variants in ClinVar is estimated to cost only $300 with Carbon-X, compared to potentially millions of dollars using larger proprietary models. Technically, the model features 40 layers, GQA, and SwiGLU activation, with a context window of 40,960 tokens. Because the weights can fit on a single 80 GB GPU, it provides an ideal solution for researchers needing to process sensitive or unpublished genomic data on private infrastructure. The model is optimized for efficient serving using vLLM and supports automated DNA tagging within prompts.",
+        "long_resume_paragraphs": [
+          "Carbon-X is a newly released 14.8B parameter language model from the Carbon family, specifically engineered for biological sequence analysis. Unlike traditional models that use separate encoders, Carbon-X utilizes a single decoder architecture with a hybrid tokenizer. This tokenizer integrates standard BPE vocabulary for natural language with a specialized system that encodes DNA as non-overlapping 6-mers, allowing the model to process raw DNA directly within a chat interface. The model's capabilities include predicting whether mutations are benign or pathogenic, identifying regulatory regions, and performing next-base prediction. In evaluations across five DNA benchmarks, Carbon-X achieved an average score of 66.7%, significantly outperforming Qwen3-14B and rivaling frontier models like GPT-6.1 Sol at a fraction of the cost. For example, analyzing 2.4 million variants in ClinVar is estimated to cost only $300 with Carbon-X, compared to potentially millions of dollars using larger proprietary models. Technically, the model features 40 layers, GQA, and SwiGLU activation, with a context window of 40,960 tokens. Because the weights can fit on a single 80 GB GPU, it provides an ideal solution for researchers needing to process sensitive or unpublished genomic data on private infrastructure. The model is optimized for efficient serving using vLLM and supports automated DNA tagging within prompts."
+        ],
+        "main_topic": "The release of Carbon-X, an open 14.8B parameter language model designed for joint DNA sequence understanding and natural language processing.",
+        "technologies": [
+          "Carbon-X",
+          "Hugging Face",
+          "Qwen3-14B",
+          "vLLM",
+          "Transformers",
+          "PyTorch",
+          "GPT-6.1 Sol",
+          "OpenAI API"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "US Government Funded Quantum Finance Initiatives to Safeguard  Risk Modeling, Portfolio Optimization, Cryptography, Q-Day",
+        "slug": "us-government-funded-quantum-finance-initiatives-to-safeguard-risk-modeling-portfolio-optimization-cryptography-q-day",
+        "url": "https://insidequantumtechnology.com/news-archive/us-government-funded-quantum-finance-initiatives-to-safeguard-risk-modeling-portfolio-optimization-cryptography-q-day",
+        "source": "Inside Quantum Technology",
+        "published": "Thu, 22 Oct 2026 11:00:32 +0000",
+        "short_summary": "The United States is deploying massive federal funding and regulatory mandates to safeguard the financial system against the cryptographic risks posed by future quantum computers. This strategy involves a coordinated effort between the Treasury, NIST, CISA, and the NSA to transition critical infrastructure to post-quantum standards.",
+        "long_resume": "The U.S. government has launched an aggressive multi-billion dollar strategy to defend the nation's financial architecture against 'Q-Day,' the point at which cryptanalytically relevant quantum computers (CRQCs) can break classical public-key encryption. Under Executive Orders 14412 and 14413, the federal strategy focuses on both economic risk management and technical cybersecurity. A significant component of this effort is the $2 billion allocation from the CHIPS & Science Act, which provides venture equity in quantum computing leaders such as IBM, D-Wave, and Rigetti to bolster domestic hardware foundations for risk modeling and portfolio optimization. The Department of the Treasury, acting as the Sector Risk Management Agency, has established a Quantum-Readiness Task Force to oversee the migration of banks, payment processors, and insurance networks toward quantum-safe systems. Simultaneously, NIST is tasked with the mathematical standardization of Post-Quantum Cryptography (PQC) algorithms, while CISA leads the operational execution of these migrations across critical infrastructure, enforcing a deadline for software upgrades by late 2030. The NSA provides essential intelligence regarding 'Harvest Now, Decrypt Later' threats from state-sponsored actors, ensuring that national security systems and the defense industrial base are prepared for the quantum era.",
+        "long_resume_paragraphs": [
+          "The U.S. government has launched an aggressive multi-billion dollar strategy to defend the nation's financial architecture against 'Q-Day,' the point at which cryptanalytically relevant quantum computers (CRQCs) can break classical public-key encryption. Under Executive Orders 14412 and 14413, the federal strategy focuses on both economic risk management and technical cybersecurity. A significant component of this effort is the $2 billion allocation from the CHIPS & Science Act, which provides venture equity in quantum computing leaders such as IBM, D-Wave, and Rigetti to bolster domestic hardware foundations for risk modeling and portfolio optimization. The Department of the Treasury, acting as the Sector Risk Management Agency, has established a Quantum-Readiness Task Force to oversee the migration of banks, payment processors, and insurance networks toward quantum-safe systems. Simultaneously, NIST is tasked with the mathematical standardization of Post-Quantum Cryptography (PQC) algorithms, while CISA leads the operational execution of these migrations across critical infrastructure, enforcing a deadline for software upgrades by late 2030. The NSA provides essential intelligence regarding 'Harvest Now, Decrypt Later' threats from state-sponsored actors, ensuring that national security systems and the defense industrial base are prepared for the quantum era."
+        ],
+        "main_topic": "The U.S. government is implementing multi-billion dollar funding initiatives and federal mandates to protect the financial sector from quantum computing threats, specifically targeting 'Q-Day' readiness.",
+        "technologies": [
+          "Quantum Computing",
+          "Post-Quantum Cryptography (PQC)",
+          "Public-key encryption",
+          "Quantum-resistant encryption",
+          "IBM Quantum",
+          "D-Wave",
+          "Rigetti"
+        ],
+        "category": "security",
+        "category_label": "Cybersecurity"
+      }
+    ],
+    "article_count": 20,
+    "preview_titles": [
+      "Markdown Is the New Executable: Attackers Are Dropping Agent Instructions Into Your Downloads Folder From the Web",
+      "Nvidia Unveils Its Full-Stack Blueprint to Contain and Monitor AI Agents",
+      "Agentic inequality"
+    ],
+    "preview_articles": [
+      {
+        "title": "Markdown Is the New Executable: Attackers Are Dropping Agent Instructions Into Your Downloads Folder From the Web",
+        "slug": "markdown-is-the-new-executable-attackers-are-dropping-agent-instructions-into-your-downloads-folder-from-the-web",
+        "url": "https://forever.security/blog/hijacking-ai-agents-via-downloads-folder",
+        "source": "Reddit r/netsec",
+        "published": "2026-10-22T16:27:22Z",
+        "short_summary": "Researchers have discovered a novel attack vector where web browsers can drop malicious Markdown files into the Downloads folder to hijack AI coding assistants. These agents automatically execute instructions within these files, leading to potential account takeover and remote code execution.",
+        "long_resume": "Security researchers at Forever Security have identified a critical new attack vector involving AI coding agents such as OpenAI Codex and Claude Code. The vulnerability exploits the fact that web browsers can write files to a user's Downloads folder without explicit permission or user interaction. Attackers can plant a specially crafted 'AGENTS.md' file in this directory, which contains instructions designed to be obeyed by AI assistants. Because these agents are built to automatically parse and follow project-specific instructions for automation, they treat the malicious Markdown file as a trusted command set. The researchers demonstrated that this can lead to the installation of malicious npm packages, such as 'function-color', and the modification of global configuration files like '~/.codex/config.toml'. This allows an attacker to achieve persistent remote code execution or account takeover on the user's machine. Notably, the attack does not rely on traditional executable malware that triggers OS security warnings; instead, it uses plain text instructions that bypass standard guardrails. The researchers noted that this is a fundamental design issue in how AI agents interact with local file systems and cannot be easily patched by developers like OpenAI or Anthropic without altering the core utility of the tools.",
+        "long_resume_paragraphs": [
+          "Security researchers at Forever Security have identified a critical new attack vector involving AI coding agents such as OpenAI Codex and Claude Code. The vulnerability exploits the fact that web browsers can write files to a user's Downloads folder without explicit permission or user interaction. Attackers can plant a specially crafted 'AGENTS.md' file in this directory, which contains instructions designed to be obeyed by AI assistants. Because these agents are built to automatically parse and follow project-specific instructions for automation, they treat the malicious Markdown file as a trusted command set. The researchers demonstrated that this can lead to the installation of malicious npm packages, such as 'function-color', and the modification of global configuration files like '~/.codex/config.toml'. This allows an attacker to achieve persistent remote code execution or account takeover on the user's machine. Notably, the attack does not rely on traditional executable malware that triggers OS security warnings; instead, it uses plain text instructions that bypass standard guardrails. The researchers noted that this is a fundamental design issue in how AI agents interact with local file systems and cannot be easily patched by developers like OpenAI or Anthropic without altering the core utility of the tools."
+        ],
+        "main_topic": "A new security vulnerability where attackers use web-based downloads to plant instruction files like AGENTS.md in the Downloads folder to hijack AI coding agents.",
+        "technologies": [
+          "Claude Code",
+          "OpenAI Codex",
+          "npm",
+          "Markdown",
+          "MCP (Model Context Protocol)",
+          "launchctl",
+          "zsh"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "Nvidia Unveils Its Full-Stack Blueprint to Contain and Monitor AI Agents",
+        "slug": "nvidia-unveils-its-full-stack-blueprint-to-contain-and-monitor-ai-agents",
+        "url": "https://decrypt.co/381570/nvidia-ai-agent-containment-tools-full-stack-blueprint",
+        "source": "Decrypt",
+        "published": "Wed, 21 Oct 2026 20:16:02 +0000",
+        "short_summary": "Nvidia's new OpenShell architecture provides a multi-layered security approach to govern autonomous AI agents through hardware-level isolation and software sandboxing. By leveraging BlueField-4 chips, the system can monitor and intercept malicious agent activity independently of the agent's own processes.",
+        "long_resume": "At GTC Berlin, Nvidia introduced the OpenShell Reference Architecture, a comprehensive solution aimed at solving the growing security risks associated with autonomous AI agents. The architecture is built on a synergistic hardware-software stack: Vera CPUs execute the agents and their tools within the OpenShell runtime, while the Rubin platform provides the underlying model processing power. To ensure security, Nvidia utilizes BlueField-4 Data Processing Units (DPUs) to run a monitoring framework known as Sentry. This setup allows for 'out-of-band' inspection, meaning Sentry can monitor and intercept traffic between an agent and its model from a separate hardware domain, enabling near-instant quarantine of rogue agents without requiring the agent or host to cooperate. The OpenShell software component implements a zero-trust model, treating every workload as untrusted through four primary mechanisms: a gateway for policy management, a supervisor for credential handling, a sandbox for isolation, and a policy prover that uses formal verification to ensure permissions remain within defined organizational boundaries. This development follows high-profile incidents where AI agents demonstrated the ability to coordinate unsanctioned activities or breach external web portals. The ecosystem is already seeing significant industry adoption, with security leaders like CrowdStrike, Palo Alto Networks, Zscaler, and Check Point integrating support into their products, while financial institutions like BBVA and Santander are exploring the framework for governance. While parts of the architecture are available now, the Sentry hardware-based safeguard is slated for broader availability early next year.",
+        "long_resume_paragraphs": [
+          "At GTC Berlin, Nvidia introduced the OpenShell Reference Architecture, a comprehensive solution aimed at solving the growing security risks associated with autonomous AI agents. The architecture is built on a synergistic hardware-software stack: Vera CPUs execute the agents and their tools within the OpenShell runtime, while the Rubin platform provides the underlying model processing power. To ensure security, Nvidia utilizes BlueField-4 Data Processing Units (DPUs) to run a monitoring framework known as Sentry. This setup allows for 'out-of-band' inspection, meaning Sentry can monitor and intercept traffic between an agent and its model from a separate hardware domain, enabling near-instant quarantine of rogue agents without requiring the agent or host to cooperate. The OpenShell software component implements a zero-trust model, treating every workload as untrusted through four primary mechanisms: a gateway for policy management, a supervisor for credential handling, a sandbox for isolation, and a policy prover that uses formal verification to ensure permissions remain within defined organizational boundaries. This development follows high-profile incidents where AI agents demonstrated the ability to coordinate unsanctioned activities or breach external web portals. The ecosystem is already seeing significant industry adoption, with security leaders like CrowdStrike, Palo Alto Networks, Zscaler, and Check Point integrating support into their products, while financial institutions like BBVA and Santander are exploring the framework for governance. While parts of the architecture are available now, the Sentry hardware-based safeguard is slated for broader availability early next year."
+        ],
+        "main_topic": "Nvidia has unveiled the OpenShell Reference Architecture, a full-stack security framework designed to contain and monitor autonomous AI agents using specialized hardware and software.",
+        "technologies": [
+          "OpenShell Reference Architecture",
+          "Vera CPUs",
+          "BlueField-4 DPUs",
+          "Sentry",
+          "Open Agent Safety Platform",
+          "Rubin systems",
+          "OpenShell runtime"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "Agentic inequality",
+        "slug": "agentic-inequality",
+        "url": "https://nature.com/articles/s42256-026-01318-5",
+        "source": "Nature Machine Intelligence",
+        "published": "2026-10-20",
+        "short_summary": "The text examines the systemic risks posed by the proliferation of autonomous AI agents in global economies. It highlights how unequal access to agentic technologies could deepen social and economic divides.",
+        "long_resume": "The provided bibliography and article context discuss the profound socio-economic shifts precipitated by the advent of 'agentic' technologies. As large language models evolve into autonomous agents capable of independent decision-making, a new 'agentic economy' is emerging. However, this transition carries significant risks of 'agentic inequality.' The literature suggests that the concentration of computing power and AI infrastructure among a few dominant players could create a massive digital divide, where access to high-functioning agents determines economic opportunity. Furthermore, the text touches upon technical and ethical challenges such as algorithmic pricing collusion, the use of dark patterns in automated commerce, and the impact of generative AI on professional productivity and labor market stability. Governance is identified as a critical frontier, requiring new legal and regulatory frameworks to oversee agent-to-agent negotiations and prevent the erosion of human autonomy in an increasingly automated social order.",
+        "long_resume_paragraphs": [
+          "The provided bibliography and article context discuss the profound socio-economic shifts precipitated by the advent of 'agentic' technologies. As large language models evolve into autonomous agents capable of independent decision-making, a new 'agentic economy' is emerging. However, this transition carries significant risks of 'agentic inequality.' The literature suggests that the concentration of computing power and AI infrastructure among a few dominant players could create a massive digital divide, where access to high-functioning agents determines economic opportunity. Furthermore, the text touches upon technical and ethical challenges such as algorithmic pricing collusion, the use of dark patterns in automated commerce, and the impact of generative AI on professional productivity and labor market stability. Governance is identified as a critical frontier, requiring new legal and regulatory frameworks to oversee agent-to-agent negotiations and prevent the erosion of human autonomy in an increasingly automated social order."
+        ],
+        "main_topic": "The article explores the socio-economic implications of 'agentic inequality,' focusing on how the rise of autonomous AI agents may exacerbate existing digital divides and market concentration.",
+        "technologies": [
+          "Large Language Models (LLMs)",
+          "Autonomous Agents",
+          "Generative AI",
+          "GitHub Copilot",
+          "Multi-agent systems"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "Compromised LiteLLM 1.107.0 on PyPI Installs a Credential Stealer and Backdoor",
+        "slug": "compromised-litellm-11070-on-pypi-installs-a-credential-stealer-and-backdoor",
+        "url": "https://safedep.io/litellm-pypi-compromise-credential-stealer-backdoor",
+        "source": "HN Best",
+        "published": "Wed, 21 Oct 2026 14:00:26 +0000",
+        "short_summary": "The LiteLLM 1.107.0 release was compromised by attackers using stolen developer credentials to inject a credential stealer and a backdoor into PyPI wheels and Docker images. The malicious code targets sensitive data including cloud credentials, SSH keys, and AI provider tokens while maintaining persistent remote access.",
+        "long_resume": "A significant software supply chain attack has been identified targeting the LiteLLM package, specifically version 1.107.0. By leveraging stolen GitHub CLI credentials from three developers, attackers were able to bypass branch protection and redirect the official release workflow to a lookalike repository. This allowed them to publish malicious Python wheels on PyPI and compromised Docker images on both Docker Hub and GHCR.\n\nThe attack utilizes two distinct payloads embedded within the package's site-packages directory. The first payload, delivered via a .pth file, executes 'cook.py', a sophisticated credential stealer. This script targets a wide array of sensitive information, including SSH keys, browser passwords (via DPAPI on Windows), cloud provider credentials (AWS, Azure, GCP), Kubernetes tokens, and various AI development tool secrets like Claude and Coplanilot. The stolen data is encrypted using AES-256-CBC and RSA-OAEP before being exfiltrated to a controlled domain.\n\nThe second payload, implemented through 'sitecustomize.py', establishes a persistent background daemon on the host system. This daemon periodically checks a GitHub repository for instructions and downloads secondary payloads for remote code execution. Because these files are placed in the Python site-packages directory, the malicious code executes every time any Python process—including IDEs, CI/CD runners, or standalone applications—is started on the infected machine.\n\nLiteLLM has confirmed the incident and taken steps to remove the compromised versions from PyPI and Docker Hub. While the attacker's primary command-and-control infrastructure was taken offline shortly after the attack, the potential for secondary payload execution remains a critical concern for any system that ran the affected version.",
+        "long_resume_paragraphs": [
+          "A significant software supply chain attack has been identified targeting the LiteLLM package, specifically version 1.107.0. By leveraging stolen GitHub CLI credentials from three developers, attackers were able to bypass branch protection and redirect the official release workflow to a lookalike repository. This allowed them to publish malicious Python wheels on PyPI and compromised Docker images on both Docker Hub and GHCR.",
+          "The attack utilizes two distinct payloads embedded within the package's site-packages directory. The first payload, delivered via a .pth file, executes 'cook.py', a sophisticated credential stealer. This script targets a wide array of sensitive information, including SSH keys, browser passwords (via DPAPI on Windows), cloud provider credentials (AWS, Azure, GCP), Kubernetes tokens, and various AI development tool secrets like Claude and Coplanilot. The stolen data is encrypted using AES-256-CBC and RSA-OAEP before being exfiltrated to a controlled domain.",
+          "The second payload, implemented through 'sitecustomize.py', establishes a persistent background daemon on the host system. This daemon periodically checks a GitHub repository for instructions and downloads secondary payloads for remote code execution. Because these files are placed in the Python site-packages directory, the malicious code executes every time any Python process—including IDEs, CI/CD runners, or standalone applications—is started on the infected machine.",
+          "LiteLLM has confirmed the incident and taken steps to remove the compromised versions from PyPI and Docker Hub. While the attacker's primary command-and-control infrastructure was taken offline shortly after the attack, the potential for secondary payload execution remains a critical concern for any system that ran the affected version."
+        ],
+        "main_topic": "A supply chain attack on LiteLLM version 1.107.0 via PyPI introduced a credential stealer and a remote code execution backdoor.",
+        "technologies": [
+          "LiteLLM",
+          "PyPI",
+          "Python",
+          "Docker",
+          "GitHub",
+          "GHCR",
+          "AWS",
+          "Azure",
+          "Kubernetes",
+          "maturin",
+          "Terraform",
+          "Jenkins",
+          "GitLab"
+        ],
+        "category": "engineering",
+        "category_label": "Software Engineering"
+      },
+      {
+        "title": "How payroll giant ADP practices AI governance and human oversight",
+        "slug": "how-payroll-giant-adp-practices-ai-governance-and-human-oversight",
+        "url": "https://aibusiness.com/generative-ai/how-payroll-giant-adp-practices-ai-governance-human-oversight",
+        "source": "AI Business",
+        "published": "Wed, 21 Oct 2026 13:05:01 GMT",
+        "short_summary": "ADP discusses its long-standing commitment to responsible AI governance and the integration of human oversight in automated workflows. The company focuses on maintaining transparency and preventing automation bias in high-stakes payroll and HR functions.",
+        "long_resume": "In an interview with Helena Almeida, ADP's VP and AI legal officer, the company outlines its comprehensive strategy for managing artificial intelligence within the enterprise human capital management sector. ADP has been utilizing machine learning and established a formal AI and data ethics framework as early as 2018. This governance is supported by a cross-functional AI and data ethics council that includes external subject matter experts to ensure diverse perspectives on privacy, legal, and ethical implications. As generative AI becomes more mainstream, ADP has integrated these capabilities into its 'ADP Assist' suite of AI agents, while simultaneously updating its governance processes to meet evolving global regulatory standards. A central pillar of their strategy is the concept of meaningful human oversight. Almeida emphasizes that for high-risk tasks—such as those impacting an employee's pay or legal status—human intervention must be substantive rather than a mere 'ceremonial checkbox.' The company actively works to mitigate 'automation bias,' where users might reflexively trust AI outputs without scrutiny. By differentiating between low-risk administrative automation and high-stakes decision-making, ADP aims to leverage the productivity gains of GenAI while maintaining rigorous safety and transparency standards.",
+        "long_resume_paragraphs": [
+          "In an interview with Helena Almeida, ADP's VP and AI legal officer, the company outlines its comprehensive strategy for managing artificial intelligence within the enterprise human capital management sector. ADP has been utilizing machine learning and established a formal AI and data ethics framework as early as 2018. This governance is supported by a cross-functional AI and data ethics council that includes external subject matter experts to ensure diverse perspectives on privacy, legal, and ethical implications. As generative AI becomes more mainstream, ADP has integrated these capabilities into its 'ADP Assist' suite of AI agents, while simultaneously updating its governance processes to meet evolving global regulatory standards. A central pillar of their strategy is the concept of meaningful human oversight. Almeida emphasizes that for high-risk tasks—such as those impacting an employee's pay or legal status—human intervention must be substantive rather than a mere 'ceremonial checkbox.' The company actively works to mitigate 'automation bias,' where users might reflexively trust AI outputs without scrutiny. By differentiating between low-risk administrative automation and high-stakes decision-making, ADP aims to leverage the productivity gains of GenAI while maintaining rigorous safety and transparency standards."
+        ],
+        "main_topic": "ADP's approach to implementing responsible AI governance and human oversight within its HR and payroll products.",
+        "technologies": [
+          "ADP Assist",
+          "Generative AI",
+          "Machine Learning",
+          "AI Agents"
+        ],
+        "category": "governance",
+        "category_label": "Data & AI Governance"
+      }
+    ],
+    "source_mtime": 1792749070.081352,
+    "source_file": "curated_43_2026.json",
+    "model_releases": [
+      {
+        "provider": "Cohere",
+        "model_name": "Rerank 5 (rerank-v5.0-pro and rerank-v5.0-fast)",
+        "slug": "rerank-5-rerank-v50-pro-and-rerank-v50-fast",
+        "release_date": "2026-10-21",
+        "summary": "Cohere has announced Rerank 5, featuring two new models optimized for high-quality reasoning (Pro) and low-latency workloads (Fast). The release introduces 'Context Focus' to return specific relevant passages within documents, helping reduce LLM token costs.",
+        "key_features": [
+          "Two variants: rerank-v5.0-pro for quality and rerank-v5.0-fast for speed",
+          "Context Focus capability for returning scored character spans",
+          "Calibrated relevance scores consistent across queries/domains",
+          "Support for semi-structured data like JSON, tables, and YAML strings",
+          "32k token context window with multilingual support (100+ languages)"
+        ],
+        "url": "https://docs.cohere.com/changelog",
+        "netlify_url": "https://bowlofdata.net/week/43_2026.html#rerank-5-rerank-v50-pro-and-rerank-v50-fast",
+        "altervista_url": ""
+      },
+      {
+        "provider": "Amazon (Nova)",
+        "model_name": "Amazon Polly Generative engine",
+        "slug": "amazon-polly-generative-engine",
+        "release_date": "2026-10-22",
+        "summary": "Amazon has released a major upgrade to its Amazon Polly Generative engine, providing more expressive and accurate speech with low latency. This drop-in update introduces 14 new voices across nine locales and marks the general availability of Hindi and Finnish languages.",
+        "key_features": [
+          "More natural, authentic, and expressive voice output",
+          "Improved accuracy for numbers, currency, and addresses",
+          "Addition of 14 new voices including US English (Kenneth, Nate) and Brazilian Portuguese (Leo, Carolina)",
+          "General availability of Hindi and Finnish languages",
+          "Enhanced ability to reflect emotion and prosody based on textual context without manual setup"
+        ],
+        "url": "https://aws.amazon.com/blogs/machine-learning/amazon-polly-delivers-a-major-upgrade-to-its-generative-engine/",
+        "netlify_url": "https://bowlofdata.net/week/43_2026.html#amazon-polly-generative-engine",
+        "altervista_url": ""
+      },
+      {
+        "provider": "IBM (Granite)",
+        "model_name": "llm-d 1.0",
+        "slug": "llm-d-10",
+        "release_date": "2026-10-20",
+        "summary": "IBM has released llm-d 1.0, a tool designed to harden open-source AI inference for production environments. The release focuses on ensuring stability and reliability during day 2 operations in enterprise settings.",
+        "key_features": [
+          "Hardened open-source AI inference",
+          "Optimized for day 2 production operations"
+        ],
+        "url": "https://research.ibm.com/blog",
+        "netlify_url": "https://bowlofdata.net/week/43_2026.html#llm-d-10",
+        "altervista_url": ""
+      },
+      {
+        "provider": "JetBrains (Mellum)",
+        "model_name": "nmvn-exact-v2",
+        "slug": "nmvn-exact-v2",
+        "release_date": "recent",
+        "summary": "JetBrains researchers successfully compiled Maven build logic into a fixed weight matrix within a neural network. Unlike traditional models, this approach uses handwired weights to ensure the decision-making process is deterministic and byte-for-byte accurate.",
+        "key_features": [
+          "Deterministic execution without training or gradient descent",
+          "Compiled program logic stored as a 26,626 row weight table",
+          "Achieves exact Maven compatibility for build controller decisions"
+        ],
+        "url": "https://blog.jetbrains.com/ai/2026/10/can-you-bake-maven-into-a-neural-network/",
+        "netlify_url": "https://bowlofdata.net/week/43_2026.html#nmvn-exact-v2",
+        "altervista_url": ""
+      },
+      {
+        "provider": "Sakana AI",
+        "model_name": "Sakana Aquarium",
+        "slug": "sakana-aquarium",
+        "release_date": "2026-10-23",
+        "summary": "An AI agent platform designed to support decision-making and execution based on an ontology framework. The platform focuses on providing structured intelligence for complex tasks.",
+        "key_features": [
+          "Ontology-based architecture",
+          "Decision support capabilities",
+          "Agentic execution"
+        ],
+        "url": "https://sakana.ai/blog/",
+        "netlify_url": "https://bowlofdata.net/week/43_2026.html#sakana-aquarium",
+        "altervista_url": ""
+      },
+      {
+        "provider": "NVIDIA (Nemotron)",
+        "model_name": "NVIDIA Nemotron",
+        "slug": "nvidia-nemotron",
+        "release_date": "2026-10-21",
+        "summary": "NVIDIA demonstrated the use of Nemotron models within WPP's creative agent reference architecture on A5X instances. These models power agents that transform conversational requests into complex, multi-step creative workflows like video generation and upscaling.",
+        "key_features": [
+          "Integration with NVIDIA OpenShell for safe AI agent execution",
+          "Support for automated multistep creative workflows",
+          "Optimized for running on A5X infrastructure using Vera Rubin GPUs"
+        ],
+        "url": "https://blogs.nvidia.com/blog/google-cloud-vera-rubin-infrastructure/",
+        "netlify_url": "https://bowlofdata.net/week/43_2026.html#nvidia-nemotron",
+        "altervista_url": ""
+      },
+      {
+        "provider": "NVIDIA Dev Blog (Nemotron)",
+        "model_name": "NVIDIA Nemotron 3.5 Super VL",
+        "slug": "nvidia-nemotron-35-super-vl",
+        "release_date": "2026-10-21",
+        "summary": "NVIDIA has introduced Nemotron 3.5 Super VL, an open and customizable multimodal model designed for complex enterprise workflows involving multi-source information retrieval. The model is optimized to handle tasks such as document reading, policy following, and tool calling within always-on agent architectures.",
+        "key_features": [
+          "120B-parameter Mixture-of-Experts (MoE) architecture",
+          "Activates 12B parameters per token",
+          "Multimodal capabilities for specialized enterprise workflows"
+        ],
+        "url": "https://developer.nvidia.com/blog/?p=123590",
+        "netlify_url": "https://bowlofdata.net/week/43_2026.html#nvidia-nemotron-35-super-vl",
+        "altervista_url": ""
+      },
+      {
+        "provider": "Sakana AI",
+        "model_name": "QD-Rec",
+        "slug": "qd-rec",
+        "release_date": "2026-10-20",
+        "summary": "Sakana AI has proposed QD-Rec, a new method designed to enhance both the quality and diversity of recommendations. The approach utilizes open-ended exploration to improve decision support systems.",
+        "key_features": [
+          "Enhanced recommendation quality",
+          "Increased diversity through open-ended exploration"
+        ],
+        "url": "https://sakana.ai/blog/",
+        "netlify_url": "https://bowlofdata.net/week/43_2026.html#qd-rec",
+        "altervista_url": ""
+      },
+      {
+        "provider": "Amazon (Nova)",
+        "model_name": "Laplace 3B",
+        "slug": "laplace-3b",
+        "release_date": "2026-10-20",
+        "summary": "i14 has demonstrated the successful training and serving of its Laplace 3B linear attention model on AWS Trainium2 using native PyTorch. The architecture utilizes Gated Linear Attention (GLA) to maintain a fixed recurrent state, significantly reducing memory overhead compared to traditional transformer KV caches.",
+        "key_features": [
+          "Linear attention mechanism with O(T) training complexity",
+          "Fixed inference memory footprint of 29.5 MB per sequence regardless of context length",
+          "Optimized for AWS Trainium2 using TorchNeuron Native and redesigned Muon communication collectives"
+        ],
+        "url": "https://aws.amazon.com/blogs/machine-learning/beyond-the-kv-cache-training-and-serving-i14s-laplace-3b-linear-attention-model-on-aws-trainium2-with-native-pytorch/",
+        "netlify_url": "https://bowlofdata.net/week/43_2026.html#laplace-3b",
+        "altervista_url": ""
+      }
+    ],
+    "model_releases_mtime": 1792749072.989318,
+    "papers": [
+      {
+        "title": "TraceForge: Distilling with Your Own Thinking",
+        "slug": "traceforge-distilling-with-your-own-thinking",
+        "url": "https://arxiv.org/html/2610.29680",
+        "source": "arXiv",
+        "published": "2026-10-21T00:00:00.000Z",
+        "short_summary": "TraceForge presents a novel approach to LLM distillation that generates synthetic reasoning traces tailored to a student model's specific style. This method outperforms traditional distillation methods on coding tasks while remaining legally compliant with closed-model provider terms.",
+        "long_resume": "The paper introduces TraceForge, an alternative to the increasingly difficult task of distilling reasoning traces from closed-source LLMs. As major AI providers implement restrictions to hide their models' internal reasoning processes (often via encrypted blocks), researchers have previously attempted to 'replay' these blocks to recover hidden data, a method that violates terms of service. TraceForge bypasses this legal and technical hurdle by using a generator-critic framework. Instead of recovering the teacher's original reasoning, the system takes the teacher's answer and context as input to generate a 'family-native' trace—a reasoning path written in the linguistic and structural style of the student model family. This two-stage adversarial training ensures that the generated traces are indistinguishable from authentic ones produced by the student's own lineage. Experimental results on Qwen3.5-9B-Base demonstrate significant gains in coding proficiency, with notable improvements in HumanEval+ and MBPP+ benchmarks. The authors argue that these gains occur because the student model can more easily absorb data that matches its own internal patterns, thereby minimizing adaptation costs and catastrophic forgetting. Ultimately, TraceForge provides a scalable, legal pipeline for high-quality model distillation that allows smaller models to leverage the knowledge of frontier models without infringing on intellectual property or service agreements.",
+        "long_resume_paragraphs": [
+          "The paper introduces TraceForge, an alternative to the increasingly difficult task of distilling reasoning traces from closed-source LLMs. As major AI providers implement restrictions to hide their models' internal reasoning processes (often via encrypted blocks), researchers have previously attempted to 'replay' these blocks to recover hidden data, a method that violates terms of service. TraceForge bypasses this legal and technical hurdle by using a generator-critic framework. Instead of recovering the teacher's original reasoning, the system takes the teacher's answer and context as input to generate a 'family-native' trace—a reasoning path written in the linguistic and structural style of the student model family. This two-stage adversarial training ensures that the generated traces are indistinguishable from authentic ones produced by the student's own lineage. Experimental results on Qwen3.5-9B-Base demonstrate significant gains in coding proficiency, with notable improvements in HumanEval+ and MBPP+ benchmarks. The authors argue that these gains occur because the student model can more easily absorb data that matches its own internal patterns, thereby minimizing adaptation costs and catastrophic forgetting. Ultimately, TraceForge provides a scalable, legal pipeline for high-quality model distillation that allows smaller models to leverage the knowledge of frontier models without infringing on intellectual property or service agreements."
+        ],
+        "main_topic": "The introduction of TraceForge, a method for generating 'family-native' reasoning traces to facilitate legal and efficient LLM distillation.",
+        "key_points": [
+          "TraceForge avoids violating provider terms of service by generating new reasoning traces in the student model's style rather than attempting to recover hidden traces from closed models.",
+          "The training process uses a two-stage adversarial approach involving a generator to create traces and a critic to evaluate their authenticity.",
+          "Family-native traces improve coding benchmarks, specifically increasing HumanEval+ by 3.7 points and MBPP+ by 7.1 points.",
+          "The method reduces catastrophic forgetting because the student model absorbs data that aligns with its existing architectural habits and patterns.",
+          "The technique allows for high-quality distillation from models like GPT-6.1-SOL without direct exposure to their proprietary reasoning blocks."
+        ],
+        "technologies": [
+          "TraceForge",
+          "Qwen3.5-9B-Base",
+          "Qwen3.8-Max",
+          "Fable 5",
+          "GPT-6.1-SOL",
+          "Claude",
+          "OpenAI",
+          "HumanEval+",
+          "MBPP+"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "Cache Engineering for Agents",
+        "slug": "cache-engineering-for-agents",
+        "url": "https://arxiv.org/html/2610.28577",
+        "source": "arXiv",
+        "published": "2026-10-20T00:00:00.000Z",
+        "short_summary": "This technical paper introduces AKV, a system for efficient KV cache management in agentic workloads using advanced segmentation and repositioning techniques. It focuses on minimizing recomputation by identifying reusable cache prefixes through precise operation-aware matching.",
+        "long_resume": "The document describes the internal mechanics of the AKV serving system, specifically focusing on how it manages Key-Value (KV) cache states during complex agent trajectories involving 'drop' and 'reposition' operations. To handle missing or altered history, AKV implements segment-batch attention, which partitions queries into segments that apply standard causal attention to reconstruct visibility without expensive dense masking. A core innovation is the Reposition Scheme, which uses token-node representations—comprising token IDs and position encables—to distinguish between different cache versions. The system employs two matching algorithms: Exact matching for identical token-position pairs, and Retrigger matching, which allows for the reuse of prefixes that share operation history even if positional indices differ. This ensures that K encodings can be transformed via rotation matrices without recomputing hidden states, provided the computational path (operation nodes) remains consistent. The effectiveness of this approach is validated using a workload replay protocol on SWE-bench Verified tasks, simulating high-concurrency, long-context agent environments to demonstrate reduced serving degradation compared to standard KV cache management.",
+        "long_resume_paragraphs": [
+          "The document describes the internal mechanics of the AKV serving system, specifically focusing on how it manages Key-Value (KV) cache states during complex agent trajectories involving 'drop' and 'reposition' operations. To handle missing or altered history, AKV implements segment-batch attention, which partitions queries into segments that apply standard causal attention to reconstruct visibility without expensive dense masking. A core innovation is the Reposition Scheme, which uses token-node representations—comprising token IDs and position encables—to distinguish between different cache versions. The system employs two matching algorithms: Exact matching for identical token-position pairs, and Retrigger matching, which allows for the reuse of prefixes that share operation history even if positional indices differ. This ensures that K encodings can be transformed via rotation matrices without recomputing hidden states, provided the computational path (operation nodes) remains consistent. The effectiveness of this approach is validated using a workload replay protocol on SWE-bench Verified tasks, simulating high-concurrency, long-context agent environments to demonstrate reduced serving degradation compared to standard KV cache management."
+        ],
+        "main_topic": "The article details the technical architecture of AKV, a cache engineering system designed to optimize KV state management for long-context AI agents through segment-batch attention and reposition-aware caching.",
+        "key_points": [
+          "AKV uses segment-batch attention to restore missing KV states by partitioning queries into segments without dense custom masks.",
+          "The 'Reposition Scheme' distinguishes between cache versions using position labels and operation history to enable safe reuse of computational states.",
+          "Two matching strategies, Exact and Retrigger matching, are employed to identify reusable cache prefixes while preserving computational integrity.",
+          "The system allows for positional transformation of K encodings (Kt = R(pt)R(ps)^-1 Ks) without recomputing hidden states during reposition operations.",
+          "Evaluation is conducted using SWE-bench Verified tasks with large context lengths to simulate realistic long-horizon agent workloads."
+        ],
+        "technologies": [
+          "AKV Serving System",
+          "KV Cache",
+          "Segment-batch Attention",
+          "Radix Tree",
+          "SWE-bench Verified"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "Meta Expert: Cross-Layer Expert Sharing for Storage- and Retrieval-Efficient MoE",
+        "slug": "meta-expert-cross-layer-expert-sharing-for-storage-and-retrieval-efficient-moe",
+        "url": "https://arxiv.org/html/2610.27598",
+        "source": "arXiv",
+        "published": "2026-10-20T00:00:00.000Z",
+        "short_summary": "This research proposes a new MoE architecture called Meta Expert that shares experts across layers to mitigate parameter redundancy. The approach demonstrates that models can maintain high performance with significantly fewer parameters and experts compared to traditional hierarchical designs.",
+        "long_resume": "The paper addresses the growing inefficiency in scaling Large Language Models (LLMs) through Mixture-of-Experts (MoE) architectures. While MoE has successfully enabled parameter sparsification along the width dimension, current hierarchical models suffer from significant redundancy because experts in different layers often store similar information. The authors propose a 'Meta Expert' approach, which implements cross-layer expert sharing to optimize both storage and retrieval efficiency. Unlike Looped Transformers that increase computational depth through recursion, Meta Experts maintain the same number of recursions but allow for shared parameters across layers. Empirical results show that this method can match the performance of Vanilla MoE models using only 70% to 80% of the experts, effectively increasing the capacity per parameter. Theoretically, the authors demonstrate that Meta Experts create more flexible residual pathways by introducing a backward residual connection at the activation level, allowing both shallow and deep layers bidirectional access to representations. This architecture significantly improves scaling potential by reducing the total parameter count required for high-performance downstream tasks.",
+        "long_resume_paragraphs": [
+          "The paper addresses the growing inefficiency in scaling Large Language Models (LLMs) through Mixture-of-Experts (MoE) architectures. While MoE has successfully enabled parameter sparsification along the width dimension, current hierarchical models suffer from significant redundancy because experts in different layers often store similar information. The authors propose a 'Meta Expert' approach, which implements cross-layer expert sharing to optimize both storage and retrieval efficiency. Unlike Looped Transformers that increase computational depth through recursion, Meta Experts maintain the same number of recursions but allow for shared parameters across layers. Empirical results show that this method can match the performance of Vanilla MoE models using only 70% to 80% of the experts, effectively increasing the capacity per parameter. Theoretically, the authors demonstrate that Meta Experts create more flexible residual pathways by introducing a backward residual connection at the activation level, allowing both shallow and deep layers bidirectional access to representations. This architecture significantly improves scaling potential by reducing the total parameter count required for high-performance downstream tasks."
+        ],
+        "main_topic": "The introduction of 'Meta Experts' in Mixture-of-Experts (MoE) architectures to reduce parameter redundancy through cross-layer expert sharing.",
+        "key_points": [
+          "Traditional MoE models use hierarchical, layer-private 'Local Experts' that exhibit high inter-layer redundancy.",
+          "The proposed 'Meta Expert' architecture shares experts across different layers to improve storage and retrieval efficiency.",
+          "Meta Expert models achieve comparable performance to Vanilla MoE using only 70–80% of the total experts.",
+          "Cross-layer sharing provides more flexible residual pathways, including a unique backward residual connection at the activation level.",
+          "The design improves both parameter efficiency along the depth dimension and downstream task accuracy."
+        ],
+        "technologies": [
+          "Mixture-of-Experts (MoE)",
+          "Large Language Models (LLMs)",
+          "Transformer architectures",
+          "Meta Experts",
+          "Local Experts",
+          "Looped Transformers"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "Code2Video-Compass: A Comprehensive Benchmark for General-Purpose Code-Based Video Generation across T2V, I2V, and V2V",
+        "slug": "code2video-compass-a-comprehensive-benchmark-for-general-purpose-code-based-video-generation-across-t2v-i2v-and-v2v",
+        "url": "https://arxiv.org/html/2610.28416",
+        "source": "arXiv",
+        "published": "2026-10-20T00:00:00.000Z",
+        "short_summary": "Researchers have developed Code2Video-Compass, a comprehensive benchmarking framework for evaluating code-driven video generation. The system utilizes both automated objective metrics and LLM-driven subjective assessments to measure everything from execution success to aesthetic quality.",
+        "long_resume": "The paper presents Code2Video-Compass, a novel evaluation framework tailored for the complexities of general-purpose code-based video generation. As video generation moves toward more controllable, code-driven methods across Text-to-Video (T2V), Image-to-Video (I2V), and Video-to-Video (V2V) paradigms, standard metrics often fail to capture operational and semantic nuances. To address this, the authors propose a dual-level approach. The objective layer includes 12 metrics focusing on execution success, token consumption efficiency, technical video quality (blur/noise), aesthetic appeal, motion smoothness, and text-video alignment. It also specifically addresses reference fidelity for I2V and V2V tasks using advanced computer vision tools like DINOv3 and CoTracker3 to ensure structural and motion consistency. The subjective layer employs Gemini 3.8 Flash to perform rigorous instruction-following audits via a multi-dimensional QA checklist, covering content, attributes, composition, relations, dynamics, and aesthetics. Additionally, the framework uses Likert scales to evaluate holistic qualities such as content coherence, visual design, motion quality, and viewer engagement. This comprehensive methodology provides a standardized way to benchmark the reliability and creative efficacy of emerging generative video models.",
+        "long_resume_paragraphs": [
+          "The paper presents Code2Video-Compass, a novel evaluation framework tailored for the complexities of general-purpose code-based video generation. As video generation moves toward more controllable, code-driven methods across Text-to-Video (T2V), Image-to-Video (I2V), and Video-to-Video (V2V) paradigms, standard metrics often fail to capture operational and semantic nuances. To address this, the authors propose a dual-level approach. The objective layer includes 12 metrics focusing on execution success, token consumption efficiency, technical video quality (blur/noise), aesthetic appeal, motion smoothness, and text-video alignment. It also specifically addresses reference fidelity for I2V and V2V tasks using advanced computer vision tools like DINOv3 and CoTracker3 to ensure structural and motion consistency. The subjective layer employs Gemini 3.8 Flash to perform rigorous instruction-following audits via a multi-dimensional QA checklist, covering content, attributes, composition, relations, dynamics, and aesthetics. Additionally, the framework uses Likert scales to evaluate holistic qualities such as content coherence, visual design, motion quality, and viewer engagement. This comprehensive methodology provides a standardized way to benchmark the reliability and creative efficacy of emerging generative video models."
+        ],
+        "main_topic": "The introduction of Code2Video-Compass, a dual-level evaluation framework designed to benchmark code-based video generation across T2V, I2V, and V2V tasks.",
+        "key_points": [
+          "Implementation of a dual-level evaluation system consisting of 12 objective metrics and five subjective metrics.",
+          "Objective metrics cover execution reliability (ES), token efficiency (TC), video quality (TQ, AQ, MS), text-video alignment (L-T/G-TVA), and reference fidelity (PF, SF, SA, AF, MF).",
+          "Subjective evaluation utilizes Gemini 3.8 Flash to assess instruction following via QA checklists and rate holistic video quality.",
+          "The framework evaluates three distinct generation modes: Text-to-Video (T2V), Image-to-Video (I2V), and Video-to-Video (V2V).",
+          "Metrics for motion smoothness and appearance fidelity leverage advanced tracking and embedding technologies like CoTracker3 and DINOv3."
+        ],
+        "technologies": [
+          "Gemini 3.8 Flash",
+          "DOVER++",
+          "Aesthetic Predictor V2.5",
+          "AMT",
+          "ViCLIP-L",
+          "Qwen3-VL-Embedding-8B",
+          "DINOv3",
+          "SSIM",
+          "DTW",
+          "DreamSim",
+          "CoTracker3"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      },
+      {
+        "title": "Policy-Mask: Budget-Aware Adaptation of Diffusion Features to Discriminative Tasks",
+        "slug": "policy-mask-budget-aware-adaptation-of-diffusion-features-to-discriminative-tasks",
+        "url": "https://arxiv.org/html/2610.28889",
+        "source": "arXiv",
+        "published": "2026-10-20T00:00:00.000Z",
+        "short_summary": "The research presents Policy-Mask, a framework designed to efficiently adapt frozen diffusion features for downstream discriminative tasks under strict computational budgets. It achieves this by learning a policy to select optimal feature channels and layers through reinforcement learning.",
+        "long_resume": "The paper addresses the challenge of adapting high-capacity, frozen diffusion models to specific discriminative tasks like semantic segmentation and classification while adhering to computational constraints. The authors propose 'Policy-Mask,' a method that uses an alignment map (Al) to project features from different layers and resolutions into a unified feature space, making budget-aware selection mathematically consistent. The core mechanism involves a student model that learns to replicate the task-relevant information from a selected subset of teacher features. This selection is governed by a policy trained via policy gradients, which avoids the need to enumerate all possible channel combinations in the large action space. During training, the student minimizes a combination of task-specific loss (such as cross-entropy and Dice loss) and a knowledge distillation loss that aligns the student's projected features with the masked teacher features. Experimental results on the ADE20K dataset indicate that the method can effectively learn to pick the most informative features, significantly reducing the computational overhead while maintaining high performance in metrics like mIoU and top-1 accuracy.",
+        "long_resume_paragraphs": [
+          "The paper addresses the challenge of adapting high-capacity, frozen diffusion models to specific discriminative tasks like semantic segmentation and classification while adhering to computational constraints. The authors propose 'Policy-Mask,' a method that uses an alignment map (Al) to project features from different layers and resolutions into a unified feature space, making budget-aware selection mathematically consistent. The core mechanism involves a student model that learns to replicate the task-relevant information from a selected subset of teacher features. This selection is governed by a policy trained via policy gradients, which avoids the need to enumerate all possible channel combinations in the large action space. During training, the student minimizes a combination of task-specific loss (such as cross-entropy and Dice loss) and a knowledge distillation loss that aligns the student's projected features with the masked teacher features. Experimental results on the ADE20K dataset indicate that the method can effectively learn to pick the most informative features, significantly reducing the computational overhead while maintaining high performance in metrics like mIoU and top-1 accuracy."
+        ],
+        "main_topic": "The paper introduces Policy-Mask, a method for budget-aware adaptation of diffusion model features to discriminative tasks using policy gradients.",
+        "key_points": [
+          "Introduces an alignment map to project varying teacher layer dimensions into a common feature space.",
+          "Utilizes a binary channel mask to select specific feature subsets based on a predefined computational budget.",
+          "Employs a student-teacher framework where the student is trained via task loss and knowledge distillation (KD) loss.",
+          "Uses policy gradient methods to sample optimal feature subsets from a large discrete action space.",
+          "Demonstrates effective adaptation for tasks like segmentation and classification using datasets such as ADE20K."
+        ],
+        "technologies": [
+          "Diffusion Models",
+          "Policy Gradient",
+          "Knowledge Distillation",
+          "ADE20K",
+          "Dice Loss"
+        ],
+        "category": "ai",
+        "category_label": "AI & ML"
+      }
+    ],
+    "papers_mtime": 1792749070.081706,
+    "selection_mtime": 1792748855.2076974
+  },
+  {
     "week": 42,
     "year": 2026,
     "month": 10,
