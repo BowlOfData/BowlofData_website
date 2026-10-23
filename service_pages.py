@@ -13,6 +13,61 @@ from __future__ import annotations
 
 SERVICE_PAGES: list[dict] = [
     {
+        "slug": "ai-adoption",
+        "offer": "adoption",
+        "subject": "build",
+        "nav_name": "AI adoption readiness sprint",
+        "title": "AI Adoption Consulting: Readiness Sprint",
+        "meta": ("A fixed-scope sprint to help your company adopt AI: choose use cases, "
+                 "check data and security readiness, run one pilot, leave a written roadmap."),
+        "h1": "AI adoption readiness sprint",
+        "lede": ("Adopting AI starts with a choice: which use case, on which data, and how "
+                 "you will know it works. In about two weeks we help you choose where to "
+                 "start, check that you are ready, and test one idea on a small pilot, so "
+                 "the next step is a decision and not a guess."),
+        "facts": "Fixed scope · typically 2 weeks",
+        "get": [
+            "Two or three candidate use cases, chosen with you and checked against your own data",
+            "A readiness check: where the data lives, and what access and security it needs",
+            "One small pilot, measured against real questions from your team",
+            "A written roadmap: what to build, what to secure and what to leave, in order",
+        ],
+        "fit_title": "When this fits",
+        "fit": [
+            "You want to use AI but have more ideas than capacity to test them.",
+            "You are not sure whether your data and security setup are ready.",
+            "You want evidence from a small pilot before you commit to a larger project.",
+        ],
+        "steps": [
+            ("Choose the use cases",
+             "We work with your team to shortlist two or three, and look at the data each one would rely on."),
+            ("Check readiness",
+             "We look at where the data lives, who can reach it, and what security it needs before an AI system touches it."),
+            ("Pilot and roadmap",
+             "One small pilot is run against real questions from your team, and you receive a written roadmap in order of priority."),
+        ],
+        "faq": [
+            ("What is an AI adoption readiness sprint?",
+             "A short, fixed-scope engagement that takes you from \u201cwe should use AI\u201d to "
+             "a concrete next step. You choose use cases, check data and security readiness, "
+             "see one small pilot measured on real questions, and leave with a written roadmap."),
+            ("Does our data need to be ready before we start?",
+             "No. Readiness is one of the things the sprint checks, so you can start before "
+             "everything is in order."),
+            ("Is the pilot production software?",
+             "No. The pilot is small and exists to show whether an idea works on your data. "
+             "Turning it into a production system is scoped separately."),
+            ("What happens after the sprint?",
+             "The roadmap names the next steps in order. Where they involve a retrieval "
+             "pipeline, a private model or a security review, those are separate, scoped "
+             "engagements, and you are free to do them with us or without us."),
+            ("How long does it take, and what does it cost?",
+             "The sprint is fixed scope and typically two weeks. You receive a one-page "
+             "written scope first, and nothing starts until you agree to it."),
+        ],
+        "related": ["rag-pipelines", "private-ai", "ai-security-review"],
+    },
+    {
         "slug": "rag-pipelines",
         "offer": "build",
         "subject": "build",
@@ -62,7 +117,7 @@ SERVICE_PAGES: list[dict] = [
              "The sprint is fixed scope and typically two weeks. You receive a one-page written "
              "scope first, and nothing starts until you agree to it."),
         ],
-        "related": ["private-ai", "ai-security-review"],
+        "related": ["ai-adoption", "private-ai", "ai-security-review"],
     },
     {
         "slug": "private-ai",
@@ -115,7 +170,7 @@ SERVICE_PAGES: list[dict] = [
              "It is scoped per project. You receive a one-page written scope with deliverables "
              "and timing, and nothing starts until you agree to it."),
         ],
-        "related": ["rag-pipelines", "ai-guardrails"],
+        "related": ["ai-adoption", "rag-pipelines", "ai-guardrails"],
     },
     {
         "slug": "ai-guardrails",
