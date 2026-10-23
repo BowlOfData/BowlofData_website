@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page_title }} · {{ site_name }}{% endblock %}
+{% block og_title %}{{ page_title }}{% endblock %}
+{% block og_description %}{{ meta }}{% endblock %}
+{% block og_url %}{{ canonical_url }}{% endblock %}
+
+{% block content %}
+
+<div class="services-hero">
+  <div class="services-hero-inner">
+    <span class="services-hero-badge">Illustrative sample</span>
+    <h1 class="services-hero-title">{{ h1 }}</h1>
+    <p class="services-hero-sub">{{ lede }}</p>
+    <div class="services-hero-ctas">
+      <a href="{{ contact_href }}?subject=secure" class="cta-primary">Start a conversation</a>
+      <a href="{{ review_href }}" class="cta-secondary">About the review</a>
+    </div>
+  </div>
+</div>
+
+<div class="services-body">
+
+  <p class="sample-banner" role="note">{{ banner }}</p>
+
+  <section class="services-section">
+    <h2 class="services-section-title">{{ system_title }}</h2>
+    <p class="services-lede">{{ system }}</p>
+  </section>
+
+  <section class="services-section">
+    <h2 class="services-section-title">{{ tools_title }}</h2>
+    <div class="svc-table-wrap">
+      <table class="svc-table">
+        <thead><tr>{% for c in tools_cols %}<th scope="col">{{ c }}</th>{% endfor %}</tr></thead>
+        <tbody>
+          {% for row in tools %}<tr>{% for cell in row %}{% if loop.first %}<th scope="row" data-label="{{ tools_cols[0] }}">{{ cell }}</th>{% else %}<td data-label="{{ tools_cols[loop.index0] }}">{{ cell }}</td>{% endif %}{% endfor %}</tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="services-section">
+    <h2 class="services-section-title">{{ findings_title }}</h2>
+    <div class="svc-findings">
+      {% for f in findings %}
+      <article class="svc-finding">
+        <p class="svc-finding-head"><span class="svc-sev svc-sev--{{ f.sev | lower }}">{{ f.sev }}</span> <span class="svc-finding-num">F{{ loop.index }}</span></p>
+        <h3 class="svc-finding-title">{{ f.title }}</h3>
+        <p class="svc-finding-text">{{ f.what }}</p>
+        <p class="svc-finding-fix"><strong>Recommended:</strong> {{ f.fix }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="services-section">
+    <h2 class="services-section-title">{{ logblock_title }}</h2>
+    <div class="pricing pricing--two">
+      <div class="plan">
+        <div class="plan-name">Log</div>
+        <ul class="plan-features">{% for x in log %}<li>{{ x }}</li>{% endfor %}</ul>
+      </div>
+      <div class="plan">
+        <div class="plan-name">Block</div>
+        <ul class="plan-features">{% for x in block %}<li>{{ x }}</li>{% endfor %}</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-section">
+    <h2 class="services-section-title">{{ order_title }}</h2>
+    <div class="about-steps">
+      {% for x in order %}
+      <div class="about-step">
+        <div class="about-step-num">0{{ loop.index }}</div>
+        <div class="about-step-body"><p class="about-step-text">{{ x }}</p></div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="services-section">
+    <h2 class="services-section-title">{{ limits_title }}</h2>
+    <div class="pricing pricing--one">
+      <div class="plan">
+        <ul class="plan-features">{% for x in limits %}<li>{{ x }}</li>{% endfor %}</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-section">
+    <h2 class="services-section-title">Related</h2>
+    <ul class="svc-related">
+      {% for r in related %}<li><a href="{{ r.href }}">{{ r.name }} →</a></li>
+      {% endfor %}
+      <li><a href="{{ services_href }}">All services →</a></li>
+    </ul>
+  </section>
+
+  <section class="services-cta-section">
+    <h2 class="services-cta-title">Want this for your own system?</h2>
+    <p class="services-cta-sub">Tell us what it is and we&rsquo;ll get back to you within 48 hours.</p>
+    <a href="{{ contact_href }}?subject=secure" class="cta-primary">Get in touch</a>
+  </section>
+
+</div>
+{% endblock %}

@@ -29,7 +29,7 @@ from typing import Any
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from service_pages import SERVICE_PAGES
+from service_pages import SAMPLE_REVIEW, SERVICE_PAGES
 
 # ---------------------------------------------------------------------------
 # Config
@@ -2046,6 +2046,7 @@ def _generate_llms_txt(all_weeks: list[dict], site_url: str, site_name: str, tag
         f"- [Services]({site_url}/services.html): RAG pipelines, private AI, agent and guardrail security, plus LLM model risk review, AI vendor report review and AI governance readiness assessments",
         *[f"  - [{p['nav_name'][0].upper() + p['nav_name'][1:]}]({site_url}/service/{p['slug']}.html): {p['meta']}"
           for p in SERVICE_PAGES],
+        f"  - [Sample AI security review]({site_url}/service/{SAMPLE_REVIEW['slug']}.html): {SAMPLE_REVIEW['meta']}",
         f"- [About]({site_url}/about.html): Mission, topics covered, and how the pipeline works",
         f"- [Team]({site_url}/team.html): About the people and AI behind {site_name}",
         f"- [Maki]({site_url}/maki.html): The open-source multi-agent framework that curates each issue; links to its repository and docs site",
@@ -2561,8 +2562,10 @@ def build() -> None:
             page_title=title, meta=pg["meta"], canonical_url=url, h1=pg["h1"],
             lede=pg["lede"], facts=pg["facts"], get=pg["get"], fit_title=pg["fit_title"],
             fit=pg["fit"], steps=pg["steps"], faq=pg["faq"], subject=pg["subject"],
-            related=[{"href": f"{r}.html", "name": pages_by_slug[r]["nav_name"]}
-                     for r in pg["related"]],
+            related=([{"href": f"{SAMPLE_REVIEW['slug']}.html", "name": "Sample AI security review"}]
+                     if pg["slug"] in ("ai-security-review", "ai-guardrails") else [])
+                    + [{"href": f"{r}.html", "name": pages_by_slug[r]["nav_name"]}
+                       for r in pg["related"]],
             topic_href=f"../topic/{topic_slug}.html", topic_name=topic_name,
             jsonld_str=json.dumps(webpage, ensure_ascii=False),
             faq_jsonld_str=_make_faq_jsonld(pg["faq"]),
@@ -2572,6 +2575,30 @@ def build() -> None:
         )
         (SITE_DIR / "service" / f"{pg['slug']}.html").write_text(html, encoding="utf-8")
     print(f"  Rendered  {len(SERVICE_PAGES)} service page(s) → site/service/")
+
+    # Illustrative findings report (fictional system, labelled as such on the page).
+    sr = SAMPLE_REVIEW
+    sr_url = f"{SITE_URL}/service/{sr['slug']}.html"
+    sr_page = json.loads(_make_webpage_jsonld(
+        "WebPage", f"{sr['title']} · {SITE_NAME}", sr["meta"], sr_url, SITE_URL, SITE_NAME,
+        about=[f"{SITE_URL}/services.html#{sr['offer']}"]))
+    sample_html = env.get_template("sample_review.html").render(
+        **collection_nav, current_page="services",
+        page_title=sr["title"], meta=sr["meta"], canonical_url=sr_url,
+        **{k: sr[k] for k in ("h1", "lede", "banner", "system_title", "system",
+                              "tools_title", "tools_cols", "tools", "findings_title",
+                              "findings", "logblock_title", "log", "block", "order_title",
+                              "order", "limits_title", "limits")},
+        review_href="ai-security-review.html",
+        related=[{"href": f"{r}.html", "name": pages_by_slug[r]["nav_name"]}
+                 for r in sr["related"]],
+        jsonld_str=json.dumps(sr_page, ensure_ascii=False),
+        breadcrumb_jsonld_str=_make_breadcrumb_jsonld([
+            (SITE_NAME, f"{SITE_URL}/"), ("Services", f"{SITE_URL}/services.html"),
+            ("Sample AI security review", sr_url)]),
+    )
+    (SITE_DIR / "service" / f"{sr['slug']}.html").write_text(sample_html, encoding="utf-8")
+    print(f"  Rendered  sample review → site/service/{sr['slug']}.html")
 
     for cat in hub_slugs:
         hub = hubs[cat]
@@ -2711,7 +2738,7 @@ def build() -> None:
         all_weeks, SITE_URL, indexed_hubs, indexed_tags,
         hub_lastmod={c: _collection_lastmod(hubs[c]) for c in indexed_hubs},
         tag_lastmod={s: _collection_lastmod(tags[s]) for s in indexed_tags},
-        service_slugs=[p["slug"] for p in SERVICE_PAGES],
+        service_slugs=[p["slug"] for p in SERVICE_PAGES] + [SAMPLE_REVIEW["slug"]],
     )
     (SITE_DIR / "sitemap.xml").write_text(sitemap_xml, encoding="utf-8")
     _assert_sitemap_matches_disk(sitemap_xml)
