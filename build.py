@@ -29,6 +29,8 @@ from typing import Any
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
+from service_pages import SERVICE_PAGES
+
 # ---------------------------------------------------------------------------
 # Config
 # ---------------------------------------------------------------------------
@@ -176,9 +178,17 @@ TAG_TO_HUB: dict[str, str] = {
 # simply renders no CTA. Deliberately narrow: broad tags (llm, openai, anthropic)
 # are news, not intent, so they stay unmapped. `door` is the services.html section
 # anchor and the contact-form subject.
+# Which beat hub each service page links to as "what we are reading".
+SERVICE_PAGE_TOPIC = {
+    "rag-pipelines": ("ai", "AI & Machine Learning"),
+    "private-ai": ("ai", "AI & Machine Learning"),
+    "ai-guardrails": ("security", "Cybersecurity"),
+    "ai-security-review": ("security", "Cybersecurity"),
+}
+
 SERVICE_CTAS: dict[str, dict[str, str]] = {
     "secure": {
-        "door": "secure",
+        "door": "secure", "page": "ai-security-review",
         "title": "Putting agents in front of real tools?",
         "text": ("We review what your agents can reach and do, the guardrails around "
                  "them, and the evidence you can show afterwards. Fixed scope, "
@@ -186,7 +196,7 @@ SERVICE_CTAS: dict[str, dict[str, str]] = {
         "label": "See the Agent & Guardrail Security Review",
     },
     "rag": {
-        "door": "build",
+        "door": "build", "page": "rag-pipelines",
         "title": "Want AI that answers from your own documents?",
         "text": ("We review or design retrieval pipelines, tune them on your own "
                  "questions and measure the result, with sources shown for every "
@@ -194,7 +204,7 @@ SERVICE_CTAS: dict[str, dict[str, str]] = {
         "label": "See the RAG Pipeline Review & Sprint",
     },
     "private": {
-        "door": "build",
+        "door": "build", "page": "private-ai",
         "title": "Need AI that runs where your data stays?",
         "text": ("We implement assistants and pipelines on open models, deployed on "
                  "your infrastructure with no third-party AI service in the loop."),
@@ -1295,15 +1305,10 @@ def _make_collection_jsonld(
     }, ensure_ascii=False)
 
 
-def _make_services_jsonld(page_jsonld: str, site_url: str) -> str:
-    """The services page's WebPage node plus one Service node per offer.
-
-    Each Service names the one Organization (`#organization`) as provider, so a
-    consumer resolves them to the same entity as every other page. No `offers`
-    or price: the page states none, and schema must not claim what it doesn't show.
-    """
-    page = json.loads(page_jsonld)
-    offers = [
+# One Service node per offer on services.html. `slug` is the stable @id fragment,
+# `door` the services.html section anchor. Offers with a dedicated page link their
+# `url` there (see _service_page_urls); the rest keep the section anchor.
+_SERVICE_OFFERS = [
         ("RAG Pipeline Review & Sprint", "build", "build",
          "Review or design of a retrieval-augmented generation pipeline, tuned and "
          "measured on the client's own questions, with source attribution and an audit trail."),
@@ -1322,13 +1327,31 @@ def _make_services_jsonld(page_jsonld: str, site_url: str) -> str:
         ("AI Vendor Report Review", "vendor-report", "assure",
          "Structured review of an AI vendor's SOC 2 report against ICT third-party risk "
          "expectations, with a findings memo. Not an audit or attestation."),
-    ]
-    page["mainEntity"] = [
-        {"@type": "Service", "@id": f"{site_url}/services.html#{slug}", "name": name,
-         "description": desc, "provider": {"@id": f"{site_url}/#organization"},
-         "url": f"{site_url}/services.html#{door}"}
-        for name, slug, door, desc in offers
-    ]
+]
+
+# offer slug -> the service page that is its primary home. "secure" has two pages
+# (guardrails, security review); the review is the engagement, so it owns the url.
+_OFFER_PRIMARY_PAGE = {"build": "rag-pipelines", "private-ai": "private-ai",
+                       "secure": "ai-security-review"}
+
+
+def _service_node(site_url: str, name: str, slug: str, door: str, desc: str) -> dict[str, Any]:
+    page = _OFFER_PRIMARY_PAGE.get(slug)
+    return {"@type": "Service", "@id": f"{site_url}/services.html#{slug}", "name": name,
+            "description": desc, "provider": {"@id": f"{site_url}/#organization"},
+            "url": (f"{site_url}/service/{page}.html" if page
+                    else f"{site_url}/services.html#{door}")}
+
+
+def _make_services_jsonld(page_jsonld: str, site_url: str) -> str:
+    """The services page's WebPage node plus one Service node per offer.
+
+    Each Service names the one Organization (`#organization`) as provider, so a
+    consumer resolves them to the same entity as every other page. No `offers`
+    or price: the page states none, and schema must not claim what it doesn't show.
+    """
+    page = json.loads(page_jsonld)
+    page["mainEntity"] = [_service_node(site_url, *o) for o in _SERVICE_OFFERS]
     return json.dumps(page, ensure_ascii=False)
 
 
@@ -1768,7 +1791,8 @@ def _generate_sitemap(all_weeks: list[dict], site_url: str,
                       hub_slugs: list[str] | None = None,
                       tag_slugs: list[str] | None = None,
                       hub_lastmod: dict[str, str | None] | None = None,
-                      tag_lastmod: dict[str, str | None] | None = None) -> str:
+                      tag_lastmod: dict[str, str | None] | None = None,
+                      service_slugs: list[str] | None = None) -> str:
     """Sitemap for every page the build publishes.
 
     lastmod is the date the page's content actually changed, never the build
@@ -1800,6 +1824,8 @@ def _generate_sitemap(all_weeks: list[dict], site_url: str,
         (f"{site_url}/maki.html", None),
         (f"{site_url}/contact.html", None),
     ]
+    for slug in (service_slugs or []):
+        entries.append((f"{site_url}/service/{slug}.html", None))
     for slug in (hub_slugs or []):
         entries.append((f"{site_url}/topic/{slug}.html", hub_lastmod.get(slug)))
     for slug in (tag_slugs or []):
@@ -2018,6 +2044,8 @@ def _generate_llms_txt(all_weeks: list[dict], site_url: str, site_name: str, tag
         f"- [Topics]({site_url}/topics.html): Browse coverage by beat and technology",
         f"- [Archive]({site_url}/archive.html): Every issue of the newsletter, newest first",
         f"- [Services]({site_url}/services.html): RAG pipelines, private AI, agent and guardrail security, plus LLM model risk review, AI vendor report review and AI governance readiness assessments",
+        *[f"  - [{p['nav_name'][0].upper() + p['nav_name'][1:]}]({site_url}/service/{p['slug']}.html): {p['meta']}"
+          for p in SERVICE_PAGES],
         f"- [About]({site_url}/about.html): Mission, topics covered, and how the pipeline works",
         f"- [Team]({site_url}/team.html): About the people and AI behind {site_name}",
         f"- [Maki]({site_url}/maki.html): The open-source multi-agent framework that curates each issue; links to its repository and docs site",
@@ -2514,6 +2542,37 @@ def build() -> None:
     )
     collection_tmpl = env.get_template("collection.html")
 
+    # Dedicated service pages: one per long-tail query the single services page cannot
+    # rank for. Copy lives in service_pages.py. Nested one level, so relative hrefs.
+    (SITE_DIR / "service").mkdir(parents=True, exist_ok=True)
+    service_tmpl = env.get_template("service.html")
+    pages_by_slug = {p["slug"]: p for p in SERVICE_PAGES}
+    offers = {o[1]: o for o in _SERVICE_OFFERS}
+    for pg in SERVICE_PAGES:
+        url = f"{SITE_URL}/service/{pg['slug']}.html"
+        title = f"{pg['title']}"
+        webpage = json.loads(_make_webpage_jsonld(
+            "WebPage", f"{title} · {SITE_NAME}", pg["meta"], url, SITE_URL, SITE_NAME,
+            about=[f"{SITE_URL}/services.html#{pg['offer']}"]))
+        webpage["mainEntity"] = _service_node(SITE_URL, *offers[pg["offer"]])
+        topic_slug, topic_name = SERVICE_PAGE_TOPIC[pg["slug"]]
+        html = service_tmpl.render(
+            **collection_nav, current_page="services",
+            page_title=title, meta=pg["meta"], canonical_url=url, h1=pg["h1"],
+            lede=pg["lede"], facts=pg["facts"], get=pg["get"], fit_title=pg["fit_title"],
+            fit=pg["fit"], steps=pg["steps"], faq=pg["faq"], subject=pg["subject"],
+            related=[{"href": f"{r}.html", "name": pages_by_slug[r]["nav_name"]}
+                     for r in pg["related"]],
+            topic_href=f"../topic/{topic_slug}.html", topic_name=topic_name,
+            jsonld_str=json.dumps(webpage, ensure_ascii=False),
+            faq_jsonld_str=_make_faq_jsonld(pg["faq"]),
+            breadcrumb_jsonld_str=_make_breadcrumb_jsonld([
+                (SITE_NAME, f"{SITE_URL}/"), ("Services", f"{SITE_URL}/services.html"),
+                (pg["nav_name"], url)]),
+        )
+        (SITE_DIR / "service" / f"{pg['slug']}.html").write_text(html, encoding="utf-8")
+    print(f"  Rendered  {len(SERVICE_PAGES)} service page(s) → site/service/")
+
     for cat in hub_slugs:
         hub = hubs[cat]
         meta = hub["meta"]
@@ -2652,6 +2711,7 @@ def build() -> None:
         all_weeks, SITE_URL, indexed_hubs, indexed_tags,
         hub_lastmod={c: _collection_lastmod(hubs[c]) for c in indexed_hubs},
         tag_lastmod={s: _collection_lastmod(tags[s]) for s in indexed_tags},
+        service_slugs=[p["slug"] for p in SERVICE_PAGES],
     )
     (SITE_DIR / "sitemap.xml").write_text(sitemap_xml, encoding="utf-8")
     _assert_sitemap_matches_disk(sitemap_xml)
