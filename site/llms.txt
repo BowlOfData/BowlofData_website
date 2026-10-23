@@ -274,7 +274,7 @@ One issue per ISO week, newest first. 25 published so far. Counts follow one def
   - [Sample AI security review](https://bowlofdata.net/service/sample-ai-security-review.html): An illustrative AI security review findings report for a fictional claims assistant: tool map, prioritised findings and what we would log and block.
 - [About](https://bowlofdata.net/about.html): Mission, topics covered, and how the pipeline works
 - [Team](https://bowlofdata.net/team.html): About the people and AI behind Bowl of Data
-- [Maki](https://bowlofdata.net/maki.html): The open-source multi-agent framework that curates each issue; links to its repository and docs site
+- [Maki](https://bowlofdata.net/maki.html): The open-source multi-agent framework that curates each issue; how the pipeline works, install with pip, links to its repository and docs
 - [Contact](https://bowlofdata.net/contact.html): Feedback and article suggestions
 
 ## Optional

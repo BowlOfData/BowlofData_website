@@ -65,7 +65,9 @@ CRUNCHBASE_URL = "https://www.crunchbase.com/organization/bowl-of-data"
 X_HANDLE     = "@BowlOfData"
 X_URL        = f"https://x.com/{X_HANDLE[1:]}"
 MAKI_REPO_URL = "https://github.com/BowlOfData/maki"
-MAKI_DOCS_URL = "https://bowlofdata.github.io/maki/"    # GitHub Pages site of the Maki repo
+MAKI_SITE_URL = "https://bowlofdata.github.io/maki/"     # GitHub Pages landing page of the Maki repo
+MAKI_DOCS_URL = "https://bowlofdata.github.io/maki/docs/"  # MkDocs user documentation, same Pages site
+MAKI_PYPI_URL = "https://pypi.org/project/maki-framework/"
 MAKI_ID       = f"{SITE_URL}/maki.html#software"
 
 # One sentence, used verbatim wherever the site says how an issue is made (about page, FAQ,
@@ -518,9 +520,9 @@ MAKI_FAQ = [
      "Yes. Maki is released under the MIT license and requires Python 3.10 or newer. The "
      "source is on GitHub, and the project documentation is hosted on GitHub Pages."),
     ("How do I try Maki?",
-     "Clone the repository and install it with pip from the source folder, then follow the "
-     "documentation site. The project describes itself as young (0.x), so expect the "
-     "interfaces to keep changing."),
+     "Run pip install maki-framework (the import name is maki), start a local model with "
+     "Ollama, and follow the quickstart in the documentation. The project describes itself "
+     "as young (0.x), so expect the interfaces to keep changing."),
 ]
 
 
@@ -1437,9 +1439,10 @@ def _make_maki_jsonld(site_url: str, site_name: str) -> str:
                 "softwareRequirements": "Python 3.10+",
                 "license": "https://opensource.org/license/mit",
                 "isAccessibleForFree": True,
-                "url": MAKI_DOCS_URL,
+                "url": MAKI_SITE_URL,
                 "codeRepository": MAKI_REPO_URL,
-                "sameAs": [MAKI_REPO_URL, MAKI_DOCS_URL],
+                "installUrl": MAKI_PYPI_URL,
+                "sameAs": [MAKI_REPO_URL, MAKI_SITE_URL, MAKI_DOCS_URL, MAKI_PYPI_URL],
                 "author": {"@id": f"{site_url}/#organization"},
                 "publisher": {"@id": f"{site_url}/#organization"},
             },
@@ -2067,7 +2070,7 @@ def _generate_llms_txt(all_weeks: list[dict], site_url: str, site_name: str, tag
         f"  - [Sample AI security review]({site_url}/service/{SAMPLE_REVIEW['slug']}.html): {SAMPLE_REVIEW['meta']}",
         f"- [About]({site_url}/about.html): Mission, topics covered, and how the pipeline works",
         f"- [Team]({site_url}/team.html): About the people and AI behind {site_name}",
-        f"- [Maki]({site_url}/maki.html): The open-source multi-agent framework that curates each issue; links to its repository and docs site",
+        f"- [Maki]({site_url}/maki.html): The open-source multi-agent framework that curates each issue; how the pipeline works, install with pip, links to its repository and docs",
         f"- [Contact]({site_url}/contact.html): Feedback and article suggestions",
         "",
         "## Optional",
@@ -2416,6 +2419,7 @@ def build() -> None:
         curation_statement=CURATION_STATEMENT,
         maki_repo_url=MAKI_REPO_URL,
         maki_docs_url=MAKI_DOCS_URL,
+        maki_pypi_url=MAKI_PYPI_URL,
         jsonld_str=website_jsonld_str,
     )
 
