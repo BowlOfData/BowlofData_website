@@ -8,15 +8,17 @@ Building is free; publishing is the push. So the page work proceeds now, and **P
 ## Decision log
 | # | Decision | Why |
 |---|---|---|
-| E1 | Three doors (Build / Secure / Assure), one entry offer each, same URL `/services.html`. | Owner call; keeps focus and the indexed URL. |
+| E1 | Three doors (Build / Secure / Assure), one entry offer each, same URL `/services.html`. **Amended by E10 (2026-10-23).** | Owner call; keeps focus and the indexed URL. |
 | E2 | SOC2 review = AI vendor report review for the client's due diligence. Output is a findings memo; it is not an audit or attestation and the page says so. | Owner call; clearest EU hook; limits liability. |
 | E3 | Secure entry offer is the review; implementation is a separately scoped second step (confirmed 2026-10-18). | Fixed scope is only possible for the review. |
 | E4 | Maki wording: "we apply allowlist-gated tool access in our own pipeline; open source, inspectable". No "trusted enforcement layer". | Owner asked for a Maki trust claim; the factual version is defensible at 0.x. |
 | E5 | Copy: "reduce and evidence", never "prevent/guarantee/block all". | Security claims are tested by the audience. |
-| E6 | Software development becomes an "also" line; Build shows RAG Sprint and Private AI. | Keeps the page to 6 cards (confirmed 2026-10-18). |
+| E6 | Software development becomes an "also" line; Build shows RAG Sprint and Private AI. | Keeps the page to 6 cards (confirmed 2026-10-18). **Superseded by E11 (2026-10-23).** |
 | E7 | Long-tail SEO targets only. | Head terms are owned by vendors. |
 | E9 (added) | BAIT wording is "BAIT where it still applies" (Bundesbank: repealed completely at the end of 2026), not "former". DORA Articles 28 to 30 are named (verified on EUR-Lex); paragraph numbers are not. | P0 verification, 2026-10-18; see docs/ideas/services-expansion-p0.md. |
 | E8 | The push is gated by the P0 validation criteria (or a written owner override). Build and local merges are not gated. | Confirmed 2026-10-18; publishing is the irreversible step. |
+| E10 (added) | `/services.html` stays the hub, but each offer with long-tail demand also gets a dedicated page under `/service/` (rag-pipelines, private-ai, ai-guardrails, ai-security-review, ai-adoption), plus an illustrative sample findings report on a fictional system. Door structure (Build / Secure / Assure) is unchanged; `build` stays the anchor for the Build offers. | Owner approval 2026-10-23. One URL cannot rank for four or five distinct queries; the sample is the only proof asset that needs no client data. Copy lives in `service_pages.py`. |
+| E11 (added) | Build gains an "AI Adoption Readiness Sprint" as its entry offer (fixed scope, typically 2 weeks: use cases chosen on the client's data, data and security readiness check, one small pilot, written roadmap). The services page now shows 7 cards (Build 3, Secure 1, Assure 3). RAG Sprint and Private AI stay as the follow-on build offers. | Owner decision 2026-10-23. The stated goal includes helping companies adopt AI, which the site did not offer. The pilot is explicitly not production software. |
 
 ## Always / Never
 - Always: reuse existing classes (`.pricing`, `.pricing--two`, `.cov`), `_make_webpage_jsonld` / `_make_services_jsonld`, stable `@id`s; no pricing language; render through `build.py`, never hand-edit `site/`.

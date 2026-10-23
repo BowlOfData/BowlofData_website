@@ -3,7 +3,7 @@
 {% block title %}AI Engineering, Security &amp; Assurance Services · {{ site_name }}{% endblock %}
 {% block og_title %}AI Engineering, Security &amp; Assurance — RAG, Private AI, Agents, Model Risk{% endblock %}
 
-{% block og_description %}RAG, private AI and agent security, plus LLM model risk review and AI governance readiness for banks and insurers. Fixed scope, small team.{% endblock %}
+{% block og_description %}AI adoption support, RAG, private AI and agent security, plus model risk review and AI governance readiness for banks and insurers. Fixed scope.{% endblock %}
 {% block og_url %}{{ site_url }}/services.html{% endblock %}
 
 {% block content %}
@@ -16,8 +16,8 @@
       <span>Then prove it holds.</span>
     </h1>
     <p class="services-hero-sub">
-      We build retrieval-augmented (RAG) pipelines and private AI, secure the agents and
-      LLM applications you run, and review AI systems and AI vendors for the regulators
+      We help companies decide where to start with AI, build retrieval-augmented (RAG)
+      pipelines and private AI, secure the agents and LLM applications you run, and review AI systems and AI vendors for the regulators
       and auditors who will ask about them. Small team, fixed scope, work you can show.
     </p>
     <div class="services-hero-ctas">
@@ -38,10 +38,24 @@
   <section class="services-section" id="build">
     <h2 class="services-section-title">Build</h2>
     <p class="services-lede">For any company that wants AI working on its own documents and data. We start small, prove it against real questions, then grow it.</p>
-    <div class="pricing pricing--two">
+    <div class="pricing">
 
       <div class="plan plan--featured">
         <span class="plan-flag">Start here</span>
+        <div class="plan-name">AI Adoption Readiness Sprint</div>
+        <p class="plan-tagline">Find where AI helps first, and test it on one small pilot.</p>
+        <p class="plan-price">Fixed scope · typically 2 weeks</p>
+        <ul class="plan-features">
+          <li>Two or three candidate use cases, chosen with you and checked against your own data</li>
+          <li>A readiness check: where the data lives, and what access and security it needs</li>
+          <li>One small pilot, measured against real questions from your team</li>
+          <li>A written roadmap: what to build, what to secure and what to leave, in order</li>
+        </ul>
+        <a href="{{ contact_href }}?subject=build" class="cta-primary">Start a conversation</a>
+        <a href="service/ai-adoption.html" class="plan-more">About the adoption sprint &rarr;</a>
+      </div>
+
+      <div class="plan">
         <div class="plan-name">RAG Pipeline Review &amp; Sprint</div>
         <p class="plan-tagline">A retrieval pipeline that answers from your documents and shows its sources.</p>
         <p class="plan-price">Fixed scope · typically 2 weeks</p>
@@ -51,7 +65,7 @@
           <li>An evaluation set, so quality is measured and not guessed</li>
           <li>Source attribution and an audit trail for every answer</li>
         </ul>
-        <a href="{{ contact_href }}?subject=build" class="cta-primary">Start a conversation</a>
+        <a href="{{ contact_href }}?subject=build" class="cta-secondary">Start a conversation</a>
         <a href="service/rag-pipelines.html" class="plan-more">About RAG pipeline review &rarr;</a>
       </div>
 

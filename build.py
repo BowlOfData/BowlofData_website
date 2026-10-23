@@ -180,6 +180,7 @@ TAG_TO_HUB: dict[str, str] = {
 # anchor and the contact-form subject.
 # Which beat hub each service page links to as "what we are reading".
 SERVICE_PAGE_TOPIC = {
+    "ai-adoption": ("ai", "AI & Machine Learning"),
     "rag-pipelines": ("ai", "AI & Machine Learning"),
     "private-ai": ("ai", "AI & Machine Learning"),
     "ai-guardrails": ("security", "Cybersecurity"),
@@ -210,6 +211,14 @@ SERVICE_CTAS: dict[str, dict[str, str]] = {
                  "your infrastructure with no third-party AI service in the loop."),
         "label": "See Private AI Implementation",
     },
+    "adopt": {
+        "door": "build", "page": "ai-adoption",
+        "title": "Not sure where to start with AI?",
+        "text": ("In about two weeks we help you choose use cases, check your data and "
+                 "security readiness, and test one idea on a small pilot, ending in a "
+                 "written roadmap."),
+        "label": "See the AI Adoption Readiness Sprint",
+    },
     "assure": {
         "door": "assure",
         "title": "Need to explain your AI to an auditor?",
@@ -226,7 +235,7 @@ TAG_SERVICE: dict[str, str] = {
     "retrieval-augmented-generation-rag": "rag",
     "ollama": "private", "llama": "private", "llama-32-3b": "private", "vllm": "private",
 }
-TOPIC_SERVICE: dict[str, str] = {"security": "secure", "governance": "assure"}
+TOPIC_SERVICE: dict[str, str] = {"security": "secure", "governance": "assure", "ai": "adopt"}
 
 _TAG_CANONICAL = {v: canon for canon, vs in TAG_ALIASES.items() for v in vs}
 
@@ -415,6 +424,11 @@ CATEGORY_META = {
 # FAQ content — kept in sync with the on-page <details> markup so the
 # FAQPage schema matches what users actually see.
 SERVICES_FAQ = [
+    ("What is the AI adoption readiness sprint?",
+     "A fixed-scope engagement, typically two weeks, for companies that want to adopt AI "
+     "but are not sure where to start. We choose two or three use cases with you, check "
+     "data and security readiness, run one small pilot measured on real questions, and "
+     "leave a written roadmap of what to build, secure and leave, in order."),
     ("What is a governance readiness assessment?",
      "A fixed-scope review of where your IT, data and AI governance stands. We build an "
      "inventory of your AI and model-based systems, classify each by risk, compare the "
@@ -482,7 +496,7 @@ ABOUT_FAQ = [
      "A new issue ships every week. You can read it here on the site, subscribe by email on "
      "Substack, or listen to the companion podcast on Spotify."),
     ("Does Bowl of Data offer services?",
-     "Yes, in three areas: building (RAG pipelines, private AI, custom software), securing "
+     "Yes, in three areas: building (AI adoption support, RAG pipelines, private AI, custom software), securing "
      "(agent and guardrail security) and assuring (LLM and model risk review, AI vendor "
      "report review and governance readiness assessments for banks, insurers and their IT "
      "providers). The newsletter stays free and is the public example of the pipeline at "
@@ -1309,6 +1323,10 @@ def _make_collection_jsonld(
 # `door` the services.html section anchor. Offers with a dedicated page link their
 # `url` there (see _service_page_urls); the rest keep the section anchor.
 _SERVICE_OFFERS = [
+        ("AI Adoption Readiness Sprint", "adoption", "build",
+         "A fixed-scope sprint to help a company adopt AI: candidate use cases chosen on "
+         "its own data, a data and security readiness check, one small measured pilot, and "
+         "a written roadmap."),
         ("RAG Pipeline Review & Sprint", "build", "build",
          "Review or design of a retrieval-augmented generation pipeline, tuned and "
          "measured on the client's own questions, with source attribution and an audit trail."),
@@ -1331,7 +1349,7 @@ _SERVICE_OFFERS = [
 
 # offer slug -> the service page that is its primary home. "secure" has two pages
 # (guardrails, security review); the review is the engagement, so it owns the url.
-_OFFER_PRIMARY_PAGE = {"build": "rag-pipelines", "private-ai": "private-ai",
+_OFFER_PRIMARY_PAGE = {"adoption": "ai-adoption", "build": "rag-pipelines", "private-ai": "private-ai",
                        "secure": "ai-security-review"}
 
 
@@ -1990,8 +2008,8 @@ def _generate_llms_txt(all_weeks: list[dict], site_url: str, site_name: str, tag
         ),
         "",
         (
-            f"The team behind {site_name} also offers services in three areas: building (RAG "
-            "pipelines, private AI, custom software), securing (agent and guardrail security "
+            f"The team behind {site_name} also offers services in three areas: building (AI "
+            "adoption support, RAG pipelines, private AI, custom software), securing (agent and guardrail security "
             "reviews) and assuring (LLM and model risk review, AI vendor report review and "
             "IT, data and AI governance readiness assessments for regulated firms). "
             f"See {site_url}/services.html"
@@ -2043,7 +2061,7 @@ def _generate_llms_txt(all_weeks: list[dict], site_url: str, site_name: str, tag
         "",
         f"- [Topics]({site_url}/topics.html): Browse coverage by beat and technology",
         f"- [Archive]({site_url}/archive.html): Every issue of the newsletter, newest first",
-        f"- [Services]({site_url}/services.html): RAG pipelines, private AI, agent and guardrail security, plus LLM model risk review, AI vendor report review and AI governance readiness assessments",
+        f"- [Services]({site_url}/services.html): AI adoption support, RAG pipelines, private AI, agent and guardrail security, plus LLM model risk review, AI vendor report review and AI governance readiness assessments",
         *[f"  - [{p['nav_name'][0].upper() + p['nav_name'][1:]}]({site_url}/service/{p['slug']}.html): {p['meta']}"
           for p in SERVICE_PAGES],
         f"  - [Sample AI security review]({site_url}/service/{SAMPLE_REVIEW['slug']}.html): {SAMPLE_REVIEW['meta']}",
@@ -2507,8 +2525,8 @@ def build() -> None:
     services_html = env.get_template("services.html").render(
         **{**shared, "jsonld_str": _make_services_jsonld(_make_webpage_jsonld(
             "WebPage", f"AI Engineering, Security & Assurance Services · {SITE_NAME}",
-            "RAG pipelines, private AI and software development, agent and guardrail "
-            "security, LLM and model risk review, AI vendor report review and IT, data "
+            "AI adoption support, RAG pipelines, private AI and software development, agent and "
+            "guardrail security, LLM and model risk review, AI vendor report review and IT, data "
             f"and AI governance readiness assessments, from the team behind {SITE_NAME}.",
             f"{SITE_URL}/services.html", SITE_URL, SITE_NAME, about=[ORG_ID]), SITE_URL)},
         current_page="services",
