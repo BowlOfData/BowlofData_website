@@ -2435,6 +2435,7 @@ def build() -> None:
             f"{SITE_URL}/services.html", SITE_URL, SITE_NAME, about=[ORG_ID]), SITE_URL)},
         current_page="services",
         latest_week=latest_week,   # the "see a real issue" proof link
+        total_count=len(all_weeks),
         faq_jsonld_str=_make_faq_jsonld(SERVICES_FAQ),
         faq=SERVICES_FAQ,
         breadcrumb_jsonld_str=_make_breadcrumb_jsonld([
