@@ -385,8 +385,11 @@ also flagged that the homepage and the Substack describe the curation differentl
 
 **Needs a person (cannot be done from the repo)**
 
-- [ ] Substack: use the `CURATION_STATEMENT` wording in the post footer and About page, and
-      stop quoting "22 articles" for an issue that is 17 articles + 5 papers.
+- [x] Substack: use the `CURATION_STATEMENT` wording in the post footer and About page, and
+      stop quoting "22 articles" for an issue that is 17 articles + 5 papers. Done 2026-10-23:
+      About page and bio (tagline) verified live; the old `netlify.app` links are gone; counts were
+      already fixed (week 42: 20 articles, 5 papers, 7 model releases). The post footer applies to
+      new posts only, so confirm it on the next issue. Paste copy: `docs/substack-copy.md`.
 - [ ] EveryDev.ai listing: fix the Week 36 date ("10/01/2004"), the duplicated Maki sources,
       and the Essential/Signature vs "Intelligence package" mismatch (edit link on the page).
 - [ ] Submit to InboxReads and the roundups that rank for "best AI / cybersecurity
