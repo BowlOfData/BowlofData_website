@@ -1050,6 +1050,22 @@ img { display: block; max-width: 100%; }
 .about-facts dt { font-family: var(--mono); font-size: .68rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding-top: .2rem; }
 .about-facts dd { margin: 0; font-family: var(--serif); font-size: 1rem; line-height: 1.6; color: var(--muted); }
 .about-facts a { color: var(--signal); }
+.pipeline { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem 1.1rem; counter-reset: step; }
+.pipeline-step { position: relative; counter-increment: step; background: var(--ink-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.1rem 1.1rem; }
+.pipeline-step::before { content: counter(step); position: absolute; top: .9rem; right: 1rem; font-family: var(--mono); font-size: .7rem; color: var(--faint); }
+.pipeline-step:not(:nth-child(3n))::after { content: "\2192"; position: absolute; right: -1.05rem; top: 50%; transform: translateY(-50%); color: var(--signal); font-family: var(--mono); font-size: .95rem; }
+.pipeline-step--human { border-color: var(--signal); }
+.pipeline-who { display: inline-block; font-family: var(--mono); font-size: .62rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .4rem; }
+.pipeline-step--human .pipeline-who { color: var(--signal); }
+.pipeline-t { font-family: var(--display); font-size: 1.05rem; font-weight: 800; letter-spacing: -.02em; color: var(--text); margin: 0 0 .35rem; }
+.pipeline-d { font-family: var(--serif); font-size: .92rem; line-height: 1.5; color: var(--muted); margin: 0; }
+.maki-code { background: var(--ink-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.1rem; margin: 0 0 .9rem; overflow-x: auto; }
+.maki-code code { font-family: var(--mono); font-size: .82rem; line-height: 1.6; color: var(--text); white-space: pre; }
+@media (max-width: 760px) {
+  .pipeline { grid-template-columns: 1fr; gap: 1.3rem; }
+  .pipeline-step:not(:nth-child(3n))::after { content: "\2193"; right: auto; left: 50%; top: auto; bottom: -1.2rem; transform: translateX(-50%); }
+  .pipeline-step:last-child::after { content: none; }
+}
 .maki-links { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
 @media (max-width: 600px) { .about-facts > div { grid-template-columns: 1fr; gap: .15rem; } }
 
