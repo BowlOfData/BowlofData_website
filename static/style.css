@@ -716,6 +716,9 @@ img { display: block; max-width: 100%; }
 .services-also { font-family: var(--serif); font-size: .95rem; color: var(--muted); line-height: 1.6; max-width: 62ch; margin: 1.4rem auto 0; text-align: center; }
 .plan-note { font-family: var(--mono); font-size: .68rem; letter-spacing: .04em; color: var(--muted); margin: 0; }
 .cov--three { grid-template-columns: repeat(3, 1fr); }
+.plan-more { display: block; text-align: center; margin-top: .8rem; font-family: var(--mono); font-size: .76rem; color: var(--signal-2); }
+.svc-related { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .6rem; }
+.svc-related a { font-family: var(--mono); font-size: .86rem; padding: .35rem 0; display: inline-block; }
 .services-lede { font-family: var(--serif); font-size: 1.02rem; color: var(--muted); line-height: 1.6; max-width: 62ch; margin: -.4rem 0 1.6rem; }
 
 /* Services — why work with us */

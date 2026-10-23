@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page_title }} · {{ site_name }}{% endblock %}
+{% block og_title %}{{ page_title }}{% endblock %}
+{% block og_description %}{{ meta }}{% endblock %}
+{% block og_url %}{{ canonical_url }}{% endblock %}
+
+{% block content %}
+
+<div class="services-hero">
+  <div class="services-hero-inner">
+    <span class="services-hero-badge">Services</span>
+    <h1 class="services-hero-title">{{ h1 }}</h1>
+    <p class="services-hero-sub">{{ lede }}</p>
+    <div class="services-hero-ctas">
+      <a href="{{ contact_href }}?subject={{ subject }}" class="cta-primary">Start a conversation</a>
+      <a href="{{ services_href }}" class="cta-secondary">All services</a>
+    </div>
+  </div>
+</div>
+
+<div class="services-body">
+
+  <section class="services-section">
+    <h2 class="services-section-title">What you get</h2>
+    <div class="pricing pricing--one">
+      <div class="plan plan--featured">
+        <p class="plan-price">{{ facts }}</p>
+        <ul class="plan-features">
+          {% for item in get %}<li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+        <a href="{{ contact_href }}?subject={{ subject }}" class="cta-primary">Start a conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-section">
+    <h2 class="services-section-title">{{ fit_title }}</h2>
+    <div class="pricing pricing--one">
+      <div class="plan">
+        <ul class="plan-features">
+          {% for item in fit %}<li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-section">
+    <h2 class="services-section-title">How it works</h2>
+    <div class="about-steps">
+      {% for title, text in steps %}
+      <div class="about-step">
+        <div class="about-step-num">0{{ loop.index }}</div>
+        <div class="about-step-body">
+          <h3 class="about-step-title">{{ title }}</h3>
+          <p class="about-step-text">{{ text }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="services-section">
+    <h2 class="services-section-title">Common questions</h2>
+    <div class="faq">
+      {% for q, a in faq %}
+      <details class="faq-item">
+        <summary>{{ q }}</summary>
+        <div class="faq-answer">{{ a }}</div>
+      </details>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="services-section">
+    <h2 class="services-section-title">Related</h2>
+    <ul class="svc-related">
+      {% for r in related %}<li><a href="{{ r.href }}">{{ r.name }} →</a></li>
+      {% endfor %}
+      <li><a href="{{ services_href }}">All services →</a></li>
+      <li><a href="{{ topic_href }}">What we are reading: {{ topic_name }} coverage →</a></li>
+    </ul>
+  </section>
+
+  <section class="services-cta-section">
+    <h2 class="services-cta-title">Have a system to build, secure or document?</h2>
+    <p class="services-cta-sub">Tell us what it is and we&rsquo;ll get back to you within 48 hours.</p>
+    <a href="{{ contact_href }}?subject={{ subject }}" class="cta-primary">Get in touch</a>
+  </section>
+
+</div>
+{% endblock %}
