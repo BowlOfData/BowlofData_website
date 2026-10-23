@@ -64,7 +64,7 @@
   {% endif %}
 </div>
 
-{# subscribe_ctx comes from the render call — this template serves both the
+{% if service_cta %}{% include "_service_cta.html" %}{% endif %}{# subscribe_ctx comes from the render call — this template serves both the
    topic hubs and the tag pages, and hardcoding it here collapsed all 105 tag
    pages into utm_campaign=topic. #}
 {% include "_subscribe.html" %}
