@@ -143,7 +143,7 @@
           <li>A written roadmap: what to build, what to secure and what to leave, in order</li>
         </ul>
         <a href="contact.html?subject=build" class="cta-primary">Start a conversation</a>
-        <a href="service/ai-adoption.html" class="plan-more">About the adoption sprint &rarr;</a>
+        <a href="service/ai-adoption.html" class="plan-more">About the adoption sprint</a>
       </div>
 
       <div class="plan">
@@ -157,7 +157,7 @@
           <li>Source attribution and an audit trail for every answer</li>
         </ul>
         <a href="contact.html?subject=build" class="cta-secondary">Start a conversation</a>
-        <a href="service/rag-pipelines.html" class="plan-more">About RAG pipeline review &rarr;</a>
+        <a href="service/rag-pipelines.html" class="plan-more">About RAG pipeline review</a>
       </div>
 
       <div class="plan">
@@ -171,7 +171,7 @@
           <li>Hooks for guardrails and audit logging from day one</li>
         </ul>
         <a href="contact.html?subject=build" class="cta-secondary">Talk to us</a>
-        <a href="service/private-ai.html" class="plan-more">About private AI implementation &rarr;</a>
+        <a href="service/private-ai.html" class="plan-more">About private AI implementation</a>
       </div>
 
     </div>
@@ -196,9 +196,9 @@
           <li>Prioritised findings you can act on</li>
         </ul>
         <a href="contact.html?subject=secure" class="cta-primary">Start a conversation</a>
-        <a href="service/ai-security-review.html" class="plan-more">About the security review &rarr;</a>
-        <a href="service/ai-guardrails.html" class="plan-more">About AI guardrails &rarr;</a>
-        <a href="service/sample-ai-security-review.html" class="plan-more">See a sample report &rarr;</a>
+        <a href="service/ai-security-review.html" class="plan-more">About the security review</a>
+        <a href="service/ai-guardrails.html" class="plan-more">About AI guardrails</a>
+        <a href="service/sample-ai-security-review.html" class="plan-more">See a sample report</a>
       </div>
 
     </div>
@@ -313,7 +313,7 @@
         <p class="services-proof-label">See the work</p>
         <p class="services-proof-body">The weekly newsletter is the public proof: a curated digest, produced by an open-source pipeline and reviewed by people. Read <a href="week/43_2026.html">this week&rsquo;s issue</a>, or browse the <a href="maki.html">Maki framework</a> behind it.</p>
       </div>
-      <a href="about.html" class="services-proof-link">About Bowl of Data →</a>
+      <a href="about.html" class="services-proof-link">About Bowl of Data</a>
     </div>
   </section>
 
@@ -426,6 +426,7 @@
           </svg>
         </a>
       </div>
+      <p class="footer-privacy"><strong>No cookies, no tracking.</strong> This site sets no cookies, runs no analytics or ads, and serves its fonts from its own server.</p>
       <p class="footer-credit">
         Powered by
         
@@ -433,22 +434,6 @@
       </p>
     </div>
   </footer>
-
-  <!-- Privacy notice: nothing here needs consent (no cookies, no third-party requests),
-       so it is a dismissible notice, not an accept/decline choice. The storage key keeps
-       its old name so visitors who already answered are not shown it again. -->
-  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Privacy notice" aria-live="polite">
-    <div class="cookie-banner-inner">
-      <p class="cookie-banner-text">
-        <strong>No cookies, no tracking.</strong>
-        This site sets no cookies, runs no analytics or ads, and loads its fonts from its own
-        server. Your browser only remembers that you dismissed this notice.
-      </p>
-      <div class="cookie-banner-actions">
-        <button id="cookie-accept" class="cookie-btn cookie-btn-accept">Got it</button>
-      </div>
-    </div>
-  </div>
 
   <script>
     document.documentElement.classList.add('js-anim');
@@ -492,19 +477,6 @@
           morePanel.classList.remove('is-open');
           moreBtn.setAttribute('aria-expanded', 'false');
         }
-      });
-    })();
-
-    // Privacy notice
-    (function () {
-      var banner = document.getElementById('cookie-banner');
-      if (!banner) return;
-      if (!localStorage.getItem('cookie-consent')) {
-        banner.classList.add('is-visible');
-      }
-      document.getElementById('cookie-accept').addEventListener('click', function () {
-        localStorage.setItem('cookie-consent', 'dismissed');
-        banner.classList.remove('is-visible');
       });
     })();
   </script>

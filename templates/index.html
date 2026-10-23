@@ -9,13 +9,6 @@
 <section class="hero" aria-label="Bowl of Data — weekly tech digest">
   <div class="hero-inner">
     <div class="hero-copy">
-      {% if total_count %}
-      <p class="hero-stat-line">
-        <span class="hero-stat"><strong>{{ total_count }}</strong> issues shipped</span>
-        <span class="hero-stat"><strong>{{ "{:,}".format(total_articles) }}</strong> stories filtered</span>
-        <span class="hero-stat"><strong>Sat</strong> every week</span>
-      </p>
-      {% endif %}
       <h1 class="hero-headline">
         The feed is noise.
         <span class="hero-headline-accent">We serve the <span class="mark">signal</span>.</span>
@@ -28,9 +21,8 @@
       <div class="hero-ctas">
         <a href="https://bowlofdata.substack.com/" class="cta-primary" target="_blank" rel="noopener">Subscribe — it's free</a>
         {% if latest_week %}
-        <a href="{{ latest_week.href }}" class="cta-secondary">Read issue {{ latest_week.week }} →</a>
+        <a href="{{ latest_week.href }}" class="cta-secondary">Read issue {{ latest_week.week }}</a>
         {% endif %}
-        <a href="{{ archive_href }}" class="cta-secondary">Browse archive</a>
       </div>
     </div>
 
@@ -63,7 +55,7 @@
       </ol>
       {% endif %}
 
-      <a class="manifest-cta" href="{{ latest_week.href }}">Read the full plate →</a>
+      <a class="manifest-cta" href="{{ latest_week.href }}">Read the full plate</a>
     </aside>
     {% endif %}
   </div>
@@ -143,7 +135,7 @@
       {% endfor %}
     </div>
     <div class="reg-foot">
-      <a class="cta-secondary" href="{{ archive_href }}">Browse all {{ total_count }} issues →</a>
+      <a class="cta-secondary" href="{{ archive_href }}">Browse all {{ total_count }} issues</a>
     </div>
   </div>
 </section>

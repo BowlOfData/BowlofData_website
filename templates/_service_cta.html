@@ -5,7 +5,7 @@
     <h2 class="service-cta-title">{{ service_cta.title }}</h2>
     <p class="service-cta-text">{{ service_cta.text }}</p>
     <div class="service-cta-actions">
-      <a href="{% if service_cta.page %}{{ services_href | replace('services.html', 'service/' ~ service_cta.page ~ '.html') }}{% else %}{{ services_href }}#{{ service_cta.door }}{% endif %}" class="cta-secondary">{{ service_cta.label | e }} &rarr;</a>
+      <a href="{% if service_cta.page %}{{ services_href | replace('services.html', 'service/' ~ service_cta.page ~ '.html') }}{% else %}{{ services_href }}#{{ service_cta.door }}{% endif %}" class="cta-secondary">{{ service_cta.label | e }}</a>
       <a href="{{ contact_href }}?subject={{ service_cta.door }}" class="service-cta-link">Talk to us</a>
     </div>
   </div>
