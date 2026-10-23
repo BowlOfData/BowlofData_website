@@ -1,0 +1,12 @@
+{# Contextual services CTA. Needs `service_cta` (see SERVICE_CTAS in build.py). #}
+<aside class="service-cta" aria-label="Services">
+  <div class="service-cta-inner">
+    <p class="service-cta-kicker">Work with the team behind the bowl</p>
+    <h2 class="service-cta-title">{{ service_cta.title }}</h2>
+    <p class="service-cta-text">{{ service_cta.text }}</p>
+    <div class="service-cta-actions">
+      <a href="{{ services_href }}#{{ service_cta.door }}" class="cta-secondary">{{ service_cta.label | e }} &rarr;</a>
+      <a href="{{ contact_href }}?subject={{ service_cta.door }}" class="service-cta-link">Talk to us</a>
+    </div>
+  </div>
+</aside>

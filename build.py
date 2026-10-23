@@ -170,6 +170,54 @@ TAG_TO_HUB: dict[str, str] = {
     "blockchain":                 "blockchain",
 }
 
+# Contextual services CTA on topic hubs and tag pages. Those pages are the long-tail
+# entry points, so a reader on the MCP or AI-agents tag is exactly who the matching
+# service is for. Keys are *final* slugs (after TAG_ALIASES), and a slug missing here
+# simply renders no CTA. Deliberately narrow: broad tags (llm, openai, anthropic)
+# are news, not intent, so they stay unmapped. `door` is the services.html section
+# anchor and the contact-form subject.
+SERVICE_CTAS: dict[str, dict[str, str]] = {
+    "secure": {
+        "door": "secure",
+        "title": "Putting agents in front of real tools?",
+        "text": ("We review what your agents can reach and do, the guardrails around "
+                 "them, and the evidence you can show afterwards. Fixed scope, "
+                 "typically 2\u20133 weeks."),
+        "label": "See the Agent & Guardrail Security Review",
+    },
+    "rag": {
+        "door": "build",
+        "title": "Want AI that answers from your own documents?",
+        "text": ("We review or design retrieval pipelines, tune them on your own "
+                 "questions and measure the result, with sources shown for every "
+                 "answer. Typically 2 weeks."),
+        "label": "See the RAG Pipeline Review & Sprint",
+    },
+    "private": {
+        "door": "build",
+        "title": "Need AI that runs where your data stays?",
+        "text": ("We implement assistants and pipelines on open models, deployed on "
+                 "your infrastructure with no third-party AI service in the loop."),
+        "label": "See Private AI Implementation",
+    },
+    "assure": {
+        "door": "assure",
+        "title": "Need to explain your AI to an auditor?",
+        "text": ("We inventory and risk-classify your AI systems and map the gaps to "
+                 "what MaRisk and DORA expect, in the order an auditor will ask."),
+        "label": "See the Governance Readiness Assessment",
+    },
+}
+TAG_SERVICE: dict[str, str] = {
+    "ai-agents": "secure", "ai-coding-agents": "secure", "claude-code": "secure",
+    "model-context-protocol-mcp": "secure", "github-copilot": "secure",
+    "microsoft-copilot": "secure", "openclaw": "secure", "cve": "secure",
+    "npm": "secure", "github-actions": "secure",
+    "retrieval-augmented-generation-rag": "rag",
+    "ollama": "private", "llama": "private", "llama-32-3b": "private", "vllm": "private",
+}
+TOPIC_SERVICE: dict[str, str] = {"security": "secure", "governance": "assure"}
+
 _TAG_CANONICAL = {v: canon for canon, vs in TAG_ALIASES.items() for v in vs}
 
 # Tag slugs whose page may disappear with a plain 404 -- a deliberate decision,
@@ -2484,6 +2532,7 @@ def build() -> None:
             **collection_nav, current_page="topics",
             kicker="Topic", h1=meta["h1"], page_title=f"{meta['h1']} News · {SITE_NAME}",
             robots=_robots_for(hub), subscribe_ctx="topic",
+            service_cta=SERVICE_CTAS.get(TOPIC_SERVICE.get(cat, "")),
             intro=meta["intro"], og_desc=og_desc, canonical_url=url,
             count=hub["count"], groups=shown, total_issues=issues,
             related_tags=hub["related_tags"], related_topics=None,
@@ -2518,6 +2567,7 @@ def build() -> None:
             kicker="Tag", h1=tag["name"],
             page_title=_tag_page_title(tag["name"]),
             robots=_robots_for(tag), subscribe_ctx="tag",
+            service_cta=SERVICE_CTAS.get(TAG_SERVICE.get(slug, "")),
             intro=intro, og_desc=og_desc, canonical_url=url,
             count=tag["count"], groups=tag["groups"],
             related_tags=tag["related_tags"], related_topics=tag["categories"],

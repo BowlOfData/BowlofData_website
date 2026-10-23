@@ -996,6 +996,14 @@ img { display: block; max-width: 100%; }
 .cov-engineering { --sig: var(--eng); }
 
 /* Inline subscribe CTA */
+.service-cta { max-width: var(--wrap); margin: 1rem auto 0; padding: 0 1.5rem; }
+.service-cta-inner { background: var(--ink-2); border: 1px solid var(--line); border-left: 3px solid var(--signal); border-radius: var(--radius-lg); padding: 1.8rem 2rem; box-shadow: var(--shadow-sm); }
+.service-cta-kicker { font-family: var(--mono); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--signal); margin-bottom: .5rem; }
+.service-cta-title { font-family: var(--display); font-weight: 800; font-size: 1.3rem; letter-spacing: -.02em; color: var(--text); margin: 0 0 .5rem; }
+.service-cta-text { font-family: var(--serif); font-size: 1.02rem; line-height: 1.55; color: var(--muted); max-width: 60ch; margin: 0 0 1.1rem; }
+.service-cta-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.4rem; }
+.service-cta-link { color: var(--signal-2); font-weight: 600; }
+@media (max-width: 640px) { .service-cta-inner { padding: 1.4rem 1.2rem; } }
 .subscribe-cta { max-width: var(--wrap); margin: 1rem auto 3.5rem; padding: 0 1.5rem; }
 .subscribe-cta-inner { background: var(--ink-2); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 2.4rem 2rem; text-align: center; box-shadow: var(--shadow-sm); }
 .subscribe-cta-kicker { font-family: var(--mono); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--signal); margin-bottom: .6rem; }
