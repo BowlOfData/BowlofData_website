@@ -1775,6 +1775,9 @@ def _generate_sitemap(all_weeks: list[dict], site_url: str,
     date: stamping every URL with "today" on each run tells Google the field is
     noise. Hubs and tags inherit the newest issue they aggregate; the marketing
     pages carry no lastmod at all, because they genuinely do not change.
+
+    changefreq and priority are omitted: Google ignores both, so emitting them
+    only invites a reader to trust numbers nothing consumes.
     """
     hub_lastmod = hub_lastmod or {}
     tag_lastmod = tag_lastmod or {}
@@ -1788,34 +1791,32 @@ def _generate_sitemap(all_weeks: list[dict], site_url: str,
     )
 
     entries = [
-        (f"{site_url}/",                 "weekly",  "1.0", newest),
-        (f"{site_url}/archive.html",     "weekly",  "0.9", newest),
-        (f"{site_url}/topics.html",      "weekly",  "0.8", newest),
-        (f"{site_url}/services.html",    "monthly", "0.7", None),
-        (f"{site_url}/about.html",       "monthly", "0.6", None),
-        (f"{site_url}/team.html",        "monthly", "0.5", None),
-        (f"{site_url}/maki.html",        "monthly", "0.5", None),
-        (f"{site_url}/contact.html",     "monthly", "0.5", None),
+        (f"{site_url}/", newest),
+        (f"{site_url}/archive.html", newest),
+        (f"{site_url}/topics.html", newest),
+        (f"{site_url}/services.html", None),
+        (f"{site_url}/about.html", None),
+        (f"{site_url}/team.html", None),
+        (f"{site_url}/maki.html", None),
+        (f"{site_url}/contact.html", None),
     ]
     for slug in (hub_slugs or []):
-        entries.append((f"{site_url}/topic/{slug}.html", "weekly", "0.8", hub_lastmod.get(slug)))
+        entries.append((f"{site_url}/topic/{slug}.html", hub_lastmod.get(slug)))
     for slug in (tag_slugs or []):
-        entries.append((f"{site_url}/tag/{slug}.html", "weekly", "0.6", tag_lastmod.get(slug)))
+        entries.append((f"{site_url}/tag/{slug}.html", tag_lastmod.get(slug)))
     for w in all_weeks:
         mtime = w.get("source_mtime")
         lastmod = (
             datetime.fromtimestamp(mtime, tz=timezone.utc).strftime("%Y-%m-%d")
             if mtime else None
         )
-        entries.append((f"{site_url}/{w['href']}", "never", "0.8", lastmod))
+        entries.append((f"{site_url}/{w['href']}", lastmod))
 
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    for loc, freq, priority, lastmod in entries:
+    for loc, lastmod in entries:
         lines.append("  <url>")
         lines.append(f"    <loc>{loc}</loc>")
-        lines.append(f"    <changefreq>{freq}</changefreq>")
-        lines.append(f"    <priority>{priority}</priority>")
         if lastmod:
             lines.append(f"    <lastmod>{lastmod}</lastmod>")
         lines.append("  </url>")
