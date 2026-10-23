@@ -221,3 +221,94 @@ SERVICE_PAGES: list[dict] = [
         "related": ["ai-guardrails", "rag-pipelines"],
     },
 ]
+
+
+# An illustrative findings report for the AI security review. It describes a FICTIONAL
+# system and invents no client, number or incident; the page says so at the top and the
+# bottom. Same wording rules as above: "reduce and evidence", never "prevent". The
+# findings are generic failure modes of tool-using LLM applications, not claims about
+# any real deployment.
+SAMPLE_REVIEW: dict = {
+    "slug": "sample-ai-security-review",
+    "offer": "secure",
+    "title": "Sample AI Security Review Findings Report",
+    "meta": ("An illustrative AI security review findings report for a fictional claims "
+             "assistant: tool map, prioritised findings and what we would log and block."),
+    "h1": "Sample AI security review",
+    "lede": ("What the end of an AI security review looks like. This is an illustrative "
+             "report on a fictional system. It shows the structure and level of detail of "
+             "the real deliverable, and contains no client data."),
+    "banner": ("Illustrative sample. The system, company and findings below are fictional "
+               "and describe common failure modes of tool-using LLM applications. They are "
+               "not from a real engagement."),
+    "system_title": "The system under review",
+    "system": ("Example Insurance Co. runs a claims-support assistant. A customer-service "
+               "agent types a question; a language model searches policy documents "
+               "(retrieval), reads the customer’s record, and can draft emails, update "
+               "claim status and issue small goodwill refunds through tools."),
+    "tools_title": "Tool and permission map",
+    "tools_cols": ["Tool", "Reaches", "Can change things?", "Control in place today"],
+    "tools": [
+        ["search_policy_docs", "Policy document index", "No", "None needed beyond index access"],
+        ["lookup_customer", "Customer record (read)", "No", "One shared service account"],
+        ["draft_email", "Outbound email drafts", "Drafts only", "Agent reviews before sending"],
+        ["update_claim_status", "Claims system (write)", "Yes", "One shared service account"],
+        ["issue_refund", "Payments (write)", "Yes", "Amount set by the model; no limit in code"],
+    ],
+    "findings_title": "Prioritised findings",
+    "findings": [
+        {"sev": "High", "title": "Every tool shares one write-capable service account",
+         "what": ("The lookup, status-update and refund tools all run under the same "
+                  "credential, so any one of them can reach everything the account can."),
+         "fix": "Give each tool its own least-privilege credential, so a misused tool cannot reach the others’ data."},
+        {"sev": "High", "title": "The refund amount is chosen by the model with no server-side limit",
+         "what": ("Nothing outside the model checks the amount or the number of refunds. "
+                  "A wrong or manipulated instruction becomes a payment."),
+         "fix": "Enforce a ceiling and a per-claim count in the payments service, and require human approval above a threshold."},
+        {"sev": "High", "title": "Retrieved document text can carry instructions into a tool-calling context",
+         "what": ("Policy documents and uploaded attachments are indexed together. Text inside "
+                  "them reaches the same context that decides which tool to call, so a "
+                  "crafted document can try to steer the agent."),
+         "fix": "Separate untrusted content from instructions, keep uploaded files out of the trusted index, and re-check tool calls against the user’s request."},
+        {"sev": "Medium", "title": "The audit log records answers but not tool calls",
+         "what": ("After an incident you could read what the assistant said, but not which "
+                  "tools it called, with what arguments, or what came back."),
+         "fix": "Log every tool call with arguments, result and requesting user, in a store the agent cannot edit."},
+        {"sev": "Medium", "title": "Blocked or unusual tool calls are neither blocked nor flagged",
+         "what": ("There is no rule for a tool called outside its normal pattern, so a "
+                  "failure is silent until someone notices its effect."),
+         "fix": "Add blocking rules for out-of-policy calls and an alert on repeated attempts."},
+        {"sev": "Medium", "title": "Coverage answers are given without checking them against the policy text",
+         "what": ("The assistant states what a policy covers in fluent prose. Where the "
+                  "retrieved text is thin, it can sound sure and be wrong."),
+         "fix": "Require a cited source for every coverage statement, and test accuracy on a fixed question set."},
+        {"sev": "Low", "title": "Internal hostnames appear in the system prompt",
+         "what": "Anything in the prompt can be coaxed out, so internal names should not be there.",
+         "fix": "Move them into configuration the model never sees."},
+    ],
+    "logblock_title": "What we would log and block",
+    "log": [
+        "Every tool call: who asked, which tool, arguments, result, time.",
+        "Every refusal by a guardrail, with the rule that fired.",
+        "Retrieved sources behind each answer, so a statement can be traced.",
+    ],
+    "block": [
+        "Refunds above the ceiling or beyond the per-claim count.",
+        "Tool calls the user’s request does not plausibly require.",
+        "Instructions arriving from retrieved or uploaded text, treated as data.",
+    ],
+    "order_title": "Suggested order of work",
+    "order": [
+        "Separate the credentials and add the refund ceiling. These close the highest-impact gaps first.",
+        "Add tool-call logging. Every later control depends on being able to see what happened.",
+        "Handle untrusted document content, then add blocking rules and alerts.",
+        "Cite-or-refuse on coverage answers, and measure accuracy on a fixed question set.",
+    ],
+    "limits_title": "What this sample is, and is not",
+    "limits": [
+        "It shows the shape of the deliverable. A real review is written for your system.",
+        "No review can promise that nothing gets through; the aim is to reduce risk and leave you evidence.",
+        "Implementing the fixes is scoped separately after the review.",
+    ],
+    "related": ["ai-security-review", "ai-guardrails"],
+}
