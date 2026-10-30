@@ -16,3 +16,9 @@ __pycache__/
 # Local Netlify folder
 .netlify
 SEO_STRATEGY.md
+docs/ideas/business-plan.md
+docs/ideas/execution-plan.md
+docs/ideas/pitch-deck-plan.md
+docs/ideas/highest-email-draft.md
+docs/ideas/silicon-allee-application.md
+.DS_Store

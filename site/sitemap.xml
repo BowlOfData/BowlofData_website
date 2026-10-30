@@ -2,15 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://bowlofdata.net/</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/archive.html</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/topics.html</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/services.html</loc>
@@ -47,19 +47,19 @@
   </url>
   <url>
     <loc>https://bowlofdata.net/topic/ai.html</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/topic/governance.html</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/topic/security.html</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/topic/blockchain.html</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/topic/engineering.html</loc>
@@ -67,39 +67,43 @@
   </url>
   <url>
     <loc>https://bowlofdata.net/topic/quantum.html</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/topic/space.html</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/large-language-models-llms.html</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/bitcoin.html</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/ethereum.html</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/python.html</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/quantum-computing.html</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/openai.html</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/anthropic.html</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/post-quantum-cryptography-pqc.html</loc>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/ai-agents.html</loc>
@@ -110,20 +114,16 @@
     <lastmod>2026-10-23</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/github.html</loc>
-    <lastmod>2026-10-23</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/post-quantum-cryptography-pqc.html</loc>
-    <lastmod>2026-10-23</lastmod>
-  </url>
-  <url>
     <loc>https://bowlofdata.net/tag/hugging-face.html</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/github.html</loc>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/claude.html</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/aws.html</loc>
@@ -150,6 +150,14 @@
     <lastmod>2026-10-09</lastmod>
   </url>
   <url>
+    <loc>https://bowlofdata.net/tag/windows.html</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/linux.html</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
     <loc>https://bowlofdata.net/tag/kubernetes.html</loc>
     <lastmod>2026-10-23</lastmod>
   </url>
@@ -166,6 +174,14 @@
     <lastmod>2026-08-14</lastmod>
   </url>
   <url>
+    <loc>https://bowlofdata.net/tag/shors-algorithm.html</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/javascript.html</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
     <loc>https://bowlofdata.net/tag/generative-ai.html</loc>
     <lastmod>2026-10-23</lastmod>
   </url>
@@ -175,10 +191,6 @@
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/azure.html</loc>
-    <lastmod>2026-10-23</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/linux.html</loc>
     <lastmod>2026-10-23</lastmod>
   </url>
   <url>
@@ -206,8 +218,8 @@
     <lastmod>2026-09-11</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/javascript.html</loc>
-    <lastmod>2026-10-16</lastmod>
+    <loc>https://bowlofdata.net/tag/ml-kem.html</loc>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/lora.html</loc>
@@ -222,16 +234,12 @@
     <lastmod>2026-10-02</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/windows.html</loc>
-    <lastmod>2026-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/shors-algorithm.html</loc>
-    <lastmod>2026-09-11</lastmod>
-  </url>
-  <url>
     <loc>https://bowlofdata.net/tag/data-centers.html</loc>
     <lastmod>2026-08-07</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/retrieval-augmented-generation-rag.html</loc>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/npm.html</loc>
@@ -258,6 +266,22 @@
     <lastmod>2026-08-07</lastmod>
   </url>
   <url>
+    <loc>https://bowlofdata.net/tag/quantum-key-distribution-qkd.html</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/macos.html</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/model-context-protocol-mcp.html</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/mixture-of-experts-moe.html</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
     <loc>https://bowlofdata.net/tag/tls.html</loc>
     <lastmod>2026-10-23</lastmod>
   </url>
@@ -270,19 +294,11 @@
     <lastmod>2026-10-23</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/ml-kem.html</loc>
-    <lastmod>2026-10-16</lastmod>
-  </url>
-  <url>
     <loc>https://bowlofdata.net/tag/bip-360.html</loc>
     <lastmod>2026-10-16</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/rust.html</loc>
-    <lastmod>2026-10-09</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/retrieval-augmented-generation-rag.html</loc>
     <lastmod>2026-10-09</lastmod>
   </url>
   <url>
@@ -298,8 +314,8 @@
     <lastmod>2026-09-25</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/model-context-protocol-mcp.html</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://bowlofdata.net/tag/quantum-processing-unit-qpu.html</loc>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/ubuntu.html</loc>
@@ -307,10 +323,6 @@
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/kv-cache.html</loc>
-    <lastmod>2026-10-23</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/mixture-of-experts-moe.html</loc>
     <lastmod>2026-10-23</lastmod>
   </url>
   <url>
@@ -346,16 +358,12 @@
     <lastmod>2026-09-18</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/macos.html</loc>
-    <lastmod>2026-09-11</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/quantum-key-distribution-qkd.html</loc>
-    <lastmod>2026-09-11</lastmod>
-  </url>
-  <url>
     <loc>https://bowlofdata.net/tag/stellar.html</loc>
     <lastmod>2026-09-04</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/android.html</loc>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/pypi.html</loc>
@@ -434,12 +442,28 @@
     <lastmod>2026-09-18</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/quantum-processing-unit-qpu.html</loc>
-    <lastmod>2026-08-29</lastmod>
-  </url>
-  <url>
     <loc>https://bowlofdata.net/tag/spacex.html</loc>
     <lastmod>2026-05-31</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/ecdsa.html</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/tokenization.html</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/diffusion-models.html</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/aave.html</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/arbitrum.html</loc>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/markdown.html</loc>
@@ -467,10 +491,6 @@
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/claude-mythos-preview.html</loc>
-    <lastmod>2026-10-16</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/android.html</loc>
     <lastmod>2026-10-16</lastmod>
   </url>
   <url>
@@ -602,6 +622,42 @@
     <lastmod>2026-05-31</lastmod>
   </url>
   <url>
+    <loc>https://bowlofdata.net/tag/rsa-2048.html</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/ecdh.html</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/distributed-ledger-technology-dlt.html</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/usdt.html</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/solc.html</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/bm25.html</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/agentdojo.html</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/llm-agents.html</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/tag/pagedattention.html</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
     <loc>https://bowlofdata.net/tag/litellm.html</loc>
     <lastmod>2026-10-23</lastmod>
   </url>
@@ -638,10 +694,6 @@
     <lastmod>2026-10-23</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/diffusion-models.html</loc>
-    <lastmod>2026-10-23</lastmod>
-  </url>
-  <url>
     <loc>https://bowlofdata.net/tag/frontier-ai-models.html</loc>
     <lastmod>2026-10-16</lastmod>
   </url>
@@ -659,10 +711,6 @@
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/ml-dsa.html</loc>
-    <lastmod>2026-10-16</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/ecdsa.html</loc>
     <lastmod>2026-10-16</lastmod>
   </url>
   <url>
@@ -710,10 +758,6 @@
     <lastmod>2026-10-02</lastmod>
   </url>
   <url>
-    <loc>https://bowlofdata.net/tag/arbitrum.html</loc>
-    <lastmod>2026-10-02</lastmod>
-  </url>
-  <url>
     <loc>https://bowlofdata.net/tag/gpt-6-astra.html</loc>
     <lastmod>2026-10-02</lastmod>
   </url>
@@ -751,10 +795,6 @@
   </url>
   <url>
     <loc>https://bowlofdata.net/tag/instagram.html</loc>
-    <lastmod>2026-09-18</lastmod>
-  </url>
-  <url>
-    <loc>https://bowlofdata.net/tag/aave.html</loc>
     <lastmod>2026-09-18</lastmod>
   </url>
   <url>
@@ -904,6 +944,10 @@
   <url>
     <loc>https://bowlofdata.net/tag/starlink.html</loc>
     <lastmod>2026-05-31</lastmod>
+  </url>
+  <url>
+    <loc>https://bowlofdata.net/week/44_2026.html</loc>
+    <lastmod>2026-10-30</lastmod>
   </url>
   <url>
     <loc>https://bowlofdata.net/week/43_2026.html</loc>
